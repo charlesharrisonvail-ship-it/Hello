@@ -1163,30 +1163,45 @@ div[style*="background"]{
   var R = Math.min(W, H) * 0.46;
   var svg = d3.select('#eq-globe-svg').attr('width', W).attr('height', H);
   var defs = svg.append('defs');
-  var og = defs.append('radialGradient').attr('id','eq-og').attr('cx','38%').attr('cy','35%').attr('r','65%');
-  og.append('stop').attr('offset','0%').attr('stop-color','#152848');
-  og.append('stop').attr('offset','100%').attr('stop-color','#050c18');
+  /* Ocean — rich blue lit from upper-left */
+  var og = defs.append('radialGradient').attr('id','eq-og').attr('cx','35%').attr('cy','30%').attr('r','70%');
+  og.append('stop').attr('offset','0%').attr('stop-color','#2196f3');
+  og.append('stop').attr('offset','55%').attr('stop-color','#1565c0');
+  og.append('stop').attr('offset','100%').attr('stop-color','#0a2f6e');
+  /* Land — natural green lit from upper-left */
   var lg = defs.append('radialGradient').attr('id','eq-lg').attr('cx','35%').attr('cy','30%').attr('r','70%');
-  lg.append('stop').attr('offset','0%').attr('stop-color','#1c3560');
-  lg.append('stop').attr('offset','100%').attr('stop-color','#0b1a32');
+  lg.append('stop').attr('offset','0%').attr('stop-color','#66bb6a');
+  lg.append('stop').attr('offset','55%').attr('stop-color','#388e3c');
+  lg.append('stop').attr('offset','100%').attr('stop-color','#1b5e20');
+  /* Specular highlight — simulates sun */
+  var sg = defs.append('radialGradient').attr('id','eq-sg').attr('cx','32%').attr('cy','28%').attr('r','45%');
+  sg.append('stop').attr('offset','0%').attr('stop-color','#ffffff').attr('stop-opacity','0.18');
+  sg.append('stop').attr('offset','100%').attr('stop-color','#ffffff').attr('stop-opacity','0');
+  /* Atmosphere glow at edges */
   var ag = defs.append('radialGradient').attr('id','eq-ag').attr('cx','50%').attr('cy','50%').attr('r','50%');
-  ag.append('stop').attr('offset','76%').attr('stop-color','#0a1628').attr('stop-opacity','0');
-  ag.append('stop').attr('offset','100%').attr('stop-color','#1a4a8a').attr('stop-opacity','0.2');
+  ag.append('stop').attr('offset','72%').attr('stop-color','#0a1628').attr('stop-opacity','0');
+  ag.append('stop').attr('offset','100%').attr('stop-color','#64b5f6').attr('stop-opacity','0.55');
   defs.append('clipPath').attr('id','eq-gc').append('circle').attr('cx',W/2).attr('cy',H/2).attr('r',R);
   var proj = d3.geoOrthographic().scale(R).translate([W/2,H/2]).clipAngle(90).rotate([0,-20]);
   var path = d3.geoPath().projection(proj);
   var g = svg.append('g');
   g.append('circle').attr('cx',W/2).attr('cy',H/2).attr('r',R).attr('fill','url(#eq-og)');
   var grat = d3.geoGraticule().step([20,20]);
-  var gratPath = g.append('path').datum(grat()).attr('fill','none').attr('stroke','rgba(201,168,76,0.05)').attr('stroke-width','0.5').attr('clip-path','url(#eq-gc)').attr('d',path);
+  var gratPath = g.append('path').datum(grat()).attr('fill','none').attr('stroke','rgba(255,255,255,0.13)').attr('stroke-width','0.5').attr('clip-path','url(#eq-gc)').attr('d',path);
   var world = await d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json');
   var countries = topojson.feature(world, world.objects.countries);
   var borders = topojson.mesh(world, world.objects.countries, function(a,b){return a!==b;});
   var landG = g.append('g').attr('clip-path','url(#eq-gc)');
   var landPaths = landG.selectAll('path').data(countries.features).enter().append('path').attr('fill','url(#eq-lg)').attr('stroke','none').attr('d',path);
-  var borderPath = g.append('path').datum(borders).attr('fill','none').attr('stroke','rgba(201,168,76,0.6)').attr('stroke-width','0.65').attr('clip-path','url(#eq-gc)').attr('d',path);
-  g.append('circle').attr('cx',W/2).attr('cy',H/2).attr('r',R).attr('fill','none').attr('stroke','rgba(201,168,76,0.28)').attr('stroke-width','1');
-  g.append('circle').attr('cx',W/2).attr('cy',H/2).attr('r',R+8).attr('fill','url(#eq-ag)');
+  var borderPath = g.append('path').datum(borders).attr('fill','none').attr('stroke','rgba(255,255,255,0.45)').attr('stroke-width','0.6').attr('clip-path','url(#eq-gc)').attr('d',path);
+  /* Specular sun glint */
+  g.append('circle').attr('cx',W/2).attr('cy',H/2).attr('r',R).attr('fill','url(#eq-sg)').attr('clip-path','url(#eq-gc)');
+  /* Outer edge ring */
+  g.append('circle').attr('cx',W/2).attr('cy',H/2).attr('r',R).attr('fill','none').attr('stroke','rgba(100,181,246,0.4)').attr('stroke-width','1.5');
+  /* Atmosphere halo */
+  g.append('circle').attr('cx',W/2).attr('cy',H/2).attr('r',R+16).attr('fill','url(#eq-ag)');
+  /* Outer soft halo ring */
+  g.append('circle').attr('cx',W/2).attr('cy',H/2).attr('r',R+28).attr('fill','none').attr('stroke','rgba(100,181,246,0.12)').attr('stroke-width','18');
   var cities = [{lat:39.6,lon:-106.4},{lat:48.8,lon:2.3},{lat:52.5,lon:13.4},{lat:19.4,lon:-99.1},{lat:40.7,lon:-74.0},{lat:51.5,lon:-0.1},{lat:35.7,lon:139.7},{lat:-33.9,lon:151.2},{lat:25.2,lon:55.3}];
   var cityG = g.append('g').attr('clip-path','url(#eq-gc)');
   function isVisible(lat,lon){var rot=proj.rotate(),lonDiff=lon-(-rot[0]);return Math.abs(((lonDiff+540)%360)-180)<88;}
@@ -1195,8 +1210,9 @@ div[style*="background"]{
     cities.forEach(function(c){
       if(!isVisible(c.lat,c.lon)) return;
       var p=proj([c.lon,c.lat]); if(!p) return;
-      cityG.append('circle').attr('cx',p[0]).attr('cy',p[1]).attr('r',3.5).attr('fill','#e8c66a').attr('opacity',0.92);
-      cityG.append('circle').attr('cx',p[0]).attr('cy',p[1]).attr('r',7).attr('fill','none').attr('stroke','rgba(201,168,76,0.38)').attr('stroke-width','0.8');
+      cityG.append('circle').attr('cx',p[0]).attr('cy',p[1]).attr('r',4).attr('fill','#ffd54f').attr('opacity',1);
+      cityG.append('circle').attr('cx',p[0]).attr('cy',p[1]).attr('r',9).attr('fill','none').attr('stroke','rgba(255,213,79,0.5)').attr('stroke-width','1');
+      cityG.append('circle').attr('cx',p[0]).attr('cy',p[1]).attr('r',14).attr('fill','none').attr('stroke','rgba(255,213,79,0.18)').attr('stroke-width','1');
     });
   }
   svgEl.classList.add('loaded');
