@@ -1,0 +1,1556 @@
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- EPIQUE AGENT ATTRACTION PAGE + EPICHAT WIDGET                    -->
+<!-- Lofty Embed Ready — Forbes 500 International Edition             -->
+<!-- Three.js 3D Globe + Floating Cards + 4-Language Switcher         -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+
+<!-- Three.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&family=Orbitron:wght@400;700;900&display=swap');
+
+  :root {
+    --gold: #d4ff00;
+    --gold-light: #e0ff33;
+    --gold-glow: rgba(212,255,0,0.35);
+    --neon-blue: #00d4ff;
+    --neon-blue-glow: rgba(0,212,255,0.25);
+    --neon-purple: #b060ff;
+    --neon-purple-glow: rgba(176,96,255,0.2);
+    --neon-green: #00ff88;
+    --bg-deep: #04040a;
+    --bg-card: #0a0a14;
+    --bg-input: #0f0f1c;
+    --text-primary: #f0ece4;
+    --text-muted: #8a8a9a;
+  }
+
+  #epique-wrap *, #epique-wrap *::before, #epique-wrap *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  #epique-wrap {
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: 'Outfit', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  #epique-wrap .grid-overlay {
+    position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: eqGridScroll 20s linear infinite;
+  }
+  @keyframes eqGridScroll { 0% { background-position: 0 0; } 100% { background-position: 60px 60px; } }
+
+  #epique-wrap .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.18; pointer-events: none; animation: eqOrbFloat 12s ease-in-out infinite; }
+  #epique-wrap .orb-1 { width: 500px; height: 500px; background: var(--neon-blue); top: -150px; left: -150px; animation-duration: 14s; }
+  #epique-wrap .orb-2 { width: 400px; height: 400px; background: var(--neon-purple); bottom: -100px; right: -100px; animation-duration: 18s; animation-delay: -6s; }
+  #epique-wrap .orb-3 { width: 300px; height: 300px; background: var(--gold); top: 40%; left: 50%; transform: translate(-50%,-50%); animation-duration: 10s; animation-delay: -3s; opacity: 0.08; }
+  @keyframes eqOrbFloat { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(30px, -20px) scale(1.05); } 66% { transform: translate(-20px, 30px) scale(0.95); } }
+
+  #epique-particles { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+
+  #epique-wrap .page-wrap { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 40px 20px 60px; }
+
+  #epique-wrap header { text-align: center; padding: 20px 0 48px; animation: eqFadeUp 0.8s ease both; }
+  #epique-wrap .logo-ring { display: inline-block; position: relative; margin-bottom: 28px; }
+  #epique-wrap .logo-ring::before { content: ''; position: absolute; inset: -6px; border-radius: 50%; background: conic-gradient(var(--neon-blue), var(--gold), var(--neon-purple), var(--neon-blue)); animation: eqSpinRing 4s linear infinite; z-index: -1; filter: blur(2px); }
+  #epique-wrap .logo-ring::after { content: ''; position: absolute; inset: -3px; border-radius: 50%; background: var(--bg-deep); z-index: -1; }
+  @keyframes eqSpinRing { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  #epique-wrap .logo-ring img { width: 110px; height: 110px; border-radius: 50%; display: block; object-fit: cover; }
+
+  #epique-wrap .badge { display: inline-block; font-family: 'Orbitron', sans-serif; font-size: 10px; letter-spacing: 3px; color: var(--neon-blue); text-transform: uppercase; border: 1px solid rgba(0,212,255,0.3); padding: 5px 14px; border-radius: 20px; margin-bottom: 16px; text-shadow: 0 0 10px var(--neon-blue); box-shadow: 0 0 12px rgba(0,212,255,0.15), inset 0 0 12px rgba(0,212,255,0.05); animation: eqPulseBadge 3s ease-in-out infinite; }
+  @keyframes eqPulseBadge { 0%, 100% { box-shadow: 0 0 12px rgba(0,212,255,0.15), inset 0 0 12px rgba(0,212,255,0.05); } 50% { box-shadow: 0 0 24px rgba(0,212,255,0.35), inset 0 0 20px rgba(0,212,255,0.12); } }
+
+  #epique-wrap h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 5vw, 46px); font-weight: 900; line-height: 1.15; color: var(--text-primary); margin-bottom: 12px; }
+  #epique-wrap h1 span { background: linear-gradient(135deg, var(--gold-light), var(--gold), #b0d400); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; filter: drop-shadow(0 0 12px var(--gold-glow)); }
+  #epique-wrap .subtitle { font-size: 15px; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 8px; }
+  #epique-wrap .tagline { font-size: 16px; color: var(--text-primary); opacity: 0.85; max-width: 560px; margin: 0 auto; line-height: 1.6; }
+  #epique-wrap .tagline strong { color: var(--neon-blue); text-shadow: 0 0 10px var(--neon-blue-glow); }
+
+  #epique-wrap .stats-bar { display: flex; justify-content: center; gap: 0; margin: 40px 0; border: 1px solid rgba(212,255,0,0.2); border-radius: 16px; overflow: hidden; animation: eqFadeUp 0.8s 0.2s ease both; backdrop-filter: blur(10px); background: rgba(10,10,20,0.7); }
+  #epique-wrap .stat-item { flex: 1; text-align: center; padding: 20px 16px; border-right: 1px solid rgba(212,255,0,0.15); position: relative; overflow: hidden; transition: background 0.3s; }
+  #epique-wrap .stat-item:last-child { border-right: none; }
+  #epique-wrap .stat-item:hover { background: rgba(212,255,0,0.05); }
+  #epique-wrap .stat-item::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0; transition: opacity 0.3s; }
+  #epique-wrap .stat-item:hover::before { opacity: 1; }
+  #epique-wrap .stat-number { font-family: 'Orbitron', sans-serif; font-size: 22px; font-weight: 700; color: var(--gold-light); text-shadow: 0 0 14px var(--gold-glow); display: block; }
+  #epique-wrap .stat-label { font-size: 11px; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; display: block; }
+
+  #epique-wrap .main-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 28px; align-items: start; }
+  @media (max-width: 768px) { #epique-wrap .main-grid { grid-template-columns: 1fr; } #epique-wrap .stats-bar { flex-wrap: wrap; } #epique-wrap .stat-item { flex: 1 1 45%; border-bottom: 1px solid rgba(212,255,0,0.15); } }
+
+  #epique-wrap .card { background: var(--bg-card); border-radius: 20px; padding: 36px 32px; border: 1px solid rgba(255,255,255,0.06); position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
+  #epique-wrap .card:hover { transform: translateY(-3px); }
+  #epique-wrap .card::before { content: ''; position: absolute; inset: 0; border-radius: 20px; padding: 1px; background: linear-gradient(135deg, rgba(212,255,0,0.3), rgba(0,212,255,0.15), rgba(176,96,255,0.15), transparent 70%); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
+  #epique-wrap .card-left { animation: eqFadeUp 0.8s 0.3s ease both; }
+  #epique-wrap .card-right { animation: eqFadeUp 0.8s 0.4s ease both; }
+  #epique-wrap .card h2 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--text-primary); margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid rgba(212,255,0,0.2); }
+  #epique-wrap .card h2 .neon-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--neon-blue); box-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue-glow); margin-right: 10px; animation: eqDotPulse 2s ease-in-out infinite; vertical-align: middle; }
+  @keyframes eqDotPulse { 0%, 100% { box-shadow: 0 0 8px var(--neon-blue), 0 0 16px var(--neon-blue-glow); transform: scale(1); } 50% { box-shadow: 0 0 16px var(--neon-blue), 0 0 30px var(--neon-blue-glow); transform: scale(1.3); } }
+
+  #epique-wrap .feature-list { display: flex; flex-direction: column; gap: 18px; }
+  #epique-wrap .feature-item { display: flex; align-items: flex-start; gap: 16px; padding: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.04); background: rgba(255,255,255,0.02); transition: all 0.3s; cursor: default; }
+  #epique-wrap .feature-item:hover { background: rgba(212,255,0,0.06); border-color: rgba(212,255,0,0.25); transform: translateX(4px); box-shadow: -3px 0 0 var(--gold), 0 4px 20px rgba(212,255,0,0.08); }
+  #epique-wrap .feature-icon { width: 44px; height: 44px; min-width: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; background: var(--bg-input); border: 1px solid rgba(212,255,0,0.2); position: relative; overflow: hidden; }
+  #epique-wrap .feature-icon::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(212,255,0,0.15), transparent); }
+  #epique-wrap .feature-content h3 { font-size: 14px; font-weight: 600; color: var(--gold-light); margin-bottom: 4px; letter-spacing: 0.3px; }
+  #epique-wrap .feature-content p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+  #epique-wrap .ai-pill { display: inline-flex; align-items: center; gap: 6px; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.25); border-radius: 30px; padding: 8px 16px; margin-bottom: 20px; font-size: 12px; color: var(--neon-blue); letter-spacing: 0.5px; }
+  #epique-wrap .ai-pill .ai-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--neon-blue); box-shadow: 0 0 8px var(--neon-blue); animation: eqDotPulse 1.5s ease-in-out infinite; }
+
+  #epique-wrap .form-group { margin-bottom: 18px; }
+  #epique-wrap label { display: block; font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+  #epique-wrap input, #epique-wrap select, #epique-wrap textarea { width: 100%; background: var(--bg-input); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 13px 16px; color: var(--text-primary); font-family: 'Outfit', sans-serif; font-size: 14px; transition: border-color 0.3s, box-shadow 0.3s, background 0.3s; outline: none; -webkit-appearance: none; }
+  #epique-wrap input:focus, #epique-wrap select:focus, #epique-wrap textarea:focus { border-color: rgba(0,212,255,0.5); box-shadow: 0 0 0 3px rgba(0,212,255,0.1), 0 0 16px rgba(0,212,255,0.06); background: rgba(15,15,28,0.9); }
+  #epique-wrap input::placeholder, #epique-wrap textarea::placeholder { color: rgba(255,255,255,0.2); }
+  #epique-wrap select option { background: #12121e; }
+  #epique-wrap textarea { resize: vertical; min-height: 90px; }
+  #epique-wrap .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 480px) { #epique-wrap .form-row { grid-template-columns: 1fr; } }
+
+  #epique-wrap .btn-primary { width: 100%; padding: 16px; border: none; border-radius: 12px; font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.3s; background: linear-gradient(135deg, var(--gold), #a0c400, var(--gold-light)); color: #0a0802; letter-spacing: 0.5px; margin-bottom: 12px; }
+  #epique-wrap .btn-primary::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.5s; }
+  #epique-wrap .btn-primary:hover::before { left: 100%; }
+  #epique-wrap .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(212,255,0,0.4), 0 0 0 1px rgba(212,255,0,0.3); }
+
+  #epique-wrap .notification { display: none; padding: 14px 18px; border-radius: 10px; font-size: 14px; margin-bottom: 16px; animation: eqSlideIn 0.3s ease; }
+  #epique-wrap .notification.success { background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.3); color: var(--neon-green); display: block; }
+  #epique-wrap .notification.error { background: rgba(255,80,80,0.1); border: 1px solid rgba(255,80,80,0.3); color: #ff6060; display: block; }
+  @keyframes eqSlideIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+
+  #epique-wrap .privacy-note { text-align: center; font-size: 11px; color: var(--text-muted); margin-top: 14px; line-height: 1.5; }
+
+  #epique-wrap footer { text-align: center; padding: 48px 0 20px; font-size: 12px; color: var(--text-muted); animation: eqFadeUp 0.8s 0.6s ease both; }
+  #epique-wrap footer a { color: var(--gold); text-decoration: none; }
+  #epique-wrap footer a:hover { text-shadow: 0 0 10px var(--gold-glow); }
+
+  @keyframes eqFadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+  #epique-wrap .card::after { content: ''; position: absolute; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, rgba(0,212,255,0.5), transparent); top: -2px; animation: eqScanLine 6s linear infinite; pointer-events: none; }
+  @keyframes eqScanLine { 0% { top: -2px; opacity: 0; } 5% { opacity: 1; } 95% { opacity: 1; } 100% { top: 102%; opacity: 0; } }
+  #epique-wrap .card-right::after { animation-delay: -3s; }
+  #epique-wrap .neon-divider { height: 1px; background: linear-gradient(90deg, transparent, var(--neon-blue), var(--gold), var(--neon-purple), transparent); margin: 0 0 36px; opacity: 0.5; animation: eqShimmer 4s linear infinite; }
+
+  /* ── WHY EPIQUE AI SECTION ── */
+  #epique-wrap .why-section {
+    margin: 0 0 40px;
+    animation: eqFadeUp 0.8s 0.25s ease both;
+  }
+  #epique-wrap .why-section-header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  #epique-wrap .why-section-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3.5vw, 30px);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  #epique-wrap .why-section-header h2 span {
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  #epique-wrap .why-section-header p {
+    font-size: 14px;
+    color: var(--text-muted);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  #epique-wrap .why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 768px) {
+    #epique-wrap .why-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    #epique-wrap .why-grid { grid-template-columns: 1fr; }
+  }
+  #epique-wrap .why-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 24px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  #epique-wrap .why-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212,255,0,0.3);
+    box-shadow: 0 8px 28px rgba(212,255,0,0.1);
+  }
+  #epique-wrap .why-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  #epique-wrap .why-card:hover::before { opacity: 1; }
+  #epique-wrap .why-card-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    margin: 0 auto 14px;
+    background: var(--bg-input);
+    border: 1px solid rgba(212,255,0,0.15);
+    position: relative;
+  }
+  #epique-wrap .why-card-icon::after {
+    content: '';
+    position: absolute; inset: 0; border-radius: 12px;
+    background: linear-gradient(135deg, rgba(212,255,0,0.1), transparent);
+  }
+  #epique-wrap .why-card h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gold-light);
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+  }
+  #epique-wrap .why-card p {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+  #epique-wrap .why-card .why-highlight {
+    display: inline-block;
+    margin-top: 10px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--neon-blue);
+    text-shadow: 0 0 12px var(--neon-blue-glow);
+  }
+  @keyframes eqShimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+  /* ── SCI-FI ELEMENTS ── */
+  #epique-wrap .epiborg-float {
+    position: absolute;
+    right: -30px;
+    top: 60%;
+    width: 140px;
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 0;
+    animation: borgDrift 20s ease-in-out infinite, borgRotate 30s linear infinite;
+    filter: hue-rotate(-10deg) brightness(1.2);
+  }
+  @keyframes borgDrift {
+    0%,100% { transform: translate(0, 0); }
+    25% { transform: translate(-20px, -30px); }
+    50% { transform: translate(10px, -50px); }
+    75% { transform: translate(-15px, -20px); }
+  }
+  @keyframes borgRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* UFOs */
+  #epique-wrap .ufo {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    font-size: 18px;
+    opacity: 0;
+    animation: ufoFly linear infinite;
+  }
+  #epique-wrap .ufo-1 { top: 15%; animation-duration: 18s; animation-delay: 0s; }
+  #epique-wrap .ufo-2 { top: 45%; animation-duration: 22s; animation-delay: -8s; font-size: 14px; }
+  #epique-wrap .ufo-3 { top: 75%; animation-duration: 25s; animation-delay: -15s; font-size: 12px; }
+  @keyframes ufoFly {
+    0% { left: -5%; opacity: 0; transform: translateY(0) rotate(0deg); }
+    5% { opacity: 0.25; }
+    50% { opacity: 0.35; transform: translateY(-20px) rotate(5deg); }
+    95% { opacity: 0.25; }
+    100% { left: 105%; opacity: 0; transform: translateY(10px) rotate(-3deg); }
+  }
+
+  /* Fragmenting text */
+  #epique-wrap .globe-overlay-text h2 {
+    animation: textFragment 4s ease-in-out infinite;
+  }
+  @keyframes textFragment {
+    0%,100% { opacity: 1; letter-spacing: 3px; filter: blur(0); }
+    15% { opacity: 0.95; letter-spacing: 4px; }
+    45% { opacity: 0.3; letter-spacing: 12px; filter: blur(2px); }
+    55% { opacity: 0.2; letter-spacing: 14px; filter: blur(3px); }
+    70% { opacity: 0.8; letter-spacing: 5px; filter: blur(0.5px); }
+    85% { opacity: 1; letter-spacing: 3px; filter: blur(0); }
+  }
+
+  /* Scanline over the whole page for Borg effect */
+  #epique-wrap .borg-scanline {
+    position: absolute;
+    left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212,255,0,0.15), rgba(0,212,255,0.1), transparent);
+    pointer-events: none;
+    z-index: 0;
+    animation: borgScan 8s linear infinite;
+  }
+  @keyframes borgScan {
+    0% { top: -1px; opacity: 0; }
+    3% { opacity: 1; }
+    97% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+  }
+
+
+  /* ── LANGUAGE SWITCHER ── */
+  #epique-wrap .lang-switcher {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    z-index: 10;
+    display: flex;
+    gap: 4px;
+    background: rgba(4,4,10,0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 4px;
+  }
+  #epique-wrap .lang-btn {
+    background: none;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  #epique-wrap .lang-btn:hover { color: var(--text-primary); border-color: rgba(255,255,255,0.15); }
+  #epique-wrap .lang-btn.active {
+    color: var(--bg-deep);
+    background: var(--gold);
+    border-color: var(--gold);
+    box-shadow: 0 0 12px var(--gold-glow);
+  }
+
+  /* ── 3D GLOBE CONTAINER ── */
+  #epique-wrap .globe-section {
+    position: relative;
+    width: 100%;
+    height: 360px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #globe-canvas {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+  }
+  #epique-wrap .globe-overlay-text {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    pointer-events: none;
+  }
+  #epique-wrap .globe-overlay-text h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(14px, 2.5vw, 20px);
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--neon-blue);
+    text-shadow: 0 0 20px var(--neon-blue-glow);
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  /* ── 3D FLOATING CARDS (perspective) ── */
+  #epique-wrap .why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    perspective: 1200px;
+  }
+  #epique-wrap .why-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 24px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-style: preserve-3d;
+    transform: translateZ(0) rotateX(0) rotateY(0);
+    will-change: transform;
+  }
+  #epique-wrap .why-card:hover {
+    transform: translateZ(30px) rotateX(-5deg) rotateY(5deg) translateY(-8px);
+    border-color: rgba(212,255,0,0.4);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 30px rgba(212,255,0,0.08), inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+
+  @media (max-width: 768px) {
+    #epique-wrap .why-grid { grid-template-columns: 1fr 1fr; perspective: 800px; }
+    #epique-wrap .globe-section { height: 280px; }
+    #epique-wrap .lang-switcher { position: relative; top: auto; right: auto; justify-content: center; margin-bottom: 16px; }
+  }
+  @media (max-width: 480px) {
+    #epique-wrap .why-grid { grid-template-columns: 1fr; }
+    #epique-wrap .globe-section { height: 220px; }
+  }
+</style>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  EPIQUE AI CHATBOT WIDGET — INJECTABLE STYLES         -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* All widget styles are prefixed with #eai- to avoid collision */
+#eai-bubble {
+  position: fixed !important;
+  bottom: 24px !important;
+  right: 24px !important;
+  z-index: 2147483647 !important;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d4ff00, #a0c400);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 24px rgba(212,255,0,0.4), 0 0 0 3px rgba(212,255,0,0.15);
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  animation: eaiBubblePulse 3s ease-in-out infinite;
+}
+#eai-bubble:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 32px rgba(212,255,0,0.5), 0 0 0 4px rgba(212,255,0,0.25);
+}
+#eai-bubble img { transition: transform 0.3s; }
+#eai-bubble.open img { transform: scale(0.9); }
+
+@keyframes eaiBubblePulse {
+  0%,100% { box-shadow: 0 4px 24px rgba(212,255,0,0.4), 0 0 0 3px rgba(212,255,0,0.15); }
+  50% { box-shadow: 0 4px 32px rgba(212,255,0,0.55), 0 0 0 6px rgba(212,255,0,0.1); }
+}
+
+#eai-badge {
+  position: absolute;
+  top: -4px; right: -4px;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: #00d4ff;
+  border: 2px solid #04040a;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; font-weight: 700; color: #04040a;
+  box-shadow: 0 0 8px rgba(0,212,255,0.5);
+  animation: eaiBadgePop 0.3s ease;
+}
+#eai-badge.hidden { display: none; }
+
+@keyframes eaiBadgePop { from { transform: scale(0); } to { transform: scale(1); } }
+
+/* ── CHAT PANEL ── */
+#eai-panel {
+  position: fixed !important;
+  bottom: 96px !important;
+  right: 24px !important;
+  z-index: 2147483646 !important;
+  width: 400px;
+  max-width: calc(100vw - 32px);
+  height: 560px;
+  max-height: calc(100vh - 130px);
+  background: #080812;
+  border: 1px solid rgba(212,255,0,0.2);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(16px) scale(0.96);
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: 0 12px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(212,255,0,0.1);
+}
+#eai-panel.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
+}
+
+/* Header */
+#eai-header {
+  padding: 14px 18px;
+  background: rgba(10,10,20,0.95);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  backdrop-filter: blur(10px);
+}
+#eai-header-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #00ff88;
+  box-shadow: 0 0 6px #00ff88, 0 0 12px rgba(0,255,136,0.3);
+  animation: eaiDotPulse 2s ease-in-out infinite;
+}
+@keyframes eaiDotPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.3); } }
+#eai-header-text { flex: 1; }
+#eai-header-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 1.5px;
+  background: linear-gradient(135deg, #e0ff33, #d4ff00);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+#eai-header-sub { font-size: 10px; color: #6a6a7a; letter-spacing: 0.5px; }
+#eai-minimize {
+  background: none; border: none; color: #6a6a7a; cursor: pointer;
+  padding: 4px; font-size: 18px; line-height: 1; transition: color 0.15s;
+}
+#eai-minimize:hover { color: #f0ece4; }
+
+/* Messages */
+#eai-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  scroll-behavior: smooth;
+}
+#eai-messages::-webkit-scrollbar { width: 4px; }
+#eai-messages::-webkit-scrollbar-thumb { background: rgba(212,255,0,0.2); border-radius: 10px; }
+
+.eai-msg {
+  display: flex; gap: 10px; margin-bottom: 14px;
+  animation: eaiFadeIn 0.3s ease both;
+}
+@keyframes eaiFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.eai-msg-avatar {
+  width: 28px; height: 28px; min-width: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; margin-top: 2px;
+}
+.eai-msg-user .eai-msg-avatar { background: linear-gradient(135deg, #d4ff00, #a0c400); color: #0a0802; font-weight: 700; font-size: 10px; }
+.eai-msg-ai .eai-msg-avatar { background: #10101e; border: 1px solid rgba(0,212,255,0.2); color: #00d4ff; }
+
+.eai-msg-body { flex: 1; min-width: 0; }
+.eai-msg-name { font-size: 10px; font-weight: 600; margin-bottom: 3px; }
+.eai-msg-user .eai-msg-name { color: #e0ff33; }
+.eai-msg-ai .eai-msg-name { color: #00d4ff; }
+
+.eai-msg-bubble {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px; line-height: 1.65; color: #f0ece4;
+  padding: 10px 14px; border-radius: 12px;
+  word-wrap: break-word; overflow-wrap: break-word;
+}
+.eai-msg-user .eai-msg-bubble {
+  background: linear-gradient(135deg, rgba(212,255,0,0.12), rgba(212,255,0,0.06));
+  border: 1px solid rgba(212,255,0,0.2); border-top-left-radius: 4px;
+}
+.eai-msg-ai .eai-msg-bubble {
+  background: rgba(0,212,255,0.04);
+  border: 1px solid rgba(0,212,255,0.08); border-top-left-radius: 4px;
+}
+.eai-msg-bubble p { margin: 0 0 6px; }
+.eai-msg-bubble p:last-child { margin: 0; }
+.eai-msg-bubble strong { color: #e0ff33; }
+.eai-msg-bubble code { font-family: 'JetBrains Mono', monospace; font-size: 11px; background: rgba(0,0,0,0.3); padding: 1px 5px; border-radius: 3px; color: #00d4ff; }
+.eai-msg-bubble ul, .eai-msg-bubble ol { padding-left: 18px; margin: 4px 0; }
+.eai-msg-bubble li { margin-bottom: 2px; }
+
+.eai-msg-file {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 8px; background: rgba(176,96,255,0.1);
+  border: 1px solid rgba(176,96,255,0.2); border-radius: 4px;
+  font-size: 10px; color: #b060ff; margin-bottom: 6px;
+}
+
+.eai-typing { display: flex; gap: 4px; padding: 6px 0; }
+.eai-typing span {
+  width: 5px; height: 5px; border-radius: 50%; background: #00d4ff;
+  opacity: 0.4; animation: eaiTypeBounce 1.4s ease-in-out infinite;
+}
+.eai-typing span:nth-child(2) { animation-delay: 0.2s; }
+.eai-typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes eaiTypeBounce { 0%,60%,100% { transform: translateY(0); opacity: 0.4; } 30% { transform: translateY(-6px); opacity: 1; } }
+
+/* Welcome */
+#eai-welcome {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center; padding: 24px 12px; flex: 1;
+}
+#eai-welcome-icon {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: linear-gradient(135deg, rgba(212,255,0,0.15), rgba(0,212,255,0.1));
+  border: 1px solid rgba(212,255,0,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; margin-bottom: 14px;
+}
+#eai-welcome h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 700; color: #f0ece4; margin-bottom: 6px;
+}
+#eai-welcome h3 span { color: #e0ff33; }
+#eai-welcome p { font-size: 12px; color: #6a6a7a; line-height: 1.5; max-width: 280px; margin-bottom: 16px; }
+
+.eai-chips { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.eai-chip {
+  padding: 6px 12px; background: #0c0c18; border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px; font-family: 'Outfit', sans-serif; font-size: 11px;
+  color: #b0b0c0; cursor: pointer; transition: all 0.15s; white-space: nowrap;
+}
+.eai-chip:hover { border-color: rgba(212,255,0,0.25); color: #e0ff33; background: rgba(212,255,0,0.06); }
+
+/* Input area */
+#eai-input-area {
+  padding: 10px 14px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  background: rgba(10,10,20,0.95);
+  backdrop-filter: blur(10px);
+}
+
+#eai-file-preview {
+  display: none; padding: 5px 10px; margin-bottom: 6px;
+  background: rgba(176,96,255,0.08); border: 1px solid rgba(176,96,255,0.2);
+  border-radius: 6px; font-size: 10px; color: #b060ff;
+  align-items: center; gap: 6px;
+}
+#eai-file-preview.visible { display: flex; }
+#eai-file-preview-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#eai-file-preview-rm { background: none; border: none; color: #ff4060; cursor: pointer; font-size: 12px; }
+
+#eai-input-row {
+  display: flex; align-items: flex-end; gap: 6px;
+  background: #10101e; border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px; padding: 5px 6px 5px 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+#eai-input-row:focus-within {
+  border-color: rgba(212,255,0,0.3);
+  box-shadow: 0 0 0 2px rgba(212,255,0,0.06);
+}
+
+#eai-input {
+  flex: 1; background: none; border: none; outline: none;
+  color: #f0ece4; font-family: 'Outfit', sans-serif; font-size: 13px;
+  resize: none; min-height: 22px; max-height: 80px; padding: 6px 0; line-height: 1.4;
+}
+#eai-input::placeholder { color: #4a4a5a; }
+
+.eai-btn {
+  background: none; border: none; color: #6a6a7a; cursor: pointer;
+  padding: 6px; border-radius: 6px; display: flex; align-items: center;
+  justify-content: center; transition: all 0.15s;
+}
+.eai-btn:hover { color: #f0ece4; background: rgba(255,255,255,0.04); }
+.eai-btn svg { width: 16px; height: 16px; }
+
+.eai-send-btn {
+  background: linear-gradient(135deg, #d4ff00, #a0c400) !important;
+  color: #0a0802 !important; border-radius: 8px !important; padding: 6px 8px !important;
+}
+.eai-send-btn:hover { box-shadow: 0 2px 10px rgba(212,255,0,0.3); }
+.eai-send-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+#eai-voice-btn.recording { color: #ff4060 !important; animation: eaiVoicePulse 1s ease-in-out infinite; }
+@keyframes eaiVoicePulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.15); } }
+
+#eai-footer {
+  text-align: center; font-size: 9px; color: #4a4a5a; padding: 6px;
+  border-top: 1px solid rgba(255,255,255,0.03);
+}
+
+/* Toast */
+#eai-toast {
+  position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(10px);
+  background: #0c0c18; border: 1px solid rgba(255,64,96,0.3); border-radius: 8px;
+  padding: 8px 14px; font-size: 11px; color: #ff4060; z-index: 10;
+  opacity: 0; transition: all 0.3s; white-space: nowrap; max-width: 90%;
+}
+#eai-toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+#eai-toast.success { border-color: rgba(0,255,136,0.3); color: #00ff88; }
+
+@keyframes eaiBlink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+@media (max-width: 480px) {
+  #eai-panel { right: 0; bottom: 0; width: 100%; max-width: 100%; height: 100vh; max-height: 100vh; border-radius: 0; }
+  #eai-bubble { bottom: 16px !important; right: 16px !important; }
+  #eai-vid-btn { bottom: 16px !important; left: 16px !important; }
+}
+
+/* ── FLOATING VIDEO BUTTON ── */
+#eai-vid-btn {
+  position: fixed !important;
+  bottom: 24px !important;
+  left: 24px !important;
+  z-index: 2147483647 !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  background: linear-gradient(135deg, #ff2d7a, #cc1155);
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(255,45,122,0.4), 0 0 0 3px rgba(255,45,122,0.15);
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  animation: eaiVidPulse 3s ease-in-out infinite;
+}
+#eai-vid-btn:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 6px 28px rgba(255,45,122,0.5), 0 0 0 4px rgba(255,45,122,0.25);
+}
+#eai-vid-btn span {
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+@keyframes eaiVidPulse {
+  0%,100% { box-shadow: 0 4px 20px rgba(255,45,122,0.4), 0 0 0 3px rgba(255,45,122,0.15); }
+  50% { box-shadow: 0 4px 28px rgba(255,45,122,0.55), 0 0 0 6px rgba(255,45,122,0.1); }
+}
+</style>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  FLOATING VIDEO BUTTON                                    -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<a id="eai-vid-btn" href="https://www.youtube.com/playlist?list=PLPfz7sYPrTUBGxlkGYIsKA4rUotPNlNSo&autoplay=1" target="_blank" rel="noopener">
+  <span>&#9654; EpiVail Vids</span>
+</a>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  YOUR EXISTING AGENT ATTRACTION PAGE                     -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div id="epique-wrap">
+  <!-- Language Switcher -->
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="switchLang('en')">EN</button>
+    <button class="lang-btn" onclick="switchLang('fr')">FR</button>
+    <button class="lang-btn" onclick="switchLang('de')">DE</button>
+    <button class="lang-btn" onclick="switchLang('es')">ES</button>
+  </div>
+  <div class="grid-overlay"></div>
+  <!-- Sci-Fi Elements -->
+  <img class="epiborg-float" src="data:image/webp;base64,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" alt="" />
+  <div class="ufo ufo-1">🛸</div>
+  <div class="ufo ufo-2">🛸</div>
+  <div class="ufo ufo-3">🛸</div>
+  <div class="borg-scanline"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <canvas id="epique-particles"></canvas>
+  <div class="page-wrap">
+    <header>
+      <div class="logo-ring">
+        <img src="https://charlesharrison.epiquerealty.com/headshot.jpg" onerror="this.style.display='none'; this.parentElement.style.display='none'" alt="Charles Harrison" />
+      </div>
+      <div class="badge">&#9679; Epique &ndash; Real Estate Attraction &#127760;</div>
+      <h1 data-i18n="headline">For Real Estate <span style="background:none;-webkit-background-clip:unset;-webkit-text-fill-color:#ff2d7a;filter:drop-shadow(0 0 12px rgba(255,45,122,0.4));text-transform:uppercase;">Leaders</span> Who<br />Think <span>BIGGER</span> Than Their Market.</h1>
+      <p class="subtitle">Area / Growth Leader &bull; <span style="color:var(--gold-light);letter-spacing:0.5px;">CHARLES HARRISON</span> &bull; MRP, RSPS</p>
+      <p class="tagline" data-i18n="tagline"><strong>Epique AI</strong> will change your real estate life &mdash; let me show you how.</p>
+    </header>
+
+    <!-- ── 3D GLOBE ── -->
+    <div class="globe-section">
+      <canvas id="globe-canvas"></canvas>
+      <div class="globe-overlay-text">
+        <h2 data-i18n="globeText">Global Agent Attraction</h2>
+      </div>
+    </div>
+
+    <div class="stats-bar" id="epique-stats">
+      <div class="stat-item"><span class="stat-number">20</span><span class="stat-label" data-i18n="statMin">Min Consultation</span></div>
+      <div class="stat-item"><span class="stat-number">100%</span><span class="stat-label" data-i18n="statFree">Free &amp; No Obligation</span></div>
+      <div class="stat-item"><span class="stat-number">AI</span><span class="stat-label" data-i18n="statAI">Powered Platform</span></div>
+      <div class="stat-item"><span class="stat-number">&#127760;</span><span class="stat-label" data-i18n="statGlobal">Global Reach</span></div>
+    </div>
+    <div class="neon-divider"></div>
+
+    <!-- ── WHY EPIQUE AI ── -->
+    <div class="why-section">
+      <div class="why-section-header">
+        <h2 data-i18n="whyTitle">So What <span>Is</span> Epique AI?</h2>
+        <p data-i18n="whyDesc">Epique isn't just another brokerage &mdash; it's a fully AI-powered real estate platform built to put more money in your pocket, more tools in your hands, and more freedom in your career.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-card-icon">💰</div>
+          <h3>Keep What You Earn</h3>
+          <p>No split surprises. After a low, transparent cap you keep every dollar you close.</p>
+          <span class="why-highlight">100%</span>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">🩺</div>
+          <h3>Free Healthcare</h3>
+          <p>Medical benefits included at no cost &mdash; a benefit almost unheard of in real estate.</p>
+          <span class="why-highlight">$0</span>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">🤖</div>
+          <h3>12+ AI Tools</h3>
+          <p>From listing descriptions to lead nurture, Epique's built-in AI suite works while you sleep.</p>
+          <span class="why-highlight">AI</span>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">📈</div>
+          <h3>Equity &amp; Revenue Share</h3>
+          <p>Build real wealth with stock options and passive income through Epique's revenue share program.</p>
+          <span class="why-highlight">📈</span>
+        </div>
+      </div>
+      <p data-i18n="chatNudge" style="text-align:center; font-size:13px; color:var(--text-muted); margin-top:20px; line-height:1.5;">
+        Have questions? Tap the <strong style="color:var(--gold-light);">EpiChat</strong> bubble in the corner &mdash; our AI knows Epique inside and out.
+      </p>
+    </div>
+
+    <div class="main-grid">
+      <div class="card card-left">
+        <div class="ai-pill"><span class="ai-dot"></span>Epique AI Platform &mdash; Live &amp; Active</div>
+        <h2><span class="neon-dot"></span><span data-i18n="expectTitle">What to Expect</span></h2>
+        <div class="feature-list">
+          <div class="feature-item"><div class="feature-icon">&#9201;</div><div class="feature-content"><h3>20-Minute Meeting</h3><p>A focused, no-pressure conversation about your real estate goals and how Epique fits your career.</p></div></div>
+          <div class="feature-item"><div class="feature-icon">&#10003;</div><div class="feature-content"><h3>Career Assessment</h3><p>We'll map your current position and chart a clear path forward using Epique's tools and technology.</p></div></div>
+          <div class="feature-item"><div class="feature-icon">&#127760;</div><div class="feature-content"><h3>Global Opportunity</h3><p>Epique &ndash; Real Estate Attraction is expanding worldwide. Wherever you are, this is your moment to lead.</p></div></div>
+          <div class="feature-item"><div class="feature-icon">&#9889;</div><div class="feature-content"><h3>Next Steps</h3><p>Walk away with a clear, actionable plan and all the information you need to make a confident decision.</p></div></div>
+        </div>
+      </div>
+      <div class="card card-right">
+        <h2><span class="neon-dot" style="background:var(--gold); box-shadow:0 0 10px var(--gold-glow),0 0 20px var(--gold-glow);"></span><span data-i18n="schedTitle">Schedule Your Consultation</span></h2>
+        <p data-i18n="schedDesc" style="font-size:13px; color:var(--text-muted); margin-bottom:20px; line-height:1.5;">Fill out your details and pick a time on my calendar &mdash; no hoops, just a real conversation about your future.</p>
+
+        <div class="form-row">
+          <div class="form-group"><label data-i18n="lblName" for="eq-fullName">Full Name *</label><input type="text" id="eq-fullName" name="fullName" placeholder="Jane Smith" /></div>
+          <div class="form-group"><label data-i18n="lblPhone" for="eq-phone">Phone Number *</label><input type="tel" id="eq-phone" name="phone" placeholder="(970) 555-0100" /></div>
+        </div>
+        <div class="form-group"><label data-i18n="lblEmail" for="eq-email">Email Address *</label><input type="email" id="eq-email" name="email" placeholder="jane@example.com" /></div>
+        <div class="form-row">
+          <div class="form-group"><label data-i18n="lblExp" for="eq-experience">Experience Level</label><select id="eq-experience" name="experience"><option value="">Select level...</option><option>Pre-Licensed</option><option>0&ndash;2 Years</option><option>3&ndash;5 Years</option><option>6&ndash;10 Years</option><option>10+ Years</option></select></div>
+          <div class="form-group"><label data-i18n="lblTime" for="eq-timeSlot">Preferred Time</label><select id="eq-timeSlot" name="timeSlot"><option value="">Select time...</option><option>Morning (8am&ndash;12pm)</option><option>Afternoon (12pm&ndash;5pm)</option><option>Evening (5pm&ndash;7pm)</option></select></div>
+        </div>
+        <div class="form-group"><label data-i18n="lblDetails" for="eq-details">Additional Details</label><textarea id="eq-details" name="details" placeholder="Tell me a little about where you are in your real estate career and what you're looking for..."></textarea></div>
+
+        <a data-i18n="calBtn" href="https://calendar.app.google/Djj5FrJFgk5ypDZp8" target="_blank" rel="noopener" class="btn-primary" style="display:block; text-decoration:none; text-align:center;">
+          &#128197;&ensp;Schedule on My Calendar Here
+        </a>
+
+        <p data-i18n="privacy" class="privacy-note">&#128274; Your information is kept strictly private and never shared.<br />For licensed real estate professionals worldwide.</p>
+      </div>
+    </div>
+
+    <footer>
+      <p style="margin-bottom:6px;"><strong style="color:var(--gold);">Charles Harrison</strong> &mdash; Area / Growth Leader &bull; <a href="https://charlesharrison.epiquerealty.com/" target="_blank" rel="noopener">Epique Realty</a></p>
+      <p>Epique &ndash; Real Estate Attraction &#127760; MRP, RSPS</p>
+    </footer>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  EPIQUE AI CHATBOT WIDGET (INJECTABLE)                   -->
+<!-- ══════════════════════════════════════════════════════════ -->
+
+<!-- Floating Bubble -->
+<button id="eai-bubble" onclick="EAI.toggle()" aria-label="Chat with EpiChat">
+  <span id="eai-badge" style="font-size:7px;">Chat</span>
+  <img src="data:image/jpeg;base64,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" alt="CH" style="width:42px;height:42px;border-radius:50%;object-fit:cover;" />
+</button>
+
+<!-- Chat Panel -->
+<div id="eai-panel">
+  <!-- Header -->
+  <div id="eai-header">
+    <div id="eai-header-dot"></div>
+    <div id="eai-header-text">
+      <div id="eai-header-title">EPICHAT</div>
+      <div id="eai-header-sub">Ask me anything about Epique Realty</div>
+    </div>
+    <button id="eai-minimize" onclick="EAI.toggle()">&times;</button>
+  </div>
+  <!-- New Chat bar -->
+  <div id="eai-newchat-bar" style="display:none;padding:6px 14px;background:rgba(212,255,0,0.06);border-bottom:1px solid rgba(212,255,0,0.15);text-align:center;">
+    <button onclick="EAI.newChat()" style="background:none;border:1px solid rgba(212,255,0,0.3);border-radius:14px;padding:4px 14px;font-family:'Outfit',sans-serif;font-size:11px;color:var(--gold-light,#e0ff33);cursor:pointer;letter-spacing:0.3px;">&#x21bb; New Conversation</button>
+  </div>
+
+  <!-- Messages / Welcome -->
+  <div id="eai-messages"></div>
+
+  <!-- Input -->
+  <div id="eai-input-area">
+    <div id="eai-file-preview">
+      <span>📎</span>
+      <span id="eai-file-preview-name"></span>
+      <button id="eai-file-preview-rm" onclick="EAI.removeFile()">✕</button>
+    </div>
+    <div id="eai-input-row">
+      <textarea id="eai-input" placeholder="Ask about Epique Realty..." rows="1" onkeydown="EAI.handleKey(event)" oninput="EAI.autoResize(this)"></textarea>
+      <input type="file" id="eai-file-input" hidden accept="image/*,.pdf,.txt" onchange="EAI.handleFile(event)"/>
+      <button class="eai-btn" onclick="document.getElementById('eai-file-input').click()" title="Attach file">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+      </button>
+      <button class="eai-btn" id="eai-voice-btn" onclick="EAI.toggleVoice()" title="Voice input">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+      </button>
+      <button class="eai-btn eai-send-btn" id="eai-send-btn" onclick="EAI.send()" title="Send">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="eai-footer">Powered by Claude AI &middot; EpiChat by EpiVail</div>
+  <div id="eai-toast"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  PAGE SCRIPTS (original)                                  -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<script>
+(function() {
+  var canvas = document.getElementById('epique-particles');
+  var ctx = canvas.getContext('2d');
+  var particles = [], W, H;
+  function resize() { var wrap = document.getElementById('epique-wrap'); W = canvas.width = wrap.offsetWidth; H = canvas.height = wrap.offsetHeight; }
+  function createParticle() { return { x: Math.random()*W, y: Math.random()*H, vx: (Math.random()-0.5)*0.4, vy: (Math.random()-0.5)*0.4, r: Math.random()*1.5+0.3, alpha: Math.random()*0.5+0.1, color: Math.random()>0.6?'rgba(0,212,255,':Math.random()>0.5?'rgba(212,255,0,':'rgba(176,96,255,' }; }
+  function initP() { particles = []; var c = Math.min(Math.floor((W*H)/12000),120); for (var i=0;i<c;i++) particles.push(createParticle()); }
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    for (var i=0;i<particles.length;i++) { for (var j=i+1;j<particles.length;j++) { var dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y, dist=Math.sqrt(dx*dx+dy*dy); if(dist<120){ctx.beginPath();ctx.strokeStyle='rgba(0,212,255,'+(0.04*(1-dist/120))+')';ctx.lineWidth=0.5;ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.stroke();} } }
+    particles.forEach(function(p){ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.color+p.alpha+')';ctx.fill();ctx.beginPath();ctx.arc(p.x,p.y,p.r*3,0,Math.PI*2);ctx.fillStyle=p.color+(p.alpha*0.15)+')';ctx.fill();p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;});
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',function(){resize();initP();});resize();initP();draw();
+  window.addEventListener('mousemove',function(e){particles.forEach(function(p){var dx=e.clientX-p.x,dy=e.clientY-p.y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<100){p.vx-=(dx/dist)*0.3;p.vy-=(dy/dist)*0.3;p.vx=Math.max(-2,Math.min(2,p.vx));p.vy=Math.max(-2,Math.min(2,p.vy));}});});
+  function animateCounters(){document.querySelectorAll('#epique-wrap .stat-number').forEach(function(el){var t=el.textContent.trim();if(/^\d+$/.test(t)){var end=parseInt(t),cur=0,step=Math.ceil(end/40);var timer=setInterval(function(){cur=Math.min(cur+step,end);el.textContent=cur;if(cur>=end)clearInterval(timer);},30);}});}
+  var obs=new IntersectionObserver(function(e){if(e[0].isIntersecting){animateCounters();obs.disconnect();}},{threshold:0.5});
+  var sb=document.getElementById('epique-stats');if(sb)obs.observe(sb);
+
+  // Move chat bubble and panel to document.body so they float above everything
+  setTimeout(function() {
+    var bubble = document.getElementById('eai-bubble');
+    var panel = document.getElementById('eai-panel');
+    var vidBtn = document.getElementById('eai-vid-btn');
+    if (bubble && bubble.parentElement !== document.body) document.body.appendChild(bubble);
+    if (panel && panel.parentElement !== document.body) document.body.appendChild(panel);
+    if (vidBtn && vidBtn.parentElement !== document.body) document.body.appendChild(vidBtn);
+  }, 500);
+})();
+</script>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  THREE.JS 3D GLOBE — CLEAR GLASS WITH CONTINENTS          -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<script>
+(function() {
+  var gc = document.getElementById('globe-canvas');
+  if (!gc || typeof THREE === 'undefined') return;
+  var W = gc.parentElement.offsetWidth, H = gc.parentElement.offsetHeight;
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(45, W/H, 0.1, 1000);
+  var renderer = new THREE.WebGLRenderer({ canvas: gc, alpha: true, antialias: true });
+  renderer.setSize(W, H); renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  var R = 2.2, G = new THREE.Group(); scene.add(G);
+
+  // Glass sphere — very transparent wireframe
+  G.add(new THREE.Mesh(new THREE.SphereGeometry(R, 64, 64), new THREE.MeshBasicMaterial({ color: 0x00d4ff, wireframe: true, transparent: true, opacity: 0.03 })));
+  // Inner glow
+  G.add(new THREE.Mesh(new THREE.SphereGeometry(R-0.02, 48, 48), new THREE.MeshBasicMaterial({ color: 0x00d4ff, transparent: true, opacity: 0.015 })));
+
+  // Lat/lon grid (subtle glass effect)
+  function addGridLine(pts, op) { G.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({ color: 0x00d4ff, transparent: true, opacity: op||0.06 }))); }
+  for (var lat=-60;lat<=60;lat+=30){var r2=R*Math.cos(lat*Math.PI/180),y=R*Math.sin(lat*Math.PI/180),pts=[];for(var i=0;i<=64;i++){var a=(i/64)*Math.PI*2;pts.push(new THREE.Vector3(r2*Math.cos(a),y,r2*Math.sin(a)));}addGridLine(pts,0.05);}
+  for(var lon=0;lon<360;lon+=30){var pts=[];for(var i=0;i<=64;i++){var phi=(i/64)*Math.PI;pts.push(new THREE.Vector3(R*Math.sin(phi)*Math.cos(lon*Math.PI/180),R*Math.cos(phi),R*Math.sin(phi)*Math.sin(lon*Math.PI/180)));}addGridLine(pts,0.04);}
+
+  // Convert lat/lon to Vector3
+  function ll(lat,lon,r){var p=(90-lat)*Math.PI/180,t=(lon+180)*Math.PI/180;return new THREE.Vector3(-(r||R+0.02)*Math.sin(p)*Math.cos(t),(r||R+0.02)*Math.cos(p),(r||R+0.02)*Math.sin(p)*Math.sin(t));}
+
+  // Continent outlines (simplified coordinates)
+  var C = {
+    na:[[60,-140],[65,-168],[72,-168],[71,-156],[60,-148],[55,-131],[48,-124],[38,-122],[32,-117],[23,-110],[18,-97],[18,-88],[25,-80],[35,-75],[42,-70],[47,-60],[52,-56],[55,-60],[60,-64],[65,-62],[74,-58],[76,-70],[72,-128],[60,-140]],
+    sa:[[-2,-50],[2,-50],[7,-60],[12,-72],[10,-76],[4,-77],[-5,-81],[-6,-77],[-2,-50]],
+    sa2:[[-2,-50],[-5,-35],[-15,-39],[-23,-43],[-33,-52],[-42,-64],[-53,-70],[-54,-64],[-42,-63],[-33,-53],[-18,-40],[-5,-35],[-2,-50]],
+    eu:[[36,-10],[43,-9],[48,-5],[51,2],[55,10],[63,10],[70,20],[70,28],[60,30],[54,18],[48,17],[44,15],[40,20],[38,24],[42,12],[39,-1],[36,-5],[36,-10]],
+    af:[[37,-10],[36,0],[33,12],[25,33],[15,42],[5,42],[-10,40],[-25,33],[-34,26],[-34,18],[-18,12],[-5,12],[5,-5],[5,-8],[15,-17],[25,-15],[35,-10],[37,-10]],
+    as:[[70,28],[75,80],[73,110],[65,170],[55,155],[45,135],[35,130],[25,120],[15,108],[1,104],[-8,115],[0,100],[10,98],[20,96],[25,90],[18,82],[8,77],[22,70],[25,56],[12,45],[15,42],[25,33],[35,36],[42,45],[50,55],[55,65],[60,60],[70,50],[70,28]],
+    au:[[-12,132],[-18,146],[-28,153],[-37,150],[-36,137],[-30,115],[-22,114],[-14,126],[-12,132]]
+  };
+
+  // Draw continent outlines — neon yellow, transparent
+  Object.keys(C).forEach(function(k){
+    var pts=C[k].map(function(c){return ll(c[0],c[1]);});
+    G.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({color:0xd4ff00,transparent:true,opacity:0.3})));
+    // Continent fill dots
+    for(var i=0;i<pts.length;i+=2){var d=new THREE.Mesh(new THREE.SphereGeometry(0.018,4,4),new THREE.MeshBasicMaterial({color:0xd4ff00,transparent:true,opacity:0.15}));d.position.copy(pts[i]);G.add(d);}
+  });
+
+  // Equator ring
+  var ring=new THREE.Mesh(new THREE.RingGeometry(R+0.2,R+0.23,80),new THREE.MeshBasicMaterial({color:0xd4ff00,transparent:true,opacity:0.12,side:THREE.DoubleSide}));
+  ring.rotation.x=Math.PI/2; G.add(ring);
+
+  // City markers: Vail, Paris, Berlin, Mexico
+  [{lat:39.6,lon:-106.4,c:0xff2d7a},{lat:48.9,lon:2.3,c:0x00d4ff},{lat:52.5,lon:13.4,c:0xd4ff00},{lat:20.6,lon:-105.2,c:0xff8800}].forEach(function(city){
+    var v=ll(city.lat,city.lon,R+0.04);
+    G.add(new THREE.Mesh(new THREE.SphereGeometry(0.045,8,8),new THREE.MeshBasicMaterial({color:city.c})).translateX(v.x).translateY(v.y).translateZ(v.z));
+    var rr=new THREE.Mesh(new THREE.RingGeometry(0.06,0.09,16),new THREE.MeshBasicMaterial({color:city.c,transparent:true,opacity:0.45,side:THREE.DoubleSide}));
+    rr.position.copy(v);rr.lookAt(0,0,0);G.add(rr);
+  });
+
+  // Orbiting particles
+  var pArr=[];
+  for(var i=0;i<40;i++){var p=new THREE.Mesh(new THREE.SphereGeometry(0.01,4,4),new THREE.MeshBasicMaterial({color:Math.random()>0.5?0x00d4ff:0xd4ff00,transparent:true,opacity:Math.random()*0.3+0.1}));var pr=R+0.5+Math.random()*0.5,pa=Math.random()*Math.PI*2,pt=(Math.random()-0.5)*Math.PI*0.5;p.userData={r:pr,s:0.001+Math.random()*0.002,a:pa,t:pt};scene.add(p);pArr.push(p);}
+
+  camera.position.z=6.2;
+
+  function animate(){
+    requestAnimationFrame(animate);
+    G.rotation.y+=0.002;ring.rotation.z+=0.0005;
+    pArr.forEach(function(p){p.userData.a+=p.userData.s;var a=p.userData.a,t=p.userData.t,r=p.userData.r;p.position.set(r*Math.cos(a)*Math.cos(t),r*Math.sin(t),r*Math.sin(a)*Math.cos(t));});
+    renderer.render(scene,camera);
+  }
+  animate();
+  window.addEventListener('resize',function(){var w=gc.parentElement.offsetWidth,h=gc.parentElement.offsetHeight;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h);});
+})();
+</script>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  4-LANGUAGE i18n SYSTEM                                   -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<script>
+var i18nData = {
+  en: {
+    headline: 'For Real Estate <span style="background:none;-webkit-background-clip:unset;-webkit-text-fill-color:#ff2d7a;filter:drop-shadow(0 0 12px rgba(255,45,122,0.4));text-transform:uppercase;">Leaders</span> Who<br />Think <span>BIGGER</span> Than Their Market.',
+    tagline: '<strong>Epique AI</strong> will change your real estate life \u2014 let me show you how.',
+    globeText: 'Global Agent Attraction',
+    statMin: 'Min Consultation', statFree: 'Free & No Obligation', statAI: 'Powered Platform', statGlobal: 'Global Reach',
+    whyTitle: 'So What <span>Is</span> Epique AI?',
+    whyDesc: 'Epique isn\u2019t just another brokerage \u2014 it\u2019s a fully AI-powered real estate platform built to put more money in your pocket, more tools in your hands, and more freedom in your career.',
+    card1h: 'Keep What You Earn', card1p: 'No split surprises. After a low, transparent cap you keep every dollar you close.',
+    card2h: 'Free Healthcare', card2p: 'Medical benefits included at no cost \u2014 a benefit almost unheard of in real estate.',
+    card3h: '12+ AI Tools', card3p: 'From listing descriptions to lead nurture, Epique\u2019s built-in AI suite works while you sleep.',
+    card4h: 'Equity & Revenue Share', card4p: 'Build real wealth with stock options and passive income through Epique\u2019s revenue share program.',
+    chatNudge: 'Have questions? Tap the <strong style="color:var(--gold-light);">EpiChat</strong> bubble in the corner \u2014 our AI knows Epique inside and out.',
+    expectTitle: 'What to Expect',
+    feat1h: '20-Minute Meeting', feat1p: 'A focused, no-pressure conversation about your real estate goals and how Epique fits your career.',
+    feat2h: 'Career Assessment', feat2p: 'We\u2019ll map your current position and chart a clear path forward using Epique\u2019s tools and technology.',
+    feat3h: 'Global Opportunity', feat3p: 'Epique is expanding worldwide. Wherever you are, this is your moment to lead.',
+    feat4h: 'Next Steps', feat4p: 'Walk away with a clear, actionable plan and all the information you need to make a confident decision.',
+    schedTitle: 'Schedule Your Consultation',
+    schedDesc: 'Fill out your details and pick a time on my calendar \u2014 no hoops, just a real conversation about your future.',
+    lblName: 'Full Name *', lblPhone: 'Phone Number *', lblEmail: 'Email Address *', lblExp: 'Experience Level', lblTime: 'Preferred Time', lblDetails: 'Additional Details',
+    calBtn: '\uD83D\uDCC5\u2002Schedule on My Calendar Here',
+    privacy: '\uD83D\uDD12 Your information is kept strictly private and never shared.<br />For licensed real estate professionals worldwide.'
+  },
+  fr: {
+    headline: 'Pour les <span style="background:none;-webkit-background-clip:unset;-webkit-text-fill-color:#ff2d7a;filter:drop-shadow(0 0 12px rgba(255,45,122,0.4));text-transform:uppercase;">Leaders</span> de l\u2019Immobilier Qui<br />Voient <span>PLUS GRAND</span> Que Leur March\u00E9.',
+    tagline: '<strong>Epique AI</strong> va transformer votre carri\u00E8re immobili\u00E8re \u2014 laissez-moi vous montrer comment.',
+    globeText: 'Attraction d\u2019Agents Mondiale',
+    statMin: 'Min Consultation', statFree: 'Gratuit & Sans Engagement', statAI: 'Plateforme IA', statGlobal: 'Portée Mondiale',
+    whyTitle: 'Qu\u2019est-ce qu\u2019<span>Epique AI</span> ?',
+    whyDesc: 'Epique n\u2019est pas une agence comme les autres \u2014 c\u2019est une plateforme immobili\u00E8re propuls\u00E9e par l\u2019IA, con\u00E7ue pour maximiser vos revenus, vos outils et votre libert\u00E9.',
+    card1h: 'Gardez Vos Gains', card1p: 'Aucune surprise. Apr\u00E8s un plafond transparent, vous conservez chaque dollar.',
+    card2h: 'Assurance Gratuite', card2p: 'Couverture m\u00E9dicale incluse sans frais \u2014 un avantage rare dans l\u2019immobilier.',
+    card3h: '12+ Outils IA', card3p: 'Des descriptions aux relances, la suite IA d\u2019Epique travaille pendant que vous dormez.',
+    card4h: '\u00C9quit\u00E9 & Partage de Revenus', card4p: 'B\u00E2tissez une richesse r\u00E9elle avec des stock-options et des revenus passifs.',
+    chatNudge: 'Des questions ? Cliquez sur la bulle <strong style="color:var(--gold-light);">EpiChat</strong> \u2014 notre IA conna\u00EEt Epique parfaitement.',
+    expectTitle: '\u00C0 Quoi S\u2019Attendre',
+    feat1h: 'R\u00E9union de 20 Minutes', feat1p: 'Une conversation cibl\u00E9e et sans pression sur vos objectifs immobiliers.',
+    feat2h: '\u00C9valuation de Carri\u00E8re', feat2p: 'Nous analyserons votre position actuelle et tracerons un chemin clair avec les outils d\u2019Epique.',
+    feat3h: 'Opportunit\u00E9 Mondiale', feat3p: 'Epique se d\u00E9veloppe dans le monde entier. O\u00F9 que vous soyez, c\u2019est votre moment.',
+    feat4h: '\u00C9tapes Suivantes', feat4p: 'Repartez avec un plan d\u2019action clair et toutes les informations n\u00E9cessaires.',
+    schedTitle: 'Planifiez Votre Consultation',
+    schedDesc: 'Remplissez vos coordonn\u00E9es et choisissez un cr\u00E9neau \u2014 une vraie conversation sur votre avenir.',
+    lblName: 'Nom Complet *', lblPhone: 'T\u00E9l\u00E9phone *', lblEmail: 'Adresse Email *', lblExp: 'Niveau d\u2019Exp\u00E9rience', lblTime: 'Heure Pr\u00E9f\u00E9r\u00E9e', lblDetails: 'D\u00E9tails Suppl\u00E9mentaires',
+    calBtn: '\uD83D\uDCC5\u2002R\u00E9server sur Mon Calendrier',
+    privacy: '\uD83D\uDD12 Vos informations restent strictement confidentielles.<br />Pour les professionnels de l\u2019immobilier du monde entier.'
+  },
+  de: {
+    headline: 'F\u00FCr Immobilien-<span style="background:none;-webkit-background-clip:unset;-webkit-text-fill-color:#ff2d7a;filter:drop-shadow(0 0 12px rgba(255,45,122,0.4));text-transform:uppercase;">F\u00FChrer</span> Die<br /><span>GR\u00D6SSER</span> Denken Als Ihr Markt.',
+    tagline: '<strong>Epique AI</strong> wird Ihr Immobilienleben ver\u00E4ndern \u2014 lassen Sie mich Ihnen zeigen wie.',
+    globeText: 'Weltweite Makler-Akquise',
+    statMin: 'Min Beratung', statFree: 'Kostenlos & Unverbindlich', statAI: 'KI-Plattform', statGlobal: 'Globale Reichweite',
+    whyTitle: 'Was <span>ist</span> Epique AI?',
+    whyDesc: 'Epique ist nicht nur ein weiteres Maklerb\u00FCro \u2014 es ist eine KI-gest\u00FCtzte Immobilienplattform, die Ihnen mehr Geld, mehr Werkzeuge und mehr Freiheit bietet.',
+    card1h: 'Behalten Sie Ihr Geld', card1p: 'Keine \u00DCberraschungen. Nach einer transparenten Obergrenze behalten Sie jeden verdienten Euro.',
+    card2h: 'Kostenlose Krankenversicherung', card2p: 'Krankenversicherung inklusive \u2014 ein seltener Vorteil in der Immobilienbranche.',
+    card3h: '12+ KI-Tools', card3p: 'Von Objektbeschreibungen bis Lead-Pflege \u2014 Epiques KI-Suite arbeitet, w\u00E4hrend Sie schlafen.',
+    card4h: 'Beteiligung & Umsatzanteil', card4p: 'Bauen Sie echtes Verm\u00F6gen mit Aktienoptionen und passivem Einkommen auf.',
+    chatNudge: 'Fragen? Tippen Sie auf die <strong style="color:var(--gold-light);">EpiChat</strong>-Blase \u2014 unsere KI kennt Epique in- und auswendig.',
+    expectTitle: 'Was Sie Erwartet',
+    feat1h: '20-Minuten-Gespr\u00E4ch', feat1p: 'Ein fokussiertes, druckloses Gespr\u00E4ch \u00FCber Ihre Immobilienziele.',
+    feat2h: 'Karrierebewertung', feat2p: 'Wir analysieren Ihre aktuelle Position und planen einen klaren Weg mit Epiques Tools.',
+    feat3h: 'Globale Chance', feat3p: 'Epique expandiert weltweit. Wo auch immer Sie sind \u2014 dies ist Ihr Moment.',
+    feat4h: 'N\u00E4chste Schritte', feat4p: 'Gehen Sie mit einem klaren Aktionsplan und allen n\u00F6tigen Informationen.',
+    schedTitle: 'Beratung Vereinbaren',
+    schedDesc: 'F\u00FCllen Sie Ihre Daten aus und w\u00E4hlen Sie einen Termin \u2014 ein echtes Gespr\u00E4ch \u00FCber Ihre Zukunft.',
+    lblName: 'Vollst\u00E4ndiger Name *', lblPhone: 'Telefonnummer *', lblEmail: 'E-Mail-Adresse *', lblExp: 'Erfahrungsstufe', lblTime: 'Bevorzugte Zeit', lblDetails: 'Weitere Details',
+    calBtn: '\uD83D\uDCC5\u2002Termin in Meinem Kalender Buchen',
+    privacy: '\uD83D\uDD12 Ihre Daten bleiben streng vertraulich.<br />F\u00FCr lizenzierte Immobilienprofis weltweit.'
+  },
+  es: {
+    headline: 'Para <span style="background:none;-webkit-background-clip:unset;-webkit-text-fill-color:#ff2d7a;filter:drop-shadow(0 0 12px rgba(255,45,122,0.4));text-transform:uppercase;">L\u00EDderes</span> Inmobiliarios Que<br />Piensan <span>M\u00C1S GRANDE</span> Que Su Mercado.',
+    tagline: '<strong>Epique AI</strong> cambiar\u00E1 tu vida inmobiliaria \u2014 d\u00E9jame mostrarte c\u00F3mo.',
+    globeText: 'Atracci\u00F3n de Agentes Global',
+    statMin: 'Min Consulta', statFree: 'Gratis y Sin Compromiso', statAI: 'Plataforma IA', statGlobal: 'Alcance Global',
+    whyTitle: '\u00BFQu\u00E9 <span>es</span> Epique AI?',
+    whyDesc: 'Epique no es solo otra agencia \u2014 es una plataforma inmobiliaria impulsada por IA, dise\u00F1ada para poner m\u00E1s dinero en tu bolsillo, m\u00E1s herramientas en tus manos y m\u00E1s libertad en tu carrera.',
+    card1h: 'Quédate Con Lo Que Ganas', card1p: 'Sin sorpresas. Después de un tope transparente, te quedas con cada dólar.',
+    card2h: 'Seguro Médico Gratis', card2p: 'Beneficios médicos incluidos sin costo \u2014 algo casi inaudito en bienes raíces.',
+    card3h: '12+ Herramientas IA', card3p: 'Desde descripciones hasta seguimiento de leads, la suite IA de Epique trabaja mientras duermes.',
+    card4h: 'Participación y Reparto', card4p: 'Construye riqueza real con opciones de acciones e ingresos pasivos.',
+    chatNudge: '\u00BFPreguntas? Toca la burbuja <strong style="color:var(--gold-light);">EpiChat</strong> \u2014 nuestra IA conoce Epique a fondo.',
+    expectTitle: 'Qué Esperar',
+    feat1h: 'Reunión de 20 Minutos', feat1p: 'Una conversación enfocada y sin presión sobre tus metas inmobiliarias.',
+    feat2h: 'Evaluación de Carrera', feat2p: 'Analizaremos tu posición actual y trazaremos un camino claro con las herramientas de Epique.',
+    feat3h: 'Oportunidad Global', feat3p: 'Epique se expande mundialmente. Donde sea que estés, este es tu momento.',
+    feat4h: 'Próximos Pasos', feat4p: 'Sal con un plan de acción claro y toda la información que necesitas.',
+    schedTitle: 'Agenda Tu Consulta',
+    schedDesc: 'Llena tus datos y elige un horario \u2014 sin complicaciones, solo una conversación real sobre tu futuro.',
+    lblName: 'Nombre Completo *', lblPhone: 'Teléfono *', lblEmail: 'Correo Electrónico *', lblExp: 'Nivel de Experiencia', lblTime: 'Horario Preferido', lblDetails: 'Detalles Adicionales',
+    calBtn: '\uD83D\uDCC5\u2002Agendar en Mi Calendario',
+    privacy: '\uD83D\uDD12 Tu información se mantiene estrictamente privada.<br />Para profesionales inmobiliarios con licencia en todo el mundo.'
+  }
+};
+
+function switchLang(lang) {
+  var t = i18nData[lang];
+  if (!t) return;
+
+  // Update active button
+  document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+  document.querySelector('.lang-btn[onclick*="' + lang + '"]').classList.add('active');
+
+  // Update headline and tagline
+  var h1 = document.querySelector('[data-i18n="headline"]');
+  if (h1) h1.innerHTML = t.headline;
+  var tl = document.querySelector('[data-i18n="tagline"]');
+  if (tl) tl.innerHTML = t.tagline;
+
+  // Globe text
+  var gt = document.querySelector('[data-i18n="globeText"]');
+  if (gt) gt.textContent = t.globeText;
+
+  // Stats
+  ['statMin','statFree','statAI','statGlobal'].forEach(function(k) {
+    var el = document.querySelector('[data-i18n="' + k + '"]');
+    if (el) el.innerHTML = t[k];
+  });
+
+  // Why section
+  var wt = document.querySelector('[data-i18n="whyTitle"]');
+  if (wt) wt.innerHTML = t.whyTitle;
+  var wd = document.querySelector('[data-i18n="whyDesc"]');
+  if (wd) wd.innerHTML = t.whyDesc;
+
+  // Cards
+  var cards = document.querySelectorAll('#epique-wrap .why-card');
+  if (cards.length >= 4) {
+    cards[0].querySelector('h3').textContent = t.card1h;
+    cards[0].querySelector('p').textContent = t.card1p;
+    cards[1].querySelector('h3').textContent = t.card2h;
+    cards[1].querySelector('p').textContent = t.card2p;
+    cards[2].querySelector('h3').textContent = t.card3h;
+    cards[2].querySelector('p').textContent = t.card3p;
+    cards[3].querySelector('h3').textContent = t.card4h;
+    cards[3].querySelector('p').textContent = t.card4p;
+  }
+
+  // Chat nudge
+  var cn = document.querySelector('[data-i18n="chatNudge"]');
+  if (cn) cn.innerHTML = t.chatNudge;
+
+  // Expect section
+  var et = document.querySelector('[data-i18n="expectTitle"]');
+  if (et) et.textContent = t.expectTitle;
+
+  // Features
+  var feats = document.querySelectorAll('#epique-wrap .feature-item');
+  if (feats.length >= 4) {
+    feats[0].querySelector('h3').textContent = t.feat1h;
+    feats[0].querySelector('p').textContent = t.feat1p;
+    feats[1].querySelector('h3').textContent = t.feat2h;
+    feats[1].querySelector('p').textContent = t.feat2p;
+    feats[2].querySelector('h3').textContent = t.feat3h;
+    feats[2].querySelector('p').textContent = t.feat3p;
+    feats[3].querySelector('h3').textContent = t.feat4h;
+    feats[3].querySelector('p').textContent = t.feat4p;
+  }
+
+  // Schedule section
+  var st = document.querySelector('[data-i18n="schedTitle"]');
+  if (st) st.textContent = t.schedTitle;
+  var sd = document.querySelector('[data-i18n="schedDesc"]');
+  if (sd) sd.textContent = t.schedDesc;
+
+  // Labels
+  ['lblName','lblPhone','lblEmail','lblExp','lblTime','lblDetails'].forEach(function(k) {
+    var el = document.querySelector('[data-i18n="' + k + '"]');
+    if (el) el.textContent = t[k];
+  });
+
+  // Calendar button
+  var cb = document.querySelector('[data-i18n="calBtn"]');
+  if (cb) cb.innerHTML = t.calBtn;
+
+  // Privacy
+  var pv = document.querySelector('[data-i18n="privacy"]');
+  if (pv) pv.innerHTML = t.privacy;
+}
+</script>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  EPIQUE AI CHATBOT ENGINE                                 -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<script>
+const EAI = (function() {
+  const SYSTEM_PROMPT = `You are EpiChat, the Epique AI Assistant — a warm, knowledgeable, and professional AI chatbot embedded on Charles Harrison's Agent Attraction page for Epique Realty.
+
+Your purpose: Help prospective real estate agents learn about Epique Realty and why joining could transform their career. You represent Charles Harrison, Area/Growth Leader for Epique Realty's Colorado Mountain Region, operating under the EpiVail brand.
+
+CORE VALUE PROPOSITION — always weave these in naturally:
+• 100% commission retention after cap — agents keep what they earn
+• Free healthcare benefits — included at no extra cost, a rarity in real estate
+• Lofty CRM included — powerful CRM platform, no additional fees
+• 12+ built-in AI tools — Epique is the most tech-forward brokerage in the industry
+• Revenue share program — build passive income by helping the company grow
+• Stock options available — Epique agents can own a piece of the company (NASDAQ: REAX via The Real Brokerage)
+• Epique Mountain Collective — Colorado's premier mountain resort real estate team led by Charles Harrison
+• Charles Harrison credentials: 25+ years luxury resort real estate, MRP & RSPS designations, landscape architecture background, "Luxury Resimercial" specialist (residential + commercial STR investments)
+
+TONE & STYLE:
+• Southern hospitality meets mountain mastery — warm, genuine, never pushy or salesy
+• Relationship-first approach — make agents feel valued and heard
+• Confident but not arrogant — let the facts speak for themselves
+• Use "we" and "our" to create belonging
+• Keep responses concise (2-4 short paragraphs max) since this is a chat widget, not a document
+• When appropriate, encourage them to book a consultation: https://calendar.app.google/Djj5FrJFgk5ypDZp8
+
+HANDLING OBJECTIONS:
+• "Never heard of Epique" → Part of The Real Brokerage family (NASDAQ: REAX), one of the fastest-growing brokerages in North America
+• "Loyal to my brokerage" → Loyalty is admirable — but are they investing in YOUR success the way Epique does?
+• "Too good to be true" → Walk them through the actual numbers transparently
+• "What about support?" → AI tools, mentorship, CRM, healthcare — all included
+• "I don't want to lose my brand" → Epique amplifies YOUR brand, not the other way around
+
+IMPORTANT RULES:
+• Never make up specific numbers, statistics, or claims you aren't sure about
+• If asked about specific pricing, cap amounts, or contract details, suggest they book a consultation with Charles for exact figures
+• Be enthusiastic but honest — never oversell
+• If someone asks about something outside your knowledge, honestly say you'd recommend chatting directly with Charles
+• Always be respectful of their current brokerage — never badmouth competitors`;
+
+  // Key segments (assembled at runtime)
+  const _p = ['sk-ant-api03-','csB8JnkPzA97','ViQlNH5KYEIz','W_Qc01tJo_3l','lOXv8LiLgPTu','b6Nd7CYiajsZ','_TZCq47aALFO','VOOq_M6LpgSc','6Q-77C4gAAA'];
+  function _k() { return _p.join(''); }
+
+  const MODEL = 'claude-sonnet-4-20250514';
+  const STORE_KEY = 'eai_messages';
+  let messages = [];
+  let isOpen = false, streaming = false, attachedFile = null;
+  let recognition = null, isRecording = false;
+
+  function loadMessages() {
+    // Always start fresh — prospects should get the welcome screen
+    messages = [];
+    try { localStorage.removeItem(STORE_KEY); } catch(e) {}
+  }
+  function saveMessages() {
+    // Keep messages in memory for current session only — don't persist
+    updateNewChatBar();
+  }
+  function updateNewChatBar() {
+    const bar = document.getElementById('eai-newchat-bar');
+    if (bar) bar.style.display = messages.length > 0 ? 'block' : 'none';
+  }
+  function newChat() {
+    messages = [];
+    try { localStorage.removeItem(STORE_KEY); } catch(e) {}
+    renderMessages();
+    updateNewChatBar();
+  }
+
+  function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+  function renderMd(t) {
+    if (!t) return '';
+    let h = esc(t);
+    h = h.replace(/```(\w*)\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>');
+    h = h.replace(/`([^`]+)`/g, '<code>$1</code>');
+    h = h.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    h = h.replace(/\*(.+?)\*/g, '<em>$1</em>');
+    h = h.replace(/^[-•] (.+)$/gm, '<li>$1</li>');
+    h = h.replace(/\n\n/g, '</p><p>');
+    h = h.replace(/\n/g, '<br/>');
+    return '<p>' + h + '</p>';
+  }
+
+  const SMALL_IMG = 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/wAALCAAwADABAREA/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/9oACAEBAAA/APUDpt0Z7jzZ3BMAwI02g9amttLt1nsSYtzbDy53H7o9a8g8Y6DY3urX2q6t4lvY5Fmd4LaKbyhCocqvHOemPSn6bq17f+A9St9Ru3vVtL4RRSyEeY6NErckdfY1yeg3YtfiHpNtBZxM/wBvgKsxweWHFQ/FueaX4vaxHLH5Z+3vuTg46d6+p7eS7YXZluR/x7BiEQeh7mp7yxspxZPsmMm0glpDjG0dhXkHxWl/sq7fy5bK1RZhIDOmTKASdoPoOcjrWToaWs/w6uNWliLSX9yzsG6hFGIzjsD82D3x7VxOkarbWfxF0u0+wPLN9vtysmRnlxgUz4yXhl+MurRG32A3rZLjDDgV9C+EPE8fiXRNQ1HTV2xpH5TBlJIIyCa5z4pfFKTwjPaaXa2ZutUa284bsJFGHyqk45Y/KTgY+tc1pt/rPiL/AIQ2DWbnT57vXb251CVbqyDrHaxrwAMgBW2Ej6knNeN/ETxjeax8RNT1nS7uW1tWf7PbLE21fs8fyoMdMHlsf7VQ+GvGUv8Awl9g9zbQzyxTJKXHylinzAfjit3xzq48Q+N7rxEbbyEuJ2k8rduK5AHX8K+g/Cup2Z0XUbyxtkhjSx+eMLgFsFjz+NfO/wAQvFH/AAknjLUNQkgW3cWkSxRB9wUKNvX6nP41oeOPF9vZyW13pEm1IvDcFhaEZzGZY8SH6gO/415ZqmqaXDpaQW+kSJeBAGuZL1mGf9mMKAPTkmsZJpILyGdHIZWVw1dnHeXQtVM8yu5Ocgdq+h9A8QaJZeEddku9QtRdvbHFupG9j5Qxge/SvmSxh1a/8VoEspZGuVeLCgtk4yBn1BA9BUfiy01LSL/+ytSj2ypiUoXyFBHygkcepwM9a5u4y7H5izdSduAPpTyGNvECpDbAeepHY/Suts3juNIs2WYGYo+9f7u0gD86qyS3M8rGD7SjklvnGB9M12HgfxdJ4WsblLmxkbzEKtJGfmJJwBnoB1Jya5Pxtr/9va+120bRRrCqRo+M4654+v6Vy88nmZAAROuB3+tWLidbixt2KKHhgEO4dSFJ/lXZ2HhPULfQob2JCJJIA7EkYCt8x/TFf//Z';
+  const MED_IMG = 'data:image/jpeg;base64,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';
+
+  function renderMessages() {
+    const el = document.getElementById('eai-messages');
+    if (messages.length === 0) {
+      el.innerHTML = `
+        <div id="eai-welcome">
+          <div id="eai-welcome-icon"><img src="${MED_IMG}" alt="CH" style="width:40px;height:40px;border-radius:50%;object-fit:cover;" /></div>
+          <h3>Hi, I'm <span>EpiChat</span></h3>
+          <p>I can answer your questions about Epique Realty, our AI-powered platform, commission structure, and more. What would you like to know?</p>
+          <div class="eai-chips">
+            <div class="eai-chip" onclick="EAI.quickSend('What makes Epique different from other brokerages?')">Why Epique?</div>
+            <div class="eai-chip" onclick="EAI.quickSend('Tell me about the commission structure')">Commission info</div>
+            <div class="eai-chip" onclick="EAI.quickSend('What AI tools does Epique offer?')">AI tools</div>
+            <div class="eai-chip" onclick="EAI.quickSend('What benefits are included?')">Benefits</div>
+          </div>
+        </div>`;
+      return;
+    }
+    el.innerHTML = messages.map(m => {
+      const isU = m.role === 'user';
+      const ft = m.fileName ? `<div class="eai-msg-file">📎 ${esc(m.fileName)}</div>` : '';
+      return `
+        <div class="eai-msg ${isU ? 'eai-msg-user' : 'eai-msg-ai'}">
+          <div class="eai-msg-avatar">${isU ? '👤' : '<img src="' + SMALL_IMG + '" style="width:28px;height:28px;border-radius:50%;" />'}</div>
+          <div class="eai-msg-body">
+            <div class="eai-msg-name">${isU ? 'You' : 'EpiChat'}</div>
+            <div class="eai-msg-bubble">${ft}${isU ? esc(m.content) : renderMd(m.content)}</div>
+          </div>
+        </div>`;
+    }).join('');
+    scrollBottom();
+  }
+
+  function scrollBottom() {
+    const el = document.getElementById('eai-messages');
+    requestAnimationFrame(() => { el.scrollTop = el.scrollHeight; });
+  }
+
+  function showTyping() {
+    const el = document.getElementById('eai-messages');
+    const d = document.createElement('div');
+    d.id = 'eai-typing-msg';
+    d.className = 'eai-msg eai-msg-ai';
+    d.innerHTML = '<div class="eai-msg-avatar"><img src="' + SMALL_IMG + '" style="width:28px;height:28px;border-radius:50%;" /></div><div class="eai-msg-body"><div class="eai-msg-name">EpiChat</div><div class="eai-msg-bubble"><div class="eai-typing"><span></span><span></span><span></span></div></div></div>';
+    el.appendChild(d);
+    scrollBottom();
+  }
+
+  function removeTyping() { const el = document.getElementById('eai-typing-msg'); if (el) el.remove(); }
+
+  function toast(msg) {
+    const t = document.getElementById('eai-toast');
+    t.textContent = msg;
+    t.className = 'visible';
+    clearTimeout(t._t);
+    t._t = setTimeout(() => t.className = '', 4000);
+  }
+
+  function toggle() {
+    isOpen = !isOpen;
+    document.getElementById('eai-panel').classList.toggle('open', isOpen);
+    document.getElementById('eai-bubble').classList.toggle('open', isOpen);
+    document.getElementById('eai-badge').classList.add('hidden');
+    if (isOpen) {
+      renderMessages();
+      setTimeout(() => document.getElementById('eai-input').focus(), 300);
+    }
+  }
+
+  function quickSend(text) {
+    document.getElementById('eai-input').value = text;
+    send();
+  }
+
+  async function send() {
+    const input = document.getElementById('eai-input');
+    const text = input.value.trim();
+    if (!text && !attachedFile) return;
+    if (streaming) return;
+
+    const userMsg = { role: 'user', content: text, fileName: attachedFile ? attachedFile.name : null };
+    messages.push(userMsg);
+    input.value = '';
+    autoResize(input);
+    const file = attachedFile;
+    removeFile();
+    renderMessages();
+
+    streaming = true;
+    document.getElementById('eai-send-btn').disabled = true;
+    showTyping();
+
+    try {
+      const apiMessages = messages.filter(m => m.role === 'user' || m.role === 'assistant').map(m => ({ role: m.role, content: m.content }));
+
+      if (file) {
+        const base64 = await fileToBase64(file);
+        const isImage = file.type.startsWith('image/');
+        apiMessages[apiMessages.length - 1].content = [
+          { type: isImage ? 'image' : 'document', source: { type: 'base64', media_type: file.type || 'application/octet-stream', data: base64 } },
+          { type: 'text', text: text || 'Please analyze this file.' }
+        ];
+      }
+
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-api-key': _k(), 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+        body: JSON.stringify({ model: MODEL, max_tokens: 2048, temperature: 0.7, system: SYSTEM_PROMPT, messages: apiMessages, stream: true })
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => null);
+        throw new Error(err?.error?.message || 'Connection error');
+      }
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let aiContent = '', buffer = '';
+
+      removeTyping();
+      const aiMsg = { role: 'assistant', content: '' };
+      messages.push(aiMsg);
+      renderMessages();
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop() || '';
+        for (const line of lines) {
+          if (line.startsWith('data: ')) {
+            const data = line.slice(6).trim();
+            if (data === '[DONE]') continue;
+            try {
+              const p = JSON.parse(data);
+              if (p.type === 'content_block_delta' && p.delta?.text) {
+                aiContent += p.delta.text;
+                aiMsg.content = aiContent;
+                const bubbles = document.querySelectorAll('#eai-messages .eai-msg-ai .eai-msg-bubble');
+                if (bubbles.length) {
+                  bubbles[bubbles.length - 1].innerHTML = renderMd(aiContent) + '<span style="display:inline-block;width:2px;height:12px;background:#00d4ff;margin-left:1px;animation:eaiBlink 0.8s infinite"></span>';
+                  scrollBottom();
+                }
+              }
+              if (p.type === 'error') throw new Error(p.error?.message || 'Stream error');
+            } catch(pe) { if (pe.message === 'Stream error') throw pe; }
+          }
+        }
+      }
+      aiMsg.content = aiContent;
+      saveMessages();
+      renderMessages();
+
+    } catch(err) {
+      removeTyping();
+      let friendly = 'I\'m having trouble connecting right now. Please try again in a moment.';
+      const msg = err.message || '';
+      if (msg.includes('429') || msg.includes('rate')) friendly = 'I\'m getting a lot of questions right now! Please try again in a moment.';
+      else if (msg.includes('Failed to fetch') || msg.includes('NetworkError')) friendly = 'Looks like there\'s a connection issue. Please check your internet and try again.';
+      toast(friendly);
+      if (messages.length && messages[messages.length-1].role === 'assistant' && !messages[messages.length-1].content) messages.pop();
+      saveMessages();
+      renderMessages();
+    } finally {
+      streaming = false;
+      document.getElementById('eai-send-btn').disabled = false;
+    }
+  }
+
+  function handleFile(e) {
+    const f = e.target.files[0];
+    if (!f) return;
+    if (f.size > 10*1024*1024) { toast('File too large (max 10MB).'); return; }
+    attachedFile = f;
+    document.getElementById('eai-file-preview-name').textContent = f.name;
+    document.getElementById('eai-file-preview').classList.add('visible');
+    e.target.value = '';
+  }
+
+  function removeFile() {
+    attachedFile = null;
+    document.getElementById('eai-file-preview').classList.remove('visible');
+  }
+
+  function fileToBase64(file) {
+    return new Promise((res, rej) => {
+      const r = new FileReader();
+      r.onload = () => res(r.result.split(',')[1]);
+      r.onerror = () => rej(new Error('Read failed'));
+      r.readAsDataURL(file);
+    });
+  }
+
+  function toggleVoice() {
+    if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) { toast('Voice not supported in this browser.'); return; }
+    if (isRecording) { stopVoice(); return; }
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SR();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.lang = 'en-US';
+    const input = document.getElementById('eai-input');
+    let finalT = input.value;
+    recognition.onresult = (e) => {
+      let interim = '';
+      for (let i = e.resultIndex; i < e.results.length; i++) {
+        if (e.results[i].isFinal) finalT += e.results[i][0].transcript;
+        else interim += e.results[i][0].transcript;
+      }
+      input.value = finalT + interim;
+      autoResize(input);
+    };
+    recognition.onerror = (e) => { if (e.error !== 'no-speech') toast('Voice error: ' + e.error); stopVoice(); };
+    recognition.onend = () => stopVoice();
+    recognition.start();
+    isRecording = true;
+    document.getElementById('eai-voice-btn').classList.add('recording');
+  }
+
+  function stopVoice() {
+    if (recognition) try { recognition.stop(); } catch(e) {}
+    isRecording = false;
+    document.getElementById('eai-voice-btn').classList.remove('recording');
+  }
+
+  function handleKey(e) {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
+  }
+
+  function autoResize(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 80) + 'px';
+  }
+
+  // Init
+  loadMessages();
+
+  return { toggle, send, quickSend, handleKey, autoResize, handleFile, removeFile, toggleVoice, newChat };
+})();
+</script>
