@@ -1223,6 +1223,10 @@ div[style*="background"]{
 })();
 </script>
 
+<!-- ── GSAP + ScrollTrigger ─────────────────────────────────── -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
 <!-- ── SCRIPTS ────────────────────────────────────────────────── -->
 <script>
 
@@ -1662,5 +1666,60 @@ RULES: Never invent specific numbers. Never disparage competitors by name. Alway
       recog.start();recding=true;btn.classList.add('rec');
     }
   };
+})();
+</script>
+
+<!-- ── GSAP CINEMATIC MOTION LAYER ───────────────────────────── -->
+<script>
+(function(){
+  if(typeof gsap==='undefined')return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ── Hero entrance sequence ───────────────────────────────── */
+  var heroEls=[
+    '#eq-hero .eq-live',
+    '#eq-hero h1',
+    '#eq-hero .eq-hero-byline',
+    '#eq-hero .eq-ctas a'
+  ];
+  gsap.set(heroEls,{opacity:0,y:30,willChange:'transform,opacity'});
+  gsap.set('#eq-hero .eq-scroll-hint',{opacity:0});
+
+  var tl=gsap.timeline({delay:0.2});
+  tl.to('#eq-hero .eq-live',{opacity:1,y:0,duration:0.65,ease:'power3.out'})
+    .to('#eq-hero h1',{opacity:1,y:0,duration:0.95,ease:'power3.out',clearProps:'transform'},'-=0.3')
+    .to('#eq-hero .eq-hero-byline',{opacity:1,y:0,duration:0.65,ease:'power3.out'},'-=0.45')
+    .to('#eq-hero .eq-ctas a',{opacity:1,y:0,duration:0.52,stagger:0.14,ease:'power2.out',clearProps:'transform'},'-=0.35')
+    .to('#eq-hero .eq-scroll-hint',{opacity:0.35,duration:0.55,ease:'power2.out'},'-=0.15');
+
+  /* ── Globe parallax depth ─────────────────────────────────── */
+  ScrollTrigger.create({
+    trigger:'#eq-hero',
+    start:'top top',
+    end:'bottom top',
+    scrub:1.8,
+    onUpdate:function(self){
+      gsap.set('#eq-globe-wrap',{y:self.progress*-90});
+    }
+  });
+
+  /* ── Ticker entrance ─────────────────────────────────────── */
+  gsap.from('#eq-ticker',{
+    opacity:0,y:22,duration:0.6,ease:'power2.out',
+    scrollTrigger:{trigger:'#eq-ticker',start:'top 96%',once:true}
+  });
+
+  /* ── Manifesto rule lines sweep in ───────────────────────── */
+  gsap.from('.eq-manifesto-rule',{
+    scaleX:0,transformOrigin:'left center',duration:0.8,ease:'power3.out',
+    scrollTrigger:{trigger:'#eq-manifesto',start:'top 82%',once:true}
+  });
+  gsap.from('.eq-manifesto-rule-bot',{
+    scaleX:0,transformOrigin:'right center',duration:0.8,ease:'power3.out',delay:0.1,
+    scrollTrigger:{trigger:'#eq-manifesto',start:'top 82%',once:true}
+  });
+
+  /* ── Smooth anchor scrolling ─────────────────────────────── */
+  document.documentElement.style.scrollBehavior='smooth';
 })();
 </script>
