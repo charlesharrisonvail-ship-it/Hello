@@ -1431,9 +1431,11 @@ IMPORTANT RULES:
         ];
       }
 
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
+      // PROXY_URL: replace with your Cloudflare Worker URL after deploying epichat-proxy
+      const PROXY_URL = 'https://epichat-proxy.YOUR-SUBDOMAIN.workers.dev';
+      const res = await fetch(PROXY_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-api-key': _k(), 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+        headers: { 'Content-Type': 'application/json', 'anthropic-version': '2023-06-01' },
         body: JSON.stringify({ model: MODEL, max_tokens: 2048, temperature: 0.7, system: SYSTEM_PROMPT, messages: apiMessages, stream: true })
       });
 

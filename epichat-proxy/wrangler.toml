@@ -1,0 +1,6 @@
+name = "epichat-proxy"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# After `wrangler deploy` your URL will be:
+# https://epichat-proxy.<your-workers-subdomain>.workers.dev
