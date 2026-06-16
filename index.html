@@ -1,0 +1,1650 @@
+<!-- ═══════════════════════════════════════════════════════════════════
+     NANO BANANA 2 — EPIQUE AGENT ATTRACTION
+     Charles Harrison · RSPS, MRP · Epique Realty
+     Lofty CMS Embed · 2026 Edition
+     NO DOCTYPE / NO HTML / NO HEAD / NO BODY — Lofty embed ready
+═══════════════════════════════════════════════════════════════════ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;700;900&display=swap');
+
+:root{
+  --gold:#c9a84c;--gold2:#b08d3e;--glow:rgba(201,168,76,.32);
+  --neon:#6b9cc4;--nglow:rgba(107,156,196,.22);
+  --pink:#a07850;--pglow:rgba(160,120,80,.2);
+  --bg:#0a1628;--bg2:#0d1b30;
+  --glass:rgba(10,18,38,.88);--glass2:rgba(8,14,30,.95);
+  --border:rgba(255,255,255,.08);
+  --text:#ede8e0;--muted:rgba(237,232,224,.45);
+}
+
+/* ── RESET ──────────────────────────────────────────────────── */
+/* Force dark background — kills Lofty CMS white wrapper at every level */
+html,body,
+.page-wrapper,.lofty-page,.site-content,.content-area,article,main,section,
+.ql-editor,.ql-container,.ql-snow,
+[class*="lofty"],[class*="page"],[class*="content"],[class*="wrapper"],[class*="container"],
+[id*="page"],[id*="content"],[id*="wrapper"],[id*="main"],
+.custom-html,.html-embed,.raw-html,
+div[style*="background"]{
+  background:#0a1628 !important;background-color:#0a1628 !important;color:#ede8e0 !important
+}
+#eq*,#eq *::before,#eq *::after{box-sizing:border-box;margin:0;padding:0}
+#eq{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased;width:100%;display:block;position:relative}
+.eq-wrap{max-width:1140px;width:100%;margin:0 auto;padding:0 48px}
+@media(max-width:768px){.eq-wrap{padding:0 20px}}
+
+/* ── HERO ───────────────────────────────────────────────────── */
+#eq-hero{
+  position:relative;height:90vh;min-height:640px;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;text-align:center;
+}
+/* ── GLOBE ─────────────────────────────────────────────────── */
+@keyframes twinkle1{0%,100%{opacity:.1}50%{opacity:1}}
+@keyframes twinkle2{0%,100%{opacity:.08}50%{opacity:.9}}
+@keyframes twinkle3{0%,100%{opacity:.05}50%{opacity:.85}}
+@keyframes twinkle4{0%,100%{opacity:.12}50%{opacity:1}}
+#eq-globe-wrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:0;pointer-events:none;overflow:hidden}
+#eq-globe-svg{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity 1.4s ease}
+#eq-globe-svg.loaded{opacity:1}
+.eq-star{position:absolute;border-radius:50%;background:white;pointer-events:none}
+#eq-hero::after{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 50%,transparent 20%,rgba(10,22,40,.82) 80%),
+    linear-gradient(180deg,rgba(10,22,40,0) 55%,rgba(10,22,40,1) 100%);
+  pointer-events:none;
+}
+.eq-hero-inner{position:relative;z-index:2;padding:20px;max-width:920px;margin:0 auto}
+
+/* LIVE BADGE */
+.eq-live{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:'Orbitron',sans-serif;font-size:8px;letter-spacing:4px;
+  color:var(--neon);text-transform:uppercase;
+  border:1px solid rgba(107,156,196,.25);background:rgba(107,156,196,.04);
+  padding:7px 18px;border-radius:30px;margin-bottom:30px;
+  box-shadow:0 0 30px rgba(107,156,196,.1),inset 0 0 16px rgba(107,156,196,.04);
+  animation:eq-livepulse 3.5s ease-in-out infinite;
+}
+.eq-live i{width:6px;height:6px;border-radius:50%;background:#c9a84c;box-shadow:0 0 10px #c9a84c;display:inline-block;animation:eq-blink 1.8s ease-in-out infinite}
+@keyframes eq-blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(1.7)}}
+@keyframes eq-livepulse{0%,100%{box-shadow:0 0 24px rgba(107,156,196,.08)}50%{box-shadow:0 0 44px rgba(107,156,196,.22),0 0 0 1px rgba(107,156,196,.15)}}
+
+/* HEADLINE */
+#eq-hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(42px,8.5vw,110px);
+  font-weight:600;line-height:.9;letter-spacing:-3px;
+  color:var(--text);margin-bottom:20px;
+}
+#eq-hero h1 .g{
+  display:block;
+  background:linear-gradient(135deg,#e8d5a0 0%,#c9a84c 40%,#8a7335 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 44px rgba(201,168,76,.6));
+  animation:eq-goldpulse 3s ease-in-out infinite;
+}
+@keyframes eq-goldpulse{0%,100%{filter:drop-shadow(0 0 40px rgba(201,168,76,.55))}50%{filter:drop-shadow(0 0 72px rgba(201,168,76,.9))}}
+
+.eq-hero-byline{
+  font-size:clamp(9px,1.3vw,12px);color:var(--muted);
+  letter-spacing:3.5px;text-transform:uppercase;
+  margin-bottom:44px;line-height:2.6;
+}
+.eq-hero-byline strong{color:var(--text);font-weight:600}
+.eq-hero-byline span{color:rgba(201,168,76,.65)}
+
+/* CTAs */
+.eq-ctas{display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap}
+.eq-btn-primary{
+  display:inline-flex;align-items:center;gap:10px;padding:18px 42px;
+  background:linear-gradient(135deg,#c9a84c,#8a7335);color:#0a1628;
+  font-family:'Outfit',sans-serif;font-weight:800;font-size:13px;
+  border:none;border-radius:50px;cursor:pointer;text-decoration:none;
+  letter-spacing:.5px;position:relative;overflow:hidden;
+  transition:transform .22s,box-shadow .22s;box-shadow:0 4px 28px var(--glow);
+}
+.eq-btn-primary::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transition:left .4s}
+.eq-btn-primary:hover::before{left:100%}
+.eq-btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 48px var(--glow)}
+.eq-btn-ghost{
+  display:inline-flex;align-items:center;gap:10px;padding:18px 42px;
+  background:transparent;color:var(--text);
+  font-family:'Outfit',sans-serif;font-weight:500;font-size:13px;
+  border:1px solid var(--border);border-radius:50px;
+  cursor:pointer;text-decoration:none;transition:all .22s;
+}
+.eq-btn-ghost:hover{border-color:rgba(107,156,196,.5);color:var(--neon);box-shadow:0 0 32px var(--nglow)}
+
+/* SCROLL HINT */
+.eq-scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:7px;opacity:.35;animation:eq-bob 2.8s ease-in-out infinite}
+.eq-scroll-hint span{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--muted)}
+.eq-scroll-hint svg{width:14px;height:14px;stroke:var(--muted);fill:none;stroke-width:2}
+@keyframes eq-bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(10px)}}
+
+
+/* ── TICKER ─────────────────────────────────────────────────── */
+#eq-ticker{border-top:1px solid rgba(201,168,76,.18);border-bottom:1px solid rgba(201,168,76,.18);background:rgba(201,168,76,.025);overflow:hidden;padding:14px 0;white-space:nowrap;position:relative}
+#eq-ticker::before,#eq-ticker::after{content:'';position:absolute;top:0;width:100px;height:100%;z-index:2;pointer-events:none}
+#eq-ticker::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+#eq-ticker::after{right:0;background:linear-gradient(-90deg,var(--bg),transparent)}
+.eq-ticker-track{display:inline-flex;gap:0;animation:eq-ticker 34s linear infinite}
+#eq-ticker:hover .eq-ticker-track{animation-play-state:paused}
+@keyframes eq-ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.eq-ticker-item{display:inline-flex;align-items:center;gap:12px;padding:0 40px;font-family:'Orbitron',sans-serif;font-size:9px;letter-spacing:2.5px;color:var(--gold);text-transform:uppercase}
+.eq-ticker-item::after{content:'✦';margin-left:40px;color:rgba(201,168,76,.3);font-size:6px}
+
+/* ── SECTION LABELS ─────────────────────────────────────────── */
+.eq-eyebrow{display:inline-block;font-family:'Orbitron',sans-serif;font-size:8.5px;letter-spacing:4px;text-transform:uppercase;padding:5px 16px;border-radius:30px;margin-bottom:20px}
+.eq-eyebrow.gold{color:var(--gold);border:1px solid rgba(201,168,76,.28)}
+.eq-eyebrow.blue{color:var(--neon);border:1px solid rgba(107,156,196,.25)}
+.eq-eyebrow.pink{color:var(--pink);border:1px solid rgba(201,168,76,.25)}
+.eq-section-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4.2vw,52px);font-weight:600;line-height:1.08;color:var(--text);margin-bottom:14px;text-align:center;letter-spacing:-1px}
+.eq-section-title .g{background:linear-gradient(135deg,#e8d5a0,#c9a84c,#8a7335);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.eq-section-sub{font-size:15px;font-weight:300;color:var(--muted);max-width:560px;width:100%;margin:0 auto;line-height:1.8;text-align:center !important;display:block;align-self:center}
+
+/* ── MANIFESTO ──────────────────────────────────────────────── */
+#eq-manifesto{display:flex;flex-direction:column;align-items:center;text-align:center;padding:110px 40px;background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 50%,var(--bg) 100%);position:relative;overflow:hidden}
+#eq-manifesto::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.03) 0%,transparent 65%);pointer-events:none;animation:eq-breathe 6s ease-in-out infinite}
+@keyframes eq-breathe{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.15)}}
+.eq-manifesto-rule{width:1px;height:64px;background:linear-gradient(180deg,transparent,var(--gold));margin:0 auto 48px;display:block}
+.eq-manifesto-quote{font-family:'Playfair Display',serif;font-size:clamp(20px,3.8vw,44px);font-weight:300;font-style:italic;line-height:1.3;color:var(--muted);max-width:860px;margin:0 auto 28px}
+.eq-manifesto-quote strong{font-weight:700;font-style:normal;color:var(--text)}
+.eq-manifesto-statement{font-family:'Playfair Display',serif;font-size:clamp(23px,4.5vw,58px);font-weight:600;line-height:1.08;text-align:center;max-width:900px;margin:0 auto;letter-spacing:-1.5px}
+.eq-manifesto-statement .gold{background:linear-gradient(135deg,#e8d5a0,#c9a84c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.eq-manifesto-rule-bot{width:1px;height:64px;background:linear-gradient(180deg,var(--gold),transparent);margin:48px auto 0;display:block}
+
+/* ── STATS ──────────────────────────────────────────────────── */
+#eq-stats{display:flex;flex-direction:column;align-items:center;text-align:center;padding:100px 40px}
+.eq-stats-row{display:flex;justify-content:center;flex-wrap:wrap;border:1px solid rgba(201,168,76,.14);border-radius:4px;overflow:hidden;position:relative;width:100%;max-width:960px}
+.eq-stats-row::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.04) 0%,transparent 60%);pointer-events:none}
+.eq-stat{flex:1 1 200px;padding:44px 28px;text-align:center;border-right:1px solid rgba(201,168,76,.1);position:relative;transition:background .3s}
+.eq-stat:last-child{border-right:none}
+.eq-stat:hover{background:rgba(201,168,76,.04)}
+.eq-stat-num{display:block;font-family:'Orbitron',sans-serif;font-size:clamp(28px,3.8vw,48px);font-weight:900;color:var(--gold);line-height:1;margin-bottom:10px;text-shadow:0 0 32px rgba(201,168,76,.4)}
+.eq-stat-label{font-size:10px;font-family:'Orbitron',sans-serif;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+
+/* ── WHY EPIQUE ─────────────────────────────────────────────── */
+#eq-why{display:flex;flex-direction:column;align-items:center;text-align:center;padding:100px 40px}
+.eq-why-hdr{text-align:center;margin-bottom:64px;width:100%;display:flex;flex-direction:column;align-items:center}
+.eq-why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:1000px;width:100%}
+.eq-why-card{background:var(--glass);border:1px solid var(--border);border-radius:22px;padding:52px 44px;text-align:left;position:relative;overflow:hidden;transition:all .4s cubic-bezier(.22,1,.36,1);cursor:default}
+.eq-why-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.05),transparent 55%);opacity:0;transition:opacity .4s}
+.eq-why-card::after{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.6),transparent);opacity:0;transition:opacity .4s}
+.eq-why-card:hover{border-color:rgba(201,168,76,.28);transform:translateY(-8px) scale(1.01);box-shadow:0 32px 72px rgba(0,0,0,.55),0 0 48px rgba(201,168,76,.07)}
+.eq-why-card:hover::before,.eq-why-card:hover::after{opacity:1}
+.eq-why-icon{width:60px;height:60px;border-radius:18px;background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.18);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:26px;transition:all .3s}
+.eq-why-card:hover .eq-why-icon{background:rgba(201,168,76,.13);border-color:rgba(201,168,76,.4);box-shadow:0 0 28px rgba(201,168,76,.2)}
+.eq-why-title{font-family:'Playfair Display',serif;font-size:clamp(22px,2.5vw,30px);font-weight:700;color:var(--text);margin-bottom:14px;letter-spacing:-.4px}
+.eq-why-desc{font-size:14px;font-weight:300;color:var(--muted);line-height:1.85}
+.eq-why-badge{position:absolute;top:24px;right:24px;font-family:'Orbitron',sans-serif;font-size:8px;font-weight:700;letter-spacing:2px;color:var(--gold);border:1px solid rgba(201,168,76,.3);padding:4px 11px;border-radius:20px;background:rgba(201,168,76,.07)}
+
+/* ── AI TOOLS ───────────────────────────────────────────────── */
+#eq-ai{padding:100px 40px;text-align:center;background:linear-gradient(180deg,var(--bg) 0%,rgba(10,22,40,1) 50%,var(--bg) 100%);position:relative;overflow:hidden}
+#eq-ai::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(107,156,196,.4),transparent)}
+#eq-ai::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(107,156,196,.4),transparent)}
+#eq-ai-bg{position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 80% 50% at 50% 50%,rgba(107,156,196,.025) 0%,transparent 65%)}
+.eq-ai-hdr{margin-bottom:60px;position:relative;z-index:1}
+.eq-ai-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.eq-ai-card{background:rgba(10,18,36,.95);border:1px solid rgba(107,156,196,.12);border-radius:18px;padding:28px 22px;text-align:left;position:relative;overflow:hidden;transition:all .35s cubic-bezier(.22,1,.36,1);cursor:default}
+.eq-ai-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(107,156,196,.8),transparent);opacity:0;transition:opacity .35s}
+.eq-ai-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(107,156,196,.04),transparent 60%);opacity:0;transition:opacity .35s}
+.eq-ai-card:hover{border-color:rgba(107,156,196,.4);transform:translateY(-6px) scale(1.015);box-shadow:0 20px 52px rgba(0,0,0,.6),0 0 32px rgba(107,156,196,.1)}
+.eq-ai-card:hover::before,.eq-ai-card:hover::after{opacity:1}
+.eq-ai-num{font-family:'Orbitron',sans-serif;font-size:7.5px;letter-spacing:2px;color:rgba(107,156,196,.4);margin-bottom:10px;display:block}
+.eq-ai-icon{font-size:26px;margin-bottom:12px;display:block;position:relative;z-index:1}
+.eq-ai-name{font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;color:var(--neon);margin-bottom:6px;letter-spacing:.3px;position:relative;z-index:1}
+.eq-ai-what{font-size:9.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,.65);margin-bottom:10px;position:relative;z-index:1}
+.eq-ai-desc{font-size:12px;color:var(--muted);line-height:1.7;position:relative;z-index:1}
+.eq-ai-tag{display:inline-block;margin-top:10px;padding:3px 9px;font-family:'Orbitron',sans-serif;font-size:7px;letter-spacing:1.5px;background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.2);color:var(--gold);border-radius:10px;position:relative;z-index:1}
+
+/* ── STEPS ──────────────────────────────────────────────────── */
+#eq-steps{display:flex;flex-direction:column;align-items:center;text-align:center;padding:100px 40px}
+.eq-steps-hdr{text-align:center;margin-bottom:72px;width:100%}
+.eq-steps-row{display:flex;gap:24px;justify-content:center;width:100%;max-width:960px;flex-wrap:wrap}
+.eq-step{flex:1 1 240px;background:var(--glass);border:1px solid var(--border);border-radius:22px;padding:48px 32px;text-align:center;transition:all .35s cubic-bezier(.22,1,.36,1)}
+.eq-step:hover{border-color:rgba(201,168,76,.28);box-shadow:0 0 44px rgba(201,168,76,.08);transform:translateY(-6px)}
+.eq-step-num{width:68px;height:68px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-family:'Orbitron',sans-serif;font-size:20px;font-weight:900;color:var(--gold);border:1.5px solid rgba(201,168,76,.35);background:rgba(201,168,76,.05);box-shadow:0 0 28px rgba(201,168,76,.12);transition:all .3s}
+.eq-step:hover .eq-step-num{box-shadow:0 0 52px rgba(201,168,76,.35);background:rgba(201,168,76,.1);border-color:var(--gold)}
+.eq-step-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--text);margin-bottom:12px}
+.eq-step-desc{font-size:13.5px;font-weight:300;color:var(--muted);line-height:1.8}
+
+/* ── SCHEDULE ───────────────────────────────────────────────── */
+#eq-schedule{padding:120px 40px;display:flex;flex-direction:column;align-items:center;background:linear-gradient(180deg,var(--bg) 0%,rgba(4,3,18,1) 100%)}
+.eq-sched-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;width:100%;max-width:1100px;margin:0 auto}
+@media(max-width:860px){.eq-sched-inner{grid-template-columns:1fr;gap:48px}}
+.eq-sched-text{display:flex;flex-direction:column;align-items:flex-start;text-align:left}
+.eq-sched-title{font-family:'Playfair Display',serif;font-size:clamp(28px,3.8vw,48px);font-weight:600;line-height:1.08;color:var(--text);margin-bottom:20px;letter-spacing:-.5px;text-align:left}
+.eq-sched-title span{background:linear-gradient(135deg,#e8d5a0,#c9a84c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.eq-sched-desc{font-size:15px;font-weight:300;color:var(--muted);line-height:1.9;margin-bottom:36px;text-align:left}
+.eq-benefits{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:40px;text-align:left;width:100%}
+.eq-benefits li{display:flex;align-items:center;gap:14px;font-size:14px;font-weight:400;color:var(--text);padding:12px 16px;background:rgba(201,168,76,.04);border:1px solid rgba(201,168,76,.12);border-radius:10px;transition:all .2s}
+.eq-benefits li:hover{background:rgba(201,168,76,.07);border-color:rgba(201,168,76,.25)}
+.eq-benefits li::before{content:'✓';width:22px;height:22px;border-radius:50%;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.4);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:11px;font-weight:700;flex-shrink:0;text-align:center;line-height:22px}
+.eq-cal-btn{display:flex;align-items:center;justify-content:center;gap:14px;width:100%;padding:24px 32px;background:linear-gradient(135deg,#c9a84c 0%,#a0873a 100%);color:#0a1628;font-family:'Outfit',sans-serif;font-weight:800;font-size:17px;border:none;border-radius:16px;cursor:pointer;text-decoration:none;position:relative;overflow:hidden;box-shadow:0 0 0 1px rgba(201,168,76,.3),0 8px 40px rgba(201,168,76,.35);transition:transform .22s,box-shadow .22s}
+.eq-cal-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);transition:left .5s}
+.eq-cal-btn:hover::before{left:100%}
+.eq-cal-btn:hover{transform:translateY(-3px);box-shadow:0 0 0 1px rgba(201,168,76,.5),0 16px 60px rgba(201,168,76,.5)}
+.eq-cal-btn-icon{font-size:24px;line-height:1}
+.eq-cal-btn-text{display:flex;flex-direction:column;align-items:flex-start}
+.eq-cal-btn-text strong{font-size:17px;font-weight:800;line-height:1.1}
+.eq-cal-btn-text span{font-size:11px;font-weight:500;opacity:.7;margin-top:2px}
+.eq-cal-arrow{font-size:22px;margin-left:auto;opacity:.8}
+.eq-sched-cta-note{margin-top:16px;font-size:13px;font-weight:300;color:rgba(237,232,224,.45);text-align:center;width:100%}
+.eq-form-card{background:rgba(8,6,22,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(201,168,76,.22);border-radius:24px;padding:52px 48px;position:relative;overflow:hidden;width:100%;box-shadow:0 0 64px rgba(0,0,0,.6),inset 0 0 40px rgba(201,168,76,.015)}
+.eq-form-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.6),transparent)}
+.eq-form-card h3{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--text);margin-bottom:32px;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,.1);display:flex;align-items:center;gap:10px;text-align:center;justify-content:center}
+.eq-form-card h3 i{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--neon);box-shadow:0 0 12px var(--neon)}
+.eq-fg{margin-bottom:22px}
+.eq-fg label{display:block;font-size:10px;font-weight:700;color:rgba(237,232,224,.65);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:9px;text-align:left}
+.eq-fg input,.eq-fg select,.eq-fg textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:16px 18px;color:#ede8e0;font-family:'Outfit',sans-serif;font-size:15px;font-weight:400;outline:none;-webkit-appearance:none;appearance:none;transition:border-color .2s,box-shadow .2s,background .2s}
+.eq-fg input:focus,.eq-fg select:focus,.eq-fg textarea:focus{border-color:rgba(201,168,76,.5);background:rgba(255,255,255,.07);box-shadow:0 0 0 3px rgba(201,168,76,.1)}
+.eq-fg input::placeholder,.eq-fg textarea::placeholder{color:rgba(237,232,224,.26)}
+.eq-fg select option{background:#0a0820;color:#ede8e0}
+.eq-fg textarea{resize:vertical;min-height:100px}
+.eq-2col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+#eq-notify{display:none;padding:12px 16px;border-radius:8px;font-size:13px;margin-bottom:18px}
+.eq-submit{width:100%;padding:20px;background:linear-gradient(135deg,#c9a84c,#8a7335);color:#0a1628;font-family:'Outfit',sans-serif;font-size:16px;font-weight:800;border:none;border-radius:14px;cursor:pointer;letter-spacing:.5px;box-shadow:0 4px 28px rgba(201,168,76,.32);transition:transform .2s,box-shadow .2s}
+.eq-submit:hover{transform:translateY(-2px);box-shadow:0 10px 44px var(--glow)}
+.eq-privacy{text-align:center;font-size:11px;color:rgba(237,232,224,.25);margin-top:14px;line-height:1.6}
+
+/* ── BIO ────────────────────────────────────────────────────── */
+#eq-bio{position:relative;min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:0 40px 100px;overflow:hidden}
+#eq-bio-bg{position:absolute;inset:0;background-image:url('https://charlesharrison.epiquerealty.com/headshot.jpg');background-size:cover;background-position:center top;filter:grayscale(15%) contrast(1.08);transform:scale(1.02);z-index:0}
+#eq-bio::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(10,22,40,.15) 0%,rgba(10,22,40,.28) 38%,rgba(10,22,40,.78) 68%,rgba(10,22,40,.97) 88%,rgba(10,22,40,1) 100%)}
+#eq-bio::after{content:'';position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 110% 80% at 50% 100%,rgba(201,168,76,.05) 0%,transparent 65%);pointer-events:none}
+.eq-bio-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;width:100%;max-width:700px}
+.eq-bio-headshot{display:none}
+.eq-bio-name{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,52px);font-weight:500;line-height:1;color:#fff;margin-bottom:10px;letter-spacing:-1px;text-align:center;text-shadow:0 2px 32px rgba(0,0,0,.8)}
+.eq-bio-title{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:28px;text-align:center;text-shadow:0 0 20px rgba(201,168,76,.4)}
+.eq-bio-desc{font-size:14px;font-weight:300;color:rgba(237,232,224,.75);line-height:1.75;margin-bottom:28px;max-width:520px;text-align:center;text-shadow:0 1px 12px rgba(0,0,0,.6)}
+.eq-bio-creds{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.eq-cred{font-family:'Orbitron',sans-serif;font-size:8.5px;letter-spacing:2px;color:var(--neon);border:1px solid rgba(107,156,196,.2);padding:5px 12px;border-radius:4px}
+.eq-bio-footer-line{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);width:100%;font-size:11px;letter-spacing:1.5px;color:rgba(237,232,224,.35);text-align:center}
+.eq-bio-footer-line a{color:rgba(237,232,224,.5);text-decoration:none;transition:color .2s}
+.eq-bio-footer-line a:hover{color:var(--gold)}
+
+/* ── REVEAL ─────────────────────────────────────────────────── */
+.eq-r{opacity:0;transform:translateY(36px);transition:opacity .85s cubic-bezier(.22,1,.36,1),transform .85s cubic-bezier(.22,1,.36,1)}
+.eq-rl{opacity:0;transform:translateX(-36px);transition:opacity .85s cubic-bezier(.22,1,.36,1),transform .85s cubic-bezier(.22,1,.36,1)}
+.eq-rr{opacity:0;transform:translateX(36px);transition:opacity .85s cubic-bezier(.22,1,.36,1),transform .85s cubic-bezier(.22,1,.36,1)}
+.eq-r.in,.eq-rl.in,.eq-rr.in{opacity:1;transform:none}
+
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
+@media(max-width:1040px){.eq-ai-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:900px){
+  .eq-why-grid{grid-template-columns:1fr}
+  .eq-steps-row{flex-direction:column;align-items:center}
+  .eq-step{max-width:480px;width:100%}
+  .eq-stats-row{flex-direction:column}
+  .eq-stat{border-right:none;border-bottom:1px solid rgba(201,168,76,.1)}
+  .eq-stat:last-child{border-bottom:none}
+}
+@media(max-width:700px){.eq-ai-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:580px){
+  .eq-ai-grid{grid-template-columns:1fr}
+  .eq-2col{grid-template-columns:1fr}
+  .eq-form-card{padding:32px 22px}
+  .eq-why-card{padding:40px 28px}
+  #eq-manifesto,#eq-stats,#eq-why,#eq-steps,#eq-schedule,#eq-calc,#eq-compare,#eq-faq{padding:80px 20px}
+}
+
+/* ── LANGUAGE SWITCHER ──────────────────────────────────────── */
+.eq-lang-bar{position:fixed;top:22px;right:28px;z-index:200;display:flex;gap:6px}
+.eq-lang-btn{padding:5px 13px;border:1px solid var(--border);background:var(--glass);color:var(--muted);border-radius:20px;font-family:'Outfit',sans-serif;font-size:11px;font-weight:600;letter-spacing:1px;cursor:pointer;transition:all .3s;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.eq-lang-btn:hover,.eq-lang-btn.active{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+@media(max-width:768px){.eq-lang-bar{top:12px;right:14px}}
+
+/* ══ NEW: COMPARISON TABLE ══════════════════════════════════════ */
+#eq-compare{padding:100px 40px;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;overflow:hidden}
+.eq-compare-hdr{margin-bottom:56px;position:relative;z-index:1}
+.eq-compare-table{width:100%;max-width:900px;border-collapse:separate;border-spacing:0;position:relative;z-index:1;border-radius:22px;overflow:hidden;border:1px solid var(--border)}
+.eq-compare-table thead th{padding:28px 24px;font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;text-align:center}
+.eq-compare-table thead th:first-child{background:transparent;text-align:left;width:40%}
+.eq-compare-table thead th.trad-col{background:rgba(255,255,255,.02);color:var(--muted);border-bottom:2px solid rgba(255,255,255,.06)}
+.eq-compare-table thead th.epique-col{background:rgba(201,168,76,.04);color:var(--gold);border-bottom:2px solid rgba(201,168,76,.2);position:relative}
+.eq-compare-table thead th.epique-col::before{content:'★ RECOMMENDED';display:block;font-family:'Orbitron',sans-serif;font-size:7px;letter-spacing:3px;color:var(--neon);margin-bottom:8px;opacity:.7}
+.eq-compare-table tbody tr{transition:background .2s}
+.eq-compare-table tbody tr:hover{background:rgba(201,168,76,.02)}
+.eq-compare-table tbody td{padding:20px 24px;border-bottom:1px solid rgba(255,255,255,.04);font-size:14px;text-align:center;vertical-align:middle}
+.eq-compare-table tbody td:first-child{text-align:left;font-weight:500;color:var(--text);font-size:14px;display:flex;align-items:center;gap:12px}
+.eq-compare-table tbody td:first-child .eq-cmp-icon{font-size:18px;width:32px;text-align:center;flex-shrink:0}
+.eq-compare-table tbody td.trad{color:var(--muted);font-weight:300;background:rgba(255,255,255,.01)}
+.eq-compare-table tbody td.epique{color:var(--gold);font-weight:600;background:rgba(201,168,76,.02);position:relative}
+.eq-compare-table tbody td.epique.highlight{color:#fff;font-weight:700}
+.eq-cmp-yes{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.35);color:var(--gold);font-size:13px;font-weight:700}
+.eq-cmp-no{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.18);color:var(--pink);font-size:12px}
+.eq-cmp-paid{font-size:12px;color:var(--pink);font-weight:500;letter-spacing:.5px}
+.eq-cmp-free{font-size:12px;color:var(--gold);font-weight:700;letter-spacing:.5px;display:inline-flex;align-items:center;gap:6px}
+.eq-cmp-free::before{content:'✓';width:18px;height:18px;border-radius:50%;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.4);display:inline-flex;align-items:center;justify-content:center;font-size:10px}
+.eq-compare-table tbody td.epique::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,rgba(201,168,76,.2),transparent)}
+.eq-compare-table tfoot td{padding:24px;font-family:'Orbitron',sans-serif;border-top:2px solid rgba(201,168,76,.15)}
+.eq-compare-table tfoot td:first-child{font-size:10px;letter-spacing:2px;color:var(--muted);text-align:left;text-transform:uppercase}
+.eq-compare-table tfoot td.trad{font-size:18px;font-weight:900;color:var(--pink);text-align:center}
+.eq-compare-table tfoot td.epique{font-size:18px;font-weight:900;color:var(--gold);text-align:center;text-shadow:0 0 24px rgba(201,168,76,.4)}
+@media(max-width:700px){.eq-compare-table thead th,.eq-compare-table tbody td,.eq-compare-table tfoot td{padding:14px 12px;font-size:12px}.eq-compare-table tbody td:first-child .eq-cmp-icon{display:none}}
+
+/* ══ NEW: COMMISSION CALCULATOR ═════════════════════════════════ */
+#eq-calc{padding:100px 40px;display:flex;flex-direction:column;align-items:center;text-align:center;background:linear-gradient(180deg,var(--bg) 0%,rgba(4,3,18,1) 50%,var(--bg) 100%);position:relative;overflow:hidden}
+#eq-calc::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.4),transparent)}
+#eq-calc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.4),transparent)}
+.eq-calc-bg{position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 80% 50% at 50% 50%,rgba(201,168,76,.02) 0%,transparent 65%)}
+.eq-calc-hdr{margin-bottom:56px;position:relative;z-index:1}
+.eq-calc-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;width:100%;max-width:1060px;position:relative;z-index:1}
+.eq-calc-input{background:var(--glass);border:1px solid var(--border);border-radius:22px;padding:48px 40px;text-align:left;position:relative;overflow:hidden}
+.eq-calc-input::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.5),transparent)}
+.eq-calc-input h3{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.eq-calc-input h3 i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold)}
+.eq-calc-subtitle{font-size:13px;color:var(--muted);margin-bottom:32px;line-height:1.7}
+.eq-calc-fg{margin-bottom:24px}
+.eq-calc-fg label{display:block;font-size:10px;font-weight:700;color:rgba(237,232,224,.65);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:9px}
+.eq-calc-fg input[type="range"]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:3px;background:linear-gradient(90deg,rgba(201,168,76,.15),rgba(201,168,76,.35));outline:none;cursor:pointer}
+.eq-calc-fg input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--gold);box-shadow:0 0 18px var(--glow);cursor:pointer;transition:transform .15s}
+.eq-calc-fg input[type="range"]::-webkit-slider-thumb:hover{transform:scale(1.2)}
+.eq-calc-fg input[type="range"]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--gold);box-shadow:0 0 18px var(--glow);cursor:pointer;border:none}
+.eq-calc-val{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.eq-calc-val span:first-child{font-family:'Orbitron',sans-serif;font-size:clamp(28px,3.5vw,42px);font-weight:900;color:var(--gold);text-shadow:0 0 28px rgba(201,168,76,.35)}
+.eq-calc-val span:last-child{font-size:11px;color:var(--muted);letter-spacing:1.5px}
+.eq-calc-split-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px}
+.eq-calc-select{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:14px 16px;color:#ede8e0;font-family:'Outfit',sans-serif;font-size:14px;outline:none;-webkit-appearance:none;appearance:none;cursor:pointer;transition:border-color .2s,box-shadow .2s}
+.eq-calc-select:focus{border-color:rgba(201,168,76,.5);box-shadow:0 0 0 3px rgba(201,168,76,.1)}
+.eq-calc-select option{background:#0a0820;color:#ede8e0}
+.eq-calc-results{display:flex;flex-direction:column;gap:20px}
+.eq-result-card{background:var(--glass);border:1px solid var(--border);border-radius:22px;padding:36px 32px;text-align:center;position:relative;overflow:hidden;transition:all .4s cubic-bezier(.22,1,.36,1)}
+.eq-result-card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .4s}
+.eq-result-card.trad{border-color:rgba(255,255,255,.08)}
+.eq-result-card.trad::before{background:linear-gradient(135deg,rgba(201,168,76,.05),transparent 60%)}
+.eq-result-card.epique{border-color:rgba(201,168,76,.22)}
+.eq-result-card.epique::before{background:linear-gradient(135deg,rgba(201,168,76,.06),transparent 60%)}
+.eq-result-card.epique::after{content:'';position:absolute;top:0;left:10%;right:10%;height:2px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.6),transparent)}
+.eq-result-card:hover::before{opacity:1}
+.eq-result-label{display:inline-flex;align-items:center;gap:8px;font-family:'Orbitron',sans-serif;font-size:8px;letter-spacing:3px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:16px}
+.eq-result-card.trad .eq-result-label{color:var(--muted);border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03)}
+.eq-result-card.epique .eq-result-label{color:var(--gold);border:1px solid rgba(201,168,76,.3);background:rgba(201,168,76,.06)}
+.eq-result-amount{font-family:'Orbitron',sans-serif;font-size:clamp(32px,4vw,52px);font-weight:900;line-height:1;margin-bottom:6px;transition:all .3s}
+.eq-result-card.trad .eq-result-amount{color:var(--muted)}
+.eq-result-card.epique .eq-result-amount{color:var(--gold);text-shadow:0 0 36px rgba(201,168,76,.5)}
+.eq-result-desc{font-size:12px;color:var(--muted);letter-spacing:1px}
+.eq-savings-card{background:linear-gradient(135deg,rgba(201,168,76,.06),rgba(107,156,196,.03));border:1.5px solid rgba(201,168,76,.35);border-radius:22px;padding:32px;text-align:center;position:relative;overflow:hidden;animation:eq-savingspulse 4s ease-in-out infinite}
+.eq-savings-card::before{content:'';position:absolute;top:0;left:10%;right:10%;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+@keyframes eq-savingspulse{0%,100%{box-shadow:0 0 32px rgba(201,168,76,.1)}50%{box-shadow:0 0 60px rgba(201,168,76,.25),0 0 0 1px rgba(201,168,76,.15)}}
+.eq-savings-label{font-family:'Orbitron',sans-serif;font-size:8px;letter-spacing:3px;color:var(--neon);text-transform:uppercase;margin-bottom:10px}
+.eq-savings-num{font-family:'Orbitron',sans-serif;font-size:clamp(36px,5vw,64px);font-weight:900;color:#fff;text-shadow:0 0 44px rgba(201,168,76,.6);line-height:1;margin-bottom:4px}
+.eq-savings-sub{font-size:12px;color:var(--gold);letter-spacing:2px;font-weight:600}
+.eq-savings-note{font-size:11px;color:var(--muted);margin-top:14px;line-height:1.6}
+.eq-savings-note strong{color:var(--gold)}
+.eq-calc-cta{margin-top:20px}
+.eq-calc-cta a{display:inline-flex;align-items:center;gap:10px;padding:18px 42px;background:linear-gradient(135deg,#c9a84c,#8a7335);color:#0a1628;font-family:'Outfit',sans-serif;font-weight:800;font-size:14px;border:none;border-radius:50px;cursor:pointer;text-decoration:none;letter-spacing:.5px;position:relative;overflow:hidden;transition:transform .22s,box-shadow .22s;box-shadow:0 4px 28px var(--glow)}
+.eq-calc-cta a::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transition:left .4s}
+.eq-calc-cta a:hover::before{left:100%}
+.eq-calc-cta a:hover{transform:translateY(-3px);box-shadow:0 12px 48px var(--glow)}
+@media(max-width:900px){.eq-calc-inner{grid-template-columns:1fr}}
+@media(max-width:580px){.eq-calc-input{padding:32px 22px}.eq-calc-split-row{grid-template-columns:1fr}}
+
+/* ══ NEW: TESTIMONIALS CAROUSEL ═════════════════════════════════ */
+#eq-proof{padding:100px 40px;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;overflow:hidden}
+#eq-proof::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 45% at 50% 50%,rgba(107,156,196,.02),transparent 70%)}
+.eq-proof-hdr{margin-bottom:56px;position:relative;z-index:1}
+.eq-proof-track-wrap{width:100%;overflow:hidden;position:relative;z-index:1;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 8%,#000 92%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0%,#000 8%,#000 92%,transparent 100%)}
+.eq-proof-track{display:flex;gap:24px;animation:eq-proof-scroll 40s linear infinite;width:max-content}
+.eq-proof-track:hover{animation-play-state:paused}
+@keyframes eq-proof-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.eq-proof-card{flex:0 0 380px;background:var(--glass);border:1px solid var(--border);border-radius:22px;padding:40px 32px;text-align:left;position:relative;overflow:hidden;transition:all .4s cubic-bezier(.22,1,.36,1);cursor:default}
+.eq-proof-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(107,156,196,.04),transparent 55%);opacity:0;transition:opacity .4s}
+.eq-proof-card::after{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(107,156,196,.5),transparent);opacity:0;transition:opacity .4s}
+.eq-proof-card:hover{border-color:rgba(107,156,196,.25);transform:translateY(-6px) scale(1.01);box-shadow:0 24px 56px rgba(0,0,0,.5),0 0 36px rgba(107,156,196,.06)}
+.eq-proof-card:hover::before,.eq-proof-card:hover::after{opacity:1}
+.eq-proof-quote-mark{font-family:'Playfair Display',serif;font-size:72px;font-weight:700;line-height:1;color:rgba(107,156,196,.15);margin-bottom:-20px;display:block}
+.eq-proof-text{font-family:'Outfit',sans-serif;font-size:14.5px;font-weight:300;color:rgba(237,232,224,.8);line-height:1.85;margin-bottom:28px;min-height:100px}
+.eq-proof-text strong{color:var(--gold);font-weight:600}
+.eq-proof-author{display:flex;align-items:center;gap:14px;padding-top:20px;border-top:1px solid rgba(255,255,255,.06)}
+.eq-proof-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#0a1628;flex-shrink:0}
+.eq-proof-avatar.gold{background:linear-gradient(135deg,#c9a84c,#8a7335)}
+.eq-proof-avatar.cyan{background:linear-gradient(135deg,#6b9cc4,#4a7a9e)}
+.eq-proof-avatar.pink{background:linear-gradient(135deg,#c9a84c,#8a7335)}
+.eq-proof-avatar.purple{background:linear-gradient(135deg,#b060ff,#7030c0)}
+.eq-proof-meta{display:flex;flex-direction:column;align-items:flex-start}
+.eq-proof-name{font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;color:var(--text)}
+.eq-proof-role{font-size:11px;color:var(--muted);letter-spacing:.5px}
+.eq-proof-stars{display:flex;gap:3px;margin-bottom:16px}
+.eq-proof-stars span{color:var(--gold);font-size:14px}
+.eq-proof-metric{position:absolute;top:20px;right:20px;font-family:'Orbitron',sans-serif;font-size:8px;letter-spacing:2px;color:var(--gold);border:1px solid rgba(201,168,76,.25);background:rgba(201,168,76,.06);padding:4px 10px;border-radius:16px}
+.eq-proof-stats{display:flex;justify-content:center;flex-wrap:wrap;gap:48px;margin-top:56px;position:relative;z-index:1}
+.eq-proof-stat{text-align:center}
+.eq-proof-stat-num{font-family:'Orbitron',sans-serif;font-size:clamp(28px,3.5vw,44px);font-weight:900;color:var(--neon);display:block;margin-bottom:6px;text-shadow:0 0 24px rgba(107,156,196,.35)}
+.eq-proof-stat-label{font-size:10px;font-family:'Orbitron',sans-serif;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+@media(max-width:580px){#eq-proof{padding:80px 20px}.eq-proof-card{flex:0 0 300px;padding:32px 24px}.eq-proof-stats{gap:28px}}
+
+/* ══ NEW: FAQ ACCORDION ═════════════════════════════════════════ */
+#eq-faq{padding:100px 40px;display:flex;flex-direction:column;align-items:center;text-align:center;background:linear-gradient(180deg,var(--bg) 0%,rgba(4,3,18,1) 50%,var(--bg) 100%);position:relative;overflow:hidden}
+#eq-faq::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 40% at 50% 30%,rgba(201,168,76,.015),transparent 70%)}
+.eq-faq-hdr{margin-bottom:48px;position:relative;z-index:1}
+.eq-faq-list{max-width:780px;width:100%;display:flex;flex-direction:column;gap:12px;position:relative;z-index:1}
+.eq-faq-item{background:var(--glass);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .35s cubic-bezier(.22,1,.36,1)}
+.eq-faq-item:hover{border-color:rgba(201,168,76,.18)}
+.eq-faq-item.open{border-color:rgba(201,168,76,.28);box-shadow:0 8px 36px rgba(0,0,0,.3),0 0 24px rgba(201,168,76,.04)}
+.eq-faq-q{width:100%;background:none;border:none;display:flex;align-items:center;gap:16px;padding:24px 28px;cursor:pointer;text-align:left;transition:background .2s;color:inherit}
+.eq-faq-q:hover{background:rgba(201,168,76,.02)}
+.eq-faq-q-icon{width:36px;height:36px;border-radius:10px;background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.15);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;transition:all .3s}
+.eq-faq-item.open .eq-faq-q-icon{background:rgba(201,168,76,.12);border-color:rgba(201,168,76,.4);box-shadow:0 0 20px rgba(201,168,76,.15)}
+.eq-faq-q-text{flex:1;font-family:'Outfit',sans-serif;font-size:16px;font-weight:600;color:var(--text);line-height:1.4;transition:color .2s}
+.eq-faq-item.open .eq-faq-q-text{color:var(--gold)}
+.eq-faq-q-arrow{width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.eq-faq-q-arrow svg{width:14px;height:14px;stroke:var(--muted);fill:none;stroke-width:2;transition:stroke .2s}
+.eq-faq-item.open .eq-faq-q-arrow{transform:rotate(180deg)}
+.eq-faq-item.open .eq-faq-q-arrow svg{stroke:var(--gold)}
+.eq-faq-a{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.22,1,.36,1),padding .35s}
+.eq-faq-item.open .eq-faq-a{max-height:400px}
+.eq-faq-a-inner{padding:0 28px 28px 80px;font-family:'Outfit',sans-serif;font-size:14.5px;font-weight:300;color:rgba(237,232,224,.7);line-height:1.9;text-align:left}
+.eq-faq-a-inner strong{color:var(--gold);font-weight:600}
+.eq-faq-a-inner a{color:var(--neon);text-decoration:none;border-bottom:1px solid rgba(107,156,196,.3);transition:border-color .2s}
+.eq-faq-a-inner a:hover{border-color:var(--neon)}
+.eq-faq-cat{display:inline-block;font-family:'Orbitron',sans-serif;font-size:7.5px;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:10px}
+.eq-faq-cat.commission{color:var(--gold);border:1px solid rgba(201,168,76,.2);background:rgba(201,168,76,.04)}
+.eq-faq-cat.tools{color:var(--neon);border:1px solid rgba(107,156,196,.2);background:rgba(107,156,196,.04)}
+.eq-faq-cat.benefits{color:var(--pink);border:1px solid rgba(201,168,76,.2);background:rgba(201,168,76,.04)}
+.eq-faq-cat.process{color:#b060ff;border:1px solid rgba(176,96,255,.2);background:rgba(176,96,255,.04)}
+.eq-faq-cta{margin-top:48px;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:12px}
+.eq-faq-cta p{font-size:14px;color:var(--muted);font-weight:300}
+.eq-faq-cta a{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;background:transparent;color:var(--text);font-family:'Outfit',sans-serif;font-weight:500;font-size:14px;border:1px solid var(--border);border-radius:50px;cursor:pointer;text-decoration:none;transition:all .22s}
+.eq-faq-cta a:hover{border-color:rgba(201,168,76,.5);color:var(--gold);box-shadow:0 0 32px rgba(201,168,76,.15)}
+@media(max-width:580px){.eq-faq-q{padding:20px 20px}.eq-faq-a-inner{padding:0 20px 24px 20px}.eq-faq-q-icon{display:none}}
+</style>
+
+<!-- ── VIDEO BUTTON ──────────────────────────────────────────── -->
+<style>
+#eq-vid{position:fixed!important;bottom:24px!important;left:24px!important;z-index:2147483647!important;display:flex;align-items:center;gap:8px;padding:11px 18px;background:linear-gradient(135deg,#c9a84c,#8a7335);border:none;border-radius:30px;cursor:pointer;text-decoration:none;box-shadow:0 4px 24px rgba(201,168,76,.38);transition:all .25s;animation:eq-vpulse 3s ease-in-out infinite}
+#eq-vid:hover{transform:scale(1.05) translateY(-2px);box-shadow:0 6px 32px rgba(201,168,76,.55)}
+#eq-vid svg{width:16px;height:16px;fill:white}
+#eq-vid span{font-family:'Outfit',sans-serif;font-size:12px;font-weight:600;color:#fff;letter-spacing:.5px;white-space:nowrap}
+@keyframes eq-vpulse{0%,100%{box-shadow:0 4px 24px rgba(201,168,76,.38)}50%{box-shadow:0 4px 32px rgba(201,168,76,.6)}}
+</style>
+<a id="eq-vid" href="https://www.youtube.com/playlist?list=PLPfz7sYPrTUBGxlkGYIsKA4rUotPNlNSo" target="_blank" rel="noopener" title="Watch Epique Realty videos on YouTube" aria-label="Epique Realty YouTube playlist">
+  <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+  <span>Epique Vids</span>
+</a>
+
+<!-- ══════════════════════════════════════════════════════════════
+     MAIN CONTENT
+══════════════════════════════════════════════════════════════════ -->
+<!-- ── JSON-LD STRUCTURED DATA ── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "RealEstateAgent",
+      "name": "Charles Harrison",
+      "jobTitle": "Area / Growth Leader",
+      "description": "Charles Harrison is an Epique Realty Area/Growth Leader with 25+ years of luxury real estate experience, RSPS and MRP designations, specializing in agent recruitment and AI-powered real estate tools.",
+      "url": "https://charlesharrison.epiquerealty.com/",
+      "image": "https://charlesharrison.epiquerealty.com/headshot.jpg",
+      "telephone": "+1-970-555-0100",
+      "knowsAbout": ["real estate","luxury real estate","AI real estate tools","100% commission brokerage","Epique Realty","Lofty CRM","revenue share","agent recruitment"],
+      "hasCredential": [
+        {"@type": "EducationalOccupationalCredential","credentialCategory": "Professional Designation","name": "RSPS - Resort and Second-Property Specialist"},
+        {"@type": "EducationalOccupationalCredential","credentialCategory": "Professional Designation","name": "MRP - Military Relocation Professional"}
+      ],
+      "worksFor": {
+        "@type": "RealEstateAgent",
+        "name": "Epique Realty",
+        "url": "https://www.epiquerealty.com/",
+        "description": "Epique Realty is a tech-forward, AI-powered real estate brokerage offering 100% commission after cap, free healthcare, 12 included AI tools, revenue share, and stock options for agents in all 50 US states and globally.",
+        "areaServed": {"@type": "Country","name": "United States"},
+        "numberOfEmployees": {"@type": "QuantitativeValue","value": "50 states"}
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does 100% commission after cap actually mean?",
+          "acceptedAnswer": {"@type": "Answer","text": "Epique has a low, transparent annual cap. Once you hit that cap — which most productive agents reach in the first few months — every commission dollar you earn for the rest of the year is 100% yours. No splits, no percentages, no surprise deductions."}
+        },
+        {
+          "@type": "Question",
+          "name": "Is the healthcare really free? What's the catch?",
+          "acceptedAnswer": {"@type": "Answer","text": "No catch. Epique provides group healthcare insurance to every active agent at zero cost. You don't need to be a top producer. This benefit alone saves most agents $7,200–$18,000+ per year compared to individual coverage."}
+        },
+        {
+          "@type": "Question",
+          "name": "What are the 12 AI tools, and are they really all included?",
+          "acceptedAnswer": {"@type": "Answer","text": "Yes, all 12 are fully included: Lofty CRM, AI Content Studio, Canva Pro, Cloud CMA, SkySlope, Dotloop, Ylopo, BombBomb, Social Media AI, RPR, AI Behavioral Follow-Up, and E&O Insurance. If purchased separately: $2,000+/month. At Epique, they're standard."}
+        },
+        {
+          "@type": "Question",
+          "name": "How does the revenue share program work?",
+          "acceptedAnswer": {"@type": "Answer","text": "When you introduce agents to Epique, you earn a portion of the company's revenue from their production — not from their commission. They keep their full split. You earn passive income. The more your network produces, the more you earn — even when you're not closing deals."}
+        },
+        {
+          "@type": "Question",
+          "name": "How hard is it to switch brokerages?",
+          "acceptedAnswer": {"@type": "Answer","text": "Easier than you think. Most agents complete the transition in 24–48 hours. Your MLS membership, active listings, and pending transactions transfer seamlessly. Charles personally guides you through every step."}
+        },
+        {
+          "@type": "Question",
+          "name": "Do I have to be in Colorado to work with Charles?",
+          "acceptedAnswer": {"@type": "Answer","text": "No. Epique operates in all 50 U.S. states and is expanding globally. Whether you're in Miami, Montana, or Munich — Charles can connect you with the right resources for your market."}
+        },
+        {
+          "@type": "Question",
+          "name": "What happens on the 20-minute call?",
+          "acceptedAnswer": {"@type": "Answer","text": "It's a real conversation — not a sales pitch. Charles will listen to where you are, run your actual numbers against Epique's model, walk you through the AI platform, and answer every question directly. No pressure. No obligation."}
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<!-- ── SEO ACCESSIBLE CONTENT (visually hidden, crawler/screen-reader accessible) ── -->
+<div style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">
+  <h2>Join Epique Realty — 100% Commission Real Estate Brokerage with Free Healthcare and AI Tools</h2>
+  <p>Charles Harrison, RSPS and MRP, is an Epique Realty Area and Growth Leader recruiting real estate agents in all 50 US states and globally. Epique Realty offers 100% commission after a low annual cap, free group healthcare insurance at zero cost, 12 included AI-powered real estate tools (Lofty kvCORE CRM, AI Content Studio, Canva Pro, Cloud CMA, SkySlope, Dotloop, Ylopo, BombBomb, Social Media AI, RPR Realtors Property Resource, AI Behavioral Follow-Up, and E&amp;O Insurance), a revenue share program, stock options, and zero desk fees or junk fees. Compare Epique Realty vs traditional brokerages: agents switching to Epique keep more commission, save on tools, and gain free healthcare benefits. Use our real estate commission calculator to see exactly what you keep. Schedule a free 20-minute consultation with Charles Harrison to learn how Epique Realty transforms your real estate career. Epique Realty reviews from agents confirm higher take-home pay, better technology, and unmatched benefits. Whether you are a new agent, experienced broker, luxury specialist, or team leader — Epique Realty is the best real estate brokerage for agents who want 100% commission, AI technology, and true financial freedom. Available in Colorado, Vail, Denver, Aspen, Breckenridge, and every US state.</p>
+</div>
+
+<!-- ── LANGUAGE SWITCHER ── -->
+<div class="eq-lang-bar" id="eqLangBar">
+  <button class="eq-lang-btn active" data-lang="en">EN</button>
+  <button class="eq-lang-btn" data-lang="fr">FR</button>
+  <button class="eq-lang-btn" data-lang="de">DE</button>
+  <button class="eq-lang-btn" data-lang="es">ES</button>
+</div>
+
+<div id="eq" role="main" itemscope itemtype="https://schema.org/WebPage">
+
+  <!-- HERO -->
+  <section id="eq-hero" aria-label="Join Epique Realty — 100% Commission Real Estate Brokerage">
+    <div id="eq-globe-wrap">
+      <svg id="eq-globe-svg"></svg>
+      <div class="eq-star" style="width:3px;height:3px;top:12%;left:18%;animation:twinkle1 3s infinite"></div>
+      <div class="eq-star" style="width:2px;height:2px;top:8%;left:30%;animation:twinkle2 2s infinite"></div>
+      <div class="eq-star" style="width:2px;height:2px;top:22%;right:20%;animation:twinkle3 4s infinite"></div>
+      <div class="eq-star" style="width:3px;height:3px;bottom:25%;right:18%;animation:twinkle1 3.5s infinite"></div>
+      <div class="eq-star" style="width:2px;height:2px;bottom:12%;left:38%;animation:twinkle4 1.5s infinite"></div>
+      <div class="eq-star" style="width:2px;height:2px;top:6%;right:35%;animation:twinkle3 4s infinite"></div>
+      <div class="eq-star" style="width:3px;height:3px;bottom:32%;left:15%;animation:twinkle2 2.5s infinite"></div>
+      <div class="eq-star" style="width:2px;height:2px;top:50%;right:14%;animation:twinkle4 2s infinite"></div>
+      <div class="eq-star" style="width:2px;height:2px;top:4%;left:50%;animation:twinkle1 3s infinite"></div>
+      <div class="eq-star" style="width:3px;height:3px;top:62%;left:12%;animation:twinkle3 3.5s infinite"></div>
+      <div class="eq-star" style="width:2px;height:2px;bottom:18%;right:25%;animation:twinkle2 2.8s infinite"></div>
+      <div class="eq-star" style="width:2px;height:2px;bottom:8%;right:40%;animation:twinkle1 2.2s infinite"></div>
+      <div class="eq-star" style="width:2px;height:2px;top:35%;left:8%;animation:twinkle4 3.2s infinite"></div>
+      <div class="eq-star" style="width:3px;height:3px;top:15%;right:12%;animation:twinkle2 2.4s infinite"></div>
+      <div class="eq-star" style="width:2px;height:2px;bottom:40%;right:10%;animation:twinkle3 3.8s infinite"></div>
+      <div class="eq-star" style="width:2px;height:2px;top:75%;right:30%;animation:twinkle1 2.6s infinite"></div>
+    </div>
+    <div class="eq-hero-inner">
+      <div class="eq-live" data-i18n="liveBadge"><i></i>Epique Realty &mdash; Live &amp; Expanding</div>
+      <h1 data-i18n-html="heroH1">
+        THE FUTURE<br>
+        OF REAL ESTATE<br>
+        <span class="g">IS YOURS</span>
+      </h1>
+      <p class="eq-hero-byline" data-i18n-html="heroByline">
+        <strong>Charles Harrison</strong> &nbsp;&bull;&nbsp; RSPS, MRP<br>
+        <span>AI-Powered &nbsp;&middot;&nbsp; 100% Commission &nbsp;&middot;&nbsp; Free Healthcare &nbsp;&middot;&nbsp; Global</span>
+      </p>
+      <div class="eq-ctas">
+        <a href="#eq-schedule" class="eq-btn-primary" data-i18n="ctaPrimary">Claim Your Opportunity &nbsp;&#x2192;</a>
+        <a href="#eq-why" class="eq-btn-ghost" data-i18n="ctaSecondary">Why Epique</a>
+      </div>
+    </div>
+    <div class="eq-scroll-hint">
+      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div id="eq-ticker">
+    <div class="eq-ticker-track" id="eq-track">
+      <span class="eq-ticker-item">100% Commission After Cap</span>
+      <span class="eq-ticker-item">Free Healthcare &mdash; $0 Cost</span>
+      <span class="eq-ticker-item">12 Included AI Tools</span>
+      <span class="eq-ticker-item">Revenue Share Program</span>
+      <span class="eq-ticker-item">Lofty CRM &mdash; Included</span>
+      <span class="eq-ticker-item">E&amp;O Insurance &mdash; Included</span>
+      <span class="eq-ticker-item">Global Operations</span>
+      <span class="eq-ticker-item">Zero Junk Fees</span>
+      <span class="eq-ticker-item">Canva Pro &mdash; Included</span>
+      <span class="eq-ticker-item">Stock Options Available</span>
+      <span class="eq-ticker-item">100% Commission After Cap</span>
+      <span class="eq-ticker-item">Free Healthcare &mdash; $0 Cost</span>
+      <span class="eq-ticker-item">12 Included AI Tools</span>
+      <span class="eq-ticker-item">Revenue Share Program</span>
+      <span class="eq-ticker-item">Lofty CRM &mdash; Included</span>
+      <span class="eq-ticker-item">E&amp;O Insurance &mdash; Included</span>
+      <span class="eq-ticker-item">Global Operations</span>
+      <span class="eq-ticker-item">Zero Junk Fees</span>
+      <span class="eq-ticker-item">Canva Pro &mdash; Included</span>
+      <span class="eq-ticker-item">Stock Options Available</span>
+    </div>
+  </div>
+
+  <!-- MANIFESTO -->
+  <section id="eq-manifesto" aria-label="Epique Realty mission — keep your full commission">
+    <span class="eq-manifesto-rule"></span>
+    <p class="eq-manifesto-quote eq-r" data-i18n-html="manifQuote">
+      <em>Stop splitting your commission. Stop paying for tools that should be yours.</em>
+    </p>
+    <p class="eq-manifesto-statement eq-r" style="transition-delay:.12s" data-i18n-html="manifStatement">
+      The most tech-forward brokerage<br>on the planet &mdash; <span class="gold">wants you.</span>
+    </p>
+    <span class="eq-manifesto-rule-bot"></span>
+  </section>
+
+  <!-- STATS -->
+  <section id="eq-stats" aria-label="Epique Realty agent benefits at a glance">
+    <div class="eq-stats-row eq-r">
+      <div class="eq-stat">
+        <span class="eq-stat-num" data-to="100" data-sfx="%">0%</span>
+        <span class="eq-stat-label" data-i18n="stat1Label">Commission After Cap</span>
+      </div>
+      <div class="eq-stat">
+        <span class="eq-stat-num" data-pfx="$" data-to="0">$0</span>
+        <span class="eq-stat-label" data-i18n="stat2Label">Healthcare Cost</span>
+      </div>
+      <div class="eq-stat">
+        <span class="eq-stat-num" data-to="12" data-sfx="+">0+</span>
+        <span class="eq-stat-label" data-i18n="stat3Label">Native AI Tools</span>
+      </div>
+      <div class="eq-stat">
+        <span class="eq-stat-num" data-to="25" data-sfx="yrs">0yrs</span>
+        <span class="eq-stat-label" data-i18n="stat4Label">Charles&rsquo; Experience</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY EPIQUE -->
+  <section id="eq-why" aria-label="Why join Epique Realty — best real estate brokerage for agents">
+    <div class="eq-why-hdr eq-r">
+      <div class="eq-eyebrow pink" data-i18n="whyEyebrow">The Epique Edge</div>
+      <h2 class="eq-section-title" data-i18n-html="whyTitle">Why Agents Join Epique Realty &mdash; and <span class="g">Never Look Back</span></h2>
+      <p class="eq-section-sub" data-i18n="whySub">Epique isn&rsquo;t just a brokerage. It&rsquo;s the best AI-powered real estate platform that puts 100% commission, free tools, and true independence back in the hands of agents who earn it.</p>
+    </div>
+    <div class="eq-why-grid">
+      <div class="eq-why-card eq-r">
+        <div class="eq-why-icon">💰</div>
+        <h3 class="eq-why-title" data-i18n="why1Title">Keep What You Earn</h3>
+        <p class="eq-why-desc" data-i18n="why1Desc">After a low, transparent annual cap &mdash; every dollar you close is 100% yours. No desk fees, no splits, no watching your production fund someone else&rsquo;s lifestyle. Full stop.</p>
+        <span class="eq-why-badge">100%</span>
+      </div>
+      <div class="eq-why-card eq-r" style="transition-delay:.1s">
+        <div class="eq-why-icon">🩺</div>
+        <h3 class="eq-why-title" data-i18n="why2Title">Free Healthcare</h3>
+        <p class="eq-why-desc" data-i18n="why2Desc">Group medical benefits at zero cost to you &mdash; nearly unheard of in residential real estate. Epique delivers it as a standard benefit for every agent, not a perk for the top producers.</p>
+        <span class="eq-why-badge">$0</span>
+      </div>
+      <div class="eq-why-card eq-r" style="transition-delay:.18s">
+        <div class="eq-why-icon">🤖</div>
+        <h3 class="eq-why-title" data-i18n="why3Title">12 AI Tools, Included</h3>
+        <p class="eq-why-desc" data-i18n="why3Desc">Lofty CRM, AI Content Studio, Canva Pro, Cloud CMA, BombBomb, SkySlope, Ylopo &mdash; all built-in. Tools that cost $2,000+ per month elsewhere. Yours on day one. Zero extra cost.</p>
+        <span class="eq-why-badge">AI</span>
+      </div>
+      <div class="eq-why-card eq-r" style="transition-delay:.26s">
+        <div class="eq-why-icon">📈</div>
+        <h3 class="eq-why-title" data-i18n="why4Title">Equity &amp; Revenue Share</h3>
+        <p class="eq-why-desc" data-i18n="why4Desc">Build passive income from your network through a robust revenue share program. Stock options let you own equity in the company you&rsquo;re helping build &mdash; the future is yours to claim.</p>
+        <span class="eq-why-badge">Equity</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ NEW: BROKERAGE COMPARISON TABLE ═══ -->
+  <section id="eq-compare" aria-label="Epique Realty vs traditional brokerage comparison">
+    <div class="eq-compare-hdr eq-r">
+      <div class="eq-eyebrow pink" data-i18n="cmpEyebrow">Side by Side</div>
+      <h2 class="eq-section-title" data-i18n-html="cmpTitle">Epique Realty vs Traditional Brokerage — <span class="g">Side by Side</span></h2>
+      <p class="eq-section-sub" data-i18n="cmpSub">Compare commission splits, agent benefits, and included tools. See why top-producing agents are switching to Epique Realty.</p>
+    </div>
+    <table class="eq-compare-table eq-r">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="trad-col">Traditional Brokerage</th>
+          <th class="epique-col">Epique Realty</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="eq-cmp-icon">💰</span>Commission Split</td><td class="trad">70–85% (you lose 15–30%)</td><td class="epique highlight">100% after low cap</td></tr>
+        <tr><td><span class="eq-cmp-icon">🩺</span>Healthcare</td><td class="trad"><span class="eq-cmp-paid">$600–$1,500/mo out of pocket</span></td><td class="epique"><span class="eq-cmp-free">$0 — Included Free</span></td></tr>
+        <tr><td><span class="eq-cmp-icon">🧠</span>CRM Platform</td><td class="trad"><span class="eq-cmp-paid">$500–$1,500/mo (your cost)</span></td><td class="epique"><span class="eq-cmp-free">Lofty (kvCORE) — Included</span></td></tr>
+        <tr><td><span class="eq-cmp-icon">🤖</span>AI Tools (12)</td><td class="trad"><span class="eq-cmp-paid">$2,000+/mo (if available)</span></td><td class="epique"><span class="eq-cmp-free">All 12 — Included Free</span></td></tr>
+        <tr><td><span class="eq-cmp-icon">🛡️</span>E&amp;O Insurance</td><td class="trad"><span class="eq-cmp-paid">$1,200–$2,400/yr (your cost)</span></td><td class="epique"><span class="eq-cmp-free">Fully Covered</span></td></tr>
+        <tr><td><span class="eq-cmp-icon">🎨</span>Canva Pro</td><td class="trad"><span class="eq-cmp-no">✕</span></td><td class="epique"><span class="eq-cmp-yes">✓</span></td></tr>
+        <tr><td><span class="eq-cmp-icon">📈</span>Revenue Share</td><td class="trad"><span class="eq-cmp-no">✕</span></td><td class="epique"><span class="eq-cmp-yes">✓</span></td></tr>
+        <tr><td><span class="eq-cmp-icon">📊</span>Stock Options</td><td class="trad"><span class="eq-cmp-no">✕</span></td><td class="epique"><span class="eq-cmp-yes">✓</span></td></tr>
+        <tr><td><span class="eq-cmp-icon">🏢</span>Desk Fees</td><td class="trad"><span class="eq-cmp-paid">$250–$1,000/mo typical</span></td><td class="epique"><span class="eq-cmp-free">$0 — Zero Junk Fees</span></td></tr>
+        <tr><td><span class="eq-cmp-icon">🌍</span>Global Operations</td><td class="trad"><span class="eq-cmp-no">✕</span></td><td class="epique"><span class="eq-cmp-yes">✓</span></td></tr>
+      </tbody>
+      <tfoot>
+        <tr><td>Annual Agent Cost</td><td class="trad">$40,000–$80,000+</td><td class="epique">$0 after cap</td></tr>
+      </tfoot>
+    </table>
+  </section>
+
+  <!-- 12 AI TOOLS -->
+  <section id="eq-ai" aria-label="12 AI-powered real estate tools included with Epique Realty">
+    <div id="eq-ai-bg"></div>
+    <div class="eq-ai-hdr eq-r">
+      <div class="eq-eyebrow blue" data-i18n="aiEyebrow">The Arsenal</div>
+      <h2 class="eq-section-title" data-i18n-html="aiTitle">12 AI-Powered Real Estate Tools — <span class="g">All Included Free</span></h2>
+      <p class="eq-section-sub" style="margin-top:14px" data-i18n="aiSub">Lofty CRM, Canva Pro, Ylopo, Cloud CMA, and 8 more — every tool listed below is included in your Epique Realty membership at zero additional cost. The most powerful AI tech stack in real estate.</p>
+    </div>
+    <div class="eq-ai-grid">
+
+      <div class="eq-ai-card eq-r">
+        <span class="eq-ai-num">TOOL 01</span>
+        <span class="eq-ai-icon">🧠</span>
+        <div class="eq-ai-name">Lofty (kvCORE) CRM</div>
+        <div class="eq-ai-what">AI Lead Management</div>
+        <p class="eq-ai-desc">Enterprise CRM with AI behavioral scoring, smart drip campaigns, IDX website, and predictive lead nurturing. Costs $500&ndash;$1,500/mo elsewhere &mdash; yours free from day one.</p>
+        <span class="eq-ai-tag">$1,200/mo value</span>
+      </div>
+
+      <div class="eq-ai-card eq-r" style="transition-delay:.04s">
+        <span class="eq-ai-num">TOOL 02</span>
+        <span class="eq-ai-icon">✍️</span>
+        <div class="eq-ai-name">AI Content Studio</div>
+        <div class="eq-ai-what">Listing Copy &amp; Marketing</div>
+        <p class="eq-ai-desc">Generate stunning listing descriptions, email campaigns, and ad copy in seconds. AI trained on luxury real estate &mdash; your listings will stand apart from every other agent on the MLS.</p>
+        <span class="eq-ai-tag">Included</span>
+      </div>
+
+      <div class="eq-ai-card eq-r" style="transition-delay:.08s">
+        <span class="eq-ai-num">TOOL 03</span>
+        <span class="eq-ai-icon">🎨</span>
+        <div class="eq-ai-name">Canva Pro</div>
+        <div class="eq-ai-what">AI Design Suite</div>
+        <p class="eq-ai-desc">Full Canva Pro with AI image generation, brand kit, listing flyers, social templates, CMAs, and buyer guides. Everything designed to impress sellers and buyers at every touchpoint.</p>
+        <span class="eq-ai-tag">$170/yr value</span>
+      </div>
+
+      <div class="eq-ai-card eq-r" style="transition-delay:.12s">
+        <span class="eq-ai-num">TOOL 04</span>
+        <span class="eq-ai-icon">📊</span>
+        <div class="eq-ai-name">Cloud CMA</div>
+        <div class="eq-ai-what">Automated Market Analysis</div>
+        <p class="eq-ai-desc">Generate branded CMAs with live MLS data in minutes. Stunning visual reports that consistently win listing appointments. Walk in with data &mdash; walk out with the signature.</p>
+        <span class="eq-ai-tag">$360/yr value</span>
+      </div>
+
+      <div class="eq-ai-card eq-r" style="transition-delay:.16s">
+        <span class="eq-ai-num">TOOL 05</span>
+        <span class="eq-ai-icon">📋</span>
+        <div class="eq-ai-name">SkySlope</div>
+        <div class="eq-ai-what">Transaction Management</div>
+        <p class="eq-ai-desc">End-to-end digital transaction management with automated compliance checklists, document storage, deadline tracking, and broker review. Every deal organized, on time, in compliance.</p>
+        <span class="eq-ai-tag">Included</span>
+      </div>
+
+      <div class="eq-ai-card eq-r" style="transition-delay:.20s">
+        <span class="eq-ai-num">TOOL 06</span>
+        <span class="eq-ai-icon">🖊️</span>
+        <div class="eq-ai-name">Dotloop</div>
+        <div class="eq-ai-what">Digital Signing &amp; Docs</div>
+        <p class="eq-ai-desc">Smart document management with real-time e-signatures from any device. Clients sign in minutes from anywhere in the world. Loops organized by transaction &mdash; zero paper, zero chaos.</p>
+        <span class="eq-ai-tag">$384/yr value</span>
+      </div>
+
+      <div class="eq-ai-card eq-r" style="transition-delay:.24s">
+        <span class="eq-ai-num">TOOL 07</span>
+        <span class="eq-ai-icon">🎯</span>
+        <div class="eq-ai-name">Ylopo</div>
+        <div class="eq-ai-what">AI Lead Generation</div>
+        <p class="eq-ai-desc">AI-powered buyer and seller lead generation using Facebook, Google, and retargeting. The system identifies motivated leads and delivers them to you &mdash; you just close them.</p>
+        <span class="eq-ai-tag">$600/mo value</span>
+      </div>
+
+      <div class="eq-ai-card eq-r" style="transition-delay:.28s">
+        <span class="eq-ai-num">TOOL 08</span>
+        <span class="eq-ai-icon">🎥</span>
+        <div class="eq-ai-name">BombBomb</div>
+        <div class="eq-ai-what">Video Email Platform</div>
+        <p class="eq-ai-desc">Personalized video messages that get 8x more replies than text. Record from your phone and send inside emails. Stay top of mind with every lead and client &mdash; every single time.</p>
+        <span class="eq-ai-tag">$468/yr value</span>
+      </div>
+
+      <div class="eq-ai-card eq-r" style="transition-delay:.32s">
+        <span class="eq-ai-num">TOOL 09</span>
+        <span class="eq-ai-icon">📱</span>
+        <div class="eq-ai-name">Social Media AI</div>
+        <div class="eq-ai-what">Auto-Scheduling &amp; Content</div>
+        <p class="eq-ai-desc">AI writes and schedules posts across Instagram, Facebook, LinkedIn, and X. Consistent content calendar, zero daily effort. Your brand runs on autopilot while you close deals.</p>
+        <span class="eq-ai-tag">Included</span>
+      </div>
+
+      <div class="eq-ai-card eq-r" style="transition-delay:.36s">
+        <span class="eq-ai-num">TOOL 10</span>
+        <span class="eq-ai-icon">🏔️</span>
+        <div class="eq-ai-name">RPR &mdash; Realtors Property Resource</div>
+        <div class="eq-ai-what">Deep Data &amp; Analytics</div>
+        <p class="eq-ai-desc">Access to 160+ million U.S. properties with neighborhood data, school ratings, flood zones, permit history, tax records, and market trends &mdash; the most comprehensive property database available.</p>
+        <span class="eq-ai-tag">NAR Benefit</span>
+      </div>
+
+      <div class="eq-ai-card eq-r" style="transition-delay:.40s">
+        <span class="eq-ai-num">TOOL 11</span>
+        <span class="eq-ai-icon">💬</span>
+        <div class="eq-ai-name">AI Behavioral Follow-Up</div>
+        <div class="eq-ai-what">Smart Lead Nurturing</div>
+        <p class="eq-ai-desc">Lofty AI monitors every lead&rsquo;s website behavior and triggers personalized follow-up sequences at precisely the right moment. No lead goes cold. No opportunity slips through the cracks.</p>
+        <span class="eq-ai-tag">Lofty AI</span>
+      </div>
+
+      <div class="eq-ai-card eq-r" style="transition-delay:.44s">
+        <span class="eq-ai-num">TOOL 12</span>
+        <span class="eq-ai-icon">🛡️</span>
+        <div class="eq-ai-name">E&amp;O Insurance &mdash; Included</div>
+        <div class="eq-ai-what">Full Coverage</div>
+        <p class="eq-ai-desc">Errors &amp; Omissions insurance fully covered for every Epique agent. Most brokerages charge $1,200&ndash;$2,400/year out of your pocket. At Epique it&rsquo;s included &mdash; the math just works.</p>
+        <span class="eq-ai-tag">$2,000/yr value</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ NEW: COMMISSION CALCULATOR ═══ -->
+  <section id="eq-calc" aria-label="Real estate commission calculator — see what you keep with Epique">
+    <div class="eq-calc-bg"></div>
+    <div class="eq-calc-hdr eq-r">
+      <div class="eq-eyebrow gold" data-i18n="calcEyebrow">The Math</div>
+      <h2 class="eq-section-title" data-i18n-html="calcTitle">Real Estate Commission Calculator — <span class="g">Keep More of What You Earn</span></h2>
+      <p class="eq-section-sub" data-i18n="calcSub">Compare your current brokerage split to Epique Realty's 100% commission model. Slide to your annual GCI and see the difference.</p>
+    </div>
+    <div class="eq-calc-inner">
+      <div class="eq-calc-input eq-rl">
+        <h3><i></i>&ensp;Your Numbers</h3>
+        <p class="eq-calc-subtitle">Enter your annual production and current split to see the difference.</p>
+        <div class="eq-calc-fg">
+          <label>Annual Gross Commission Income (GCI)</label>
+          <input type="range" id="eq-gci" min="50000" max="1000000" step="10000" value="250000" oninput="eqCalc()">
+          <div class="eq-calc-val"><span id="eq-gci-display">$250,000</span><span>per year</span></div>
+        </div>
+        <div class="eq-calc-split-row">
+          <div class="eq-calc-fg"><label>Current Split</label>
+            <select id="eq-split" class="eq-calc-select" onchange="eqCalc()"><option value="70">70/30</option><option value="75">75/25</option><option value="80" selected>80/20</option><option value="85">85/15</option><option value="90">90/10</option></select>
+          </div>
+          <div class="eq-calc-fg"><label>Monthly Desk/Tech Fees</label>
+            <select id="eq-fees" class="eq-calc-select" onchange="eqCalc()"><option value="0">$0 (none)</option><option value="100">$100/mo</option><option value="250" selected>$250/mo</option><option value="500">$500/mo</option><option value="750">$750/mo</option><option value="1000">$1,000/mo</option></select>
+          </div>
+        </div>
+        <div class="eq-calc-fg"><label>Tools You Currently Pay For (Monthly)</label>
+          <select id="eq-tools" class="eq-calc-select" onchange="eqCalc()"><option value="0">$0 — none</option><option value="200">~$200/mo (basic CRM)</option><option value="500" selected>~$500/mo (CRM + marketing)</option><option value="1000">~$1,000/mo (full stack)</option><option value="1500">~$1,500/mo (enterprise)</option></select>
+        </div>
+      </div>
+      <div class="eq-calc-results eq-rr">
+        <div class="eq-result-card trad"><span class="eq-result-label">Your Current Brokerage</span><div class="eq-result-amount" id="eq-trad-take">$191,000</div><div class="eq-result-desc">Annual take-home after split, fees &amp; tools</div></div>
+        <div class="eq-result-card epique"><span class="eq-result-label">✦ With Epique Realty</span><div class="eq-result-amount" id="eq-epique-take">$237,000</div><div class="eq-result-desc">Annual take-home &mdash; 12 AI tools &amp; healthcare included</div></div>
+        <div class="eq-savings-card"><div class="eq-savings-label">You're Leaving On The Table</div><div class="eq-savings-num" id="eq-diff">+$46,000</div><div class="eq-savings-sub">MORE PER YEAR WITH EPIQUE</div><p class="eq-savings-note">That's <strong id="eq-diff-monthly">$3,833</strong>/month more in your pocket &mdash; before revenue share, stock options, and free healthcare.</p></div>
+        <div class="eq-calc-cta"><a href="#eq-schedule">See My Full Numbers With Charles &nbsp;&#x2192;</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEPS -->
+  <section id="eq-steps" aria-label="How to join Epique Realty — three simple steps">
+    <div class="eq-steps-hdr eq-r">
+      <div class="eq-eyebrow blue" data-i18n="stepsEyebrow">The Process</div>
+      <h2 class="eq-section-title" data-i18n-html="stepsTitle">How to Join Epique Realty — <span class="g">Three Simple Steps</span></h2>
+    </div>
+    <div class="eq-steps-row">
+      <div class="eq-step eq-r">
+        <div class="eq-step-num">01</div>
+        <h3 class="eq-step-title" data-i18n="step1Title">20-Minute Call</h3>
+        <p class="eq-step-desc" data-i18n="step1Desc">A focused, no-pressure conversation about your goals, your current situation, and exactly how Epique transforms your bottom line. On your schedule. No obligation.</p>
+      </div>
+      <div class="eq-step eq-r" style="transition-delay:.15s">
+        <div class="eq-step-num">02</div>
+        <h3 class="eq-step-title" data-i18n="step2Title">See Your Numbers</h3>
+        <p class="eq-step-desc" data-i18n="step2Desc">We run your actual production against Epique&rsquo;s commission model and show you precisely what you&rsquo;re leaving on the table &mdash; every single year &mdash; at your current brokerage.</p>
+      </div>
+      <div class="eq-step eq-r" style="transition-delay:.3s">
+        <div class="eq-step-num">03</div>
+        <h3 class="eq-step-title" data-i18n="step3Title">Transform</h3>
+        <p class="eq-step-desc" data-i18n="step3Desc">Walk away with total clarity, every question answered, and the confidence to make the decision that changes your career &mdash; and your income &mdash; forever.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ NEW: TESTIMONIALS CAROUSEL ═══ -->
+  <section id="eq-proof" aria-label="Epique Realty agent reviews and testimonials">
+    <div class="eq-proof-hdr eq-r">
+      <div class="eq-eyebrow blue" data-i18n="proofEyebrow">Social Proof</div>
+      <h2 class="eq-section-title" data-i18n-html="proofTitle">Epique Realty Agent Reviews &mdash; <span class="g">Real Stories</span></h2>
+      <p class="eq-section-sub" data-i18n="proofSub">Hear from real estate agents who switched to Epique Realty&rsquo;s 100% commission model &mdash; and kept thousands more every year.</p>
+    </div>
+    <div class="eq-proof-track-wrap">
+      <div class="eq-proof-track" id="eq-proof-track">
+        <div class="eq-proof-card"><span class="eq-proof-metric">+$48K/yr</span><span class="eq-proof-quote-mark">&ldquo;</span><div class="eq-proof-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="eq-proof-text">I was giving away <strong>25% of every deal</strong> and paying $500/month for tools that Epique includes for free. My first year, I kept an extra $48,000 &mdash; and I actually have healthcare now.</p><div class="eq-proof-author"><div class="eq-proof-avatar gold">JR</div><div class="eq-proof-meta"><span class="eq-proof-name">Jessica R.</span><span class="eq-proof-role">Luxury Agent &bull; Vail, CO &bull; 8 years exp</span></div></div></div>
+        <div class="eq-proof-card"><span class="eq-proof-metric">$0 TECH</span><span class="eq-proof-quote-mark">&ldquo;</span><div class="eq-proof-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="eq-proof-text">I was spending <strong>$1,800/month</strong> on CRM, Canva, marketing tools, and E&O insurance. Every single one is included at Epique. That's $21,600 a year I just... kept.</p><div class="eq-proof-author"><div class="eq-proof-avatar cyan">MT</div><div class="eq-proof-meta"><span class="eq-proof-name">Marcus T.</span><span class="eq-proof-role">Team Lead &bull; Denver, CO &bull; 12 years exp</span></div></div></div>
+        <div class="eq-proof-card"><span class="eq-proof-metric">100% SPLIT</span><span class="eq-proof-quote-mark">&ldquo;</span><div class="eq-proof-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="eq-proof-text">I hit my cap in April. From May through December, <strong>every commission check was 100% mine</strong>. My old brokerage was still taking 20% on every deal, all year long.</p><div class="eq-proof-author"><div class="eq-proof-avatar pink">SK</div><div class="eq-proof-meta"><span class="eq-proof-name">Sarah K.</span><span class="eq-proof-role">Residential Specialist &bull; Breckenridge, CO &bull; 5 years exp</span></div></div></div>
+        <div class="eq-proof-card"><span class="eq-proof-metric">REV SHARE</span><span class="eq-proof-quote-mark">&ldquo;</span><div class="eq-proof-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="eq-proof-text">I introduced three agents from my old office, and now I earn <strong>passive income every month</strong> from their production. I'm building real wealth &mdash; not just chasing the next closing.</p><div class="eq-proof-author"><div class="eq-proof-avatar purple">DA</div><div class="eq-proof-meta"><span class="eq-proof-name">David A.</span><span class="eq-proof-role">Growth Leader &bull; Aspen, CO &bull; 15 years exp</span></div></div></div>
+        <div class="eq-proof-card"><span class="eq-proof-metric">AI TOOLS</span><span class="eq-proof-quote-mark">&ldquo;</span><div class="eq-proof-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="eq-proof-text">The Lofty CRM alone is worth more than what most brokerages charge. Add in <strong>12 AI tools, Canva Pro, Ylopo leads</strong> &mdash; my tech stack went from $800/month to $0.</p><div class="eq-proof-author"><div class="eq-proof-avatar gold">LP</div><div class="eq-proof-meta"><span class="eq-proof-name">Lisa P.</span><span class="eq-proof-role">New Agent &bull; Eagle, CO &bull; 2 years exp</span></div></div></div>
+        <div class="eq-proof-card"><span class="eq-proof-metric">HEALTHCARE</span><span class="eq-proof-quote-mark">&ldquo;</span><div class="eq-proof-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="eq-proof-text">I was paying <strong>$1,200/month</strong> for private health insurance. Epique's free healthcare saves my family over $14,000 a year. No brokerage in my 20 years has offered this.</p><div class="eq-proof-author"><div class="eq-proof-avatar cyan">RH</div><div class="eq-proof-meta"><span class="eq-proof-name">Robert H.</span><span class="eq-proof-role">Broker Associate &bull; Steamboat Springs, CO &bull; 20 years exp</span></div></div></div>
+      </div>
+    </div>
+    <div class="eq-proof-stats eq-r">
+      <div class="eq-proof-stat"><span class="eq-proof-stat-num">4.9★</span><span class="eq-proof-stat-label">Agent Satisfaction</span></div>
+      <div class="eq-proof-stat"><span class="eq-proof-stat-num">96%</span><span class="eq-proof-stat-label">Retention Rate</span></div>
+      <div class="eq-proof-stat"><span class="eq-proof-stat-num">50</span><span class="eq-proof-stat-label">States Active</span></div>
+      <div class="eq-proof-stat"><span class="eq-proof-stat-num">$0</span><span class="eq-proof-stat-label">Hidden Fees</span></div>
+    </div>
+  </section>
+
+  <!-- ═══ NEW: FAQ ACCORDION ═══ -->
+  <section id="eq-faq" aria-label="Frequently asked questions about joining Epique Realty">
+    <div class="eq-faq-hdr eq-r">
+      <div class="eq-eyebrow gold" data-i18n="faqEyebrow">Common Questions</div>
+      <h2 class="eq-section-title" data-i18n-html="faqTitle">Epique Realty FAQ — Everything You Need to <span class="g">Know Before Joining</span></h2>
+      <p class="eq-section-sub" data-i18n="faqSub">Straight answers about Epique's commission structure, free healthcare, AI tools, revenue share, and switching brokerages.</p>
+    </div>
+    <div class="eq-faq-list eq-r">
+      <div class="eq-faq-item"><button class="eq-faq-q" onclick="eqFaqToggle(this)"><span class="eq-faq-q-icon">💰</span><span class="eq-faq-q-text">What does "100% commission after cap" actually mean?</span><span class="eq-faq-q-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="eq-faq-a"><div class="eq-faq-a-inner"><span class="eq-faq-cat commission">Commission</span>Epique has a <strong>low, transparent annual cap</strong>. Once you hit that cap &mdash; which most productive agents reach in the first few months &mdash; every commission dollar you earn for the rest of the year is <strong>100% yours</strong>. No splits, no percentages, no surprise deductions.</div></div></div>
+      <div class="eq-faq-item"><button class="eq-faq-q" onclick="eqFaqToggle(this)"><span class="eq-faq-q-icon">🩺</span><span class="eq-faq-q-text">Is the healthcare really free? What's the catch?</span><span class="eq-faq-q-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="eq-faq-a"><div class="eq-faq-a-inner"><span class="eq-faq-cat benefits">Benefits</span><strong>No catch.</strong> Epique provides group healthcare insurance to every active agent at zero cost. You don't need to be a top producer. This benefit alone saves most agents <strong>$7,200&ndash;$18,000+ per year</strong> compared to individual coverage.</div></div></div>
+      <div class="eq-faq-item"><button class="eq-faq-q" onclick="eqFaqToggle(this)"><span class="eq-faq-q-icon">🤖</span><span class="eq-faq-q-text">What are the 12 AI tools, and are they really all included?</span><span class="eq-faq-q-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="eq-faq-a"><div class="eq-faq-a-inner"><span class="eq-faq-cat tools">Technology</span>Yes, all 12 are fully included: <strong>Lofty CRM, AI Content Studio, Canva Pro, Cloud CMA, SkySlope, Dotloop, Ylopo, BombBomb, Social Media AI, RPR, AI Behavioral Follow-Up,</strong> and <strong>E&amp;O Insurance</strong>. If purchased separately: <strong>$2,000+/month</strong>. At Epique, they're standard.</div></div></div>
+      <div class="eq-faq-item"><button class="eq-faq-q" onclick="eqFaqToggle(this)"><span class="eq-faq-q-icon">📈</span><span class="eq-faq-q-text">How does the revenue share program work?</span><span class="eq-faq-q-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="eq-faq-a"><div class="eq-faq-a-inner"><span class="eq-faq-cat commission">Revenue Share</span>When you introduce agents to Epique, you earn a portion of the company's revenue from their production &mdash; <strong>not from their commission</strong>. They keep their full split. You earn passive income. The more your network produces, the more you earn &mdash; even when you're not closing deals.</div></div></div>
+      <div class="eq-faq-item"><button class="eq-faq-q" onclick="eqFaqToggle(this)"><span class="eq-faq-q-icon">🔄</span><span class="eq-faq-q-text">How hard is it to switch brokerages?</span><span class="eq-faq-q-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="eq-faq-a"><div class="eq-faq-a-inner"><span class="eq-faq-cat process">Process</span>Easier than you think. Most agents complete the transition in <strong>24&ndash;48 hours</strong>. Your MLS membership, active listings, and pending transactions transfer seamlessly. Charles personally guides you through every step.</div></div></div>
+      <div class="eq-faq-item"><button class="eq-faq-q" onclick="eqFaqToggle(this)"><span class="eq-faq-q-icon">🏔️</span><span class="eq-faq-q-text">Do I have to be in Colorado to work with Charles?</span><span class="eq-faq-q-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="eq-faq-a"><div class="eq-faq-a-inner"><span class="eq-faq-cat process">Location</span><strong>No.</strong> Epique operates in <strong>all 50 U.S. states</strong> and is expanding globally. Whether you're in Miami, Montana, or Munich &mdash; Charles can connect you with the right resources for your market.</div></div></div>
+      <div class="eq-faq-item"><button class="eq-faq-q" onclick="eqFaqToggle(this)"><span class="eq-faq-q-icon">⏱️</span><span class="eq-faq-q-text">What happens on the 20-minute call?</span><span class="eq-faq-q-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="eq-faq-a"><div class="eq-faq-a-inner"><span class="eq-faq-cat process">Consultation</span>It's a real conversation &mdash; not a sales pitch. Charles will listen to where you are, <strong>run your actual numbers</strong> against Epique's model, walk you through the AI platform, and answer every question directly. No pressure. No obligation.</div></div></div>
+    </div>
+    <div class="eq-faq-cta eq-r"><p data-i18n="faqCtaText">Still have questions? Let's talk directly.</p><a href="#eq-schedule" data-i18n="faqCtaLink">Schedule a Free Consultation &nbsp;&#x2192;</a></div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section id="eq-schedule" aria-label="Schedule a free consultation with Charles Harrison — Epique Realty">
+    <div class="eq-sched-inner">
+      <div class="eq-sched-text eq-rl">
+        <div class="eq-eyebrow gold" data-i18n="schedEyebrow">Let&rsquo;s Talk</div>
+        <h2 class="eq-sched-title" data-i18n-html="schedTitle">Schedule Your<br><span>Free Consultation</span></h2>
+        <p class="eq-sched-desc" data-i18n="schedDesc">No pressure. No obligation. Just a real conversation with a leader who has been transforming real estate careers in the mountain resort market for over 25 years.</p>
+        <ul class="eq-benefits">
+          <li data-i18n="schedBen1">20 minutes &mdash; your schedule, your terms</li>
+          <li data-i18n="schedBen2">Side-by-side commission comparison</li>
+          <li data-i18n="schedBen3">Full Epique AI platform walkthrough</li>
+          <li data-i18n="schedBen4">Clear, actionable next steps</li>
+          <li data-i18n="schedBen5">No strings. Just exceptional value.</li>
+        </ul>
+        <a href="https://calendar.app.google/Djj5FrJFgk5ypDZp8" target="_blank" rel="noopener" title="Book a free 20-minute consultation with Charles Harrison — Epique Realty" class="eq-cal-btn">
+          <span class="eq-cal-btn-icon">📅</span>
+          <span class="eq-cal-btn-text">
+            <strong data-i18n="schedBookBtn">Book My Free 20-Min Call</strong>
+            <span data-i18n="schedBookSub">calendar.app.google &mdash; instant scheduling</span>
+          </span>
+          <span class="eq-cal-arrow">&#x2192;</span>
+        </a>
+        <p class="eq-sched-cta-note" data-i18n="schedNote">Or complete the form &mdash; I will reach out personally within 24 hours.</p>
+      </div>
+
+      <div class="eq-form-card eq-rr">
+        <h3 data-i18n-html="formTitle"><i></i>&ensp;Your Details</h3>
+        <div id="eq-notify"></div>
+        <div class="eq-2col">
+          <div class="eq-fg"><label data-i18n="formName">Full Name *</label><input type="text" id="eq-fname" placeholder="Jane Smith"></div>
+          <div class="eq-fg"><label data-i18n="formPhone">Phone *</label><input type="tel" id="eq-phone" placeholder="(970) 555-0100"></div>
+        </div>
+        <div class="eq-fg"><label data-i18n="formEmail">Email Address *</label><input type="email" id="eq-email" placeholder="jane@example.com"></div>
+        <div class="eq-2col">
+          <div class="eq-fg">
+            <label data-i18n="formExp">Experience Level</label>
+            <select id="eq-exp">
+              <option value="">Select level...</option>
+              <option>Pre-Licensed</option>
+              <option>0&ndash;2 Years</option>
+              <option>3&ndash;5 Years</option>
+              <option>6&ndash;10 Years</option>
+              <option>10+ Years</option>
+            </select>
+          </div>
+          <div class="eq-fg">
+            <label data-i18n="formTime">Preferred Time</label>
+            <select id="eq-time">
+              <option value="">Select time...</option>
+              <option>Morning (8am&ndash;12pm)</option>
+              <option>Afternoon (12&ndash;5pm)</option>
+              <option>Evening (5&ndash;7pm)</option>
+            </select>
+          </div>
+        </div>
+        <div class="eq-fg"><label data-i18n="formDetails">Tell Me About You</label><textarea id="eq-details" placeholder="Where are you in your real estate career, and what are you looking to build?"></textarea></div>
+        <button class="eq-submit" onclick="eqSubmit()" data-i18n="formSubmit">&#128197;&ensp;Schedule My Consultation</button>
+        <p class="eq-privacy" data-i18n="formPrivacy">&#128274;&nbsp; Your information is kept strictly private. For licensed real estate professionals worldwide.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIO / FOOTER -->
+  <section id="eq-bio" aria-label="About Charles Harrison — RSPS MRP — Epique Realty agent recruiter" itemscope itemtype="https://schema.org/Person">
+    <div id="eq-bio-bg"></div>
+    <div class="eq-bio-inner">
+      <div class="eq-eyebrow blue eq-r" style="margin-bottom:24px" data-i18n="bioEyebrow">Your Guide</div>
+      <h2 class="eq-bio-name eq-r" style="transition-delay:.08s" data-i18n="bioName">Charles Harrison</h2>
+      <p class="eq-bio-title eq-r" style="transition-delay:.1s" data-i18n="bioTitle1">RSPS, MRP</p>
+      <p class="eq-bio-title eq-r" style="transition-delay:.14s;margin-top:-20px" data-i18n="bioTitle2">Area / Growth Leader &mdash; Epique Realty</p>
+      <p class="eq-bio-desc eq-r" style="transition-delay:.18s" data-i18n="bioDesc">
+        25+ years navigating luxury real estate. Blending investment strategy and the Epique AI platform into a career model agents across the globe are choosing to follow.
+      </p>
+      <div class="eq-bio-creds eq-r" style="transition-delay:.24s">
+        <span class="eq-cred">RSPS</span>
+        <span class="eq-cred">MRP</span>
+      </div>
+      <div class="eq-bio-footer-line eq-r" style="transition-delay:.32s">
+        <a href="https://charlesharrison.epiquerealty.com/" target="_blank" rel="noopener" title="Charles Harrison — Epique Realty agent website">charlesharrison.epiquerealty.com</a>
+        &nbsp;&nbsp;&#x2022;&nbsp;&nbsp;
+        <span>EPIQUE &mdash; REAL ESTATE ATTRACTION &nbsp;&#127760;</span>
+      </div>
+    </div>
+  </section>
+
+</div><!-- #eq -->
+
+<!-- ── EPICHAT WIDGET ────────────────────────────────────────── -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+#eai-bubble{position:fixed!important;bottom:24px!important;right:24px!important;z-index:2147483647!important;width:60px;height:60px;border-radius:50%;background:#0a0a0a;border:2px solid rgba(201,168,76,.35);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(201,168,76,.4),0 0 0 3px rgba(201,168,76,.12);transition:all .25s;animation:eai-bp 3s ease-in-out infinite;padding:0;overflow:hidden}
+#eai-bubble:hover{transform:scale(1.08);box-shadow:0 6px 32px rgba(201,168,76,.55)}
+@keyframes eai-bp{0%,100%{box-shadow:0 4px 24px rgba(201,168,76,.4),0 0 0 3px rgba(201,168,76,.12)}50%{box-shadow:0 4px 32px rgba(201,168,76,.58),0 0 0 7px rgba(201,168,76,.07)}}
+#eai-bdg{position:absolute;top:-4px;right:-4px;width:18px;height:18px;border-radius:50%;background:#6b9cc4;border:2px solid #0a1628;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;color:#0a1628}
+#eai-bdg.off{display:none}
+#eai-panel{position:fixed!important;bottom:94px!important;right:24px!important;z-index:2147483646!important;width:400px;max-width:calc(100vw - 32px);height:560px;max-height:calc(100vh - 130px);background:#07060f;border:1px solid rgba(201,168,76,.18);border-radius:20px;display:flex;flex-direction:column;overflow:hidden;opacity:0;transform:translateY(14px) scale(.97);pointer-events:none;transition:all .28s cubic-bezier(.4,0,.2,1);box-shadow:0 16px 56px rgba(0,0,0,.7)}
+#eai-panel.open{opacity:1;transform:none;pointer-events:all}
+#eai-ph{padding:14px 18px;background:rgba(7,6,15,.98);border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:center;gap:10px}
+#eai-ph-dot{width:7px;height:7px;border-radius:50%;background:#c9a84c;box-shadow:0 0 7px #c9a84c;animation:eai-dp 2s ease-in-out infinite}
+@keyframes eai-dp{0%,100%{transform:scale(1)}50%{transform:scale(1.35)}}
+#eai-ph-t{flex:1}
+#eai-ph-ti{font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;background:linear-gradient(135deg,#e8d5a0,#c9a84c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+#eai-ph-s{font-size:10px;color:#5a5a7a;letter-spacing:.4px}
+#eai-close{background:none;border:none;color:#5a5a7a;cursor:pointer;padding:4px;font-size:18px;line-height:1;transition:color .15s}
+#eai-close:hover{color:#ede8e0}
+#eai-msgs{flex:1;overflow-y:auto;padding:16px;scroll-behavior:smooth}
+#eai-msgs::-webkit-scrollbar{width:3px}
+#eai-msgs::-webkit-scrollbar-thumb{background:rgba(201,168,76,.18);border-radius:10px}
+.eai-msg{display:flex;gap:10px;margin-bottom:14px;animation:eai-mi .28s ease both}
+@keyframes eai-mi{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+.eai-av{width:26px;height:26px;min-width:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;margin-top:2px}
+.m-u .eai-av{background:linear-gradient(135deg,#c9a84c,#8a7335);color:#0a1628;font-weight:700;font-size:9px}
+.m-a .eai-av{background:#0d1b30;border:1px solid rgba(107,156,196,.18);color:#6b9cc4}
+.eai-body{flex:1;min-width:0}
+.eai-nm{font-size:10px;font-weight:600;margin-bottom:3px}
+.m-u .eai-nm{color:#c9a84c}.m-a .eai-nm{color:#6b9cc4}
+.eai-bub{font-family:'Outfit',sans-serif;font-size:13px;line-height:1.65;color:#ede8e0;padding:10px 14px;border-radius:12px;word-wrap:break-word}
+.m-u .eai-bub{background:rgba(201,168,76,.09);border:1px solid rgba(201,168,76,.18);border-top-left-radius:3px}
+.m-a .eai-bub{background:rgba(107,156,196,.04);border:1px solid rgba(107,156,196,.08);border-top-left-radius:3px}
+.eai-bub p{margin:0 0 6px}.eai-bub p:last-child{margin:0}
+.eai-bub strong{color:#c9a84c}
+.eai-bub code{font-family:'JetBrains Mono',monospace;font-size:11px;background:rgba(0,0,0,.3);padding:1px 5px;border-radius:3px;color:#6b9cc4}
+.eai-bub ul,.eai-bub ol{padding-left:18px;margin:4px 0}
+.eai-typing{display:flex;gap:4px;padding:4px 0}
+.eai-typing span{width:5px;height:5px;border-radius:50%;background:#6b9cc4;opacity:.4;animation:eai-tb 1.4s ease-in-out infinite}
+.eai-typing span:nth-child(2){animation-delay:.2s}.eai-typing span:nth-child(3){animation-delay:.4s}
+@keyframes eai-tb{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-6px);opacity:1}}
+#eai-welcome{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px 16px;flex:1}
+#eai-welcome-icon{width:48px;height:48px;border-radius:50%;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.18);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
+#eai-welcome h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#ede8e0;margin-bottom:8px}
+#eai-welcome h3 span{color:#c9a84c}
+#eai-welcome p{font-size:12px;color:#5a5a7a;line-height:1.55;max-width:280px;margin-bottom:18px}
+.eai-chips{display:flex;flex-wrap:wrap;gap:7px;justify-content:center}
+.eai-chip{padding:6px 13px;background:#0d0c1e;border:1px solid rgba(255,255,255,.06);border-radius:16px;font-family:'Outfit',sans-serif;font-size:11px;color:#9898b8;cursor:pointer;transition:all .15s;white-space:nowrap}
+.eai-chip:hover{border-color:rgba(201,168,76,.25);color:#c9a84c;background:rgba(201,168,76,.05)}
+#eai-input-area{padding:10px 14px;border-top:1px solid rgba(255,255,255,.05);background:rgba(7,6,15,.98)}
+#eai-fp{display:none;padding:5px 10px;margin-bottom:6px;background:rgba(176,96,255,.08);border:1px solid rgba(176,96,255,.2);border-radius:6px;font-size:10px;color:#b060ff;align-items:center;gap:6px}
+#eai-fp.vis{display:flex}
+#eai-ir{display:flex;align-items:flex-end;gap:6px;background:#0d1b30;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:5px 6px 5px 14px;transition:border-color .2s}
+#eai-ir:focus-within{border-color:rgba(201,168,76,.28)}
+#eai-input{flex:1;background:none;border:none;outline:none;color:#ede8e0;font-family:'Outfit',sans-serif;font-size:13px;resize:none;min-height:22px;max-height:80px;padding:6px 0;line-height:1.4}
+#eai-input::placeholder{color:#3a3a5a}
+.eai-ib{background:none;border:none;color:#5a5a7a;cursor:pointer;padding:6px;border-radius:6px;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.eai-ib:hover{color:#ede8e0;background:rgba(255,255,255,.04)}
+.eai-ib svg{width:15px;height:15px}
+.eai-send{background:linear-gradient(135deg,#c9a84c,#8a7335)!important;color:#0a1628!important;border-radius:8px!important;padding:6px 8px!important}
+.eai-send:hover{box-shadow:0 2px 12px rgba(201,168,76,.3)}
+.eai-send:disabled{opacity:.3;cursor:not-allowed}
+#eai-newchat{display:none;padding:5px 14px;background:rgba(201,168,76,.04);border-bottom:1px solid rgba(201,168,76,.12);text-align:center}
+#eai-newchat button{background:none;border:1px solid rgba(201,168,76,.25);border-radius:14px;padding:4px 14px;font-family:'Outfit',sans-serif;font-size:10px;color:#c9a84c;cursor:pointer}
+#eai-fbar{text-align:center;font-size:9px;color:#3a3a5a;padding:6px;border-top:1px solid rgba(255,255,255,.03)}
+#eai-toast{position:absolute;bottom:78px;left:50%;transform:translateX(-50%) translateY(10px);background:#0c0c18;border:1px solid rgba(255,64,96,.3);border-radius:8px;padding:8px 14px;font-size:11px;color:#ff4060;z-index:10;opacity:0;transition:all .28s;white-space:nowrap;max-width:90%}
+#eai-toast.on{opacity:1;transform:translateX(-50%) translateY(0)}#eai-toast.ok{border-color:rgba(201,168,76,.3);color:#c9a84c}
+#eai-voice-btn.rec{color:#ff4060!important;animation:eai-vr 1s ease-in-out infinite}
+@keyframes eai-vr{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+@media(max-width:480px){#eai-panel{right:0;bottom:0;width:100%;max-width:100%;height:100vh;max-height:100vh;border-radius:0}#eai-bubble{bottom:16px!important;right:16px!important}}
+</style>
+
+<button id="eai-bubble" onclick="EAI.toggle()" aria-label="EpiChat">
+  <span id="eai-bdg">Chat</span>
+  <img src="https://charlesharrison.epiquerealty.com/epivail-logo.png" alt="EpiVail AI Chat — Epique Realty assistant by Charles Harrison" style="width:44px;height:44px;border-radius:50%;object-fit:cover" onerror="this.style.display='none';this.parentElement.querySelector('.eq-logo-fallback').style.display='flex'"><span class="eq-logo-fallback" style="display:none;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#c9a84c,#8a7335);align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#0a1628">E</span>
+</button>
+
+<div id="eai-panel">
+  <div id="eai-ph">
+    <div id="eai-ph-dot"></div>
+    <div id="eai-ph-t">
+      <div id="eai-ph-ti">EPICHAT</div>
+      <div id="eai-ph-s">Ask me anything about Epique Realty</div>
+    </div>
+    <button id="eai-close" onclick="EAI.toggle()">&times;</button>
+  </div>
+  <div id="eai-newchat"><button onclick="EAI.newChat()">&#x21bb; New Conversation</button></div>
+  <div id="eai-msgs"></div>
+  <div id="eai-input-area">
+    <div id="eai-fp">
+      <span>📎</span><span id="eai-fp-name"></span>
+      <button style="background:none;border:none;color:#ff4060;cursor:pointer;font-size:12px" onclick="EAI.removeFile()">✕</button>
+    </div>
+    <div id="eai-ir">
+      <textarea id="eai-input" placeholder="Ask about Epique Realty..." rows="1" onkeydown="EAI.handleKey(event)" oninput="EAI.autoResize(this)"></textarea>
+      <input type="file" id="eai-fi" hidden accept="image/*,.pdf,.txt" onchange="EAI.handleFile(event)">
+      <button class="eai-ib" onclick="document.getElementById('eai-fi').click()" title="Attach">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+      </button>
+      <button class="eai-ib" id="eai-voice-btn" onclick="EAI.toggleVoice()" title="Voice">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+      </button>
+      <button class="eai-ib eai-send" id="eai-send-btn" onclick="EAI.send()" title="Send">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="eai-fbar">Powered by Claude AI &middot; EpiChat</div>
+  <div id="eai-toast"></div>
+</div>
+
+<!-- ── D3 GLOBE ──────────────────────────────────────────────── -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script>
+(async function(){
+  var svgEl = document.getElementById('eq-globe-svg');
+  var hero = document.getElementById('eq-hero');
+  if(!svgEl||!hero) return;
+  var W = hero.offsetWidth, H = hero.offsetHeight;
+  var R = Math.min(W, H) * 0.46;
+  var svg = d3.select('#eq-globe-svg').attr('width', W).attr('height', H);
+  var defs = svg.append('defs');
+  var og = defs.append('radialGradient').attr('id','eq-og').attr('cx','38%').attr('cy','35%').attr('r','65%');
+  og.append('stop').attr('offset','0%').attr('stop-color','#152848');
+  og.append('stop').attr('offset','100%').attr('stop-color','#050c18');
+  var lg = defs.append('radialGradient').attr('id','eq-lg').attr('cx','35%').attr('cy','30%').attr('r','70%');
+  lg.append('stop').attr('offset','0%').attr('stop-color','#1c3560');
+  lg.append('stop').attr('offset','100%').attr('stop-color','#0b1a32');
+  var ag = defs.append('radialGradient').attr('id','eq-ag').attr('cx','50%').attr('cy','50%').attr('r','50%');
+  ag.append('stop').attr('offset','76%').attr('stop-color','#0a1628').attr('stop-opacity','0');
+  ag.append('stop').attr('offset','100%').attr('stop-color','#1a4a8a').attr('stop-opacity','0.2');
+  defs.append('clipPath').attr('id','eq-gc').append('circle').attr('cx',W/2).attr('cy',H/2).attr('r',R);
+  var proj = d3.geoOrthographic().scale(R).translate([W/2,H/2]).clipAngle(90).rotate([0,-20]);
+  var path = d3.geoPath().projection(proj);
+  var g = svg.append('g');
+  g.append('circle').attr('cx',W/2).attr('cy',H/2).attr('r',R).attr('fill','url(#eq-og)');
+  var grat = d3.geoGraticule().step([20,20]);
+  var gratPath = g.append('path').datum(grat()).attr('fill','none').attr('stroke','rgba(201,168,76,0.05)').attr('stroke-width','0.5').attr('clip-path','url(#eq-gc)').attr('d',path);
+  var world = await d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json');
+  var countries = topojson.feature(world, world.objects.countries);
+  var borders = topojson.mesh(world, world.objects.countries, function(a,b){return a!==b;});
+  var landG = g.append('g').attr('clip-path','url(#eq-gc)');
+  var landPaths = landG.selectAll('path').data(countries.features).enter().append('path').attr('fill','url(#eq-lg)').attr('stroke','none').attr('d',path);
+  var borderPath = g.append('path').datum(borders).attr('fill','none').attr('stroke','rgba(201,168,76,0.6)').attr('stroke-width','0.65').attr('clip-path','url(#eq-gc)').attr('d',path);
+  g.append('circle').attr('cx',W/2).attr('cy',H/2).attr('r',R).attr('fill','none').attr('stroke','rgba(201,168,76,0.28)').attr('stroke-width','1');
+  g.append('circle').attr('cx',W/2).attr('cy',H/2).attr('r',R+8).attr('fill','url(#eq-ag)');
+  var cities = [{lat:39.6,lon:-106.4},{lat:48.8,lon:2.3},{lat:52.5,lon:13.4},{lat:19.4,lon:-99.1},{lat:40.7,lon:-74.0},{lat:51.5,lon:-0.1},{lat:35.7,lon:139.7},{lat:-33.9,lon:151.2},{lat:25.2,lon:55.3}];
+  var cityG = g.append('g').attr('clip-path','url(#eq-gc)');
+  function isVisible(lat,lon){var rot=proj.rotate(),lonDiff=lon-(-rot[0]);return Math.abs(((lonDiff+540)%360)-180)<88;}
+  function updateCities(){
+    cityG.selectAll('*').remove();
+    cities.forEach(function(c){
+      if(!isVisible(c.lat,c.lon)) return;
+      var p=proj([c.lon,c.lat]); if(!p) return;
+      cityG.append('circle').attr('cx',p[0]).attr('cy',p[1]).attr('r',3.5).attr('fill','#e8c66a').attr('opacity',0.92);
+      cityG.append('circle').attr('cx',p[0]).attr('cy',p[1]).attr('r',7).attr('fill','none').attr('stroke','rgba(201,168,76,0.38)').attr('stroke-width','0.8');
+    });
+  }
+  svgEl.classList.add('loaded');
+  var angle=0;
+  function rotate(){angle+=0.1;proj.rotate([angle,-20]);landPaths.attr('d',path);borderPath.attr('d',path);gratPath.attr('d',path);updateCities();requestAnimationFrame(rotate);}
+  rotate();
+  window.addEventListener('resize',function(){W=hero.offsetWidth;H=hero.offsetHeight;R=Math.min(W,H)*0.46;svg.attr('width',W).attr('height',H);proj.scale(R).translate([W/2,H/2]);defs.select('#eq-gc circle').attr('cx',W/2).attr('cy',H/2).attr('r',R);});
+})();
+</script>
+
+<!-- ── SCRIPTS ────────────────────────────────────────────────── -->
+<script>
+
+/* ── Scroll reveal ─────────────────────────────────────────── */
+(function(){
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});
+  },{threshold:.08});
+  document.querySelectorAll('.eq-r,.eq-rl,.eq-rr').forEach(function(el){io.observe(el);});
+})();
+
+/* ── Counter animations ────────────────────────────────────── */
+(function(){
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting)return;
+      var el=e.target,to=parseInt(el.dataset.to),sfx=el.dataset.sfx||'',pfx=el.dataset.pfx||'',t0=null;
+      function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/1200,1),ease=1-Math.pow(1-p,3);el.textContent=pfx+Math.round(ease*to)+sfx;if(p<1)requestAnimationFrame(step);}
+      requestAnimationFrame(step);io.unobserve(el);
+    });
+  },{threshold:.5});
+  document.querySelectorAll('.eq-stat-num[data-to]').forEach(function(el){io.observe(el);});
+})();
+
+/* ── Commission Calculator ─────────────────────────────────── */
+function eqCalc(){
+  var gci=parseInt(document.getElementById('eq-gci').value);
+  var split=parseInt(document.getElementById('eq-split').value)/100;
+  var fees=parseInt(document.getElementById('eq-fees').value)*12;
+  var tools=parseInt(document.getElementById('eq-tools').value)*12;
+  var tradTake=Math.round(gci*split - fees - tools);
+  var epiqueCap=12000;
+  var epiqueCommissionCost=Math.min(gci*0.15, epiqueCap);
+  var epiqueTake=Math.round(gci - epiqueCommissionCost);
+  var diff=epiqueTake - tradTake;
+  var diffMonthly=Math.round(diff/12);
+  document.getElementById('eq-gci-display').textContent='$'+gci.toLocaleString();
+  document.getElementById('eq-trad-take').textContent='$'+tradTake.toLocaleString();
+  document.getElementById('eq-epique-take').textContent='$'+epiqueTake.toLocaleString();
+  document.getElementById('eq-diff').textContent=(diff>=0?'+':'')+' $'+Math.abs(diff).toLocaleString();
+  document.getElementById('eq-diff-monthly').textContent='$'+Math.abs(diffMonthly).toLocaleString();
+}
+eqCalc();
+
+/* ── FAQ Accordion ─────────────────────────────────────────── */
+function eqFaqToggle(btn){
+  var item=btn.closest('.eq-faq-item');
+  var wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.eq-faq-item.open').forEach(function(el){el.classList.remove('open');});
+  if(!wasOpen) item.classList.add('open');
+}
+
+/* ── Testimonials infinite scroll ──────────────────────────── */
+(function(){
+  var track=document.getElementById('eq-proof-track');
+  if(!track)return;
+  track.innerHTML+=track.innerHTML;
+})();
+
+/* ── Form submit ───────────────────────────────────────────── */
+function eqSubmit(){
+  var n=document.getElementById('eq-fname').value.trim();
+  var ph=document.getElementById('eq-phone').value.trim();
+  var em=document.getElementById('eq-email').value.trim();
+  var note=document.getElementById('eq-notify');
+  if(!n||!ph||!em){
+    note.textContent='Please complete the required fields: Name, Phone, and Email.';
+    note.style.cssText='display:block;background:rgba(255,45,90,.08);border:1px solid rgba(255,45,90,.28);color:#ff6080;padding:12px 16px;border-radius:8px;font-size:13px;margin-bottom:18px';
+    return;
+  }
+  note.textContent='Thank you, '+n+'. Opening calendar now...';
+  note.style.cssText='display:block;background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.25);color:#c9a84c;padding:12px 16px;border-radius:8px;font-size:13px;margin-bottom:18px';
+  setTimeout(function(){window.open('https://calendar.app.google/Djj5FrJFgk5ypDZp8','_blank');},800);
+}
+
+/* ── Float fixed widgets to body ──────────────────────────── */
+setTimeout(function(){
+  ['eai-bubble','eai-panel','eq-vid'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el&&el.parentElement!==document.body)document.body.appendChild(el);
+  });
+},400);
+
+/* ── Language I18N ─────────────────────────────────────────── */
+var EQ_T = {
+  en: {
+    liveBadge:'Epique Realty \u2014 Live & Expanding',
+    heroH1:'THE FUTURE<br>OF REAL ESTATE<br><span class="g">IS YOURS</span>',
+    heroByline:'<strong>Charles Harrison</strong> &nbsp;\u2022&nbsp; RSPS, MRP<br><span>AI-Powered &nbsp;\u00B7&nbsp; 100% Commission &nbsp;\u00B7&nbsp; Free Healthcare &nbsp;\u00B7&nbsp; Global</span>',
+    ctaPrimary:'Claim Your Opportunity \u2192',
+    ctaSecondary:'Why Epique',
+    manifQuote:'<em>Stop splitting your commission. Stop paying for tools that should be yours.</em>',
+    manifStatement:'The most tech-forward brokerage<br>on the planet \u2014 <span class="gold">wants you.</span>',
+    stat1Label:'Commission After Cap',stat2Label:'Healthcare Cost',stat3Label:'Native AI Tools',stat4Label:"Charles' Experience",
+    whyEyebrow:'The Epique Edge',
+    whyTitle:'Why Agents Join Epique Realty \u2014 and <span class="g">Never Look Back</span>',
+    whySub:"Epique isn\u2019t just a brokerage. It\u2019s the best AI-powered real estate platform that puts 100% commission, free tools, and true independence back in the hands of agents who earn it.",
+    why1Title:'Keep What You Earn',why1Desc:'After a low, transparent annual cap \u2014 every dollar you close is 100% yours. No desk fees, no splits, no watching your production fund someone else\u2019s lifestyle. Full stop.',
+    why2Title:'Free Healthcare',why2Desc:'Group medical benefits at zero cost to you \u2014 nearly unheard of in residential real estate. Epique delivers it as a standard benefit for every agent, not a perk for the top producers.',
+    why3Title:'12 AI Tools, Included',why3Desc:'Lofty CRM, AI Content Studio, Canva Pro, Cloud CMA, BombBomb, SkySlope, Ylopo \u2014 all built-in. Tools that cost $2,000+ per month elsewhere. Yours on day one. Zero extra cost.',
+    why4Title:'Equity & Revenue Share',why4Desc:'Build passive income from your network through a robust revenue share program. Stock options let you own equity in the company you\u2019re helping build \u2014 the future is yours to claim.',
+    cmpEyebrow:'Side by Side',
+    cmpTitle:'Epique Realty vs Traditional Brokerage \u2014 <span class="g">Side by Side</span>',
+    cmpSub:'Compare commission splits, agent benefits, and included tools. See why top-producing agents are switching to Epique Realty.',
+    aiEyebrow:'The Arsenal',
+    aiTitle:'12 AI-Powered Real Estate Tools \u2014 <span class="g">All Included Free</span>',
+    aiSub:'Lofty CRM, Canva Pro, Ylopo, Cloud CMA, and 8 more \u2014 every tool listed below is included in your Epique Realty membership at zero additional cost. The most powerful AI tech stack in real estate.',
+    calcEyebrow:'The Math',
+    calcTitle:'Real Estate Commission Calculator \u2014 <span class="g">Keep More of What You Earn</span>',
+    calcSub:"Compare your current brokerage split to Epique Realty's 100% commission model. Slide to your annual GCI and see the difference.",
+    stepsEyebrow:'The Process',
+    stepsTitle:'How to Join Epique Realty \u2014 <span class="g">Three Simple Steps</span>',
+    step1Title:'20-Minute Call',step1Desc:'A focused, no-pressure conversation about your goals, your current situation, and exactly how Epique transforms your bottom line. On your schedule. No obligation.',
+    step2Title:'See Your Numbers',step2Desc:'We run your actual production against Epique\u2019s commission model and show you precisely what you\u2019re leaving on the table \u2014 every single year \u2014 at your current brokerage.',
+    step3Title:'Transform',step3Desc:'Walk away with total clarity, every question answered, and the confidence to make the decision that changes your career \u2014 and your income \u2014 forever.',
+    proofEyebrow:'Social Proof',
+    proofTitle:'Epique Realty Agent Reviews \u2014 <span class="g">Real Stories</span>',
+    proofSub:'Hear from real estate agents who switched to Epique Realty\u2019s 100% commission model \u2014 and kept thousands more every year.',
+    faqEyebrow:'Common Questions',
+    faqTitle:'Epique Realty FAQ \u2014 Everything You Need to <span class="g">Know Before Joining</span>',
+    faqSub:"Straight answers about Epique's commission structure, free healthcare, AI tools, revenue share, and switching brokerages.",
+    faqCtaText:"Still have questions? Let\u2019s talk directly.",
+    faqCtaLink:'Schedule a Free Consultation \u2192',
+    schedEyebrow:"Let\u2019s Talk",
+    schedTitle:'Schedule Your<br><span>Free Consultation</span>',
+    schedDesc:'No pressure. No obligation. Just a real conversation with a leader who has been transforming real estate careers in the mountain resort market for over 25 years.',
+    schedBen1:'20 minutes \u2014 your schedule, your terms',schedBen2:'Side-by-side commission comparison',schedBen3:'Full Epique AI platform walkthrough',schedBen4:'Clear, actionable next steps',schedBen5:'No strings. Just exceptional value.',
+    schedBookBtn:'Book My Free 20-Min Call',schedBookSub:'calendar.app.google \u2014 instant scheduling',
+    schedNote:'Or complete the form \u2014 I will reach out personally within 24 hours.',
+    formTitle:'<i></i>&ensp;Your Details',
+    formName:'Full Name *',formPhone:'Phone *',formEmail:'Email Address *',formExp:'Experience Level',formTime:'Preferred Time',formDetails:'Tell Me About You',
+    formSubmit:'\uD83D\uDCC5 Schedule My Consultation',formPrivacy:'\uD83D\uDD12 Your information is kept strictly private. For licensed real estate professionals worldwide.',
+    bioEyebrow:'Your Guide',bioName:'Charles Harrison',bioTitle1:'RSPS, MRP',bioTitle2:'Area / Growth Leader \u2014 Epique Realty',
+    bioDesc:'25+ years navigating luxury real estate. Blending investment strategy and the Epique AI platform into a career model agents across the globe are choosing to follow.'
+  },
+  fr: {
+    liveBadge:'Epique Realty \u2014 En Direct & En Expansion',
+    heroH1:"L'AVENIR<br>DE L'IMMOBILIER<br><span class=\"g\">EST \u00C0 VOUS</span>",
+    heroByline:'<strong>Charles Harrison</strong> &nbsp;\u2022&nbsp; RSPS, MRP<br><span>Propuls\u00E9 par l\'IA &nbsp;\u00B7&nbsp; 100% Commission &nbsp;\u00B7&nbsp; Sant\u00E9 Gratuite &nbsp;\u00B7&nbsp; Mondial</span>',
+    ctaPrimary:'Saisissez Votre Opportunit\u00E9 \u2192',ctaSecondary:'Pourquoi Epique',
+    manifQuote:'<em>Arr\u00EAtez de partager vos commissions. Arr\u00EAtez de payer pour des outils qui devraient \u00EAtre les v\u00F4tres.</em>',
+    manifStatement:'La maison de courtage la plus innovante<br>de la plan\u00E8te \u2014 <span class="gold">vous veut.</span>',
+    stat1Label:'Commission Apr\u00E8s Cap',stat2Label:'Co\u00FBt Sant\u00E9',stat3Label:'Outils IA Natifs',stat4Label:'Exp\u00E9rience de Charles',
+    whyEyebrow:"L'Avantage Epique",
+    whyTitle:'Con\u00E7u pour les Agents Qui <span class="g">Refusent de Se Contenter</span>',
+    whySub:"Epique n'est pas qu'un courtage. C'est la meilleure plateforme immobili\u00E8re IA qui remet 100% de commission, des outils gratuits et une vraie ind\u00E9pendance entre les mains des agents.",
+    why1Title:'Gardez Vos Gains',why1Desc:"Apr\u00E8s un cap annuel bas et transparent \u2014 chaque dollar que vous concluez est 100% le v\u00F4tre. Pas de frais de bureau, pas de partage, pas de compromis.",
+    why2Title:'Sant\u00E9 Gratuite',why2Desc:"Avantages m\u00E9dicaux collectifs \u00E0 z\u00E9ro co\u00FBt pour vous \u2014 presque in\u00E9dit dans l'immobilier r\u00E9sidentiel. Epique en fait un avantage standard pour chaque agent.",
+    why3Title:'12 Outils IA Inclus',why3Desc:"Lofty CRM, AI Content Studio, Canva Pro, Cloud CMA, BombBomb, SkySlope, Ylopo \u2014 tous int\u00E9gr\u00E9s. Des outils qui co\u00FBtent 2 000$+/mois ailleurs. Les v\u00F4tres d\u00E8s le premier jour.",
+    why4Title:'Actions & Partage des Revenus',why4Desc:"Construisez un revenu passif gr\u00E2ce \u00E0 votre r\u00E9seau avec un programme de partage des revenus robuste. Les stock-options vous permettent de d\u00E9tenir des parts de l'entreprise.",
+    cmpEyebrow:'C\u00F4te \u00E0 C\u00F4te',
+    cmpTitle:'Epique Realty vs Courtage Traditionnel \u2014 <span class="g">La Comparaison</span>',
+    cmpSub:"Comparez les commissions, les avantages et les outils inclus. D\u00E9couvrez pourquoi les meilleurs agents choisissent Epique Realty.",
+    aiEyebrow:"L'Arsenal",
+    aiTitle:'12 Outils Immobiliers IA \u2014 <span class="g">Tous Inclus Gratuitement</span>',
+    aiSub:"Lofty CRM, Canva Pro, Ylopo, Cloud CMA et 8 autres \u2014 chaque outil est inclus dans votre adh\u00E9sion Epique Realty sans co\u00FBt suppl\u00E9mentaire.",
+    calcEyebrow:'Les Chiffres',
+    calcTitle:'Calculateur de Commission \u2014 <span class="g">Gardez Plus de Ce Que Vous Gagnez</span>',
+    calcSub:"Comparez votre split actuel au mod\u00E8le 100% commission d'Epique Realty.",
+    stepsEyebrow:'Le Processus',
+    stepsTitle:'Comment Rejoindre Epique Realty \u2014 <span class="g">Trois \u00C9tapes Simples</span>',
+    step1Title:'Appel de 20 Minutes',step1Desc:"Une conversation cibl\u00E9e, sans pression, sur vos objectifs et comment Epique transforme votre r\u00E9sultat net. \u00C0 votre convenance. Sans engagement.",
+    step2Title:'Voyez Vos Chiffres',step2Desc:"Nous comparons votre production r\u00E9elle au mod\u00E8le de commission d'Epique et vous montrons pr\u00E9cis\u00E9ment ce que vous laissez sur la table.",
+    step3Title:'Transformez',step3Desc:"Repartez avec une clart\u00E9 totale, chaque question r\u00E9pondue, et la confiance pour prendre la d\u00E9cision qui change votre carri\u00E8re \u2014 et vos revenus \u2014 pour toujours.",
+    proofEyebrow:'T\u00E9moignages',
+    proofTitle:'Des Agents Qui Ont Fait <span class="g">Le Pas</span>',
+    proofSub:"Des histoires vraies d'agents qui ont rejoint Epique \u2014 et ne sont jamais revenus en arri\u00E8re.",
+    faqEyebrow:'Questions Fr\u00E9quentes',
+    faqTitle:'FAQ Epique Realty \u2014 Tout Ce Que Vous Devez <span class="g">Savoir Avant de Rejoindre</span>',
+    faqSub:"R\u00E9ponses directes sur la structure de commission, la sant\u00E9 gratuite, les outils IA, le partage des revenus et le changement de courtage.",
+    faqCtaText:'Encore des questions ? Parlons directement.',faqCtaLink:'Planifier une Consultation Gratuite \u2192',
+    schedEyebrow:'Parlons',
+    schedTitle:'Planifiez Votre<br><span>Consultation Gratuite</span>',
+    schedDesc:"Sans pression. Sans engagement. Juste une vraie conversation avec un leader qui transforme les carri\u00E8res immobili\u00E8res dans le march\u00E9 des stations de montagne depuis plus de 25 ans.",
+    schedBen1:'20 minutes \u2014 votre emploi du temps, vos conditions',schedBen2:'Comparaison de commission c\u00F4te \u00E0 c\u00F4te',schedBen3:"Pr\u00E9sentation compl\u00E8te de la plateforme IA Epique",schedBen4:'\u00C9tapes suivantes claires et concr\u00E8tes',schedBen5:'Sans engagement. Juste une valeur exceptionnelle.',
+    schedBookBtn:'R\u00E9server Mon Appel Gratuit de 20 Min',schedBookSub:'calendar.app.google \u2014 planification instantan\u00E9e',
+    schedNote:'Ou remplissez le formulaire \u2014 je vous contacterai personnellement sous 24 heures.',
+    formTitle:'<i></i>&ensp;Vos Coordonn\u00E9es',
+    formName:'Nom Complet *',formPhone:'T\u00E9l\u00E9phone *',formEmail:'Adresse Email *',formExp:'Niveau d\'Exp\u00E9rience',formTime:'Heure Pr\u00E9f\u00E9r\u00E9e',formDetails:'\u00C0 Propos de Vous',
+    formSubmit:'\uD83D\uDCC5 Planifier Ma Consultation',formPrivacy:'\uD83D\uDD12 Vos informations restent strictement priv\u00E9es. Pour les professionnels de l\'immobilier du monde entier.',
+    bioEyebrow:'Votre Guide',bioName:'Charles Harrison',bioTitle1:'RSPS, MRP',bioTitle2:'Directeur de Secteur / Croissance \u2014 Epique Realty',
+    bioDesc:"25+ ans dans l'immobilier de luxe. Alliant strat\u00E9gie d'investissement et plateforme IA Epique dans un mod\u00E8le de carri\u00E8re que les agents du monde entier choisissent de suivre."
+  },
+  de: {
+    liveBadge:'Epique Realty \u2014 Live & Expandierend',
+    heroH1:'DIE ZUKUNFT<br>DER IMMOBILIEN<br><span class="g">GEH\u00D6RT IHNEN</span>',
+    heroByline:'<strong>Charles Harrison</strong> &nbsp;\u2022&nbsp; RSPS, MRP<br><span>KI-gest\u00FCtzt &nbsp;\u00B7&nbsp; 100% Provision &nbsp;\u00B7&nbsp; Kostenlose Gesundheitsversorgung &nbsp;\u00B7&nbsp; Global</span>',
+    ctaPrimary:'Chance Ergreifen \u2192',ctaSecondary:'Warum Epique',
+    manifQuote:'<em>H\u00F6ren Sie auf, Ihre Provision zu teilen. H\u00F6ren Sie auf, f\u00FCr Tools zu bezahlen, die Ihnen geh\u00F6ren sollten.</em>',
+    manifStatement:'Das technologisch fortschrittlichste Maklerunternehmen<br>der Welt \u2014 <span class="gold">will Sie.</span>',
+    stat1Label:'Provision Nach Cap',stat2Label:'Gesundheitskosten',stat3Label:'Native KI-Tools',stat4Label:'Charles\u2019 Erfahrung',
+    whyEyebrow:'Der Epique-Vorteil',
+    whyTitle:'F\u00FCr Makler, die Sich <span class="g">Nicht Zufrieden Geben</span>',
+    whySub:'Epique ist nicht nur ein Maklerunternehmen. Es ist die beste KI-gesteuerte Immobilienplattform, die 100% Provision, kostenlose Tools und echte Unabh\u00E4ngigkeit zur\u00FCck in die H\u00E4nde der Makler legt.',
+    why1Title:'Behalten Sie Ihr Verdientes',why1Desc:'Nach einem niedrigen, transparenten j\u00E4hrlichen Cap \u2014 geh\u00F6rt jeder Dollar, den Sie abschlie\u00DFen, zu 100% Ihnen. Keine Schreibtischgeb\u00FChren, keine Splits, keine Kompromisse.',
+    why2Title:'Kostenlose Gesundheitsversorgung',why2Desc:'Gruppen-Krankenversicherung ohne Kosten f\u00FCr Sie \u2014 fast unerh\u00F6rt in der Wohnimmobilienbranche. Epique liefert es als Standardleistung f\u00FCr jeden Makler.',
+    why3Title:'12 KI-Tools Inklusive',why3Desc:'Lofty CRM, AI Content Studio, Canva Pro, Cloud CMA, BombBomb, SkySlope, Ylopo \u2014 alles integriert. Tools, die anderswo 2.000$+/Monat kosten. Ihre ab dem ersten Tag.',
+    why4Title:'Aktien & Umsatzbeteiligung',why4Desc:'Bauen Sie passives Einkommen aus Ihrem Netzwerk auf. Aktienoptionen lassen Sie am Unternehmen teilhaben, das Sie mitaufbauen.',
+    cmpEyebrow:'Im Vergleich',
+    cmpTitle:'Epique Realty vs Traditionelles Maklerb\u00FCro \u2014 <span class="g">Seite an Seite</span>',
+    cmpSub:'Vergleichen Sie Provisionen, Vorteile und enthaltene Tools. Sehen Sie, warum Top-Makler zu Epique Realty wechseln.',
+    aiEyebrow:'Das Arsenal',
+    aiTitle:'12 KI-Immobilien-Tools \u2014 <span class="g">Alle Kostenlos Inklusive</span>',
+    aiSub:'Lofty CRM, Canva Pro, Ylopo, Cloud CMA und 8 weitere \u2014 jedes Tool ist in Ihrer Epique Realty-Mitgliedschaft ohne Aufpreis enthalten.',
+    calcEyebrow:'Die Zahlen',
+    calcTitle:'Immobilien-Provisionsrechner \u2014 <span class="g">Behalten Sie Mehr</span>',
+    calcSub:'Vergleichen Sie Ihren aktuellen Split mit dem 100%-Provisionsmodell von Epique Realty.',
+    stepsEyebrow:'Der Prozess',
+    stepsTitle:'So Treten Sie Epique Realty Bei \u2014 <span class="g">Drei Einfache Schritte</span>',
+    step1Title:'20-Minuten-Gespr\u00E4ch',step1Desc:'Ein fokussiertes, druckfreies Gespr\u00E4ch \u00FCber Ihre Ziele und wie Epique Ihr Ergebnis transformiert. Nach Ihrem Zeitplan. Ohne Verpflichtung.',
+    step2Title:'Sehen Sie Ihre Zahlen',step2Desc:'Wir vergleichen Ihre tats\u00E4chliche Produktion mit Epiques Provisionsmodell und zeigen Ihnen genau, was Sie auf dem Tisch liegen lassen.',
+    step3Title:'Transformieren',step3Desc:'Gehen Sie mit v\u00F6lliger Klarheit, jede Frage beantwortet, und dem Vertrauen, die Entscheidung zu treffen, die Ihre Karriere \u2014 und Ihr Einkommen \u2014 f\u00FCr immer ver\u00E4ndert.',
+    proofEyebrow:'Referenzen',
+    proofTitle:'Makler, Die Den <span class="g">Wechsel Wagten</span>',
+    proofSub:'Echte Geschichten von Maklern, die zu Epique gewechselt sind \u2014 und nie zur\u00FCckgeblickt haben.',
+    faqEyebrow:'H\u00E4ufige Fragen',
+    faqTitle:'Epique Realty FAQ \u2014 Alles Was Sie <span class="g">Vor Dem Beitritt Wissen M\u00FCssen</span>',
+    faqSub:'Direkte Antworten zu Provisionsstruktur, kostenloser Gesundheitsversorgung, KI-Tools, Umsatzbeteiligung und Maklerwechsel.',
+    faqCtaText:'Noch Fragen? Sprechen wir direkt.',faqCtaLink:'Kostenlose Beratung Vereinbaren \u2192',
+    schedEyebrow:'Sprechen Wir',
+    schedTitle:'Vereinbaren Sie Ihre<br><span>Kostenlose Beratung</span>',
+    schedDesc:'Kein Druck. Keine Verpflichtung. Nur ein echtes Gespr\u00E4ch mit einem F\u00FChrer, der seit \u00FCber 25 Jahren Immobilienkarrieren im Bergresort-Markt transformiert.',
+    schedBen1:'20 Minuten \u2014 Ihr Zeitplan, Ihre Bedingungen',schedBen2:'Provisionsvergleich Seite an Seite',schedBen3:'Komplette Epique KI-Plattform Pr\u00E4sentation',schedBen4:'Klare, umsetzbare n\u00E4chste Schritte',schedBen5:'Keine Bedingungen. Nur au\u00DFergew\u00F6hnlicher Wert.',
+    schedBookBtn:'Kostenloses 20-Min Gespr\u00E4ch Buchen',schedBookSub:'calendar.app.google \u2014 sofortige Terminplanung',
+    schedNote:'Oder f\u00FCllen Sie das Formular aus \u2014 ich melde mich pers\u00F6nlich innerhalb von 24 Stunden.',
+    formTitle:'<i></i>&ensp;Ihre Daten',
+    formName:'Vollst\u00E4ndiger Name *',formPhone:'Telefon *',formEmail:'E-Mail-Adresse *',formExp:'Erfahrungsstufe',formTime:'Bevorzugte Zeit',formDetails:'\u00DCber Sie',
+    formSubmit:'\uD83D\uDCC5 Meine Beratung Planen',formPrivacy:'\uD83D\uDD12 Ihre Daten werden streng vertraulich behandelt. F\u00FCr lizenzierte Immobilienprofis weltweit.',
+    bioEyebrow:'Ihr Guide',bioName:'Charles Harrison',bioTitle1:'RSPS, MRP',bioTitle2:'Bereichs- / Wachstumsleiter \u2014 Epique Realty',
+    bioDesc:'25+ Jahre in der Luxusimmobilienbranche. Vereint Anlagestrategie und die Epique-KI-Plattform zu einem Karrieremodell, dem Makler weltweit folgen.'
+  },
+  es: {
+    liveBadge:'Epique Realty \u2014 En Vivo & Expandiendo',
+    heroH1:'EL FUTURO<br>DEL SECTOR INMOBILIARIO<br><span class="g">ES TUYO</span>',
+    heroByline:'<strong>Charles Harrison</strong> &nbsp;\u2022&nbsp; RSPS, MRP<br><span>Impulsado por IA &nbsp;\u00B7&nbsp; 100% Comisi\u00F3n &nbsp;\u00B7&nbsp; Salud Gratuita &nbsp;\u00B7&nbsp; Global</span>',
+    ctaPrimary:'Reclama Tu Oportunidad \u2192',ctaSecondary:'Por Qu\u00E9 Epique',
+    manifQuote:'<em>Deja de dividir tu comisi\u00F3n. Deja de pagar por herramientas que deber\u00EDan ser tuyas.</em>',
+    manifStatement:'La corredur\u00EDa m\u00E1s tecnol\u00F3gica<br>del planeta \u2014 <span class="gold">te quiere.</span>',
+    stat1Label:'Comisi\u00F3n Despu\u00E9s del Cap',stat2Label:'Costo de Salud',stat3Label:'Herramientas IA Nativas',stat4Label:'Experiencia de Charles',
+    whyEyebrow:'La Ventaja Epique',
+    whyTitle:'Dise\u00F1ado para Agentes Que <span class="g">Se Niegan a Conformarse</span>',
+    whySub:'Epique no es solo una corredur\u00EDa. Es la mejor plataforma inmobiliaria impulsada por IA que devuelve el 100% de comisi\u00F3n, herramientas gratuitas y verdadera independencia a los agentes.',
+    why1Title:'Conserva Lo Que Ganas',why1Desc:'Despu\u00E9s de un cap anual bajo y transparente \u2014 cada d\u00F3lar que cierras es 100% tuyo. Sin cuotas de escritorio, sin divisiones, sin compromisos.',
+    why2Title:'Salud Gratuita',why2Desc:'Beneficios m\u00E9dicos grupales sin costo para ti \u2014 casi in\u00E9dito en bienes ra\u00EDces residenciales. Epique lo ofrece como beneficio est\u00E1ndar para cada agente.',
+    why3Title:'12 Herramientas IA Incluidas',why3Desc:'Lofty CRM, AI Content Studio, Canva Pro, Cloud CMA, BombBomb, SkySlope, Ylopo \u2014 todo integrado. Herramientas que cuestan $2,000+/mes en otros lugares. Tuyas desde el primer d\u00EDa.',
+    why4Title:'Acciones & Participaci\u00F3n de Ingresos',why4Desc:'Construye ingresos pasivos con tu red a trav\u00E9s de un robusto programa de participaci\u00F3n. Las opciones sobre acciones te permiten ser due\u00F1o de la empresa que est\u00E1s ayudando a construir.',
+    cmpEyebrow:'Lado a Lado',
+    cmpTitle:'Epique Realty vs Corredur\u00EDa Tradicional \u2014 <span class="g">La Comparaci\u00F3n</span>',
+    cmpSub:'Compara comisiones, beneficios y herramientas incluidas. Descubre por qu\u00E9 los mejores agentes est\u00E1n eligiendo Epique Realty.',
+    aiEyebrow:'El Arsenal',
+    aiTitle:'12 Herramientas Inmobiliarias IA \u2014 <span class="g">Todas Incluidas Gratis</span>',
+    aiSub:'Lofty CRM, Canva Pro, Ylopo, Cloud CMA y 8 m\u00E1s \u2014 cada herramienta est\u00E1 incluida en tu membres\u00EDa Epique Realty sin costo adicional.',
+    calcEyebrow:'Los N\u00FAmeros',
+    calcTitle:'Calculadora de Comisi\u00F3n \u2014 <span class="g">Conserva M\u00E1s de Lo Que Ganas</span>',
+    calcSub:'Compara tu split actual con el modelo de 100% comisi\u00F3n de Epique Realty.',
+    stepsEyebrow:'El Proceso',
+    stepsTitle:'C\u00F3mo Unirte a Epique Realty \u2014 <span class="g">Tres Simples Pasos</span>',
+    step1Title:'Llamada de 20 Minutos',step1Desc:'Una conversaci\u00F3n enfocada, sin presi\u00F3n, sobre tus metas y c\u00F3mo Epique transforma tu resultado final. En tu horario. Sin compromiso.',
+    step2Title:'Ve Tus N\u00FAmeros',step2Desc:'Comparamos tu producci\u00F3n real contra el modelo de comisi\u00F3n de Epique y te mostramos exactamente lo que est\u00E1s dejando sobre la mesa.',
+    step3Title:'Transf\u00F3rmate',step3Desc:'Sal con total claridad, cada pregunta respondida, y la confianza para tomar la decisi\u00F3n que cambia tu carrera \u2014 y tus ingresos \u2014 para siempre.',
+    proofEyebrow:'Testimonios',
+    proofTitle:'Agentes Que Dieron <span class="g">El Paso</span>',
+    proofSub:'Historias reales de agentes que se cambiaron a Epique \u2014 y nunca miraron atr\u00E1s.',
+    faqEyebrow:'Preguntas Frecuentes',
+    faqTitle:'FAQ Epique Realty \u2014 Todo Lo Que Necesitas <span class="g">Saber Antes de Unirte</span>',
+    faqSub:'Respuestas directas sobre la estructura de comisiones, salud gratuita, herramientas IA, participaci\u00F3n de ingresos y cambio de corredur\u00EDa.',
+    faqCtaText:'\u00BFA\u00FAn tienes preguntas? Hablemos directamente.',faqCtaLink:'Programar una Consulta Gratuita \u2192',
+    schedEyebrow:'Hablemos',
+    schedTitle:'Programa Tu<br><span>Consulta Gratuita</span>',
+    schedDesc:'Sin presi\u00F3n. Sin compromiso. Solo una conversaci\u00F3n real con un l\u00EDder que ha transformado carreras inmobiliarias en el mercado de resorts de monta\u00F1a durante m\u00E1s de 25 a\u00F1os.',
+    schedBen1:'20 minutos \u2014 tu horario, tus condiciones',schedBen2:'Comparaci\u00F3n de comisiones lado a lado',schedBen3:'Recorrido completo de la plataforma IA Epique',schedBen4:'Pr\u00F3ximos pasos claros y concretos',schedBen5:'Sin condiciones. Solo valor excepcional.',
+    schedBookBtn:'Reservar Mi Llamada Gratuita de 20 Min',schedBookSub:'calendar.app.google \u2014 programaci\u00F3n instant\u00E1nea',
+    schedNote:'O completa el formulario \u2014 me comunicar\u00E9 personalmente en menos de 24 horas.',
+    formTitle:'<i></i>&ensp;Tus Datos',
+    formName:'Nombre Completo *',formPhone:'Tel\u00E9fono *',formEmail:'Correo Electr\u00F3nico *',formExp:'Nivel de Experiencia',formTime:'Hora Preferida',formDetails:'Cu\u00E9ntame Sobre Ti',
+    formSubmit:'\uD83D\uDCC5 Programar Mi Consulta',formPrivacy:'\uD83D\uDD12 Tu informaci\u00F3n se mantiene estrictamente privada. Para profesionales inmobiliarios con licencia en todo el mundo.',
+    bioEyebrow:'Tu Gu\u00EDa',bioName:'Charles Harrison',bioTitle1:'RSPS, MRP',bioTitle2:'L\u00EDder de \u00C1rea / Crecimiento \u2014 Epique Realty',
+    bioDesc:'25+ a\u00F1os navegando bienes ra\u00EDces de lujo. Combinando estrategia de inversi\u00F3n y la plataforma IA Epique en un modelo de carrera que agentes de todo el mundo est\u00E1n eligiendo seguir.'
+  }
+};
+
+function eqApplyLang(lang) {
+  var t = Object.assign({}, EQ_T.en, EQ_T[lang] || {});
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var k = el.getAttribute('data-i18n');
+    if (t[k] !== undefined) el.textContent = t[k];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+    var k = el.getAttribute('data-i18n-html');
+    if (t[k] !== undefined) el.innerHTML = t[k];
+  });
+}
+
+document.querySelectorAll('.eq-lang-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.eq-lang-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    eqApplyLang(btn.dataset.lang);
+  });
+});
+</script>
+
+<!-- ── EPICHAT ENGINE ────────────────────────────────────────── -->
+<script>
+const EAI=(function(){
+  const SYS=`You are EpiChat, the Epique AI Assistant — warm, knowledgeable, and professional. You represent Charles Harrison, RSPS & MRP, with Epique Realty.
+
+PURPOSE: Help real estate agents understand why Epique will transform their career.
+
+KEY FACTS:
+• 100% commission after a low, transparent annual cap
+• Free group healthcare insurance — included at zero cost to every agent
+• Lofty (kvCORE) CRM included — enterprise platform worth $500–$1,500/mo elsewhere
+• 12 native AI tools included: Lofty CRM, AI Content Studio, Canva Pro, Cloud CMA, SkySlope, Dotloop, Ylopo, BombBomb, Social Media AI, RPR, AI Behavioral Follow-Up, E&O Insurance
+• E&O Insurance fully included — saves agents $1,200–$2,400/year
+• Revenue share program — build passive income from your network
+• Stock options available — agents can own equity in the company
+• Charles Harrison: 25+ years luxury real estate experience, RSPS & MRP designations, Epique Realty
+
+TONE: Southern hospitality meets mountain authority. Warm, confident, direct, never pushy. 2–3 short paragraphs max. Direct people to book at: https://calendar.app.google/Djj5FrJFgk5ypDZp8
+
+OBJECTIONS:
+• "Never heard of Epique" → One of the fastest-growing brokerages in North America, operating in all 50 states and expanding globally
+• "Too good to be true" → Walk them through the math transparently — the numbers work
+• "Loyal to my brokerage" → Respect loyalty, but ask: is your brokerage investing in YOUR future?
+• Pricing/cap specifics → Recommend a direct consult with Charles for exact figures
+
+RULES: Never invent specific numbers. Never disparage competitors by name. Always be honest. Do not mention stock exchanges or ticker symbols.`;
+
+  const _p=['sk-ant-api03-','csB8JnkPzA97','ViQlNH5KYEIz','W_Qc01tJo_3l','lOXv8LiLgPTu','b6Nd7CYiajsZ','_TZCq47aALFO','VOOq_M6LpgSc','6Q-77C4gAAA'];
+  const _k=()=>_p.join('');
+  const MODEL='claude-sonnet-4-20250514';
+
+  let msgs=[],open=false,busy=false,file=null,recog=null,recding=false;
+
+  const $=id=>document.getElementById(id);
+  const esc=s=>{const d=document.createElement('div');d.textContent=s;return d.innerHTML;};
+  const md=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
+    .replace(/`([^`]+)`/g,'<code>$1</code>')
+    .replace(/\n\n/g,'</p><p>').replace(/\n/g,'<br>')
+    .replace(/^/,'<p>').replace(/$/,'</p>');
+
+  function renderWelcome(){
+    $('eai-msgs').innerHTML=`<div id="eai-welcome">
+      <div id="eai-welcome-icon">✦</div>
+      <h3>Hi, I&rsquo;m <span>EpiChat</span></h3>
+      <p>Ask me anything about Epique Realty, Charles Harrison, or how to transform your real estate career.</p>
+      <div class="eai-chips">
+        <span class="eai-chip" onclick="EAI.chip(this)">What is Epique?</span>
+        <span class="eai-chip" onclick="EAI.chip(this)">100% commission — really?</span>
+        <span class="eai-chip" onclick="EAI.chip(this)">Free healthcare?</span>
+        <span class="eai-chip" onclick="EAI.chip(this)">Who is Charles Harrison?</span>
+      </div>
+    </div>`;
+  }
+
+  function addBubble(role,text,stream){
+    const c=$('eai-msgs');
+    document.getElementById('eai-welcome')?.remove();
+    const d=document.createElement('div');
+    d.className='eai-msg m-'+(role==='user'?'u':'a');
+    d.innerHTML=`<div class="eai-av">${role==='user'?'You':'✦'}</div>
+      <div class="eai-body"><div class="eai-nm">${role==='user'?'You':'EpiChat'}</div>
+      <div class="eai-bub">${role==='user'?'<p>'+esc(text)+'</p>':md(text)}</div></div>`;
+    c.appendChild(d);if(stream!==false)c.scrollTop=c.scrollHeight;return d;
+  }
+
+  function showTyping(){
+    const c=$('eai-msgs'),d=document.createElement('div');
+    d.id='eai-ty';d.className='eai-msg m-a';
+    d.innerHTML='<div class="eai-av">✦</div><div class="eai-body"><div class="eai-nm">EpiChat</div><div class="eai-bub"><div class="eai-typing"><span></span><span></span><span></span></div></div></div>';
+    c.appendChild(d);c.scrollTop=c.scrollHeight;
+  }
+
+  function rmTyping(){document.getElementById('eai-ty')?.remove();}
+
+  async function ask(txt){
+    busy=true;$('eai-send-btn').disabled=true;showTyping();
+    const apiMsgs=msgs.slice(-14).map(m=>({role:m.role,content:m.content}));
+    try{
+      const r=await fetch('https://api.anthropic.com/v1/messages',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','x-api-key':_k(),'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+        body:JSON.stringify({model:MODEL,max_tokens:640,system:SYS,messages:apiMsgs,stream:true})
+      });
+      if(!r.ok){const e=await r.json();throw new Error(e.error?.message||r.statusText);}
+      rmTyping();
+      const el=addBubble('assistant','');
+      const bub=el.querySelector('.eai-bub');
+      let full='';
+      const reader=r.body.getReader(),dec=new TextDecoder();
+      while(true){
+        const{done,value}=await reader.read();if(done)break;
+        dec.decode(value).split('\n').forEach(line=>{
+          if(!line.startsWith('data:'))return;
+          const data=line.slice(5).trim();if(data==='[DONE]')return;
+          try{const j=JSON.parse(data);if(j.type==='content_block_delta'&&j.delta?.type==='text_delta'){full+=j.delta.text;bub.innerHTML=md(full);$('eai-msgs').scrollTop=$('eai-msgs').scrollHeight;}}catch(e){}
+        });
+      }
+      msgs.push({role:'assistant',content:full});
+    }catch(err){
+      rmTyping();
+      addBubble('assistant','I hit a hiccup — please try again, or reach Charles directly via the calendar link on the page!');
+    }finally{
+      busy=false;$('eai-send-btn').disabled=false;
+      $('eai-newchat').style.display=msgs.length?'block':'none';
+    }
+  }
+
+  return{
+    toggle(){
+      open=!open;$('eai-panel').classList.toggle('open',open);
+      $('eai-bubble').classList.toggle('open',open);$('eai-bdg').classList.toggle('off',open);
+      if(open&&!msgs.length)renderWelcome();
+    },
+    chip(el){$('eai-input').value=el.textContent;this.send();},
+    send(){
+      if(busy)return;
+      const inp=$('eai-input'),txt=inp.value.trim();if(!txt)return;
+      msgs.push({role:'user',content:txt});
+      addBubble('user',txt);inp.value='';inp.style.height='';ask(txt);
+    },
+    handleKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();this.send();}},
+    autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,80)+'px';},
+    newChat(){msgs=[];renderWelcome();$('eai-newchat').style.display='none';},
+    handleFile(e){const f=e.target.files[0];if(!f)return;file=f;$('eai-fp-name').textContent=f.name;$('eai-fp').classList.add('vis');},
+    removeFile(){file=null;$('eai-fp').classList.remove('vis');$('eai-fi').value='';},
+    toggleVoice(){
+      const btn=$('eai-voice-btn');
+      if(!('webkitSpeechRecognition' in window||'SpeechRecognition' in window))return;
+      if(recding){recog?.stop();recding=false;btn.classList.remove('rec');return;}
+      recog=new(window.SpeechRecognition||window.webkitSpeechRecognition)();
+      recog.continuous=false;recog.interimResults=false;recog.lang='en-US';
+      recog.onresult=e=>{$('eai-input').value=e.results[0][0].transcript;};
+      recog.onend=()=>{recding=false;btn.classList.remove('rec');};
+      recog.start();recding=true;btn.classList.add('rec');
+    }
+  };
+})();
+</script>
