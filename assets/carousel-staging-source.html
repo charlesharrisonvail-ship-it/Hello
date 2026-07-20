@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: 11.25in 14.0625in; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #0E1A2B; }
+  .slide {
+    width: 11.25in; height: 14.0625in;
+    page-break-after: always;
+    position: relative;
+    background: #0E1A2B;
+    color: #F2EFE6;
+    font-family: "DejaVu Sans", sans-serif;
+    padding: 1in 0.95in;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  .slide:last-child { page-break-after: auto; }
+  /* subtle mountain silhouette base */
+  .mountains {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 3.2in;
+    opacity: 0.55;
+  }
+  .rule { height: 4px; width: 1.1in; background: #D4B04A; margin: 0.32in 0 0.5in; }
+  .eyebrow {
+    font-size: 0.26in; font-weight: bold; letter-spacing: 0.09in;
+    color: #D4B04A; text-transform: uppercase;
+  }
+  .num {
+    font-family: "DejaVu Serif", serif;
+    font-size: 1.55in; line-height: 1; color: #D4B04A; opacity: 0.9;
+    margin-bottom: 0.25in;
+  }
+  h1 {
+    font-family: "DejaVu Serif", serif; font-weight: bold;
+    font-size: 1.02in; line-height: 1.14; margin-top: 0.1in;
+  }
+  h2 {
+    font-family: "DejaVu Serif", serif; font-weight: bold;
+    font-size: 0.78in; line-height: 1.16;
+  }
+  .body {
+    font-size: 0.34in; line-height: 1.55; color: #C9CDD6;
+    margin-top: 0.45in; max-width: 8.6in;
+  }
+  .body strong { color: #F2EFE6; }
+  .gold { color: #D4B04A; }
+  .footer {
+    position: absolute; left: 0.95in; right: 0.95in; bottom: 0.7in;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.22in; letter-spacing: 0.03in; color: #8E96A6;
+    z-index: 2;
+  }
+  .footer .brand { color: #D4B04A; font-weight: bold; letter-spacing: 0.06in; }
+  .swipe {
+    margin-top: auto; margin-bottom: 1in;
+    font-size: 0.3in; color: #D4B04A; font-weight: bold; letter-spacing: 0.05in;
+    z-index: 2;
+  }
+  .cta-box {
+    margin-top: 0.6in; border: 3px solid #D4B04A; padding: 0.42in 0.5in;
+    max-width: 8.6in;
+  }
+  .cta-box .name { font-family: "DejaVu Serif", serif; font-size: 0.44in; font-weight: bold; }
+  .cta-box .role { font-size: 0.28in; color: #D4B04A; margin-top: 0.12in; letter-spacing: 0.02in; }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — COVER -->
+<div class="slide">
+  <div class="eyebrow">EpiVail · Vail–Beaver Creek</div>
+  <div class="rule"></div>
+  <h1>Staging at<br>Altitude</h1>
+  <p class="body" style="font-size:0.42in; color:#F2EFE6; margin-top:0.5in;">
+    5 moves that sell mountain homes faster —<br>
+    and why suburban staging advice fails up here.
+  </p>
+  <div class="swipe">SWIPE &#8594;</div>
+  <svg class="mountains" viewBox="0 0 1080 300" preserveAspectRatio="none">
+    <polygon points="0,300 0,180 150,80 290,190 400,110 540,220 660,90 800,200 930,130 1080,210 1080,300" fill="#16263C"/>
+    <polygon points="0,300 0,240 180,150 340,250 520,170 700,260 860,190 1080,260 1080,300" fill="#1D3350"/>
+  </svg>
+  <div class="footer"><span class="brand">EPIVAIL</span><span>Charles Harrison, Epique Area/Growth Leader</span></div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide">
+  <div class="num">1</div>
+  <h2>Frame the view.<br>Don't compete with it.</h2>
+  <p class="body">Bare windows. Clear sightlines from the front door to the glass.
+  Furniture angled toward the mountains, not the TV.<br><br>
+  <strong>The view is the most expensive thing in the house</strong> — staging
+  that blocks it is staging that costs money.</p>
+  <div class="footer"><span class="brand">EPIVAIL</span><span>2 / 7</span></div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide">
+  <div class="num">2</div>
+  <h2>Stage the fireplace like it's the kitchen.</h2>
+  <p class="body">In resort markets, it is. Buyers picture snowy evenings before
+  they picture dinner parties.<br><br>
+  Wood stacked, hearth styled, seating pulled in close —
+  <strong>make it the room's gravity.</strong></p>
+  <div class="footer"><span class="brand">EPIVAIL</span><span>3 / 7</span></div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide">
+  <div class="num">3</div>
+  <h2>Texture over color.</h2>
+  <p class="body">Wool throws. Timber. Stone. Leather with some years on it.<br><br>
+  Mountain buyers <strong>touch everything</strong> — a home that feels like a
+  lodge outsells one that photographs like a catalog.</p>
+  <div class="footer"><span class="brand">EPIVAIL</span><span>4 / 7</span></div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide">
+  <div class="num">4</div>
+  <h2>Show the après moments.</h2>
+  <p class="body">The mudroom with boot warmers. The hot-tub deck. The gear wall.<br><br>
+  Suburban staging hides utility spaces. Up here,
+  <strong>utility spaces are the lifestyle</strong> — and the lifestyle is
+  what's for sale.</p>
+  <div class="footer"><span class="brand">EPIVAIL</span><span>5 / 7</span></div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide">
+  <div class="num">5</div>
+  <h2>Light for 4pm winter.<br>Not noon summer.</h2>
+  <p class="body">Warm lamps on. Fire going. Golden hour, staged indoors.<br><br>
+  That's the hour buyers <strong>dream about owning here</strong> — show the
+  home at the moment it sells itself.</p>
+  <div class="footer"><span class="brand">EPIVAIL</span><span>6 / 7</span></div>
+</div>
+
+<!-- SLIDE 7 — CTA -->
+<div class="slide">
+  <div class="eyebrow">Selling in the corridor?</div>
+  <div class="rule"></div>
+  <h2>Staging is strategy.<br><span class="gold">Let's talk.</span></h2>
+  <p class="body">Luxury Resimercial&#8482; — residential and commercial investment
+  property, Vail to Beaver Creek.</p>
+  <div class="cta-box">
+    <div class="name">Charles Harrison</div>
+    <div class="role">Epique Area/Growth Leader</div>
+  </div>
+  <div class="swipe" style="margin-bottom:1.2in;">FOLLOW FOR THE CORRIDOR, DECODED</div>
+  <svg class="mountains" viewBox="0 0 1080 300" preserveAspectRatio="none">
+    <polygon points="0,300 0,180 150,80 290,190 400,110 540,220 660,90 800,200 930,130 1080,210 1080,300" fill="#16263C"/>
+    <polygon points="0,300 0,240 180,150 340,250 520,170 700,260 860,190 1080,260 1080,300" fill="#1D3350"/>
+  </svg>
+  <div class="footer"><span class="brand">EPIVAIL</span><span>7 / 7</span></div>
+</div>
+
+</body>
+</html>
