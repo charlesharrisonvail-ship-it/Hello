@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Sandbox venv/home (created by scripts/setup-sandbox.sh, lives outside the repo by default)
+/agent-reach-sandbox/
+venv/
+.venv/
