@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EpiVail — Luxury Resimercial in Vail &amp; Beaver Creek | Charles Harrison</title>
+<meta name="description" content="Charles Harrison and the Epique Mountain Collective advise across luxury residential, short-term rental investment, and boutique commercial real estate in the Vail and Beaver Creek corridor.">
+<meta name="theme-color" content="#0a1628">
+
+<!-- Set before first paint so the pinned-cinema styles never flash on a
+     browser that will not be running them. -->
+<script>document.documentElement.classList.add('js');</script>
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="EpiVail — Southern Hospitality Meets Mountain Mastery">
+<meta property="og:description" content="Luxury Resimercial™ advisory across the Vail and Beaver Creek resort corridor.">
+<meta property="og:image" content="assets/img/poster-0045.webp">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Bebas+Neue&display=swap">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a1628'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='15' fill='%23c9a84c' text-anchor='middle'%3EEV%3C/text%3E%3C/svg%3E">
+
+<!-- The opening frame doubles as the poster, so the first paint is the same
+     image whether or not the sequence ever loads. -->
+<link rel="preload" as="image" href="assets/img/poster-0000.webp" fetchpriority="high">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="masthead" data-masthead>
+  <a class="masthead__brand" href="#top">
+    <span class="masthead__mark">EV</span>
+    <span class="masthead__name">
+      <strong>EpiVail</strong>
+      <span>Epique Mountain Collective</span>
+    </span>
+  </a>
+  <nav class="masthead__nav" aria-label="Primary">
+    <a href="#pillars">The Three Pillars</a>
+    <a href="#market">The Market</a>
+    <a href="#advisor">The Advisor</a>
+    <a class="btn btn--ghost" href="#connect">Let's Connect</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ============================================================== -->
+  <!-- THE FILM — a pinned stage scrubbed by scroll position.         -->
+  <!-- Height is set in CSS as a multiple of the viewport; the engine  -->
+  <!-- derives the scroll span from the element, not a magic number.  -->
+  <!-- ============================================================== -->
+  <section class="film" id="top" data-film>
+
+    <div class="film__stage">
+
+      <div class="film__layers" aria-hidden="true">
+        <!-- Poster paints first and stays as the base layer. The canvas fades
+             in over it once the first sequence frame is decoded, so there is
+             never a flash of empty background. -->
+        <img class="film__poster" data-film-poster
+             src="assets/img/poster-0000.webp" alt=""
+             width="1600" height="900" fetchpriority="high">
+
+        <canvas class="film__canvas" data-film-canvas></canvas>
+
+        <!-- Colour wash: a gold-to-navy gradient whose opacity and hue are
+             driven by act progress. This is what makes the background feel
+             like it is dissolving rather than merely playing. -->
+        <div class="film__wash" data-film-wash></div>
+        <div class="film__vignette"></div>
+        <div class="film__grain"></div>
+      </div>
+
+    <!-- Captions sit above the stage and cross-dissolve as the acts pass. -->
+    <div class="film__script">
+
+      <article class="act act--hero" data-act="0" style="--at: 0">
+        <p class="eyebrow">Epique Mountain Collective</p>
+        <h1 class="display">
+          Southern Hospitality<br>meets <em>Mountain Mastery</em>
+        </h1>
+        <p class="lede">
+          Twenty-five years of production in the Vail Valley, brought to the
+          buyers, sellers and investors who move at 8,150 feet.
+        </p>
+        <p class="scroll-hint" aria-hidden="true"><span></span>Scroll</p>
+      </article>
+
+      <article class="act" data-act="1" style="--at: 1">
+        <p class="eyebrow">Eagle County, Colorado</p>
+        <h2 class="display">
+          The corridor rewards<br>those who <em>know the terrain</em>
+        </h2>
+        <p class="lede">
+          Vail. Beaver Creek. Avon. Edwards. Four markets that trade on
+          different logic and are too often advised as one.
+        </p>
+      </article>
+
+      <article class="act" data-act="2" style="--at: 2">
+        <p class="eyebrow">The Proprietary Lens</p>
+        <h2 class="display">Luxury <em>Resimercial</em><sup class="tm">&trade;</sup></h2>
+        <p class="lede">
+          The convergence of luxury residential, short-term rental investment,
+          and boutique commercial — a convergence that exists only in mountain
+          resort corridors like this one.
+        </p>
+      </article>
+
+      <article class="act act--reveal" data-act="3" style="--at: 3">
+        <p class="eyebrow">Three Pillars. One Advisor.</p>
+        <h2 class="display">
+          Most agents work<br>one of these. <em>We work all three.</em>
+        </h2>
+      </article>
+
+    </div>
+
+    <!-- Chapter rail: a live read on where you are in the sequence. -->
+    <div class="film__rail" data-film-rail aria-hidden="true">
+      <ol>
+        <li data-rail-step="0"><span>Ascent</span></li>
+        <li data-rail-step="1"><span>The Valley</span></li>
+        <li data-rail-step="2"><span>Resimercial</span></li>
+        <li data-rail-step="3"><span>The Collective</span></li>
+      </ol>
+      <div class="film__rail-progress"><i data-film-bar></i></div>
+    </div>
+
+    </div><!-- /.film__stage -->
+  </section>
+
+  <!-- ============================================================== -->
+  <section class="section" id="pillars">
+    <div class="wrap">
+      <p class="eyebrow">The Three Pillars</p>
+      <h2 class="section__title">
+        One advisory practice,<br><em>three intersecting markets</em>
+      </h2>
+
+      <div class="pillars">
+        <article class="pillar reveal">
+          <p class="pillar__index">01</p>
+          <h3>Luxury Residential</h3>
+          <p>
+            Primary and second-home mountain property, from slopeside
+            residences to legacy valley estates. Represented with the
+            discretion the price band expects.
+          </p>
+        </article>
+
+        <article class="pillar reveal">
+          <p class="pillar__index">02</p>
+          <h3>Short-Term Rental Investment</h3>
+          <p>
+            Ski-in / ski-out income assets underwritten on real occupancy and
+            real regulation — not on a pro forma that ignores either.
+          </p>
+        </article>
+
+        <article class="pillar reveal">
+          <p class="pillar__index">03</p>
+          <h3>Boutique Commercial</h3>
+          <p>
+            Resort-corridor retail and hospitality-adjacent commercial, where
+            the tenant mix and the lift line are the same analysis.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <section class="section section--alt" id="market">
+    <div class="wrap">
+      <p class="eyebrow">The Market</p>
+      <h2 class="section__title">Four zip codes,<br><em>four different conversations</em></h2>
+
+      <div class="grid-two">
+        <div>
+          <dl class="spec">
+            <div><dt>81657</dt><dd>Vail</dd></div>
+            <div><dt>81620</dt><dd>Avon &amp; Beaver Creek</dd></div>
+            <div><dt>81632</dt><dd>Edwards</dd></div>
+            <div><dt>81631</dt><dd>Eagle</dd></div>
+          </dl>
+        </div>
+        <div>
+          <p class="body">
+            Pricing in this corridor does not move as one market. A Beaver
+            Creek slopeside condo and an Edwards single-family trade on
+            different buyers, different seasons and different financing —
+            and an advisor who treats them identically will misprice both.
+          </p>
+          <ul class="tiers">
+            <li><span class="tiers__tag tiers__tag--platinum">Platinum</span> $2.5M+</li>
+            <li><span class="tiers__tag tiers__tag--gold">Gold</span> $1M – $2.5M</li>
+            <li><span class="tiers__tag tiers__tag--silver">Silver</span> $500K – $1M</li>
+            <li><span class="tiers__tag tiers__tag--bronze">Bronze</span> Under $500K</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <section class="section" id="advisor">
+    <div class="wrap wrap--narrow">
+      <p class="eyebrow">The Advisor</p>
+      <h2 class="section__title">Charles Harrison</h2>
+      <p class="body body--lead">
+        I have spent twenty-five years learning how this valley actually
+        trades — which streets hold value through a soft season, which STR
+        rules are about to bite, which commercial corners are worth waiting
+        for. I bring Southern hospitality to a market that can feel closed,
+        and I work with clients the way I would want to be worked with:
+        peer to peer, no pressure, straight answers.
+      </p>
+      <p class="signature">
+        Charles Harrison<br>
+        <span>EpiVail | Epique Mountain Collective</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <section class="section section--cta" id="connect">
+    <div class="wrap wrap--narrow">
+      <p class="eyebrow">Let's Connect</p>
+      <h2 class="section__title">Start the conversation</h2>
+      <p class="body">
+        Whether you are buying, positioning an investment asset, or weighing a
+        move to a brokerage that actually supports mountain producers — happy
+        to talk anytime.
+      </p>
+
+      <!-- TODO: swap in the live tel: and mailto: values before launch.
+           Left as links to the existing site rather than placeholder
+           digits, so nothing incorrect ships. -->
+      <p class="cta-row">
+        <a class="btn btn--gold" href="https://charlesharrison.epiquerealty.com/">Get in touch</a>
+        <a class="btn btn--ghost" href="https://www.tiktok.com/@epivail" rel="noopener">@epivail</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>Charles Harrison | EpiVail | Epique Mountain Collective</p>
+    <p class="footer__fine">
+      Southern Hospitality, Mountain Results. Luxury Resimercial™ is a
+      proprietary market framework of EpiVail.
+    </p>
+  </div>
+</footer>
+
+<script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

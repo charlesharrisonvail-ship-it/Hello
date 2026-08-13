@@ -1,0 +1,14 @@
+{
+  "name": "epivail-frame-bakery",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Offline renderer that bakes the EpiVail hero flythrough into WebP frame sequences.",
+  "scripts": {
+    "bake": "node render-frames.mjs"
+  },
+  "dependencies": {
+    "playwright": "^1.49.0",
+    "three": "^0.185.1"
+  }
+}
