@@ -118,11 +118,23 @@ async function main() {
     await page.screenshot({ path: join(OUT, `${suffix}-film-${i}.png`) });
   }
 
-  // The standard sections below the film.
-  for (const id of ['pillars', 'market', 'advisor', 'connect']) {
-    await page.evaluate((sel) => {
-      document.querySelector(sel)?.scrollIntoView({ behavior: 'instant', block: 'start' });
+  // The standard sections below the film. Discovered from the document
+  // rather than hard-coded, so renaming a section cannot leave this silently
+  // screenshotting whatever was already on screen.
+  const sectionIds = await page.evaluate(() =>
+    [...document.querySelectorAll('main section[id]')]
+      .map((el) => el.id)
+      .filter((id) => id !== 'top')
+  );
+
+  for (const id of sectionIds) {
+    const found = await page.evaluate((sel) => {
+      const el = document.querySelector(sel);
+      if (!el) return false;
+      el.scrollIntoView({ behavior: 'instant', block: 'start' });
+      return true;
     }, `#${id}`);
+    if (!found) { problems.push(`missing section #${id}`); continue; }
     await page.waitForTimeout(600);
     await page.screenshot({ path: join(OUT, `${suffix}-${id}.png`) });
   }
@@ -141,7 +153,7 @@ async function main() {
   server.close();
 
   console.log(`[preview] ${suffix}: ${JSON.stringify(chosen)}`);
-  console.log(`[preview] wrote ${FILM_STOPS.length + 4} shots to ${OUT}`);
+  console.log(`[preview] wrote ${FILM_STOPS.length + sectionIds.length} shots to ${OUT}`);
 
   if (problems.length) {
     console.error(`\n[preview] ${problems.length} problem(s):`);
