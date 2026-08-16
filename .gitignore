@@ -1,0 +1,5 @@
+# graphify: local-only artifacts.
+# The rest of graphify-out/ (graph.json, GRAPH_REPORT.md, manifest.json) is
+# meant to be committed so teammates start with the map already built.
+graphify-out/cost.json
+graphify-out/cache/
