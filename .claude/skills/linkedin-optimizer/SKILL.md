@@ -1,14 +1,15 @@
 ---
 name: linkedin-optimizer
 description: >
-  Data-driven LinkedIn optimization workflow for Charles Harrison (EpiVail /
-  Epique Realty). Use this skill whenever Charles mentions LinkedIn analytics,
-  LinkedIn growth, profile optimization, post performance, content strategy for
-  LinkedIn, exporting LinkedIn data, or improving reach and engagement. Also
+  Data-driven LinkedIn optimization workflow for Charles Harrison (EpiVail —
+  International Attraction AI). Use this skill whenever Charles mentions
+  LinkedIn analytics, LinkedIn growth, profile optimization, post performance,
+  content strategy for LinkedIn, exporting LinkedIn data, or improving reach
+  and engagement. Also
   activate when Charles uploads a LinkedIn analytics CSV or screenshot, asks
   which posts or days perform best, or wants headline/profile rewrites.
-  Works alongside epivail-brand-system (voice, tone, Luxury Resimercial™
-  positioning) and epique-agent-recruitment (audience: agents nationally and
+  Works alongside epivail-brand-system (voice and tone) and
+  epique-agent-recruitment (audience: agents nationally and
   internationally).
 ---
 
@@ -21,10 +22,11 @@ Claude" workflow and tailored to Charles's brand and audience.
 ## Audience & Goal Context (always apply)
 
 - Primary audience: real estate agents Charles is attracting to Epique Realty
-  (US, France, Australia, Mexico) — see `epique-agent-recruitment`.
-- Secondary audience: luxury buyers/sellers/investors in the Vail–Beaver Creek
-  corridor (Luxury Resimercial™).
-- All content must follow `epivail-brand-system` voice and tokens.
+  (US, France, Germany, Mexico) — see `epique-agent-recruitment`.
+- Secondary audience: buyers/sellers/investors in Charles's home market.
+- All content must follow `epivail-brand-system` voice and tokens. Where that
+  skill's positioning conflicts with the International Attraction AI identity,
+  this file wins — the brand skill has not yet been updated.
 - Byline is always exactly: **Charles Harrison, Epique Area/Growth Leader** —
   never append a regional descriptor.
 
@@ -74,12 +76,12 @@ Maintain and reuse these prompts (adapt to current data):
    agents to Epique. Score headline, About, Featured, and Experience for
    clarity and conversion. Rewrite the weakest section."
 2. **Headline rewrite** — "Rewrite my headline for clarity and impact. Keep the
-   exact byline 'Charles Harrison, Epique Area/Growth Leader' and the Luxury
-   Resimercial™ positioning."
+   exact byline 'Charles Harrison, Epique Area/Growth Leader' and the
+   International Attraction AI positioning."
 3. **Post performance analysis** — "Here's my last 30/90 days of post data.
    Which topics, days, and formats win? What should I stop doing?"
 4. **Content strategy** — "Based on this analysis, build a 2-week content
-   calendar targeting agent attraction first, luxury market second."
+   calendar targeting agent attraction first, market authority second."
 5. **Repurpose winners** — "Take my top 3 posts and adapt them into TikTok
    (@epivail) scripts and Facebook (@CharlesHarrisonVail) versions."
 
