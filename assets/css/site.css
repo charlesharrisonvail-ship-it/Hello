@@ -1,5 +1,5 @@
 /* ==================================================================
-   EpiVail — Luxury Resimercial landing page
+   EpiVail — International Attraction AI landing page
    Brand tokens per the EpiVail brand system: dark navy ground, gold
    accent, Cormorant Garamond display, DM Sans UI, Bebas Neue eyebrows.
 
@@ -92,15 +92,6 @@ a { color: inherit; }
 .display em, .section__title em {
   color: var(--gold);
   font-style: italic;
-}
-
-/* The trademark mark is legal furniture, not part of the wordmark — keep it
-   from competing with the display type it sits on. */
-.tm {
-  font-size: 0.26em;
-  vertical-align: super;
-  letter-spacing: 0.04em;
-  color: var(--gold-dim);
 }
 
 .section__title {

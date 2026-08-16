@@ -64,7 +64,7 @@ retimed so each act has its own pace.
 |---|---|---|
 | 0.00 – 0.36 | **Ascent** | Aerial above the ridgeline. Starfield dissolves out, key light climbs from pre-dawn to alpenglow, sky glow ramps up. |
 | 0.30 – 0.72 | **The Valley** | Camera descends into the corridor. Fog density drops — the "dissolve" is an atmospheric ramp, not a crossfade. |
-| 0.66 – 1.00 | **The Collective** | Three monoliths rise from the valley floor on a stagger, gold edges igniting. FOV tightens 46° → 41°. |
+| 0.66 – 1.00 | **The Engine** | Three monoliths rise from the valley floor on a stagger, gold edges igniting — Identify, Engage, Onboard. FOV tightens 46° → 41°. |
 
 Acts overlap deliberately. Ranges that share a boundary produce a cut; ranges
 that overlap produce a dissolve.

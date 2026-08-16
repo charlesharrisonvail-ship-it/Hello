@@ -1,13 +1,14 @@
-# EpiVail — Luxury Resimercial landing page
+# EpiVail — International Attraction AI
 
 An immersive, frame-based 3D scroll experience for **Charles Harrison |
-EpiVail | Epique Mountain Collective**, covering the Vail and Beaver Creek
-resort corridor.
+EpiVail | International Attraction AI** — agent attraction across the United
+States, France, Germany and Mexico.
 
 Scrolling scrubs a pre-rendered camera flythrough of a procedurally generated
-alpine valley. The background dissolves through three acts — pre-dawn ridgeline,
-descent into the valley at alpenglow, and the reveal of three monoliths standing
-for the Luxury Resimercial™ pillars — while the copy cross-dissolves over it.
+alpine valley. The background dissolves through three acts — pre-dawn
+ridgeline, descent into the valley at alpenglow, and the reveal of three
+monoliths standing for the engine's systems (Identify, Engage, Onboard) —
+while the copy cross-dissolves over it.
 
 ## Running it
 
@@ -66,10 +67,14 @@ Full rationale in [`docs/scroll-architecture.md`](docs/scroll-architecture.md).
 
 ## Before launch
 
-`index.html` links the primary CTA to the existing site rather than carrying
-`tel:` / `mailto:` values, which were not available when this was built. Swap
-in the real contact details at the `TODO` in the `#connect` section.
+- `index.html` links the primary CTA to the existing site rather than carrying
+  `tel:` / `mailto:` values, which were not available when this was built.
+  Swap in the real contact details at the `TODO` in the `#connect` section.
+- Body copy is a first pass written to the International Attraction AI
+  positioning. The pipeline-stage labels in `#markets` (Identified / Engaged /
+  In conversation / Onboarded) are placeholders for however the funnel is
+  actually named.
 
 ---
 
-Charles Harrison | EpiVail | Epique Mountain Collective
+Charles Harrison | EpiVail | International Attraction AI
