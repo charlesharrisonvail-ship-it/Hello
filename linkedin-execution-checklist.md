@@ -2,6 +2,17 @@
 
 The plan only works if the loop runs. ~45 min/day total.
 
+## Scheduled / in flight
+
+| What | When | How |
+|---|---|---|
+| Vail market carousel (PDF) | **Wed Aug 19, 7–9am MT** | Manual — LinkedIn's native scheduler. Claude sends a reminder at 7am MT with the file path and copy. |
+| Equity vs Commission (video) | **Fri Aug 21** — not yet scheduled | Blocked: OpusClip auto-applied the default brand template (intro/outro media + karaoke captions), so its render is 68s, not the 60s built. Awaiting Charles's call. |
+
+Document (PDF/carousel) posts cannot be scheduled by any connected tool —
+OpusClip's LinkedIn integration handles video only. Carousels go through
+LinkedIn's own scheduler.
+
 ## Daily (Mon–Fri)
 - [ ] Post the day's calendar item, 7–9am MT (Mon/Tue posts are the priority — 43% of your reach lives there)
 - [ ] 15 comments: 10 US real-estate voices, 5 France/Australia/Mexico agents (see target list in `linkedin-content-queue.md`)
