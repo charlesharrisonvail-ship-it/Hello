@@ -1,0 +1,46 @@
+{
+  "generated": "2026-08-16",
+  "frameCount": 90,
+  "pattern": "{tier}/frame-{index}.webp",
+  "indexPad": 4,
+  "aspect": 1.7777777777777777,
+  "tiers": [
+    {
+      "id": "lg",
+      "width": 1600,
+      "height": 900,
+      "orientation": "landscape",
+      "bytes": 2102664,
+      "avgFrameBytes": 23363
+    },
+    {
+      "id": "md",
+      "width": 1024,
+      "height": 576,
+      "orientation": "landscape",
+      "bytes": 852816,
+      "avgFrameBytes": 9476
+    },
+    {
+      "id": "sm",
+      "width": 640,
+      "height": 360,
+      "orientation": "landscape",
+      "bytes": 352466,
+      "avgFrameBytes": 3916
+    },
+    {
+      "id": "pt",
+      "width": 720,
+      "height": 1280,
+      "orientation": "portrait",
+      "bytes": 727852,
+      "avgFrameBytes": 8087
+    }
+  ],
+  "posters": [
+    "img/poster-0000.webp",
+    "img/poster-0045.webp",
+    "img/poster-0089.webp"
+  ]
+}

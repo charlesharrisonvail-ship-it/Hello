@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>EpiVail flythrough — bake source</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #0a1628; overflow: hidden; }
+  canvas { display: block; }
+</style>
+<script type="importmap">
+{ "imports": { "three": "/three/build/three.module.js" } }
+</script>
+</head>
+<body>
+<script type="module">
+import {
+  Scene, PerspectiveCamera, WebGLRenderer, PlaneGeometry, BufferGeometry,
+  MeshStandardMaterial, Mesh, DirectionalLight, HemisphereLight, AmbientLight,
+  FogExp2, Color, Vector3, Float32BufferAttribute, Points, PointsMaterial,
+  BoxGeometry, EdgesGeometry, LineSegments, LineBasicMaterial, Group,
+  SphereGeometry, BackSide, ShaderMaterial, CatmullRomCurve3,
+  ACESFilmicToneMapping, SRGBColorSpace
+} from 'three';
+
+/* ------------------------------------------------------------------ *
+ * Deterministic value noise. Seeded by integer lattice hashing so the
+ * terrain is byte-identical on every bake, on every machine.
+ * ------------------------------------------------------------------ */
+const SEED = 1957;
+
+function hash2(x, y) {
+  let h = x * 374761393 + y * 668265263 + SEED * 1442695040;
+  h = (h ^ (h >>> 13)) * 1274126177;
+  return ((h ^ (h >>> 16)) >>> 0) / 4294967295;
+}
+
+function smooth(t) { return t * t * (3 - 2 * t); }
+
+function valueNoise(x, y) {
+  const xi = Math.floor(x), yi = Math.floor(y);
+  const xf = x - xi, yf = y - yi;
+  const u = smooth(xf), v = smooth(yf);
+  const a = hash2(xi, yi), b = hash2(xi + 1, yi);
+  const c = hash2(xi, yi + 1), d = hash2(xi + 1, yi + 1);
+  return (a * (1 - u) + b * u) * (1 - v) + (c * (1 - u) + d * u) * v;
+}
+
+function fbm(x, y, octaves = 5) {
+  let sum = 0, amp = 1, freq = 1, norm = 0;
+  for (let i = 0; i < octaves; i++) {
+    sum += valueNoise(x * freq, y * freq) * amp;
+    norm += amp;
+    amp *= 0.5;
+    freq *= 2.03;
+  }
+  return sum / norm;
+}
+
+/* Ridged fBm gives the sharp alpine crests that read as Gore Range. */
+function ridged(x, y, octaves = 5) {
+  let sum = 0, amp = 1, freq = 1, norm = 0;
+  for (let i = 0; i < octaves; i++) {
+    const n = 1 - Math.abs(valueNoise(x * freq, y * freq) * 2 - 1);
+    sum += n * n * amp;
+    norm += amp;
+    amp *= 0.5;
+    freq *= 2.07;
+  }
+  return sum / norm;
+}
+
+/* ------------------------------------------------------------------ *
+ * Palette — locked to the EpiVail brand tokens.
+ * ------------------------------------------------------------------ */
+const NAVY       = new Color('#0a1628');
+const NAVY_MID   = new Color('#0f1f3d');
+const NAVY_LIGHT = new Color('#172847');
+const GOLD       = new Color('#c9a84c');
+const GOLD_BRIGHT= new Color('#e8c66a');
+const GOLD_DIM   = new Color('#8a6f2e');
+
+/* Current render target. The bake driver swaps this between passes so the
+ * portrait crop is a real render, not an upscale of the landscape one. */
+let WIDTH = 1600, HEIGHT = 900, FOV_BASE = 46;
+
+const renderer = new WebGLRenderer({
+  antialias: true,
+  preserveDrawingBuffer: true,
+  powerPreference: 'high-performance'
+});
+renderer.setPixelRatio(1);
+renderer.setSize(WIDTH, HEIGHT, false);
+renderer.toneMapping = ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.28;
+renderer.outputColorSpace = SRGBColorSpace;
+document.body.appendChild(renderer.domElement);
+
+const scene = new Scene();
+scene.background = NAVY.clone();
+const fog = new FogExp2(NAVY_MID.getHex(), 0.00055);
+scene.fog = fog;
+
+const camera = new PerspectiveCamera(46, WIDTH / HEIGHT, 1, 13000);
+
+/* ------------------------------------------------------------------ *
+ * Sky dome — vertical navy→gold gradient standing in for alpenglow.
+ * ------------------------------------------------------------------ */
+const skyMat = new ShaderMaterial({
+  side: BackSide,
+  depthWrite: false,
+  uniforms: {
+    uTop:     { value: new Color('#0e1d38') },
+    uHorizon: { value: new Color('#162c54') },
+    uGlow:    { value: GOLD.clone() },
+    uGlowAmount: { value: 0.0 }
+  },
+  vertexShader: `
+    varying vec3 vPos;
+    void main() {
+      vPos = position;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+  `,
+  fragmentShader: `
+    uniform vec3 uTop; uniform vec3 uHorizon; uniform vec3 uGlow;
+    uniform float uGlowAmount;
+    varying vec3 vPos;
+    void main() {
+      vec3 dir = normalize(vPos);
+      float h = clamp(dir.y * 0.95 + 0.26, 0.0, 1.0);
+      vec3 col = mix(uHorizon, uTop, pow(h, 1.15));
+      // Sunrise bloom low on the -Z horizon, where the key light sits.
+      float band = pow(max(0.0, 1.0 - abs(dir.y) * 5.5), 3.0);
+      float front = pow(max(0.0, -dir.z * 0.5 + 0.5), 3.0);
+      col += uGlow * band * front * uGlowAmount;
+      gl_FragColor = vec4(col, 1.0);
+    }
+  `
+});
+scene.add(new Mesh(new SphereGeometry(9200, 48, 32), skyMat));
+
+/* ------------------------------------------------------------------ *
+ * Terrain. One big displaced plane, flat-shaded so the facets catch
+ * the low key light the way real snowfields do.
+ * ------------------------------------------------------------------ */
+const TERRAIN_SIZE = 6800;
+const TERRAIN_SEGS = 380;
+const TERRAIN_Z = -1500;
+
+/** The corridor is flat out to VALLEY_FLAT, then ramps to full relief by
+ *  VALLEY_WALL. A dead-flat floor is what keeps the monoliths level. */
+const VALLEY_FLAT = 420;
+const VALLEY_WALL = 1000;
+
+function terrainHeight(x, z) {
+  // Carve a valley corridor along x = 0 — the camera flies down it. The
+  // exponent keeps the floor genuinely flat before the walls kick up, so
+  // the shot reads as a valley rather than a slot canyon.
+  const ramp = (Math.abs(x) - VALLEY_FLAT) / (VALLEY_WALL - VALLEY_FLAT);
+  const valleyMask = Math.pow(smooth(Math.min(1, Math.max(0, ramp))), 1.4);
+
+  const base = fbm(x * 0.00085, z * 0.00085, 5) * 190;
+  const peaks = ridged(x * 0.0016 + 40, z * 0.0016 - 12, 6) * 470;
+  const detail = fbm(x * 0.0075, z * 0.0075, 3) * 26;
+
+  const h = (base + peaks) * valleyMask + detail * (0.28 + valleyMask * 0.72);
+  // Floor of the valley sits just below zero so the monoliths read as rising.
+  return h - 50;
+}
+
+const terrainGeo = new PlaneGeometry(TERRAIN_SIZE, TERRAIN_SIZE, TERRAIN_SEGS, TERRAIN_SEGS);
+terrainGeo.rotateX(-Math.PI / 2);
+{
+  const pos = terrainGeo.attributes.position;
+  for (let i = 0; i < pos.count; i++) {
+    pos.setY(i, terrainHeight(pos.getX(i), pos.getZ(i)));
+  }
+  pos.needsUpdate = true;
+  terrainGeo.computeVertexNormals();
+}
+
+const terrainMat = new MeshStandardMaterial({
+  color: NAVY_LIGHT.clone().multiplyScalar(1.15),
+  roughness: 0.94,
+  metalness: 0.04,
+  flatShading: true
+});
+const terrain = new Mesh(terrainGeo, terrainMat);
+terrain.position.z = TERRAIN_Z;
+scene.add(terrain);
+
+/* ------------------------------------------------------------------ *
+ * Starfield — hemisphere of points that dissolves as the sun comes up.
+ * ------------------------------------------------------------------ */
+const starGeo = new BufferGeometry();
+{
+  const N = 1400, arr = new Float32Array(N * 3);
+  for (let i = 0; i < N; i++) {
+    const u = hash2(i * 3 + 1, 7), v = hash2(i * 3 + 2, 13);
+    const theta = u * Math.PI * 2;
+    const phi = Math.acos(v * 0.85);          // upper hemisphere only
+    const r = 7400 + hash2(i, 29) * 1100;
+    arr[i * 3]     = r * Math.sin(phi) * Math.cos(theta);
+    arr[i * 3 + 1] = r * Math.cos(phi);
+    arr[i * 3 + 2] = r * Math.sin(phi) * Math.sin(theta);
+  }
+  starGeo.setAttribute('position', new Float32BufferAttribute(arr, 3));
+}
+const starMat = new PointsMaterial({
+  color: new Color('#f5f0e8'), size: 3.2, sizeAttenuation: false,
+  transparent: true, opacity: 0.9, depthWrite: false, fog: false
+});
+scene.add(new Points(starGeo, starMat));
+
+/* ------------------------------------------------------------------ *
+ * The three monoliths — the engine's three systems, made literal.
+ * Identify / Engage / Onboard.
+ * ------------------------------------------------------------------ */
+const MONO_Z = -2100;
+const monoliths = new Group();
+monoliths.position.set(0, 0, MONO_Z);
+scene.add(monoliths);
+
+const MONO_SPECS = [
+  { x: -262, h: 258, w: 62, d: 62, rot:  0.19 },
+  { x:    0, h: 386, w: 74, d: 74, rot: -0.09 },
+  { x:  268, h: 292, w: 62, d: 62, rot:  0.27 }
+];
+
+const monolithParts = MONO_SPECS.map((spec) => {
+  const group = new Group();
+  const geo = new BoxGeometry(spec.w, spec.h, spec.d);
+  const mat = new MeshStandardMaterial({
+    color: NAVY_MID.clone().multiplyScalar(0.8),
+    roughness: 0.42,
+    metalness: 0.34,
+    emissive: GOLD_DIM.clone(),
+    emissiveIntensity: 0.0
+  });
+  const body = new Mesh(geo, mat);
+  body.position.y = spec.h / 2;
+  group.add(body);
+
+  const edges = new LineSegments(
+    new EdgesGeometry(geo),
+    new LineBasicMaterial({ color: GOLD_BRIGHT.clone(), transparent: true, opacity: 0 })
+  );
+  edges.position.y = spec.h / 2;
+  group.add(edges);
+
+  group.position.set(spec.x, terrainHeight(spec.x, MONO_Z - TERRAIN_Z) - 34, 0);
+  group.rotation.y = spec.rot;
+  monoliths.add(group);
+  return { group, mat, edgeMat: edges.material, spec };
+});
+
+/* ------------------------------------------------------------------ *
+ * Lighting.
+ * ------------------------------------------------------------------ */
+const keyLight = new DirectionalLight(GOLD_BRIGHT.clone(), 0.65);
+keyLight.position.set(-620, 240, -2600);
+scene.add(keyLight);
+
+const rimLight = new DirectionalLight(new Color('#7d9bd0'), 0.55);
+rimLight.position.set(1100, 620, 900);
+scene.add(rimLight);
+
+const hemi = new HemisphereLight(new Color('#2b4a7d'), new Color('#0d141f'), 1.05);
+scene.add(hemi);
+
+const ambient = new AmbientLight(NAVY_LIGHT.clone(), 0.9);
+scene.add(ambient);
+
+/* ------------------------------------------------------------------ *
+ * Camera rig. A Catmull-Rom spline down the valley, sampled by the
+ * eased act progress rather than raw t, so each act gets its own pace.
+ * ------------------------------------------------------------------ */
+const flightPath = new CatmullRomCurve3([
+  new Vector3(   0, 980, 1500),   // aerial, clear of every ridgeline
+  new Vector3(  70, 790, 1150),
+  new Vector3(  35, 540,  720),
+  new Vector3( -80, 350,  230),   // dropping into the corridor
+  new Vector3( -35, 235, -230),
+  new Vector3(  45, 215, -600),
+  new Vector3(  15, 290, -800),   // rising for the reveal
+  new Vector3(   0, 355, -900)
+]);
+
+const lookPath = new CatmullRomCurve3([
+  // The opening look is nearly level, so act one frames ridgeline and sky
+  // rather than staring down at the valley floor.
+  new Vector3(   0, 900,  660),
+  new Vector3(   0, 590,  240),
+  new Vector3(   0, 265, -320),
+  new Vector3(   0, 190, -900),
+  new Vector3(   0, 270, -1800),
+  new Vector3(   0, 300, -2050)
+]);
+
+const easeInOut  = (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+const easeOut    = (t) => 1 - Math.pow(1 - t, 3);
+const clamp01    = (t) => Math.min(1, Math.max(0, t));
+/* Normalized progress through a sub-range of the master timeline. */
+const range = (t, a, b) => clamp01((t - a) / (b - a));
+
+const _pos = new Vector3(), _look = new Vector3();
+
+function renderAt(t) {
+  t = clamp01(t);
+
+  // --- Act boundaries ------------------------------------------------
+  const actAscent  = range(t, 0.00, 0.36);
+  const actValley  = range(t, 0.30, 0.72);
+  const actReveal  = range(t, 0.66, 1.00);
+
+  // --- Camera --------------------------------------------------------
+  // Slight ease so the descent decelerates into the valley floor.
+  const pathT = easeInOut(t) * 0.62 + t * 0.38;
+  flightPath.getPointAt(clamp01(pathT), _pos);
+  lookPath.getPointAt(clamp01(easeOut(t)), _look);
+
+  // A lazy drift keeps the shot from feeling rail-mounted.
+  const drift = Math.sin(t * Math.PI * 2.2) * 16;
+  camera.position.set(_pos.x + drift, _pos.y, _pos.z);
+  camera.lookAt(_look);
+  camera.rotation.z = Math.sin(t * Math.PI * 1.4) * 0.022;
+  camera.fov = FOV_BASE - easeInOut(actReveal) * 5;
+  camera.updateProjectionMatrix();
+
+  // --- Atmosphere: the "dissolve" is a fog density ramp ---------------
+  fog.density = 0.00062 - easeInOut(actValley) * 0.00022 - easeOut(actReveal) * 0.00012;
+
+  // --- Light: night → alpenglow ---------------------------------------
+  keyLight.intensity = 0.65 + easeInOut(actAscent) * 0.7 + easeOut(actReveal) * 0.4;
+  keyLight.position.y = 240 + easeInOut(actAscent) * 420;
+  rimLight.intensity = 0.55 + easeInOut(actValley) * 0.25;
+  hemi.intensity = 1.05 + easeInOut(actAscent) * 0.45;
+  skyMat.uniforms.uGlowAmount.value = easeInOut(actAscent) * 0.85 + easeOut(actReveal) * 0.35;
+
+  // Stars dissolve out across the first act.
+  starMat.opacity = 0.9 * (1 - easeInOut(range(t, 0.02, 0.34)));
+
+  // Terrain warms slightly as the sun clears the ridge.
+  terrainMat.color.copy(NAVY_LIGHT).multiplyScalar(1.15)
+    .lerp(GOLD_DIM, easeInOut(actValley) * 0.16);
+
+  // --- Monoliths rise and ignite --------------------------------------
+  monolithParts.forEach((part, i) => {
+    // Stagger so they arrive one after another, not as a block.
+    const local = easeOut(range(actReveal, i * 0.13, 0.62 + i * 0.13));
+    part.group.scale.y = Math.max(0.0001, local);
+    part.mat.emissiveIntensity = local * 0.17;
+    part.edgeMat.opacity = local * 0.95;
+  });
+
+  renderer.render(scene, camera);
+}
+
+/* ------------------------------------------------------------------ *
+ * Bake API consumed by render-frames.mjs.
+ * ------------------------------------------------------------------ */
+const scratch = document.createElement('canvas');
+const sctx = scratch.getContext('2d');
+
+/* Resize the render target between bake passes. A portrait phone crops the
+ * valley rather than widening it, so the portrait pass keeps a comparable
+ * vertical framing via a larger FOV instead of a distorted horizontal one. */
+window.__setViewport = function setViewport(width, height, fov) {
+  WIDTH = width; HEIGHT = height; FOV_BASE = fov;
+  renderer.setSize(width, height, false);
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
+};
+
+/* Encode the frame already sitting in the drawing buffer. Kept separate
+ * from renderAt so one render can feed every tier derived from it. */
+window.__encode = function encode(width, height, quality) {
+  if (width === WIDTH && height === HEIGHT) {
+    return renderer.domElement.toDataURL('image/webp', quality);
+  }
+  scratch.width = width;
+  scratch.height = height;
+  sctx.imageSmoothingEnabled = true;
+  sctx.imageSmoothingQuality = 'high';
+  sctx.drawImage(renderer.domElement, 0, 0, width, height);
+  return scratch.toDataURL('image/webp', quality);
+};
+
+window.__renderAt = renderAt;
+window.__ready = true;
+</script>
+</body>
+</html>
