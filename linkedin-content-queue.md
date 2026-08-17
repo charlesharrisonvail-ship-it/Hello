@@ -61,30 +61,34 @@ Colorado legislature. Speed beats polish — your Senate post proved it.*
 
 ---
 
-### Wed W1 — Vail Market Carousel
+### Wed W1 — Vail Market Carousel ✅ BUILT
 
-**Format:** PDF carousel, 6 slides, navy/gold.
+**Format:** PDF carousel, 7 slides, navy/gold →
+`assets/carousel-vail-market-aug2026.pdf` (upload as-is).
+**Numbers are live from Vail MLS**, residential, 12 months ending July 2026.
 
 ```
 Post copy:
-Vail–Beaver Creek, mid-summer 2026: 5 numbers that matter.
+Vail just hit a 12-month inventory high. Most people haven't noticed.
 
-Most of what you read about "the Colorado market" is Denver data.
-The mountains are a different animal. Swipe for what's actually happening
-in the corridor — and what it means if you're buying, selling, or investing
-here. 👇
+190 active listings. Up from 130 in January — a 46% climb in six months.
 
-Which number surprised you?
+But that's not even the number that should change how you price. Swipe for
+the 5 that matter right now, straight from the MLS. 👇
 
-Slides:
-1. VAIL–BEAVER CREEK · MID-SUMMER 2026 — 5 numbers that matter
-2. [Median price + YoY change]
-3. [Days on market + what it signals]
-4. [Inventory / months of supply]
-5. [Luxury segment ($4M+) activity]
-6. The takeaway → Follow Charles Harrison for the corridor, decoded.
+Sellers: which one of these is your listing fighting?
+
+#vailrealestate #coloradorealestate #luxuryrealestate #mountainliving
 ```
-*Pull the five numbers from your MLS before posting.*
+
+**The five numbers (for your reference when people ask in comments):**
+| # | Metric | July 2026 | Context |
+|---|---|---|---|
+| 1 | Active listings | **190** | 12-month high; 130 in Jan (+46%) |
+| 2 | Ask-vs-sold gap | **$772K** | $3.0M median ask vs $2.2M median sold (26%) |
+| 3 | Avg days on market | **103** | Was 60 in April; climbing every month |
+| 4 | Months of supply | **~10** | 190 active ÷ 19 July closings; >6 = buyer's market |
+| 5 | Avg vs median sale | **$4.8M vs $2.2M** | Ultra-luxury tier is a separate market |
 
 ---
 
