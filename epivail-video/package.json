@@ -1,0 +1,31 @@
+{
+  "name": "epivail-video",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fontsource/bebas-neue": "^5.3.0",
+    "@fontsource/cormorant-garamond": "^5.3.0",
+    "@fontsource/dm-sans": "^5.3.0",
+    "@remotion/bundler": "^4.0.512",
+    "@remotion/cli": "^4.0.512",
+    "@remotion/fonts": "^4.0.512",
+    "@remotion/renderer": "^4.0.512",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "remotion": "^4.0.512"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "css-loader": "^7.1.4",
+    "style-loader": "^4.0.0",
+    "typescript": "^7.0.2"
+  }
+}
