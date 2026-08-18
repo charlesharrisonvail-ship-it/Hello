@@ -101,7 +101,10 @@ async function main() {
     problems.push(`requestfailed: ${r.url()} ${r.failure()?.errorText ?? ''}`);
   });
 
-  await page.goto(`http://127.0.0.1:${port}/`, { waitUntil: 'networkidle' });
+  // --page targets a built bundle (dist/artifact-preview.html) instead of the
+  // source page, so the same checks cover both.
+  const PAGE = arg('page', '/');
+  await page.goto(`http://127.0.0.1:${port}${PAGE}`, { waitUntil: 'networkidle' });
 
   const suffix = MOBILE ? 'mobile' : REDUCED ? 'reduced' : 'desktop';
 

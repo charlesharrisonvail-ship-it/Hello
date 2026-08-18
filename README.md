@@ -44,10 +44,19 @@ npm run bake                      # re-render the frame sequences (~90s)
 node preview.mjs                  # screenshot the page, desktop
 node preview.mjs --mobile         # 390x844 @ DPR 3
 node preview.mjs --reduced-motion # verify the static fallback
+
+node build-artifact.mjs           # bundle to a single self-contained file
+node preview.mjs --page /dist/artifact-preview.html   # verify that bundle
 ```
 
 `preview.mjs` exits non-zero on any console error or failed request, so it
 works as a smoke test.
+
+`build-artifact.mjs` inlines the CSS, the three modules, the manifest and the
+frames as data URIs, producing `dist/artifact.html` for hosts that serve a
+single file under a strict CSP. It embeds the `lg` and `pt` tiers by default
+(~3.7 MB); `chooseTier`'s fallback chain resolves the omitted tiers to `lg`,
+so dropping them needs no code change. `dist/` is generated and gitignored.
 
 ## Performance and degradation
 
