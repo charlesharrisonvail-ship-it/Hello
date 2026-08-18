@@ -7,11 +7,17 @@ The plan only works if the loop runs. ~45 min/day total.
 | What | When | How |
 |---|---|---|
 | Vail market carousel (PDF) | **Wed Aug 19, 7–9am MT** | Manual — LinkedIn's native scheduler. Claude sends a reminder at 7am MT with the file path and copy. |
-| Equity vs Commission (video) | **Fri Aug 21** — not yet scheduled | Blocked: OpusClip auto-applied the default brand template (intro/outro media + karaoke captions), so its render is 68s, not the 60s built. Awaiting Charles's call. |
+| Equity vs Commission (video, 15s) | **Fri Aug 21, 8am MT** | Manual — upload `assets/equity-vs-commission-15s.mp4` natively. Claude sends a reminder at 8am MT. |
 
 Document (PDF/carousel) posts cannot be scheduled by any connected tool —
 OpusClip's LinkedIn integration handles video only. Carousels go through
 LinkedIn's own scheduler.
+
+**Do not route video through OpusClip.** It auto-applies the default brand
+template, which appends intro/outro media (`CharlesInternational.mp4`,
+`logoexplode.mp4`) and burns karaoke captions over the typography — the test
+render came back 68s instead of the length built. Native upload only, unless
+that template is turned off in OpusClip first.
 
 ## Daily (Mon–Fri)
 - [ ] Post the day's calendar item, 7–9am MT (Mon/Tue posts are the priority — 43% of your reach lives there)
