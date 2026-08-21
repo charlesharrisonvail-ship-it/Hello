@@ -220,28 +220,36 @@ Building the team across Colorado and beyond. 🏔️
 
 ### Fri W2 — Agent Attraction Vertical Video
 
-**Format:** Native vertical video, 60s, captions on. (Remotion template candidate.)
+**Format:** Native vertical video, 15s, 1080×1920 →
+`assets/equity-vs-commission-15s.mp4` (upload as-is). ✅ BUILT
+
+Upload **natively to LinkedIn**. Do not route through OpusClip — its default
+brand template appends intro/outro media and burns karaoke captions over the
+typography. No captions needed: the words are the visuals.
 
 ```
 Post copy:
-Equity vs. commission. 60 seconds. No pitch.
+Equity vs. commission. 15 seconds. No pitch.
 
-A commission is income. You earn it, you spend it, you start over.
-Equity is ownership. It compounds while you sleep.
+A commission is income. You earn it, you spend it, you start over at zero.
+Equity is ownership. It keeps working after you close.
 
-Most agents build their whole career on the first and never touch the
-second. That's the conversation nobody's having — so I made it a minute long.
+Most agents build an entire career on the first and never touch the second.
+That's the conversation nobody's having.
 
-Agents: watch, then tell me what you'd want to know.
-
-Script beats (60s):
-0–5s   HOOK: "Your commission split isn't your biggest problem."
-5–20s  A commission is income; income stops when you stop.
-20–40s Equity compounds: stock awards, rev share — the Epique math.
-40–55s "The agents joining us aren't leaving brokerages. They're leaving
-       a model."
-55–60s CTA: "Follow for the numbers nobody shows you. DMs open."
+Agents: watch it, then tell me what you'd want to know.
 ```
+
+**Scene beats (15s):** hook → "a commission is income, it stops when you
+stop" → "equity is ownership" + compounding chart → "they're not leaving
+brokerages, they're leaving a model" + byline.
+
+**No income claims by design.** The chart is unlabeled — it shows the shape
+of the two models, not projected returns. If you want real figures in a
+future cut, they need to be disclosed Epique numbers, not illustrative ones.
+
+**Optional VO:** `equity-video-voiceover-script.md` has the timed script if
+you'd rather record it. Silent is fine and intended — LinkedIn autoplays muted.
 
 ---
 
