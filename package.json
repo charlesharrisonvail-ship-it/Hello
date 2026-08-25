@@ -1,0 +1,23 @@
+{
+  "name": "hello",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Hello World repo with a Playwright end-to-end test suite.",
+  "scripts": {
+    "serve": "node scripts/serve.mjs",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:debug": "PWDEBUG=1 playwright test",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:update-snapshots": "playwright test --update-snapshots",
+    "report": "playwright show-report",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}
