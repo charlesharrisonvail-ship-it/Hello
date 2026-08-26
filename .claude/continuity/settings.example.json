@@ -1,0 +1,35 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|compact|clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .claude/continuity/identity.py"
+          }
+        ]
+      },
+      {
+        "matcher": "startup|compact|clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .claude/continuity/session_start.py"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .claude/continuity/pre_compact.py"
+          }
+        ]
+      }
+    ]
+  }
+}
