@@ -36,16 +36,13 @@ writing-plans, writing-skills
 
 `linkedin-optimizer` in this directory is a local skill, not part of Superpowers.
 
-## Not wired up: the session-start hook
+## The session-start hook
 
 Upstream ships a SessionStart hook that injects `using-superpowers` into every
-session, which is what makes the rest of the skills fire reliably. The adapted
-script is committed at `.claude/hooks/superpowers-session-start` but is **not
-active** — activating it requires a `.claude/settings.json` that runs a command
-on every session start, which is a deliberate decision for a repo owner to make
-rather than something to land silently.
-
-To enable it, create `.claude/settings.json`:
+session, which is what makes the rest of the skills fire reliably rather than
+only when a description happens to match. The adapted script lives at
+`.claude/hooks/superpowers-session-start` and is **active**, wired up in
+`.claude/settings.json`:
 
 ```json
 {
@@ -67,9 +64,18 @@ To enable it, create `.claude/settings.json`:
 }
 ```
 
-Without the hook the skills still load and remain invocable by name
-(`/brainstorming`, `/systematic-debugging`, ...); they just are not force-injected
-at the top of every session.
+It runs on session startup, `/clear`, and post-compact, and emits the full
+`using-superpowers` skill wrapped in an `<EXTREMELY_IMPORTANT>` block. That block
+instructs the agent to invoke a matching skill before responding to anything —
+including before asking clarifying questions. This applies to every session on
+this repo, for anyone working in it.
+
+To turn it off, delete `.claude/settings.json` (or just its `SessionStart` entry).
+The skills still load and stay invocable by name (`/brainstorming`,
+`/systematic-debugging`, ...); they are simply not force-injected up front.
+
+The script's exec bit is tracked in git as mode `100755`, so it survives a fresh
+clone into a new container.
 
 Two adaptations were made to that script versus upstream:
 
