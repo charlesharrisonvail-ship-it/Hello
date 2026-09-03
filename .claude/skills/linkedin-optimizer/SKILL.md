@@ -21,7 +21,7 @@ Claude" workflow and tailored to Charles's brand and audience.
 ## Audience & Goal Context (always apply)
 
 - Primary audience: real estate agents Charles is attracting to Epique Realty
-  (US, France, Australia, Mexico) — see `epique-agent-recruitment`.
+  (US, France, Germany, Mexico) — see `epique-agent-recruitment`.
 - Secondary audience: luxury buyers/sellers/investors in the Vail–Beaver Creek
   corridor (Luxury Resimercial™).
 - All content must follow `epivail-brand-system` voice and tokens.
