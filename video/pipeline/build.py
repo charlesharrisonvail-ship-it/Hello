@@ -141,18 +141,21 @@ def grid_overlay():
 # source spec is ("gen", file, start) for the new plates, or
 # ("src", start, length) for a window of the v1 cut, retimed to fit.
 
+# OREGON, COLORADO and NEW MEXICO are regenerated rather than reused: v1 ran
+# Seattle skyline under the OREGON label, hillside homes with pools under
+# COLORADO, and an all-male headshot grid with no homes at all under NEW MEXICO.
 STATES = [
     ("WASHINGTON", ("src", 6.40, 1.85)),
-    ("OREGON",     ("src", 8.45, 1.80)),
+    ("OREGON",     ("gen", "g10.mp4", 0.80)),
     ("CALIFORNIA", ("gen", "g04.mp4", 0.80)),
     ("MONTANA",    ("gen", "g05.mp4", 0.80)),
     ("IDAHO",      ("gen", "g06.mp4", 0.80)),
     ("WYOMING",    ("src", 14.95, 1.80)),
     ("NEVADA",     ("gen", "g07.mp4", 0.80)),
     ("UTAH",       ("gen", "g08.mp4", 0.80)),
-    ("COLORADO",   ("src", 20.95, 1.80)),
+    ("COLORADO",   ("gen", "g11.mp4", 0.80)),
     ("ARIZONA",    ("gen", "g09.mp4", 0.80)),
-    ("NEW MEXICO", ("src", 25.35, 1.80)),
+    ("NEW MEXICO", ("gen", "g12.mp4", 0.80)),
 ]
 
 SEG_STATE = 2.0
