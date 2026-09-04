@@ -256,8 +256,9 @@ def main():
         i += 1
 
     # 6. End card, held long enough to read, with a slow push in.
+    # rendered XF longer, like every other segment, so the chain lands on 40.00s
     segs.append((render_segment(
-        i, ("src", 28.00, 2.10), None, SEG_END,
+        i, ("src", 28.00, 2.10), None, SEG_END + XF,
         extra_vf=(f"scale={int(W*1.12)}:{int(H*1.12)},"
                   f"zoompan=z='min(zoom+0.0006,1.06)':d=1:"
                   f"x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s={W}x{H}:fps={FPS},"
