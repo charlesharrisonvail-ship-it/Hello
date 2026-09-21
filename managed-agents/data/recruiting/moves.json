@@ -1,0 +1,19 @@
+{
+  "window": "last 90 days",
+  "market_events": [
+    {"at": "2026-08-14", "brokerage": "Summit Peak Realty", "event": "split_change",
+     "detail": "Commission split cut from 80/20 to 65/35; $495/mo desk fee introduced. Announced at all-hands, effective immediately."},
+    {"at": "2026-07-02", "brokerage": "Gore Range Properties", "event": "leadership_change",
+     "detail": "Managing broker retired; no structural changes announced."}
+  ],
+  "departures": [
+    {"license_id": "CO-1148802", "name": "Marisol Avery",    "from": "Summit Peak Realty", "to": "Compass",            "at": "2026-08-29"},
+    {"license_id": "CO-1150934", "name": "Trent Boucher",    "from": "Summit Peak Realty", "to": "eXp Realty",         "at": "2026-09-03"},
+    {"license_id": "CO-1143177", "name": "Nadia Oyelaran",   "from": "Summit Peak Realty", "to": "Independent",        "at": "2026-09-05"},
+    {"license_id": "CO-1156620", "name": "Wes Kaminski",     "from": "Summit Peak Realty", "to": "eXp Realty",         "at": "2026-09-09"},
+    {"license_id": "CO-1139845", "name": "Priya Raghunathan","from": "Summit Peak Realty", "to": "Compass",            "at": "2026-09-11"},
+    {"license_id": "CO-1161204", "name": "Dane Whitlock",    "from": "Summit Peak Realty", "to": "Christie's Intl",    "at": "2026-09-14"},
+    {"license_id": "CO-1127399", "name": "Alina Barros",     "from": "Summit Peak Realty", "to": "eXp Realty",         "at": "2026-09-16"},
+    {"license_id": "CO-1133051", "name": "Grant Pemberton",  "from": "Blue River Brokerage","to": "Gore Range Properties","at": "2026-08-21"}
+  ]
+}

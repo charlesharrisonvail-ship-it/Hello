@@ -1,0 +1,6 @@
+.env
+.venv/
+__pycache__/
+.ids.json
+data/incident/app.log
+data/recruiting/roster.csv

@@ -1,0 +1,7 @@
+[
+  {"commit": "a3f9c21", "service": "checkout",  "at": "14:31:18Z", "author": "d.okafor",  "message": "refactor: simplify order line lookup"},
+  {"commit": "7b2e104", "service": "inventory", "at": "13:58:02Z", "author": "m.lindqvist","message": "chore: bump otel sdk to 1.29"},
+  {"commit": "c19aa55", "service": "auth",      "at": "12:14:47Z", "author": "r.patel",    "message": "fix: clock skew tolerance on jwt exp"},
+  {"commit": "e4d7708", "service": "cart",      "at": "10:02:33Z", "author": "s.nakamura", "message": "feat: coupon stacking behind flag"},
+  {"commit": "f0c3b91", "service": "checkout",  "at": "09:41:12Z", "author": "d.okafor",   "message": "test: add fixture for split shipments"}
+]

@@ -1,0 +1,27 @@
+commit a3f9c21b4e8f2d6a91c05e7b3f8d24ac1e69b0d3
+Author: d.okafor <d.okafor@example.com>
+Date:   Tue Sep 15 14:29:51 2026 +0000
+
+    refactor: simplify order line lookup
+
+--- a/services/checkout/order_service.py
++++ b/services/checkout/order_service.py
+@@ -112,13 +112,11 @@ class OrderService:
+     def hydrate_lines(self, order_ids: list[int]) -> dict[int, list[OrderLine]]:
+-        # Single round trip: one IN query for every order in the batch.
+-        rows = self.db.query(
+-            "SELECT * FROM order_lines WHERE order_id = ANY(%s)",
+-            (order_ids,),
+-        )
+-        out: dict[int, list[OrderLine]] = defaultdict(list)
+-        for row in rows:
+-            out[row.order_id].append(OrderLine.from_row(row))
+-        return out
++        # Simpler to read: just ask for each order's lines directly.
++        out: dict[int, list[OrderLine]] = {}
++        for order_id in order_ids:
++            rows = self.db.query(
++                "SELECT * FROM order_lines WHERE order_id = %s", (order_id,)
++            )
++            out[order_id] = [OrderLine.from_row(r) for r in rows]
++        return out

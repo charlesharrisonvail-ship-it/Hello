@@ -1,0 +1,50 @@
+{
+  "CO-1142663": {
+    "license_id": "CO-1142663", "name": "Rowan Delacroix", "brokerage": "Summit Peak Realty",
+    "market": "Vail / Beaver Creek", "years_licensed": 14, "team_size": 3,
+    "ytd_volume_usd": 41200000, "ytd_units": 19, "avg_price_point_usd": 2168000,
+    "segment": "luxury resort", "languages": ["English", "French"],
+    "listings_active": 6, "listings_expired_90d": 0,
+    "notes": "Consistent top-3 producer at Summit Peak for six straight years. Runs a three-person team. Has not changed brokerage since 2019."
+  },
+  "CO-1155018": {
+    "license_id": "CO-1155018", "name": "Imogen Hartwell", "brokerage": "Summit Peak Realty",
+    "market": "Edwards / Avon", "years_licensed": 9, "team_size": 2,
+    "ytd_volume_usd": 18700000, "ytd_units": 22, "avg_price_point_usd": 850000,
+    "segment": "move-up residential", "languages": ["English"],
+    "listings_active": 4, "listings_expired_90d": 1,
+    "notes": "Steady mid-luxury producer. Team of two. Publicly active on social; posts about brokerage culture."
+  },
+  "CO-1129470": {
+    "license_id": "CO-1129470", "name": "Bastien Moreau", "brokerage": "Summit Peak Realty",
+    "market": "Vail Village / international", "years_licensed": 11, "team_size": 1,
+    "ytd_volume_usd": 27400000, "ytd_units": 11, "avg_price_point_usd": 2490000,
+    "segment": "luxury resort / international buyers", "languages": ["English", "French", "German"],
+    "listings_active": 5, "listings_expired_90d": 0,
+    "notes": "Sources a large share of buyers from France and Germany. Solo agent, no team overhead. Travels to Europe twice a year for client work."
+  },
+  "CO-1166735": {
+    "license_id": "CO-1166735", "name": "Quinn Ashworth", "brokerage": "Summit Peak Realty",
+    "market": "Eagle / Gypsum", "years_licensed": 4, "team_size": 1,
+    "ytd_volume_usd": 6300000, "ytd_units": 14, "avg_price_point_usd": 450000,
+    "segment": "entry residential", "languages": ["English"],
+    "listings_active": 2, "listings_expired_90d": 3,
+    "notes": "Newer agent, volume-sensitive to fee changes. Three expired listings in the last quarter."
+  },
+  "CO-1137882": {
+    "license_id": "CO-1137882", "name": "Solveig Brennan", "brokerage": "Summit Peak Realty",
+    "market": "Beaver Creek / Bachelor Gulch", "years_licensed": 17, "team_size": 5,
+    "ytd_volume_usd": 58900000, "ytd_units": 16, "avg_price_point_usd": 3681000,
+    "segment": "ultra-luxury", "languages": ["English"],
+    "listings_active": 8, "listings_expired_90d": 0,
+    "notes": "Highest producer at the brokerage. Five-person team with a dedicated transaction coordinator. Any move would bring the team."
+  },
+  "CO-1148802": {
+    "license_id": "CO-1148802", "name": "Marisol Avery", "brokerage": "Compass",
+    "market": "Vail / Beaver Creek", "years_licensed": 12, "team_size": 2,
+    "ytd_volume_usd": 22100000, "ytd_units": 13, "avg_price_point_usd": 1700000,
+    "segment": "luxury resort", "languages": ["English", "Spanish"],
+    "listings_active": 3, "listings_expired_90d": 0,
+    "notes": "Already left Summit Peak on 2026-08-29. Landed at Compass. Recently moved — unlikely to move again this cycle."
+  }
+}
