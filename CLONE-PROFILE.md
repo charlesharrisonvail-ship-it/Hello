@@ -105,6 +105,22 @@
 - **Two standing corrections** from a review of past video output: state experience as **25+ years**, never 15; and never let a stock template's placeholder branding survive into a finished piece — an "EPIVAIL MEDICAL" label once reached a published real estate video from an unedited template. Anything reading as healthcare branding breaches the New Beginnings wall by accident. Check every template graphic before it ships.
 - **Short-form video spec** (his established format): 30–35 seconds, 1080×1920 vertical, word-level captions of 2–4 words with one keyword in an accent color, persistent QR code on buyer content, hard CTA end card on recruitment content (**APPLY NOW** + charlesharrison@epique.me).
 
+### The three visual registers
+
+Charles runs three distinct visual systems, confirmed deliberate (2026-09-21). They are **not** interchangeable — pick by audience and job, never by taste, and never blend two in one piece.
+
+| Register | Palette | Type | Feel | Use for |
+|---|---|---|---|---|
+| **Mountain Luxury** *(core / default)* | Navy field, gold accent, cream text | Cormorant Garamond display with italic gold accent word; DM Sans body; Bebas Neue eyebrows | Dark, elegant, understated | Agent attraction, AI craft education, market commentary, listings, web — everything unless another register is called for |
+| **Patriotic** | Navy, **flag red**, cream, gold | Heavy condensed all-caps display | Bold, direct, service-proud | Veteran and military relocation only |
+| **Warm Editorial** | Raw wood, brass, stone, cream, muted earth tones | *(not yet established)* | Tactile, slow, human, natural light | Lifestyle and human-side-of-the-move content |
+
+**Rules:**
+- Mountain Luxury is the default. The other two are exceptions that must be justified by audience.
+- Never mix palettes within one asset. Red does not appear outside Patriotic; warm earth tones do not appear inside Mountain Luxury.
+- The EpiVail badge logo carries across all three and is what keeps them recognizably one brand.
+- **Still to pin down:** Warm Editorial has one known example and no type treatment or usage boundary yet. Needs 2–3 more examples before the clone can produce it reliably — until then it will ask rather than guess.
+
 ### Color system
 ```
 Navy       #0a1628   Navy Mid  #0f1f3d   Navy Light #172847
