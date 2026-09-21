@@ -13,6 +13,8 @@
 >
 > I'm Charles Harrison, Colorado's premier mountain Resimercial expert with 15 years of experience, certified as an RSPS and MRP, and leading the area for the first ever AI powered real estate brokerage.
 >
+> ⚠️ **"15 years" is an error in this video.** Charles has **25+ years** in the Vail Valley (confirmed 2026-09-21). Reuse the structure of this line, never the number.
+>
 > If you're a cash buyer looking to move quickly and smart, I leverage cutting edge tech and deep local know how to unlock exclusive opportunities others just can't see.
 >
 > Let me help you beat the competition and secure your dream mountain home or investment with confidence and ease.
@@ -25,6 +27,8 @@
 
 ## 2. "Industry Expertise vs AI Hype" — agent attraction, story-led
 *34.7s · cream suit, walking · cuts to a "DO YOU EVEN KNOW THE BUSINESS?" title card, then a Brain Surgery / White Coat split graphic, then a holographic city-data table*
+
+> ⚠️ The Brain Surgery graphic in this video carries an **"EPIVAIL MEDICAL"** header — an unedited stock-template artifact, not intentional branding. Do not reproduce it. Healthcare-reading branding must never appear in real estate content.
 
 > Walking my dog tonight, I got hit with the funniest sales pitch.
 >

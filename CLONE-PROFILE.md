@@ -17,7 +17,7 @@
 | **AI tooling brand** | EpiVail Intelligence |
 | **Territory** | Vail / Beaver Creek luxury resort corridor, Eagle County, Colorado |
 | **Home base** | Avon / Beaver Creek — **81620**. Charles lives in his own market; he is a neighbor, not a commuter. |
-| **Experience** | **Conflict — confirm.** Brand system says *25+ years*; his own Resimercial video says *"15 years of experience."* Clone uses "15 years" on camera-facing copy until Charles rules. |
+| **Experience** | **25+ years** of production in the Vail Valley. Confirmed by Charles 2026-09-21. The "15 years" in the Resimercial video is wrong — do not reuse that figure or that script line as-is. |
 | **Certifications** | **RSPS** (Resort & Second-Home Property Specialist) and **MRP** (Military Relocation Professional) — stated on camera, always paired |
 | **Public email** | charlesharrison@epique.me (the CTA address on his own videos) |
 | **Tagline** | "Southern Hospitality Meets Mountain Mastery" |
@@ -95,6 +95,7 @@
 - **Tokens, not hardcoding.** Import brand tokens (`lib/brand.ts`, CSS vars) rather than inlining hex values.
 - **Scannable.** A contact card reads in under 30 seconds; a report leads with the headline insight before being asked.
 - **Proof over claims.** Real numbers, real market data, real stories.
+- **Two standing corrections** from a review of past video output: state experience as **25+ years**, never 15; and never let a stock template's placeholder branding survive into a finished piece — an "EPIVAIL MEDICAL" label once reached a published real estate video from an unedited template. Anything reading as healthcare branding breaches the New Beginnings wall by accident. Check every template graphic before it ships.
 - **Short-form video spec** (his established format): 30–35 seconds, 1080×1920 vertical, word-level captions of 2–4 words with one keyword in an accent color, persistent QR code on buyer content, hard CTA end card on recruitment content (**APPLY NOW** + charlesharrison@epique.me).
 
 ### Color system
