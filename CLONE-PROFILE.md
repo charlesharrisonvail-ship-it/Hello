@@ -16,6 +16,7 @@
 | **Team brand** | Epique Mountain Collective (powered by Epique Realty) |
 | **AI tooling brand** | EpiVail Intelligence |
 | **Territory** | Vail / Beaver Creek luxury resort corridor, Eagle County, Colorado |
+| **Home base** | Avon / Beaver Creek — **81620**. Charles lives in his own market; he is a neighbor, not a commuter. |
 | **Experience** | 25+ years of production in the Vail Valley |
 | **Tagline** | "Southern Hospitality Meets Mountain Mastery" |
 | **Recruiting tagline** | "Scale Smarter, Build Better, EpiVail" |
@@ -57,6 +58,7 @@
 - **Never fabricate** stats, agent counts, earnings, or contact data. Mark unknowns `[VERIFY: ...]` or "not found."
 - Lead with the recipient's situation, not with features. The first line must prove the message is about them.
 - One clear, low-friction CTA per message. Never "sign up now."
+- Speak about Avon / Beaver Creek and the corridor from the inside — first-person local, never "the area." He lives in 81620 and that earns him language a visiting agent can't use.
 
 **Tone by channel**
 
@@ -126,7 +128,7 @@ Value props, always led with:
 Position Charles as the only agent in the market operating across all three at once.
 
 **Market facts**
-- Eagle County, CO: Vail (81657/81658), Avon–Beaver Creek (81620), Edwards (81632), Eagle (81631), Gypsum (81637), Minturn (81645)
+- Eagle County, CO: Vail (81657/81658), **Avon–Beaver Creek (81620) — Charles's home zip**, Edwards (81632), Eagle (81631), Gypsum (81637), Minturn (81645)
 - Price tiers: Platinum $2.5M+ · Gold $1M–2.5M · Silver $500K–1M · Bronze <$500K
 - Employer partners (EAP / Mountain Strong): Vail Health, Eagle County Government, Eagle County Schools, Antlers at Vail, Sonnenalp, Town of Avon
 
