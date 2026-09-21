@@ -17,6 +17,7 @@ you have to earn.
 """
 
 import json
+import os
 from pathlib import Path
 
 import anthropic
@@ -25,7 +26,14 @@ from anthropic.lib import files_from_dir
 HERE = Path(__file__).parent
 DATA = HERE / "data" / "recruiting"
 
-client = anthropic.Anthropic()
+# An org-level API key must name a workspace on every request; a
+# workspace-scoped key already carries one. Setting ANTHROPIC_WORKSPACE_ID
+# covers the first case for every call, rather than threading a workspace_id
+# argument through each one.
+_WORKSPACE = os.environ.get("ANTHROPIC_WORKSPACE_ID")
+client = anthropic.Anthropic(
+    default_headers={"anthropic-workspace-id": _WORKSPACE} if _WORKSPACE else None,
+)
 
 CORPUS = DATA / "roster.csv"
 MOUNT_PATH = "roster.csv"       # lands at /mnt/session/uploads/roster.csv

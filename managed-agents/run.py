@@ -18,6 +18,8 @@ import json
 import sys
 from pathlib import Path
 
+import anthropic
+
 try:                                    # optional: only needed if you use a .env file
     from dotenv import load_dotenv
     load_dotenv()
@@ -151,6 +153,37 @@ def replay(mod, session_id: str) -> None:
     print()
 
 
+def explain_api_error(e: Exception) -> str:
+    """Turn an API failure into one actionable sentence, not a stack trace."""
+    if isinstance(e, anthropic.AuthenticationError):
+        return ("Your API key was rejected. Check it was copied whole "
+                "(it starts with sk-ant-) and has not been revoked.")
+    if isinstance(e, anthropic.BadRequestError):
+        msg = str(e)
+        if "workspace" in msg.lower():
+            return (
+                "Your API key is not scoped to a workspace, so every request "
+                "must name one. Two ways to fix it:\n\n"
+                "  1. Easiest — make a workspace-scoped key:\n"
+                "     console.anthropic.com/settings/keys -> Create Key, and\n"
+                "     pick a Workspace (not 'Default'/org-level) when asked.\n\n"
+                "  2. Or keep this key and name the workspace:\n"
+                "     find the ID in the Console URL when a workspace is open\n"
+                "     (it looks like wrkspc_...), then set:\n"
+                "       PowerShell  $env:ANTHROPIC_WORKSPACE_ID = \"wrkspc_...\"\n"
+                "       bash        export ANTHROPIC_WORKSPACE_ID=wrkspc_..."
+            )
+        return f"The API rejected the request: {msg}"
+    if isinstance(e, anthropic.PermissionDeniedError):
+        return ("Your key authenticated but lacks access to Managed Agents. "
+                "Check the workspace and that the beta is enabled for your org.")
+    if isinstance(e, anthropic.RateLimitError):
+        return "Rate limited. Wait a moment and run it again."
+    if isinstance(e, anthropic.APIConnectionError):
+        return "Could not reach the API. Check your network connection."
+    return str(e)
+
+
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -170,7 +203,10 @@ def main() -> None:
         print(f"cleared cached IDs for {args.agent}")
         return
 
-    ids = provision(mod, args.agent)
+    try:
+        ids = provision(mod, args.agent)
+    except anthropic.APIError as e:
+        sys.exit(f"\n{explain_api_error(e)}\n")
 
     if args.sessions:
         list_sessions(mod, ids["agent_id"])

@@ -294,6 +294,27 @@ state. Session history is a managed resource.
 
 ---
 
+### If the first run fails
+
+**`This API key is not scoped to a workspace`** — your key is org-level, and
+every request has to name a workspace. Either create a workspace-scoped key
+(Console -> Create Key -> pick a Workspace, not the org), or keep this key and
+set the workspace once:
+
+```powershell
+$env:ANTHROPIC_WORKSPACE_ID = "wrkspc_..."     # PowerShell
+```
+```bash
+export ANTHROPIC_WORKSPACE_ID=wrkspc_...       # bash / zsh
+```
+
+The ID is in the Console address bar while a workspace is open. Both agents
+read that variable and send it as the `anthropic-workspace-id` header on every
+call, so you only set it in one place.
+
+`run.py` translates this and the other common API failures into one plain
+sentence — if you get a raw traceback instead, that's a bug worth reporting.
+
 ## The two agents, side by side
 
 | | incident | recruiting |

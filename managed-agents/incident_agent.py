@@ -15,6 +15,7 @@ handle_tool(), which is the one that runs on YOUR machine.
 """
 
 import json
+import os
 from pathlib import Path
 
 import anthropic
@@ -23,7 +24,14 @@ from anthropic.lib import files_from_dir
 HERE = Path(__file__).parent
 DATA = HERE / "data" / "incident"
 
-client = anthropic.Anthropic()
+# An org-level API key must name a workspace on every request; a
+# workspace-scoped key already carries one. Setting ANTHROPIC_WORKSPACE_ID
+# covers the first case for every call, rather than threading a workspace_id
+# argument through each one.
+_WORKSPACE = os.environ.get("ANTHROPIC_WORKSPACE_ID")
+client = anthropic.Anthropic(
+    default_headers={"anthropic-workspace-id": _WORKSPACE} if _WORKSPACE else None,
+)
 
 # The file the agent mounts and greps inside its own sandbox.
 CORPUS = DATA / "app.log"
