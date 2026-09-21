@@ -222,25 +222,30 @@ Deletes the session, its events, and its container.
 
 ## Running it
 
+> **These go in a terminal, not in Python.** If your prompt is `>>>` you are
+> inside the Python interpreter and `cd`/`pip` will throw `SyntaxError` — type
+> `exit()` and press Enter to get back to your shell. On macOS use `python3`
+> and `pip3`; plain `python` often isn't wired up.
+
 ```bash
 cd managed-agents
-python -m venv .venv && source .venv/bin/activate    # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
+python3 -m venv .venv && source .venv/bin/activate   # optional; Windows: .venv\Scripts\activate
+pip3 install -r requirements.txt
 
 cp .env.example .env        # put your key in it — console.anthropic.com/settings/keys
-python make_fixtures.py     # builds app.log (12 MB) and roster.csv (3.6 MB)
+python3 make_fixtures.py     # builds app.log (12 MB) and roster.csv (3.6 MB)
 
-python test_local.py        # 48 checks, no API key needed, no tokens spent
+python3 test_local.py        # 48 checks, no API key needed, no tokens spent
 ```
 
 Then:
 
 ```bash
-python run.py incident                                  # interactive
-python run.py recruiting --ask "who should I call today?"
-python run.py incident --sessions                       # list past sessions
-python run.py incident --resume ses_...                 # reload one from the server
-python run.py incident --reset                          # forget cached IDs
+python3 run.py incident                                  # interactive
+python3 run.py recruiting --ask "who should I call today?"
+python3 run.py incident --sessions                       # list past sessions
+python3 run.py incident --resume ses_...                 # reload one from the server
+python3 run.py incident --reset                          # forget cached IDs
 ```
 
 The first run creates the agent, environment, and file upload, then caches
