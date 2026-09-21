@@ -223,29 +223,62 @@ Deletes the session, its events, and its container.
 ## Running it
 
 > **These go in a terminal, not in Python.** If your prompt is `>>>` you are
-> inside the Python interpreter and `cd`/`pip` will throw `SyntaxError` — type
-> `exit()` and press Enter to get back to your shell. On macOS use `python3`
-> and `pip3`; plain `python` often isn't wired up.
+> inside the Python interpreter, and `cd`/`pip` will throw `SyntaxError` there.
+> Type `exit()` and press Enter to get back to your shell — its prompt ends in
+> `>` (Windows) or `$` / `%` (Linux, macOS).
+
+The command names differ by platform. Pick your row and use it throughout:
+
+| | run Python | install | copy a file | activate a venv |
+|---|---|---|---|---|
+| **Windows** (PowerShell / cmd) | `python` | `pip` | `copy` | `.venv\Scripts\activate` |
+| **Linux** | `python3` | `pip3` | `cp` | `source .venv/bin/activate` |
+| **macOS** | `python3` | `pip3` | `cp` | `source .venv/bin/activate` |
+
+Not sure which you're in? Run `python --version`. If it prints a version you're
+on the Windows row; if it says "command not found", try `python3 --version` and
+use the Linux/macOS row.
+
+**Windows:**
+
+```powershell
+cd managed-agents
+python -m venv .venv
+.venv\Scripts\activate          # optional but recommended
+pip install -r requirements.txt
+
+copy .env.example .env           # then open .env and paste your key in
+python make_fixtures.py          # builds app.log (12 MB) and roster.csv (3.6 MB)
+python test_local.py             # 48 checks, no API key needed, no tokens spent
+```
+
+**Linux / macOS:**
 
 ```bash
 cd managed-agents
-python3 -m venv .venv && source .venv/bin/activate   # optional; Windows: .venv\Scripts\activate
+python3 -m venv .venv
+source .venv/bin/activate        # optional but recommended
 pip3 install -r requirements.txt
 
-cp .env.example .env        # put your key in it — console.anthropic.com/settings/keys
-python3 make_fixtures.py     # builds app.log (12 MB) and roster.csv (3.6 MB)
-
-python3 test_local.py        # 48 checks, no API key needed, no tokens spent
+cp .env.example .env             # then open .env and paste your key in
+python3 make_fixtures.py         # builds app.log (12 MB) and roster.csv (3.6 MB)
+python3 test_local.py            # 48 checks, no API key needed, no tokens spent
 ```
+
+`test_local.py` should end with `all local checks passed`. It costs nothing
+and needs no key — if it passes, the local half works.
+
+> Once a venv is activated, plain `python` and `pip` work on every platform.
+> The `3` suffix is only needed outside one.
 
 Then:
 
 ```bash
-python3 run.py incident                                  # interactive
-python3 run.py recruiting --ask "who should I call today?"
-python3 run.py incident --sessions                       # list past sessions
-python3 run.py incident --resume ses_...                 # reload one from the server
-python3 run.py incident --reset                          # forget cached IDs
+python run.py incident                                  # interactive
+python run.py recruiting --ask "who should I call today?"
+python run.py incident --sessions                       # list past sessions
+python run.py incident --resume ses_...                 # reload one from the server
+python run.py incident --reset                          # forget cached IDs
 ```
 
 The first run creates the agent, environment, and file upload, then caches
