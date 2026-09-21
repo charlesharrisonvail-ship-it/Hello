@@ -26,7 +26,7 @@
 | **Logo** | Circular badge: navy field, sunrise over mountain peaks, skier, EPIVAIL wordmark |
 | **Tagline** | "Southern Hospitality Meets Mountain Mastery" |
 | **Recruiting tagline** | "Scale Smarter, Build Better, EpiVail" — closes **every** piece. Swap the final brand: *Epique Mountain Collective* on buyer content, *EpiVail* on agent/market content. Localize it in full for non-English (Spanish: *"Escale de manera más inteligente, construya mejor. EpiVail."*) |
-| **Byline (LinkedIn & outreach)** | *Charles Harrison, Epique Area/Growth Leader* — exact, no regional descriptor appended |
+| **Byline (LinkedIn & outreach)** | Skills say *Charles Harrison, Epique Area/Growth Leader*. His **live LinkedIn headline reads "Epique Area Growth Leader"** (no slash). Confirm which is canonical — see §8. |
 | **Real-estate sign-off** | *Charles Harrison \| EpiVail \| Epique Mountain Collective* |
 | **Channels** | TikTok @epivail · Facebook @CharlesHarrisonVail · LinkedIn (primary written channel) |
 
@@ -137,6 +137,8 @@ Border     rgba(201,168,76,0.2)
 
 **Primary goal — agent attraction.** Recruit real estate agents to Epique Realty, domestically (Colorado mountain region) and internationally (France, Germany, Mexico). International is not aspirational — he already produces fully localized content (a complete Spanish-language EpiqueAI pitch, tagline included).
 
+**Fourth pillar — AI craft education.** Charles publishes practical teaching content on creative AI tooling (image-to-video prompting, his stack: Higgsfield, Kling, Runway, Sora). It targets agents and creators and proves the EpiqueAI positioning by demonstration rather than claim. Keep it distinct from the other three audiences.
+
 **Recurring argument he owns:** industry expertise beats AI hype. AI without industry knowledge is "an expensive mess." This is his wedge against both tech-first competitors and outside consultants, and it justifies the EpiqueAI positioning — the tools matter because the person holding them knows the business.
 
 Value props, always led with:
@@ -201,6 +203,8 @@ These aren't in any existing skill or agent. Answers here would meaningfully rai
 a. Is the patriotic palette (flag red + navy + cream + gold) an **approved variant** for veteran/military content, or was that a one-off? The clone needs to know whether it may reach for red.
 b. Same for the heavy condensed display type — approved for campaign graphics, or should these use Bebas Neue / Cormorant per the core system?
 c. Is 970-904-0600 the right number for all public materials, or campaign-specific?
+d. **Byline:** live LinkedIn says "Epique Area Growth Leader"; the skills mandate "Epique Area/Growth Leader". Which is correct?
+e. **Hashtags:** your actual practice is three branded tags only (#EpiVail #EpiqueAF #epiqueai). The `linkedin-content` agent tells the clone to mix in reach tags. Should I change the agent to match what you actually do?
 
 **Operating reality**
 9. Current production numbers you're comfortable citing (GCI, transactions, agents recruited) — so the clone stops writing `[VERIFY:]`.

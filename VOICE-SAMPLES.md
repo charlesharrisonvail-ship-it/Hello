@@ -88,6 +88,47 @@
 
 ---
 
+## 5. LinkedIn post — "20 things worth specifying" (AI craft education)
+*Posted ~2026-09-16 · byline shown as "Epique Area Growth Leader" · single portrait graphic*
+
+**Post copy, verbatim:**
+
+> 20 things worth specifying in an image-to-video prompt 👇 with Higgsfield,  Cling, Runway
+> scale Smarter Build Better....EpiVail!
+> #EpiVail #EpiqueAF #epiqueai
+
+**Graphic copy, verbatim:**
+
+> IMAGE-TO-VIDEO
+> **20 things worth actually *specifying*.**
+> HIGGSFIELD · RUNWAY · KLING · SORA
+>
+> Subject · Motion · Camera Move · Shot Size · Duration · Pacing · Lens · Lighting · Time of Day · Weather
+> Environment · Style · Color Grade · Speed · Loop · Aspect Ratio · First Frame · Last Frame · What Stays Still · Sound
+>
+> *They aren't commands.*
+> *They're controls.*
+>
+> No AI tool has a /slash menu. Ask for these in plain words.
+
+### What this sample establishes
+
+**The graphic carries the content; the copy is deliberately light.** The post body is three short lines typed fast — inconsistent capitalization ("scale Smarter Build Better"), a four-dot ellipsis, a tool name misspelled ("Cling" for Kling). The *graphic* is meticulous and fully on-brand. This is a real and repeatable division of labor: polish the asset, keep the caption casual and human. The clone should not over-write LinkedIn copy when a designed asset is doing the work.
+
+**Closing couplet — the contrast pivot again.** *"They aren't commands. They're controls."* Same two-beat move as *"Veterans served our country. Now we serve Colorado homeowners."* Negate, then reframe. This is one of Charles's most consistent structures.
+
+**The useful-footnote close.** One small line of genuine practical help under the main point: *"No AI tool has a /slash menu. Ask for these in plain words."* Generous rather than promotional.
+
+**Graphic is on-brand and confirms the system works:** navy field, gold/amber accent, Cormorant-style display with the italic gold accent word (*specifying*), letter-spaced all-caps eyebrow (IMAGE-TO-VIDEO), pill-shaped navy chips. This is the core brand system executed well — unlike the veteran campaign's patriotic variant.
+
+**Hashtag practice (differs from the documented rule):** three tags, all branded — `#EpiVail #EpiqueAF #epiqueai`. No reach tags, inconsistent casing. The `linkedin-content` agent currently says "3-5 max, mix one branded with reach tags." His actual practice is branded-only.
+
+**A fourth content pillar: AI craft education.** Not agent attraction, not luxury client work, not veteran relocation — teaching creative AI tooling. Audience is agents and creators, and it demonstrates the EpiqueAI positioning by being visibly good at the tools rather than claiming to be.
+
+**Tools named as his stack:** Higgsfield, Kling, Runway, Sora.
+
+---
+
 ## Voice Patterns Extracted
 
 **Openings — he never opens with himself.** Three of four start with the audience's situation or a story: a pain question ("Struggling to find…"), an anecdote ("Walking my dog tonight…"), or a market claim ("Real estate cycles are usually predictable, but…"). The one that does introduce him puts it in line two, after the hook.
