@@ -406,19 +406,91 @@ idea, smaller.
 
 ---
 
+## The eighth function: running on a schedule
+
+Everything above still needs you to type a command. A **scheduled deployment**
+removes that. `deploy.py` builds one:
+
+```
+python deploy.py create
+```
+
+That saves a bundle — the agent, the environment, the mounted roster, and the
+kickoff — against a cron schedule, and Anthropic fires a fresh session at each
+interval. Your laptop does not need to be on.
+
+```python
+client.beta.deployments.create(
+    name="EpiVail — Monday recruiting brief",
+    agent=agent_id,
+    environment_id=env_id,
+    resources=[{"type": "file", "file_id": file_id, "mount_path": "roster.csv"}],
+    schedule={"type": "cron", "expression": "0 6 * * 1", "timezone": "America/Denver"},
+    budget={"type": "limit", "max_list_cost": {"amount": "500", "currency": "USD"}},
+    initial_events=[{"type": "user.define_outcome", "description": TASK,
+                     "rubric": {"type": "text", "content": RUBRIC}}],
+)
+```
+
+| command | what it does |
+|---|---|
+| `python deploy.py create` | create it |
+| `python deploy.py status` | show it and the next three fire times |
+| `python deploy.py test` | fire once now, don't wait for Monday |
+| `python deploy.py runs` | every firing, successes and failures |
+| `python deploy.py pause` / `unpause` | stop and resume — reversible |
+| `python deploy.py archive` | permanent; asks you to type the word first |
+
+Four things in that call are worth understanding.
+
+**The cron is `0 6 * * 1`** — minute, hour, day-of-month, month, day-of-week.
+Monday at 06:00, `America/Denver`. Fire times are **jittered up to 9 minutes**
+to spread load, so treat the schedule as "about then". Wall-clock times between
+1 and 3 AM are skipped or doubled on daylight-saving days — 6 AM stays clear of
+that, deliberately.
+
+**It has a budget.** This runs with nobody watching, so it is capped at $5.00
+per run (`"500"` — minor units, as a string, so no float rounding ever applies).
+At the cap the session *pauses* rather than dies. Unlike a session's, a
+deployment's budget can be changed or cleared later. **Put a budget on anything
+that fires unattended.**
+
+**It starts with an outcome, not a message.** A call list is a deliverable, so
+instead of asking a question, the run states what "done" means and hands over a
+rubric. A separate grader — its own context window — scores each attempt
+criterion by criterion and sends the gaps back, up to `max_iterations`. You get
+a brief that passed a standard, not a first draft.
+
+The rubric is in `deploy.py` and it is **yours to edit** — it is the definition
+of a good Monday brief. Keep criteria concrete and independently checkable
+("names two or three agents", "no agent from the departures list") rather than
+vague ("the list is good"); vague criteria make the grader noisy.
+
+**Every firing is recorded.** `deployment_runs` logs each attempt whether or not
+the session started, so a run that never launched is visible instead of silent.
+That is what `python deploy.py runs` reads.
+
+---
+
 ## Where to go next
 
-Four features in the platform that this folder doesn't use, roughly in the
-order they'd pay off for you:
+This folder now uses agents, environments, sessions, events, custom tools,
+skills, scheduled deployments, and outcomes. Two big pieces are left:
 
-- **Scheduled deployments** — run an agent on a cron. "Every Monday at 6am,
-  check which agents in my markets changed brokerage last week." No server.
-- **Memory stores** — persistent memory across sessions, so the agent
-  remembers who you already called.
-- **MCP servers** — connect Lofty, Apollo, or Gmail as first-class tools
-  instead of hand-writing `handle_tool()` bodies.
-- **Outcomes** — give the agent a rubric and it iterates against a grader
-  until the work passes, instead of stopping at a first draft.
+- **Memory stores** — memory that persists across sessions, so next Monday's
+  brief knows who last Monday's already told you to call. Mounted as a session
+  resource, same as a file.
+- **MCP servers** — connect Lofty, Apollo, Gmail or an MLS as first-class
+  tools, so `handle_tool()` stops being hand-written. Credentials live in a
+  vault and are substituted at egress, never entering the sandbox.
+
+Together those two turn the recruiting desk from a good demo into something
+that runs your week: real data in, memory of what it already said, a call list
+on Monday morning.
+
+Two smaller ones worth knowing exist: **multiagent** (fan work out to
+subagents, or to a cheaper model for reading-heavy sub-tasks) and **webhooks**
+(get notified of session state changes instead of holding a stream open).
 
 Docs: [Managed Agents overview](https://platform.claude.com/docs/en/managed-agents/overview)
 · [quickstart](https://platform.claude.com/docs/en/managed-agents/quickstart)

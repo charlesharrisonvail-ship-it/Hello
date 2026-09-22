@@ -8,6 +8,7 @@ the tool schemas, and the fixtures. Run them before you spend tokens.
 """
 
 import json
+import pathlib
 import sys
 
 import incident_agent as inc
@@ -111,6 +112,53 @@ for fn in seven:
 check("both use claude-opus-5 in setup_agent",
       all("claude-opus-5" in open(f"{m}.py").read()
           for m in ("incident_agent", "recruiting_agent")))
+
+# The scheduled deployment fires unattended, so its config has to be right
+# before it ever runs -- nobody is watching the first time.
+print("\nscheduled deployment config")
+import deploy
+from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
+
+fields = deploy.SCHEDULE["expression"].split()
+check("cron expression has 5 fields", len(fields) == 5, deploy.SCHEDULE["expression"])
+check("schedule type is cron", deploy.SCHEDULE.get("type") == "cron")
+try:
+    tz = ZoneInfo(deploy.SCHEDULE["timezone"])
+    check("timezone is a real IANA zone", True)
+except Exception as exc:
+    tz = None
+    check("timezone is a real IANA zone", False, str(exc))
+
+if tz:
+    mi, hr, dom, mon, dow = fields
+    t = datetime(2026, 1, 5, 0, 0, tzinfo=tz)
+    hits = []
+    for _ in range(366 * 24):
+        if (str(t.minute) == mi and str(t.hour) == hr and dom == "*" and mon == "*"
+                and str((t.weekday() + 1) % 7) == dow):
+            hits.append(t)
+        t += timedelta(hours=1)
+    check("fires ~weekly (50-53 times a year)", 50 <= len(hits) <= 53, f"got {len(hits)}")
+    check("every firing is a Monday at 06:00 local",
+          bool(hits) and all(h.weekday() == 0 and h.hour == 6 for h in hits))
+    check("avoids the 01:00-03:00 DST window (skipped/doubled hours)",
+          not (1 <= int(hr) <= 3), f"hour={hr}")
+
+amount = deploy.BUDGET["max_list_cost"]["amount"]
+check("budget amount is an integer string in cents",
+      isinstance(amount, str) and amount.isdigit() and int(amount) > 0, repr(amount))
+check("budget currency is USD", deploy.BUDGET["max_list_cost"]["currency"] == "USD")
+check("an unattended run is capped at all", int(amount) > 0)
+
+criteria = [l for l in deploy.RUBRIC.splitlines() if l.strip()[:2].rstrip(".").isdigit()]
+check("rubric has 5-10 gradeable criteria", 5 <= len(criteria) <= 10, f"got {len(criteria)}")
+check("rubric encodes the 'recently moved is disqualifying' rule",
+      "not moving again" in deploy.RUBRIC or "departures" in deploy.RUBRIC)
+check("rubric forbids invented figures",
+      "VERIFY" in deploy.RUBRIC and "invented" in deploy.RUBRIC)
+check("archive is guarded by a typed confirmation",
+      'Type "archive" to confirm' in pathlib.Path("deploy.py").read_text())
 
 print("=" * 62)
 if failures:
