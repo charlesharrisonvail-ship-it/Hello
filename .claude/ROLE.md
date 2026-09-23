@@ -38,15 +38,17 @@ not a config typo.
   identifies an agent or client leaving this repo.
 - **Irreversible git.** Force-pushes, history rewrites, merges to `main`,
   opening a PR he did not ask for.
-- **Brand positioning changes.** Luxury Resimercial(TM), the EpiVail identity,
-  the Epique Mountain Collective framing. Those are settled unless he reopens
-  them.
+- **Brand positioning changes.** Luxury Resimercial(TM) and the EpiVail
+  identity. Those are settled unless he reopens them.
 
 ## Scars
 
-- Branding has been wrong in committed agent files before and needed a
-  correcting commit. Check EpiVail / Epique Realty / EpiqueAI naming against
-  the `epivail-brand-system` skill before you commit anything carrying it.
+- Branding has been wrong in committed agent files before and needed two
+  correcting commits (PR #9, PR #15). `CLAUDE.md` is the authority on naming,
+  not the brand skill: the brand skill still suggests a Collective phrase that
+  `CLAUDE.md` bans outright. Where they disagree, `CLAUDE.md` wins.
+- Sign off client and lead messages **Charles Harrison | EpiVail | Epique
+  Realty**. The region is **Epique Realty Colorado Mountain Region**.
 
 <!-- TODO Charles: correct anything above that is wrong, and add the rules that
      only you know. A rule with a scar behind it gets followed; a rule you

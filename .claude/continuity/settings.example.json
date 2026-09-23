@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 .claude/continuity/identity.py"
+            "command": "python3 .claude/continuity/identity.py || python .claude/continuity/identity.py"
           }
         ]
       },
@@ -15,7 +15,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 .claude/continuity/session_start.py"
+            "command": "python3 .claude/continuity/session_start.py || python .claude/continuity/session_start.py"
           }
         ]
       }
@@ -26,7 +26,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 .claude/continuity/pre_compact.py"
+            "command": "python3 .claude/continuity/pre_compact.py || python .claude/continuity/pre_compact.py"
           }
         ]
       }

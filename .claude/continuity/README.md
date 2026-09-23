@@ -21,23 +21,25 @@ reference kit ships `ROLE.md` but never loads it; this install does.
 
 ## Activating it
 
-The hooks only run once they are registered. Merge
-`settings.example.json` into `.claude/settings.json` (create it if absent,
-merge if it already has content - do not overwrite):
+`.claude/settings.json` is committed and already registers all three hooks, so a
+fresh checkout wakes oriented with nothing to run. If it ever gets clobbered or
+you install this kit into another repo, restore it from the template:
 
 ```sh
 cp .claude/continuity/settings.example.json .claude/settings.json
 python3 .claude/continuity/verify.py
 ```
 
-Expect `CONTINUITY: PASS`. Until `.claude/settings.json` exists, nothing loads
-automatically and the verifier will fail on the hook-registration checks.
+Expect `CONTINUITY: PASS`.
 
-**The interpreter name matters.** `settings.json` names `python3` as a bare
-word that Claude Code runs through the shell. On a machine where only `python`
-resolves (some Windows setups), swap all three commands to `python` - a wrong
-name fails silently: the session starts, the agent sounds confident, and
-orientation never arrives. `verify.py` checks that the name resolves.
+**The interpreter name matters.** `settings.json` names the interpreter as a bare
+word that Claude Code runs through the shell, and which one exists varies by
+machine - macOS often has no `python`, some Windows setups have no `python3`. A
+wrong name fails silently: the session starts, the agent sounds confident, and
+orientation never arrives. So each hook command is `python3 <script> || python
+<script>` and works either way. The scripts always exit 0, so the fallback fires
+only when the interpreter itself is absent, never because a script errored.
+`verify.py` checks that at least one branch resolves here.
 
 ## Then
 

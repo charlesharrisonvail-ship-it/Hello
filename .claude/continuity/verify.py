@@ -84,17 +84,29 @@ def main():
     # the session starts, the agent sounds fine, and the orientation payload
     # simply never arrives. That is the single most likely cross-platform
     # break, and without this check every other test still reports PASS.
+    # Upstream checked only the FIRST word of each command, which reports a
+    # false FAIL against a `python3 ... || python ...` fallback on a machine
+    # where only `python` resolves -- an install that actually works. So check
+    # every `||` branch and pass when ANY of their interpreters resolves; that
+    # is exactly the condition under which the shell gets the payload.
     import shutil
-    cmds = []
+    variants = set()
     for group in list(ss) + list(hooks.get("PreCompact", [])):
         for h in group.get("hooks", []):
-            c = (h.get("command") or "").split()
-            if c:
-                cmds.append(c[0])
-    for interp in sorted(set(cmds)):
-        chk(shutil.which(interp) is not None,
-            "hook interpreter %r resolves on this machine (settings.json "
-            "names it; a wrong name fails SILENTLY)" % interp)
+            interps = []
+            for branch in (h.get("command") or "").split("||"):
+                words = branch.split()
+                if words:
+                    interps.append(words[0])
+            if interps:
+                variants.add(tuple(interps))
+    for interps in sorted(variants):
+        found = [i for i in interps if shutil.which(i)]
+        chk(bool(found),
+            "hook interpreter resolves on this machine: %s -> %s "
+            "(settings.json names it; a wrong name fails SILENTLY)"
+            % (" or ".join(repr(i) for i in interps),
+               found[0] if found else "NONE FOUND"))
 
     # 3/4 -- the hook actually runs, and fits through the door
     rc, out = run("session_start.py")

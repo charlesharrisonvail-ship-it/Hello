@@ -9,13 +9,16 @@ It is not a product. Its users are Claude Code sessions.
 
 ## What lives here
 
+- `CLAUDE.md` - repo conventions. **The authority on brand naming and
+  sign-off.** Where it and a brand skill disagree, `CLAUDE.md` wins.
 - `.claude/agents/` - subagent definitions: `lead-enrichment`,
-  `recruitment-outreach`, `linkedin-content`
+  `recruitment-outreach`, `linkedin-content`, `lofty-crm`
 - `.claude/skills/` - project skills, currently `linkedin-optimizer`
+- `.claude/settings.json` - enables the Superpowers plugin AND registers the
+  continuity hooks. Both sets of keys must survive any edit.
 - `.claude/continuity/` - the continuity kit (this file is loaded by it)
 - `.claude/memory/` - one fact per file, frontmatter-indexed, searched on
   demand via `recall.py`
-- `AI agents/`, `README.md` - earlier scratch content, not load-bearing
 
 ## What done looks like
 
