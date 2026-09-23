@@ -10,6 +10,7 @@ not an application: there is no build, test, or lint step.
   - `lead-enrichment.md` — enrich a name, company, LinkedIn URL, or email into a full contact card
   - `recruitment-outreach.md` — agent recruitment emails, DMs, SMS, call scripts, and sequences
   - `linkedin-content.md` — LinkedIn posts, content calendars, and carousel/Reel concepts
+  - `lofty-crm.md` — Lofty contacts, tiers, tags, recruit pipeline stages, and follow-up tasks
 - `.claude/skills/linkedin-optimizer/` — LinkedIn analytics and profile optimization
 - `.claude/settings.json` — project settings; enables the Superpowers plugin
 
