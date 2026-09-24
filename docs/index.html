@@ -306,6 +306,8 @@
   .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,22px);
     margin-top:clamp(32px,5vw,50px);align-items:start;perspective:1200px}
   @media (max-width:920px){.tiers{grid-template-columns:1fr;max-width:470px}}
+  .tiers.two{grid-template-columns:repeat(2,minmax(0,1fr));max-width:900px;margin-left:auto;margin-right:auto}
+  @media (max-width:920px){.tiers.two{grid-template-columns:1fr;max-width:470px}}
   .tier{border:1px solid var(--edge);padding:30px 26px 32px;display:flex;flex-direction:column;
     background:var(--panel);transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s,box-shadow .25s;
     transform-style:preserve-3d;will-change:transform}
@@ -649,28 +651,21 @@
 <section class="band glow" id="pricing">
   <div class="inner">
     <p class="kick rv">Pricing</p>
-    <h2 class="rv">Three <em>ways in</em></h2>
-    <div class="tiers" id="tiers">
-      <div class="tier rv">
+    <h2 class="rv">Two <em>ways in</em></h2>
+    <div class="tiers two" id="tiers">
+      <div class="tier feat rv">
+        <span class="flag">Start here</span>
         <span class="nm">The Course</span><div class="pr">$67</div>
         <p class="sub">One payment &middot; Yours to keep</p>
         <ul><li>All seven modules, downloadable</li><li>The Agent Brand File template</li>
           <li>Updates included as the tools change</li><li>The AiRE Agent credential when you finish</li></ul>
-        <a class="btn sec" data-buy="course" href="#start">Get the course</a>
-      </div>
-      <div class="tier feat rv">
-        <span class="flag">Most popular</span>
-        <span class="nm">Certified</span><div class="pr">$199</div>
-        <p class="sub">Everything above, plus the kit</p>
-        <ul><li>The full seven-module course</li><li>Printed AiRE Agent certificate</li>
-          <li>AiRE Agent cap and shirt, shipped</li><li>Listed in the AiRE Agent directory</li></ul>
-        <a class="btn pri" data-buy="certified" href="#start">Get certified <span class="ar">&rarr;</span></a>
+        <a class="btn pri" data-buy="course" href="#start">Get the course <span class="ar">&rarr;</span></a>
       </div>
       <div class="tier rv">
         <span class="nm">Team &amp; Brokerage</span><div class="pr">$1,500</div>
         <p class="sub">Up to 10 agents &middot; One invoice</p>
         <ul><li>Ten seats, ten certifications</li><li>A live 90-minute session with your team</li>
-          <li>Your brokerage's brand file built with you</li><li>Kit shipped to every agent</li></ul>
+          <li>Your brokerage's brand file built with you</li></ul>
         <a class="btn sec" href="#start">Call to arrange</a>
       </div>
     </div>
@@ -707,7 +702,7 @@
         <p class="kick rv">What you walk away as</p>
         <h2 class="rv">An <em>AiRE Agent</em></h2>
         <p class="lede rv">Nobody puts "I bought a course" in their signature line. They do put a designation there.</p>
-        <p class="rv" style="color:var(--slate)">Finish all seven modules and the mark is yours &mdash; on your signature, your listing presentations, and your profile. Certified holders are listed in the AiRE Agent directory.</p>
+        <p class="rv" style="color:var(--slate)">Finish all seven modules and the mark is yours &mdash; on your signature, your listing presentations, and your profile.</p>
       </div>
       <div class="card rv" role="img" aria-label="AiRE Agent certification card">
         <div class="cardtop">
@@ -1136,6 +1131,6 @@
 
 <script>
 /* GoDaddy store: paste each product's page URL between the quotes. Empty = button scrolls to the contact section. */
-var STORE = { course: "", certified: "", l2k: "" };
+var STORE = { course: "", l2k: "" };
 document.querySelectorAll('[data-buy]').forEach(function(a){ var u = STORE[a.getAttribute('data-buy')]; if (u) a.href = u; });
 </script>
