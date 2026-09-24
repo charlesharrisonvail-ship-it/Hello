@@ -1,0 +1,1141 @@
+<title>AiRE Estate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@300;400;500;600;700&display=swap">
+
+<style>
+  :root{
+    --ink:#04070d; --panel:#080e18; --panel2:#0d1524; --panel3:#111b2c;
+    --edge:rgba(255,255,255,0.09); --edge2:rgba(255,255,255,0.18);
+    --sig:#38bdf8; --sig-hi:#7dd3fc; --sig-dim:rgba(56,189,248,0.14);
+    --rec:#ff453a;
+    --head:#ffffff; --text:#dbe2ec; --slate:#8496b2; --slate2:#5a6a85;
+    --wm:'Archivo','Helvetica Neue',Arial,sans-serif;
+    --bd:'Manrope','Helvetica Neue',Helvetica,Arial,sans-serif;
+    --mn:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --gut:clamp(18px,4.6vw,60px);
+    --band:clamp(52px,6vw,88px);
+    --nav:60px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{margin:0;background:var(--ink);color:var(--text);font-family:var(--bd);
+    font-weight:300;font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased;
+    overflow-x:hidden}
+
+  /* grain + survey grid over everything */
+  .tex{position:fixed;inset:0;pointer-events:none;z-index:60}
+  .tex::before{content:"";position:absolute;inset:0;opacity:.55;
+    background-image:linear-gradient(rgba(56,189,248,.05) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(56,189,248,.05) 1px,transparent 1px);
+    background-size:78px 78px;
+    -webkit-mask-image:radial-gradient(ellipse 130% 95% at 50% 0%,#000 8%,transparent 76%);
+    mask-image:radial-gradient(ellipse 130% 95% at 50% 0%,#000 8%,transparent 76%)}
+  .tex::after{content:"";position:absolute;inset:-60%;opacity:.045;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation:gr .8s steps(1,end) infinite}
+  @keyframes gr{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}
+    50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}100%{transform:translate(0,0)}}
+
+  /* ---------------- NAV ---------------- */
+  .nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;height:var(--nav);
+    z-index:70;display:flex;align-items:center;gap:20px;padding-inline:var(--gut);
+    background:rgba(4,7,13,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
+  .nav.stuck{border-bottom-color:var(--edge);background:rgba(4,7,13,.93)}
+  .nav .brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+  .dotpulse{width:7px;height:7px;border-radius:50%;background:var(--sig);flex:none;
+    box-shadow:0 0 0 0 rgba(56,189,248,.6);animation:pulse 2.6s ease-out infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(56,189,248,.55)}
+    70%{box-shadow:0 0 0 11px rgba(56,189,248,0)}100%{box-shadow:0 0 0 0 rgba(56,189,248,0)}}
+  .navlinks{margin-left:auto;display:flex;gap:clamp(14px,2.2vw,30px);align-items:center}
+  .navlinks a{font-family:var(--mn);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--slate);text-decoration:none;transition:color .2s;white-space:nowrap}
+  .navlinks a:hover,.navlinks a.on{color:var(--sig)}
+  .navlinks .apply{color:var(--ink);background:var(--sig);padding:8px 15px;font-weight:600}
+  .navlinks .apply:hover{background:var(--sig-hi);color:var(--ink)}
+  @media (max-width:860px){.navlinks a:not(.apply){display:none}}
+  .prog{position:absolute;left:0;bottom:-1px;height:2px;background:var(--sig);width:0;
+    box-shadow:0 0 12px rgba(56,189,248,.8)}
+
+  /* ---------------- SHARED ---------------- */
+  .band{padding-inline:var(--gut);padding-block:var(--band);position:relative;z-index:1}
+  .inner{max-width:1200px;margin:0 auto}
+  .narrow{max-width:780px}
+  .kick{font-family:var(--mn);font-weight:500;font-size:.68rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--sig);margin:0 0 20px;display:flex;align-items:center;gap:13px}
+  .kick::after{content:"";flex:1;height:1px;background:var(--edge);max-width:190px}
+  h2{font-family:var(--wm);font-weight:800;letter-spacing:-.046em;
+    font-size:clamp(2rem,5.6vw,3.6rem);line-height:.97;color:var(--head);margin:0 0 18px;
+    text-wrap:balance}
+  h2 em{font-style:normal;color:var(--sig)}
+  h3{font-family:var(--wm);font-weight:700;letter-spacing:-.025em;font-size:1.06rem;
+    color:var(--head);margin:0 0 7px;line-height:1.26}
+  p{margin:0 0 16px;max-width:66ch}
+  .lede{font-size:clamp(1.02rem,2vw,1.2rem);max-width:60ch}
+  a{color:var(--sig)}
+
+  .lock{display:inline-flex;align-items:baseline;font-family:var(--wm);font-weight:700;
+    letter-spacing:-.05em;line-height:1;white-space:nowrap;font-size:1.2rem}
+  .lock .dl{position:relative;display:inline-block}
+  .lock .dl svg{position:absolute;left:50%;transform:translateX(-50%);bottom:.84em}
+  .lock .est{margin-left:.24em;font-weight:500;letter-spacing:-.025em;color:var(--slate)}
+  .lock .a,.lock .i{color:var(--head)} .lock .re{color:var(--sig)}
+
+  .btn{display:inline-flex;align-items:center;gap:11px;font-family:var(--mn);font-weight:600;
+    font-size:.72rem;letter-spacing:.17em;text-transform:uppercase;padding:16px 26px;
+    text-decoration:none;border:1px solid transparent;position:relative;overflow:hidden;
+    transition:transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .2s}
+  .btn .ar{transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+  .btn:hover .ar{transform:translateX(5px)}
+  .btn.pri{background:var(--sig);color:#03060d;border-color:var(--sig)}
+  .btn.pri:hover{transform:translateY(-2px);box-shadow:0 12px 30px -10px rgba(56,189,248,.6)}
+  .btn.sec{color:#fff;border-color:var(--edge2)}
+  .btn.sec:hover{border-color:var(--sig);color:var(--sig);transform:translateY(-2px)}
+  .btn:focus-visible,summary:focus-visible,.mchip:focus-visible{outline:2px solid var(--sig);outline-offset:3px}
+
+  /* reveal — starts VISIBLE, enhancement only */
+  .rv{opacity:1;transform:none;transition:opacity .85s cubic-bezier(.2,.8,.2,1),transform .85s cubic-bezier(.2,.8,.2,1)}
+  .js .rv{opacity:0;transform:translateY(22px)}
+  .js .rv.in{opacity:1;transform:none}
+
+  /* ---------------- HERO ---------------- */
+  .hero{position:relative;min-height:clamp(620px,96vh,980px);display:grid;align-items:center;
+    padding-top:calc(var(--nav) + clamp(34px,6vw,60px));padding-bottom:clamp(76px,9vw,104px);
+    overflow:hidden;background:#03060d}
+  #cloud{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
+  .hscan{position:absolute;left:0;right:0;height:26%;z-index:1;pointer-events:none;
+    background:linear-gradient(180deg,transparent,rgba(56,189,248,.075) 45%,rgba(56,189,248,.14) 50%,rgba(56,189,248,.075) 55%,transparent);
+    animation:sweep 7.5s cubic-bezier(.45,0,.55,1) infinite}
+  @keyframes sweep{0%{top:-26%}100%{top:104%}}
+  html[data-motion="off"] .hscan{animation:none;opacity:0}
+  .hglow{position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(ellipse 54% 60% at 66% 50%,rgba(56,189,248,.16),transparent 68%),
+      linear-gradient(90deg,rgba(3,6,13,.94) 0%,rgba(3,6,13,.80) 30%,rgba(3,6,13,.24) 56%,rgba(3,6,13,0) 74%),
+      radial-gradient(ellipse 100% 62% at 50% 108%,rgba(3,6,13,.97),transparent 60%)}
+  @media (max-width:760px){
+    .hglow{background:radial-gradient(ellipse 70% 46% at 50% 30%,rgba(56,189,248,.16),transparent 70%),
+      linear-gradient(180deg,rgba(3,6,13,.46) 0%,rgba(3,6,13,.80) 46%,rgba(3,6,13,.97) 100%)}
+  }
+  .hero .inner{position:relative;z-index:2;width:100%;padding-inline:var(--gut);
+    max-width:1200px;margin:0 auto}
+  .htxt{max-width:min(660px,100%)}
+  .htag{font-family:var(--mn);font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--sig);margin:0 0 20px;display:flex;align-items:center;gap:12px}
+  .htag::before{content:"";width:26px;height:1px;background:var(--sig)}
+  h1{font-family:var(--wm);font-weight:800;letter-spacing:-.05em;
+    font-size:clamp(2.35rem,6.4vw,4.9rem);line-height:.93;color:#fff;margin:0 0 22px;
+    text-wrap:balance}
+  h1 em{font-style:normal;color:var(--sig);display:inline-block}
+  .hsub{color:rgba(219,226,236,.86);font-size:clamp(1rem,1.85vw,1.14rem);max-width:47ch;margin:0 0 30px}
+  .hsub b{color:#fff;font-weight:600}
+  .hcta{display:flex;flex-wrap:wrap;gap:12px}
+
+  .ticker{position:absolute;left:0;right:0;bottom:0;z-index:3;border-top:1px solid var(--edge);
+    background:rgba(4,7,13,.58);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    overflow:hidden;height:44px;display:flex;align-items:center}
+  .tkr{display:flex;gap:44px;white-space:nowrap;font-family:var(--mn);font-size:.66rem;
+    letter-spacing:.17em;text-transform:uppercase;color:var(--slate);
+    animation:slide 42s linear infinite;padding-left:44px;flex:none}
+  .tkr b{color:var(--sig);font-weight:600}
+  @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .scrollmark{position:absolute;right:calc(var(--gut) - 6px);bottom:78px;z-index:3;
+    font-family:var(--mn);font-size:.6rem;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--slate2);writing-mode:vertical-rl;display:flex;align-items:center;gap:12px}
+  .scrollmark::after{content:"";width:1px;height:52px;background:linear-gradient(var(--sig),transparent);
+    animation:drop 2.4s ease-in-out infinite}
+  @keyframes drop{0%,100%{opacity:.25;transform:scaleY(.5);transform-origin:top}
+    50%{opacity:1;transform:scaleY(1);transform-origin:top}}
+  @media (max-width:760px){.scrollmark{display:none}}
+
+  /* ---------------- ARITHMETIC ---------------- */
+  .gap{background:var(--panel);border-block:1px solid var(--edge);overflow:hidden}
+  .gap::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(ellipse 55% 100% at 80% 50%,rgba(56,189,248,.11),transparent 66%)}
+  .gap>.inner{position:relative;z-index:1}
+  .gg{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(18px,4vw,60px);align-items:center}
+  @media (max-width:860px){.gg{grid-template-columns:1fr;gap:26px}}
+  .fig{font-family:var(--wm);font-weight:900;letter-spacing:-.06em;line-height:.84;
+    font-variant-numeric:tabular-nums;font-size:clamp(3.4rem,11.5vw,8rem)}
+  .fig.bad{color:var(--head)} .fig.good{color:var(--sig)}
+  .strike{position:relative;display:inline-block}
+  .strike::after{content:"";position:absolute;left:-3%;right:-3%;top:53%;height:5px;
+    background:var(--rec);transform:rotate(-7deg) scaleX(0);transform-origin:left;
+    transition:transform .7s cubic-bezier(.65,0,.35,1) .35s}
+  .strike.in::after{transform:rotate(-7deg) scaleX(1)}
+  .figlab{font-family:var(--mn);font-size:.67rem;letter-spacing:.19em;text-transform:uppercase;
+    color:var(--slate);margin-top:16px;max-width:32ch;line-height:1.65}
+  .arw{display:flex;align-items:center;justify-content:center;color:var(--slate2)}
+  .arw svg{width:clamp(40px,6vw,70px)}
+  @media (max-width:860px){.arw svg{transform:rotate(90deg)}}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--edge);
+    border:1px solid var(--edge);margin-top:clamp(36px,6vw,58px)}
+  @media (max-width:880px){.stats{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:430px){.stats{grid-template-columns:1fr}}
+  .stats div{background:var(--panel);padding:24px 20px;position:relative;transition:background .25s}
+  .stats div:hover{background:var(--panel2)}
+  .stats div::before{content:"";position:absolute;top:0;left:0;width:24px;height:2px;background:var(--sig)}
+  .stats b{display:block;font-family:var(--wm);font-weight:800;font-size:1.65rem;letter-spacing:-.035em;
+    color:var(--head);line-height:1;margin-bottom:9px;font-variant-numeric:tabular-nums}
+  .stats span{color:var(--slate);font-size:.85rem;line-height:1.45;display:block}
+
+  /* ---------------- FILMSTRIP ---------------- */
+  .pipe{margin-top:clamp(34px,5vw,54px);border:1px solid var(--edge);background:var(--panel);overflow:hidden}
+  .pipehd{display:flex;gap:16px;flex-wrap:wrap;padding:14px clamp(16px,2.4vw,24px);
+    border-bottom:1px solid var(--edge);font-family:var(--mn);font-size:.64rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--slate2)}
+  .pipehd b{color:var(--sig);font-weight:600} .pipehd .sp{margin-left:auto}
+  .prow{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--edge)}
+  @media (max-width:900px){.prow{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:480px){.prow{grid-template-columns:repeat(2,1fr)}}
+  .cell{background:#04070e;aspect-ratio:3/4;position:relative;overflow:hidden}
+  .cell canvas{position:absolute;inset:-14%;width:128%;height:128%;display:block;will-change:transform}
+  .cell .cl{position:absolute;left:11px;bottom:10px;z-index:4;font-family:var(--mn);font-weight:600;
+    font-size:.63rem;letter-spacing:.15em;text-transform:uppercase;color:#fff;
+    text-shadow:0 1px 5px rgba(0,0,0,.98)}
+  .cell svg.dg{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;
+    overflow:visible}
+  .cell svg.dg .pth{fill:none;stroke:#38bdf8;stroke-width:1.6;stroke-linecap:round;
+    filter:drop-shadow(0 0 5px rgba(56,189,248,.85));
+    stroke-dasharray:var(--L,120);stroke-dashoffset:var(--L,120);
+    animation:trace 3.4s cubic-bezier(.6,0,.3,1) infinite}
+  .cell:nth-child(2) svg.dg .pth{animation-delay:0s}
+  .cell:nth-child(3) svg.dg .pth{animation-delay:.34s}
+  .cell:nth-child(4) svg.dg .pth{animation-delay:.68s}
+  .cell:nth-child(5) svg.dg .pth{animation-delay:1.02s}
+  .cell:nth-child(6) svg.dg .pth{animation-delay:1.36s}
+  @keyframes trace{
+    0%{stroke-dashoffset:var(--L,120);opacity:0}
+    12%{opacity:1}
+    55%{stroke-dashoffset:0;opacity:1}
+    82%{stroke-dashoffset:0;opacity:1}
+    100%{stroke-dashoffset:0;opacity:0}}
+  .cell svg.dg .hd{animation:hdfade 3.4s ease-in-out infinite}
+  .cell:nth-child(3) svg.dg .hd{animation-delay:.34s}
+  .cell:nth-child(4) svg.dg .hd{animation-delay:.68s}
+  .cell:nth-child(5) svg.dg .hd{animation-delay:1.02s}
+  .cell:nth-child(6) svg.dg .hd{animation-delay:1.36s}
+  @keyframes hdfade{0%,42%{opacity:0}58%,86%{opacity:1}100%{opacity:0}}
+  html[data-motion="off"] .cell svg.dg .pth,
+  html[data-motion="off"] .cell svg.dg .hd{animation:none;stroke-dashoffset:0;opacity:1}
+  .cell svg.dg .gst{fill:none;stroke:rgba(56,189,248,.26);stroke-width:1;stroke-dasharray:3 4}
+  .cell svg.dg .hd{fill:#38bdf8;filter:drop-shadow(0 0 5px rgba(56,189,248,.85))}
+  .cell svg.dg .bx{fill:none;stroke:rgba(255,255,255,.34);stroke-width:1}
+  .cell .cn{position:absolute;right:10px;top:9px;z-index:3;font-family:var(--mn);font-size:.58rem;
+    letter-spacing:.1em;color:var(--sig)}
+  .cell::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:linear-gradient(180deg,transparent 50%,rgba(2,4,10,.86) 100%)}
+  .cell.src::before{content:"";position:absolute;inset:8px;z-index:3;pointer-events:none;
+    border:1px dashed rgba(132,150,178,.42)}
+  .cell.src .cl{color:var(--slate)}
+  .pipeft{padding:15px clamp(16px,2.4vw,24px);border-top:1px solid var(--edge);display:flex;
+    gap:10px 26px;flex-wrap:wrap;font-size:.86rem;color:var(--slate)}
+  .pipeft b{color:var(--head);font-weight:600}
+
+
+  /* ---------------- ONE PHOTO, START TO FINISH ---------------- */
+  .steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.8vw,20px);margin-top:clamp(30px,4.6vw,48px)}
+  @media (max-width:860px){.steps3{grid-template-columns:1fr;max-width:460px}}
+  .st{margin:0;background:var(--panel);border:1px solid var(--edge);display:flex;flex-direction:column}
+  .stimg{position:relative;aspect-ratio:1122/1396;overflow:hidden;background:#0b1320}
+  .stimg img,.stimg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .stimg svg.path{position:absolute;inset:0;width:100%;height:100%}
+  .rl{fill:none;stroke:#ff2d2d;stroke-width:9;stroke-linecap:round;stroke-linejoin:round;
+    stroke-dasharray:2600;stroke-dashoffset:2600;filter:drop-shadow(0 0 6px rgba(255,45,45,.55))}
+  .rl2{stroke-dasharray:900;stroke-dashoffset:900}
+  .rl3{stroke-dasharray:3200;stroke-dashoffset:3200}
+  .wa{stroke:#fff;stroke-width:6;stroke-linecap:round;opacity:0;filter:drop-shadow(0 0 4px rgba(0,0,0,.6))}
+  .st.in .rl{animation:draw 2.4s cubic-bezier(.6,0,.3,1) .3s forwards}
+  .st.in .rl2{animation-delay:2.1s;animation-duration:1.2s}
+  .st.in .rl3{animation-delay:3s;animation-duration:2.6s}
+  .st.in .wa{animation:fadein .5s ease 5.2s forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes fadein{to{opacity:1}}
+  html[data-motion="off"] .rl{animation:none;stroke-dashoffset:0}
+  html[data-motion="off"] .wa{animation:none;opacity:1}
+  .st figcaption{padding:18px 18px 20px;display:grid;gap:5px}
+  .st .sn{font-family:var(--mn);font-size:.62rem;letter-spacing:.2em;color:var(--sig)}
+  .st b{font-family:var(--wm);font-weight:800;letter-spacing:-.03em;font-size:1.15rem;color:var(--head)}
+  .st figcaption span:last-child{color:var(--slate);font-size:.88rem;line-height:1.45}
+  .promptbox{margin-top:clamp(18px,2.4vw,26px);border:1px solid var(--edge);border-left:3px solid var(--sig);
+    background:var(--panel);padding:20px 24px}
+  .promptbox .pl{font-family:var(--mn);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sig)}
+  .promptbox p{font-family:var(--mn);font-size:clamp(.86rem,1.5vw,.98rem);color:var(--head);margin:10px 0 10px;max-width:none;line-height:1.6}
+  .promptbox .pn{color:var(--slate);font-size:.88rem}
+  .demonote{margin-top:16px;font-size:.8rem;color:var(--slate2);max-width:none}
+  /* ---------------- PINNED HORIZONTAL MODULES ---------------- */
+  .rail{position:relative;background:var(--panel2);border-block:1px solid var(--edge)}
+  .railsticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;
+    justify-content:flex-start;padding-bottom:clamp(20px,4vh,48px)}
+  .railhd{padding-inline:var(--gut);padding-top:calc(var(--nav) + clamp(18px,4vh,44px));flex:none}
+  .railhd h2{margin-bottom:8px}
+  .railbar{display:flex;align-items:center;gap:14px;margin-top:18px;padding-right:var(--gut)}
+  .railbar .line{flex:1;height:1px;background:var(--edge);position:relative}
+  .railbar .line i{position:absolute;left:0;top:-1px;height:3px;background:var(--sig);width:0;
+    box-shadow:0 0 10px rgba(56,189,248,.8)}
+  .railbar .ct{font-family:var(--mn);font-size:.64rem;letter-spacing:.16em;color:var(--slate2);
+    font-variant-numeric:tabular-nums;white-space:nowrap}
+  .track{display:flex;gap:clamp(14px,2vw,26px);padding-inline:var(--gut);
+    padding-block:clamp(20px,3.4vh,40px);will-change:transform;flex:1;align-items:stretch}
+  .mod{flex:none;width:clamp(260px,32vw,400px);background:var(--panel);border:1px solid var(--edge);
+    padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;position:relative;
+    min-height:0;overflow:hidden;transition:border-color .3s,transform .3s}
+  .mod:hover{border-color:var(--sig);transform:translateY(-4px)}
+  .mod .bignum{position:absolute;right:-12px;top:-26px;font-family:var(--wm);font-weight:900;
+    font-size:clamp(6rem,11vw,9.5rem);line-height:1;letter-spacing:-.06em;
+    color:rgba(56,189,248,.075);pointer-events:none;font-variant-numeric:tabular-nums}
+  .mod .mk{font-family:var(--mn);font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--sig);margin-bottom:auto}
+  .mod h3{font-family:var(--wm);font-weight:800;letter-spacing:-.035em;
+    font-size:clamp(1.25rem,2.1vw,1.7rem);line-height:1.05;margin:26px 0 12px;color:var(--head)}
+  .mod p{color:var(--slate);font-size:.92rem;margin:0;max-width:none}
+  .mod .rt{margin-top:20px;padding-top:16px;border-top:1px solid var(--edge);font-family:var(--mn);
+    font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--slate2)}
+  @media (max-width:760px){
+    .railsticky{position:static;height:auto}
+    .track{flex-direction:column;transform:none!important}
+    .mod{width:auto;min-height:0}
+    .railbar{display:none}
+  }
+
+  /* ---------------- PRICING ---------------- */
+  .glow{background:var(--panel2);border-block:1px solid var(--edge);overflow:hidden}
+  .glow::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(ellipse 82% 66% at 50% 0%,rgba(56,189,248,.09),transparent 62%)}
+  .glow>.inner{position:relative;z-index:1}
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,22px);
+    margin-top:clamp(32px,5vw,50px);align-items:start;perspective:1200px}
+  @media (max-width:920px){.tiers{grid-template-columns:1fr;max-width:470px}}
+  .tier{border:1px solid var(--edge);padding:30px 26px 32px;display:flex;flex-direction:column;
+    background:var(--panel);transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s,box-shadow .25s;
+    transform-style:preserve-3d;will-change:transform}
+  .tier.feat{border-color:var(--sig);background:var(--panel3);
+    box-shadow:0 26px 64px -30px rgba(0,0,0,.9);padding-block:40px 42px;position:relative}
+  .tier .flag{position:absolute;top:-1px;right:-1px;background:var(--sig);color:#03060d;
+    font-family:var(--mn);font-weight:600;font-size:.6rem;letter-spacing:.17em;text-transform:uppercase;
+    padding:7px 13px}
+  .tier .nm{font-family:var(--mn);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--slate);margin-bottom:16px}
+  .tier .pr{font-family:var(--wm);font-weight:800;letter-spacing:-.05em;
+    font-size:clamp(2.6rem,5vw,3.5rem);line-height:.9;color:var(--head);font-variant-numeric:tabular-nums}
+  .tier.feat .pr{color:var(--sig)}
+  .tier .sub{font-size:.84rem;color:var(--slate2);margin:13px 0 24px}
+  .tier ul{list-style:none;margin:0 0 28px;padding:0;display:grid;gap:11px;flex:1}
+  .tier li{position:relative;padding-left:22px;font-size:.92rem;line-height:1.45}
+  .tier li::before{content:"";position:absolute;left:0;top:.56em;width:8px;height:1px;background:var(--sig)}
+  .tier .btn{justify-content:center;width:100%}
+
+  .finalsale{margin-top:clamp(26px,4vw,38px);border:1px solid var(--edge);
+    border-left:3px solid var(--sig);background:var(--panel);padding:22px 24px;
+    display:flex;gap:16px;align-items:flex-start}
+  .finalsale .ic{font-family:var(--mn);font-weight:600;font-size:.63rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--sig);white-space:nowrap;padding-top:2px}
+  .finalsale p{margin:0;font-size:.92rem;color:var(--slate);max-width:74ch}
+  .finalsale b{color:var(--head);font-weight:600}
+  @media (max-width:620px){.finalsale{flex-direction:column;gap:10px}}
+
+  /* ---------------- COMPLIANCE ---------------- */
+  .flagz{background:#0a0709;border-block:1px solid rgba(255,69,58,.28);overflow:hidden}
+  .flagz::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(ellipse 66% 100% at 16% 0%,rgba(255,69,58,.11),transparent 62%)}
+  .flagz>.inner{position:relative;z-index:1}
+  .flagz .kick{color:var(--rec)} .flagz .kick::after{background:rgba(255,69,58,.28)}
+  .flagz h2 em{color:var(--rec)}
+  .truth{display:grid;grid-template-columns:repeat(auto-fit,minmax(262px,1fr));gap:1px;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);margin-top:clamp(30px,5vw,46px)}
+  .truth>div{background:#0d0a0c;padding:28px 24px;border-top:2px solid var(--rec)}
+  .truth .tn{font-family:var(--mn);font-weight:600;font-size:.65rem;letter-spacing:.2em;
+    color:var(--rec);display:block;margin-bottom:13px}
+  .truth p{color:var(--slate);font-size:.92rem;margin:0;max-width:none}
+
+  /* ---------------- SERVICES / PROOF / FAQ ---------------- */
+  .svc,.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(246px,1fr));gap:1px;
+    background:var(--edge);border:1px solid var(--edge);margin-top:clamp(28px,4vw,44px)}
+  .svc>div,.grid>div{background:var(--panel);padding:28px 24px;transition:background .25s}
+  .svc>div:hover,.grid>div:hover{background:var(--panel2)}
+  .svc .rate{display:flex;align-items:baseline;gap:11px;margin-bottom:14px;flex-wrap:wrap}
+  .svc .rate b{font-family:var(--wm);font-weight:800;font-size:1.85rem;letter-spacing:-.04em;
+    color:var(--sig);line-height:1;font-variant-numeric:tabular-nums}
+  .svc .rate span{font-family:var(--mn);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--slate2)}
+  .svc p,.grid p{color:var(--slate);font-size:.9rem;margin:0;max-width:none}
+  .grid .n{font-family:var(--mn);font-size:.63rem;letter-spacing:.18em;color:var(--sig);
+    display:block;margin-bottom:11px}
+
+  .faq{margin-top:clamp(26px,4vw,42px);border-top:1px solid var(--edge)}
+  .faq details{border-bottom:1px solid var(--edge)}
+  .faq summary{list-style:none;cursor:pointer;padding:22px 42px 22px 0;position:relative;
+    font-family:var(--wm);font-weight:600;font-size:1rem;letter-spacing:-.02em;color:var(--head);
+    transition:color .2s}
+  .faq summary:hover{color:var(--sig)}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"";position:absolute;right:8px;top:50%;width:10px;height:10px;
+    border-right:1.5px solid var(--sig);border-bottom:1.5px solid var(--sig);
+    transform:translateY(-70%) rotate(45deg);transition:transform .25s}
+  .faq details[open] summary::after{transform:translateY(-30%) rotate(225deg)}
+  .faq .ans{padding:0 0 24px;color:var(--slate);font-size:.94rem;max-width:64ch}
+
+  .credgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(26px,4vw,56px);
+    align-items:center}
+  @media (max-width:860px){.credgrid{grid-template-columns:1fr;gap:30px}}
+  .card{position:relative;background:linear-gradient(150deg,#101d2e 0%,#080f1a 58%,#060b14 100%);
+    border:1px solid var(--edge2);padding:clamp(26px,3vw,36px);overflow:hidden;
+    box-shadow:0 30px 70px -34px rgba(0,0,0,.95)}
+  .card::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(ellipse 70% 60% at 82% 6%,rgba(56,189,248,.20),transparent 62%)}
+  .card::after{content:"";position:absolute;inset:9px;border:1px solid rgba(56,189,248,.20);
+    pointer-events:none}
+  .card>*{position:relative;z-index:1}
+  .cardtop{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;
+    margin-bottom:clamp(26px,4vw,44px)}
+  .cardtop .ct1{font-family:var(--mn);font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--slate2);line-height:1.9}
+  .seal{width:clamp(50px,6vw,66px);height:clamp(50px,6vw,66px);flex:none}
+  .card .holder{font-family:var(--mn);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--slate2);margin-bottom:9px}
+  .card .cname{font-family:var(--wm);font-weight:800;letter-spacing:-.04em;
+    font-size:clamp(1.5rem,2.6vw,2.05rem);color:#fff;line-height:1;margin-bottom:6px}
+  .card .cmark{display:inline-flex;align-items:baseline;font-family:var(--wm);font-weight:700;
+    font-size:1.12rem;letter-spacing:-.05em;color:#fff;line-height:1;margin-top:20px}
+  .card .cmark .bdl{position:relative;display:inline-block}
+  .card .cmark .bdl svg{position:absolute;left:50%;transform:translateX(-50%);bottom:.84em}
+  .card .cmark .re{color:var(--sig)}
+  .cardfoot{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    margin-top:clamp(24px,3.4vw,38px);padding-top:16px;border-top:1px solid var(--edge);
+    font-family:var(--mn);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--slate2)}
+  .cardfoot b{color:var(--sig);font-weight:600}
+
+  .badge{display:inline-flex;align-items:center;gap:15px;border:1px solid var(--edge2);
+    background:var(--panel);padding:15px 24px;margin-top:24px}
+  .badge .bm{display:inline-flex;align-items:baseline;font-family:var(--wm);font-weight:700;
+    font-size:1.25rem;letter-spacing:-.05em;color:var(--head);line-height:1}
+  .badge .bdl{position:relative;display:inline-block}
+  .badge .bdl svg{position:absolute;left:50%;transform:translateX(-50%);bottom:.84em}
+  .badge .re{color:var(--sig)}
+  .badge .bt{font-family:var(--mn);font-weight:500;font-size:.61rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--slate);border-left:1px solid var(--edge2);padding-left:15px}
+
+  /* ---------------- VOICES ---------------- */
+  .voices{background:var(--panel2);border-block:1px solid var(--edge);overflow:hidden;
+    padding-inline:0}
+  .voices::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(ellipse 70% 90% at 30% 40%,rgba(56,189,248,.09),transparent 66%)}
+  .voices>.vhd{position:relative;z-index:1;padding-inline:var(--gut);max-width:1200px;margin:0 auto}
+  .vmask{position:relative;z-index:1;margin-top:clamp(28px,4vw,42px);
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+  .vtrack{display:flex;gap:clamp(14px,2vw,24px);width:max-content;
+    animation:vslide 54s linear infinite}
+  .vmask:hover .vtrack{animation-play-state:paused}
+  @keyframes vslide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .quote{flex:none;width:clamp(285px,38vw,470px);background:rgba(13,21,36,.72);
+    border:1px solid var(--edge);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    padding:30px 28px 24px;display:flex;flex-direction:column;position:relative}
+  .quote .qm{font-family:var(--wm);font-weight:900;font-size:2.4rem;line-height:.7;
+    color:var(--sig);margin-bottom:16px;display:block}
+  .quote blockquote{margin:0 0 auto;font-size:clamp(1.02rem,1.5vw,1.16rem);line-height:1.5;
+    color:var(--head);font-weight:300}
+  .quote .who{display:flex;align-items:center;gap:13px;margin-top:26px;padding-top:18px;
+    border-top:1px solid var(--edge)}
+  .quote .av{width:40px;height:40px;border-radius:50%;flex:none;display:grid;place-items:center;
+    background:rgba(56,189,248,.16);border:1px solid rgba(56,189,248,.4);color:var(--sig);
+    font-family:var(--wm);font-weight:700;font-size:1rem}
+  .quote .nm{font-family:var(--wm);font-weight:700;font-size:.95rem;color:var(--head);
+    letter-spacing:-.01em;display:block}
+  .quote .rl{font-family:var(--mn);font-size:.61rem;letter-spacing:.17em;text-transform:uppercase;
+    color:var(--slate2);display:block;margin-top:4px}
+  .vnote{position:relative;z-index:1;padding-inline:var(--gut);max-width:1200px;margin:26px auto 0;
+    font-family:var(--mn);font-size:.63rem;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--slate2);line-height:1.8}
+  @media (prefers-reduced-motion:reduce){.vtrack{animation:none}
+    .vmask{overflow-x:auto}}
+
+  .close{background:var(--panel);border-top:1px solid var(--edge)}
+  .contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;
+    background:var(--edge);border:1px solid var(--edge);margin-top:clamp(28px,4vw,42px)}
+  .contact>div{background:var(--panel);padding:22px}
+  .contact .cl{font-family:var(--mn);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--slate2);display:block;margin-bottom:9px}
+  .contact .cv{font-family:var(--wm);font-weight:700;font-size:1rem;letter-spacing:-.02em;
+    color:var(--head);word-break:break-word}
+  .contact a{color:var(--head);text-decoration:none} .contact a:hover{color:var(--sig)}
+
+  footer{background:var(--ink);border-top:1px solid var(--edge);padding-inline:var(--gut);
+    padding-block:46px 60px;position:relative;z-index:1}
+  .legal{font-size:.78rem;line-height:1.7;color:var(--slate2);max-width:96ch;margin:0 0 12px}
+
+  /* Reduced motion softens the page; it does not switch it off. Parallax, tilt
+     and page-scale movement stop. Fades, marquees and the hero keep running,
+     and the toggle in the nav overrides either way. */
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .tex::after{animation:none}
+    .js .rv{transition-duration:.35s}
+  }
+  html[data-motion="off"] .tex::after,
+  html[data-motion="off"] .tkr,
+  html[data-motion="off"] .vtrack,
+  html[data-motion="off"] .dotpulse,
+  html[data-motion="off"] .scrollmark::after,
+  html[data-motion="off"] .recdot i{animation:none!important}
+  html[data-motion="off"] .js .rv{opacity:1!important;transform:none!important}
+
+  .mtoggle{display:inline-flex;align-items:center;gap:8px;font-family:var(--mn);
+    font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--slate2);
+    background:none;border:1px solid var(--edge);padding:7px 11px;cursor:pointer;
+    transition:color .2s,border-color .2s}
+  .mtoggle:hover{color:var(--sig);border-color:var(--sig)}
+  .mtoggle i{width:6px;height:6px;border-radius:50%;background:var(--sig);flex:none;
+    box-shadow:0 0 8px rgba(56,189,248,.9)}
+  html[data-motion="off"] .mtoggle i{background:var(--slate2);box-shadow:none}
+  @media (max-width:980px){.mtoggle{display:none}}
+</style>
+
+<div class="tex" aria-hidden="true"></div>
+
+<nav class="nav" id="nav">
+  <a class="brand" href="#top">
+    <span class="dotpulse" aria-hidden="true"></span>
+    <span class="lock"><span class="a">A</span><span class="dl i">&#305;<svg width="0.44em" height="0.44em" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="34" fill="none" stroke="#38bdf8" stroke-width="17" stroke-linecap="round" stroke-dasharray="160 54" transform="rotate(-38 50 50)"/><circle cx="50" cy="50" r="15" fill="#38bdf8"/></svg></span><span class="re">RE</span><span class="est">Estate</span></span>
+  </a>
+  <div class="navlinks">
+    <a href="#math">The Math</a>
+    <a href="#demo">See It</a>
+    <a href="#course">The Course</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#honest">Straight Talk</a>
+    <button class="mtoggle" id="mtoggle" type="button" aria-pressed="true">
+      <i aria-hidden="true"></i><span id="mtxt">Motion on</span></button>
+    <a class="apply" href="#start">Enroll</a>
+  </div>
+  <i class="prog" id="prog"></i>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <canvas id="cloud" aria-label="A house reconstructing itself from a cloud of points"></canvas>
+  <div class="hscan" aria-hidden="true"></div>
+  <div class="hglow" aria-hidden="true"></div>
+
+  <div class="inner">
+    <div class="htxt">
+      <p class="htag">Artificial Intelligence &middot; Real Estate</p>
+      <h1>Zillow wants $750 to make your listing look <em>premium</em>.</h1>
+      <p class="hsub"><b>Build it yourself for pennies.</b> Nine minutes, tools that already exist, and the listing photos sitting on your hard drive right now.</p>
+      <div class="hcta">
+        <a class="btn pri" href="#pricing">Get the course &mdash; $67 <span class="ar">&rarr;</span></a>
+        <a class="btn sec" href="#consulting">Have it built for you</a>
+      </div>
+    </div>
+  </div>
+
+  <span class="scrollmark" aria-hidden="true">Scroll</span>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="tkr" id="tkr">
+      <span>&bull; Source <b>1 photograph</b></span><span>&bull; Output <b>a drone flight</b></span>
+      <span>&bull; Render <b>~90 seconds</b></span><span>&bull; Drone video <b>$250&ndash;550</b></span>
+      <span>&bull; Zillow Showcase <b>$400&ndash;950</b></span><span>&bull; This course <b>$67 once</b></span>
+      <span>&bull; Works with <b>Claude or ChatGPT</b></span><span>&bull; Updates <b>included for life</b></span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ THE MATH ============ -->
+<section class="band gap" id="math">
+  <div class="inner">
+    <p class="kick rv">The arithmetic</p>
+    <div class="gg">
+      <div class="rv">
+        <div class="fig bad"><span class="strike" id="strike">$<span class="cnt" data-to="750">750</span></span></div>
+        <p class="figlab">Zillow Showcase, per listing &mdash; on roughly one listing in ten they'll even allow it</p>
+      </div>
+      <div class="arw rv" aria-hidden="true">
+        <svg viewBox="0 0 80 24" fill="none"><path d="M0 12h72M62 3l10 9-10 9" stroke="currentColor" stroke-width="1.5"/></svg>
+      </div>
+      <div class="rv">
+        <div class="fig good">$<span class="cnt" data-to="67">67</span></div>
+        <p class="figlab">Once. Then every listing you ever take, for pennies in usage</p>
+      </div>
+    </div>
+
+    <div class="stats rv">
+      <div><b>$400&ndash;950</b><span>What Zillow Showcase runs per listing</span></div>
+      <div><b>1 in 10</b><span>Listings per market they'll even allow it on</span></div>
+      <div><b>$250&ndash;550</b><span>What a drone video runs, weather permitting</span></div>
+      <div><b>$67</b><span>What this costs, once</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ONE PHOTO, START TO FINISH (from the live class) ============ -->
+<section class="band" id="demo">
+  <div class="inner">
+    <p class="kick rv">From the live class</p>
+    <h2 class="rv">One photo. One red line. <em>One drone flight.</em></h2>
+    <p class="lede rv">This is the exact example taught in the live class. No drone, no pilot, no weather window. A photograph, a line you draw in Paint, and a simple prompt.</p>
+    <div class="steps3">
+      <figure class="st rv">
+        <div class="stimg"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3DQPFQB5knVKdCtoFjiflsBSNkk/a03b6d05-d557-492f-b2dd-7d9f998501a6.jpg" alt="The original photograph: the Seine, a bridge, Notre-Dame and the Eiffel Tower" loading="lazy"></div>
+        <figcaption><span class="sn">01</span><b>Start with one photo</b><span>Download it. Any photo you own will do.</span></figcaption>
+      </figure>
+      <figure class="st rv">
+        <div class="stimg"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3DQPFQB5knVKdCtoFjiflsBSNkk/a03b6d05-d557-492f-b2dd-7d9f998501a6.jpg" alt="The same photograph with a red flight path and white camera arrows drawn on it" loading="lazy">
+          <svg class="path" viewBox="0 0 1122 1396" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs><marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#fff"/></marker></defs>
+            <path class="rl" d="M85,1305 C300,1235 470,1175 560,1085 S660,960 690,905 S760,790 845,742"/>
+            <ellipse class="rl rl2" cx="915" cy="590" rx="140" ry="108"/>
+            <path class="rl rl3" d="M780,600 C700,560 560,520 480,540 C360,560 180,570 110,525 C60,480 300,420 430,400 C450,375 330,355 240,385 C150,410 160,330 280,300 C370,280 385,310 355,330 C300,350 235,320 245,275 C255,235 300,220 340,228"/>
+            <line class="wa" x1="660" y1="905" x2="625" y2="845" marker-end="url(#ah)"/><line class="wa" x1="785" y1="772" x2="705" y2="748" marker-end="url(#ah)"/><line class="wa" x1="850" y1="512" x2="846" y2="596" marker-end="url(#ah)"/><line class="wa" x1="1022" y1="532" x2="968" y2="568" marker-end="url(#ah)"/><line class="wa" x1="806" y1="612" x2="842" y2="578" marker-end="url(#ah)"/><line class="wa" x1="318" y1="214" x2="386" y2="250" marker-end="url(#ah)"/><line class="wa" x1="412" y1="392" x2="356" y2="408" marker-end="url(#ah)"/>
+          </svg></div>
+        <figcaption><span class="sn">02</span><b>Draw the flight path</b><span>Red is where the drone flies. White arrows are where the camera looks.</span></figcaption>
+      </figure>
+      <figure class="st rv">
+        <div class="stimg"><video src="https://d2ol7oe51mr4n9.cloudfront.net/user_3DQPFQB5knVKdCtoFjiflsBSNkk/467aeb60-94b8-498e-8ecc-b194287b62ec.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3DQPFQB5knVKdCtoFjiflsBSNkk/a03b6d05-d557-492f-b2dd-7d9f998501a6.jpg" autoplay muted loop playsinline preload="metadata" aria-label="The finished drone flight generated from the photo"></video></div>
+        <figcaption><span class="sn">03</span><b>Get the flight</b><span>The finished shot, generated from that one photo.</span></figcaption>
+      </figure>
+    </div>
+    <div class="promptbox rv">
+      <span class="pl">The prompt used in class</span>
+      <p>&ldquo;Help me write an expert cinematic drone prompt for this Paris picture. Follow the red line for the flight path and the white arrows for the camera to pan.&rdquo;</p>
+      <span class="pn">Upload both pictures, the original and your marked-up copy, with that line. Want a bird&rsquo;s-eye glide instead of a drone? Say so. In class, ChatGPT wrote the strongest prompt; Google Flow came second, and it&rsquo;s free.</span>
+    </div>
+    <p class="demonote rv">The Paris photo is itself AI-generated, used for practice. On a real listing, use your own photo, check every frame, and label it as AI.</p>
+  </div>
+</section>
+
+<!-- ============ MODULES — PINNED HORIZONTAL ============ -->
+<section class="rail" id="course">
+  <div class="railsticky">
+    <div class="railhd">
+      <div class="inner" style="padding:0">
+        <p class="kick">The course</p>
+        <h2>Listing Media <em>Without the Invoice</em></h2>
+        <div class="railbar">
+          <span class="ct" id="railct">01 / 07</span>
+          <span class="line"><i id="railfill"></i></span>
+          <span class="ct">Scroll &rarr;</span>
+        </div>
+      </div>
+    </div>
+    <div class="track" id="track">
+      <article class="mod"><span class="bignum">01</span><span class="mk">Module 01</span>
+        <h3>Welcome</h3><p>Who I am, and what I'm not going to oversell you.</p>
+        <span class="rt">Filmed in person</span></article>
+      <article class="mod"><span class="bignum">02</span><span class="mk">Module 02</span>
+        <h3>Ground Floor</h3><p>Everything the other courses assume you already know &mdash; accounts, terminal, what a skill is, how to hold an API key.</p>
+        <span class="rt">~6 min</span></article>
+      <article class="mod"><span class="bignum">03</span><span class="mk">Module 03</span>
+        <h3>The Five Setups</h3><p>Five commands, fifteen minutes, every one of them on screen.</p>
+        <span class="rt">~4 min</span></article>
+      <article class="mod"><span class="bignum">04</span><span class="mk">Module 04</span>
+        <h3>A Drone Shot From One Photograph</h3><p>One exterior photo in. Cinematic aerial out. About ninety seconds.</p>
+        <span class="rt">~3 min</span></article>
+      <article class="mod"><span class="bignum">05</span><span class="mk">Module 05</span>
+        <h3>The AiRE Listing Showcase</h3><p>A room-by-room cinematic walkthrough, built from photos you already own.</p>
+        <span class="rt">~5 min</span></article>
+      <article class="mod"><span class="bignum">06</span><span class="mk">Module 06</span>
+        <h3>Claude as Your Social Media Manager</h3><p>A month of content in one sitting, in your voice &mdash; not in everybody's.</p>
+        <span class="rt">~4 min</span></article>
+      <article class="mod"><span class="bignum">07</span><span class="mk">Module 07</span>
+        <h3>Getting Found</h3><p>Local search, and how to get quoted by the AI assistants buyers now ask instead of searching.</p>
+        <span class="rt">~4 min</span></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="band glow" id="pricing">
+  <div class="inner">
+    <p class="kick rv">Pricing</p>
+    <h2 class="rv">Three <em>ways in</em></h2>
+    <div class="tiers" id="tiers">
+      <div class="tier rv">
+        <span class="nm">The Course</span><div class="pr">$67</div>
+        <p class="sub">One payment &middot; Yours to keep</p>
+        <ul><li>All seven modules, downloadable</li><li>The Agent Brand File template</li>
+          <li>Updates included as the tools change</li><li>The AiRE Agent credential when you finish</li></ul>
+        <a class="btn sec" data-buy="course" href="#start">Get the course</a>
+      </div>
+      <div class="tier feat rv">
+        <span class="flag">Most popular</span>
+        <span class="nm">Certified</span><div class="pr">$199</div>
+        <p class="sub">Everything above, plus the kit</p>
+        <ul><li>The full seven-module course</li><li>Printed AiRE Agent certificate</li>
+          <li>AiRE Agent cap and shirt, shipped</li><li>Listed in the AiRE Agent directory</li></ul>
+        <a class="btn pri" data-buy="certified" href="#start">Get certified <span class="ar">&rarr;</span></a>
+      </div>
+      <div class="tier rv">
+        <span class="nm">Team &amp; Brokerage</span><div class="pr">$1,500</div>
+        <p class="sub">Up to 10 agents &middot; One invoice</p>
+        <ul><li>Ten seats, ten certifications</li><li>A live 90-minute session with your team</li>
+          <li>Your brokerage's brand file built with you</li><li>Kit shipped to every agent</li></ul>
+        <a class="btn sec" href="#start">Call to arrange</a>
+      </div>
+    </div>
+
+    <div class="finalsale rv">
+      <span class="ic">All sales final</span>
+      <p><b>Every module downloads the moment you pay, so there are no refunds once material is delivered.</b> That's why the three points below this section exist &mdash; I'd rather tell you what this is and isn't before you spend the money than argue about it afterward. Read them first. If anything is still unclear, call me at 970-904-0600 and ask before you buy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STRAIGHT TALK ============ -->
+<section class="band flagz" id="honest">
+  <div class="inner">
+    <p class="kick rv">Before you buy</p>
+    <h2 class="rv">Three things I'd rather <em>tell you now</em></h2>
+    <p class="lede rv">I'd rather you trust me than be impressed by me. So here's what the sales page usually leaves out.</p>
+    <div class="truth">
+      <div class="rv"><span class="tn">01</span><h3>It is a cinematic video, not a 3D tour</h3>
+        <p>What you'll build is a room-by-room walkthrough video that looks like a production worth a couple thousand dollars. It is not a clickable, walk-around 3D tour &mdash; that's a different product needing different equipment. On social, the video wins. I'm just not going to tell you it's something it isn't.</p></div>
+      <div class="rv"><span class="tn">02</span><h3>It isn't free &mdash; it's pennies</h3>
+        <p>Two of the tools charge for usage, and Claude Pro runs $20 a month. Real cost lands in pennies per listing rather than hundreds, and I show you exactly what to sign up for and roughly what it runs. Some of those are my referral links, and I say so on screen when we get there.</p></div>
+      <div class="rv"><span class="tn">03</span><h3>You still have to watch what it makes</h3>
+        <p>These models occasionally invent detail &mdash; a window, a roofline, a view past the treeline. Fine on a lifestyle post. Not fine in a property advertisement. The course teaches you to check every clip before it goes out, because you're the licensee, not the software.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CREDENTIAL ============ -->
+<section class="band">
+  <div class="inner">
+    <div class="credgrid">
+      <div>
+        <p class="kick rv">What you walk away as</p>
+        <h2 class="rv">An <em>AiRE Agent</em></h2>
+        <p class="lede rv">Nobody puts "I bought a course" in their signature line. They do put a designation there.</p>
+        <p class="rv" style="color:var(--slate)">Finish all seven modules and the mark is yours &mdash; on your signature, your listing presentations, and your profile. Certified holders are listed in the AiRE Agent directory.</p>
+      </div>
+      <div class="card rv" role="img" aria-label="AiRE Agent certification card">
+        <div class="cardtop">
+          <span class="ct1">Certificate of<br>Completion</span>
+          <span class="seal"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="34" fill="none" stroke="#38bdf8" stroke-width="9" stroke-linecap="round" stroke-dasharray="160 54" transform="rotate(-38 50 50)"/><circle cx="50" cy="50" r="11" fill="#ffffff"/></svg></span>
+        </div>
+        <div>
+          <p class="holder">Issued to</p>
+          <p class="cname">Your Name Here</p>
+          <p class="holder" style="margin:0">Licensed Real Estate Professional &middot; Your Market</p>
+          <span class="cmark">A<span class="bdl">&#305;<svg width="0.44em" height="0.44em" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="34" fill="none" stroke="#38bdf8" stroke-width="17" stroke-linecap="round" stroke-dasharray="160 54" transform="rotate(-38 50 50)"/><circle cx="50" cy="50" r="15" fill="#38bdf8"/></svg></span><span class="re">RE</span>&nbsp;Agent</span>
+        </div>
+        <div class="cardfoot">
+          <span>Seven modules <b>complete</b></span>
+          <span>Credential <b>AiRE-0001</b></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONSULTING ============ -->
+<section class="band glow" id="consulting">
+  <div class="inner">
+    <p class="kick rv">Or don't do it yourself</p>
+    <h2 class="rv">Have it <em>built for you</em></h2>
+    <p class="lede rv">Some people want the skill. Some want the result. If you'd rather I build your systems while you keep selling houses, that's what the consulting side is for.</p>
+    <div class="svc">
+      <div class="rv"><div class="rate"><b>$500</b><span>90 minutes</span></div><h3>Intelligence Audit</h3>
+        <p>We map your operation and find where the hours are going. Written plan, yours to keep. Credited in full toward any build.</p></div>
+      <div class="rv"><div class="rate"><b>$1,500</b><span>Per day</span></div><h3>Build Sprint</h3>
+        <p>One or two days. You end the day with systems running, not a slide deck. Your team trained, everything documented.</p></div>
+      <div class="rv"><div class="rate"><b>$2,500+</b><span>Fixed scope</span></div><h3>Full Build</h3>
+        <p>Defined outcome, quoted before we start. Built on your tools, not a platform I resell. Thirty days of support after handoff.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHO ============ -->
+<section class="band">
+  <div class="inner">
+    <p class="kick rv">Who's behind this</p>
+    <h2 class="rv">Owned and operated by <em>a working agent</em></h2>
+    <p class="lede rv">AiRE Estate isn't run by technologists who studied real estate. It's run by a licensed, practicing agent who got tired of what this business charges us for marketing and built the alternative.</p>
+    <div class="grid">
+      <div class="rv"><span class="n">01</span><h3>25 years</h3><p>Selling real estate in Colorado's Vail Valley.</p></div>
+      <div class="rv"><span class="n">02</span><h3>Built in-house</h3><p>The automation behind this course is code we wrote, not software we resell.</p></div>
+      <div class="rv"><span class="n">03</span><h3>Still selling</h3><p>Taught by a working agent, not a retired one teaching from memory.</p></div>
+      <div class="rv"><span class="n">04</span><h3>Plain English</h3><p>If you've never opened a terminal, this course was written for you.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART TWO ============ -->
+<section class="band glow" id="parttwo">
+  <div class="inner">
+    <p class="kick rv">Part Two &middot; A separate course</p>
+    <h2 class="rv">Then run the rest of the desk: <em>Lead to Keys</em></h2>
+    <p class="lede rv">This course makes the marketing. Part Two covers the rest of the working day: clean listings, client profiles, comps from your MLS, seller updates, buyer comparisons, follow-up that stays inside texting and email law, and contracts handled so they don't end in an E&amp;O claim. Seven modules, a Capstone, and its own certificate.</p>
+    <div class="hcta rv" style="margin-top:26px">
+      <a class="btn pri" href="lead-to-keys.html">See Lead to Keys &mdash; $97 <span class="ar">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="band">
+  <div class="inner narrow">
+    <p class="kick rv">Questions people ask</p>
+    <h2 class="rv">Before you spend <em>$67</em></h2>
+    <div class="faq rv">
+      <details open><summary>Claude or ChatGPT &mdash; which do I need?</summary>
+        <div class="ans">Whichever you already pay for. The prompts in this course are the skill, and I run the same ones in both. A few modules use tools that are Claude-specific, and I say so when we get there. You don't have to switch anything to start.</div></details>
+      <details><summary>Do I need to be technical?</summary>
+        <div class="ans">No. Module Two is the ground floor &mdash; accounts, terminal, what a skill is, how to hold an API key. Then Module Three walks the setup slowly with every command on screen.</div></details>
+      <details><summary>Will this still work in six months?</summary>
+        <div class="ans">The tools change constantly. That's why updates are included &mdash; when something shifts, I re-record the module and you get it.</div></details>
+      <details><summary>Can I use this on any listing?</summary>
+        <div class="ans">Use it on your own listings, where you control the photos or hired the photographer. Listing photos belong to somebody &mdash; usually the photographer or the listing brokerage. The course covers this properly.</div></details>
+      <details><summary>What's your refund policy?</summary>
+        <div class="ans">All sales are final. The entire course downloads the instant you pay, so there's nothing to return. That's the trade for the price &mdash; and it's why I spend a whole section of this page telling you the limitations before you buy instead of after. If you're unsure whether it fits your business, call me at <a href="tel:+19709040600">970-904-0600</a> first. I'll give you a straight answer, including "don't buy it."</div></details>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ CLOSE ============ -->
+<section class="band close" id="start">
+  <div class="inner">
+    <p class="kick rv">Get started</p>
+    <h2 class="rv">Ready when <em>you are</em>.</h2>
+    <p class="lede rv">Buy the course and start this afternoon, or call and we'll talk about having it built for you. Either way you'll get a straight answer about whether it fits your business.</p>
+    <div class="hcta rv" style="margin-top:28px">
+      <a class="btn pri" data-buy="course" href="#pricing">Buy the course &mdash; $67 <span class="ar">&rarr;</span></a>
+      <a class="btn sec" href="tel:+19709040600">Call 970-904-0600</a>
+    </div>
+    <div class="contact rv">
+      <div><span class="cl">Phone</span><span class="cv"><a href="tel:+19709040600">970-904-0600</a></span></div>
+      <div><span class="cl">Email</span><span class="cv"><a href="mailto:charlesharrisonvail@gmail.com">charlesharrisonvail@gmail.com</a></span></div>
+      <div><span class="cl">Web</span><span class="cv"><a href="https://aireestate.com">aireestate.com</a></span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="inner">
+    <span class="lock"><span class="a">A</span><span class="dl i">&#305;<svg width="0.44em" height="0.44em" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="34" fill="none" stroke="#38bdf8" stroke-width="17" stroke-linecap="round" stroke-dasharray="160 54" transform="rotate(-38 50 50)"/><circle cx="50" cy="50" r="15" fill="#38bdf8"/></svg></span><span class="re">RE</span><span class="est">Estate</span></span>
+    <p class="legal" style="margin-top:22px">AiRE Estate, LLC</p>
+    <p class="legal">AiRE Estate, LLC provides education and consulting only. It does not provide real estate brokerage services, does not list or sell property, and does not represent buyers or sellers. Real estate brokerage services are provided separately by a licensed brokerage, entirely independent of AiRE Estate, LLC, and nothing on this page is an offer of brokerage representation.</p>
+    <p class="legal">Course materials produce marketing assets from your own listing photos. Training analysis tools are not a certified market analysis and not an appraisal. Pricing figures cited for third-party services are published industry ranges, not quotes from any provider, and are current as of publication. AiRE Estate, LLC is independent and is not affiliated with, endorsed by, or sponsored by Zillow Group, Inc. or any other listing portal, brokerage, or software company. Zillow&reg; and Zillow Showcase&reg; are trademarks of their respective owner and are referenced here solely for truthful price comparison.</p>
+    <p class="legal"><b>All sales are final.</b> Course materials are delivered digitally on payment and are licensed to the individual purchaser for their own use. They may not be resold, redistributed, or shared with agents outside the purchasing seat count. No refunds are issued once material has been delivered; this policy is disclosed at the point of purchase.</p>
+    <p class="legal">AiRE Estate, LLC provides paid education and practical advice on using AI in a real estate practice. It is not legal advice and does not create an attorney-client relationship. Laws on advertising, fair housing, texting, email, privacy, artificial intelligence and contracts differ by state and change often. Consult a licensed attorney in your state before acting on anything in this course that carries legal weight.</p>
+    <p class="legal">Some links in the course are referral links, disclosed as such where they appear.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  document.documentElement.classList.add('js');
+  var RM = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function rnd(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;
+    var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;
+    return((t^t>>>14)>>>0)/4294967296;};}
+
+  /* ============ 1. HERO — point-cloud house ============ */
+  /* Hand-rolled 3D: points sampled on a modern house's massing, projected with
+     perspective and depth-sorted. They begin scattered and settle into the
+     building — photographs becoming dimensional space, which is the product. */
+  (function(){
+    var cv=document.getElementById('cloud'); if(!cv) return;
+    var ctx=cv.getContext('2d'), W=0,H=0,DPR=1, pts=[], t0=performance.now(), raf=null;
+    function OFF(){ return document.documentElement.getAttribute('data-motion')==='off'; }
+
+    function box(r,cx,cy,cz,sx,sy,sz,n){
+      for(var i=0;i<n;i++){
+        var f=Math.floor(r()*6), u=r()-0.5, v=r()-0.5, x,y,z;
+        if(f===0||f===1){x=u*sx; y=v*sy; z=(f===0?0.5:-0.5)*sz;}
+        else if(f===2||f===3){x=(f===2?0.5:-0.5)*sx; y=v*sy; z=u*sz;}
+        else{x=u*sx; y=(f===4?0.5:-0.5)*sy; z=v*sz;}
+        pts.push({x:cx+x,y:cy+y,z:cz+z,
+                  sx:(r()-0.5)*9,sy:(r()-0.5)*7,sz:(r()-0.5)*9,
+                  d:r(),w:r()<0.06});
+      }
+    }
+    var r=rnd(20260921);
+    box(r, 0,   0.30, 0,    3.30,0.92,1.70, 2900);   /* main bar   */
+    box(r, 1.05,-0.52, 0.16,1.35,1.02,1.45, 1550);   /* upper mass */
+    box(r,-1.35,-0.22,-0.30,0.74,0.10,1.10,  420);   /* canopy     */
+    for(var i=0;i<1000;i++){                         /* ground plane */
+      var a=r()*Math.PI*2, rad=1.6+r()*4.4;
+      pts.push({x:Math.cos(a)*rad, y:0.80, z:Math.sin(a)*rad*0.62,
+                sx:(r()-0.5)*11, sy:(r()-0.5)*6, sz:(r()-0.5)*11, d:r(), w:false, g:true});
+    }
+
+    function size(){
+      var b=cv.getBoundingClientRect();
+      DPR=Math.min(window.devicePixelRatio||1,2);
+      W=Math.max(1,Math.round(b.width)); H=Math.max(1,Math.round(b.height));
+      cv.width=Math.round(W*DPR); cv.height=Math.round(H*DPR);
+      ctx.setTransform(DPR,0,0,DPR,0,0);
+    }
+
+    var scrollK=0;
+    function draw(now){
+      var el=(now-t0)/1000;
+      var form=Math.min(1,Math.max(0,(el-0.25)/2.6));
+      form=1-Math.pow(1-form,3);                       /* ease-out cubic */
+      if(RM) form=1;
+      var spin=-0.45+el*(RM?0.045:0.155);
+
+      ctx.clearRect(0,0,W,H);
+      var cxp=W*(W<760?0.5:0.625), cyp=H*(W<760?0.42:0.50);
+      var scale=Math.min(W,H)*(W<760?0.86:1.46);
+      var cs=Math.cos(spin), sn=Math.sin(spin);
+      var tilt=0.20+scrollK*0.16, ct=Math.cos(tilt), st=Math.sin(tilt);
+      var camZ=7.2+scrollK*2.4;
+
+      var out=[],k,p,x,z,y,y2,z2,pz,s;
+      for(k=0;k<pts.length;k++){
+        p=pts[k];
+        x=p.x+p.sx*(1-form); y=p.y+p.sy*(1-form); z=p.z+p.sz*(1-form);
+        var rx=x*cs - z*sn, rz=x*sn + z*cs;           /* yaw   */
+        y2=y*ct - rz*st;  z2=y*st + rz*ct;            /* pitch */
+        pz=z2+camZ; if(pz<0.6) continue;
+        s=scale/pz;
+        out.push({X:cxp+rx*s, Y:cyp+y2*s, S:s, P:p, Z:pz});
+      }
+      out.sort(function(a,b){return b.Z-a.Z;});
+
+      for(k=0;k<out.length;k++){
+        var o=out[k], dep=Math.max(0,Math.min(1,(12.5-o.Z)/6.5));
+        var sz=Math.max(0.7, o.S*0.0085*(0.55+o.P.d*0.85));
+        var al=(o.P.g?0.26:0.86)*dep*(0.45+o.P.d*0.55)*(0.30+form*0.70);
+        if(o.P.w){ ctx.fillStyle='rgba(255,196,128,'+Math.min(1,al*2.1).toFixed(3)+')'; sz*=1.5; }
+        else if(o.P.g){ ctx.fillStyle='rgba(90,118,155,'+al.toFixed(3)+')'; }
+        else { ctx.fillStyle='rgba('+(120+dep*135)+','+(200+dep*40)+',252,'+al.toFixed(3)+')'; }
+        ctx.fillRect(o.X-sz/2, o.Y-sz/2, sz, sz);
+      }
+      if(!OFF()) { raf=requestAnimationFrame(draw); } else { raf=null; }
+    }
+
+    size();
+    window.addEventListener('resize',size,{passive:true});
+    if(window.ResizeObserver) new ResizeObserver(size).observe(cv);
+    window.addEventListener('scroll',function(){
+      var h=cv.getBoundingClientRect();
+      scrollK=Math.max(0,Math.min(1,-h.top/Math.max(1,h.height)));
+    },{passive:true});
+    raf=requestAnimationFrame(draw);
+    window.__heroRedraw=function(){ if(!raf) raf=requestAnimationFrame(draw); };
+  })();
+
+  /* ============ 2. FILMSTRIP plates ============ */
+  (function(){
+    /* horizon, building position/scale, grade and crop all move per shot,
+       so six frames read as six different camera setups, not one texture. */
+    var F=[
+      {z:1.00,px:.50,py:.52,rot:0,   hz:.60,bx:.50,bs:.30,by:.03,warm:.85,cool:.80,flat:1},
+      {z:1.15,px:.50,py:.56,rot:-1.5,hz:.66,bx:.50,bs:.46,by:.02,warm:1.35,cool:.62},
+      {z:1.30,px:.42,py:.52,rot:5.0, hz:.58,bx:.62,bs:.38,by:.04,warm:.80,cool:1.30},
+      {z:1.10,px:.58,py:.50,rot:-0.5,hz:.62,bx:.34,bs:.34,by:.03,warm:1.00,cool:1.00},
+      {z:1.70,px:.66,py:.58,rot:1.5, hz:.70,bx:.52,bs:.62,by:.01,warm:1.60,cool:.50},
+      {z:1.22,px:.48,py:.34,rot:-3.0,hz:.46,bx:.50,bs:.26,by:.10,warm:.70,cool:1.45}
+    ];
+    function plate(c,cfg){
+      var b=c.getBoundingClientRect(); if(!b.width||!b.height) return;
+      var dp=Math.min(window.devicePixelRatio||1,2), w=Math.round(b.width), h=Math.round(b.height);
+      c.width=Math.round(w*dp); c.height=Math.round(h*dp);
+      var x=c.getContext('2d'); x.setTransform(dp,0,0,dp,0,0);
+      x.save(); x.translate(w*cfg.px,h*cfg.py); x.rotate(cfg.rot*Math.PI/180);
+      x.scale(cfg.z,cfg.z); x.translate(-w*0.5,-h*0.5);
+      var W=w,H=h,HZ=H*cfg.hz;
+
+      var sky=x.createLinearGradient(0,-H*0.5,0,HZ);
+      sky.addColorStop(0,'#071427'); sky.addColorStop(.45,'#123a5c');
+      sky.addColorStop(.82,'#2b6e92'); sky.addColorStop(1,'#5aa0bd');
+      x.fillStyle=sky; x.fillRect(-W,-H,W*3,H*2+HZ);
+
+      var sun=x.createRadialGradient(W*.72,HZ,0,W*.72,HZ,Math.max(W,H)*.95);
+      sun.addColorStop(0,'rgba(255,196,124,'+(.60*cfg.warm).toFixed(3)+')');
+      sun.addColorStop(.26,'rgba(150,190,215,'+(.24*cfg.warm).toFixed(3)+')');
+      sun.addColorStop(1,'rgba(0,0,0,0)');
+      x.fillStyle=sun; x.fillRect(-W,-H,W*3,H*3);
+
+      var cl=x.createRadialGradient(W*.16,H*.06,0,W*.16,H*.06,Math.max(W,H)*.9);
+      cl.addColorStop(0,'rgba(56,189,248,'+(.42*cfg.cool).toFixed(3)+')'); cl.addColorStop(1,'rgba(0,0,0,0)');
+      x.fillStyle=cl; x.fillRect(-W,-H,W*3,H*3);
+
+      /* ridgeline behind */
+      x.beginPath(); x.moveTo(-W,H*2); x.lineTo(-W,HZ-H*.06);
+      x.bezierCurveTo(W*.26,HZ-H*.15,W*.48,HZ-H*.01,W*.70,HZ-H*.09);
+      x.bezierCurveTo(W*.86,HZ-H*.15,W*1.1,HZ-H*.03,W*2,HZ-H*.08);
+      x.lineTo(W*2,H*2); x.closePath();
+      x.fillStyle='rgba(10,30,48,.92)'; x.fill();
+
+      /* ground */
+      var gd=x.createLinearGradient(0,HZ,0,H*1.3);
+      gd.addColorStop(0,'#0a1a2a'); gd.addColorStop(1,'#04080f');
+      x.fillStyle=gd; x.fillRect(-W,HZ,W*3,H*2);
+
+      /* the building — position and scale differ per shot */
+      var bw=W*cfg.bs, bh=bw*0.52, bx0=W*cfg.bx-bw/2, by0=HZ-bh+H*cfg.by;
+      x.fillStyle='#02060c'; x.fillRect(bx0,by0,bw,bh);
+      x.fillRect(bx0+bw*0.58,by0-bh*0.52,bw*0.42,bh*0.52);
+      x.fillStyle='rgba(0,0,0,.55)'; x.fillRect(bx0-bw*.03,by0+bh,bw*1.06,bh*.10);
+      var wy=by0+bh*0.30, wh=bh*0.34;
+      for(var k=0;k<5;k++){
+        x.fillStyle='rgba(255,206,146,'+Math.min(1,.98*cfg.warm).toFixed(3)+')';
+        x.fillRect(bx0+bw*(0.07+k*0.115), wy, bw*0.072, wh);
+      }
+      x.fillStyle='rgba(255,216,166,'+Math.min(1,.88*cfg.warm).toFixed(3)+')';
+      x.fillRect(bx0+bw*0.64,by0-bh*0.40,bw*0.28,bh*0.26);
+      x.restore();
+
+      x.fillStyle='rgba(3,7,14,.30)'; x.fillRect(0,0,w,h);       /* seat it back */
+      if(cfg.flat){ x.fillStyle='rgba(26,33,45,.62)'; x.fillRect(0,0,w,h); }
+    }
+    var cells=[].slice.call(document.querySelectorAll('#prow canvas'));
+    function all(){cells.forEach(function(c,i){plate(c,F[i]||F[0]);});}
+    if(cells.length){ all(); window.addEventListener('resize',all,{passive:true});
+      if(window.ResizeObserver) new ResizeObserver(all).observe(cells[0]); }
+
+    /* parallax drift per cell */
+    var row=document.getElementById('prow');
+    if(row && !RM){
+      window.addEventListener('scroll',function(){
+        var b=row.getBoundingClientRect();
+        var k=(b.top+b.height/2-window.innerHeight/2)/window.innerHeight;
+        cells.forEach(function(c,i){
+          c.style.transform='translate3d('+(k*(i%2?-24:24)).toFixed(2)+'px,'+(k*(6+i*3)).toFixed(2)+'px,0)';
+        });
+      },{passive:true});
+    }
+  })();
+
+  /* ============ 3. Reveals, counters, strike ============ */
+  (function(){
+    var rvs=[].slice.call(document.querySelectorAll('.rv'));
+    if(!('IntersectionObserver' in window)){
+      rvs.forEach(function(e){e.classList.add('in');}); return;
+    }
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return;
+        var el=e.target; el.classList.add('in'); io.unobserve(el);
+        [].slice.call(el.querySelectorAll('.cnt')).forEach(count);
+        var st=el.querySelector('.strike'); if(st) st.classList.add('in');
+      });
+    },{threshold:.16,rootMargin:'0px 0px -8% 0px'});
+    rvs.forEach(function(e,i){ e.style.transitionDelay=(Math.min(i,4)*55)+'ms'; io.observe(e); });
+
+    function count(n){
+      var to=parseFloat(n.dataset.to)||0;
+      if(RM){n.textContent=to.toLocaleString('en-US');return;}
+      var t0=null, dur=1250;
+      (function step(ts){
+        if(t0===null) t0=ts;
+        var k=Math.min(1,(ts-t0)/dur), e=1-Math.pow(1-k,3);
+        n.textContent=Math.round(to*e).toLocaleString('en-US');
+        if(k<1) requestAnimationFrame(step);
+      })(performance.now());
+    }
+  })();
+
+  /* ============ 4. Nav: stuck state, progress, active link ============ */
+  (function(){
+    var nav=document.getElementById('nav'), prog=document.getElementById('prog');
+    var links=[].slice.call(document.querySelectorAll('.navlinks a[href^="#"]'));
+    var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+    function onScroll(){
+      var y=window.scrollY||window.pageYOffset;
+      nav.classList.toggle('stuck', y>30);
+      var max=document.documentElement.scrollHeight-window.innerHeight;
+      prog.style.width=(max>0?(y/max*100):0).toFixed(2)+'%';
+      var best=-1;
+      secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=140) best=i; });
+      links.forEach(function(a,i){ a.classList.toggle('on', i===best); });
+    }
+    window.addEventListener('scroll',onScroll,{passive:true});
+    window.addEventListener('resize',onScroll,{passive:true}); onScroll();
+  })();
+
+  /* ============ 5. Pinned horizontal module rail ============ */
+  (function(){
+    var rail=document.getElementById('course'),
+        track=document.getElementById('track'),
+        fill=document.getElementById('railfill'),
+        ct=document.getElementById('railct');
+    if(!rail||!track) return;
+    var mods=track.children.length;
+
+    function measure(){
+      if(window.innerWidth<=760){ rail.style.height=''; track.style.transform=''; return; }
+      var dist=Math.max(0, track.scrollWidth - window.innerWidth + 40);
+      rail.style.height=(window.innerHeight + dist*1.05)+'px';
+      move();
+    }
+    function move(){
+      if(window.innerWidth<=760) return;
+      var b=rail.getBoundingClientRect();
+      var total=rail.offsetHeight-window.innerHeight;
+      var k=total>0 ? Math.max(0,Math.min(1,-b.top/total)) : 0;
+      var dist=Math.max(0, track.scrollWidth - window.innerWidth + 40);
+      track.style.transform='translate3d('+(-k*dist).toFixed(1)+'px,0,0)';
+      if(fill) fill.style.width=(k*100).toFixed(1)+'%';
+      if(ct){
+        var n=Math.min(mods,Math.floor(k*(mods-0.001))+1);
+        ct.textContent=('0'+n).slice(-2)+' / 0'+mods;
+      }
+    }
+    window.addEventListener('scroll',move,{passive:true});
+    window.addEventListener('resize',measure,{passive:true});
+    measure(); setTimeout(measure,400);
+  })();
+
+  /* ============ 6. Tier tilt ============ */
+  (function(){
+    if(RM || !window.matchMedia('(hover:hover)').matches) return;
+    [].slice.call(document.querySelectorAll('#tiers .tier')).forEach(function(el){
+      el.addEventListener('mousemove',function(ev){
+        var b=el.getBoundingClientRect();
+        var px=(ev.clientX-b.left)/b.width-0.5, py=(ev.clientY-b.top)/b.height-0.5;
+        el.style.transform='perspective(1000px) rotateX('+(-py*5).toFixed(2)+'deg) rotateY('+(px*6).toFixed(2)+'deg) translateY(-5px)';
+      });
+      el.addEventListener('mouseleave',function(){ el.style.transform=''; });
+    });
+  })();
+
+  /* ============ 6b. Motion toggle ============ */
+  (function(){
+    var el=document.getElementById('mtoggle'), tx=document.getElementById('mtxt');
+    var root=document.documentElement;
+    var start='on';
+    try{ start=localStorage.getItem('aire-motion') || (RM?'off':'on'); }catch(e){ start=RM?'off':'on'; }
+    function set(v){
+      root.setAttribute('data-motion',v);
+      if(el){ el.setAttribute('aria-pressed', v==='on'?'true':'false'); }
+      if(tx){ tx.textContent = v==='on' ? 'Motion on' : 'Motion off'; }
+      try{ localStorage.setItem('aire-motion',v); }catch(e){}
+      if(v==='on' && window.__heroRedraw) window.__heroRedraw();
+    }
+    set(start);
+    if(el) el.addEventListener('click',function(){
+      set(root.getAttribute('data-motion')==='on'?'off':'on');
+    });
+  })();
+
+  /* ============ 6c. Measure each motion path so it draws itself ============ */
+  (function(){
+    [].slice.call(document.querySelectorAll('.cell svg.dg .pth')).forEach(function(p){
+      try{ p.style.setProperty('--L', Math.ceil(p.getTotalLength())+1); }catch(e){}
+    });
+  })();
+
+  /* ============ 7. Seamless marquees ============ */
+  (function(){
+    ['tkr','vtrack'].forEach(function(id){
+      var t=document.getElementById(id);
+      if(t) t.innerHTML += t.innerHTML;   /* duplicate for a seamless -50% loop */
+    });
+  })();
+})();
+</script>
+
+<script>
+/* GoDaddy store: paste each product's page URL between the quotes. Empty = button scrolls to the contact section. */
+var STORE = { course: "", certified: "", l2k: "" };
+document.querySelectorAll('[data-buy]').forEach(function(a){ var u = STORE[a.getAttribute('data-buy')]; if (u) a.href = u; });
+</script>
