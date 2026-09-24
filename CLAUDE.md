@@ -21,4 +21,14 @@ not an application: there is no build, test, or lint step.
 - **Never use "Epique Mountain Collective"** anywhere — not in messages, signatures, or materials — even if a brand skill suggests it.
 - Sign off client and lead messages: **Charles Harrison | EpiVail | Epique Realty**
 - Voice is courteous and warm, with Southern manners.
+
+## Do not contact
+
+Never email, text, call, or enroll these people in any sequence, even if Lofty
+flags them as past due or needing attention:
+
+- Jeff Karpel (karpel@karpel.com) — inactive, asked not to be contacted
+
+Before sending any message to a lead, check this list and confirm the lead is
+still active. When in doubt, draft and show Charles instead of sending.
 - Work on a feature branch and merge through a pull request.
