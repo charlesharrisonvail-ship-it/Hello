@@ -188,59 +188,6 @@
     color:var(--head);line-height:1;margin-bottom:9px;font-variant-numeric:tabular-nums}
   .stats span{color:var(--slate);font-size:.85rem;line-height:1.45;display:block}
 
-  /* ---------------- FILMSTRIP ---------------- */
-  .pipe{margin-top:clamp(34px,5vw,54px);border:1px solid var(--edge);background:var(--panel);overflow:hidden}
-  .pipehd{display:flex;gap:16px;flex-wrap:wrap;padding:14px clamp(16px,2.4vw,24px);
-    border-bottom:1px solid var(--edge);font-family:var(--mn);font-size:.64rem;letter-spacing:.18em;
-    text-transform:uppercase;color:var(--slate2)}
-  .pipehd b{color:var(--sig);font-weight:600} .pipehd .sp{margin-left:auto}
-  .prow{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--edge)}
-  @media (max-width:900px){.prow{grid-template-columns:repeat(3,1fr)}}
-  @media (max-width:480px){.prow{grid-template-columns:repeat(2,1fr)}}
-  .cell{background:#04070e;aspect-ratio:3/4;position:relative;overflow:hidden}
-  .cell canvas{position:absolute;inset:-14%;width:128%;height:128%;display:block;will-change:transform}
-  .cell .cl{position:absolute;left:11px;bottom:10px;z-index:4;font-family:var(--mn);font-weight:600;
-    font-size:.63rem;letter-spacing:.15em;text-transform:uppercase;color:#fff;
-    text-shadow:0 1px 5px rgba(0,0,0,.98)}
-  .cell svg.dg{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;
-    overflow:visible}
-  .cell svg.dg .pth{fill:none;stroke:#38bdf8;stroke-width:1.6;stroke-linecap:round;
-    filter:drop-shadow(0 0 5px rgba(56,189,248,.85));
-    stroke-dasharray:var(--L,120);stroke-dashoffset:var(--L,120);
-    animation:trace 3.4s cubic-bezier(.6,0,.3,1) infinite}
-  .cell:nth-child(2) svg.dg .pth{animation-delay:0s}
-  .cell:nth-child(3) svg.dg .pth{animation-delay:.34s}
-  .cell:nth-child(4) svg.dg .pth{animation-delay:.68s}
-  .cell:nth-child(5) svg.dg .pth{animation-delay:1.02s}
-  .cell:nth-child(6) svg.dg .pth{animation-delay:1.36s}
-  @keyframes trace{
-    0%{stroke-dashoffset:var(--L,120);opacity:0}
-    12%{opacity:1}
-    55%{stroke-dashoffset:0;opacity:1}
-    82%{stroke-dashoffset:0;opacity:1}
-    100%{stroke-dashoffset:0;opacity:0}}
-  .cell svg.dg .hd{animation:hdfade 3.4s ease-in-out infinite}
-  .cell:nth-child(3) svg.dg .hd{animation-delay:.34s}
-  .cell:nth-child(4) svg.dg .hd{animation-delay:.68s}
-  .cell:nth-child(5) svg.dg .hd{animation-delay:1.02s}
-  .cell:nth-child(6) svg.dg .hd{animation-delay:1.36s}
-  @keyframes hdfade{0%,42%{opacity:0}58%,86%{opacity:1}100%{opacity:0}}
-  html[data-motion="off"] .cell svg.dg .pth,
-  html[data-motion="off"] .cell svg.dg .hd{animation:none;stroke-dashoffset:0;opacity:1}
-  .cell svg.dg .gst{fill:none;stroke:rgba(56,189,248,.26);stroke-width:1;stroke-dasharray:3 4}
-  .cell svg.dg .hd{fill:#38bdf8;filter:drop-shadow(0 0 5px rgba(56,189,248,.85))}
-  .cell svg.dg .bx{fill:none;stroke:rgba(255,255,255,.34);stroke-width:1}
-  .cell .cn{position:absolute;right:10px;top:9px;z-index:3;font-family:var(--mn);font-size:.58rem;
-    letter-spacing:.1em;color:var(--sig)}
-  .cell::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
-    background:linear-gradient(180deg,transparent 50%,rgba(2,4,10,.86) 100%)}
-  .cell.src::before{content:"";position:absolute;inset:8px;z-index:3;pointer-events:none;
-    border:1px dashed rgba(132,150,178,.42)}
-  .cell.src .cl{color:var(--slate)}
-  .pipeft{padding:15px clamp(16px,2.4vw,24px);border-top:1px solid var(--edge);display:flex;
-    gap:10px 26px;flex-wrap:wrap;font-size:.86rem;color:var(--slate)}
-  .pipeft b{color:var(--head);font-weight:600}
-
 
   /* ---------------- ONE PHOTO, START TO FINISH ---------------- */
   .steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.8vw,20px);margin-top:clamp(30px,4.6vw,48px)}
@@ -427,41 +374,6 @@
   .badge .bt{font-family:var(--mn);font-weight:500;font-size:.61rem;letter-spacing:.2em;
     text-transform:uppercase;color:var(--slate);border-left:1px solid var(--edge2);padding-left:15px}
 
-  /* ---------------- VOICES ---------------- */
-  .voices{background:var(--panel2);border-block:1px solid var(--edge);overflow:hidden;
-    padding-inline:0}
-  .voices::after{content:"";position:absolute;inset:0;pointer-events:none;
-    background:radial-gradient(ellipse 70% 90% at 30% 40%,rgba(56,189,248,.09),transparent 66%)}
-  .voices>.vhd{position:relative;z-index:1;padding-inline:var(--gut);max-width:1200px;margin:0 auto}
-  .vmask{position:relative;z-index:1;margin-top:clamp(28px,4vw,42px);
-    -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
-    mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
-  .vtrack{display:flex;gap:clamp(14px,2vw,24px);width:max-content;
-    animation:vslide 54s linear infinite}
-  .vmask:hover .vtrack{animation-play-state:paused}
-  @keyframes vslide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-  .quote{flex:none;width:clamp(285px,38vw,470px);background:rgba(13,21,36,.72);
-    border:1px solid var(--edge);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-    padding:30px 28px 24px;display:flex;flex-direction:column;position:relative}
-  .quote .qm{font-family:var(--wm);font-weight:900;font-size:2.4rem;line-height:.7;
-    color:var(--sig);margin-bottom:16px;display:block}
-  .quote blockquote{margin:0 0 auto;font-size:clamp(1.02rem,1.5vw,1.16rem);line-height:1.5;
-    color:var(--head);font-weight:300}
-  .quote .who{display:flex;align-items:center;gap:13px;margin-top:26px;padding-top:18px;
-    border-top:1px solid var(--edge)}
-  .quote .av{width:40px;height:40px;border-radius:50%;flex:none;display:grid;place-items:center;
-    background:rgba(56,189,248,.16);border:1px solid rgba(56,189,248,.4);color:var(--sig);
-    font-family:var(--wm);font-weight:700;font-size:1rem}
-  .quote .nm{font-family:var(--wm);font-weight:700;font-size:.95rem;color:var(--head);
-    letter-spacing:-.01em;display:block}
-  .quote .rl{font-family:var(--mn);font-size:.61rem;letter-spacing:.17em;text-transform:uppercase;
-    color:var(--slate2);display:block;margin-top:4px}
-  .vnote{position:relative;z-index:1;padding-inline:var(--gut);max-width:1200px;margin:26px auto 0;
-    font-family:var(--mn);font-size:.63rem;letter-spacing:.13em;text-transform:uppercase;
-    color:var(--slate2);line-height:1.8}
-  @media (prefers-reduced-motion:reduce){.vtrack{animation:none}
-    .vmask{overflow-x:auto}}
-
   .close{background:var(--panel);border-top:1px solid var(--edge)}
   .contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;
     background:var(--edge);border:1px solid var(--edge);margin-top:clamp(28px,4vw,42px)}
@@ -486,10 +398,8 @@
   }
   html[data-motion="off"] .tex::after,
   html[data-motion="off"] .tkr,
-  html[data-motion="off"] .vtrack,
   html[data-motion="off"] .dotpulse,
-  html[data-motion="off"] .scrollmark::after,
-  html[data-motion="off"] .recdot i{animation:none!important}
+  html[data-motion="off"] .scrollmark::after{animation:none!important}
   html[data-motion="off"] .js .rv{opacity:1!important;transform:none!important}
 
   .mtoggle{display:inline-flex;align-items:center;gap:8px;font-family:var(--mn);
@@ -767,11 +677,11 @@
 <!-- ============ PART TWO ============ -->
 <section class="band glow" id="parttwo">
   <div class="inner">
-    <p class="kick rv">Part Two &middot; A separate course</p>
+    <p class="kick rv">Part Two &middot; In production</p>
     <h2 class="rv">Then run the rest of the desk: <em>Lead to Keys</em></h2>
-    <p class="lede rv">This course makes the marketing. Part Two covers the rest of the working day: clean listings, client profiles, comps from your MLS, seller updates, buyer comparisons, follow-up that stays inside texting and email law, and contracts handled so they don't end in an E&amp;O claim. Seven modules, a Capstone, and its own certificate.</p>
+    <p class="lede rv">This course makes the marketing. Part Two covers the rest of the working day: clean listings, client profiles, comps from your MLS, seller updates, buyer comparisons, follow-up that stays inside texting and email law, and contracts handled so they don't end in an E&amp;O claim. Seven modules, a Capstone, and its own certificate. It is in production now &mdash; join the waitlist and you will hear first.</p>
     <div class="hcta rv" style="margin-top:26px">
-      <a class="btn pri" data-buy="l2k" href="#start">Get Lead to Keys &mdash; $97 <span class="ar">&rarr;</span></a>
+      <a class="btn sec" href="#start">Join the waitlist <span class="ar">&rarr;</span></a>
     </div>
   </div>
 </section>
@@ -804,7 +714,7 @@
     <h2 class="rv">Ready when <em>you are</em>.</h2>
     <p class="lede rv">Buy the course and start this afternoon, or call and we'll talk about having it built for you. Either way you'll get a straight answer about whether it fits your business.</p>
     <div class="hcta rv" style="margin-top:28px">
-      <a class="btn pri" data-buy="course" href="#pricing">Buy the course &mdash; $67 <span class="ar">&rarr;</span></a>
+      <a class="btn pri" data-buy="course" href="tel:+19709040600">Buy the course &mdash; $67 <span class="ar">&rarr;</span></a>
       <a class="btn sec" href="tel:+19709040600">Call 970-904-0600</a>
     </div>
     <div class="contact rv">
@@ -926,89 +836,6 @@
     window.__heroRedraw=function(){ if(!raf) raf=requestAnimationFrame(draw); };
   })();
 
-  /* ============ 2. FILMSTRIP plates ============ */
-  (function(){
-    /* horizon, building position/scale, grade and crop all move per shot,
-       so six frames read as six different camera setups, not one texture. */
-    var F=[
-      {z:1.00,px:.50,py:.52,rot:0,   hz:.60,bx:.50,bs:.30,by:.03,warm:.85,cool:.80,flat:1},
-      {z:1.15,px:.50,py:.56,rot:-1.5,hz:.66,bx:.50,bs:.46,by:.02,warm:1.35,cool:.62},
-      {z:1.30,px:.42,py:.52,rot:5.0, hz:.58,bx:.62,bs:.38,by:.04,warm:.80,cool:1.30},
-      {z:1.10,px:.58,py:.50,rot:-0.5,hz:.62,bx:.34,bs:.34,by:.03,warm:1.00,cool:1.00},
-      {z:1.70,px:.66,py:.58,rot:1.5, hz:.70,bx:.52,bs:.62,by:.01,warm:1.60,cool:.50},
-      {z:1.22,px:.48,py:.34,rot:-3.0,hz:.46,bx:.50,bs:.26,by:.10,warm:.70,cool:1.45}
-    ];
-    function plate(c,cfg){
-      var b=c.getBoundingClientRect(); if(!b.width||!b.height) return;
-      var dp=Math.min(window.devicePixelRatio||1,2), w=Math.round(b.width), h=Math.round(b.height);
-      c.width=Math.round(w*dp); c.height=Math.round(h*dp);
-      var x=c.getContext('2d'); x.setTransform(dp,0,0,dp,0,0);
-      x.save(); x.translate(w*cfg.px,h*cfg.py); x.rotate(cfg.rot*Math.PI/180);
-      x.scale(cfg.z,cfg.z); x.translate(-w*0.5,-h*0.5);
-      var W=w,H=h,HZ=H*cfg.hz;
-
-      var sky=x.createLinearGradient(0,-H*0.5,0,HZ);
-      sky.addColorStop(0,'#071427'); sky.addColorStop(.45,'#123a5c');
-      sky.addColorStop(.82,'#2b6e92'); sky.addColorStop(1,'#5aa0bd');
-      x.fillStyle=sky; x.fillRect(-W,-H,W*3,H*2+HZ);
-
-      var sun=x.createRadialGradient(W*.72,HZ,0,W*.72,HZ,Math.max(W,H)*.95);
-      sun.addColorStop(0,'rgba(255,196,124,'+(.60*cfg.warm).toFixed(3)+')');
-      sun.addColorStop(.26,'rgba(150,190,215,'+(.24*cfg.warm).toFixed(3)+')');
-      sun.addColorStop(1,'rgba(0,0,0,0)');
-      x.fillStyle=sun; x.fillRect(-W,-H,W*3,H*3);
-
-      var cl=x.createRadialGradient(W*.16,H*.06,0,W*.16,H*.06,Math.max(W,H)*.9);
-      cl.addColorStop(0,'rgba(56,189,248,'+(.42*cfg.cool).toFixed(3)+')'); cl.addColorStop(1,'rgba(0,0,0,0)');
-      x.fillStyle=cl; x.fillRect(-W,-H,W*3,H*3);
-
-      /* ridgeline behind */
-      x.beginPath(); x.moveTo(-W,H*2); x.lineTo(-W,HZ-H*.06);
-      x.bezierCurveTo(W*.26,HZ-H*.15,W*.48,HZ-H*.01,W*.70,HZ-H*.09);
-      x.bezierCurveTo(W*.86,HZ-H*.15,W*1.1,HZ-H*.03,W*2,HZ-H*.08);
-      x.lineTo(W*2,H*2); x.closePath();
-      x.fillStyle='rgba(10,30,48,.92)'; x.fill();
-
-      /* ground */
-      var gd=x.createLinearGradient(0,HZ,0,H*1.3);
-      gd.addColorStop(0,'#0a1a2a'); gd.addColorStop(1,'#04080f');
-      x.fillStyle=gd; x.fillRect(-W,HZ,W*3,H*2);
-
-      /* the building — position and scale differ per shot */
-      var bw=W*cfg.bs, bh=bw*0.52, bx0=W*cfg.bx-bw/2, by0=HZ-bh+H*cfg.by;
-      x.fillStyle='#02060c'; x.fillRect(bx0,by0,bw,bh);
-      x.fillRect(bx0+bw*0.58,by0-bh*0.52,bw*0.42,bh*0.52);
-      x.fillStyle='rgba(0,0,0,.55)'; x.fillRect(bx0-bw*.03,by0+bh,bw*1.06,bh*.10);
-      var wy=by0+bh*0.30, wh=bh*0.34;
-      for(var k=0;k<5;k++){
-        x.fillStyle='rgba(255,206,146,'+Math.min(1,.98*cfg.warm).toFixed(3)+')';
-        x.fillRect(bx0+bw*(0.07+k*0.115), wy, bw*0.072, wh);
-      }
-      x.fillStyle='rgba(255,216,166,'+Math.min(1,.88*cfg.warm).toFixed(3)+')';
-      x.fillRect(bx0+bw*0.64,by0-bh*0.40,bw*0.28,bh*0.26);
-      x.restore();
-
-      x.fillStyle='rgba(3,7,14,.30)'; x.fillRect(0,0,w,h);       /* seat it back */
-      if(cfg.flat){ x.fillStyle='rgba(26,33,45,.62)'; x.fillRect(0,0,w,h); }
-    }
-    var cells=[].slice.call(document.querySelectorAll('#prow canvas'));
-    function all(){cells.forEach(function(c,i){plate(c,F[i]||F[0]);});}
-    if(cells.length){ all(); window.addEventListener('resize',all,{passive:true});
-      if(window.ResizeObserver) new ResizeObserver(all).observe(cells[0]); }
-
-    /* parallax drift per cell */
-    var row=document.getElementById('prow');
-    if(row && !RM){
-      window.addEventListener('scroll',function(){
-        var b=row.getBoundingClientRect();
-        var k=(b.top+b.height/2-window.innerHeight/2)/window.innerHeight;
-        cells.forEach(function(c,i){
-          c.style.transform='translate3d('+(k*(i%2?-24:24)).toFixed(2)+'px,'+(k*(6+i*3)).toFixed(2)+'px,0)';
-        });
-      },{passive:true});
-    }
-  })();
-
   /* ============ 3. Reveals, counters, strike ============ */
   (function(){
     var rvs=[].slice.call(document.querySelectorAll('.rv'));
@@ -1121,16 +948,9 @@
     });
   })();
 
-  /* ============ 6c. Measure each motion path so it draws itself ============ */
-  (function(){
-    [].slice.call(document.querySelectorAll('.cell svg.dg .pth')).forEach(function(p){
-      try{ p.style.setProperty('--L', Math.ceil(p.getTotalLength())+1); }catch(e){}
-    });
-  })();
-
   /* ============ 7. Seamless marquees ============ */
   (function(){
-    ['tkr','vtrack'].forEach(function(id){
+    ['tkr'].forEach(function(id){
       var t=document.getElementById(id);
       if(t) t.innerHTML += t.innerHTML;   /* duplicate for a seamless -50% loop */
     });
