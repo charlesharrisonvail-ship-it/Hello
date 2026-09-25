@@ -56,6 +56,8 @@
   .navlinks .apply{color:var(--ink);background:var(--sig);padding:8px 15px;font-weight:600}
   .navlinks .apply:hover{background:var(--sig-hi);color:var(--ink)}
   @media (max-width:860px){.navlinks a:not(.apply){display:none}}
+  .navlinks a.apply.on{color:var(--ink)}
+  #parttwo .kick{color:var(--rasp)} #parttwo .kick::after,#parttwo .kick::before{background:var(--rasp)} #parttwo h2 em{color:var(--rasp)}
   .prog{position:absolute;left:0;bottom:-1px;height:2px;background:var(--sig);width:0;
     box-shadow:0 0 12px rgba(56,189,248,.8)}
 
@@ -123,7 +125,7 @@
   .htxt{max-width:min(660px,100%)}
   .htag{font-family:var(--mn);font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;
     color:var(--sig);margin:0 0 20px;display:flex;align-items:center;gap:12px}
-  .htag::before{content:"";width:26px;height:1px;background:var(--sig)}
+  .htag::before{content:"";width:26px;height:1px;background:var(--sig);flex:none}
   h1{font-family:var(--wm);font-weight:800;letter-spacing:-.05em;
     font-size:clamp(2.35rem,6.4vw,4.9rem);line-height:.93;color:#fff;margin:0 0 22px;
     text-wrap:balance}
@@ -131,6 +133,37 @@
   .hsub{color:rgba(219,226,236,.86);font-size:clamp(1rem,1.85vw,1.14rem);max-width:47ch;margin:0 0 30px}
   .hsub b{color:#fff;font-weight:600}
   .hcta{display:flex;flex-wrap:wrap;gap:12px}
+  :root{--rasp:#d63a73;--rasp-hi:#f07aa3}
+  .pick{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:900px;margin-top:0}
+  .pc{background:rgba(8,14,24,.82);border:1px solid var(--edge2);border-top:3px solid var(--sig);padding:15px 18px 16px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+  .pc.two{border-top-color:var(--rasp)}
+  .pc .pt{display:block;font-family:var(--mn);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sig);margin-bottom:8px}
+  .pc.two .pt{color:var(--rasp-hi)}
+  .pc b{display:block;font-family:var(--wm);font-weight:800;letter-spacing:-.02em;color:var(--head);font-size:1.22rem;line-height:1.15;margin-bottom:6px}
+  .pc p{margin:0 0 12px;font-size:.9rem;line-height:1.5;color:var(--slate)}
+  .pc .pr{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .pc .amt{font-family:var(--wm);font-weight:800;font-size:1.5rem;color:var(--head);letter-spacing:-.02em}
+  .pc .btn{padding:11px 16px}
+  .pc.two .btn.pri{background:var(--rasp);border-color:var(--rasp);color:#fff}
+  .pc.two .btn.pri:hover{box-shadow:0 12px 30px -10px rgba(214,58,115,.6)}
+  .pc .lk{font-size:.86rem;color:var(--slate);text-decoration:underline;text-underline-offset:3px}
+  .pc .lk:hover{color:var(--head)}
+  .hbuilt{display:inline-block;margin-top:16px;font-size:.9rem;color:var(--slate);text-decoration:none;border-bottom:1px solid var(--edge2)}
+  .hbuilt:hover{color:var(--head)}
+  h1 em.r{color:var(--rasp)}
+  h1 em.cc{background:linear-gradient(90deg,var(--sig) 0%,var(--sig) 35%,var(--rasp) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hsub .c1{color:var(--sig);font-weight:600} .hsub .c2{color:var(--rasp-hi);font-weight:600}
+  .need{max-width:900px;margin:14px 0 0;padding:12px 16px;border:1px solid var(--edge2);border-left:3px solid var(--sig);background:rgba(8,14,24,.82);font-size:.9rem;line-height:1.55;color:var(--slate)}
+  .need b{color:var(--head)}
+  .pc{display:flex;flex-direction:column}.pc .pr{margin-top:auto}
+  @media (min-width:761px){
+    .hero{padding-top:calc(var(--nav) + clamp(20px,3.5vh,60px))}
+    .hero h1{font-size:min(clamp(2.35rem,6.4vw,4.9rem),9vh)}
+    .hero .hsub{margin-bottom:22px}
+    .hero .htxt{max-width:min(900px,100%)} .hero h1{max-width:680px} .hero .htag{white-space:nowrap}
+  }
+  @media (max-width:640px){.pick{grid-template-columns:1fr}}
+  .ptwo-btn{background:var(--rasp)!important;border-color:var(--rasp)!important;color:#fff!important}
 
   .ticker{position:absolute;left:0;right:0;bottom:0;z-index:3;border-top:1px solid var(--edge);
     background:rgba(4,7,13,.58);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
@@ -511,7 +544,7 @@
     <a href="#honest">Straight Talk</a>
     <button class="mtoggle" id="mtoggle" type="button" aria-pressed="true">
       <i aria-hidden="true"></i><span id="mtxt">Motion on</span></button>
-    <a class="apply" href="#start">Enroll</a>
+    <a class="apply" href="#courses">Enroll</a>
   </div>
   <i class="prog" id="prog"></i>
 </nav>
@@ -524,13 +557,29 @@
 
   <div class="inner">
     <div class="htxt">
-      <p class="htag">Artificial Intelligence &middot; Real Estate</p>
-      <h1>The big platforms charge up to $950 to make one listing look <em>premium</em>.</h1>
-      <p class="hsub"><b>Build it yourself for pennies.</b> Nine minutes, tools that already exist, and the listing photos sitting on your hard drive right now.</p>
-      <div class="hcta">
-        <a class="btn pri" href="#pricing">Get the course &mdash; $67 <span class="ar">&rarr;</span></a>
-        <a class="btn sec" href="#consulting">Have it built for you</a>
+      <p class="htag">The Claude Code courses for real estate agents</p>
+      <h1>Run your real estate business on <em class="cc">Claude&nbsp;Code</em>.</h1>
+      <p class="hsub"><b>Step-by-step, from a working agent.</b> <span class="c1">Part One</span> makes every listing look premium, with the media the big platforms charge up to $950 for. <span class="c2">Part Two</span> runs the rest of the desk, from the first lead to the keys.</p>
+      <div class="pick" id="courses">
+        <div class="pc one">
+          <span class="pt">Part One &middot; 7 video modules</span>
+          <b>Listing Media Without the Invoice</b>
+          <p>Drone shots from one photo, a listing showcase, and social media that runs itself.</p>
+          <div class="pr"><span class="amt">$67</span>
+            <a class="btn pri" data-buy="course" href="#pricing">Buy <span class="ar">&rarr;</span></a>
+            <a class="lk" href="#course">Details</a></div>
+        </div>
+        <div class="pc two">
+          <span class="pt">Part Two &middot; 10 video lessons</span>
+          <b>Lead to Keys</b>
+          <p>Listings, clients, comps, follow-up and contracts: the rest of the desk.</p>
+          <div class="pr"><span class="amt">$97</span>
+            <a class="btn pri" data-buy="l2k" href="lead-to-keys.html">Buy <span class="ar">&rarr;</span></a>
+            <a class="lk" href="lead-to-keys.html">Details</a></div>
+        </div>
       </div>
+      <p class="need"><b>You&rsquo;ll need Claude Code.</b> Both courses are built in it. It is <b>not included</b> in the course price: you&rsquo;ll need your own Claude Pro subscription ($20 a month), which you buy directly from Anthropic, the company that makes Claude. Module Two walks you through setting it up. Higgsfield and ChatGPT come in along the way.</p>
+      <a class="hbuilt" href="#consulting">Rather have it built for you? &rarr;</a>
     </div>
   </div>
 
@@ -763,7 +812,7 @@
     <h2 class="rv">Then run the rest of the desk: <em>Lead to Keys</em></h2>
     <p class="lede rv">This course makes the marketing. Part Two covers the rest of the working day: clean listings, client profiles, comps from your MLS, seller updates, buyer comparisons, follow-up that stays inside texting and email law, and contracts handled so they don't end in an E&amp;O claim. Seven modules, a Capstone, and its own certificate.</p>
     <div class="hcta rv" style="margin-top:26px">
-      <a class="btn pri" href="lead-to-keys.html">See Lead to Keys &mdash; $97 <span class="ar">&rarr;</span></a>
+      <a class="btn pri ptwo-btn" href="lead-to-keys.html">See Lead to Keys &mdash; $97 <span class="ar">&rarr;</span></a>
     </div>
   </div>
 </section>
