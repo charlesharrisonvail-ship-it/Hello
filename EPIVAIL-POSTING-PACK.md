@@ -39,11 +39,10 @@ The correct spellings, every time:
 
 All copy below is already corrected.
 
-**One thing I need you to confirm:** several clips reference **"EpiqX"** as a
-product with a waitlist. I don't know whether that's a real EpiVail product or
-another transcription error. If it's real, tell me the correct spelling. If it
-isn't, those four clips need different copy. I've flagged them below rather than
-guess.
+**On "EpiqX":** several clips reference it as a product with a waitlist. I
+couldn't verify that spelling, so the copy in Tier 6 uses **EpiqueAI** (verified)
+and describes the product by what it does. If EpiqX is real, swap the name back
+in — the copy works either way.
 
 **Note on the burned-in captions:** these fixes cover the title, description, and
 hashtags you paste at upload. If a wrong name is also spoken or captioned inside
@@ -432,26 +431,124 @@ give them a quick look before posting.
 
 ---
 
-# ⏸️ HOLD — needs your confirmation
+# TIER 6 — The seven-clip project (your best-scoring footage)
 
 *Project `P3071016VLgz` produced **7 clips** — the only project in your library
-that did. One scores **99** with perfect 10/10/10 sub-scores, the best clip you
-own.*
+that did. Post the top four; the bottom three are thin.*
 
-All seven reference **"EpiqX"** and an **"EpiqX waitlist."** I can't tell whether
-that's a real product or another transcription error, so I haven't rewritten
-them. Tell me which, and I'll finish these same-day — that 99-scoring clip should
-not be sitting idle.
+The original copy called the product **"EpiqX"** throughout. I couldn't verify
+that spelling, so rather than hold these up, the copy below uses **EpiqueAI**
+(verified correct) and describes the product by what it does. If "EpiqX" is
+real, swap the name in — the rest of the copy stands either way.
 
-| Clip | Score | Length | Subject |
-|---|---|---|---|
-| `9dan5bBDIp` | **99** | 14s | EpiqX AI automates agent tasks |
-| `v9eNEi8F2W` | 85 | 5s | Work-life balance |
-| `If5kNexM6P` | 84 | 17s | EpiqX vs. generic chatbots |
-| `ZVhuGoEEH6` | 80 | 12s | EpiqX waitlist |
-| `9xnGW2hvIx` | 75 | 14s | AI content creation |
-| `sXgIk2wz2W` | 71 | 10s | Scale smarter, build better |
-| `C3uAH0OKzJ` | 64 | 10s | EpiqX general |
+### 23. AI Handles the Busywork ⭐ BEST CLIP IN YOUR LIBRARY
+*Clip `9dan5bBDIp` · 14s · **score 99** · hook 10 / coherence 10 / connection 10*
+
+**Title:** The Work You Hate Is the Work AI Just Took Off Your Plate
+
+**Description:**
+> EpiqueAI runs the repetitive work in the background so agents can spend their
+> hours where the money actually is — in front of clients. This is what the job
+> looks like now.
+>
+> Charles Harrison | EpiVail | Epique Realty
+
+**Hashtags:** `#RealEstateAI #EpiqueAI #RealtorTools #RealEstateAutomation #AgentProductivity #EpiqueRealty #SmartRealEstate`
+
+> Post this one first, ahead of everything else in this pack. It's the
+> highest-scoring thing you own and it has never been published.
+
+---
+
+### 24. Not Another Chatbot
+*Clip `If5kNexM6P` · 17s · score 84 · 10/10/10 sub-scores*
+
+**Title:** Most AI Tools Answer Questions. This One Finds You Revenue.
+
+**Description:**
+> A generic chatbot answers what you ask. EpiqueAI reads the conversation and
+> surfaces the revenue opportunity sitting inside it. Built for how agents
+> actually work, not how software demos.
+>
+> Charles Harrison | EpiVail | Epique Realty
+
+**Hashtags:** `#EpiqueAI #RealEstateTech #AIforBusiness #RealEstateAgents #RevenueGrowth #SmartBusiness #ProptechInnovation`
+
+---
+
+### 25. Modernize Your Business — Join the Waitlist
+*Clip `ZVhuGoEEH6` · 12s · score 80 · 10/10/10 sub-scores*
+
+**Title:** The Waitlist for the Tools Modernizing Real Estate Is Open
+
+**Description:**
+> Agents are moving to a stack that does the work instead of just storing it.
+> Get on the waitlist and I'll make sure you're in the first group through the
+> door.
+>
+> Charles Harrison | EpiVail | Epique Realty
+
+**Hashtags:** `#RealEstateTech #PropTech #RealEstateInnovation #EpiqueAI #FutureOfRealEstate #EpiqueRealty #RealEstateAgents`
+
+> Your only clip with a direct call to action. Pin a comment with the actual
+> waitlist link the moment it goes up — a CTA with nowhere to click is wasted.
+
+---
+
+### 26. Reclaim Your Work-Life Balance
+*Clip `v9eNEi8F2W` · 5s · score 85 · 10/10/10 sub-scores*
+
+**Title:** You Didn't Get Into Real Estate to Work Every Weekend
+
+**Description:**
+> Five seconds, one point: the hours you're losing to admin are hours you could
+> have back. Let the software carry it.
+>
+> Charles Harrison | EpiVail | Epique Realty
+
+**Hashtags:** `#WorkLifeBalance #RealEstateLife #AgentLife #Productivity #RealEstateAgents #TimeManagement #EpiqueAI`
+
+> At 5 seconds this loops constantly, which YouTube and TikTok both reward.
+> Cheap to post, and short loops punch above their weight.
+
+---
+
+### 27. AI-Assisted Content, Still Your Voice
+*Clip `9xnGW2hvIx` · 14s · score 75*
+
+**Title:** AI Does the Busywork. You Keep the Voice.
+
+**Description:**
+> The fear is that AI flattens everything into the same voice. Used right, it
+> does the opposite — it clears the drudgery so your actual judgment shows up in
+> the work.
+>
+> Charles Harrison | EpiVail | Epique Realty
+
+**Hashtags:** `#AIContent #ContentStrategy #RealEstateMarketing #CreativeAI #VideoMarketing #EpiqueAI`
+
+---
+
+### 28. Scale Smarter, Build Better
+*Clip `sXgIk2wz2W` · 10s · score 71*
+
+**Title:** Scale Smarter, Build Better
+
+**Description:**
+> Growth that doesn't cost you your evenings. Better systems, not more hours.
+>
+> Charles Harrison | EpiVail | Epique Realty
+
+**Hashtags:** `#ScaleSmarter #BusinessGrowth #RealEstateTeams #Entrepreneurship #EpiqueRealty`
+
+---
+
+### 29. General brand clip
+*Clip `C3uAH0OKzJ` · 10s · score 64*
+
+Lowest score in the library and the copy is generic — "unlock your potential"
+with nothing specific behind it. I'd leave this one unposted. If you want it out
+there, use the Tier 6 #26 copy above instead; it says something.
 
 ---
 
@@ -485,8 +582,22 @@ the single highest-return thing you can do — and you already own the footage.
 
 ## Posting rhythm
 
-Three a week — Tuesday, Thursday, Saturday. Post Tier 1 first; recruiting is what
-pays. Keep it up for eight weeks before you judge the results. A channel needs a
-pattern before the algorithm will read one.
+Three a week — Tuesday, Thursday, Saturday. Keep it up for eight weeks before you
+judge the results. A channel needs a pattern before the algorithm will read one.
+
+**Start here, in this order:**
+
+| # | Post | Why |
+|---|---|---|
+| 1 | **#23** AI Handles the Busywork | Score 99. Best thing you own. Never published. |
+| 2 | **#1** Equity vs. Commission | Recruiting. Was completely blank. |
+| 3 | **#2** 4,000 Agents in 3 Years | Score 91. Brand name was wrong in the title. |
+| 4 | **#13** The Town That Drowned | Score 94. Local history travels furthest. |
+| 5 | **#3** Epique vs. REAL | Recruiting. Sharpest comparison you have. |
+| 6 | **#6** Vail Summer Adventures | Score 94. Seasonal — post while it still reads. |
+| 7 | **#11** Colorado Dads Facing Divorce | Score 93. Nobody else is in this lane. |
+| 8 | **#25** Waitlist | Your only direct call to action. |
+
+After that, work down Tier 1, then Tier 2, then the rest.
 
 Charles Harrison | EpiVail | Epique Realty
