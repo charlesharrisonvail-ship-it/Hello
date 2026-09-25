@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2722%27 fill=%27%2304070d%27/%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2730%27 fill=%27none%27 stroke=%27%2338bdf8%27 stroke-width=%2714%27 stroke-linecap=%27round%27 stroke-dasharray=%27140 50%27 transform=%27rotate(-38 50 50)%27/%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2712%27 fill=%27%2338bdf8%27/%3E%3C/svg%3E">
+<title>Install Claude Code, Free | AiRE Estate</title>
+<meta name="description" content="A free, step-by-step lesson for real estate agents: install Claude Code on Mac or Windows in about 15 minutes.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@300;400;500;600&display=swap">
+<style>
+:root{--ink:#04070d;--panel:#080e18;--panel2:#0d1524;--edge:rgba(255,255,255,.09);--edge2:rgba(255,255,255,.18);
+  --sig:#38bdf8;--sig-hi:#7dd3fc;--rasp:#d63a73;--ok:#34d399;--head:#fff;--text:#dbe2ec;--slate:#8496b2;--slate2:#5a6a85;
+  --wm:'Archivo','Helvetica Neue',Arial,sans-serif;--bd:'Manrope','Helvetica Neue',Arial,sans-serif;--mn:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--text);font:300 16.5px/1.7 var(--bd);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--sig)}
+.top{position:sticky;top:0;z-index:5;background:rgba(4,7,13,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--edge)}
+.top .in{max-width:880px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.lock{font-family:var(--wm);font-weight:700;letter-spacing:-.05em;color:#fff;font-size:22px;text-decoration:none;display:inline-flex;align-items:baseline}
+.lock .re{color:var(--sig)} .lock .est{font-family:var(--bd);font-weight:400;letter-spacing:0;color:var(--slate);margin-left:6px;font-size:.8em}
+.prog{font-family:var(--mn);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--slate)}
+.prog b{color:var(--ok)}
+main{max-width:880px;margin:0 auto;padding:40px 16px 90px}
+.tag{font-family:var(--mn);font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--sig);margin:0 0 14px}
+h1{font:800 clamp(2.1rem,6vw,3.4rem)/1.02 var(--wm);letter-spacing:-.045em;color:#fff;margin:0 0 16px}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--sig),var(--sig) 35%,var(--rasp));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{font-size:1.1rem;color:var(--text);max-width:62ch;margin:0 0 24px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 34px}
+.meta span{font-family:var(--mn);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--edge2);padding:6px 10px;color:var(--slate)}
+.step{border:1px solid var(--edge);background:var(--panel);margin:0 0 18px;padding:24px 22px}
+.step.done{border-color:rgba(52,211,153,.45)}
+.sh{display:flex;align-items:flex-start;gap:14px;margin-bottom:10px}
+.num{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid var(--sig);color:var(--sig);display:grid;place-items:center;font:600 .9rem var(--mn)}
+.step.done .num{background:var(--ok);border-color:var(--ok);color:#04070d}
+h2{font:800 1.35rem/1.2 var(--wm);letter-spacing:-.02em;color:#fff;margin:4px 0 0}
+.step p,.step li{color:var(--text)}
+.step ol,.step ul{padding-left:1.2em;margin:10px 0}
+.step li{margin:6px 0}
+.note{border-left:3px solid var(--sig);background:var(--panel2);padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--slate)}
+.note b{color:#fff}
+.note.warn{border-left-color:var(--rasp)}
+.tabs{display:flex;gap:8px;margin:14px 0 0;flex-wrap:wrap}
+.tabs button{font:600 .75rem var(--mn);letter-spacing:.12em;text-transform:uppercase;background:transparent;color:var(--slate);border:1px solid var(--edge2);padding:10px 14px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--sig);color:#03060d;border-color:var(--sig)}
+.pane{display:none;padding-top:6px}.pane.on{display:block}
+.cmd{position:relative;background:#02040a;border:1px solid var(--edge2);margin:12px 0;padding:14px 92px 14px 16px;font:500 .9rem/1.5 var(--mn);color:var(--sig-hi);word-break:break-all}
+.cmd button{position:absolute;top:8px;right:8px;font:600 .68rem var(--mn);letter-spacing:.12em;text-transform:uppercase;background:var(--panel2);color:#fff;border:1px solid var(--edge2);padding:8px 10px;cursor:pointer}
+.cmd button.ok{background:var(--ok);color:#04070d;border-color:var(--ok)}
+kbd{font:500 .85em var(--mn);border:1px solid var(--edge2);border-bottom-width:2px;padding:1px 6px;color:#fff;background:var(--panel2)}
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 .8rem var(--mn);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:14px 20px;border:1px solid var(--sig);background:var(--sig);color:#03060d}
+.btn.sec{background:transparent;color:#fff;border-color:var(--edge2)}
+.btn.r{background:var(--rasp);border-color:var(--rasp);color:#fff}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 4px}
+.mark{margin-top:16px;display:inline-flex;align-items:center;gap:10px;font:600 .75rem var(--mn);letter-spacing:.12em;text-transform:uppercase;background:transparent;color:var(--ok);border:1px solid rgba(52,211,153,.5);padding:10px 14px;cursor:pointer}
+.step.done .mark{background:var(--ok);color:#04070d}
+.next{margin-top:40px;border:1px solid var(--edge2);padding:26px 22px;background:linear-gradient(135deg,rgba(56,189,248,.08),rgba(214,58,115,.08))}
+.next h2{margin:0 0 8px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.card{border:1px solid var(--edge2);border-top:3px solid var(--sig);padding:16px;background:var(--panel)}
+.card.two{border-top-color:var(--rasp)}
+.card b{display:block;font:800 1.1rem var(--wm);color:#fff;margin-bottom:4px}
+.card p{margin:0 0 12px;font-size:.9rem;color:var(--slate)}
+@media (max-width:620px){.cards{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--edge);color:var(--slate2);font-size:.82rem;padding:24px 16px 40px;text-align:center}
+footer a{color:var(--slate)}
+</style></head><body>
+
+<header class="top"><div class="in">
+  <a class="lock" href="index.html">A<span>i</span><span class="re">RE</span><span class="est">Estate</span></a>
+  <span class="prog" id="prog">Progress <b>0</b> / 6</span>
+</div></header>
+
+<main>
+  <p class="tag">Free lesson &middot; No purchase needed</p>
+  <h1>Install <em>Claude Code</em> in about 15 minutes.</h1>
+  <p class="lede">Everything in our real estate courses is built in Claude Code. This free lesson gets it running on your Mac or Windows computer, one step at a time. No tech background needed: you&rsquo;ll copy, paste, and press Enter.</p>
+  <div class="meta"><span>~15 minutes</span><span>Mac or Windows</span><span>6 steps</span><span>Free</span></div>
+
+  <section class="step" data-step="1">
+    <div class="sh"><span class="num">1</span><h2>Get a Claude plan that includes Claude Code</h2></div>
+    <p>Claude Code is made by <b>Anthropic</b>, the company behind the Claude chat app. It needs a paid Claude plan. The free Claude plan does <b>not</b> include Claude Code.</p>
+    <ul>
+      <li><b>Claude Pro</b> is about <b>$20 a month</b> and is all you need for our courses.</li>
+      <li>You buy it <b>directly from Anthropic</b>. AiRE Estate doesn&rsquo;t sell it and doesn&rsquo;t pay for it, and your course purchase doesn&rsquo;t include it.</li>
+      <li>Already paying for Claude Pro or Max? You&rsquo;re set. Skip to step 2.</li>
+    </ul>
+    <div class="row"><a class="btn" href="https://claude.com/pricing" target="_blank" rel="noopener">See Claude plans &amp; upgrade &rarr;</a></div>
+    <div class="note">Check Anthropic&rsquo;s page for current prices. They set them, not us.</div>
+    <button class="mark" type="button">&#10003; I have a Claude plan</button>
+  </section>
+
+  <section class="step" data-step="2">
+    <div class="sh"><span class="num">2</span><h2>Check your computer</h2></div>
+    <ul>
+      <li><b>Mac:</b> macOS 13 (Ventura) or newer. Check under &#63743; menu &rarr; <i>About This Mac</i>.</li>
+      <li><b>Windows:</b> Windows 10 (version 1809 or newer) or Windows 11.</li>
+      <li>At least 4 GB of memory and an internet connection. Almost any computer from the last several years qualifies.</li>
+    </ul>
+    <div class="note"><b>Chromebooks, iPads and phones</b> can&rsquo;t run this install. Use a Mac or Windows computer.</div>
+    <button class="mark" type="button">&#10003; My computer qualifies</button>
+  </section>
+
+  <section class="step" data-step="3">
+    <div class="sh"><span class="num">3</span><h2>Open the terminal</h2></div>
+    <p>The terminal is a plain text window where you type instructions to your computer. It looks technical, but you&rsquo;ll only be pasting.</p>
+    <div class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-os="mac">Mac</button>
+      <button role="tab" aria-selected="false" data-os="win">Windows</button>
+    </div>
+    <div class="pane on" data-os="mac">
+      <ol>
+        <li>Press <kbd>&#8984; Command</kbd> + <kbd>Space</kbd> to open Spotlight search.</li>
+        <li>Type <b>Terminal</b> and press <kbd>Enter</kbd>.</li>
+        <li>A window opens with a blinking cursor. That&rsquo;s it.</li>
+      </ol>
+    </div>
+    <div class="pane" data-os="win">
+      <ol>
+        <li>Click the <b>Start</b> button (or press the <kbd>&#8862; Windows</kbd> key).</li>
+        <li>Type <b>PowerShell</b> and click <b>Windows PowerShell</b>. You don&rsquo;t need &ldquo;Run as administrator.&rdquo;</li>
+        <li>A window opens showing <code>PS C:\Users\YourName&gt;</code>. The <b>PS</b> means you&rsquo;re in the right place.</li>
+      </ol>
+    </div>
+    <button class="mark" type="button">&#10003; My terminal is open</button>
+  </section>
+
+  <section class="step" data-step="4">
+    <div class="sh"><span class="num">4</span><h2>Paste the install command</h2></div>
+    <p>Click <b>Copy</b>, click inside the terminal window, paste, and press <kbd>Enter</kbd>. It takes a minute or two. Let it finish.</p>
+    <div class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-os="mac">Mac</button>
+      <button role="tab" aria-selected="false" data-os="win">Windows</button>
+    </div>
+    <div class="pane on" data-os="mac">
+      <p>Paste with <kbd>&#8984; Command</kbd> + <kbd>V</kbd>:</p>
+      <div class="cmd"><span>curl -fsSL https://claude.ai/install.sh | bash</span><button type="button">Copy</button></div>
+    </div>
+    <div class="pane" data-os="win">
+      <p>Paste with <kbd>Ctrl</kbd> + <kbd>V</kbd> (or right-click):</p>
+      <div class="cmd"><span>irm https://claude.ai/install.ps1 | iex</span><button type="button">Copy</button></div>
+      <div class="note"><b>Recommended for Windows:</b> also install <a href="https://git-scm.com/downloads/win" target="_blank" rel="noopener">Git for Windows</a> (accept the default choices). Claude Code works without it, but works best with it.</div>
+    </div>
+    <div class="note">These commands come straight from <a href="https://code.claude.com/docs/en/setup" target="_blank" rel="noopener">Anthropic&rsquo;s official install guide</a>. Only paste commands from sources you trust.</div>
+    <button class="mark" type="button">&#10003; The install finished</button>
+  </section>
+
+  <section class="step" data-step="5">
+    <div class="sh"><span class="num">5</span><h2>Check it worked, then sign in</h2></div>
+    <ol>
+      <li><b>Close the terminal window and open a new one</b> (same as step 3). This lets your computer find the new program.</li>
+      <li>Paste this and press <kbd>Enter</kbd>:
+        <div class="cmd"><span>claude --version</span><button type="button">Copy</button></div>
+        You should see a version number followed by <b>(Claude Code)</b>. That means it&rsquo;s installed.</li>
+      <li>Now start it:
+        <div class="cmd"><span>claude</span><button type="button">Copy</button></div></li>
+      <li>Your web browser opens. <b>Sign in with the same Claude account that has your paid plan</b>, then click to authorize.</li>
+      <li>Go back to the terminal. Follow the short on-screen questions (pick a color theme, press <kbd>Enter</kbd> to accept defaults).</li>
+    </ol>
+    <button class="mark" type="button">&#10003; I&rsquo;m signed in</button>
+  </section>
+
+  <section class="step" data-step="6">
+    <div class="sh"><span class="num">6</span><h2>Say hello</h2></div>
+    <p>You&rsquo;ll see a box where you can type. Type in plain English, just like texting, and press <kbd>Enter</kbd>. Try:</p>
+    <div class="cmd"><span>I'm a real estate agent. In plain English, what are five things you can do for my business?</span><button type="button">Copy</button></div>
+    <p>To leave Claude Code, type <b>/exit</b> or press <kbd>Ctrl</kbd> + <kbd>C</kbd> twice. To come back any time, open the terminal and type <b>claude</b>.</p>
+    <button class="mark" type="button">&#10003; Claude Code answered me</button>
+  </section>
+
+  <section class="step" id="help">
+    <div class="sh"><span class="num">?</span><h2>If something goes wrong</h2></div>
+    <ul>
+      <li><b>&ldquo;command not found&rdquo; or &ldquo;not recognized&rdquo;</b> after installing: close <i>every</i> terminal window, open a new one, and try again. Still stuck? Restart the computer.</li>
+      <li><b>Windows says &ldquo;&apos;irm&apos; is not recognized&rdquo;:</b> you opened Command Prompt instead of PowerShell. Go back to step 3 and open <b>PowerShell</b>.</li>
+      <li><b>It says your plan doesn&rsquo;t include Claude Code:</b> you signed in with a free account. Upgrade in step 1, or sign in with the account that has the paid plan.</li>
+      <li><b>Want a full health check?</b> Paste this for a plain-language report:
+        <div class="cmd"><span>claude doctor</span><button type="button">Copy</button></div></li>
+      <li>Anthropic&rsquo;s <a href="https://code.claude.com/docs/en/troubleshoot-install" target="_blank" rel="noopener">troubleshooting guide</a> covers every error message.</li>
+    </ul>
+    <div class="note"><b>Prefer to skip the terminal?</b> Anthropic also makes a <a href="https://claude.com/download" target="_blank" rel="noopener">Claude desktop app</a> that includes Claude Code. Our courses teach the terminal because it&rsquo;s where the most powerful tools run.</div>
+  </section>
+
+  <section class="next">
+    <h2>You&rsquo;re set up. Now put it to work.</h2>
+    <p style="margin:0;color:var(--slate)">Two courses from a working agent, both built in Claude Code.</p>
+    <div class="cards">
+      <div class="card"><b>Listing Media Without the Invoice</b><p>Part One &middot; $67. Drone shots from one photo, a listing showcase, and social media that runs itself.</p><a class="btn" href="index.html#courses">See Part One &rarr;</a></div>
+      <div class="card two"><b>Lead to Keys</b><p>Part Two &middot; $97. Listings, clients, comps, follow-up and contracts: the rest of the desk.</p><a class="btn r" href="lead-to-keys.html">See Lead to Keys &rarr;</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>AiRE Estate, LLC &middot; <a href="mailto:hello@aireestate.com">hello@aireestate.com</a> &middot; <a href="tel:+19709040600">970-904-0600</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a><br>
+Claude and Claude Code are products of Anthropic. AiRE Estate is independent and not affiliated with Anthropic. Install steps current as of September 2026.</footer>
+
+<script>
+(function(){
+  var KEY='aire-install-progress', done={};
+  try{ done=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(e){}
+  var steps=[].slice.call(document.querySelectorAll('.step[data-step]'));
+  function paint(){
+    var n=0;
+    steps.forEach(function(s){ var on=!!done[s.dataset.step]; s.classList.toggle('done',on); if(on) n++; });
+    document.querySelector('#prog b').textContent=n;
+  }
+  steps.forEach(function(s){
+    s.querySelector('.mark').addEventListener('click',function(){
+      done[s.dataset.step]=!done[s.dataset.step];
+      try{ localStorage.setItem(KEY,JSON.stringify(done)); }catch(e){}
+      paint();
+    });
+  });
+  paint();
+  /* Mac / Windows tabs: picking one switches every step */
+  function setOS(os){
+    document.querySelectorAll('.tabs button').forEach(function(b){ b.setAttribute('aria-selected', b.dataset.os===os ? 'true':'false'); });
+    document.querySelectorAll('.pane').forEach(function(p){ p.classList.toggle('on', p.dataset.os===os); });
+  }
+  document.querySelectorAll('.tabs button').forEach(function(b){ b.addEventListener('click',function(){ setOS(b.dataset.os); }); });
+  if(/Win/i.test(navigator.platform||navigator.userAgent)) setOS('win');
+  /* copy buttons */
+  document.querySelectorAll('.cmd button').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var t=btn.parentNode.querySelector('span').textContent;
+      function ok(){ btn.textContent='Copied'; btn.classList.add('ok'); setTimeout(function(){ btn.textContent='Copy'; btn.classList.remove('ok'); },1600); }
+      if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(ok,function(){}); }
+      else { var r=document.createRange(); r.selectNodeContents(btn.parentNode.querySelector('span')); var sel=getSelection(); sel.removeAllRanges(); sel.addRange(r); }
+    });
+  });
+})();
+</script>
+</body></html>
