@@ -21,6 +21,7 @@ not an application: there is no build, test, or lint step.
 - **Never use "Epique Mountain Collective"** anywhere — not in messages, signatures, or materials — even if a brand skill suggests it.
 - Sign off client and lead messages: **Charles Harrison | EpiVail | Epique Realty**
 - Voice is courteous and warm, with Southern manners.
+- Work on a feature branch and merge through a pull request.
 
 ## Do not contact
 
@@ -31,4 +32,3 @@ flags them as past due or needing attention:
 
 Before sending any message to a lead, check this list and confirm the lead is
 still active. When in doubt, draft and show Charles instead of sending.
-- Work on a feature branch and merge through a pull request.
