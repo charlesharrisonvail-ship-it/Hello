@@ -101,6 +101,9 @@ chat, commits, or files.
 
 ## Rules
 
+- Never contact anyone on the **Do not contact** list in `CLAUDE.md`, and
+  never treat a Lofty "past due" or "needs attention" flag alone as a reason
+  to send. Confirm the lead is still active first.
 - Never invent contact data. Any unknown field stays blank.
 - Never move a contact to `Joined Epique`, `Not Interested`, or delete a record
   without Charles saying so explicitly.
