@@ -43,6 +43,14 @@ only when the interpreter itself is absent, never because a script errored.
 
 ## Then
 
-Fill in the `TODO Charles` blocks in `ROLE.md`, `PROJECT.md` and
-`DECISIONS.md`, start a fresh session, and ask *"who are you and what are we
-working on?"* - both answers should arrive without being told.
+The four orientation documents are filled from this repo's own config -
+`CLAUDE.md`, the four agent definitions, and the skills. Keep them current: when
+a rule changes, change it in `DECISIONS.md` too, or a future session will act on
+the old one with full confidence.
+
+Start a fresh session and ask *"who are you and what are we working on?"* - both
+answers should arrive without being told.
+
+Orientation runs at roughly 6,700 of the 9,000-character budget. When
+`DECISIONS.md` outgrows its share, add a fourth hook entry rather than cutting a
+rule; the limit is per hook entry, not per session.

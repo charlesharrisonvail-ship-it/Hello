@@ -4,18 +4,24 @@ _Keep this tidy. `pre_compact.py` appends banked blocks below it._
 
 ## Working on now
 
-Continuity is installed and active, rebased onto `main` at #15. Verifier reports
-`CONTINUITY: PASS`. `.claude/settings.json` is the union of the Superpowers keys
-from `main` and the continuity hooks - check both survive any edit to it.
+Continuity is installed, active, and rebased onto `main` at #15. The orientation
+documents and the memory index are filled from the repo's own config rather than
+scaffolded. `CONTINUITY: PASS`.
 
-## Blocked
+## Open question for Charles
 
-Nothing.
+**Two files disagree on how to sign a lead message.** `CLAUDE.md` says
+`Charles Harrison | EpiVail | Epique Realty`; `recruitment-outreach.md` says
+`Charles Harrison, Epique Area/Growth Leader` and calls it exact. Both are in
+force. CLAUDE.md governs for now - one of the two files needs editing to match.
+
+Smaller: the agents say "powered by Epique X", some skills say "EpiqueAI".
+`CLAUDE.md` does not rule on it.
 
 ## Next
 
 1. Open a PR for `claude/continuity-plugin-install-m0b7ln` and merge it
-2. Fill in the `TODO Charles` blocks in `ROLE.md`, `PROJECT.md`, `DECISIONS.md` -
-   until then this orientation is a scaffold written from the repo, not from you
-3. Start a fresh session and ask "who are you and what are we working on?" -
-   both answers should arrive without being told
+2. Resolve the sign-off contradiction above
+3. Orientation is at ~6,700 of the 9,000 budget. When `DECISIONS.md` grows past
+   its share, add a fourth hook entry rather than cutting a rule - the limit is
+   per entry, not per session
