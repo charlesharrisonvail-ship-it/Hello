@@ -116,10 +116,11 @@ going direct is better anyway: the graphic uploads as multipart form data, so it
 never needs public hosting, and Meta's own scheduling is available, which
 Windsor did not offer.
 
-It needs two environment variables, set in the cloud environment's settings:
-`NBMH_FB_PAGE_ID` and `NBMH_FB_PAGE_TOKEN` (a long-lived Page access token with
-`pages_manage_posts` and `pages_read_engagement`), plus `graph.facebook.com`
-allowed by the environment's network policy.
+It needs `graph.facebook.com` allowed by the environment's network policy, plus
+a token in the environment's settings — either `NBMH_FB_USER_TOKEN` (simplest;
+the page and its page-token are resolved from `/me/accounts`, so no page id has
+to be found by hand) or `NBMH_FB_PAGE_TOKEN`. `content/nbmh/SETUP-FACEBOOK.md`
+has the walkthrough.
 
 ```bash
 # verify credentials and page identity; posts nothing

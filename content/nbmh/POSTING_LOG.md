@@ -35,11 +35,13 @@ the closest scheduler and does not support Facebook.
    denies it — a CONNECT 403 at the proxy, confirmed 2026-09-26. Cloud
    environment menu in the session title bar → Edit → Network access: either a
    broader access level or `graph.facebook.com` added to the allowed domains.
-2. **Store the page credentials.** Two environment variables in the same Edit
-   screen: `NBMH_FB_PAGE_ID` (the page id) and `NBMH_FB_PAGE_TOKEN` (a
-   long-lived Page access token with `pages_manage_posts` and
-   `pages_read_engagement`). A new session picks them up. The token goes in that
-   settings form, never into chat.
+2. **Store a token.** One environment variable in the same Edit screen:
+   `NBMH_FB_USER_TOKEN`, a User access token from the Graph API Explorer with
+   `pages_show_list`, `pages_read_engagement`, and `pages_manage_posts`. The
+   page and its page-token are resolved from `/me/accounts`, so no page id has
+   to be hunted for — Facebook has moved where that is shown. A new session
+   picks it up. The token goes in that settings form, never into chat.
+   See `SETUP-FACEBOOK.md`.
 
 Verify with `publish-facebook.py --check`, which resolves the credentials, prints
 the page name, and posts nothing. The script refuses to publish unless the page

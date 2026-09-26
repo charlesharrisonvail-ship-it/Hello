@@ -5,11 +5,18 @@ Goes straight to Meta's Graph API — no third-party scheduler in the middle, so
 there is no seat or quota to run out of. The image is uploaded as multipart
 form data, so the graphic never needs to be hosted at a public URL first.
 
-Needs two environment variables, set in the cloud environment's settings:
+Credentials come from the cloud environment's settings. Either is enough:
 
-    NBMH_FB_PAGE_ID        the New Beginnings Mental Health page id
-    NBMH_FB_PAGE_TOKEN     a long-lived Page access token with
-                           pages_manage_posts and pages_read_engagement
+    NBMH_FB_USER_TOKEN     a User access token from the Graph API Explorer.
+                           The page and its page-token are looked up from
+                           /me/accounts, so no page id has to be hunted for.
+
+    NBMH_FB_PAGE_TOKEN     a Page access token, if one is already in hand.
+                           NBMH_FB_PAGE_ID is then optional and is resolved
+                           from the token when omitted.
+
+Either way the token needs pages_show_list, pages_read_engagement, and
+pages_manage_posts.
 
 Usage:
     # what would happen, without touching Meta
@@ -80,15 +87,41 @@ def _multipart(fields, filename, filebytes, content_type):
     return bytes(out), f"multipart/form-data; boundary={boundary}"
 
 
-def verify_page(page_id, token):
-    """Confirm the token really points at NBMH before anything is posted."""
-    q = urllib.parse.urlencode({"fields": "id,name", "access_token": token})
-    page = _call(f"{GRAPH}/{page_id}?{q}")
+def resolve(page_id, page_token, user_token):
+    """Work out which page and which token to use, and prove it is NBMH.
+
+    A user token is the easy path: /me/accounts returns every page the person
+    administers, each with its own page-token, so neither the page id nor a
+    separate page-token has to be found by hand.
+    """
+    if user_token and not page_token:
+        q = urllib.parse.urlencode({"fields": "id,name,access_token",
+                                    "access_token": user_token})
+        pages = _call(f"{GRAPH}/me/accounts?{q}").get("data", [])
+        if not pages:
+            sys.exit("FAILED — that token administers no pages. Check it was "
+                     "granted pages_show_list.")
+        match = [p for p in pages if EXPECTED_PAGE in p.get("name", "").lower()]
+        if not match:
+            listed = ", ".join(repr(p.get("name", "?")) for p in pages)
+            sys.exit("REFUSED — no New Beginnings Mental Health page on that "
+                     f"token. It administers: {listed}. Nothing was posted.")
+        if len(match) > 1:
+            listed = ", ".join(f"{p['name']} ({p['id']})" for p in match)
+            sys.exit(f"REFUSED — more than one match: {listed}. Set "
+                     "NBMH_FB_PAGE_ID to pick one. Nothing was posted.")
+        page = match[0]
+        return page["id"], page["access_token"], page["name"]
+
+    # A page token was supplied. Confirm what it actually points at.
+    target = page_id or "me"
+    q = urllib.parse.urlencode({"fields": "id,name", "access_token": page_token})
+    page = _call(f"{GRAPH}/{target}?{q}")
     name = page.get("name", "")
     if EXPECTED_PAGE not in name.lower():
         sys.exit(f"REFUSED — token points at {name!r}, not the New Beginnings "
                  "Mental Health page. Nothing was posted.")
-    return page
+    return page["id"], page_token, name
 
 
 def main():
@@ -102,18 +135,16 @@ def main():
     args = ap.parse_args()
 
     page_id = os.environ.get("NBMH_FB_PAGE_ID")
-    token = os.environ.get("NBMH_FB_PAGE_TOKEN")
-    missing = [n for n, v in (("NBMH_FB_PAGE_ID", page_id),
-                              ("NBMH_FB_PAGE_TOKEN", token)) if not v]
-    if missing:
-        sys.exit("NOT CONFIGURED — missing " + ", ".join(missing) +
-                 ".\nSet them in the cloud environment's settings, then start a "
-                 "new session.")
+    page_token = os.environ.get("NBMH_FB_PAGE_TOKEN")
+    user_token = os.environ.get("NBMH_FB_USER_TOKEN")
+    if not page_token and not user_token:
+        sys.exit("NOT CONFIGURED — set NBMH_FB_USER_TOKEN (simplest) or "
+                 "NBMH_FB_PAGE_TOKEN in the cloud environment's settings, then "
+                 "start a new session.")
 
-    page = verify_page(page_id, token)
+    page_id, token, page_name = resolve(page_id, page_token, user_token)
     if args.check:
-        print(f"OK — credentials resolve to {page['name']} (id {page['id']}). "
-              "Nothing was posted.")
+        print(f"OK — resolves to {page_name} (id {page_id}). Nothing was posted.")
         return
 
     if not args.image or not args.caption:

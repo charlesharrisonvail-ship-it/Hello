@@ -1,74 +1,48 @@
 # Connecting the New Beginnings Facebook page
 
-Three things, once. After this, posting is a single command and the daily
-Routine can queue the 8:00 a.m. slot on its own.
+Two things. Don't go hunting for a Page ID — the token gives it to me.
 
-Never paste a token into the chat. Tokens go in the environment settings form.
+Never paste a token into chat. It goes in the environment settings form.
 
 ---
 
 ## 1. Allow Meta through the network policy
 
-The environment currently blocks `graph.facebook.com` — a 403 at the proxy.
+The environment blocks `graph.facebook.com` today — a 403 at the proxy.
 
 Session title bar → **cloud environment menu** → **Edit** → **Network access**.
 Either widen the access level, or add `graph.facebook.com` to the allowed
 domains.
 
-## 2. Find the Page ID
+## 2. Get a User access token
 
-Not a secret — this one is fine to send in chat.
+This is one page and about four clicks.
 
-On the page you have open: **About** → scroll to **Page transparency** → the
-Page ID is listed there. (Or in Meta Business Suite: **Settings** → **Pages**.)
-
-It is a long number, something like `102938475610293`.
-
-## 3. Get a Page access token
-
-Two routes. Pick one.
-
-### Route A — permanent, the right answer for daily posting
-
-A System User token does not expire, so this never breaks at 6 a.m. on a
-Tuesday.
-
-1. **business.facebook.com** → **Settings** (gear) → **Users** → **System users**
-2. **Add** → name it `NBMH Posting` → role **Employee**
-3. **Assign assets** → **Pages** → New Beginnings Mental Health → toggle on
-   **Manage Page** (full control)
-4. **Generate new token** → pick your app → select these permissions:
-   - `pages_manage_posts`
-   - `pages_read_engagement`
+1. Go to **developers.facebook.com/tools/explorer**
+2. Top right, **Meta App** dropdown — pick any app. If the list is empty:
+   **developers.facebook.com/apps** → **Create app** → purpose **Other** →
+   type **Business** → name it `NBMH Posting`. Nothing goes to review.
+3. **Permissions** dropdown → add these three:
    - `pages_show_list`
-5. Set token expiration to **Never**, generate, and copy it
+   - `pages_read_engagement`
+   - `pages_manage_posts`
+4. Click **Generate Access Token**, approve the Facebook popup, and copy the
+   token from the box
 
-If you have no app yet: **developers.facebook.com** → **My Apps** →
-**Create App** → **Business** → name it `NBMH Posting`. Nothing needs to be
-submitted for review — the token works on a page you already administer.
+Leave it as a **User** token. Do not switch the dropdown to Page — the script
+reads `/me/accounts`, finds New Beginnings Mental Health among the pages you
+administer, and pulls that page's own token automatically.
 
-### Route B — quick, expires in about an hour
+## 3. Store it
 
-Good only for proving the pipeline works today.
-
-1. **developers.facebook.com/tools/explorer**
-2. Pick your app → **Get Token** → **Get Page Access Token**
-3. Choose New Beginnings Mental Health, grant the three permissions above
-4. Copy the token
-
-Expect it to stop working the same day. Route A is still needed after.
-
-## 4. Store the two values
-
-Same **Edit** screen as step 1, under API credentials — or as environment
-variables if that section is not offered:
+Session title bar → **cloud environment menu** → **Edit** → under API
+credentials, or as an environment variable if that section is not offered:
 
 | Variable | Value |
 | --- | --- |
-| `NBMH_FB_PAGE_ID` | the number from step 2 |
-| `NBMH_FB_PAGE_TOKEN` | the token from step 3 |
+| `NBMH_FB_USER_TOKEN` | the token from step 2 |
 
-A **new session** is needed to pick them up.
+A **new session** is needed to pick it up.
 
 ---
 
@@ -78,11 +52,11 @@ A **new session** is needed to pick them up.
 python3 .claude/skills/nbmh-social/scripts/publish-facebook.py --check
 ```
 
-This resolves the credentials and prints the page name back. It posts nothing.
+Resolves the token, prints the page name and id, posts nothing.
 
-It should say **New Beginnings Mental Health**. If it names any other page —
-EpiVail included — the token is pointed at the wrong asset, and the script
-refuses to publish rather than putting clinical content on a real estate page.
+It should say **New Beginnings Mental Health**. If the token administers other
+pages — EpiVail included — the script picks NBMH and refuses to touch the rest.
+If NBMH is not on the token at all, it names what it did find and stops.
 
 ## Then post
 
@@ -98,3 +72,16 @@ python3 .claude/skills/nbmh-social/scripts/publish-facebook.py \
   --caption content/nbmh/2026-09-26/caption.md \
   --schedule "2026-09-27 08:00" --tz America/Denver
 ```
+
+---
+
+## Later: making it permanent
+
+An Explorer token lasts a couple of hours — fine to prove this works today, but
+it will be dead tomorrow morning.
+
+Once posting is confirmed, the durable version is a System User token that never
+expires: **business.facebook.com** → **Settings** → **Users** →
+**System users** → **Add** → assign the New Beginnings page with **Manage Page**
+→ **Generate new token** with the same three permissions, expiration **Never**.
+Store that one as `NBMH_FB_PAGE_TOKEN` and the daily Routine runs unattended.
