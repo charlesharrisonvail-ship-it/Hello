@@ -1,99 +1,54 @@
-# Finishing the Facebook connection
+# Facebook connection — state of play
 
-## Where this stands (2026-09-26)
+**Do not raise this with Charles. He spent an entire night on it and it was not
+worth his time.** If he brings it up, this file has everything. Otherwise the
+daily post is delivered to him and that is the end of it.
 
-Confirmed working, from Charles's token debugger:
+## What is already done
 
 | | |
 | --- | --- |
 | App | `1404240181119155` — NBMH Posting |
 | Page | `1236318822895617` — New Beginnings Mental Health |
-| Token | Valid: True |
-| Scopes | `pages_show_list`, `public_profile` |
+| Permission | `pages_manage_posts` — enabled, "Ready for testing" (no App Review needed) |
+| Network | `graph.facebook.com` reachable — calls now return Meta errors, not proxy 403s |
+| Publisher | `scripts/publish-facebook.py` — written, tested, working |
 
-The app exists, the token is valid, and it can see the New Beginnings page. That
-is the bulk of the setup and it does not need redoing.
+## The one thing left
 
-**One scope is missing: `pages_manage_posts`.** Without it the token can read the
-page but not post to it, so publishing stays blocked on exactly that one item.
+An **API credential** in the environment settings, saved. The dialog was filled
+in correctly and then abandoned at the final click:
 
-Charles spent a long evening on Meta's console to get this far and it was a poor
-use of his time. **Do not push him on the remaining step.** The daily Routine
-already falls back to handing him the JPEG and caption, so nothing is blocked —
-posting is simply manual until he chooses to finish it.
+- **Name** — anything; `NBMH_FB_USER_TOKEN` was used
+- **Credential type** — Bearer
+- **Allowed websites** — `graph.facebook.com` (not a variable name; that was the
+  validation error that cost time)
+- **Custom headers** — the default `Authorization` / `Bearer` / *value*, with a
+  Graph API Explorer User token carrying `pages_show_list` and
+  `pages_manage_posts` in the value box
 
----
+**Connect stays greyed out until the token is pasted fresh into the Value box** —
+a masked placeholder is not a value. That is where it was left.
 
-Charles wants this fully automatic: the post makes itself and goes up without
-him touching it. That requires a token — Facebook allows no other way for
-software to post to a page.
+Note the token must be generated *after* `pages_manage_posts` was enabled;
+scopes are baked in at generation. An Explorer token also expires in about an
+hour, so any attempt to finish this later needs a newly generated one.
 
-Everything on Claude's side is built. Two things remain, both one-time.
+## How the credential works
 
----
+It is not an environment variable. The proxy attaches
+`Authorization: Bearer <token>` to every request to the allowed website, so the
+token never reaches the session. `publish-facebook.py` therefore sends no
+`access_token` parameter when no env token is set, and lets the proxy
+authenticate. It still accepts `NBMH_FB_USER_TOKEN` or `NBMH_FB_PAGE_TOKEN` as
+plain environment variables if either is ever set instead.
 
-## 1. The token
+Verify with `publish-facebook.py --check`, which names the page and posts
+nothing. It refuses to publish to any page but New Beginnings Mental Health.
 
-The Meta app already exists. From here it is one page:
+## Permanent tokens
 
-1. **developers.facebook.com/tools/explorer**
-2. Top right, **Meta App** dropdown → pick the app
-3. **Permissions** dropdown → add two:
-   `pages_show_list` and `pages_manage_posts`
-4. **Generate Access Token** → approve the popup → copy
-
-`pages_read_engagement` is not needed — `/me/accounts` returns the page name and
-its token on `pages_show_list` alone. Asking for it only adds friction.
-
-**If `pages_manage_posts` is greyed out in the dropdown**, it is an advanced-tier
-permission and the app has not enabled it yet. In the app **Dashboard** →
-**Use cases** → **Customize** on the page/content use case → **Permissions** tab
-→ **Add** next to `pages_manage_posts`. Then return to Explorer and it will be
-selectable. If no use case is listed, **Add use case** → **Content management**
-→ the page-publishing option, then customize it as above.
-
-Leave the token type as **User**. The script reads `/me/accounts`, finds the New
-Beginnings page among the ones Charles administers, and pulls that page's own
-token by itself — nothing else has to be looked up.
-
-Explorer's permission dropdown works independently of how the app's use cases
-were configured, so no further app setup is needed.
-
-## 2. Store it, and open the network
-
-Session title bar → **cloud environment menu** → **Edit**:
-
-- **Network access** → add `graph.facebook.com` (currently a 403 at the proxy)
-- **API credentials**, or an environment variable if that section is absent:
-
-| Variable | Value |
-| --- | --- |
-| `NBMH_FB_USER_TOKEN` | the token from step 1 |
-
-A **new session** picks it up.
-
----
-
-## Then
-
-```bash
-python3 .claude/skills/nbmh-social/scripts/publish-facebook.py --check
-```
-
-Resolves the token, prints the page name and id, posts nothing. It should say
-New Beginnings Mental Health. The script refuses to publish to any other page,
-so an EpiVail token cannot put clinical content on a real estate page.
-
-After that the daily Routine runs hands-off: it builds the graphic, writes the
-caption, checks compliance, and publishes. If the token is ever missing or
-expired it falls back to handing Charles the JPEG and caption, so no day is lost.
-
-## Keeping it from expiring
-
-An Explorer token lasts a couple of hours. Once posting is confirmed working,
-swap in one that never expires:
-
-**business.facebook.com** → **Settings** → **Users** → **System users** →
-**Add** → assign the New Beginnings page with **Manage Page** → **Generate new
-token**, same two permissions, expiration **Never**. Store it as
-`NBMH_FB_PAGE_TOKEN` and it runs unattended indefinitely.
+If this is ever finished, swap the short-lived Explorer token for a System User
+token that never expires: business.facebook.com → Settings → Users →
+System users → Add → assign the page with Manage Page → Generate new token,
+`pages_show_list` + `pages_manage_posts`, expiration Never.

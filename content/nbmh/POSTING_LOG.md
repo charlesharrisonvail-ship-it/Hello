@@ -13,27 +13,18 @@ Status values: `drafted` · `delivered` (handed to Charles to post) ·
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026-09-26 | Low Sun — seasonal light, sleep/energy/focus | created | created | PASS | **delivered** | JPEG and caption handed to Charles to post. |
 
-## Publishing — automatic, via the Meta Graph API
+## Publishing — delivered to Charles, by necessity
 
-Charles wants this hands-off: the post makes itself and goes up without him.
-The route is `scripts/publish-facebook.py`, straight to Meta's Graph API — the
-graphic uploads as multipart form data so it needs no public hosting, and Meta's
-own scheduling is available for the 8:00 a.m. slot.
+The daily Routine builds the post, tries to publish, and if publishing is not
+available hands Charles the JPEG and caption instead. Either way he gets a
+finished post every morning; no day is ever lost to setup.
 
-Windsor.ai is out; its seat is maxed. Nothing in the connector registry posts
-organically to a Facebook page.
+Automatic publishing is one saved credential away and is documented in
+`SETUP-FACEBOOK.md`. **Do not raise it with him.** He spent a full night on
+Meta's developer console for it, and the cost to him was not worth it.
 
-Status as of 2026-09-26: app `1404240181119155` created, token valid, and it
-resolves the New Beginnings page (`1236318822895617`). Missing only the
-`pages_manage_posts` scope, plus `graph.facebook.com` on the network policy and
-the token stored as `NBMH_FB_USER_TOKEN`. See `SETUP-FACEBOOK.md`.
-
-Charles has already spent a long evening in Meta's developer console for this.
-**Do not raise the remaining step with him unless he brings it up.**
-
-The daily Routine tries to publish and falls back to handing Charles the JPEG
-and caption if the token is not ready, so a missing token never costs a day.
-`published` is claimed only when the script returns a post id.
+`published` is claimed only when `publish-facebook.py` returns a post id.
+Otherwise the row reads `delivered`.
 
 ## Daily automation
 
