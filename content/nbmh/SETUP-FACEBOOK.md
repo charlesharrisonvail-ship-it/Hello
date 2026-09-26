@@ -1,5 +1,29 @@
 # Finishing the Facebook connection
 
+## Where this stands (2026-09-26)
+
+Confirmed working, from Charles's token debugger:
+
+| | |
+| --- | --- |
+| App | `1404240181119155` — NBMH Posting |
+| Page | `1236318822895617` — New Beginnings Mental Health |
+| Token | Valid: True |
+| Scopes | `pages_show_list`, `public_profile` |
+
+The app exists, the token is valid, and it can see the New Beginnings page. That
+is the bulk of the setup and it does not need redoing.
+
+**One scope is missing: `pages_manage_posts`.** Without it the token can read the
+page but not post to it, so publishing stays blocked on exactly that one item.
+
+Charles spent a long evening on Meta's console to get this far and it was a poor
+use of his time. **Do not push him on the remaining step.** The daily Routine
+already falls back to handing him the JPEG and caption, so nothing is blocked —
+posting is simply manual until he chooses to finish it.
+
+---
+
 Charles wants this fully automatic: the post makes itself and goes up without
 him touching it. That requires a token — Facebook allows no other way for
 software to post to a page.

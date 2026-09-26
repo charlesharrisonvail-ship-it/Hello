@@ -23,9 +23,13 @@ own scheduling is available for the 8:00 a.m. slot.
 Windsor.ai is out; its seat is maxed. Nothing in the connector registry posts
 organically to a Facebook page.
 
-Outstanding, one-time, both on Charles's side — see `SETUP-FACEBOOK.md`:
-`graph.facebook.com` allowed by the network policy, and `NBMH_FB_USER_TOKEN`
-stored in the environment settings.
+Status as of 2026-09-26: app `1404240181119155` created, token valid, and it
+resolves the New Beginnings page (`1236318822895617`). Missing only the
+`pages_manage_posts` scope, plus `graph.facebook.com` on the network policy and
+the token stored as `NBMH_FB_USER_TOKEN`. See `SETUP-FACEBOOK.md`.
+
+Charles has already spent a long evening in Meta's developer console for this.
+**Do not raise the remaining step with him unless he brings it up.**
 
 The daily Routine tries to publish and falls back to handing Charles the JPEG
 and caption if the token is not ready, so a missing token never costs a day.
