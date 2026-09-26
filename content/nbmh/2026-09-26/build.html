@@ -1,0 +1,107 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>NBMH 2026-09-26</title>
+<link rel="stylesheet" href="../../../.claude/skills/nbmh-social/templates/base.css">
+<style>
+/* Concept: "Low Sun" — an editorial light study for the turn of the season.
+   One idea, one headline, one gesture: a late-autumn sun sitting low and
+   partly off the frame, with the copy held in open daylight above it. Wholly
+   abstract and typographic — no stock scene, no figures, no clinical imagery,
+   and nothing that could be read as a chart or an unsourced statistic. */
+
+.canvas {
+  background:
+    radial-gradient(86% 58% at 8% 0%, #F7F2EA 0%, rgba(247,242,234,0) 64%),
+    linear-gradient(168deg, #F2EBE1 0%, #EDE4D7 58%, #E6DACA 100%);
+}
+
+/* the sun: a warm disc low in the frame, cropped by the bottom edge */
+.sun {
+  position: absolute; z-index: 1;
+  left: 50%; bottom: -318px; transform: translateX(-50%);
+  width: 812px; height: 812px; border-radius: 50%;
+  bottom: -300px;
+  background:
+    radial-gradient(circle at 50% 42%,
+      #E9C892 0%, #DFB87E 34%, #CBA774 62%, #B79A70 82%, #A89070 100%);
+  opacity: .92;
+}
+/* the light it throws back up into the frame */
+.glow {
+  position: absolute; z-index: 0; left: 50%; bottom: -280px;
+  transform: translateX(-50%);
+  width: 1400px; height: 940px; border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(233,200,146,.46) 0%, rgba(233,200,146,.18) 42%, rgba(233,200,146,0) 70%);
+}
+/* horizon: the ground the sun is setting behind */
+.ground {
+  position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; height: 236px;
+  background: linear-gradient(176deg, #1A4E34 0%, #123D29 60%, #0E3322 100%);
+  height: 268px;
+}
+.grain {
+  position: absolute; inset: 0; z-index: 6; opacity: .07; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'>\
+<filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.84' numOctaves='3'/></filter>\
+<rect width='200' height='200' filter='url(%23n)'/></svg>");
+}
+
+.lede { position: absolute; top: 258px; left: var(--gutter); right: 92px; z-index: 4; }
+.lede .rule { margin-bottom: 36px; }
+.lede .headline { font-size: 92px; }
+.lede .headline em { font-style: normal; color: var(--bloom); }
+
+.note {
+  position: absolute; z-index: 4; left: var(--gutter); right: 430px; top: 574px;
+  font-family: "Source Serif", serif; font-weight: 300;
+  font-size: 33px; line-height: 1.4; color: rgba(24,58,42,.84);
+}
+.note::before {
+  content: ""; display: block; width: 210px; height: 1px;
+  background: rgba(24,58,42,.28); margin-bottom: 30px;
+}
+
+.service {
+  position: absolute; z-index: 5; left: var(--gutter); bottom: 176px;
+  font-size: 20px; font-weight: 700; letter-spacing: .165em;
+  color: rgba(214,226,206,.90);
+}
+
+.footer {
+  bottom: 68px; background: transparent; color: var(--linen);
+  padding: 0; border-top: 1px solid rgba(240,232,221,.24);
+  padding-top: 30px; border-radius: 0;
+}
+</style>
+
+<div class="canvas">
+  <div class="glow"></div>
+  <div class="sun"></div>
+  <div class="ground"></div>
+  <div class="grain"></div>
+
+  <div class="masthead">
+    <img src="../../../.claude/skills/nbmh-social/assets/nbmh-logo.png" alt="New Beginnings Mental Health">
+    <div class="wordmark">
+      <div class="n1">NEW BEGINNINGS</div>
+      <div class="n2">MENTAL HEALTH</div>
+    </div>
+  </div>
+  <div class="datestamp">SEP 26</div>
+
+  <div class="lede">
+    <div class="rule"></div>
+    <h1 class="headline">Shorter days change<br>more than the <em>light</em>.</h1>
+  </div>
+
+  <div class="note">Sleep, energy, and focus are worth noticing as the season turns.</div>
+
+  <div class="service">MEDICATION MANAGEMENT &nbsp;·&nbsp; COLORADO TELEHEALTH</div>
+
+  <div class="footer">
+    <span>NBMentalHealth.com</span>
+    <span>970-470-2939</span>
+  </div>
+</div>

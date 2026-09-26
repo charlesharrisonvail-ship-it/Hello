@@ -1,0 +1,75 @@
+/* NBMH post canvas — shared tokens and standing chrome.
+   Every daily layout links this file and then adds only its own concept CSS.
+   Canvas is fixed at 1080 x 1350 (4:5); scripts/render.mjs asserts the size. */
+
+@font-face { font-family: Archivo; font-weight: 400; src: url("../../../.claude/skills/nbmh-social/assets/fonts/Archivo-400.ttf"); }
+@font-face { font-family: Archivo; font-weight: 500; src: url("../../../.claude/skills/nbmh-social/assets/fonts/Archivo-500.ttf"); }
+@font-face { font-family: Archivo; font-weight: 600; src: url("../../../.claude/skills/nbmh-social/assets/fonts/Archivo-600.ttf"); }
+@font-face { font-family: Archivo; font-weight: 700; src: url("../../../.claude/skills/nbmh-social/assets/fonts/Archivo-700.ttf"); }
+@font-face { font-family: Archivo; font-weight: 800; src: url("../../../.claude/skills/nbmh-social/assets/fonts/Archivo-800.ttf"); }
+@font-face { font-family: "Source Serif"; font-weight: 300; src: url("../../../.claude/skills/nbmh-social/assets/fonts/SourceSerif4-300.ttf"); }
+@font-face { font-family: "Source Serif"; font-weight: 400; src: url("../../../.claude/skills/nbmh-social/assets/fonts/SourceSerif4-400.ttf"); }
+
+:root {
+  --forest:  #12402D;   /* headline / deep field */
+  --pine:    #1E5A40;
+  --sage:    #9DB08F;
+  --cream:   #F0E8DD;   /* primary canvas */
+  --linen:   #FAF6F0;
+  --bloom:   #D95F87;   /* logo pink — accent only, never large areas */
+  --ink:     #2A3B33;
+  --gutter:  72px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 1080px; height: 1350px;
+  overflow: hidden;
+  background: var(--cream);
+  font-family: Archivo, sans-serif;
+  color: var(--forest);
+  -webkit-font-smoothing: antialiased;
+}
+
+.canvas { position: relative; width: 1080px; height: 1350px; overflow: hidden; }
+
+/* ---- standing chrome: masthead, date, footer ------------------------- */
+
+.masthead {
+  position: absolute; top: 64px; left: var(--gutter);
+  display: flex; align-items: center; gap: 18px; z-index: 5;
+}
+.masthead img { width: 62px; height: 62px; border-radius: 50%; display: block; }
+.masthead .wordmark { line-height: 1.16; }
+.masthead .n1 { font-size: 25px; font-weight: 700; letter-spacing: .055em; }
+.masthead .n2 { font-size: 19px; font-weight: 400; letter-spacing: .145em; }
+
+.datestamp {
+  position: absolute; top: 80px; right: var(--gutter); z-index: 5;
+  font-size: 15px; font-weight: 600; letter-spacing: .2em;
+  opacity: .62;
+}
+
+.footer {
+  position: absolute; left: var(--gutter); right: var(--gutter); bottom: 64px;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 26px 38px; border-radius: 6px;
+  font-size: 25px; font-weight: 600; letter-spacing: .012em;
+  z-index: 5;
+}
+
+/* Headline system. Layouts pick a size; leading and tracking stay constant so
+   every post reads as the same publication. */
+.headline {
+  font-weight: 800; line-height: 1.04; letter-spacing: -.021em;
+  text-wrap: balance;
+}
+.serif-headline {
+  font-family: "Source Serif", serif; font-weight: 300;
+  line-height: 1.1; letter-spacing: -.014em;
+}
+.eyebrow {
+  font-size: 19px; font-weight: 700; letter-spacing: .17em;
+}
+.rule { width: 62px; height: 7px; border-radius: 4px; background: var(--bloom); }
