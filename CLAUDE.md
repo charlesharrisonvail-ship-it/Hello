@@ -13,6 +13,7 @@ not an application: there is no build, test, or lint step.
   - `lofty-crm.md` — Lofty contacts, tiers, tags, recruit pipeline stages, and follow-up tasks
 - `.claude/skills/linkedin-optimizer/` — LinkedIn analytics and profile optimization
 - `.claude/settings.json` — project settings; enables the Superpowers plugin
+- `tools/jarvis/` — setup script and notes for installing Jarvis (third-party local voice assistant); source is not vendored
 
 ## Conventions
 
