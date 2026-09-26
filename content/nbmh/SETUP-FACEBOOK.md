@@ -14,9 +14,19 @@ The Meta app already exists. From here it is one page:
 
 1. **developers.facebook.com/tools/explorer**
 2. Top right, **Meta App** dropdown → pick the app
-3. **Permissions** dropdown → add three:
-   `pages_show_list`, `pages_read_engagement`, `pages_manage_posts`
+3. **Permissions** dropdown → add two:
+   `pages_show_list` and `pages_manage_posts`
 4. **Generate Access Token** → approve the popup → copy
+
+`pages_read_engagement` is not needed — `/me/accounts` returns the page name and
+its token on `pages_show_list` alone. Asking for it only adds friction.
+
+**If `pages_manage_posts` is greyed out in the dropdown**, it is an advanced-tier
+permission and the app has not enabled it yet. In the app **Dashboard** →
+**Use cases** → **Customize** on the page/content use case → **Permissions** tab
+→ **Add** next to `pages_manage_posts`. Then return to Explorer and it will be
+selectable. If no use case is listed, **Add use case** → **Content management**
+→ the page-publishing option, then customize it as above.
 
 Leave the token type as **User**. The script reads `/me/accounts`, finds the New
 Beginnings page among the ones Charles administers, and pulls that page's own
@@ -61,5 +71,5 @@ swap in one that never expires:
 
 **business.facebook.com** → **Settings** → **Users** → **System users** →
 **Add** → assign the New Beginnings page with **Manage Page** → **Generate new
-token**, same three permissions, expiration **Never**. Store it as
+token**, same two permissions, expiration **Never**. Store it as
 `NBMH_FB_PAGE_TOKEN` and it runs unattended indefinitely.
