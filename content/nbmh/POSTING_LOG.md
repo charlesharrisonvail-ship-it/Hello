@@ -42,3 +42,17 @@ get scheduled by hand in Meta Business Suite.
 Until step 1 is done, every post here stops at `drafted`, and the daily
 deliverable is the finished JPEG plus caption for Charles to post. That is the
 honest state, and it gets reported as such every single day.
+
+## Daily automation
+
+Routine `trig_01USBiEN12gveFCv6VvYNZpL` — "NBMH daily Facebook post", 6:49 a.m.
+America/Denver, fresh session each day. It drafts the day's graphic and caption,
+runs the compliance gate, logs the result, and pushes to
+`claude/newbeginnings-social-media-manager-4s9d6n`.
+
+**Caveat, stated plainly:** the Routine was created without connectors, so its
+daily sessions run **without** Windsor.ai and Higgsfield tools. Those sessions
+can still build code-based graphics and captions — but they cannot publish to
+Facebook and cannot use the Tuesday/Friday Higgsfield budget. To get those,
+Charles recreates the Routine from the Routines UI on claude.ai with Windsor.ai
+and Higgsfield attached, then deletes this one.
