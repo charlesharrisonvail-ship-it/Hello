@@ -5,25 +5,31 @@ with evidence.** Never mark a post `published` or `verified` without seeing it
 on the live New Beginnings Mental Health Facebook page or in Meta's
 published/scheduled content.
 
-Status values: `drafted` · `delivered` (handed to Charles to post) · `failed`.
-`published` and `verified` are reserved for visible evidence and are not in use
-while posting is manual.
+Status values: `drafted` · `delivered` (handed to Charles to post) ·
+`published` (the API returned a post id) · `verified` (seen on the live page) ·
+`failed`
 
 | Date | Concept | Graphic | Caption | Compliance | Status | Evidence |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026-09-26 | Low Sun — seasonal light, sleep/energy/focus | created | created | PASS | **delivered** | JPEG and caption handed to Charles to post. |
 
-## Publishing — manual, by decision
+## Publishing — automatic, via the Meta Graph API
 
-Charles posts these by hand. Automatic publishing was attempted on 2026-09-26
-and **shelved**: Windsor.ai's seat is maxed out, and Meta's own API setup turned
-into a five-screen maze of developer accounts, apps, use-case pickers, and token
-flows that was not worth his time for one graphic a day. See `SETUP-FACEBOOK.md`
-for what exists if it is ever revisited.
+Charles wants this hands-off: the post makes itself and goes up without him.
+The route is `scripts/publish-facebook.py`, straight to Meta's Graph API — the
+graphic uploads as multipart form data so it needs no public hosting, and Meta's
+own scheduling is available for the 8:00 a.m. slot.
 
-So the daily deliverable is the finished JPEG plus the caption, handed to Charles
-each morning. Status is `delivered`. **Never `published` or `verified`** — Claude
-cannot see the page, and says so rather than guessing.
+Windsor.ai is out; its seat is maxed. Nothing in the connector registry posts
+organically to a Facebook page.
+
+Outstanding, one-time, both on Charles's side — see `SETUP-FACEBOOK.md`:
+`graph.facebook.com` allowed by the network policy, and `NBMH_FB_USER_TOKEN`
+stored in the environment settings.
+
+The daily Routine tries to publish and falls back to handing Charles the JPEG
+and caption if the token is not ready, so a missing token never costs a day.
+`published` is claimed only when the script returns a post id.
 
 ## Daily automation
 

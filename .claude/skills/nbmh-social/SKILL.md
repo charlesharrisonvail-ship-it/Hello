@@ -108,21 +108,34 @@ Exact facts: **970-470-2939** · **charles@nbmentalhealth.com** ·
 UnitedHealthcare, Cigna, Mountain Strong EAP, and Olivia's Fund; private-pay
 appointments are also available.
 
-## Delivery — manual, by decision
+## How to publish
 
-**Charles posts these himself. Do not attempt to publish, and do not ask him to
-set up Meta API access.** That was tried on 2026-09-26 and abandoned: Windsor's
-seat is maxed out, and Meta's developer setup was a five-screen maze not worth
-his time for one graphic a day. `content/nbmh/SETUP-FACEBOOK.md` records what
-exists if he ever asks to revisit it.
+Charles wants this hands-off and has given standing authorization for the daily
+post — do not ask each morning. The route is `scripts/publish-facebook.py`,
+direct to Meta's Graph API.
 
-Each morning, hand him two things:
+```bash
+# resolve the token and name the page; posts nothing
+python3 .claude/skills/nbmh-social/scripts/publish-facebook.py --check
 
-1. The finished JPEG, via `SendUserFile`.
-2. The caption as plain text in the reply, formatted so he can copy it in one go.
+# publish
+python3 .claude/skills/nbmh-social/scripts/publish-facebook.py \
+  --image content/nbmh/<date>/nbmh-<date>.jpg \
+  --caption content/nbmh/<date>/caption.md
 
-Log the status as `delivered`. Never `published` or `verified` — there is no way
-to see the page from here.
+# or queue it in Meta for the morning slot
+python3 .claude/skills/nbmh-social/scripts/publish-facebook.py \
+  --image ... --caption ... --schedule "<date> 08:00" --tz America/Denver
+```
+
+Run `--check` first, every time. The script refuses to post unless the page name
+contains "New Beginnings Mental Health", but confirm it yourself too.
+
+**If `--check` fails**, do not chase the setup and do not walk Charles through
+Meta's developer console — that went badly once already. Fall back: send him the
+JPEG with `SendUserFile`, put the caption in your reply ready to paste, and note
+in one line what is missing. Never lose a day over it.
+`content/nbmh/SETUP-FACEBOOK.md` holds the setup if he asks.
 
 ## Publishing honesty — the one rule that matters most
 

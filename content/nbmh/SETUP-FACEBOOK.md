@@ -1,35 +1,65 @@
-# Meta API publishing — tried, shelved
+# Finishing the Facebook connection
 
-**Do not restart this without Charles asking for it.**
+Charles wants this fully automatic: the post makes itself and goes up without
+him touching it. That requires a token — Facebook allows no other way for
+software to post to a page.
 
-On 2026-09-26 we attempted to wire up automatic publishing to the New Beginnings
-Facebook page. It is technically possible — `scripts/publish-facebook.py` is
-written, works, and is kept in the repo — but Meta's setup turned into a maze:
-a developer account, an app, a use-case picker, permission grants, and a token
-flow, across five screens that kept spawning more. It was not worth Charles's
-time for a practice that posts one graphic a day.
+Everything on Claude's side is built. Two things remain, both one-time.
 
-**The standing arrangement is manual delivery.** Each morning the daily Routine
-builds the graphic and caption, checks compliance, and hands Charles the JPEG
-plus the caption text. He posts it himself in under a minute. Status in the
-posting log is `delivered`, never `published` — Claude has no way to see the
-page, so it never claims otherwise.
+---
 
-## If it ever comes back up
+## 1. The token
 
-`scripts/publish-facebook.py` is ready. It needs:
+The Meta app already exists. From here it is one page:
 
-1. `graph.facebook.com` allowed by the environment's network policy — currently
-   a 403 at the proxy.
-2. `NBMH_FB_USER_TOKEN` in the environment settings: a User access token with
-   `pages_show_list`, `pages_read_engagement`, `pages_manage_posts`. The script
-   reads `/me/accounts`, finds the New Beginnings page among the ones Charles
-   administers, and pulls that page's own token — no page id hunting.
+1. **developers.facebook.com/tools/explorer**
+2. Top right, **Meta App** dropdown → pick the app
+3. **Permissions** dropdown → add three:
+   `pages_show_list`, `pages_read_engagement`, `pages_manage_posts`
+4. **Generate Access Token** → approve the popup → copy
 
-`--check` resolves the token and prints the page name without posting. The
-script refuses to publish unless the page name matches New Beginnings Mental
-Health, so an EpiVail token cannot post clinical content to a real estate page.
+Leave the token type as **User**. The script reads `/me/accounts`, finds the New
+Beginnings page among the ones Charles administers, and pulls that page's own
+token by itself — nothing else has to be looked up.
 
-Meta Business Suite's own Planner is the other option, and needs no developer
-setup at all — Charles can schedule a week of graphics there by hand if he ever
-wants to batch them.
+Explorer's permission dropdown works independently of how the app's use cases
+were configured, so no further app setup is needed.
+
+## 2. Store it, and open the network
+
+Session title bar → **cloud environment menu** → **Edit**:
+
+- **Network access** → add `graph.facebook.com` (currently a 403 at the proxy)
+- **API credentials**, or an environment variable if that section is absent:
+
+| Variable | Value |
+| --- | --- |
+| `NBMH_FB_USER_TOKEN` | the token from step 1 |
+
+A **new session** picks it up.
+
+---
+
+## Then
+
+```bash
+python3 .claude/skills/nbmh-social/scripts/publish-facebook.py --check
+```
+
+Resolves the token, prints the page name and id, posts nothing. It should say
+New Beginnings Mental Health. The script refuses to publish to any other page,
+so an EpiVail token cannot put clinical content on a real estate page.
+
+After that the daily Routine runs hands-off: it builds the graphic, writes the
+caption, checks compliance, and publishes. If the token is ever missing or
+expired it falls back to handing Charles the JPEG and caption, so no day is lost.
+
+## Keeping it from expiring
+
+An Explorer token lasts a couple of hours. Once posting is confirmed working,
+swap in one that never expires:
+
+**business.facebook.com** → **Settings** → **Users** → **System users** →
+**Add** → assign the New Beginnings page with **Manage Page** → **Generate new
+token**, same three permissions, expiration **Never**. Store it as
+`NBMH_FB_PAGE_TOKEN` and it runs unattended indefinitely.
