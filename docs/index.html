@@ -545,6 +545,12 @@
     .mod .rt{margin-top:20px}
     .railbar{display:none}
   }
+  .howmade{margin-top:18px;border:1px solid var(--edge2);border-left:3px solid var(--sig);background:var(--panel);padding:18px 20px}
+  .howmade .pl{display:block;font-family:var(--mn);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sig);margin-bottom:10px}
+  .howmade ol{margin:0 0 10px;padding-left:1.2em}
+  .howmade li{margin:0 0 8px;color:var(--text);font-size:.97rem;line-height:1.55}
+  .howmade li b{color:#fff}
+  .howmade .pn{display:block;color:var(--slate);font-size:.86rem}
 </style>
 
 <div class="tex" aria-hidden="true"></div>
@@ -670,7 +676,16 @@
     <div class="promptbox rv">
       <span class="pl">The prompt used in class</span>
       <p>&ldquo;Help me write an expert cinematic drone prompt for this Paris picture. Follow the red line for the flight path and the white arrows for the camera to pan.&rdquo;</p>
-      <span class="pn">Upload both pictures, the original and your marked-up copy, with that line. Want a bird&rsquo;s-eye glide instead of a drone? Say so. In class, ChatGPT wrote the strongest prompt; Google Flow came second, and it&rsquo;s free.</span>
+      <span class="pn">Upload both pictures, the original and your marked-up copy, with that line. Want a bird&rsquo;s-eye glide instead of a drone? Say so.</span>
+    </div>
+    <div class="howmade rv">
+      <span class="pl">How this one was made</span>
+      <ol>
+        <li><b>The markup:</b> a basic drawing program like Paint. The red line is the drone&rsquo;s flight path; the white arrows are where the camera looks.</li>
+        <li><b>The prompt:</b> the same request went to three AI models, and we compared what each wrote. <b>ChatGPT</b> wrote the strongest drone prompt, <b>Google Flow</b> came second (and it&rsquo;s free, about 120 credits a day), and <b>Claude</b> came third on this test.</li>
+        <li><b>The video:</b> made with <b>Higgsfield</b> (higgsfield.ai), connected to Claude Code as a plugin. The whole flight used barely any credits.</li>
+      </ol>
+      <span class="pn">Higgsfield is a paid service you sign up for yourself. Links to it in the course are AiRE Estate referral links, and they&rsquo;re labeled that way.</span>
     </div>
     <p class="demonote rv">The Paris photo is itself AI-generated, used for practice. On a real listing, use your own photo, check every frame, and label it as AI.</p>
   </div>
