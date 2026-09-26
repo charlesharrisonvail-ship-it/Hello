@@ -110,22 +110,44 @@ appointments are also available.
 
 ## How to publish
 
-The route is **Windsor.ai `facebook_organic` → `create_photo_post`**, which takes
-an `image_url` and a `caption` and posts to the connected page.
+The route is **Meta's Graph API, direct**, via `scripts/publish-facebook.py`.
+Charles's Windsor.ai seat is maxed out, so Windsor is no longer the path — and
+going direct is better anyway: the graphic uploads as multipart form data, so it
+never needs public hosting, and Meta's own scheduling is available, which
+Windsor did not offer.
 
-1. **Check the connected account first, every time.**
-   `mcp__Windsor_ai__get_connectors` must list `facebook_organic` with the
-   **New Beginnings Mental Health** page. If it lists only
-   `EpiVail Collective - Agent Attraction`, or any other page, **stop** — that is
-   the wrong brand and the wrong surface. Charles connects the page at
-   <https://onboard.windsor.ai/connect?connector=facebook_organic&next=/facebook_organic/authorize>
-2. **Host the JPEG.** `create_photo_post` takes a URL, not a file. Publish the
-   day's JPEG as an Artifact asset and pass the returned URL exactly as given.
-3. **Get Charles's authorization for that specific post**, then
-   `execute_action`. It publishes immediately — there is no scheduled-time
-   parameter, so an 8:00 a.m. America/Denver slot means posting at that hour or
-   scheduling by hand in Meta Business Suite.
-4. **Verify**, then log. See below — this part is not optional.
+It needs two environment variables, set in the cloud environment's settings:
+`NBMH_FB_PAGE_ID` and `NBMH_FB_PAGE_TOKEN` (a long-lived Page access token with
+`pages_manage_posts` and `pages_read_engagement`), plus `graph.facebook.com`
+allowed by the environment's network policy.
+
+```bash
+# verify credentials and page identity; posts nothing
+python3 .claude/skills/nbmh-social/scripts/publish-facebook.py --check
+
+# publish now
+python3 .claude/skills/nbmh-social/scripts/publish-facebook.py \
+  --image content/nbmh/<date>/nbmh-<date>.jpg \
+  --caption content/nbmh/<date>/caption.md
+
+# or queue it in Meta for the 8:00 a.m. slot
+python3 .claude/skills/nbmh-social/scripts/publish-facebook.py \
+  --image ... --caption ... --schedule "<date> 08:00" --tz America/Denver
+```
+
+Rules around it:
+
+- **Run `--check` first**, every time. The script refuses to post unless the
+  token resolves to a page whose name contains "New Beginnings Mental Health",
+  but confirm it yourself too. A token pointing at EpiVail is the wrong brand
+  and the wrong surface — stop.
+- **Get Charles's authorization for that specific post** before publishing.
+- The script prints Meta's own error and exits non-zero on failure. If it fails,
+  report the exact failure. Never infer success.
+
+If the environment variables are missing or `graph.facebook.com` is denied, the
+script says so precisely. Log the post as `drafted` and tell Charles which of
+the two is outstanding.
 
 ## Publishing honesty — the one rule that matters most
 

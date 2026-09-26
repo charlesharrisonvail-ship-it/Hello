@@ -10,38 +10,45 @@ Status values: `drafted` · `uploaded` · `scheduled` · `published` · `verifie
 
 | Date | Concept | Graphic | Caption | Compliance | Status | Evidence |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026-09-26 | Low Sun — seasonal light, sleep/energy/focus | created | created | PASS | **drafted** | Awaiting a Facebook page connection; nothing has been sent to Meta. |
+| 2026-09-26 | Low Sun — seasonal light, sleep/energy/focus | created | created | PASS | **drafted** | Nothing sent to Meta. Publishing blocked on the network policy and page credentials below. |
 
-## Publishing — connected? Not yet. The path is known.
+## Publishing — the route, and what is still outstanding
 
-Checked 2026-09-26. Posting to a Facebook page **is** possible from here:
+**Windsor.ai is out.** Charles's seat is maxed out, so `facebook_organic` is no
+longer a usable path regardless of whether the page gets connected.
 
-- **Windsor.ai `facebook_organic`** exposes `create_photo_post`, which publishes
-  an image plus caption to a connected Facebook page. This is the route to use.
-- Ruled out: OpusClip posts to Facebook but only video from an OpusClip project,
-  and NBMH is graphics-only. Higgsfield publishes to TikTok only. Windsor's
-  `facebook` connector is Meta **Ads**, not page posts.
+**The route is Meta's Graph API, direct**, via
+`.claude/skills/nbmh-social/scripts/publish-facebook.py`. This is better than
+Windsor was on every axis: no third-party seat or quota, the graphic uploads as
+multipart form data so it never needs public hosting, and Meta's own scheduling
+works, so the 8:00 a.m. America/Denver slot can be queued rather than posted by
+hand at that hour.
 
-**Two things are still needed before anything can be published:**
+Also ruled out: OpusClip posts to Facebook but only video from an OpusClip
+project, and NBMH is graphics-only. Higgsfield publishes to TikTok only. Nothing
+in the connector registry posts organically to a Facebook page — Typefully is
+the closest scheduler and does not support Facebook.
 
-1. **Connect the New Beginnings Mental Health page.** `facebook_organic` has no
-   connected account today. The only Meta account connected is
-   `EpiVail Collective - Agent Attraction`, under the Ads connector — the wrong
-   brand and the wrong surface. Charles authorizes the page here:
-   <https://onboard.windsor.ai/connect?connector=facebook_organic&next=/facebook_organic/authorize>
-   Afterwards, confirm with `get_connectors` and check that the account listed
-   is **New Beginnings Mental Health** before posting anything.
-2. **A public URL for the graphic.** `create_photo_post` takes an `image_url`,
-   not a file upload, so each day's JPEG must be hosted at a reachable URL first
-   (publishing it as an Artifact asset works).
+**Two settings are outstanding, both on Charles's side:**
 
-`create_photo_post` publishes immediately — it has no scheduled-time parameter.
-Posts that must land at 8:00 a.m. America/Denver either go out at that hour or
-get scheduled by hand in Meta Business Suite.
+1. **Allow `graph.facebook.com`.** The environment's network policy currently
+   denies it — a CONNECT 403 at the proxy, confirmed 2026-09-26. Cloud
+   environment menu in the session title bar → Edit → Network access: either a
+   broader access level or `graph.facebook.com` added to the allowed domains.
+2. **Store the page credentials.** Two environment variables in the same Edit
+   screen: `NBMH_FB_PAGE_ID` (the page id) and `NBMH_FB_PAGE_TOKEN` (a
+   long-lived Page access token with `pages_manage_posts` and
+   `pages_read_engagement`). A new session picks them up. The token goes in that
+   settings form, never into chat.
 
-Until step 1 is done, every post here stops at `drafted`, and the daily
-deliverable is the finished JPEG plus caption for Charles to post. That is the
-honest state, and it gets reported as such every single day.
+Verify with `publish-facebook.py --check`, which resolves the credentials, prints
+the page name, and posts nothing. The script refuses to publish unless the page
+name contains "New Beginnings Mental Health", so an EpiVail token cannot post
+NBMH content by accident.
+
+Until both are done, every post stops at `drafted`, and the daily deliverable is
+the finished JPEG plus caption for Charles to post by hand. That is the honest
+state, and it gets reported as such every single day.
 
 ## Daily automation
 
@@ -52,7 +59,9 @@ runs the compliance gate, logs the result, and pushes to
 
 **Caveat, stated plainly:** the Routine was created without connectors, so its
 daily sessions run **without** Windsor.ai and Higgsfield tools. Those sessions
-can still build code-based graphics and captions — but they cannot publish to
-Facebook and cannot use the Tuesday/Friday Higgsfield budget. To get those,
-Charles recreates the Routine from the Routines UI on claude.ai with Windsor.ai
-and Higgsfield attached, then deletes this one.
+can still build code-based graphics and captions, and publishing no longer needs
+a connector at all — `publish-facebook.py` only needs the network policy and the
+two environment variables. The Higgsfield tools, however, are connector-based, so
+the Tuesday/Friday image budget is unavailable to these sessions. To get that
+back, Charles recreates the Routine from the Routines UI on claude.ai with
+Higgsfield attached, then deletes this one.
