@@ -131,11 +131,15 @@ python3 .claude/skills/nbmh-social/scripts/publish-facebook.py \
 Run `--check` first, every time. The script refuses to post unless the page name
 contains "New Beginnings Mental Health", but confirm it yourself too.
 
-**If `--check` fails**, do not chase the setup and do not walk Charles through
-Meta's developer console — that went badly once already. Fall back: send him the
-JPEG with `SendUserFile`, put the caption in your reply ready to paste, and note
-in one line what is missing. Never lose a day over it.
-`content/nbmh/SETUP-FACEBOOK.md` holds the setup if he asks.
+**If `--check` fails**, say so at the top of the reply, in one or two lines,
+naming the single outstanding step from `content/nbmh/SETUP-FACEBOOK.md`.
+Charles asked for automation and was explicit that staying quiet about a broken
+pipeline is worse than being nagged — so raise it every day until it works.
+
+Do not write an essay, and do not walk him through Meta's developer console
+again; the app and the `pages_manage_posts` permission are already done. Name
+the one step, then still send the JPEG with `SendUserFile` and the caption in
+your reply, so he is never without a post.
 
 ## Publishing honesty — the one rule that matters most
 

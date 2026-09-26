@@ -20,8 +20,10 @@ available hands Charles the JPEG and caption instead. Either way he gets a
 finished post every morning; no day is ever lost to setup.
 
 Automatic publishing is one saved credential away and is documented in
-`SETUP-FACEBOOK.md`. **Do not raise it with him.** He spent a full night on
-Meta's developer console for it, and the cost to him was not worth it.
+`SETUP-FACEBOOK.md`. **Raise it with him every day until it works** — he asked
+for automation and said plainly that going quiet about a broken pipeline is
+worse than being nagged. One or two lines naming the one step, at the top of the
+morning message.
 
 `published` is claimed only when `publish-facebook.py` returns a post id.
 Otherwise the row reads `delivered`.

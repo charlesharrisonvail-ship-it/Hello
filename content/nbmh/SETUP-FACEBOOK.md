@@ -1,8 +1,14 @@
 # Facebook connection — state of play
 
-**Do not raise this with Charles. He spent an entire night on it and it was not
-worth his time.** If he brings it up, this file has everything. Otherwise the
-daily post is delivered to him and that is the end of it.
+**Raise this with Charles every day until it works.** He asked for automatic
+publishing and he was explicit: if it is not working, say so and make him fix
+it. Quietly falling back to manual delivery and saying nothing is worse than
+nagging him — he called that out directly.
+
+Keep it to one or two lines naming the single outstanding step, at the top of
+the morning message, and deliver the post as well so he is never without one.
+Do not walk him through Meta's developer console again; the app and permission
+are already done.
 
 ## What is already done
 
