@@ -5,18 +5,18 @@ Goes straight to Meta's Graph API — no third-party scheduler in the middle, so
 there is no seat or quota to run out of. The image is uploaded as multipart
 form data, so the graphic never needs to be hosted at a public URL first.
 
-Credentials come from the cloud environment's settings. Either is enough:
+Credentials come from the cloud environment's settings, either way:
 
-    NBMH_FB_USER_TOKEN     a User access token from the Graph API Explorer.
-                           The page and its page-token are looked up from
-                           /me/accounts, so no page id has to be hunted for.
+  * An **API credential** (preferred). Allowed website `graph.facebook.com`,
+    with the default `Authorization: Bearer <token>` header. The proxy attaches
+    it to every Graph call, so nothing here ever sees the token — which is why
+    no access_token parameter is sent below.
 
-    NBMH_FB_PAGE_TOKEN     a Page access token, if one is already in hand.
-                           NBMH_FB_PAGE_ID is then optional and is resolved
-                           from the token when omitted.
+  * Or an environment variable, `NBMH_FB_USER_TOKEN` (a User token, from which
+    the page and its page-token are resolved via /me/accounts) or
+    `NBMH_FB_PAGE_TOKEN`.
 
-Either way the token needs pages_show_list, pages_read_engagement, and
-pages_manage_posts.
+Either way the token needs pages_show_list and pages_manage_posts.
 
 Usage:
     # what would happen, without touching Meta
@@ -48,11 +48,21 @@ from zoneinfo import ZoneInfo
 GRAPH = "https://graph.facebook.com/v21.0"
 EXPECTED_PAGE = "new beginnings mental health"
 
+# Empty when an API credential is supplying the Authorization header instead.
+TOKEN = os.environ.get("NBMH_FB_USER_TOKEN", "")
+
 
 def _ctx():
     # Honour the session's proxy CA bundle when one is present.
     bundle = "/root/.ccr/ca-bundle.crt"
     return ssl.create_default_context(cafile=bundle if os.path.exists(bundle) else None)
+
+
+def _auth(params):
+    """Attach the token, unless the proxy is injecting it for us."""
+    if TOKEN:
+        params = dict(params, access_token=TOKEN)
+    return urllib.parse.urlencode(params)
 
 
 def _call(url, data=None, headers=None, method=None):
@@ -94,13 +104,15 @@ def resolve(page_id, page_token, user_token):
     administers, each with its own page-token, so neither the page id nor a
     separate page-token has to be found by hand.
     """
-    if user_token and not page_token:
-        q = urllib.parse.urlencode({"fields": "id,name,access_token",
-                                    "access_token": user_token})
+    if not page_token:
+        q = _auth({"fields": "id,name,access_token"})
         pages = _call(f"{GRAPH}/me/accounts?{q}").get("data", [])
         if not pages:
             sys.exit("FAILED — that token administers no pages. Check it was "
                      "granted pages_show_list.")
+        # A page token comes back per page, so publishing needs no further
+        # lookup — but it inherits the user token's scopes, so pages_manage_posts
+        # must have been granted when the token was generated.
         match = [p for p in pages if EXPECTED_PAGE in p.get("name", "").lower()]
         if not match:
             listed = ", ".join(repr(p.get("name", "?")) for p in pages)
@@ -111,7 +123,7 @@ def resolve(page_id, page_token, user_token):
             sys.exit(f"REFUSED — more than one match: {listed}. Set "
                      "NBMH_FB_PAGE_ID to pick one. Nothing was posted.")
         page = match[0]
-        return page["id"], page["access_token"], page["name"]
+        return page["id"], page.get("access_token"), page["name"]
 
     # A page token was supplied. Confirm what it actually points at.
     target = page_id or "me"
@@ -136,13 +148,9 @@ def main():
 
     page_id = os.environ.get("NBMH_FB_PAGE_ID")
     page_token = os.environ.get("NBMH_FB_PAGE_TOKEN")
-    user_token = os.environ.get("NBMH_FB_USER_TOKEN")
-    if not page_token and not user_token:
-        sys.exit("NOT CONFIGURED — set NBMH_FB_USER_TOKEN (simplest) or "
-                 "NBMH_FB_PAGE_TOKEN in the cloud environment's settings, then "
-                 "start a new session.")
-
-    page_id, token, page_name = resolve(page_id, page_token, user_token)
+    # No env token is not an error: an API credential injects the Authorization
+    # header at the proxy, so the call is made without one and Meta answers.
+    page_id, token, page_name = resolve(page_id, page_token, TOKEN)
     if args.check:
         print(f"OK — resolves to {page_name} (id {page_id}). Nothing was posted.")
         return
@@ -154,7 +162,9 @@ def main():
     blob = open(args.image, "rb").read()
     ctype = mimetypes.guess_type(args.image)[0] or "image/jpeg"
 
-    fields = {"caption": caption, "access_token": token}
+    fields = {"caption": caption}
+    if token:
+        fields["access_token"] = token
     when = None
     if args.schedule:
         local = datetime.strptime(args.schedule, "%Y-%m-%d %H:%M").replace(
