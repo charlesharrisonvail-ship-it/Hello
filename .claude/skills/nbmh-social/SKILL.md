@@ -108,47 +108,21 @@ Exact facts: **970-470-2939** · **charles@nbmentalhealth.com** ·
 UnitedHealthcare, Cigna, Mountain Strong EAP, and Olivia's Fund; private-pay
 appointments are also available.
 
-## How to publish
+## Delivery — manual, by decision
 
-The route is **Meta's Graph API, direct**, via `scripts/publish-facebook.py`.
-Charles's Windsor.ai seat is maxed out, so Windsor is no longer the path — and
-going direct is better anyway: the graphic uploads as multipart form data, so it
-never needs public hosting, and Meta's own scheduling is available, which
-Windsor did not offer.
+**Charles posts these himself. Do not attempt to publish, and do not ask him to
+set up Meta API access.** That was tried on 2026-09-26 and abandoned: Windsor's
+seat is maxed out, and Meta's developer setup was a five-screen maze not worth
+his time for one graphic a day. `content/nbmh/SETUP-FACEBOOK.md` records what
+exists if he ever asks to revisit it.
 
-It needs `graph.facebook.com` allowed by the environment's network policy, plus
-a token in the environment's settings — either `NBMH_FB_USER_TOKEN` (simplest;
-the page and its page-token are resolved from `/me/accounts`, so no page id has
-to be found by hand) or `NBMH_FB_PAGE_TOKEN`. `content/nbmh/SETUP-FACEBOOK.md`
-has the walkthrough.
+Each morning, hand him two things:
 
-```bash
-# verify credentials and page identity; posts nothing
-python3 .claude/skills/nbmh-social/scripts/publish-facebook.py --check
+1. The finished JPEG, via `SendUserFile`.
+2. The caption as plain text in the reply, formatted so he can copy it in one go.
 
-# publish now
-python3 .claude/skills/nbmh-social/scripts/publish-facebook.py \
-  --image content/nbmh/<date>/nbmh-<date>.jpg \
-  --caption content/nbmh/<date>/caption.md
-
-# or queue it in Meta for the 8:00 a.m. slot
-python3 .claude/skills/nbmh-social/scripts/publish-facebook.py \
-  --image ... --caption ... --schedule "<date> 08:00" --tz America/Denver
-```
-
-Rules around it:
-
-- **Run `--check` first**, every time. The script refuses to post unless the
-  token resolves to a page whose name contains "New Beginnings Mental Health",
-  but confirm it yourself too. A token pointing at EpiVail is the wrong brand
-  and the wrong surface — stop.
-- **Get Charles's authorization for that specific post** before publishing.
-- The script prints Meta's own error and exits non-zero on failure. If it fails,
-  report the exact failure. Never infer success.
-
-If the environment variables are missing or `graph.facebook.com` is denied, the
-script says so precisely. Log the post as `drafted` and tell Charles which of
-the two is outstanding.
+Log the status as `delivered`. Never `published` or `verified` — there is no way
+to see the page from here.
 
 ## Publishing honesty — the one rule that matters most
 
