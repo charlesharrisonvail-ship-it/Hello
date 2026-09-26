@@ -3,7 +3,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2722%27 fill=%27%2304070d%27/%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2730%27 fill=%27none%27 stroke=%27%2338bdf8%27 stroke-width=%2714%27 stroke-linecap=%27round%27 stroke-dasharray=%27140 50%27 transform=%27rotate(-38 50 50)%27/%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2712%27 fill=%27%2338bdf8%27/%3E%3C/svg%3E">
 <title>Install Claude Code, Free | AiRE Estate</title>
-<meta name="description" content="A free, step-by-step lesson for real estate agents: install Claude Code on Mac or Windows in about 15 minutes.">
+<meta name="description" content="A free, step-by-step lesson for real estate agents: install Claude Code on Mac or Windows in about 20 minutes.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@300;400;500;600&display=swap">
 <style>
 :root{--ink:#04070d;--panel:#080e18;--panel2:#0d1524;--edge:rgba(255,255,255,.09);--edge2:rgba(255,255,255,.18);
@@ -66,15 +66,15 @@ footer a{color:var(--slate)}
 
 <header class="top"><div class="in">
   <a class="lock" href="index.html">A<span>i</span><span class="re">RE</span><span class="est">Estate</span></a>
-  <span class="prog" id="prog">Progress <b>0</b> / 6</span>
+  <span class="prog" id="prog">Progress <b>0</b> / 7</span>
 </div></header>
 
 <main>
   <p class="tag">Free lesson &middot; No purchase needed</p>
-  <h1>Install <em>Claude Code</em> in about 15 minutes.</h1>
+  <h1>Install <em>Claude Code</em> in about 20 minutes.</h1>
   <p class="lede">Everything in our real estate courses is built in Claude Code. This free lesson gets it running on your Mac or Windows computer, one step at a time. No tech background needed: you&rsquo;ll copy, paste, and press Enter.</p>
   <div class="note warn" style="margin:0 0 20px"><b>Please note:</b> AiRE Estate teaches real estate, not software. We don&rsquo;t teach Claude Code itself or provide technical support for it; our courses show you how to use it better in your real estate business. For help with Claude Code installation, accounts, billing or errors, use Anthropic&rsquo;s own <a href="https://support.claude.com" style="color:inherit">help center</a> and <a href="https://code.claude.com/docs" style="color:inherit">documentation</a>. This free guide is a courtesy walkthrough of Anthropic&rsquo;s published install steps.</div>
-  <div class="meta"><span>~15 minutes</span><span>Mac or Windows</span><span>6 steps</span><span>Free</span></div>
+  <div class="meta"><span>~20 minutes</span><span>Mac or Windows</span><span>7 steps</span><span>Free</span></div>
 
   <section class="step" data-step="1">
     <div class="sh"><span class="num">1</span><h2>Get a Claude plan that includes Claude Code</h2></div>
@@ -138,7 +138,7 @@ footer a{color:var(--slate)}
     <div class="pane" data-os="win">
       <p>Paste with <kbd>Ctrl</kbd> + <kbd>V</kbd> (or right-click):</p>
       <div class="cmd"><span>irm https://claude.ai/install.ps1 | iex</span><button type="button">Copy</button></div>
-      <div class="note"><b>Recommended for Windows:</b> also install <a href="https://git-scm.com/downloads/win" target="_blank" rel="noopener">Git for Windows</a> (accept the default choices). Claude Code works without it, but works best with it.</div>
+      <div class="note"><b>Windows:</b> Git for Windows helps Claude Code work its best, and our courses need it. Step 7 installs it for you.</div>
     </div>
     <div class="note">These commands come straight from <a href="https://code.claude.com/docs/en/setup" target="_blank" rel="noopener">Anthropic&rsquo;s official install guide</a>. Only paste commands from sources you trust.</div>
     <button class="mark" type="button">&#10003; The install finished</button>
@@ -151,10 +151,17 @@ footer a{color:var(--slate)}
       <li>Paste this and press <kbd>Enter</kbd>:
         <div class="cmd"><span>claude --version</span><button type="button">Copy</button></div>
         You should see a version number followed by <b>(Claude Code)</b>. That means it&rsquo;s installed.</li>
-      <li>Now start it:
+      <li>Make a folder for your work and step into it. Everything Claude Code makes will be saved here.
+        <div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-os="mac">Mac</button><button role="tab" aria-selected="false" data-os="win">Windows</button></div>
+        <div class="pane on" data-os="mac"><div class="cmd"><span>mkdir -p ~/AiRE && cd ~/AiRE</span><button type="button">Copy</button></div></div>
+        <div class="pane" data-os="win"><div class="cmd"><span>mkdir $HOME\AiRE -Force; cd $HOME\AiRE</span><button type="button">Copy</button></div></div></li>
+      <li>Now start Claude Code:
         <div class="cmd"><span>claude</span><button type="button">Copy</button></div></li>
-      <li>Your web browser opens. <b>Sign in with the same Claude account that has your paid plan</b>, then click to authorize.</li>
-      <li>Go back to the terminal. Follow the short on-screen questions (pick a color theme, press <kbd>Enter</kbd> to accept defaults).</li>
+      <li>Pick a color theme and press <kbd>Enter</kbd>.</li>
+      <li>When it asks how to log in, choose <b>Claude account with subscription</b>. The other choice bills you per use instead of through your $20 plan.</li>
+      <li>Your web browser opens. <b>Sign in with the same Claude account that has your paid plan</b>, click <b>Authorize</b>, then go back to the terminal.</li>
+      <li>If it asks whether you trust the files in this folder, choose <b>Yes</b>. It&rsquo;s your AiRE folder.</li>
+      <li>If Claude Code ever asks whether to use an API key, answer <b>No</b>. Your subscription covers you.</li>
     </ol>
     <button class="mark" type="button">&#10003; I&rsquo;m signed in</button>
   </section>
@@ -167,11 +174,37 @@ footer a{color:var(--slate)}
     <button class="mark" type="button">&#10003; Claude Code answered me</button>
   </section>
 
+  <section class="step" data-step="7">
+    <div class="sh"><span class="num">7</span><h2>Get ready for our courses</h2></div>
+    <p>The course tools need two more free programs: <b>Node.js</b> and <b>Git</b>. Install them once, in the <b>terminal</b> (not inside Claude Code; type <b>/exit</b> first if you see Claude&rsquo;s box).</p>
+    <div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-os="mac">Mac</button><button role="tab" aria-selected="false" data-os="win">Windows</button></div>
+    <div class="pane on" data-os="mac">
+      <ol>
+        <li>Download the <b>LTS</b> installer from <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a>, open it, and accept the defaults.</li>
+        <li>In the terminal, paste this. If a box asks to install developer tools, click <b>Install</b> and wait for it to finish (it can take a while):
+          <div class="cmd"><span>git --version</span><button type="button">Copy</button></div></li>
+      </ol>
+    </div>
+    <div class="pane" data-os="win">
+      <ol>
+        <li>Paste each line and press <kbd>Enter</kbd>, one at a time:
+          <div class="cmd"><span>winget install -e --id OpenJS.NodeJS.LTS</span><button type="button">Copy</button></div>
+          <div class="cmd"><span>winget install -e --id Git.Git</span><button type="button">Copy</button></div></li>
+      </ol>
+    </div>
+    <p>Close the terminal, open a new one, and check both. Each should print a version number:</p>
+    <div class="cmd"><span>node -v</span><button type="button">Copy</button></div>
+    <div class="cmd"><span>git --version</span><button type="button">Copy</button></div>
+    <div class="note">Stuck? Start Claude Code and ask it in plain English: <b>&ldquo;Install Node.js LTS and Git on this computer and check that they work.&rdquo;</b> It will walk through it with you.</div>
+    <button class="mark" type="button">&#10003; Node and Git are installed</button>
+  </section>
+
   <section class="step" id="help">
     <div class="sh"><span class="num">?</span><h2>If something goes wrong</h2></div>
     <ul>
       <li><b>&ldquo;command not found&rdquo; or &ldquo;not recognized&rdquo;</b> after installing: close <i>every</i> terminal window, open a new one, and try again. Still stuck? Restart the computer.</li>
       <li><b>Windows says &ldquo;&apos;irm&apos; is not recognized&rdquo;:</b> you opened Command Prompt instead of PowerShell. Go back to step 3 and open <b>PowerShell</b>.</li>
+      <li><b>Signed in with the wrong account?</b> Inside Claude Code, type <b>/login</b> to switch.</li>
       <li><b>It says your plan doesn&rsquo;t include Claude Code:</b> you signed in with a free account. Upgrade in step 1, or sign in with the account that has the paid plan.</li>
       <li><b>Want a full health check?</b> Paste this for a plain-language report:
         <div class="cmd"><span>claude doctor</span><button type="button">Copy</button></div></li>
