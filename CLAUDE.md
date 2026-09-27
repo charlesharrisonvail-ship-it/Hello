@@ -12,7 +12,20 @@ not an application: there is no build, test, or lint step.
   - `linkedin-content.md` — LinkedIn posts, content calendars, and carousel/Reel concepts
   - `lofty-crm.md` — Lofty contacts, tiers, tags, recruit pipeline stages, and follow-up tasks
 - `.claude/skills/linkedin-optimizer/` — LinkedIn analytics and profile optimization
-- `.claude/settings.json` — project settings; enables the Superpowers plugin
+- `.claude/settings.json` — project settings; enables the Superpowers and Ponytail plugins
+
+## Plugins
+
+- **Superpowers** (`obra/superpowers-marketplace`)
+- **Ponytail** (`DietrichGebert/ponytail`) — "lazy senior dev" mode: prefer the
+  simplest solution that works (YAGNI, reuse, stdlib, native platform features
+  before new code). Adds `/ponytail`, `/ponytail-review`, `/ponytail-audit`,
+  `/ponytail-debt`, `/ponytail-gain`, `/ponytail-help`. Its always-on activation
+  hooks need `node` on PATH; without Node the skills still work, activation just
+  stays quiet.
+
+Both are declared in `.claude/settings.json`, so a fresh clone or a
+claude.ai/code session picks them up with no manual install step.
 
 ## Conventions
 
