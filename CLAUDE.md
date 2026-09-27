@@ -13,6 +13,9 @@ not an application: there is no build, test, or lint step.
   - `lofty-crm.md` — Lofty contacts, tiers, tags, recruit pipeline stages, and follow-up tasks
 - `.claude/skills/linkedin-optimizer/` — LinkedIn analytics and profile optimization
 - `.claude/settings.json` — project settings; enables the Superpowers plugin
+- `.mcp.json` — project MCP servers (Playwright, Perplexity, Firecrawl,
+  Higgsfield, filesystem, Serena, Context7, sequential thinking);
+  see `docs/MCP.md` for keys and prerequisites
 
 ## Conventions
 
