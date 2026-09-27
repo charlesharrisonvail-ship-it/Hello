@@ -1,0 +1,4 @@
+# /brag scratch: extracted video frames, downloaded fonts, node_modules,
+# per-frame renders. All of it is regenerable from brag-plan.md and the site.
+brag-output/work/
+brag-output-*/work/
