@@ -12,6 +12,7 @@ not an application: there is no build, test, or lint step.
   - `linkedin-content.md` — LinkedIn posts, content calendars, and carousel/Reel concepts
   - `lofty-crm.md` — Lofty contacts, tiers, tags, recruit pipeline stages, and follow-up tasks
 - `.claude/skills/linkedin-optimizer/` — LinkedIn analytics and profile optimization
+- `.claude/skills/brag-slim/` — turn a project or website into a short launch video with music and share copy (vendored from [latent-spaces/brag](https://github.com/latent-spaces/brag), MIT, commit `c893c5e`)
 - `.claude/settings.json` — project settings; enables the Superpowers plugin
 
 ## Conventions
