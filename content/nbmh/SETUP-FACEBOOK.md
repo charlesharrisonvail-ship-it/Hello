@@ -57,4 +57,4 @@ nothing. It refuses to publish to any page but New Beginnings Mental Health.
 If this is ever finished, swap the short-lived Explorer token for a System User
 token that never expires: business.facebook.com → Settings → Users →
 System users → Add → assign the page with Manage Page → Generate new token,
-`pages_show_list` + `pages_manage_posts`, expiration Never.
+all three permissions, expiration Never.

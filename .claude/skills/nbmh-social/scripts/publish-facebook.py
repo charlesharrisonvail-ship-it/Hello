@@ -16,7 +16,10 @@ Credentials come from the cloud environment's settings, either way:
     the page and its page-token are resolved via /me/accounts) or
     `NBMH_FB_PAGE_TOKEN`.
 
-Either way the token needs pages_show_list and pages_manage_posts.
+The token needs all three of pages_show_list, pages_read_engagement, and
+pages_manage_posts. pages_read_engagement is NOT optional: Meta requires it to
+issue a working Page access token, and without it publishing fails with a bare
+"(#200) Permissions error" that names nothing.
 
 Usage:
     # what would happen, without touching Meta
@@ -76,7 +79,15 @@ def _call(url, data=None, headers=None, method=None):
             msg = json.loads(body)["error"]["message"]
         except Exception:
             msg = body[:600]
-        sys.exit(f"FAILED — Meta returned HTTP {e.code}: {msg}")
+        hint = ""
+        if "#200" in msg or "Permissions error" in msg:
+            hint = ("\n\nAlmost always a missing scope. Check with:\n"
+                    "  curl -s https://graph.facebook.com/v21.0/me/permissions\n"
+                    "All three of pages_show_list, pages_read_engagement and "
+                    "pages_manage_posts must read 'granted'. Meta will not issue "
+                    "a working Page token without pages_read_engagement, and "
+                    "says nothing useful when it is missing.")
+        sys.exit(f"FAILED — Meta returned HTTP {e.code}: {msg}{hint}")
     except urllib.error.URLError as e:
         sys.exit(f"FAILED — could not reach {GRAPH}: {e.reason}\n"
                  "If this is a proxy 403, graph.facebook.com is not yet allowed "
@@ -163,8 +174,6 @@ def main():
     ctype = mimetypes.guess_type(args.image)[0] or "image/jpeg"
 
     fields = {"caption": caption}
-    if token:
-        fields["access_token"] = token
     when = None
     if args.schedule:
         local = datetime.strptime(args.schedule, "%Y-%m-%d %H:%M").replace(
@@ -177,8 +186,14 @@ def main():
         fields["scheduled_publish_time"] = str(int(local.timestamp()))
 
     body, ctype_hdr = _multipart(fields, os.path.basename(args.image), blob, ctype)
-    res = _call(f"{GRAPH}/{page_id}/photos", data=body,
-                headers={"Content-Type": ctype_hdr})
+    # The page token goes in the query string, not the multipart body: Meta does
+    # not read access_token from a multipart field, and would otherwise fall
+    # back to whatever token authenticates the request. That fallback is the
+    # user token, which cannot post to a page — a (#200) Permissions error.
+    url = f"{GRAPH}/{page_id}/photos"
+    if token:
+        url += "?" + urllib.parse.urlencode({"access_token": token})
+    res = _call(url, data=body, headers={"Content-Type": ctype_hdr})
 
     post_id = res.get("post_id") or res.get("id")
     if when:
