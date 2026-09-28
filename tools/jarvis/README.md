@@ -5,8 +5,8 @@ private, local-first voice assistant that runs on your own hardware. Speech
 recognition, the language model, and speech synthesis all run locally; your
 conversation memory stays on the machine.
 
-This directory holds **setup only**. Jarvis's source is not vendored into this
-repository — see [Why it isn't vendored](#why-it-isnt-vendored) below.
+Targets **Windows** (ThinkPad). This directory holds **setup only** — Jarvis's
+source is not vendored here. See [Why it isn't vendored](#why-it-isnt-vendored).
 
 ## Read this first: licensing
 
@@ -22,68 +22,75 @@ draft client messages, handle lead follow-up, or otherwise support the
 brokerage would need that separate licence. The author's contact for commercial
 licensing is in the repository's `LICENSE` file.
 
-## The easy path: download the app
+## Start here: download the app
 
-Most people should skip the source install entirely. Jarvis publishes signed
-desktop builds on [GitHub Releases](https://github.com/isair/jarvis/releases):
+**This is the right path for almost everyone, and it needs no Python.** Jarvis
+publishes a prebuilt Windows build on
+[GitHub Releases](https://github.com/isair/jarvis/releases):
 
-| Platform | Package | How to open |
-| :--- | :--- | :--- |
-| macOS · Apple Silicon | `Jarvis-macOS-arm64.zip` | Extract, move to Applications, right-click → Open |
-| macOS · Intel | `Jarvis-macOS-x64.zip` | Extract, move to Applications, right-click → Open |
-| Windows · x64 | `Jarvis-Windows-x64.zip` | Extract, run `Jarvis.exe` |
-| Linux · x64 | `Jarvis-Linux-x64.tar.gz` | Extract, run `./Jarvis/Jarvis` |
+1. Download `Jarvis-Windows-x64.zip`.
+2. **Extract the full zip** before running anything — launching `Jarvis.exe`
+   from inside the compressed folder is the most common failure.
+3. Run `Jarvis.exe`. Windows Defender may flag it on first launch; allow it.
+4. The setup wizard walks through model selection, so there is no config file
+   to hand-edit. It offers an optional CUDA download for NVIDIA GPUs.
 
-The bundled setup wizard walks through model selection, so there is no config
-file to hand-edit. A source install is only worth it if you want to read or
-change the code, or want Chatterbox TTS (source installs only).
+Then allow microphone access, let the first model downloads finish, and when
+Jarvis reports it is listening, say "Jarvis" anywhere in a sentence.
 
 ## The source path
 
-```bash
-bash tools/jarvis/install-jarvis.sh
+Only worth it if you want to read or change the code, or want Chatterbox TTS
+(source installs only).
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools\jarvis\install-jarvis.ps1
 ```
 
-The script clones upstream to `~/src/jarvis` (override with
-`JARVIS_INSTALL_DIR`), then hands off to Jarvis's own `scripts/run_macos.sh`,
-which creates a `.venv`, installs `requirements.txt`, and starts the daemon.
-Re-running it pulls the latest upstream commits instead of re-cloning.
+The script clones upstream to `%USERPROFILE%\src\jarvis` (override with
+`-InstallDir`), installs Micromamba if missing, then hands off to Jarvis's own
+`scripts\run_windows.ps1`. Re-running it pulls the latest upstream commits
+instead of re-cloning.
 
 ### Prerequisites
 
-- **macOS.** The script is macOS-only, and upstream is developed primarily on
-  macOS. For other platforms run `scripts/run_linux.sh` or
-  `scripts/run_windows.ps1` from the clone.
-- **Python 3.12.** Jarvis pins `numpy<2.0.0`, which has no wheels for Python
-  3.13+. Install with `brew install python@3.12`; override the interpreter with
-  `JARVIS_PYTHON` if needed.
-- **Xcode command line tools**, for `git` and the Swift capture helper:
-  `xcode-select --install`
+- **Git.** `winget install --id Git.Git`
+- **Micromamba.** The script installs it for you. This matters: upstream's
+  fallback path is venv + pip, which compiles `webrtcvad` and `av` from source
+  and therefore needs the Visual C++ Build Tools — a multi-GB install that
+  frequently fails. Micromamba pulls prebuilt binaries instead and creates a
+  Python 3.12 environment, which also sidesteps the `numpy<2.0.0` pin that
+  rules out Python 3.13+.
 - **A local model server.** [Ollama](https://ollama.com/download)
-  (`brew install --cask ollama`) is the simplest. LM Studio, oMLX, and
-  llama.cpp work too — anything OpenAI-compatible.
-- **A microphone**, and the patience to grant macOS mic permission on first run.
+  (`winget install --id Ollama.Ollama`) is simplest. LM Studio and llama.cpp
+  work too — anything OpenAI-compatible.
+- **A microphone**, and the patience to grant Windows mic permission.
 
-### What to expect on first run
+### A note on ThinkPad hardware
 
-First launch downloads Whisper and your chosen language model. These are large;
-watch the Logs window rather than assuming startup has hung. Once Jarvis
-reports that it is listening, say "Jarvis" anywhere in a sentence and carry on
-naturally. Prefer typing? Open **Chat** from the tray menu — text replies stay
-silent.
+If your ThinkPad has Intel integrated graphics rather than a discrete NVIDIA
+GPU — most do — then **skip CUDA entirely**; speech recognition will run on the
+CPU. It works, but transcription is slower. Two things help: pick a smaller chat
+model (`qwen3.5:0.8b` rather than the `gemma4:e2b` default) and turn on **Low
+Power Mode** in Settings. The install script checks your GPU and tells you which
+situation you are in.
 
-Model sizing, per upstream's guidance: `qwen3.5:0.8b` on smaller hardware,
-`gemma4:e2b` as the default, `gemma4:e4b` for more capability. Budget memory
-for Whisper on top of the chat model.
+Budget memory for Whisper on top of the chat model. Unlike Apple's unified
+memory, a discrete GPU uses its own VRAM, so the two budgets are separate.
 
 ### Known rough edges
 
 Upstream flags these, and they are worth knowing before you install:
 
-- macOS 26+ global dictation hotkey is broken (a `pynput` incompatibility,
-  upstream issue #172).
-- A spoken "stop" can be mistaken for echo while Jarvis is talking (#24).
-- No mobile app (#17).
+- **Jarvis is developed primarily on macOS**, and upstream says plainly that
+  "Windows and Linux behaviour may differ." Expect rougher edges than the
+  screenshots suggest.
+- Windows dictation hotkey is **Ctrl + Win**.
+- A spoken "stop" can be mistaken for echo while Jarvis is talking
+  ([#24](https://github.com/isair/jarvis/issues/24)).
+- No mobile app ([#17](https://github.com/isair/jarvis/issues/17)).
+- First-run model downloads are large. Watch the Logs window rather than
+  assuming startup has hung.
 - Location awareness needs a GeoLite2 database; semantic memory search needs
   working embeddings, else it falls back to keyword search.
 
