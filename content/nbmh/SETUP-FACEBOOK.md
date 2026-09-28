@@ -1,60 +1,62 @@
-# Facebook connection — state of play
+## The token must be a System User token
 
-**Raise this with Charles every day until it works.** He asked for automatic
-publishing and he was explicit: if it is not working, say so and make him fix
-it. Quietly falling back to manual delivery and saying nothing is worse than
-nagging him — he called that out directly.
+**Do not use a Graph API Explorer token.** Explorer issues a token that expires
+in about an hour. A daily 6:49 a.m. job can never run on one — it is dead every
+morning before it fires. Chasing Explorer tokens wasted a great deal of
+Charles's time; go straight to the permanent one.
 
-Keep it to one or two lines naming the single outstanding step, at the top of
-the morning message, and deliver the post as well so he is never without one.
-Do not walk him through Meta's developer console again; the app and permission
-are already done.
+### Create it once
 
-## What is already done
+1. **business.facebook.com** → **Settings** (gear, bottom left)
+2. **Users** → **System users** → **Add**
+3. Name it `NBMH Posting`, role **Admin**, create
+4. **Assign assets** → **Pages** → New Beginnings Mental Health → turn on
+   **Manage Page** (full control) → Save
+5. **Generate new token** → app **NBMH Posting** → tick all three:
+   `pages_show_list`, `pages_read_engagement`, `pages_manage_posts`
+6. **Token expiration: Never** → Generate → copy it
 
-| | |
+All three permissions are required. `pages_read_engagement` looks optional and
+is not: Meta will not issue a working Page access token without it, and
+publishing then fails with a bare `(#200) Permissions error` naming no scope,
+while reading the page keeps working — which makes the cause very hard to see.
+
+### Store it
+
+Session title bar → cloud environment menu → **Edit** → **API credentials**.
+There must be exactly **one** credential:
+
+| Field | Value |
 | --- | --- |
-| App | `1404240181119155` — NBMH Posting |
-| Page | `1236318822895617` — New Beginnings Mental Health |
-| Permission | `pages_manage_posts` — enabled, "Ready for testing" (no App Review needed) |
-| Network | `graph.facebook.com` reachable — calls now return Meta errors, not proxy 403s |
-| Publisher | `scripts/publish-facebook.py` — written, tested, working |
+| Name | `NBMH_FB_USER_TOKEN` |
+| Credential type | Bearer |
+| Allowed websites | `graph.facebook.com` |
+| Custom headers | `Authorization` / `Bearer` / the token in Value |
 
-## The one thing left
+A second credential on the same host is ignored and the UI says so — permission
+names such as `pages_read_engagement` are Facebook scopes, not credentials, and
+do not belong here.
 
-An **API credential** in the environment settings, saved. The dialog was filled
-in correctly and then abandoned at the final click:
+### Verify
 
-- **Name** — anything; `NBMH_FB_USER_TOKEN` was used
-- **Credential type** — Bearer
-- **Allowed websites** — `graph.facebook.com` (not a variable name; that was the
-  validation error that cost time)
-- **Custom headers** — the default `Authorization` / `Bearer` / *value*, with a
-  Graph API Explorer User token carrying `pages_show_list` and
-  `pages_manage_posts` in the value box
+```bash
+python3 .claude/skills/nbmh-social/scripts/publish-facebook.py --check
+```
 
-**Connect stays greyed out until the token is pasted fresh into the Value box** —
-a masked placeholder is not a value. That is where it was left.
+It names the page and posts nothing. Then publish with `--image` and
+`--caption`.
 
-Note the token must be generated *after* `pages_manage_posts` was enabled;
-scopes are baked in at generation. An Explorer token also expires in about an
-hour, so any attempt to finish this later needs a newly generated one.
+## Notes on how this works
 
-## How the credential works
-
-It is not an environment variable. The proxy attaches
+The credential is not an environment variable. The proxy attaches
 `Authorization: Bearer <token>` to every request to the allowed website, so the
-token never reaches the session. `publish-facebook.py` therefore sends no
-`access_token` parameter when no env token is set, and lets the proxy
-authenticate. It still accepts `NBMH_FB_USER_TOKEN` or `NBMH_FB_PAGE_TOKEN` as
-plain environment variables if either is ever set instead.
+token never reaches the session, and an explicit Authorization header set in
+code is overwritten. An `access_token` query parameter does take precedence over
+that header, which is how the publisher sends the Page token — verified by
+sending a deliberately invalid one and getting Meta's invalid-token error back.
 
-Verify with `publish-facebook.py --check`, which names the page and posts
-nothing. It refuses to publish to any page but New Beginnings Mental Health.
+The Page token comes from `/me/accounts`, which returns each page Charles
+administers together with its own token, so no page id is ever looked up by hand.
 
-## Permanent tokens
-
-If this is ever finished, swap the short-lived Explorer token for a System User
-token that never expires: business.facebook.com → Settings → Users →
-System users → Add → assign the page with Manage Page → Generate new token,
-all three permissions, expiration Never.
+Current state: app `1404240181119155` (NBMH Posting), page `1236318822895617`
+(New Beginnings Mental Health), network access Full, publisher tested.
