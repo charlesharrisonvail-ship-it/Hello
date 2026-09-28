@@ -11,22 +11,28 @@ Status values: `drafted` · `delivered` (handed to Charles to post) ·
 
 | Date | Concept | Graphic | Caption | Compliance | Status | Evidence |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026-09-26 | Low Sun — seasonal light, sleep/energy/focus | created | created | PASS | **delivered** | JPEG and caption handed to Charles to post. |
+| 2026-09-26 | Low Sun — seasonal light, sleep/energy/focus | created | created | PASS | **verified** | Post `1236318822895617_122129287905383194`, published 2026-09-28 03:34 UTC, `is_published: true` confirmed on the page. [permalink](https://www.facebook.com/122129288043383194/posts/122129287905383194) |
 
-## Publishing — delivered to Charles, by necessity
+## Publishing — live
 
-The daily Routine builds the post, tries to publish, and if publishing is not
-available hands Charles the JPEG and caption instead. Either way he gets a
-finished post every morning; no day is ever lost to setup.
+Automatic publishing works as of 2026-09-28. `scripts/publish-facebook.py` posts
+straight to the page through Meta's Graph API and the first post is verified on
+the live page.
 
-Automatic publishing is one saved credential away and is documented in
-`SETUP-FACEBOOK.md`. **Raise it with him every day until it works** — he asked
-for automation and said plainly that going quiet about a broken pipeline is
-worse than being nagged. One or two lines naming the one step, at the top of the
-morning message.
+Authentication is a **system user token**, expiration Never, stored as the
+environment's `NBMH_FB_USER_TOKEN` API credential for `graph.facebook.com`. The
+proxy attaches it, so the token never reaches the code. It does not expire, so
+this needs no maintenance.
 
-`published` is claimed only when `publish-facebook.py` returns a post id.
-Otherwise the row reads `delivered`.
+What it took, recorded so it is never re-derived: the Meta app had to be claimed
+into the business portfolio before a system user could be given a role on it;
+all three of `pages_show_list`, `pages_read_engagement` and `pages_manage_posts`
+are required, and `pages_read_engagement` is the one that looks optional and is
+not; and Graph API Explorer tokens expire within the hour, so they can never
+drive a scheduled job.
+
+Status is `verified` only after reading the post back from the page with
+`is_published: true`. `published` means the API returned an id and nothing more.
 
 ## Daily automation
 

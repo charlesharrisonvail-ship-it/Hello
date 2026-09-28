@@ -15,7 +15,7 @@ The point is not the record; it is making sure today is genuinely different.
 | 2026-09-14 | Clear conversation drives clear decisions | (prepared, not published) | — |
 | 2026-09-15 | Symptom and side-effect logging | (prepared, not published) | — |
 | 2026-09-16 | Needs change over time | (prepared, not published) | — |
-| 2026-09-26 | Seasonal light change; sleep, energy, focus | Editorial light study — low autumn sun cropped by the frame, deep green horizon band | Shorter days change more than the light. |
+| 2026-09-26 | Seasonal light change; sleep, energy, focus | Editorial light study — low autumn sun cropped by the frame, deep green horizon band | Shorter days change more than the light. (published & verified) |
 
 ## Rejected directions — do not return to these
 
