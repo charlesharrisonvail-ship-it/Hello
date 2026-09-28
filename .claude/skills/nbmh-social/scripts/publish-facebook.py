@@ -50,6 +50,7 @@ from zoneinfo import ZoneInfo
 
 GRAPH = "https://graph.facebook.com/v21.0"
 EXPECTED_PAGE = "new beginnings mental health"
+NBMH_PAGE_ID = "1236318822895617"
 
 # Empty when an API credential is supplying the Authorization header instead.
 TOKEN = os.environ.get("NBMH_FB_USER_TOKEN", "")
@@ -116,6 +117,17 @@ def resolve(page_id, page_token, user_token):
     separate page-token has to be found by hand.
     """
     if not page_token:
+        # A system user token answers /me as the system user, not as a person
+        # with pages, so /me/accounts can come back empty. Asking the page for
+        # its own token works for both system user and ordinary user tokens.
+        direct = _call(f"{GRAPH}/{page_id or NBMH_PAGE_ID}?"
+                       + _auth({"fields": "id,name,access_token"}))
+        if direct.get("access_token") and direct.get("name"):
+            if EXPECTED_PAGE not in direct["name"].lower():
+                sys.exit(f"REFUSED — that token points at {direct['name']!r}, "
+                         "not New Beginnings Mental Health. Nothing was posted.")
+            return direct["id"], direct["access_token"], direct["name"]
+
         q = _auth({"fields": "id,name,access_token"})
         pages = _call(f"{GRAPH}/me/accounts?{q}").get("data", [])
         if not pages:

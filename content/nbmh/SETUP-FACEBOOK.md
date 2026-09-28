@@ -46,6 +46,16 @@ python3 .claude/skills/nbmh-social/scripts/publish-facebook.py --check
 It names the page and posts nothing. Then publish with `--image` and
 `--caption`.
 
+## Where the token goes — not a .env file
+
+This is an ephemeral cloud container: a `.env` file does not survive a restart,
+and a token committed to the repo would be exposed. The token belongs in the
+environment's **API credential**, where the proxy attaches it and it never
+reaches the code at all.
+
+There must be exactly one credential for `graph.facebook.com`. A second one is
+ignored, and the settings UI says so.
+
 ## Notes on how this works
 
 The credential is not an environment variable. The proxy attaches
@@ -55,8 +65,12 @@ code is overwritten. An `access_token` query parameter does take precedence over
 that header, which is how the publisher sends the Page token — verified by
 sending a deliberately invalid one and getting Meta's invalid-token error back.
 
-The Page token comes from `/me/accounts`, which returns each page Charles
-administers together with its own token, so no page id is ever looked up by hand.
+The publisher gets the Page token two ways. It first asks the page directly,
+`GET /{page-id}?fields=id,name,access_token`, which works for a system user
+token — a system user has no personal pages, so `/me/accounts` can come back
+empty for it. Failing that it falls back to `/me/accounts`, which returns each
+page an ordinary user administers along with that page's own token. Either way
+no page id is ever hunted for by hand.
 
 Current state: app `1404240181119155` (NBMH Posting), page `1236318822895617`
 (New Beginnings Mental Health), network access Full, publisher tested.
