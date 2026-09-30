@@ -4,24 +4,20 @@ _Keep this tidy. `pre_compact.py` appends banked blocks below it._
 
 ## Working on now
 
-Continuity is installed, active, and rebased onto `main` at #15. The orientation
-documents and the memory index are filled from the repo's own config rather than
-scaffolded. `CONTINUITY: PASS`.
+Continuity is merged to `main` (PR #10). The sign-off contradiction is resolved:
+Charles settled on `Charles Harrison, Epique Area/Growth Leader` everywhere, and
+`CLAUDE.md`, the orientation documents and the memory index now agree with the
+agent files. `CONTINUITY: PASS`.
 
 ## Open question for Charles
 
-**Two files disagree on how to sign a lead message.** `CLAUDE.md` says
-`Charles Harrison | EpiVail | Epique Realty`; `recruitment-outreach.md` says
-`Charles Harrison, Epique Area/Growth Leader` and calls it exact. Both are in
-force. CLAUDE.md governs for now - one of the two files needs editing to match.
-
-Smaller: the agents say "powered by Epique X", some skills say "EpiqueAI".
-`CLAUDE.md` does not rule on it.
+The agents say "powered by Epique X"; some skills say "EpiqueAI". `CLAUDE.md`
+does not rule on it, so ask rather than pick.
 
 ## Next
 
-1. Open a PR for `claude/continuity-plugin-install-m0b7ln` and merge it
-2. Resolve the sign-off contradiction above
-3. Orientation is at ~6,700 of the 9,000 budget. When `DECISIONS.md` grows past
-   its share, add a fourth hook entry rather than cutting a rule - the limit is
-   per entry, not per session
+1. Watch orientation size - roughly 7,000 of the 9,000-character budget. When
+   `DECISIONS.md` outgrows its share, add a fourth hook entry rather than cutting
+   a rule; the limit is per hook entry, not per session
+2. When a rule changes in `CLAUDE.md`, change it in `DECISIONS.md` and the memory
+   index too, or a future session acts on the old one with full confidence

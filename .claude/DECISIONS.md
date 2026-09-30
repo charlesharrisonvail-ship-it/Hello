@@ -13,12 +13,20 @@ signatures, posts, or materials. The `epivail-brand-system` skill still
 recommends it; `CLAUDE.md` bans it. **CLAUDE.md wins.** This exact mismatch has
 already cost two correcting commits (PR #9, PR #15). (2026-09-25)
 
-**Messages to people get the CLAUDE.md sign-off; posts get the byline** -
-`Charles Harrison | EpiVail | Epique Realty` on email, DM and SMS;
-`Charles Harrison, Epique Area/Growth Leader` as a post byline, never with a
-regional descriptor. `recruitment-outreach.md` currently mandates the byline form
-for lead messages, which contradicts `CLAUDE.md`; CLAUDE.md governs until Charles
-reconciles the two files. See `recall.py signature`. (2026-09-25)
+**One signature for everything: `Charles Harrison, Epique Area/Growth Leader`** -
+email, DM, SMS, call scripts and LinkedIn bylines alike, never with a regional
+descriptor appended. Settled by Charles 2026-09-28; it resolved a contradiction
+where `CLAUDE.md` said `Charles Harrison | EpiVail | Epique Realty` and the agent
+files said this form. The pipe-separated form is retired - if you meet it, it is
+stale. See `recall.py signature`. (2026-09-28)
+
+**Check the do-not-contact list before sending anything to anyone** - it lives in
+`CLAUDE.md` under "Do not contact", is deliberately NOT copied here so it cannot
+drift, and is absolute: never email, text, call, or enroll those people in any
+sequence, even when Lofty flags them as past due or needing attention. A Lofty
+"past due" flag alone is never a reason to send; confirm the lead is still
+active. When in doubt, draft and show Charles instead of sending. (CLAUDE.md,
+`lofty-crm.md`)
 
 **Voice is courteous and warm, with Southern manners** - and in outreach:
 confident, direct, generous, never hypey. (CLAUDE.md, `recruitment-outreach.md`)

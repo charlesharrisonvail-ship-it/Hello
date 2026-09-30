@@ -34,7 +34,9 @@ will silently produce wrong work in some future session.
 ## Bring back to Charles first
 
 - **Anything that sends.** Outreach emails, LinkedIn DMs, SMS, sequence
-  enrollment, posting. Drafts are yours; sending is his.
+  enrollment, posting. Drafts are yours; sending is his. Before any send, check
+  the "Do not contact" list in `CLAUDE.md` and confirm the lead is still active;
+  when in doubt, draft and show him.
 - **Anything that spends.** Credit-consuming enrichment or generation at scale -
   surface the estimate before the spend, and the balance after.
 - **Anything that writes to Lofty** on his behalf beyond what he asked for.
@@ -47,6 +49,8 @@ will silently produce wrong work in some future session.
 
 - Never ask for his Lofty password.
 - Never put an API key in chat, a commit, or a file.
+- Never contact anyone on the `CLAUDE.md` "Do not contact" list - not by email,
+  text, call, or sequence enrollment, even if Lofty flags them as past due.
 - Never write "Epique Mountain Collective" - `CLAUDE.md` bans it even when a
   brand skill suggests it.
 
@@ -55,6 +59,6 @@ will silently produce wrong work in some future session.
 - Branding went wrong in committed agent files twice and needed correcting
   commits (PR #9, PR #15). The cause is still live: `epivail-brand-system`
   recommends a phrase `CLAUDE.md` bans. Check naming against `CLAUDE.md`.
-- The sign-off in `CLAUDE.md` and the byline in `recruitment-outreach.md`
-  currently contradict each other for lead messages. `CLAUDE.md` governs.
-  Run `recall.py signature` before signing anything.
+- Charles's signature is one string everywhere: `Charles Harrison, Epique
+  Area/Growth Leader`. An older form, `Charles Harrison | EpiVail | Epique
+  Realty`, is retired - if you meet it, it is stale.
