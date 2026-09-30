@@ -176,27 +176,50 @@ footer a{color:var(--slate)}
 
   <section class="step" data-step="7">
     <div class="sh"><span class="num">7</span><h2>Get ready for our courses</h2></div>
-    <p>The course tools need two more free programs: <b>Node.js</b> and <b>Git</b>. Install them once, in the <b>terminal</b> (not inside Claude Code; type <b>/exit</b> first if you see Claude&rsquo;s box).</p>
+    <p>The course tools need three more free programs: <b>Node.js</b>, <b>Git</b> and <b>Python</b>. Install them once, in the <b>terminal</b> (not inside Claude Code; type <b>/exit</b> first if you see Claude&rsquo;s box).</p>
     <div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-os="mac">Mac</button><button role="tab" aria-selected="false" data-os="win">Windows</button></div>
     <div class="pane on" data-os="mac">
       <ol>
         <li>Download the <b>LTS</b> installer from <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a>, open it, and accept the defaults.</li>
         <li>In the terminal, paste this. If a box asks to install developer tools, click <b>Install</b> and wait for it to finish (it can take a while):
           <div class="cmd"><span>git --version</span><button type="button">Copy</button></div></li>
+        <li>That same developer-tools install also gives you <b>Python</b>. Nothing extra to do; you&rsquo;ll check it below.</li>
       </ol>
     </div>
     <div class="pane" data-os="win">
       <ol>
         <li>Paste each line and press <kbd>Enter</kbd>, one at a time:
           <div class="cmd"><span>winget install -e --id OpenJS.NodeJS.LTS</span><button type="button">Copy</button></div>
-          <div class="cmd"><span>winget install -e --id Git.Git</span><button type="button">Copy</button></div></li>
+          <div class="cmd"><span>winget install -e --id Git.Git</span><button type="button">Copy</button></div>
+          <div class="cmd"><span>winget install -e --id Python.Python.3.12</span><button type="button">Copy</button></div></li>
       </ol>
+      <div class="note">If typing <b>python</b> ever opens the Microsoft Store instead, use <b>py</b> in its place. That&rsquo;s a Windows shortcut, not a problem with your install.</div>
     </div>
-    <p>Close the terminal, open a new one, and check both. Each should print a version number:</p>
+    <p>Close the terminal, open a new one, and check all three. Each should print a version number:</p>
     <div class="cmd"><span>node -v</span><button type="button">Copy</button></div>
     <div class="cmd"><span>git --version</span><button type="button">Copy</button></div>
-    <div class="note">Stuck? Start Claude Code and ask it in plain English: <b>&ldquo;Install Node.js LTS and Git on this computer and check that they work.&rdquo;</b> It will walk through it with you.</div>
-    <button class="mark" type="button">&#10003; Node and Git are installed</button>
+    <p><b>Mac:</b></p>
+    <div class="cmd"><span>python3 --version</span><button type="button">Copy</button></div>
+    <p><b>Windows:</b></p>
+    <div class="cmd"><span>py --version</span><button type="button">Copy</button></div>
+    <div class="note">Stuck? Start Claude Code and ask it in plain English: <b>&ldquo;Install Node.js LTS, Git and Python 3 on this computer and check that they work.&rdquo;</b> It will walk through it with you.</div>
+    <button class="mark" type="button">&#10003; Node, Git and Python are installed</button>
+  </section>
+
+  <section class="step" id="installs">
+    <div class="sh"><span class="num">&#9776;</span><h2>Everything that gets installed</h2></div>
+    <p>So nothing surprises you later, here is every program the two courses use, what it does, and where it comes in. All are free except your Claude plan and Higgsfield credits.</p>
+    <ul>
+      <li><b>Claude Code</b> (step 4): the AI that does the work. Needs your Claude Pro plan.</li>
+      <li><b>Terminal / PowerShell</b>: already on your computer. It&rsquo;s the window you type install lines into.</li>
+      <li><b>Node.js</b> (step 7): runs the course tools. It also gives you <b>npx</b>, which installs the design skills in Part One, Module Three.</li>
+      <li><b>Git</b> (step 7): lets Claude Code download tools from GitHub.</li>
+      <li><b>Python</b> (step 7): runs the AI Real Estate tool for comps and market reports (Part One, Module Three; Lead to Keys, Module Ten).</li>
+      <li><b>ffmpeg</b>: stitches the Listing Showcase video together. Installed in Part One, Module Five.</li>
+      <li><b>Higgsfield</b>: makes the drone flight and animates the rooms. A paid service, connected in Part One, Module Three.</li>
+      <li><b>Apify</b> (optional): pulls photos from a live listing link. Skip it if you already have your photos.</li>
+    </ul>
+    <div class="note">You don&rsquo;t need Codex or any other coding tool. Claude Code is the only one the courses use.</div>
   </section>
 
   <section class="step" id="help">
