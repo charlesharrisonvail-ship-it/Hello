@@ -552,6 +552,16 @@
   .howmade li{margin:0 0 8px;color:var(--text);font-size:.97rem;line-height:1.55}
   .howmade li b{color:#fff}
   .howmade .pn{display:block;color:var(--slate);font-size:.86rem}
+  .peek{margin:26px 0 6px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .peek figure{margin:0;border:1px solid var(--edge2);background:var(--panel2);border-radius:10px;overflow:hidden}
+  .peek video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#000}
+  .peek .fl video{aspect-ratio:16/9;object-fit:cover}
+  .peek figcaption{padding:10px 14px 12px}
+  .peek .t{display:block;font-family:var(--mn);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sig);margin-bottom:4px}
+  .peek b{display:block;font-size:.98rem;margin-bottom:2px}
+  .peek small{color:rgba(255,255,255,.62);font-size:.8rem;line-height:1.45}
+  .peek a{color:var(--sig)}
+  @media (max-width:760px){.peek{grid-template-columns:1fr}}
 </style>
 
 <div class="tex" aria-hidden="true"></div>
@@ -603,6 +613,16 @@
             <a class="btn pri" data-buy="l2k" href="lead-to-keys.html">Buy <span class="ar">&rarr;</span></a>
             <a class="lk" href="lead-to-keys.html">Details</a></div>
         </div>
+      </div>
+      <div class="peek" id="peek">
+        <figure>
+          <video src="media/aire-preview-m4.mp4" poster="media/aire-preview-m4.jpg" controls playsinline preload="none" aria-label="A 35-second clip from Module Four"></video>
+          <figcaption><span class="t">Look inside &middot; Part One, Module 4</span><b>35 seconds of a real lesson</b><small>Pasting the prompt into Claude Code, and the flight that came back. The Paris clip is AI-generated from a practice photo.</small></figcaption>
+        </figure>
+        <figure class="fl">
+          <video src="https://d2ol7oe51mr4n9.cloudfront.net/user_3DQPFQB5knVKdCtoFjiflsBSNkk/467aeb60-94b8-498e-8ecc-b194287b62ec.mp4" poster="media/aire-flight-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="A finished AI drone-style flight"></video>
+          <figcaption><span class="t">What you&rsquo;ll make</span><b>One photo in, one flight out</b><small>AI-generated from one photograph. <a href="#demo">See the photo, the flight path and the prompt &rarr;</a></small></figcaption>
+        </figure>
       </div>
       <p class="need"><b>You&rsquo;ll need Claude Code.</b> Part One is built in it, and Lead to Keys uses it in Modules Ten and Eleven. It is <b>not included</b> in the course price: you&rsquo;ll need your own Claude Pro subscription ($20 a month), which you buy directly from Anthropic, the company that makes Claude. Higgsfield and ChatGPT come in along the way. We teach you to use Claude Code for real estate; we don&rsquo;t teach or support Claude Code itself. <a href="install-claude-code.html" style="color:var(--sig);font-weight:600">Free lesson: install Claude Code in about 20 minutes &rarr;</a></p>
       <a class="hbuilt" href="#consulting">Rather have it built for you? &rarr;</a>
