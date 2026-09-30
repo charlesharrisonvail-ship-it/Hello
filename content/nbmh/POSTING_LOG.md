@@ -36,16 +36,13 @@ Status is `verified` only after reading the post back from the page with
 
 ## Daily automation
 
-Routine `trig_01USBiEN12gveFCv6VvYNZpL` — "NBMH daily Facebook post", 6:49 a.m.
-America/Denver, fresh session each day. It drafts the day's graphic and caption,
-runs the compliance gate, logs the result, and pushes to
+Routine `trig_01HfQzfm8TRNfcofTq8kJmfb` — "NBMH daily Facebook post", 6:49 a.m.
+America/Denver, persistent session (fires into this session). It drafts the day's
+graphic and caption, runs the compliance gate, logs the result, and pushes to
 `claude/newbeginnings-social-media-manager-4s9d6n`.
 
-**Caveat, stated plainly:** the Routine was created without connectors, so its
-daily sessions run **without** Windsor.ai and Higgsfield tools. Those sessions
-build code-based graphics and captions and hand them over, which is the whole job
-now that posting is manual. The Higgsfield tools are connector-based, though, so
-the Tuesday/Friday image budget is unavailable to these sessions. To get that
-back, Charles recreates the Routine from the Routines UI on claude.ai with
-Higgsfield attached, then deletes this one. Not urgent — the code-built graphics
-stand on their own.
+**Higgsfield is now available:** starting 2026-10-01, the routine uses Higgsfield
+to generate graphics on Tuesday and Friday, building code-based layouts for other
+days. This improves visual quality on the two highest-traffic days each week while
+keeping the routine on budget. All other days still use bold typographic and
+editorial layouts built in code.
