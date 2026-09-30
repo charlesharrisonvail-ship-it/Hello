@@ -19,7 +19,10 @@ not an application: there is no build, test, or lint step.
 - Agents and skills use YAML frontmatter (`name`, `description`) followed by Markdown instructions.
 - Brand name is written **EpiVail**; the region is **Epique Realty Colorado Mountain Region**.
 - **Never use "Epique Mountain Collective"** anywhere — not in messages, signatures, or materials — even if a brand skill suggests it.
-- Sign off client and lead messages: **Charles Harrison | EpiVail | Epique Realty**
+- Sign off client and lead messages, and byline posts, with exactly:
+  **Charles Harrison, Epique Area/Growth Leader** — never append a regional
+  descriptor. This is the only signature; it matches `recruitment-outreach.md`
+  and `linkedin-content.md`.
 - Voice is courteous and warm, with Southern manners.
 - Work on a feature branch and merge through a pull request.
 
