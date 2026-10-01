@@ -1,0 +1,110 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>NBMH 2026-10-01</title>
+<link rel="stylesheet" href="../../../.claude/skills/nbmh-social/templates/base.css">
+<style>
+/* Concept: "Clarity Through Questions" — an inviting, clean layout for a first visit.
+   The visual centers on simplicity and preparation. Cool, sophisticated palette with
+   generous whitespace. One central idea: asking good questions matters. */
+
+.canvas {
+  background: linear-gradient(168deg, #F5F8FB 0%, #F0F5FA 58%, #E9F1F8 100%);
+}
+
+/* central open shape — suggests dialogue or openness */
+.form {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: 380px; height: 420px; z-index: 1;
+}
+
+.arc-top {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 280px; height: 200px;
+  border: 2px solid rgba(18, 64, 45, .15);
+  border-bottom: none;
+  border-radius: 280px 280px 0 0;
+}
+
+.arc-bottom {
+  position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 240px; height: 180px;
+  border: 2px solid rgba(18, 64, 45, .08);
+  border-top: none;
+  border-radius: 0 0 240px 240px;
+}
+
+/* the opening — suggests an invitation */
+.opening {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: 120px; height: 2px;
+  background: var(--bloom);
+  z-index: 2;
+}
+
+.lede {
+  position: absolute; top: 200px; left: var(--gutter); right: var(--gutter);
+  text-align: center; z-index: 4;
+}
+
+.lede .eyebrow {
+  display: block; font-size: 19px; font-weight: 700;
+  letter-spacing: .17em; color: rgba(18, 64, 45, .65);
+  margin-bottom: 28px; text-transform: uppercase;
+}
+
+.lede .headline {
+  font-size: 78px; color: var(--forest);
+  margin-bottom: 0;
+  line-height: 1.08;
+}
+
+.note {
+  position: absolute; bottom: 260px; left: var(--gutter); right: var(--gutter);
+  text-align: center; z-index: 4;
+  font-family: "Source Serif", serif; font-weight: 300;
+  font-size: 29px; line-height: 1.5; color: rgba(18, 64, 45, .72);
+}
+
+.service {
+  position: absolute; z-index: 5; left: var(--gutter); bottom: 176px;
+  font-size: 20px; font-weight: 700; letter-spacing: .165em;
+  color: rgba(18, 64, 45, .58);
+}
+
+.footer {
+  bottom: 68px; background: transparent; color: var(--ink);
+  padding: 0; border-top: 1px solid rgba(18, 64, 45, .12);
+  padding-top: 30px; border-radius: 0;
+}
+</style>
+
+<div class="canvas">
+  <div class="form">
+    <div class="arc-top"></div>
+    <div class="opening"></div>
+    <div class="arc-bottom"></div>
+  </div>
+
+  <div class="masthead">
+    <img src="../../../.claude/skills/nbmh-social/assets/nbmh-logo.png" alt="New Beginnings Mental Health">
+    <div class="wordmark">
+      <div class="n1">NEW BEGINNINGS</div>
+      <div class="n2">MENTAL HEALTH</div>
+    </div>
+  </div>
+  <div class="datestamp">OCT 1</div>
+
+  <div class="lede">
+    <span class="eyebrow">Prepare Yourself</span>
+    <h1 class="headline">Questions<br>Worth Asking</h1>
+  </div>
+
+  <div class="note">Clarity begins when you ask the right things.</div>
+
+  <div class="service">MEDICATION MANAGEMENT &nbsp;·&nbsp; COLORADO TELEHEALTH</div>
+
+  <div class="footer">
+    <span>NBMentalHealth.com</span>
+    <span>970-470-2939</span>
+  </div>
+</div>
