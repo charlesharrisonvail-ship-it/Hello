@@ -5,8 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
 <meta name="googlebot" content="noindex,nofollow">
-<!-- STAGING. Not for public launch. Remove the robots meta tags and robots.txt
-     when this is ready to go live. -->
+<!-- STAGING. Not yet open for enrolment. Flip LAUNCHED to true in the script
+     at the foot of this file, and remove these robots tags plus robots.txt,
+     on the day you open. -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2722%27 fill=%27%2304070d%27/%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2730%27 fill=%27none%27 stroke=%27%2338bdf8%27 stroke-width=%2714%27 stroke-linecap=%27round%27 stroke-dasharray=%27140 50%27 transform=%27rotate(-38 50 50)%27/%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2712%27 fill=%27%2338bdf8%27/%3E%3C/svg%3E">
 <title>AiRE Estate</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -477,7 +478,7 @@
     <div class="htxt">
       <p class="htag">Built in Claude Code &middot; AI for Real Estate</p>
       <h1>Make every listing look <em>premium</em>. Run the rest of the desk <em class="r">to&nbsp;the&nbsp;keys</em>.</h1>
-      <p class="hsub"><b>Two courses, built in Claude Code, taught by a working agent.</b> Part One makes the listing media the big platforms charge up to $950 for. Lead to Keys runs clients, comps, follow-up and contracts. All for pennies.</p>
+      <p class="hsub"><b>Built in Claude Code, taught by a working agent.</b> Part One makes the listing media the big platforms charge up to $950 for. Part Two, Lead to Keys, is in production.</p>
       <div class="pick" id="courses">
         <div class="pc one">
           <span class="pt">Part One &middot; 7 video modules</span>
@@ -488,12 +489,11 @@
             <a class="lk" href="#course">Details</a></div>
         </div>
         <div class="pc two">
-          <span class="pt">Part Two &middot; 10 video lessons</span>
+          <span class="pt">Part Two &middot; In production</span>
           <b>Lead to Keys</b>
           <p>Listings, clients, comps, follow-up and contracts: the rest of the desk.</p>
-          <div class="pr"><span class="amt">$97</span>
-            <a class="btn pri" data-buy="l2k" href="lead-to-keys.html">Buy <span class="ar">&rarr;</span></a>
-            <a class="lk" href="lead-to-keys.html">Details</a></div>
+          <div class="pr"><span class="amt">Soon</span>
+            <a class="btn pri ptwo-btn" href="#parttwo">Join the waitlist <span class="ar">&rarr;</span></a></div>
         </div>
       </div>
       <p class="need"><b>You&rsquo;ll need Claude Code.</b> Both courses are built in it, and it comes with a Claude Pro plan ($20 a month, paid to Claude, not to us). Module Two sets it up with you step by step. Higgsfield and ChatGPT come in along the way.</p>
@@ -726,11 +726,11 @@
 <!-- ============ PART TWO ============ -->
 <section class="band glow" id="parttwo">
   <div class="inner">
-    <p class="kick rv">Part Two &middot; A separate course</p>
+    <p class="kick rv">Part Two &middot; In production</p>
     <h2 class="rv">Then run the rest of the desk: <em>Lead to Keys</em></h2>
-    <p class="lede rv">This course makes the marketing. Part Two covers the rest of the working day: clean listings, client profiles, comps from your MLS, seller updates, buyer comparisons, follow-up that stays inside texting and email law, and contracts handled so they don't end in an E&amp;O claim. Seven modules, a Capstone, and its own certificate.</p>
+    <p class="lede rv">This course makes the marketing. Part Two covers the rest of the working day: clean listings, client profiles, comps from your MLS, seller updates, buyer comparisons, follow-up that stays inside texting and email law, and contracts handled so they don't end in an E&amp;O claim. Seven modules, a Capstone, and its own certificate. It is in production now &mdash; join the waitlist and you will hear first.</p>
     <div class="hcta rv" style="margin-top:26px">
-      <a class="btn pri ptwo-btn" href="lead-to-keys.html">See Lead to Keys &mdash; $97 <span class="ar">&rarr;</span></a>
+      <a class="btn pri ptwo-btn" href="#start">Join the waitlist <span class="ar">&rarr;</span></a>
     </div>
   </div>
 </section>
@@ -1009,9 +1009,40 @@
 </script>
 
 <script>
+/* ===================================================================
+   LAUNCH SWITCH.  Set LAUNCHED = true on the day you open the doors.
+   While false: every buy button is disabled, prices are hidden behind
+   a notice, and no Stripe link is ever written into the page.
+   This protects the PAGE. It does not deactivate the Stripe payment
+   links themselves - do that in the Stripe dashboard.
+   =================================================================== */
+var LAUNCHED = false;
+
 /* Stripe payment links. Empty = button scrolls to the contact section. */
-var STORE = { course: "https://buy.stripe.com/cNi14m4SA5kN46PcSo2kw00", l2k: "https://buy.stripe.com/6oU00ifxecNffPxcSo2kw01" };
-document.querySelectorAll('[data-buy]').forEach(function(a){ var u = STORE[a.getAttribute('data-buy')]; if (u) a.href = u; });
+var STORE = { course: "https://buy.stripe.com/cNi14m4SA5kN46PcSo2kw00" };
+/* l2k deliberately absent: Lead to Keys has no content yet and must not be sold.
+   Its Stripe link still exists and must be deactivated in the Stripe dashboard. */
+if (LAUNCHED) {
+  document.querySelectorAll('[data-buy]').forEach(function(a){
+    var u = STORE[a.getAttribute('data-buy')]; if (u) a.href = u;
+  });
+} else {
+  document.querySelectorAll('[data-buy]').forEach(function(a){
+    a.removeAttribute('href');
+    a.setAttribute('aria-disabled','true');
+    a.style.opacity = '.45';
+    a.style.pointerEvents = 'none';
+    a.textContent = 'Opening soon';
+  });
+  var bar = document.createElement('div');
+  bar.setAttribute('role','status');
+  bar.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:90;background:#fb923c;' +
+    'color:#120a02;font-family:\'IBM Plex Mono\',ui-monospace,monospace;font-size:.72rem;' +
+    'letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:10px 16px;' +
+    'padding-bottom:calc(10px + env(safe-area-inset-bottom,0px))';
+  bar.textContent = 'Preview \u00b7 not yet open for enrolment \u00b7 nothing on this page can be purchased';
+  document.body.appendChild(bar);
+}
 </script>
 
 </body>
