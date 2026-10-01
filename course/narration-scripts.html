@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<!-- Production material. NOT part of the published site: this file lives outside
+     docs/, so GitHub Pages never serves it. Do not move it into docs/. -->
+<title>Narration Scripts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@300;400;500;600;700&display=swap">
+<style>
+  :root{color-scheme:dark;
+    --ink:#04070d;--panel:#080e18;--panel2:#0d1524;--edge:rgba(255,255,255,.09);--edge2:rgba(255,255,255,.18);
+    --sig:#38bdf8;--rec:#ff453a;--warn:#fb923c;--go:#4ade80;
+    --head:#fff;--text:#dbe2ec;--slate:#8496b2;--slate2:#5a6a85;
+    --wm:'Archivo','Helvetica Neue',Arial,sans-serif;--bd:'Manrope','Helvetica Neue',Helvetica,Arial,sans-serif;
+    --mn:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;--gut:clamp(18px,4.6vw,56px);--nav:52px}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ink);color:var(--text);font-family:var(--bd);font-weight:300;font-size:16px;
+    line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-top:var(--nav)}
+  .wrap{max-width:1000px;margin:0 auto;padding-inline:var(--gut);padding-block:clamp(26px,5vw,44px) clamp(46px,8vw,76px)}
+  .tex{position:fixed;inset:0;pointer-events:none;z-index:60}
+  .tex::before{content:"";position:absolute;inset:0;opacity:.5;
+    background-image:linear-gradient(rgba(56,189,248,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.05) 1px,transparent 1px);
+    background-size:78px 78px;-webkit-mask-image:radial-gradient(ellipse 130% 95% at 50% 0%,#000 8%,transparent 76%);
+    mask-image:radial-gradient(ellipse 130% 95% at 50% 0%,#000 8%,transparent 76%)}
+  .nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;height:var(--nav);z-index:70;display:flex;
+    align-items:center;gap:13px;padding-inline:clamp(14px,4vw,44px);background:rgba(4,7,13,.85);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--edge)}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--sig);flex:none}
+  .lock{display:inline-flex;align-items:baseline;font-family:var(--wm);font-weight:700;letter-spacing:-.05em;
+    line-height:1;white-space:nowrap;font-size:1.05rem;color:#fff}
+  .lock .dl{position:relative;display:inline-block}
+  .lock .dl svg{position:absolute;left:50%;transform:translateX(-50%);bottom:.84em}
+  .lock .re{color:var(--sig)}.lock .est{margin-left:.24em;font-weight:500;letter-spacing:-.025em;color:var(--slate)}
+  .docname{margin-left:13px;padding-left:13px;border-left:1px solid var(--edge);font-family:var(--mn);font-size:.6rem;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--slate2)}
+  @media(max-width:620px){.docname{display:none}}
+  .kick{font-family:var(--mn);font-weight:500;font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--sig);
+    margin:0 0 16px;display:flex;align-items:center;gap:13px}
+  .kick::after{content:"";flex:1;height:1px;background:var(--edge);max-width:180px}
+  h1{font-family:var(--wm);font-weight:800;letter-spacing:-.05em;font-size:clamp(1.9rem,5vw,3rem);line-height:1.02;
+    color:#fff;margin:0 0 14px;text-wrap:balance}
+  h1 em{font-style:normal;color:var(--sig)}
+  .lede{font-size:clamp(1rem,2vw,1.1rem);max-width:64ch;margin:0 0 12px}
+  .lede b{color:var(--head);font-weight:600}
+  .sub{color:var(--slate);font-size:.92rem;max-width:68ch;margin:0}
+  b{color:var(--head);font-weight:600}
+  code{font-family:var(--mn);font-size:.87em;background:var(--panel2);border:1px solid var(--edge);padding:2px 6px;color:#7dd3fc}
+  .rule{height:1px;border:0;background:var(--edge);margin:clamp(30px,5vw,44px) 0}
+  .box{background:var(--panel2);border:1px solid var(--edge);border-left:3px solid var(--sig);padding:20px;margin-top:22px}
+  .box .lab{font-family:var(--mn);font-weight:600;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--sig);display:block;margin-bottom:9px}
+  .box p{font-size:.92rem;margin:0 0 8px;max-width:70ch}.box p:last-child{margin-bottom:0}
+  .box.warn{border-left-color:var(--warn)}.box.warn .lab{color:var(--warn)}
+  .mod{margin-top:34px}
+  .mh{display:flex;align-items:baseline;gap:12px 16px;flex-wrap:wrap;padding-bottom:11px;border-bottom:1px solid var(--edge)}
+  .mh h3{font-family:var(--wm);font-weight:800;letter-spacing:-.03em;font-size:1.18rem;color:var(--head);margin:0}
+  .mn{font-family:var(--mn);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sig);display:block;margin-bottom:3px}
+  .meta{font-family:var(--mn);font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;color:var(--slate2)}
+  .cp{margin-left:auto;font-family:var(--mn);font-weight:600;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;
+    background:none;color:var(--sig);border:1px solid var(--sig);padding:8px 14px;cursor:pointer;transition:background .2s,color .2s}
+  .cp:hover{background:var(--sig);color:#03060d}
+  .cp:focus-visible{outline:2px solid var(--sig);outline-offset:3px}
+  .cp.ok{background:var(--go);border-color:var(--go);color:#03060d}
+  pre.script{white-space:pre-wrap;font-family:var(--bd);font-weight:300;font-size:.95rem;line-height:1.72;color:var(--text);
+    background:var(--panel);border:1px solid var(--edge);padding:20px 22px;margin:16px 0 0;max-height:420px;overflow-y:auto}
+  .side{margin-top:12px;border:1px solid var(--edge);border-left:3px solid var(--slate2);background:var(--panel);padding:14px 18px}
+  .side .sl{font-family:var(--mn);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--warn);display:block;margin-bottom:8px}
+  .side ul{margin:0;padding-left:18px;display:grid;gap:6px}
+  .side li{font-size:.86rem;color:var(--slate);line-height:1.5}
+  footer{margin-top:clamp(36px,6vw,54px);padding-top:20px;border-top:1px solid var(--edge);display:flex;flex-wrap:wrap;
+    gap:12px 24px;justify-content:space-between;align-items:baseline}
+  .sig-l{font-family:var(--wm);font-weight:700;font-size:1rem;letter-spacing:-.02em;color:var(--head)}
+  .tagline{font-family:var(--mn);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--slate)}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="tex" aria-hidden="true"></div>
+<nav class="nav">
+  <span class="dot" aria-hidden="true"></span>
+  <span class="lock">A<span class="dl">&#305;<svg width="0.44em" height="0.44em" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="34" fill="none" stroke="#38bdf8" stroke-width="17" stroke-linecap="round" stroke-dasharray="160 54" transform="rotate(-38 50 50)"/><circle cx="50" cy="50" r="15" fill="#38bdf8"/></svg></span><span class="re">RE</span><span class="est">Estate</span></span>
+  <span class="docname">Narration Scripts</span>
+</nav>
+<div class="wrap">
+  <p class="kick">Paste-ready &middot; Modules 4, 5, 6, 7</p>
+  <h1>Four scripts, <em>ready for the editor</em>.</h1>
+  <p class="lede">All 21 corrections are already in these. <b>Copy a module, paste it over the old script in HeyGen, re-render with your screen treatment intact.</b> Nothing here needs editing first.</p>
+  <p class="sub">Production cues and class-clip quotes have been lifted out of the narration and listed separately underneath each script, so the avatar never reads a stage direction aloud.</p>
+
+  <div class="box warn">
+    <span class="lab">Two changes I made beyond the 21</span>
+    <p><b>Module 4 &mdash; three paragraphs removed from the avatar's script.</b> The lines beginning "From the live class" are quotes of your class recording. The clip plays; the avatar must not read them. They are listed under the script so you know where they drop in.</p>
+    <p><b>Module 7 &mdash; the Lead to Keys plug is rewritten.</b> The script sold it as a second course available now. It isn't, and the site is a waitlist. It now reads: <i>"And there's a second course coming. Lead to Keys picks up where this one ends&hellip; It isn't finished yet, so if you want to hear when it is, the waitlist is on the site."</i> Say the word if you'd rather cut it entirely.</p>
+  </div>
+
+  <div class="box">
+    <span class="lab">While you are in there &mdash; the robot fix</span>
+    <p>Your avatars are photo avatars, and <code>expressiveness</code> defaults to <b>low</b>, which is the no-gestures delivery you flagged on the navy coat. Raise it, add a motion prompt for hand gestures, and try the <b>Avatar V</b> engine &mdash; all three of your looks support it. For pauses, ease the voice speed slightly; the sentence breaks below already carry the rhythm.</p>
+  </div>
+  <hr class="rule">
+<section class="mod">
+  <div class="mh">
+    <h3><span class="mn">Module 4</span>A Drone Shot From One Photograph</h3>
+    <span class="meta">788 words &middot; ~5.3 min &middot; 35 paragraphs</span>
+    <button class="cp" type="button" data-for="s4">Copy script</button>
+  </div>
+  <pre class="script" id="s4">Let&#x27;s make a drone shot.
+Here&#x27;s what that normally costs you. Aerial stills from a licensed operator run about a hundred and fifty to three hundred and fifty. Add a video flyover and you&#x27;re realistically at two fifty to five fifty, and a premium aerial package goes higher.
+I want to be precise about that, because you&#x27;ll hear people quote five hundred for a drone shoot and that&#x27;s the top of the range, not the middle. In a lot of markets it&#x27;s closer to two hundred.
+But it isn&#x27;t only the money. You schedule around their calendar and around the weather. You wait for the footage. And if the light was wrong that morning, you do it again.
+What we&#x27;re about to do costs pennies and takes ninety seconds, and you can redo it eleven times tonight.
+We&#x27;re going to skip all of that. One photograph. About ninety seconds.
+Pick the right photo.
+This matters more than anything else in the module, so listen close.
+You want an exterior shot. Taken from a slight angle rather than straight on, so the house has some depth to it. Good light. Sharp focus. No motion blur.
+A flat, dead-on, badly lit photo will give you a flat, dead-on, badly lit video. The tool amplifies what you give it. It does not rescue it.
+Draw the flight path.
+This next part comes straight from a live AiRE class. Watch how it&#x27;s done, then do it yourself.
+Write the prompt.
+Now you have two pictures: the original, and your marked-up copy. Upload both, and ask for the prompt.
+The result.
+Here&#x27;s what came back from that one photograph.
+So here&#x27;s the takeaway. In that class, ChatGPT wrote the strongest drone prompt. Google Flow came second, and it&#x27;s free, with about a hundred and twenty credits a day. Claude came last on this one. Use what you already pay for, and if you pay for nothing, start with Google Flow.
+Then make a vertical version for Reels and TikTok. Same clip, one extra step.
+One note on that example. The Paris photo was itself AI-generated for practice, and no real view of Paris looks quite like it. That&#x27;s fine for a lesson. On a listing, it isn&#x27;t, and that&#x27;s the next part.
+Now the honest part.
+I need you to hear this one clearly, because it is the difference between a great marketing tool and a complaint to your commission.
+These models invent detail. They will occasionally add a window that isn&#x27;t there, or smooth out a roofline, or invent a view past the treeline. That is fine on a lifestyle post. It is not fine in a property advertisement.
+So watch the finished clip before you post it. Every single time. If the tool added something the house does not actually have, throw the clip out and generate another one.
+You are licensed. Advertising a property with features it doesn&#x27;t have is misrepresentation, and it doesn&#x27;t matter that a computer made it up. The clip is yours the moment you publish it.
+Now the part that changed this year.
+Being accurate is not enough anymore. You also have to say that it&#x27;s AI.
+California passed a law that took effect this January. Publishing a digitally altered listing image without disclosing it is a misdemeanor there. Not a fine from your board — a misdemeanor. Other states are writing the same thing right now, and by the time you watch this, yours may be one of them.
+On top of that, the Realtor Code of Ethics already requires you to present a true picture, and most MLSs already require a virtually staged label on any enhanced image.
+So here&#x27;s the rule I want you to follow everywhere, whatever your state says today.
+Label it. Every time.
+Put the words on the clip itself, in the caption, and in the MLS remarks. &quot;AI-generated from listing photography.&quot; Six words. It takes ten seconds and it removes the entire problem.
+And check two things before your first listing goes out: your own state&#x27;s disclosure law, and your own MLS&#x27;s rule on altered images. They are not the same rule and you have to satisfy both. If you&#x27;re not sure what yours require, ask a local attorney. It&#x27;s a short conversation, and it&#x27;s a lot cheaper than a complaint.
+I&#x27;m not trying to scare you off this. Agents who use it well use it on every listing. I&#x27;m telling you because the agents who get hurt by this in the next two years will be the ones who didn&#x27;t know there was anything to disclose.
+Do it right and this is the cheapest, fastest listing asset you will ever produce.
+Next module, we do the whole house.</pre>
+  <div class="side"><span class="sl">Plays as a clip &mdash; do not read</span><ul><li>From the live class: “As you can see here, I just took the downloaded picture into a basic program, like Paint, and you just draw a line how you want the drone to go. The arrows are already in there, so you don&#x27;t have to make them; you just drop them in, and you can use different colors. The red, of course, is the flight path of the drone, and the white arrows are where the drone&#x27;s looking and how you want it to pan. It&#x27;s very rudimentary, but it shows you how it works.”</li><li>From the live class: “I went into ChatGPT and I said, help me write an expert cinematic drone prompt for this Paris picture. Follow the red line for the flight path and the white arrows for the camera to pan. You can add anything in there. You can say, I want it to be a bird and fly. You can say, I want it to look like a Pixar film. I wanted this to look more realistic, so I just said expert cinematic drone. Each platform will take this prompt and read it differently.”</li><li>From the live class: “It understood a lot more, and you can see how much more cinematic it was. I was like, wow, that&#x27;s pretty good. And it didn&#x27;t use hardly any credits through Higgsfield. In my opinion, from the general prompt I gave and the one connector I used throughout, ChatGPT is the winner, then Google Flow, and Claude came in last.”</li></ul></div><div class="side"><span class="sl">Screen cues &mdash; production, not spoken</span><ul><li>Class clip · 05:57–06:53 · marking up the photo</li><li>Class clip · 08:58–09:59 · the prompt</li><li>Result video · the Paris flight, full screen · 15 s</li><li>Class clip · 21:19–21:49 and 23:10–23:28 · the reaction and the verdict</li><li>On screen · hold 10s · label on clip + caption + MLS remarks · &quot;AI-generated from listing photography&quot;</li></ul></div>
+</section>
+<section class="mod">
+  <div class="mh">
+    <h3><span class="mn">Module 5</span>The AiRE Listing Showcase</h3>
+    <span class="meta">724 words &middot; ~4.8 min &middot; 29 paragraphs</span>
+    <button class="cp" type="button" data-for="s5">Copy script</button>
+  </div>
+  <pre class="script" id="s5">This is the module you bought the course for.
+Zillow sells Showcase two ways: a subscription that starts around four hundred a month and includes one listing, or pay-at-closing, which lands between four hundred and nine hundred and fifty depending on the price of the home. Either way they cap it at roughly one in ten listings in a market, so most agents can&#x27;t buy it even if they want to.
+We&#x27;re going to build our own. We call it an AiRE Listing Showcase.
+First, what this is — and what it is not.
+What we&#x27;re building is a cinematic walkthrough video. Room by room, each one with its own camera move, stitched into one finished piece that looks like a production worth a couple thousand dollars.
+What it is not is a three-dimensional tour you can click through and walk around in. That&#x27;s a different product and it needs different equipment. I am not going to tell you otherwise.
+What I will tell you is that a beautiful ninety-second walkthrough video outperforms a clunky 3D tour on every social platform you post it to. Different tool, different job.
+The install.
+This is built by a developer named Charlie Dove, and it&#x27;s open source under the MIT license. Credit where it&#x27;s due — he did the hard part. We&#x27;re just using it well.
+One honest note before you install it. This tool is at version zero point one — the first release. That&#x27;s normal for something this new, and it works, but pre-version-one software changes. If a command looks different on your screen than it does on mine, check the project page first. That&#x27;s not you doing it wrong.
+And if it ever stops being maintained, the method still holds. The tool automates steps you could do by hand; it doesn&#x27;t own them.
+You&#x27;ll need three things connected. Higgsfield, which animates the rooms. Apify, which pulls the listing photos. And ffmpeg, which stitches it together.
+Higgsfield and Apify are paid. The links are in your course materials and I&#x27;ll tell you plainly — those are AiRE Estate&#x27;s referral links. You don&#x27;t have to use them. Total cost runs to pennies per listing, not hundreds.
+ffmpeg is free. One command and it&#x27;s installed.
+Restart Claude Code after all that, and you&#x27;re ready.
+Running it.
+You paste in a listing. It pulls every photo, picks the best shot of each room, throws out the floorplans and the duplicates, and works out what kind of room it&#x27;s looking at.
+Then it assigns a camera move to each one. A drone approach for the exterior. A steadicam glide down the hallways. An orbit for the great room. A window approach where there&#x27;s a view worth revealing. A rising shot for the backyard.
+Then it stitches the whole thing in walkthrough order and hands you a finished video. Sixteen by nine for the web, and nine by sixteen for Reels if you ask for it.
+You get a folder with the final video, every individual room clip, and a property summary. Use the room clips on their own too — each one is a post.
+And now the part I need you to actually hear.
+Those listing photos belong to somebody. Usually the photographer, sometimes the listing brokerage. Not to you, and not to Zillow.
+So run this on your own listings, where you control the photos or you hired the photographer. If you want to do it for another agent&#x27;s listing, ask them first and get a yes you could show somebody.
+Do not scrape a stranger&#x27;s listing, build a video out of their photographs, and publish it. That&#x27;s somebody else&#x27;s copyrighted work, and using a computer to do it doesn&#x27;t change whose it is.
+And the same labeling rule from Module Four applies here, harder — because a full walkthrough looks more real than a five-second clip does.
+Label it. On the video, in the caption, in the MLS remarks. &quot;AI-generated from listing photography.&quot; Same six words.
+A buyer who watches this and then walks the house should never feel like they were sold something different. That feeling is where complaints come from, and the label is what prevents it.
+On your own listings, disclosed properly, this is the single best marketing asset in this course.
+Next module, we put Claude to work on your social media.</pre>
+  <div class="side"><span class="sl">Screen cues &mdash; production, not spoken</span><ul><li>On screen · hold 10s · npx re-walkthrough-pro install</li><li>On screen · npm page · version 0.1.0 · MIT license</li><li>On screen · label on video + caption + MLS remarks</li></ul></div>
+</section>
+<section class="mod">
+  <div class="mh">
+    <h3><span class="mn">Module 6</span>Claude as Your Social Media Manager</h3>
+    <span class="meta">940 words &middot; ~6.3 min &middot; 43 paragraphs</span>
+    <button class="cp" type="button" data-for="s6">Copy script</button>
+  </div>
+  <pre class="script" id="s6">Before I teach you any of this.
+I want to be straight with you about something. The agent who built this course did this wrong for years.
+Posted constantly. Showed up, stayed consistent, and had no system at all behind any of it. And the videos that did best weren&#x27;t listings. They weren&#x27;t market updates. They were the dog.
+So nobody here is pretending they cracked this. I&#x27;m going to show you the system that should have been running the whole time.
+Most agents use AI for social media exactly one way. They open it up and type, write me a post about the market. And they get back something that sounds like every other post on the internet.
+That&#x27;s not a social media manager. That&#x27;s a vending machine.
+A real manager knows your voice, knows your market, and works ahead of you. We&#x27;re going to build that in three pieces.
+Piece one. A brand file.
+This is the one step nobody does, and it&#x27;s the one that changes everything.
+Remember those three design tools we installed — Taste, Impeccable, Emil. They raise the floor. Your work starts looking professional instead of homemade.
+But professional isn&#x27;t the same as distinctive. Without a brand file, every agent running these same tools produces the same handsome, interchangeable work. The tools have taste. They just don&#x27;t have yours.
+So we give them yours. Once, in writing.
+It&#x27;s a single page. Who you are. Your colors and your fonts. How you talk — and the words you&#x27;d never say out loud. Your areas, your price tiers, your major employers.
+This is what makes everything you produce look like it came from the same place.
+I&#x27;ve put a blank one in your course materials. Every section, with notes on how to fill it in. Set aside half an hour and do it properly — it&#x27;s the highest-leverage half hour in this entire course.
+Then hand it to Claude at the start of any session where you&#x27;re making something. Just say — read my brand file before we start.
+One tip. When something comes back sounding wrong, don&#x27;t just fix that one piece. Add a line to the file so it never comes back wrong again. After a month of that, it stops missing.
+Piece two. Four pillars.
+Every post you&#x27;ll ever write falls into one of four buckets.
+Market update — what&#x27;s actually happening with prices and inventory. Listings — what you have and what sold. Education — teaching what you know for free. And lifestyle — why someone would want to live where you live.
+Four pillars means you are never staring at a blank screen wondering what to post. You just ask which bucket you&#x27;re short on this week.
+What the founder&#x27;s account taught us.
+Here&#x27;s the first thing, and it&#x27;s exactly why those pillars matter. When a post had a person in it — the dog, a trip, a charity ride — people responded. When a post was nothing but company hashtags, it went nowhere. Same account. Same agent.
+So understand this. Lifestyle is not the throwaway pillar. On that account it was the one doing all the work, and it almost got ignored because it didn&#x27;t feel like real estate.
+Second lesson. Look at what was written, not just what was filmed. The posts that opened with an actual sentence pulled. The posts that were nothing but a string of hashtags did not. One video with a real line on it earned more likes than posts on the same account that got far more views.
+So the caption is a hook. Write the hook first. Then add your tags.
+Piece three. Batch it.
+Here&#x27;s where the hours come back.
+Don&#x27;t write posts one at a time. Sit down once, hand over your brand file, and build a month. Twenty posts across four pillars in one sitting.
+Then take each idea and spread it. One market insight becomes a TikTok script, a Reel caption, and a longer LinkedIn post. Same thought, three shapes, three audiences.
+That&#x27;s the whole system. A brand file, four pillars, and one batching session a month.
+Three rules.
+First, read everything before it posts. Every number, every claim about your market. AI is confident when it&#x27;s wrong, and your name is the one on the post.
+Second — never generate a testimonial, never invent a review, and never fabricate a statistic because it sounds good. Use AI to say true things well. Not to make up things that sell.
+Third, and this one is the serious one.
+Fair housing applies to everything you publish, including the words a machine wrote for you.
+HUD has been clear that the Fair Housing Act covers AI-generated advertising. You are responsible for the post. Not the software.
+Here&#x27;s why this matters more than it sounds. These models write warm, friendly marketing copy, and warm friendly marketing copy is exactly where steering language hides.
+&quot;Perfect for a young family.&quot; &quot;Great for empty nesters.&quot; &quot;Walk to St. Mary&#x27;s.&quot; &quot;A safe neighborhood.&quot; Every one of those touches a protected class — familial status, age, religion, and in the case of &quot;safe,&quot; usually race by proxy.
+No model is trying to discriminate. It&#x27;s trying to sound appealing. That&#x27;s the trap.
+So run this check on every listing description and every post before it goes out. Describe the property, never the buyer. Describe features, never who would like them. No neighborhood adjectives you couldn&#x27;t defend in a complaint.
+If you&#x27;re not sure about a sentence, take it out. Nothing you&#x27;d gain from that sentence is worth what it costs you.
+Last module. Let&#x27;s talk about getting found.</pre>
+  <div class="side"><span class="sl">Screen cues &mdash; production, not spoken</span><ul><li>On screen · Did this wrong for years · consistent, no system, the dog won</li><li>On screen · download · The Agent Brand File template</li><li>On screen · what pulled vs what went nowhere</li><li>On screen · a written opening line vs hashtags only</li><li>On screen · describe the property, never the buyer · features, not who&#x27;d like them</li></ul></div>
+</section>
+<section class="mod">
+  <div class="mh">
+    <h3><span class="mn">Module 7</span>Getting Found</h3>
+    <span class="meta">509 words &middot; ~3.4 min &middot; 21 paragraphs</span>
+    <button class="cp" type="button" data-for="s7">Copy script</button>
+  </div>
+  <pre class="script" id="s7">Last module. This is the slowest one to pay off and the longest to keep paying.
+I&#x27;ll be honest with you up front — nothing here works this week. Search takes months. If somebody&#x27;s selling you same-week SEO results, they&#x27;re selling you something else.
+But it compounds. And almost no agent does it properly, which is exactly why it&#x27;s worth your time.
+Start where the return is highest.
+Your Google Business Profile. Not your website. Your Business Profile.
+When somebody searches for an agent in your town, that&#x27;s what they see first. Fill in every field. Post to it regularly — it&#x27;s a publishing platform, not a phone book listing. Add real photos of real properties.
+And ask for reviews. Consistently, over time. A steady trickle of reviews beats a pile of them all posted the same week, and it looks like what it is — a real business with real clients.
+Then build pages worth finding.
+One page per neighborhood you serve. Not a paragraph of filler with the name swapped out — a real page.
+What it&#x27;s actually like to live there. What things cost. The school situation. What the commute really is in February, not what the map says. What nobody tells you until you&#x27;ve lived there a year.
+Use Claude to draft it. Then rewrite it with what only you know. That second half is the whole game — the local knowledge is what search rewards, and it&#x27;s the one thing a competitor can&#x27;t copy from you.
+And a warning. Do not publish twenty thin, AI-written neighborhood pages and expect them to rank. Search engines are specifically good at catching that now, and it can hurt you rather than help. Five real pages beat fifty hollow ones.
+Now the part most agents haven&#x27;t caught up to.
+People don&#x27;t only search anymore. They ask. They ask an AI assistant which neighborhood in your town fits their family, and they take the answer.
+So write to be quoted. Answer real questions directly and plainly. Put the answer first and the explanation after. Use actual numbers and name your sources.
+Content that&#x27;s easy for an AI to quote accurately is content that gets quoted. That&#x27;s the new front page, and it&#x27;s wide open right now.
+That&#x27;s the course.
+You can make a drone shot from a photograph. You can build a listing showcase for pennies. You&#x27;ve got a social media system and a plan to get found.
+And there&#x27;s a second course coming. Lead to Keys picks up where this one ends: the clients, the numbers, the follow-up and the contracts. It isn&#x27;t finished yet, so if you want to hear when it is, the waitlist is on the site.
+One last thing. This course was built by a working agent who got tired of paying for all of this. If you get stuck, or you want it built for you rather than doing it yourself, the AiRE Estate contact details are in your materials.
+Either way — go make something. Thanks for spending this time with me.</pre>
+  
+</section>  <footer>
+    <span class="sig-l">AiRE Estate, LLC</span>
+    <span class="tagline">Narration Scripts &middot; v1</span>
+  </footer>
+</div>
+<script>
+document.querySelectorAll('.cp').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var el=document.getElementById(btn.getAttribute('data-for'));
+    if(!el) return;
+    var done=function(){ var t=btn.textContent; btn.textContent='Copied'; btn.classList.add('ok');
+      setTimeout(function(){ btn.textContent=t; btn.classList.remove('ok'); },1600); };
+    try{
+      navigator.clipboard.writeText(el.textContent).then(done,function(){
+        var r=document.createRange(); r.selectNodeContents(el);
+        var s=window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        btn.textContent='Selected — press Ctrl/Cmd+C';
+      });
+    }catch(e){
+      var r=document.createRange(); r.selectNodeContents(el);
+      var s=window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent='Selected — press Ctrl/Cmd+C';
+    }
+  });
+});
+</script>
+
+</body>
+</html>
