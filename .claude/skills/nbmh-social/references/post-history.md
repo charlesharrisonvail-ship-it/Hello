@@ -16,6 +16,7 @@ The point is not the record; it is making sure today is genuinely different.
 | 2026-09-15 | Symptom and side-effect logging | (prepared, not published) | — |
 | 2026-09-16 | Needs change over time | (prepared, not published) | — |
 | 2026-09-26 | Seasonal light change; sleep, energy, focus | Editorial light study — low autumn sun cropped by the frame, deep green horizon band | Shorter days change more than the light. (published & verified) |
+| 2026-10-01 | Questions worth bringing to a first visit | Minimal, clean layout with subtle dialogue arcs — cool palette, focused typography, generous whitespace | Questions Worth Asking (published) |
 
 ## Rejected directions — do not return to these
 

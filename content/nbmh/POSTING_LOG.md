@@ -12,6 +12,7 @@ Status values: `drafted` · `delivered` (handed to Charles to post) ·
 | Date | Concept | Graphic | Caption | Compliance | Status | Evidence |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026-09-26 | Low Sun — seasonal light, sleep/energy/focus | created | created | PASS | **verified** | Post `1236318822895617_122129287905383194`, published 2026-09-28 03:34 UTC, `is_published: true` confirmed on the page. [permalink](https://www.facebook.com/122129288043383194/posts/122129287905383194) |
+| 2026-10-01 | Questions Worth Asking — preparation for first visit | created | created | PASS | **published** | Post `1236318822895617_122130189903383194`, published 2026-10-01 12:52 UTC. [permalink](https://www.facebook.com/1236318822895617_122130189903383194) |
 
 ## Publishing — live
 
