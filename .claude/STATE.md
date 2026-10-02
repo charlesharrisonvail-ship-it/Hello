@@ -11,11 +11,14 @@ agent files. `CONTINUITY: PASS`.
 
 ## Open question for Charles
 
-**AiRE Estate has no brand rules written down.** It is a separate business from
-EpiVail, so EpiVail's rules do not apply - but its own naming, signature and
-voice are undefined. Ask before writing as AiRE Estate. `CLAUDE.md` is EpiVail's
-file and still opens "a config repo, not an application", which no longer
-describes the repo.
+**AiRE Estate facts only Charles can confirm.** `ROLE.md` now carries its brand
+rules, taken from the live site. Unknown: whether he owns AiRE Estate, LLC or is its
+"Endorsed Representative", and how he signs AiRE email.
+
+**Two referral links have no label.** The site's terms promise referral links are
+"disclosed where they appear". Two of four Higgsfield links (`docs/index.html` lines
+627 and 878) have no "(referral link)" label nearby; the other two do. Not changed:
+it is the live site and a legal promise, so it is Charles's call.
 
 The agents say "powered by Epique X"; some skills say "EpiqueAI". `CLAUDE.md`
 does not rule on it, so ask rather than pick.

@@ -9,7 +9,7 @@ jobs:
 2. **The AiRE Estate course site** in `docs/` - static HTML served at
    `learn.aireestate.com` (`CNAME` and `.nojekyll` point to GitHub Pages).
    **A separate business from EpiVail.** EpiVail's brand rules do not apply to
-   it, and it has none written down yet.
+   it; its own are in `ROLE.md`.
 
 No build, test or lint step for either: the config is Markdown and Python, the
 site is plain HTML.

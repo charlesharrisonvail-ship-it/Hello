@@ -6,12 +6,11 @@ If one needs reopening, Charles reopens it.
 ## Two separate things
 
 **EpiVail and AiRE Estate are separate businesses - never blend them.** EpiVail is
-his Epique Realty work: agent recruiting, listings, Lofty, LinkedIn. AiRE Estate
-is his course business, published from `docs/` at `learn.aireestate.com`. Every
-rule in the EpiVail section below - naming, signature, voice, positioning, the
-banned phrase - applies to EpiVail work only. AiRE Estate has no written brand
-rules yet, so for it ask rather than borrowing EpiVail's. Stated by Charles
-2026-10-02, after the two had been conflated. (2026-10-02)
+his Epique Realty work: agent recruiting, listings, Lofty, LinkedIn. AiRE Estate is
+the course business he teaches for, published from `docs/` at `learn.aireestate.com`.
+Every rule in the EpiVail section below - naming, signature, voice, positioning, the
+banned phrase - applies to EpiVail work only. AiRE Estate's rules are in `ROLE.md`.
+Stated by Charles 2026-10-02, after the two had been conflated. (2026-10-02)
 
 ## EpiVail: brand, voice and sending
 
