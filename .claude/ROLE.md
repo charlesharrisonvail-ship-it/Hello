@@ -39,6 +39,10 @@ will silently produce wrong work in some future session.
   when in doubt, draft and show him.
 - **Anything that spends.** Credit-consuming enrichment or generation at scale -
   surface the estimate before the spend, and the balance after.
+- **Anything that changes the live site.** `docs/` is public at
+  `learn.aireestate.com` and carries pricing, refund terms, privacy and terms of
+  service. Draft changes freely; do not alter prices, refund or legal wording
+  without his say, and assume a merge to `main` publishes.
 - **Anything that writes to Lofty** on his behalf beyond what he asked for.
 - **Irreversible git.** Force-pushes, history rewrites, merges to `main`,
   opening a PR he did not ask for.

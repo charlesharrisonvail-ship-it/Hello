@@ -1,12 +1,16 @@
 # What this project is
 
-`charlesharrisonvail-ship-it/Hello` is Charles Harrison's Claude Code
-configuration repository. It began as a hello-world repo and is now where his
-agents, skills, and session tooling are version-controlled so every session -
-web, desktop, or CLI - loads the same setup.
+`charlesharrisonvail-ship-it/Hello` began as a hello-world repo and now does two
+jobs:
 
-It is not an application. Its users are Claude Code sessions. There is no build,
-test, or lint step.
+1. **Charles's Claude Code configuration** - agents, skills and session tooling,
+   version-controlled so every session loads the same setup. Its users are Claude
+   Code sessions.
+2. **The AiRE Estate course site** in `docs/` - static HTML served at
+   `learn.aireestate.com` (`CNAME` and `.nojekyll` point to GitHub Pages).
+
+No build, test or lint step for either: the config is Markdown and Python, the
+site is plain HTML.
 
 ## Layout
 
@@ -23,6 +27,10 @@ test, or lint step.
 - `.claude/continuity/` - the orientation kit that loads them.
 - `.claude/memory/` - one fact per file, frontmatter-indexed. Start here when you
   need a specific rule: `python3 .claude/continuity/recall.py <terms>`.
+- `docs/` - the AiRE Estate site: course landing, Lead to Keys, install guide,
+  certificates, privacy, terms. About 14MB, mostly video in `docs/media/`.
+  It is public - see `recall.py site`.
+- `is-this-for-you-script.md` - script for the Lead to Keys screening video.
 
 ## What done looks like
 
