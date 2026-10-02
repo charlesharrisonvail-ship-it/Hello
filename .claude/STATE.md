@@ -25,3 +25,17 @@ Smaller: the agents say "powered by Epique X", some skills say "EpiqueAI".
 3. Orientation is at ~6,700 of the 9,000 budget. When `DECISIONS.md` grows past
    its share, add a fourth hook entry rather than cutting a rule - the limit is
    per entry, not per session
+
+## Working thread (auto-banked)
+
+### banked 2026-10-02 06:56
+verify probe 1
+
+
+### banked 2026-10-02 06:56
+verify probe 2
+
+
+### banked 2026-10-02 06:56
+verify probe 3
+
