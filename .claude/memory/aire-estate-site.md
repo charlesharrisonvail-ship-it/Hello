@@ -1,6 +1,6 @@
 ---
 name: aire-estate-site
-description: The AiRE Estate course website in docs/ - Lead to Keys course, pricing, refund, privacy and terms pages, what is public and what needs Charles before it changes
+description: The AiRE Estate course website in docs/ - a separate business from EpiVail - Lead to Keys course, pricing, refund, privacy and terms pages, what needs Charles before it changes
 ---
 
 `docs/` is a static site, served at **learn.aireestate.com** (`docs/CNAME`;
@@ -18,5 +18,7 @@ refund and support wording, privacy policy, terms of service.
 - Do **not** change prices, refund wording, or privacy/terms without Charles.
 - Assume a merge to `main` publishes it.
 
-**Not settled:** whether the EpiVail naming, sign-off and voice rules in
-`CLAUDE.md` apply to the AiRE Estate brand. Ask; do not assume either way.
+**AiRE Estate and EpiVail are two separate businesses** (Charles, 2026-10-02).
+The EpiVail naming, signature, voice and positioning rules in `CLAUDE.md` do NOT
+apply here. AiRE Estate has no written brand rules yet - ask rather than
+borrowing EpiVail's, and do not sign AiRE Estate material as EpiVail or Epique.

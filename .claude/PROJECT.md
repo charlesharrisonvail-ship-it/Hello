@@ -4,17 +4,19 @@
 jobs:
 
 1. **Charles's Claude Code configuration** - agents, skills and session tooling,
-   version-controlled so every session loads the same setup. Its users are Claude
-   Code sessions.
+   version-controlled so every session loads the same setup. It serves his
+   **EpiVail** work. Its users are Claude Code sessions.
 2. **The AiRE Estate course site** in `docs/` - static HTML served at
    `learn.aireestate.com` (`CNAME` and `.nojekyll` point to GitHub Pages).
+   **A separate business from EpiVail.** EpiVail's brand rules do not apply to
+   it, and it has none written down yet.
 
 No build, test or lint step for either: the config is Markdown and Python, the
 site is plain HTML.
 
 ## Layout
 
-- `CLAUDE.md` - repo conventions. **The authority on brand naming and sign-off.**
+- `CLAUDE.md` - repo conventions. **The authority on EpiVail brand naming and sign-off.**
   Where it and a brand skill disagree, `CLAUDE.md` wins.
 - `.claude/agents/` - `lead-enrichment`, `recruitment-outreach`,
   `linkedin-content`, `lofty-crm`. They chain: enrich -> Lofty -> write.

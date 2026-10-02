@@ -3,11 +3,12 @@ name: signoff-and-byline
 description: The one signature, sign-off or byline for any email, DM, SMS, call script or LinkedIn post by Charles Harrison
 ---
 
-One string, everywhere - messages to people AND post bylines:
+One string for all **EpiVail** work - messages to people AND post bylines.
+Not set for AiRE Estate, a separate business; ask before signing for it:
 
     Charles Harrison, Epique Area/Growth Leader
 
-Never append a regional descriptor to it. Charles settled this on 2026-09-28.
+Never append a regional descriptor to it. Charles settled this.
 
 It is set in `CLAUDE.md` and matches `recruitment-outreach.md`,
 `linkedin-content.md` and the `linkedin-optimizer` skill.

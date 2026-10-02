@@ -3,7 +3,17 @@
 Each line is a call already made, with the reason. Do not re-propose these.
 If one needs reopening, Charles reopens it.
 
-## Brand and voice
+## Two separate things
+
+**EpiVail and AiRE Estate are separate businesses - never blend them.** EpiVail is
+his Epique Realty work: agent recruiting, listings, Lofty, LinkedIn. AiRE Estate
+is his course business, published from `docs/` at `learn.aireestate.com`. Every
+rule in the EpiVail section below - naming, signature, voice, positioning, the
+banned phrase - applies to EpiVail work only. AiRE Estate has no written brand
+rules yet, so for it ask rather than borrowing EpiVail's. Stated by Charles
+2026-10-02, after the two had been conflated. (2026-10-02)
+
+## EpiVail: brand, voice and sending
 
 **Brand is EpiVail; region is Epique Realty Colorado Mountain Region** - fixed
 strings, not descriptions to paraphrase. (CLAUDE.md)
@@ -13,12 +23,12 @@ signatures, posts, or materials. The `epivail-brand-system` skill still
 recommends it; `CLAUDE.md` bans it. **CLAUDE.md wins.** This exact mismatch has
 already cost two correcting commits (PR #9, PR #15). (2026-09-25)
 
-**One signature for everything: `Charles Harrison, Epique Area/Growth Leader`** -
+**One signature for all EpiVail work: `Charles Harrison, Epique Area/Growth Leader`** -
 email, DM, SMS, call scripts and LinkedIn bylines alike, never with a regional
-descriptor appended. Settled by Charles 2026-09-28; it resolved a contradiction
+descriptor appended. Not set for AiRE Estate. Settled by Charles; it resolved a contradiction
 where `CLAUDE.md` said `Charles Harrison | EpiVail | Epique Realty` and the agent
 files said this form. The pipe-separated form is retired - if you meet it, it is
-stale. See `recall.py signature`. (2026-09-28)
+stale. See `recall.py signature`. (2026-09)
 
 **Check the do-not-contact list before sending anything to anyone** - it lives in
 `CLAUDE.md` under "Do not contact", is deliberately NOT copied here so it cannot
@@ -59,28 +69,12 @@ files** - absolute, no exceptions. (`lofty-crm.md`)
 
 ## This repo's machinery
 
-**Continuity installed standalone, not as a plugin** - `/plugin` does not work in
-Claude Code on the web, where much of this work happens. Copying the kit into
-`.claude/continuity/` makes it version-controlled and dependent on nothing.
-Upstream: github.com/ArkodaAI/continuity, MIT. (2026-09-24)
+The reasons behind the Continuity install are in memory: `recall.py continuity`.
+Two rules bind every edit to this repo:
 
-**`.claude/settings.json` holds both Superpowers and the continuity hooks** -
-disjoint top-level keys, so the file is a union, not a choice. An edit that
-rewrites it wholesale silently disables whichever half it drops. Merge into it;
-never overwrite it. (2026-09-24)
+**Never overwrite `.claude/settings.json`** - it holds Superpowers AND the
+continuity hooks, and a wholesale rewrite silently disables whichever half it
+drops. Merge into it.
 
-**Identity gets its own SessionStart hook entry** - the ~10KB door is per hook
-entry, not per session, so `ROLE.md` costs the project orientation nothing, and
-it loads first because identity frames what is read after it. (2026-09-24)
-
-**Hook commands try `python3` then fall back to `python`** - which one exists
-varies by machine, and a wrong name fails silently: session starts, agent sounds
-confident, orientation never arrives. (2026-09-24)
-
-**The banked working thread is capped at 3 blocks** - unbounded growth would blow
-the character budget and silently truncate the whole payload, which is the exact
-failure the kit exists to prevent. (2026-09-24)
-
-**Memory frontmatter is the index** - no separate index file, because one
-maintained by hand drifts, and a drifted index hides memories that exist. Put
-the words you would actually search into `description:`. (2026-09-24)
+**Never trim a rule to fit the budget** - add a hook entry instead; the limit is
+per entry, not per session. (2026-09-24)
