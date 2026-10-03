@@ -1,0 +1,244 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>NBMH 2026-10-03</title>
+<link rel="stylesheet" href="../../../.claude/skills/nbmh-social/templates/base.css">
+<style>
+/* Concept: "Better Sleep, Better You" — tactile composition featuring natural sleep
+   textures (linen, cotton, plants, soft light). Clean educational approach pairing
+   sleep education with Medication Management. Warm, grounded palette. */
+
+.canvas {
+  background: #FBF9F6;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Texture background — three zones of soft, overlapping fabric textures */
+.texture-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.texture-zone-1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 45%;
+  background: linear-gradient(135deg, #E8DFD5 0%, #F3EBE3 100%);
+  opacity: 0.6;
+}
+
+.texture-zone-2 {
+  position: absolute;
+  top: 30%;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(45deg, #F5EDE5 0%, #EFE6DD 100%);
+  opacity: 0.4;
+}
+
+.texture-zone-3 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(-45deg, #E2D5CB 0%, #F0E8E0 100%);
+  opacity: 0.5;
+}
+
+/* Plant accent — simple leaf shapes in soft green */
+.plant-accent {
+  position: absolute;
+  bottom: 120px;
+  right: 48px;
+  width: 120px;
+  height: 180px;
+  z-index: 1;
+  opacity: 0.35;
+}
+
+.leaf {
+  position: absolute;
+  background: #9DB89D;
+  border-radius: 50% 50% 50% 0;
+  transform-origin: center;
+}
+
+.leaf-1 {
+  width: 48px;
+  height: 72px;
+  top: 20px;
+  left: 0;
+  transform: rotate(-25deg);
+}
+
+.leaf-2 {
+  width: 52px;
+  height: 78px;
+  top: 40px;
+  left: 50px;
+  transform: rotate(15deg);
+}
+
+.leaf-3 {
+  width: 46px;
+  height: 68px;
+  top: 80px;
+  left: 20px;
+  transform: rotate(-15deg);
+}
+
+/* Main content */
+.masthead {
+  position: absolute;
+  top: 64px;
+  left: var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  z-index: 5;
+}
+
+.masthead img {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  display: block;
+}
+
+.masthead .wordmark {
+  line-height: 1.16;
+}
+
+.masthead .n1 {
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: .055em;
+  color: #3A3530;
+}
+
+.masthead .n2 {
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: .145em;
+  color: #6B6660;
+}
+
+.datestamp {
+  position: absolute;
+  top: 80px;
+  right: var(--gutter);
+  z-index: 5;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  color: #9D9290;
+}
+
+.lede {
+  position: absolute;
+  top: 220px;
+  left: var(--gutter);
+  right: var(--gutter);
+  z-index: 4;
+}
+
+.lede .eyebrow {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: .17em;
+  color: #8B7F77;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.lede .headline {
+  font-size: 64px;
+  color: #2D2620;
+  margin: 0;
+  line-height: 1.15;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.lede .subline {
+  font-size: 20px;
+  color: #6B6660;
+  line-height: 1.5;
+  margin: 0;
+  font-weight: 400;
+}
+
+.service {
+  position: absolute;
+  z-index: 5;
+  left: var(--gutter);
+  bottom: 176px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  color: #5C5550;
+}
+
+.footer {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: .012em;
+  z-index: 5;
+  color: #3A3530;
+  background: rgba(243, 235, 227, 0.8);
+  padding: 26px 38px;
+  border-radius: 6px;
+}
+</style>
+
+<div class="canvas">
+  <div class="texture-bg">
+    <div class="texture-zone-1"></div>
+    <div class="texture-zone-2"></div>
+    <div class="texture-zone-3"></div>
+    <div class="plant-accent">
+      <div class="leaf leaf-1"></div>
+      <div class="leaf leaf-2"></div>
+      <div class="leaf leaf-3"></div>
+    </div>
+  </div>
+
+  <div class="masthead">
+    <img src="../../../.claude/skills/nbmh-social/assets/nbmh-logo.png" alt="New Beginnings Mental Health">
+    <div class="wordmark">
+      <div class="n1">NEW BEGINNINGS</div>
+      <div class="n2">MENTAL HEALTH</div>
+    </div>
+  </div>
+
+  <div class="datestamp">OCT 3</div>
+
+  <div class="lede">
+    <span class="eyebrow">Sleep and Recovery</span>
+    <h1 class="headline">Better Sleep,<br>Better You</h1>
+    <p class="subline">Quality rest supports your medication management and overall wellness.</p>
+  </div>
+
+  <div class="service">SLEEP EDUCATION · MEDICATION MANAGEMENT</div>
+
+  <div class="footer">
+    <span>NBMentalHealth.com</span>
+    <span>970-470-2939</span>
+  </div>
+</div>
