@@ -1,0 +1,171 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>NBMH 2026-10-04</title>
+<link rel="stylesheet" href="../../../.claude/skills/nbmh-social/templates/base.css">
+<style>
+/* Concept: "Focus Matters" — bold conceptual typography exploring ADHD and clarity.
+   Dynamic composition with intentional whitespace and strong type hierarchy.
+   Warm neutral palette with accent color for emphasis. Clean, modern. */
+
+.canvas {
+  background: #FBF8F4;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Accent block — warm brown stripe suggesting focus/direction */
+.accent-bg {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 280px;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(139,110,87,0.08) 0%, rgba(139,110,87,0.14) 100%);
+  z-index: 0;
+}
+
+.masthead {
+  position: absolute;
+  top: 64px;
+  left: var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  z-index: 5;
+}
+
+.masthead img {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  display: block;
+}
+
+.masthead .wordmark {
+  line-height: 1.16;
+}
+
+.masthead .n1 {
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: .055em;
+  color: #3A3530;
+}
+
+.masthead .n2 {
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: .145em;
+  color: #6B6660;
+}
+
+.datestamp {
+  position: absolute;
+  top: 80px;
+  right: var(--gutter);
+  z-index: 5;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  color: #9D9290;
+}
+
+.lede {
+  position: absolute;
+  top: 240px;
+  left: var(--gutter);
+  right: var(--gutter);
+  z-index: 4;
+}
+
+.lede .eyebrow {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: .17em;
+  color: #8B6E57;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.lede .headline {
+  font-size: 72px;
+  color: #2D2620;
+  margin: 0;
+  line-height: 1.05;
+  font-weight: 800;
+  margin-bottom: 28px;
+  letter-spacing: -.02em;
+}
+
+.lede .subline {
+  font-size: 22px;
+  color: #6B6660;
+  line-height: 1.4;
+  margin: 0;
+  font-weight: 400;
+}
+
+.accent-text {
+  color: #A0714F;
+  font-weight: 700;
+}
+
+.service {
+  position: absolute;
+  z-index: 5;
+  left: var(--gutter);
+  bottom: 176px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  color: #5C5550;
+}
+
+.footer {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: .012em;
+  z-index: 5;
+  color: #3A3530;
+  background: rgba(243, 235, 227, 0.85);
+  padding: 26px 38px;
+  border-radius: 6px;
+}
+</style>
+
+<div class="canvas">
+  <div class="accent-bg"></div>
+
+  <div class="masthead">
+    <img src="../../../.claude/skills/nbmh-social/assets/nbmh-logo.png" alt="New Beginnings Mental Health">
+    <div class="wordmark">
+      <div class="n1">NEW BEGINNINGS</div>
+      <div class="n2">MENTAL HEALTH</div>
+    </div>
+  </div>
+
+  <div class="datestamp">OCT 4</div>
+
+  <div class="lede">
+    <span class="eyebrow">Clarity and Attention</span>
+    <h1 class="headline">Focus<br><span class="accent-text">Matters</span></h1>
+    <p class="subline">If attention is a struggle, medication management can help you find clarity and sustained focus.</p>
+  </div>
+
+  <div class="service">ADHD EDUCATION · MEDICATION MANAGEMENT</div>
+
+  <div class="footer">
+    <span>NBMentalHealth.com</span>
+    <span>970-470-2939</span>
+  </div>
+</div>
