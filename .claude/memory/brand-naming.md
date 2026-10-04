@@ -3,6 +3,8 @@ name: brand-naming
 description: How to write the brand, region, and company names; the one phrase that is banned outright
 ---
 
+**EpiVail only.** AiRE Estate is a separate business; none of this applies to it.
+
 - Brand is **EpiVail**. Not "Epi Vail", not "EpiVAIL".
 - Region is **Epique Realty Colorado Mountain Region**.
 - Charles's title is **Area/Growth Leader**, Epique Realty.
