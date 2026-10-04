@@ -43,6 +43,12 @@ and the site is plain HTML.
   `recruitment-outreach.md` and `linkedin-content.md`.
 - Voice is courteous and warm, with Southern manners.
 
+## AiRE Estate conventions
+
+- Sign AiRE Estate emails exactly: **AiRE Estate Academy**. It is not the EpiVail
+  signature.
+- The rest of its brand notes are in `.claude/ROLE.md`.
+
 ## Do not contact
 
 Never email, text, call, or enroll these people in any sequence, even if Lofty

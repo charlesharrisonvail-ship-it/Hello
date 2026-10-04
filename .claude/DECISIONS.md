@@ -7,7 +7,7 @@ If one needs reopening, Charles reopens it.
 
 **EpiVail and AiRE Estate are separate businesses - never blend them.** EpiVail is
 his Epique Realty work: agent recruiting, listings, Lofty, LinkedIn. AiRE Estate is
-the course business he teaches for, published from `docs/` at `learn.aireestate.com`.
+his course business, published from `docs/` at `learn.aireestate.com`.
 Every rule in the EpiVail section below - naming, signature, voice, positioning, the
 banned phrase - applies to EpiVail work only. AiRE Estate's rules are in `ROLE.md`.
 Stated by Charles 2026-10-02, after the two had been conflated. (2026-10-02)
@@ -24,7 +24,7 @@ already cost two correcting commits (PR #9, PR #15). (2026-09-25)
 
 **One signature for all EpiVail work: `Charles Harrison, Epique Area/Growth Leader`** -
 email, DM, SMS, call scripts and LinkedIn bylines alike, never with a regional
-descriptor appended. Not set for AiRE Estate. Settled by Charles; it resolved a contradiction
+descriptor appended. AiRE Estate email is signed `AiRE Estate Academy` instead. Settled by Charles; it resolved a contradiction
 where `CLAUDE.md` said `Charles Harrison | EpiVail | Epique Realty` and the agent
 files said this form. The pipe-separated form is retired - if you meet it, it is
 stale. See `recall.py signature`. (2026-09)

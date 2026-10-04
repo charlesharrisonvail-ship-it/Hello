@@ -11,10 +11,6 @@ agent files. `CONTINUITY: PASS`.
 
 ## Open question for Charles
 
-**AiRE Estate facts only Charles can confirm.** `ROLE.md` now carries its brand
-rules, taken from the live site. Unknown: whether he owns AiRE Estate, LLC or is its
-"Endorsed Representative", and how he signs AiRE email.
-
 **Two referral links have no label.** The site's terms promise referral links are
 "disclosed where they appear". Two of four Higgsfield links (`docs/index.html` lines
 627 and 878) have no "(referral link)" label nearby; the other two do. Not changed:

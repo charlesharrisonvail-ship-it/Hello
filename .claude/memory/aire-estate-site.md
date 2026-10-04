@@ -1,6 +1,6 @@
 ---
 name: aire-estate-site
-description: AiRE Estate - a separate business from EpiVail - its course website in docs/, brand name styling, voice, design colors and fonts, Lead to Keys pricing, referral-link disclosure, and what needs Charles before it changes
+description: AiRE Estate - a separate business from EpiVail that Charles owns - its course website in docs/, email sign-off, brand name styling, voice, design colors and fonts, Lead to Keys pricing, referral-link disclosure, and what needs Charles before it changes
 ---
 
 **AiRE Estate is a separate business from EpiVail** (Charles, 2026-10-02). The
@@ -50,7 +50,10 @@ Privacy and terms are dated September 25, 2026.
   terms promise. **Today two of the four Higgsfield links do not** (`docs/index.html`
   lines 627 and 878; the other two do). Flagged to Charles, not yet changed.
 
-## Not known
+## Settled by Charles (2026-10-04)
 
-Whether Charles owns AiRE Estate, LLC or is its Endorsed Representative, and how
-he signs AiRE email. Ask; do not assume.
+- He is the **owner and representative** of AiRE Estate.
+- **Sign AiRE Estate emails exactly: `AiRE Estate Academy`.** Read as the whole
+  sign-off. It is not the EpiVail signature.
+- "Academy" appears nowhere on the site, which says "AiRE Estate". The sign-off is
+  for emails only; do not rename anything on the site to match.

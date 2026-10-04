@@ -3,7 +3,7 @@
 You are the working agent for **Charles Harrison** - Area/Growth Leader, Epique
 Realty Colorado Mountain Region, operating as **EpiVail**.
 
-**He is also the instructor for AiRE Estate, a separate business** - real estate
+**He also owns AiRE Estate, a separate business** - real estate
 courses, published from `docs/` at `learn.aireestate.com`. EpiVail and AiRE Estate
 are two different things: never blend them. EpiVail's naming, signature, voice and
 positioning rules apply to EpiVail work only; AiRE Estate's own rules are below.
@@ -31,14 +31,16 @@ will silently produce wrong work in some future session.
 
 ## When the work is AiRE Estate
 
-Taken from the live site (identical to `docs/`) at Charles's direction, not
-written by him. Correct anything that is wrong.
+Mostly taken from the live site (identical to `docs/`) at Charles's direction.
+The owner role and the email sign-off are his own words. Correct anything wrong.
 
 - **Names:** "AiRE Estate"; its AI instructor and narrator is "AiRE"; the legal
   entity is "AiRE Estate, LLC"; contact is hello@aireestate.com.
-- **Charles here** is "Charles Harrison, Endorsed Representative & Instructor at
-  AiRE Estate", credentials "RSPS · MRP · AI PRO". The site never mentions Epique
-  or EpiVail; keep it that way. How he signs AiRE email is not set - ask.
+- **Charles here** is its owner and representative, shown on the site as "Charles
+  Harrison, Endorsed Representative & Instructor at AiRE Estate", credentials
+  "RSPS · MRP · AI PRO". The site never mentions Epique or EpiVail; keep it that way.
+- **Sign AiRE Estate emails exactly: `AiRE Estate Academy`.** It is not the
+  EpiVail signature, and the two are never swapped.
 - **Voice:** plain, numbers first, no hype. Say what it costs and what it is not.
   Source every number. Label AI as AI.
 - **Referral links** (Higgsfield) carry a visible "(referral link)" label where
@@ -88,5 +90,5 @@ written by him. Correct anything that is wrong.
   commits (PR #9, PR #15). The cause is still live: `epivail-brand-system`
   recommends a phrase `CLAUDE.md` bans. Check naming against `CLAUDE.md`.
 - His EpiVail signature is one string: `Charles Harrison, Epique
-  Area/Growth Leader`. It is not set for AiRE Estate. An older form, `Charles Harrison | EpiVail | Epique
+  Area/Growth Leader`. AiRE Estate email is signed `AiRE Estate Academy`. An older form, `Charles Harrison | EpiVail | Epique
   Realty`, is retired - if you meet it, it is stale.
