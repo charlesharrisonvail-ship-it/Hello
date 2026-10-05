@@ -309,18 +309,9 @@ button{font:inherit;color:inherit;cursor:pointer}
      YouTube (unlisted), Vimeo, or a direct .mp4 link all work.
      Leave a line as "" until that module's video is hosted.
      ============================================================ */
-  var VIDEOS = {
- "2": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DQPFQB5knVKdCtoFjiflsBSNkk/93c83d1f-c4be-4058-9a9d-198a6745a003.mp4",
- "3": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DQPFQB5knVKdCtoFjiflsBSNkk/3ff0d4a1-7e5a-49b5-b7e9-d420adbfca04.mp4",
- "4": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DQPFQB5knVKdCtoFjiflsBSNkk/2e866d81-588a-46fd-9748-2f86f9397db0.mp4",
- "5": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DQPFQB5knVKdCtoFjiflsBSNkk/757737d3-0c20-4ee4-834b-55ae48b8d280.mp4",
- "6": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DQPFQB5knVKdCtoFjiflsBSNkk/e4eded4c-d484-44a2-bcc3-0bed71e5992c.mp4",
- "7": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DQPFQB5knVKdCtoFjiflsBSNkk/a9f7406c-1a05-4bec-ae3d-06d5752b5e51.mp4",
- "8": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DQPFQB5knVKdCtoFjiflsBSNkk/38e578dd-5044-4835-a8a6-2ffa08264180.mp4",
- "9": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DQPFQB5knVKdCtoFjiflsBSNkk/ff60bea8-29aa-4970-90a4-d898f8bebb40.mp4",
- "10": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DQPFQB5knVKdCtoFjiflsBSNkk/b2151b84-3ffd-4192-85f3-82a55eba2af0.mp4",
- "1": "media/l2k-module-1.mp4"
-};
+  /* Lesson video links, locked with the course access code. */
+  var VIDEOS = {};
+  var VPAYLOAD = {"salt":"FcjX1GQ7QGkfefFrfMxQWg==","iv":"O1XdZQkgOSgPAmVX","ct":"oz+NcM4G+yZ1jD6dsWXpX23iick7u2041VXJ4m8mVVxnpLNXgkxw3dySvtBYS4jMsZFmG2t0310enaRk1VdUUJRXWqc1WM57hVInR60+T7Hpoxvsd7J//mJIbrh2ZhHZmfR5mU2LHaA3a0+Ua0IeMaMgyKKU8mkfwwQROI6Q7ZxCTdjfkjm6gMeYQ5k6KRXthNuDnh78FDc8mrPvqoFJLu4c12oGueTxfTe+qQLG9OWl5S6g9trnCNA2DQpxChz/fQVmG3UiihbM98UcoU1CyURM8Z+rRQNaFAss5Ho2pzwFKO3c+7pd1AMsDvwlQLb/QahMxqCgwVjMh9KVZ4FVdC7jG2S7q7yZif3Nso5gzPnBL5E2H44Q1RFVQdGExdgUCIoYrpm3sGhl5EAYi7LWgbrKXbe/9A0E6ZR/RHyC3P9TNyuiWV0F0n/oqsb+f2jYzN+pEZt6rlNKK+1WrmDJl1fMQK+YtwnOdORIXsyIKZzunj4rbzVN7pQMqEIeGcqQDVE5lKNHCQYw37uQbjEeWClwTIofutLopV6T2o6bWknwrnHnhlbsmb1fIgaP/XuPVZea/8rmBaiBY3pwAN30RJsO1lGOHkiIf5M9E88N7gQaZx8b0VnYTE20CTop504QLOAlEIVpg4rOPqKmRrXwio7yZ6OdnIFFEnJ9+3x12d0FhsVQDJ4TA1VFsIvCdXP+bCy1Qd9atX6HRlqQ9bqWgQKvHuS95GNyp65ar/qeY+hZ1lyUZ2f4D7FFoa0wlwi8Bmjrw/JpvhSTTbNyRHXkptKT6w4zNGMIY2WxAF7+c7vFZpRYQSRNDRvx4EmU82XhfjE74F+VOj2b2upks9wdj72XEWaZDlYFgKWles9If1tQhUmWV26UZz8yRucbQV3cT07MxIY0/jIGRkIjpK6vWDazpTmpV5sjUWMpDCBqxss8kDMidjLUdav14GV9SB0HgndIsj/nQ20GvA/NRW4nqWm40LdnKM1oqT9R9ZXz1Sv1QVh0m5RBvE9DINnSUJhPeqWGDjs8Nu1k0sK0/SpfYWkOAjIqs3Kp2vWv2v+hhkb8E7QlCTMNuJV/Dc2of/EhvuIjud0shiodinQ4XoQuYT4eSDk4yzzaCp9vpbfTvxOjWcVwdLFXuHwK8fo/DKqnIqpfLH5UnQ72Ki/vP+EiB7wdy8pxASC1xk3cX2QiXzfjDPlyyK4wKXsWzsly8ymILPs6k7CO+0Vq68Ir0jBXlffOMgCpSTkrPK/kcbYE7jgoumqyokIjUgij5tj8nuLvnTAArC41KuA0oVfRLcOsS9iE7V4QdOuAZZmW+m1GAqG+J1sXyHXq+ieMD/FjRstAPL4AodtlUlubmm+2gzA7h9VBv9ai8issGq18zB48tHRQTVXfmyhEozTAPhfcoDEB1Q75cd6eUy2ChLgPK8keoTAvPr3ZDvci6gnH6PDvXPzbPeuArUpuAdzjD2RxmDCfRz9+0vc="};
 
   /* Public URL of the certification / quiz page. Leave "" to grey the button out. */
   var CERT_URL = "lead-to-keys-certification.html";
@@ -339,17 +330,18 @@ button{font:inherit;color:inherit;cursor:pointer}
   function b2a(b64){ var s=atob(b64), u=new Uint8Array(s.length);
     for(var i=0;i<s.length;i++) u[i]=s.charCodeAt(i); return u; }
 
-  function decrypt(pass){
+  function decrypt(pass,P){
+    P=P||PAYLOAD;
     if(!window.crypto||!crypto.subtle) return Promise.reject(new Error('insecure'));
     var enc=new TextEncoder();
     return crypto.subtle.importKey('raw',enc.encode(pass),'PBKDF2',false,['deriveKey'])
       .then(function(base){
         return crypto.subtle.deriveKey(
-          {name:'PBKDF2',salt:b2a(PAYLOAD.salt),iterations:250000,hash:'SHA-256'},
+          {name:'PBKDF2',salt:b2a(P.salt),iterations:250000,hash:'SHA-256'},
           base,{name:'AES-GCM',length:256},false,['decrypt']);
       })
       .then(function(key){
-        return crypto.subtle.decrypt({name:'AES-GCM',iv:b2a(PAYLOAD.iv)},key,b2a(PAYLOAD.ct));
+        return crypto.subtle.decrypt({name:'AES-GCM',iv:b2a(P.iv)},key,b2a(P.ct));
       })
       .then(function(buf){ return new TextDecoder().decode(buf); });
   }
@@ -512,7 +504,9 @@ button{font:inherit;color:inherit;cursor:pointer}
     gerr.textContent='';
     var btn=gform.querySelector('button');
     btn.textContent='Unlocking…';
-    return decrypt(String(code||'').trim().toUpperCase()).then(function(htmlStr){
+    var pass=String(code||'').trim().toUpperCase();
+    return Promise.all([decrypt(pass),decrypt(pass,VPAYLOAD)]).then(function(r){
+      var htmlStr=r[0]; VIDEOS=JSON.parse(r[1]);
       try{ sessionStorage.setItem('aire-k2',String(code).trim().toUpperCase()); }catch(e){}
       mount(htmlStr);
     }).catch(function(err){
