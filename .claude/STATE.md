@@ -4,22 +4,18 @@ _Keep this tidy. `pre_compact.py` appends banked blocks below it._
 
 ## Working on now
 
-Continuity is merged to `main` (PR #10). The sign-off contradiction is resolved:
-Charles settled on `Charles Harrison, Epique Area/Growth Leader` everywhere, and
-`CLAUDE.md`, the orientation documents and the memory index now agree with the
-agent files. `CONTINUITY: PASS`.
+Continuity is merged to `main` (PRs #10, #18). EpiVail and AiRE Estate are kept
+separate, each with its own signature. The AiRE Estate referral links are all
+labeled (#19), and Lead to Keys' stale module numbers are corrected. `CONTINUITY: PASS`.
 
 ## Open question for Charles
 
-**Stale module numbering on the sales pages.** `docs/index.html:627` and
-`docs/lead-to-keys.html` lines 644 and 686 still say Lead to Keys uses Claude Code in
-"Modules Ten and Eleven". The modules were renumbered 01-07 and `index.html:611`
-already says "Modules 03-04", so these likely should too. Not changed: it is a claim
-on a paid course page, so it is Charles's call.
+The agents say "powered by Epique X"; some skills say "EpiqueAI". `CLAUDE.md` does
+not rule on it, so ask rather than pick.
 
 ## Next
 
-1. Watch orientation size - roughly 7,900 of the 9,000-character budget. When
+1. Watch orientation size - roughly 7,300 of the 9,000-character budget. When
    `DECISIONS.md` outgrows its share, add a fourth hook entry rather than cutting
    a rule; the limit is per hook entry, not per session
 2. When a rule changes in `CLAUDE.md`, change it in `DECISIONS.md` and the memory

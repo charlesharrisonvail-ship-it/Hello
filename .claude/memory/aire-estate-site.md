@@ -49,9 +49,12 @@ Privacy and terms are dated September 25, 2026.
 - Referral links carry a visible "(referral link)" label right after the link, as
   the terms promise. All four Higgsfield links in `docs/index.html` do (two were
   missing it until the label fix). Keep it that way for any link added.
-- Known stale text, not fixed: `docs/index.html:627` and `docs/lead-to-keys.html`
-  lines 644 and 686 say Lead to Keys uses Claude Code in "Modules Ten and Eleven",
-  but the modules were renumbered 01-07 and `index.html:611` says "Modules 03-04".
+- **Always say which course a "Module N" is.** Both have a Module Three and Four.
+  Part One has modules 01-08 (Module Four is the drone lesson). Part Two, Lead to
+  Keys, has 01-07, renumbered from 08-14, which left stale "Ten and Eleven" and
+  "Thirteen and Fourteen" text on three pages until it was fixed. Prose spells the
+  number out ("Modules Three and Four"); card labels use digits ("Module 03").
+  Check every spelled-out module word against that map when editing course copy.
 
 ## Settled by Charles (2026-10-04)
 
