@@ -11,13 +11,11 @@ agent files. `CONTINUITY: PASS`.
 
 ## Open question for Charles
 
-**Two referral links have no label.** The site's terms promise referral links are
-"disclosed where they appear". Two of four Higgsfield links (`docs/index.html` lines
-627 and 878) have no "(referral link)" label nearby; the other two do. Not changed:
-it is the live site and a legal promise, so it is Charles's call.
-
-The agents say "powered by Epique X"; some skills say "EpiqueAI". `CLAUDE.md`
-does not rule on it, so ask rather than pick.
+**Stale module numbering on the sales pages.** `docs/index.html:627` and
+`docs/lead-to-keys.html` lines 644 and 686 still say Lead to Keys uses Claude Code in
+"Modules Ten and Eleven". The modules were renumbered 01-07 and `index.html:611`
+already says "Modules 03-04", so these likely should too. Not changed: it is a claim
+on a paid course page, so it is Charles's call.
 
 ## Next
 

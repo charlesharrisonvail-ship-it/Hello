@@ -46,9 +46,12 @@ Privacy and terms are dated September 25, 2026.
   without Charles, and assume a merge to `main` publishes.
 - Do not give away the course method on public pages (commit 8eace3d removed a
   demo that exposed a whole module). Show the proof, not the verbatim prompt.
-- Referral links carry a visible "(referral link)" label where they appear, as the
-  terms promise. **Today two of the four Higgsfield links do not** (`docs/index.html`
-  lines 627 and 878; the other two do). Flagged to Charles, not yet changed.
+- Referral links carry a visible "(referral link)" label right after the link, as
+  the terms promise. All four Higgsfield links in `docs/index.html` do (two were
+  missing it until the label fix). Keep it that way for any link added.
+- Known stale text, not fixed: `docs/index.html:627` and `docs/lead-to-keys.html`
+  lines 644 and 686 say Lead to Keys uses Claude Code in "Modules Ten and Eleven",
+  but the modules were renumbered 01-07 and `index.html:611` says "Modules 03-04".
 
 ## Settled by Charles (2026-10-04)
 
