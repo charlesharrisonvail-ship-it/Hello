@@ -21,6 +21,7 @@ The point is not the record; it is making sure today is genuinely different.
 | 2026-10-03 | Sleep and rest support medication management | Tactile texture composition — warm beige/cream overlapping gradient zones with soft plant accents. Minimal text. | Better Sleep, Better You (published) |
 | 2026-10-04 | ADHD education and clarity | Bold conceptual typography with accent stripe — warm brown highlight on "Matters", dynamic composition with strong type hierarchy. | Focus Matters (published) |
 | 2026-10-05 | Anxiety and stress education | Clean educational layout with cool palette — structured background zones in greens and grays, organized typography. Calm, grounded. | Clarity Through Calm (published) |
+| 2026-10-06 | Depression and mood education | Higgsfield golden hour Colorado mountain forest photography — warm light through tall pine trees, layered forest depth, snow-capped peaks, natural beauty. Real imagery suggesting hope and recovery. | Light in the Dark (published) |
 
 ## Rejected directions — do not return to these
 

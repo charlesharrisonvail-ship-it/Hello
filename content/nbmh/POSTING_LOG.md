@@ -17,6 +17,7 @@ Status values: `drafted` · `delivered` (handed to Charles to post) ·
 | 2026-10-03 | Better Sleep, Better You — quality rest and medication management | created | created | PASS | **published** | Post `1236318822895617_122130649641383194`, published 2026-10-03 12:49 UTC. [permalink](https://www.facebook.com/1236318822895617_122130649641383194) |
 | 2026-10-04 | Focus Matters — ADHD education and treatment | created | created | PASS | **published** | Post `1236318822895617_122130903369383194`, published 2026-10-04 12:49 UTC. [permalink](https://www.facebook.com/1236318822895617_122130903369383194) |
 | 2026-10-05 | Clarity Through Calm — anxiety and stress education | created | created | PASS | **published** | Post `1236318822895617_122131170003383194`, published 2026-10-05 12:49 UTC. [permalink](https://www.facebook.com/1236318822895617_122131170003383194) |
+| 2026-10-06 | Light in the Dark — depression/mood education, recovery and hope | Higgsfield | created | PASS | **published** | Post `1236318822895617_122131424799383194`, published 2026-10-06 12:49 UTC via Higgsfield golden hour forest photography. [permalink](https://www.facebook.com/1236318822895617_122131424799383194) |
 
 ## Publishing — live
 
