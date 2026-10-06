@@ -311,7 +311,8 @@ button{font:inherit;color:inherit;cursor:pointer}
      ============================================================ */
   /* Lesson video links, locked with the course access code. */
   var VIDEOS = {};
-  var VPAYLOAD = {"salt":"FcjX1GQ7QGkfefFrfMxQWg==","iv":"O1XdZQkgOSgPAmVX","ct":"oz+NcM4G+yZ1jD6dsWXpX23iick7u2041VXJ4m8mVVxnpLNXgkxw3dySvtBYS4jMsZFmG2t0310enaRk1VdUUJRXWqc1WM57hVInR60+T7Hpoxvsd7J//mJIbrh2ZhHZmfR5mU2LHaA3a0+Ua0IeMaMgyKKU8mkfwwQROI6Q7ZxCTdjfkjm6gMeYQ5k6KRXthNuDnh78FDc8mrPvqoFJLu4c12oGueTxfTe+qQLG9OWl5S6g9trnCNA2DQpxChz/fQVmG3UiihbM98UcoU1CyURM8Z+rRQNaFAss5Ho2pzwFKO3c+7pd1AMsDvwlQLb/QahMxqCgwVjMh9KVZ4FVdC7jG2S7q7yZif3Nso5gzPnBL5E2H44Q1RFVQdGExdgUCIoYrpm3sGhl5EAYi7LWgbrKXbe/9A0E6ZR/RHyC3P9TNyuiWV0F0n/oqsb+f2jYzN+pEZt6rlNKK+1WrmDJl1fMQK+YtwnOdORIXsyIKZzunj4rbzVN7pQMqEIeGcqQDVE5lKNHCQYw37uQbjEeWClwTIofutLopV6T2o6bWknwrnHnhlbsmb1fIgaP/XuPVZea/8rmBaiBY3pwAN30RJsO1lGOHkiIf5M9E88N7gQaZx8b0VnYTE20CTop504QLOAlEIVpg4rOPqKmRrXwio7yZ6OdnIFFEnJ9+3x12d0FhsVQDJ4TA1VFsIvCdXP+bCy1Qd9atX6HRlqQ9bqWgQKvHuS95GNyp65ar/qeY+hZ1lyUZ2f4D7FFoa0wlwi8Bmjrw/JpvhSTTbNyRHXkptKT6w4zNGMIY2WxAF7+c7vFZpRYQSRNDRvx4EmU82XhfjE74F+VOj2b2upks9wdj72XEWaZDlYFgKWles9If1tQhUmWV26UZz8yRucbQV3cT07MxIY0/jIGRkIjpK6vWDazpTmpV5sjUWMpDCBqxss8kDMidjLUdav14GV9SB0HgndIsj/nQ20GvA/NRW4nqWm40LdnKM1oqT9R9ZXz1Sv1QVh0m5RBvE9DINnSUJhPeqWGDjs8Nu1k0sK0/SpfYWkOAjIqs3Kp2vWv2v+hhkb8E7QlCTMNuJV/Dc2of/EhvuIjud0shiodinQ4XoQuYT4eSDk4yzzaCp9vpbfTvxOjWcVwdLFXuHwK8fo/DKqnIqpfLH5UnQ72Ki/vP+EiB7wdy8pxASC1xk3cX2QiXzfjDPlyyK4wKXsWzsly8ymILPs6k7CO+0Vq68Ir0jBXlffOMgCpSTkrPK/kcbYE7jgoumqyokIjUgij5tj8nuLvnTAArC41KuA0oVfRLcOsS9iE7V4QdOuAZZmW+m1GAqG+J1sXyHXq+ieMD/FjRstAPL4AodtlUlubmm+2gzA7h9VBv9ai8issGq18zB48tHRQTVXfmyhEozTAPhfcoDEB1Q75cd6eUy2ChLgPK8keoTAvPr3ZDvci6gnH6PDvXPzbPeuArUpuAdzjD2RxmDCfRz9+0vc="};
+  var PASS = '';
+  var VPAYLOAD = {"salt":"wdIaj6lQt53ox18rZ+h45Q==","iv":"Bx4z7MeyuU8061Ox","ct":"EgQkQnG/2SX6H6LQtsgoYNdnS7t94kB4mWWn+HYCzOi6bcGht3P3pCLIl2vVEsfFC6R1OnnybT2XeIEjHsAtCj0QXMeUZbJ1M6hFPkwz/sz2AJj+eqJWl4rsz6AltfP8/T+aec4ZviY0OzK5ToEYQEXGqL+J56rUQFZc3b/gm1CqENPKL7dmnNYci7I1ceuxnYswtAWy/8EhQ8YKXItJZgxevsx9zvCjB7UFUqcEfYKpt13ISBuYofSoPiLyKwv4GGfoakvWAa+yqOYxkj+PvcHW/TZFzZM4C1Xy8329iqaAo7GvYs3DgFZmMQUe0s6L9nd0HHGv5xM0NQhCS+ibLUsqQghlnDsq/BylGVSwspnPJyw74rZDdVW0WmNiFnUyJ4cLAsdv0AJujVJZNIwlL1EFQDxwq/lP8ctM0D4tZvz1tbh+SxO5oOAoMvc7G7Nhmj7UG11pcx4B25RnXKXyteYoGUNIllUiFa9Bau3Ouvdu1/JOAqAqkE1T8AigoBv2Hg1h8IqPhv8B6H1Lz/XWH6S6Bgy1o72e6wLf//31Wvju2W9Ma+Yy7xfkQ00Y+02BWquPEbuXWUaBF4SuWuyGneLzefwm7QRZY34Qyv+8NfjXFT+TQEF6ZTQqUIpLSs4AWuUr0Vu3JswjKj4juk++LJXgu36/7yi7shOyua9nVoDL+j/enrrFf2CZCZd4ZRX/Wb4Gxew2fuNPYYQo/awCWqkRrAkY5lACYk27jSUx72xkcZrThPoMQCcTDdTJAmRwlQNw6nIZ+chSxSks3VRExmaCVLDEekANP06Is2Bz//8bzNLH5uBe8d3t1Q3IFviorpsAFv7bbUk9BAuAicQJQTNTpNCKFvkXCCkwl3kRSa4Az/wjvva7dCpIIcsL7hkE+NosUwZcK5NMnk0fl/a0nAH2hNw0xCTUjIZ4N74jQVIITvJn60KCiNTJL3gYeFAY69gIiySjPMa4C3dRXDsP70ZBgkrvWATU4P6h1tKxWO4qs0c/WKpsF7aUzOqKYO+RaSsN9ItHck4Ck0O7Q5jxIP6croBNB9vfuHPeLK7KFG5gEc3FFxquyI4gIEeP83U5UmOzjsXqI6s3oGO4RdaSU7Z8surtziyM/Dy+1I2VlLyfm+v9rElV0Ch5F+BdOaSyzyow8hZHRIJ4oth1x51SFAihn+Qr1KuooPu3XCmg56qYjfNLX1EtO6s4gVS17VBMKqlvWRmZy4G7AOKNYSJ1EPrUQj3E1xan7pqoSuCZnAARQPQbCs9egrLiZz7sKaYxPyGPlEhvsK4BgYRbC/aiq+bxMcv1v7IOOEMjBhiulkNZ6LzoLn5R/+LwkoNyuBa2K9+0AGU1WXyB44kM3whplU9NEL/iKfi+UZKZnDUF652jvx12HE5SVITEBJD2CQER/WO4+p7hNYw66Flj2GHITVa2jGGeuLBaJXl6l2iXuO7u9U3MaIjvyWmhLsHO0Y0RBjYk"};
 
   /* Public URL of the certification / quiz page. Leave "" to grey the button out. */
   var CERT_URL = "lead-to-keys-certification.html";
@@ -347,6 +348,16 @@ button{font:inherit;color:inherit;cursor:pointer}
   }
 
   /* ---------- video ---------- */
+  function loadLocked(v,path){
+    fetch(path).then(function(r){ return r.arrayBuffer(); }).then(function(ab){
+      var u=new Uint8Array(ab);
+      return crypto.subtle.importKey('raw',new TextEncoder().encode(PASS),'PBKDF2',false,['deriveKey'])
+        .then(function(base){ return crypto.subtle.deriveKey({name:'PBKDF2',salt:u.slice(0,16),iterations:250000,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']); })
+        .then(function(k){ return crypto.subtle.decrypt({name:'AES-GCM',iv:u.slice(16,28)},k,u.slice(28)); });
+    }).then(function(buf){ v.src=URL.createObjectURL(new Blob([buf],{type:'video/mp4'})); })
+      .catch(function(){ v.insertAdjacentHTML('afterend','<p>This video did not load. Refresh the page, or email hello@aireestate.com.</p>'); });
+  }
+
   function videoNode(url){
     var w=document.createElement('div'); w.className='vwrap';
     var yt=url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
@@ -360,7 +371,8 @@ button{font:inherit;color:inherit;cursor:pointer}
       w.appendChild(f);
     } else {
       var v=document.createElement('video');
-      v.src=url; v.controls=true; v.preload='metadata'; v.playsInline=true;
+      if(url.indexOf('enc:')===0){ loadLocked(v,url.slice(4)); } else { v.src=url; }
+      v.controls=true; v.preload='metadata'; v.playsInline=true;
       w.appendChild(v);
     }
     return w;
@@ -506,7 +518,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     btn.textContent='Unlocking…';
     var pass=String(code||'').trim().toUpperCase();
     return Promise.all([decrypt(pass),decrypt(pass,VPAYLOAD)]).then(function(r){
-      var htmlStr=r[0]; VIDEOS=JSON.parse(r[1]);
+      var htmlStr=r[0]; VIDEOS=JSON.parse(r[1]); PASS=pass;
       try{ sessionStorage.setItem('aire-k2',String(code).trim().toUpperCase()); }catch(e){}
       mount(htmlStr);
     }).catch(function(err){
