@@ -26,3 +26,9 @@ does not rule on it, so ask rather than pick.
    a rule; the limit is per hook entry, not per session
 2. When a rule changes in `CLAUDE.md`, change it in `DECISIONS.md` and the memory
    index too, or a future session acts on the old one with full confidence
+
+## Working thread (auto-banked)
+
+### banked 2026-10-06 15:22
+(compaction point -- the thread above this line was summarised; anything not written down here is gone)
+
