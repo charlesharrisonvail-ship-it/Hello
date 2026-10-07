@@ -93,4 +93,8 @@ Only claim the last two when there is visible evidence.
 - `There's too much going on there. Too many words. It looks jumbled.`
 - `I just expect professional Forbes 100 marketing posts.`
 - Accepted coverage: Aetna, Anthem BCBS, United/UnitedHealthcare, Cigna, Mountain Strong EAP, Olivia's Fund, and private pay.
+- 2026-10-05: `The graphics are horrible. Use real pictures of beauty, life, animals...whatever to make it better please from here on out.`
+- 2026-10-06: White lettering set directly on the photo was illegible. Keep all text on solid surfaces (`templates/photo.html`).
+- 2026-10-06: In captions, say "New Beginnings Mental Health" / "New Beginnings" rather than naming Dr. Vandenberg and her credentials.
+- 2026-10-07, after a plain navy text card ran: `Starting tomorrow make each post authentic...use pics of nature, animals, landscape, or positive pictures. Stop making bland and ugly posts.` Every day is a colorful photograph; there are no code-only days.
 

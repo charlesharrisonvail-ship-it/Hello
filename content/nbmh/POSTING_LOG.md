@@ -48,8 +48,6 @@ America/Denver, persistent session (fires into this session). It drafts the day'
 graphic and caption, runs the compliance gate, logs the result, and pushes to
 `claude/newbeginnings-social-media-manager-4s9d6n`.
 
-**Higgsfield is now available:** starting 2026-10-01, the routine uses Higgsfield
-to generate graphics on Tuesday and Friday, building code-based layouts for other
-days. This improves visual quality on the two highest-traffic days each week while
-keeping the routine on budget. All other days still use bold typographic and
-editorial layouts built in code.
+**From 2026-10-08, every post is a real Higgsfield photograph** (nature,
+animals, landscapes, positive scenes) set in `templates/photo.html`. Charles
+rejected the code-built text cards. A photo costs 0.25 credits.

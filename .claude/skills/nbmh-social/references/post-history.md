@@ -32,6 +32,9 @@ The point is not the record; it is making sure today is genuinely different.
 - Bar or column motifs that read as an unlabeled chart, which implies a
   statistic NBMH has not published.
 - Rows of even vertical strokes; they read as wallpaper, not as a stand of trees.
+- **Any post without a real photograph.** Charles called the 10-03 → 10-05 and
+  10-07 code-built cards bland and ugly. Every post is a colorful photo.
+- White text set directly on a photo (10-06 was illegible). Use `templates/photo.html`.
 
 ## Topics not yet used
 

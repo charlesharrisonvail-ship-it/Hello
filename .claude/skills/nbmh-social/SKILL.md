@@ -35,9 +35,12 @@ provider type, treatment, diagnosis, statistic, or contact detail.
    `content/nbmh/POSTING_LOG.md`. Pick a topic, objective, SEO target, and — most
    importantly — a visual concept that is genuinely different from recent work.
    Changing the background and the wording is not a new concept.
-2. **Build the graphic.** Copy a recent `content/nbmh/<date>/build.html` as a
-   starting point for the standing chrome only; write the concept CSS fresh.
-   Link `templates/base.css` for brand tokens, the masthead, and the footer.
+2. **Build the graphic — every day is a real, colorful photograph.** Generate it
+   with Higgsfield (see *Imagery* below), save it as
+   `content/nbmh/<date>/photo.jpg`, then copy `templates/photo.html` to
+   `content/nbmh/<date>/build.html` and fill in the `{{...}}` placeholders.
+   The template keeps all text on solid surfaces; never set white text
+   directly on the photo.
 3. **Render and check the size:**
    ```
    node .claude/skills/nbmh-social/scripts/render.mjs \
@@ -58,27 +61,34 @@ provider type, treatment, diagnosis, statistic, or contact detail.
 8. **Publish only when Charles has authorized it**, only to the New Beginnings
    Mental Health Facebook page, and then verify.
 
-## Imagery budget
+## Imagery — a real photograph every day
 
-Charles has authorized **Higgsfield on two days of each week** for generated or
-adjusted photography. The standing days are **Tuesday and Friday**; if a stronger
-day comes up, move one and note the swap in the posting log so the week still
-totals two. Every other day is built in code — typography, gradient, texture,
-and composition. That constraint is not a downgrade: bold conceptual typography
-and minimal editorial layouts are explicitly approved creative territory.
+Charles, 2026-10-07: *"Starting tomorrow make each post authentic...use pics of
+nature, animals, landscape, or positive pictures. Stop making bland and ugly
+posts."* He had already said the same on 2026-10-05. **Every post, every day of
+the week, is a vivid, colorful photograph.** There is no code-only day. Plain
+gradients, typography-only cards, star fields, and abstract shapes have been
+rejected outright; do not fall back to them for any reason, budget included.
 
-Before spending, check `mcp__HIGGSFIELD__balance`, and preflight with
-`get_cost: true`.
+Generate with `mcp__HIGGSFIELD__generate_image`, model `gpt_image_2_5`,
+`aspect_ratio: "4:5"`. It costs 0.25 credits an image; check
+`mcp__HIGGSFIELD__balance` first. If Higgsfield is unavailable or out of
+credits, say so at the top of the report and do not publish a text-only card
+in its place.
+
+Prompt for a photorealistic, saturated, sunlit image, and leave the lower third
+calm enough to sit under the text card. No people, faces, or hands. The
+headline belongs in the template, not in the generated image.
 
 ## Creative rotation
 
-Never run yesterday's design with new words. Rotate the scene, composition,
-visual metaphor, palette, headline structure, and hierarchy every day, across:
+Never repeat yesterday's subject. Rotate the subject, season, color, and light
+every day, across:
 
-bold conceptual typography · tactile word-object compositions · minimal
-editorial layouts · natural textures, plants, and flowers · Colorado mountain,
-lake, and outdoor settings · restrained medication imagery · clean educational
-layouts
+wildlife (elk, deer, foxes, hummingbirds, butterflies, horses, dogs in a meadow)
+· wildflower fields and gardens (columbines, sunflowers, aspen in gold) ·
+Colorado mountains, lakes, rivers, and waterfalls · sunrises and clear blue
+skies · trails, meadows, and open landscapes
 
 Avoid: human-brain imagery, crying or distress, dark or institutional scenes,
 scattered pills, straitjackets, minors, elderly subjects, therapy-session
