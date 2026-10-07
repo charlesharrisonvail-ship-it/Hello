@@ -1,0 +1,181 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>NBMH 2026-10-07</title>
+<link rel="stylesheet" href="../../../.claude/skills/nbmh-social/templates/base.css">
+<style>
+/* Concept: "Rest Begins With Understanding" — minimalist night composition for sleep education.
+   Deep, calming palette with subtle stellar imagery suggesting peaceful rest. Clean typography
+   with generous space. Distinct from recent warm and structured approaches. */
+
+.canvas {
+  background: linear-gradient(135deg, #1a2447 0%, #2d3d5f 50%, #1e2d4a 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Subtle star field using multiple radial gradients */
+.stars {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(1px 1px at 20% 30%, white, transparent),
+    radial-gradient(1px 1px at 60% 70%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1.5px 1.5px at 50% 20%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 80% 10%, white, transparent),
+    radial-gradient(1px 1px at 15% 80%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1.5px 1.5px at 70% 45%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 40% 85%, white, transparent),
+    radial-gradient(1px 1px at 25% 50%, rgba(255,255,255,0.6), transparent);
+  background-size: 200% 200%, 180% 180%, 220% 220%, 190% 190%, 210% 210%, 200% 200%, 195% 195%, 205% 205%;
+  background-position: 0 0;
+}
+
+/* Subtle crescent moon accent */
+.moon-accent {
+  position: absolute;
+  top: 60px;
+  right: 80px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  z-index: 1;
+}
+
+.masthead {
+  position: absolute;
+  top: 64px;
+  left: var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  z-index: 5;
+}
+
+.masthead img {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  display: block;
+}
+
+.masthead .wordmark {
+  line-height: 1.16;
+}
+
+.masthead .n1 {
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: .055em;
+  color: white;
+}
+
+.masthead .n2 {
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: .145em;
+  color: rgba(255,255,255,.82);
+}
+
+.datestamp {
+  position: absolute;
+  top: 80px;
+  right: var(--gutter);
+  z-index: 5;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  color: rgba(255,255,255,.55);
+}
+
+.lede {
+  position: absolute;
+  top: 260px;
+  left: var(--gutter);
+  right: var(--gutter);
+  z-index: 4;
+  text-align: center;
+}
+
+.lede .eyebrow {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: .17em;
+  color: rgba(255,255,255,.60);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.lede .headline {
+  font-size: 64px;
+  color: white;
+  margin-bottom: 0;
+  line-height: 1.2;
+  font-weight: 700;
+  text-shadow: 0 4px 16px rgba(0,0,0,.4);
+}
+
+.service {
+  position: absolute;
+  z-index: 5;
+  left: var(--gutter);
+  bottom: 176px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  color: rgba(255,255,255,.70);
+  text-shadow: 0 2px 6px rgba(0,0,0,.3);
+}
+
+.footer {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: .012em;
+  z-index: 5;
+  color: white;
+  background: rgba(26, 36, 71, 0.7);
+  padding: 26px 38px;
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
+  text-shadow: 0 2px 4px rgba(0,0,0,.3);
+}
+</style>
+
+<div class="canvas">
+  <div class="stars"></div>
+  <div class="moon-accent"></div>
+
+  <div class="masthead">
+    <img src="../../../.claude/skills/nbmh-social/assets/nbmh-logo.png" alt="New Beginnings Mental Health">
+    <div class="wordmark">
+      <div class="n1">NEW BEGINNINGS</div>
+      <div class="n2">MENTAL HEALTH</div>
+    </div>
+  </div>
+
+  <div class="datestamp">OCT 7</div>
+
+  <div class="lede">
+    <span class="eyebrow">Sleep and Rest</span>
+    <h1 class="headline">Rest Begins With Understanding</h1>
+  </div>
+
+  <div class="service">SLEEP EDUCATION · MEDICATION MANAGEMENT</div>
+
+  <div class="footer">
+    <span>NBMentalHealth.com</span>
+    <span>970-470-2939</span>
+  </div>
+</div>

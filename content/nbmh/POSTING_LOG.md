@@ -18,6 +18,7 @@ Status values: `drafted` · `delivered` (handed to Charles to post) ·
 | 2026-10-04 | Focus Matters — ADHD education and treatment | created | created | PASS | **published** | Post `1236318822895617_122130903369383194`, published 2026-10-04 12:49 UTC. [permalink](https://www.facebook.com/1236318822895617_122130903369383194) |
 | 2026-10-05 | Clarity Through Calm — anxiety and stress education | created | created | PASS | **published** | Post `1236318822895617_122131170003383194`, published 2026-10-05 12:49 UTC. [permalink](https://www.facebook.com/1236318822895617_122131170003383194) |
 | 2026-10-06 | Light in the Dark — depression/mood education, recovery and hope | Higgsfield | created | PASS | **published** | Post `1236318822895617_122131424799383194`, published 2026-10-06 12:49 UTC via Higgsfield golden hour forest photography. [permalink](https://www.facebook.com/1236318822895617_122131424799383194) |
+| 2026-10-07 | Rest Begins With Understanding — sleep routine and insomnia education | created | created | PASS | **published** | Post `1236318822895617_122131687311383194`, published 2026-10-07 12:50 UTC via minimalist night composition. [permalink](https://www.facebook.com/1236318822895617_122131687311383194) |
 
 ## Publishing — live
 
