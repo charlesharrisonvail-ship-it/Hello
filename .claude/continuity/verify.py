@@ -146,10 +146,19 @@ def main():
         chk(False, "PROJECT.md exists (needed for the negative control)")
 
     # 7/8 -- banking works and stays BOUNDED
-    before = open(STATE, encoding="utf-8").read() if os.path.exists(STATE) else ""
-    for i in range(4):
-        run("pre_compact.py", "verify probe %d" % i)
-    after = open(STATE, encoding="utf-8").read() if os.path.exists(STATE) else ""
+    # Restored in `finally` so the probes never leave junk in the real STATE.md.
+    existed = os.path.exists(STATE)
+    before = open(STATE, encoding="utf-8").read() if existed else ""
+    try:
+        for i in range(4):
+            run("pre_compact.py", "verify probe %d" % i)
+        after = open(STATE, encoding="utf-8").read() if os.path.exists(STATE) else ""
+    finally:
+        if existed:
+            with open(STATE, "w", encoding="utf-8") as fh:
+                fh.write(before)
+        elif os.path.exists(STATE):
+            os.remove(STATE)
     chk(len(after) > 0 and "Working thread" in after,
         "pre_compact.py appends a banked block to STATE.md")
     n = after.count("### banked ")
