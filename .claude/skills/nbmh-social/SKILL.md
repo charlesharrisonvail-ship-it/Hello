@@ -70,8 +70,12 @@ the week, is a vivid, colorful photograph.** There is no code-only day. Plain
 gradients, typography-only cards, star fields, and abstract shapes have been
 rejected outright; do not fall back to them for any reason, budget included.
 
-Generate with `mcp__HIGGSFIELD__generate_image`, model `gpt_image_2_5`,
-`aspect_ratio: "4:5"`. It costs 0.25 credits an image; check
+Charles encourages free models. Each morning call `mcp__HIGGSFIELD__models_explore`
+(`action: "list"`, `type: "image"`, `unlim: true`). If its `unlim.available` is
+true, generate free with `use_unlim: true` on a listed model that offers 4:5
+(`nano_banana_pro` preferred). Otherwise use `gpt_image_2_5`,
+`aspect_ratio: "4:5"` — the cheapest paid option at 0.25 credits (as of
+2026-10-07 the account had no free allowance). Check
 `mcp__HIGGSFIELD__balance` first. If Higgsfield is unavailable or out of
 credits, say so at the top of the report and do not publish a text-only card
 in its place.
