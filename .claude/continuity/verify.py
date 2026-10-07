@@ -157,9 +157,14 @@ def main():
         "bank is BOUNDED at 3 blocks after 4 runs (found %d) -- unbounded "
         "growth would silently truncate the whole payload" % n)
 
-    rc2, out2 = run("session_start.py", "--check")
-    chk(rc2 == 0 and "budget" in out2,
-        "budget check still reports after banking")
+    try:
+        rc2, out2 = run("session_start.py", "--check")
+        chk(rc2 == 0 and "budget" in out2,
+            "budget check still reports after banking")
+    finally:
+        # Put STATE.md back so the probes never land in a commit.
+        with open(STATE, "w", encoding="utf-8") as fh:
+            fh.write(before)
 
     # 9 -- recall finds by description only
     mem = os.path.join(CLAUDE, "memory")
