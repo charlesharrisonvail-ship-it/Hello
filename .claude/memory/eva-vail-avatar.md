@@ -18,8 +18,20 @@ Where she is (Higgsfield, private workspace `6ce1b2b0-1aa8-44d2-ab59-b675a6c87a7
   (the original blue-dress Eva):
   https://d2ol7oe51mr4n9.cloudfront.net/user_3DQPFQB5knVKdCtoFjiflsBSNkk/a684ee36-63ac-44db-b1c9-815845e52daf.png
 - Look: adult woman, blue eyes, sun-kissed skin, long jet-black hair, athletic
-  hourglass figure; often black cat-eye glasses. Voice: warm, sophisticated,
+  hourglass figure. **She wears black cat-eye glasses - always put them in the
+  prompt; Charles rejected a render without them.** Voice: warm, sophisticated,
   low-register American female. "EpiVail" is pronounced "Eppy Vail".
+- **"Slifer" is pronounced "Sly-fer".** The model ignored a pronunciation note
+  in the prompt, so spell it phonetically inside the dialogue itself.
+
+Lessons from the rejected 2026-10-07 fireside render (110 credits, spent):
+
+- **Give each hand one job.** "Hand on the mantel AND holding champagne" produced
+  a third arm. Before delivering, pull frames at several timestamps and count
+  limbs; one frame is not enough.
+- **Pacing:** a long script crammed into 20 seconds ran together with no pauses.
+  Keep dialogue short enough to breathe, and write the pauses in with ellipses
+  and sentence breaks.
 
 How her videos were made: `generate_video` with model `flux_3_video`, 9:16, 720p,
 `generate_audio: true`, the reference passed in `medias` as role `image`, and a
