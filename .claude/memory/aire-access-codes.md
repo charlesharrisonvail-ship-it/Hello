@@ -24,3 +24,11 @@ offer it once sales have started.
 
 **Charles will not pay for more services** (declined Stan Store, $29/mo, and any
 new monthly cost). Keep fixes free.
+
+**Stripe checkout setup, confirmed by Charles 2026-10-07:** both payment links
+show a custom confirmation message with the course link and that course's
+access code (no redirect). Both require accepting the terms of service
+(terms.html set in Stripe Public details, plus privacy.html and support URL
+`https://learn.aireestate.com/#start`). Product descriptions now read "Seven
+modules and a Capstone" and name the Claude requirements; new product
+pictures are in `assets/stripe/` for Charles to upload.
