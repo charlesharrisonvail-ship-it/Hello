@@ -29,6 +29,9 @@ Lessons from the rejected 2026-10-07 fireside render (110 credits, spent):
 - **Give each hand one job.** "Hand on the mantel AND holding champagne" produced
   a third arm. Before delivering, pull frames at several timestamps and count
   limbs; one frame is not enough.
+- **Wardrobe must suit the venue.** A satin gown with a plunging neckline and high
+  slit was "too revealing" for an upscale Vail restaurant. "Alluring" means elegant
+  and classy: modest neckline, midi or full length, no slit, nothing low-cut.
 - **Pacing:** a long script crammed into 20 seconds ran together with no pauses.
   Keep dialogue short enough to breathe, and write the pauses in with ellipses
   and sentence breaks.
