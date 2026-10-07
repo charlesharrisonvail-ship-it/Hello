@@ -32,6 +32,11 @@ Lessons from the rejected 2026-10-07 fireside render (110 credits, spent):
 - **Wardrobe must suit the venue.** A satin gown with a plunging neckline and high
   slit was "too revealing" for an upscale Vail restaurant. "Alluring" means elegant
   and classy: modest neckline, midi or full length, no slit, nothing low-cut.
+- **The reference becomes the opening shot.** Higgsfield turns `image_references`
+  into role `image`, so FLUX 3 Video opens on the blue-dress photo for about 2.6s
+  before cutting to the scene, and any line spoken then plays over the wrong
+  picture. Leave about 3 seconds of silent ambience at the start of the dialogue,
+  then trim to the cut with ffmpeg (find it with `select='gt(scene,0.3)'`).
 - **Pacing:** a long script crammed into 20 seconds ran together with no pauses.
   Keep dialogue short enough to breathe, and write the pauses in with ellipses
   and sentence breaks.
