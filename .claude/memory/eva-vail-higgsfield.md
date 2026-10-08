@@ -19,8 +19,10 @@ She is AI; label her as AI wherever the platform or the post calls for it.
   Use it only for her face.
 - **Approved fuller-figure frame** (golf, 2026-10-08): image job
   `af08dacd-baa5-4d77-a6bd-a223a6f4d5a3`. Prefer this frame for her body.
-- She is not saved as a Higgsfield Element yet. Saving the fuller-figure frame
-  as an Element would lock her identity across videos.
+- **Saved as Higgsfield Element `eva-vail`**: `426cbaed-602c-4bf0-9b7e-0c5987c4a0f5`
+  (from the fuller-figure frame, 2026-10-08). Put `<<<426cbaed-602c-4bf0-9b7e-0c5987c4a0f5>>>`
+  in the prompt for Element-aware models (Nano Banana, GPT Image 2, Seedance 2.0,
+  Cinema Studio). `wan3_0` ignores Elements, so pass the frame as `image_references` there.
 
 **Recipe that works:**
 1. Make a start frame with `gpt_image_2_5` (high, 2k, 9:16) from her reference
@@ -28,7 +30,7 @@ She is AI; label her as AI wherever the platform or the post calls for it.
 2. Animate it with `wan3_0` (9:16, 1080p, `generate_audio: true`).
 3. In the prompt, quote her exact lines and add "Pronounce EpiVail as Eppy Vail."
 
-A 15-second clip costs about 52.5 credits; the start frame cost about 3.
+A 15-second clip costs about 52.5 credits and a 20-second one 70; the start frame cost about 3.
 Decline Higgsfield's preset suggestions unless they fit the piece.
 
 Her videos so far:
