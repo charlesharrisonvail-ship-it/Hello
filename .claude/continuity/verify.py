@@ -161,6 +161,13 @@ def main():
     chk(rc2 == 0 and "budget" in out2,
         "budget check still reports after banking")
 
+    # put STATE.md back -- the probes are test residue, not banked work
+    if before:
+        with open(STATE, "w", encoding="utf-8") as fh:
+            fh.write(before)
+    elif os.path.exists(STATE):
+        os.remove(STATE)
+
     # 9 -- recall finds by description only
     mem = os.path.join(CLAUDE, "memory")
     os.makedirs(mem, exist_ok=True)
