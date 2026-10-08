@@ -8,6 +8,12 @@ Continuity is merged to `main` (PRs #10, #18). EpiVail and AiRE Estate are kept
 separate, each with its own signature. The AiRE Estate referral links are all
 labeled (#19), and Lead to Keys' stale module numbers are corrected. `CONTINUITY: PASS`.
 
+Open Generative AI (Anil Matcha's studio) has free Windows setup notes in
+`tools/open-generative-ai/` (#24). Its Cinema Studio tab needs a paid key, so the
+notes use the free local Image Studio plus Cinema Studio's camera wording. Charles
+pays for no AI tools (`recall.py paid`). #24 also stopped `verify.py` leaving test
+entries in this file.
+
 ## Open question for Charles
 
 The agents say "powered by Epique X"; some skills say "EpiqueAI". `CLAUDE.md` does
@@ -20,3 +26,5 @@ not rule on it, so ask rather than pick.
    a rule; the limit is per hook entry, not per session
 2. When a rule changes in `CLAUDE.md`, change it in `DECISIONS.md` and the memory
    index too, or a future session acts on the old one with full confidence
+3. Charles hasn't installed Open Generative AI yet; the notes are untested on
+   Windows. Fix them with whatever he hits
