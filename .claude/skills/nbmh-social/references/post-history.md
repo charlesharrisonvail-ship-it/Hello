@@ -23,6 +23,7 @@ The point is not the record; it is making sure today is genuinely different.
 | 2026-10-05 | Anxiety and stress education | Clean educational layout with cool palette — structured background zones in greens and grays, organized typography. Calm, grounded. | Clarity Through Calm (published) |
 | 2026-10-06 | Depression and mood education | Higgsfield golden hour Colorado mountain forest photography — warm light through tall pine trees, layered forest depth, snow-capped peaks, natural beauty. Real imagery suggesting hope and recovery. | Light in the Dark (published) |
 | 2026-10-07 | Sleep routine and insomnia education | Minimalist night composition — deep navy/charcoal gradient, subtle stellar imagery and moon accent, clean typography, generous whitespace. Calming palette distinct from recent warm tones. | Rest Begins With Understanding (published) |
+| 2026-10-08 | Insurance and telehealth access | Photo: bull elk in a golden aspen meadow, snow-dusted peaks, blue sky (wildlife, autumn gold). templates/photo.html. | Care Within Reach (published) |
 
 ## Rejected directions — do not return to these
 
