@@ -12,6 +12,9 @@ the `epivail-brand-system` skill (navy `#0a1628`, gold `#c9a84c`, cream
 page. Charles tried a white version, a coral version and a black-and-gold
 version on 2026-10-08 and turned them all down. He wants his navy and gold.
 
+**PDFs are landscape** (11 x 8.5), laid out like a presentation with one
+section per page and large type. Charles rejected the portrait version.
+
 Sign them:
 
     Charles Harrison, Epique Area/Growth Leader
