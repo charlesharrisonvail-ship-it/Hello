@@ -26,5 +26,6 @@ not rule on it, so ask rather than pick.
    a rule; the limit is per hook entry, not per session
 2. When a rule changes in `CLAUDE.md`, change it in `DECISIONS.md` and the memory
    index too, or a future session acts on the old one with full confidence
-3. Charles hasn't installed Open Generative AI yet; the notes are untested on
-   Windows. Fix them with whatever he hits
+3. Charles installed Open Generative AI v2.0.0 on Windows (hash verified,
+   2026-10-08). Next for him: sd.cpp engine + first local model. Fix the notes
+   with whatever he hits
