@@ -10,3 +10,9 @@ AI ("I'm not paying"); its Cinema Studio needs a paid MuAPI key, so the notes in
 
 If a tool has no free route, say so plainly before setup. Don't steer him toward
 signing up.
+
+The free app runs only on his laptop; a cloud session can't drive it. Anything
+I generate from here (Higgsfield, HeyGen) spends his credits. Say that up front,
+before preparing any generation, and never spend without his "go". Eva Vail is
+a Higgsfield element (`eva-vail`); the free app cannot reproduce her or make
+her talk. (2026-10-08)
