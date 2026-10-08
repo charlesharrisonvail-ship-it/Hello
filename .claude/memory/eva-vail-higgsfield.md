@@ -36,4 +36,10 @@ Decline Higgsfield's preset suggestions unless they fit the piece.
 Her videos so far:
 - Fall mortgage-rates spokesperson (2026-09-30)
 - "Come play a round" golf invitation (2026-10-08), video job
-  `8dd5ee35-468c-4aa4-b7d5-0188a0fdd8ab`
+  `8dd5ee35-468c-4aa4-b7d5-0188a0fdd8ab`; 20-second version `2768fd3e-9234-41f4-8abd-57ae5462e09b`
+- "Ride Vail before the snow falls" mountain-biking invitation (2026-10-08),
+  start frame `cf3d1e4d-1a39-412b-9604-4b9dc04f2a99`, video job
+  `7c3548a2-f3b3-48a7-be9d-a96bb7c60335`
+
+Charles wants a social post drafted for each video (Luxury Resimercial
+audience, AI label, EpiVail byline). He posts them himself.
