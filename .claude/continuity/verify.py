@@ -163,15 +163,11 @@ def main():
             "budget check still reports after banking")
     finally:
         # Put STATE.md back so the probes never land in a commit.
-        with open(STATE, "w", encoding="utf-8") as fh:
-            fh.write(before)
-
-    # put STATE.md back -- the probes are test residue, not banked work
-    if before:
-        with open(STATE, "w", encoding="utf-8") as fh:
-            fh.write(before)
-    elif os.path.exists(STATE):
-        os.remove(STATE)
+        if before:
+            with open(STATE, "w", encoding="utf-8") as fh:
+                fh.write(before)
+        elif os.path.exists(STATE):
+            os.remove(STATE)
 
     # 9 -- recall finds by description only
     mem = os.path.join(CLAUDE, "memory")
