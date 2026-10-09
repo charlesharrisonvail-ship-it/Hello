@@ -6,6 +6,25 @@ This is my first GitHub repository!
 
 I'm learning how to use GitHub and excited to collaborate on projects!
 
-## Claude Code
+## Using Claude Code with this repo
 
-This repository is set up for use with [Claude Code](https://claude.ai/code). A `SessionStart` hook is configured in `.claude/settings.json` that runs automatically when starting a remote session.
+This repo holds my Claude Code agents, skills, and settings (see `.claude/`).
+
+**On your own computer** (needs Node.js 18+):
+
+```bash
+npm install -g @anthropic-ai/claude-code@latest
+cd Hello
+claude
+```
+
+The first run signs you in with your Claude account. Update later with `claude update`.
+
+**In the browser:** open [claude.ai/code](https://claude.ai/code) and pick this repository.
+Nothing needs installing there.
+
+## Tech Stack & Languages
+
+- **Version Control:** Git / GitHub
+- **Languages:** Markdown, Python, HTML/CSS
+- **Tools:** Claude Code, GitHub Pages

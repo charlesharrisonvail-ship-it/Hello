@@ -1,11 +1,52 @@
 {
+  "extraKnownMarketplaces": {
+    "superpowers-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "obra/superpowers-marketplace"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "superpowers@superpowers-marketplace": true
+  },
   "hooks": {
     "SessionStart": [
       {
+        "matcher": "startup|compact|clear",
         "hooks": [
           {
             "type": "command",
-            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/session-start.sh"
+            "command": "python3 .claude/continuity/identity.py || python .claude/continuity/identity.py"
+          }
+        ]
+      },
+      {
+        "matcher": "startup|compact|clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .claude/continuity/session_start.py || python .claude/continuity/session_start.py"
+          }
+        ]
+      },
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/session-start.sh"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .claude/continuity/pre_compact.py || python .claude/continuity/pre_compact.py"
           }
         ]
       }
