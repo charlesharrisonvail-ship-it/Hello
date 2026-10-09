@@ -6,7 +6,7 @@ lets you pick a camera, lens, focal length and aperture for a shot.
 
 Targets **Windows** (ThinkPad). This directory holds **notes only** — the app's
 source is not vendored here. Written against upstream commit `00132ec`
-(2026-10-07).
+(2026-10-07); Charles installed **v2.0.0** on 2026-10-08.
 
 ## Read this first: what is free and what is not
 
@@ -34,11 +34,26 @@ or enter a card.
 ## Install (Windows)
 
 1. Open the [Releases page](https://github.com/Anil-matcha/Open-Generative-AI/releases)
-   and download the newest **Windows `Setup … .exe`** (v1.0.9 at the time of
-   writing).
-2. Run it. Windows SmartScreen will warn that the installer is not code-signed:
+   and download the newest **Windows `Setup … .exe`** (v2.0.0 at the time of
+   writing: `Open.Generative.AI.Setup.2.0.0.exe`, 128 MB).
+2. **Check it is the real file** (optional, takes a second). Open PowerShell and
+   paste this — it works from any folder, including `C:\Windows\System32`:
+
+   ```powershell
+   Get-FileHash "$env:USERPROFILE\Downloads\Open*Setup*2.0.0.exe"
+   ```
+
+   The **Hash** must match the `sha256:` shown next to the file on the Releases
+   page (click **Assets** to see it). For v2.0.0 that is
+   `B6484B94667DFA70B1E96AD163F39890AE60B22955F2B82C909872CA27371FBF`
+   (PowerShell prints capitals; case doesn't matter). A newer version has a
+   different hash — compare against its own Releases entry. If PowerShell says
+   *cannot find path*, the file is not in Downloads; find it with
+   `Get-ChildItem $env:USERPROFILE -Recurse -Filter "*Setup*.exe" -ErrorAction SilentlyContinue | Get-FileHash`.
+   PowerShell does not need to be run as Administrator for any of this.
+3. Run it. Windows SmartScreen will warn that the installer is not code-signed:
    click **More info**, then **Run anyway**.
-3. It installs silently to `%LocalAppData%` and adds a Start Menu shortcut,
+4. It installs silently to `%LocalAppData%` and adds a Start Menu shortcut,
    **Open Generative AI**.
 
 No Node.js, Python or Git is needed for this route.
@@ -53,8 +68,14 @@ No Node.js, Python or Git is needed for this route.
    - **Dreamshaper 8** — 2.1 GB, lighter and more general.
    - Skip **SDXL** (6.9 GB) and the **Z-Image** models (5–6 GB plus heavy
      memory) unless the laptop has lots of RAM and a real graphics card.
-4. Go to **Image Studio**, click the **⚡ Local** toggle next to the model
-   picker, choose the model, and generate.
+4. Go to **Image Studio**. Under the prompt box, the first button reads
+   **☁ API** and the model button next to it shows a paid cloud model (e.g.
+   **Nano Banana**). Click **☁ API** once — it turns into **⚡ Local** and the
+   model button switches to a local model. Pick the one you downloaded, type a
+   prompt, and click **Generate**.
+
+   **Never press Generate while the button says ☁ API.** That sends the job to
+   MuAPI's paid models and asks for a key.
 
 Expect it to be slow. On a laptop without a separate graphics card, `sd.cpp`
 runs on the CPU, so one image can take minutes rather than seconds. Smaller
