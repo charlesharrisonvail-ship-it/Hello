@@ -21,11 +21,13 @@ and the site is plain HTML.
   - `linkedin-content.md` — LinkedIn posts, content calendars, and carousel/Reel concepts
   - `lofty-crm.md` — Lofty contacts, tiers, tags, recruit pipeline stages, and follow-up tasks
 - `.claude/skills/linkedin-optimizer/` — LinkedIn analytics and profile optimization
+- `.claude/skills/` also holds five general skills from ComposioHQ/awesome-claude-skills (commit `be2a406`, Apache-2.0): `lead-research-assistant`, `content-research-writer`, `competitive-ads-extractor`, `meeting-insights-analyzer`, `domain-name-brainstormer`. They are third-party and brand-neutral; EpiVail and AiRE Estate rules in this file still govern anything they produce.
 - `.claude/settings.json` — project settings; enables the Superpowers plugin and registers the Continuity session-orientation hooks
 - `.claude/continuity/` — the Continuity kit that loads `ROLE.md`, `PROJECT.md`, `DECISIONS.md`, and `STATE.md` at every session start
 - `.claude/memory/` — one fact per file, searched with `python3 .claude/continuity/recall.py <terms>`
 - `docs/` — the AiRE Estate site (public; carries pricing, refund terms, privacy, and terms of service)
 - `tools/jarvis/` — Windows setup script and notes for installing Jarvis (third-party local voice assistant); source is not vendored
+- `tools/open-generative-ai/` — free Windows setup notes for Open Generative AI (Anil Matcha's AI image/video studio with Cinema Studio); local models only, no paid MuAPI key; source is not vendored
 - `is-this-for-you-script.md` — script for the Lead to Keys screening video
 
 ## Conventions

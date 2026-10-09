@@ -46,9 +46,15 @@ Privacy and terms are dated September 25, 2026.
   without Charles, and assume a merge to `main` publishes.
 - Do not give away the course method on public pages (commit 8eace3d removed a
   demo that exposed a whole module). Show the proof, not the verbatim prompt.
-- Referral links carry a visible "(referral link)" label where they appear, as the
-  terms promise. **Today two of the four Higgsfield links do not** (`docs/index.html`
-  lines 627 and 878; the other two do). Flagged to Charles, not yet changed.
+- Referral links carry a visible "(referral link)" label right after the link, as
+  the terms promise. All four Higgsfield links in `docs/index.html` do (two were
+  missing it until the label fix). Keep it that way for any link added.
+- **Always say which course a "Module N" is.** Both have a Module Three and Four.
+  Part One has modules 01-08 (Module Four is the drone lesson). Part Two, Lead to
+  Keys, has 01-07, renumbered from 08-14, which left stale "Ten and Eleven" and
+  "Thirteen and Fourteen" text on three pages until it was fixed. Prose spells the
+  number out ("Modules Three and Four"); card labels use digits ("Module 03").
+  Check every spelled-out module word against that map when editing course copy.
 
 ## Settled by Charles (2026-10-04)
 

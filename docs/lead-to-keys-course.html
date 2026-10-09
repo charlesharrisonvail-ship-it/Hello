@@ -309,18 +309,10 @@ button{font:inherit;color:inherit;cursor:pointer}
      YouTube (unlisted), Vimeo, or a direct .mp4 link all work.
      Leave a line as "" until that module's video is hosted.
      ============================================================ */
-  var VIDEOS = {
- "2": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DQPFQB5knVKdCtoFjiflsBSNkk/93c83d1f-c4be-4058-9a9d-198a6745a003.mp4",
- "3": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DQPFQB5knVKdCtoFjiflsBSNkk/3ff0d4a1-7e5a-49b5-b7e9-d420adbfca04.mp4",
- "4": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DQPFQB5knVKdCtoFjiflsBSNkk/2e866d81-588a-46fd-9748-2f86f9397db0.mp4",
- "5": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DQPFQB5knVKdCtoFjiflsBSNkk/757737d3-0c20-4ee4-834b-55ae48b8d280.mp4",
- "6": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DQPFQB5knVKdCtoFjiflsBSNkk/e4eded4c-d484-44a2-bcc3-0bed71e5992c.mp4",
- "7": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DQPFQB5knVKdCtoFjiflsBSNkk/a9f7406c-1a05-4bec-ae3d-06d5752b5e51.mp4",
- "8": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DQPFQB5knVKdCtoFjiflsBSNkk/38e578dd-5044-4835-a8a6-2ffa08264180.mp4",
- "9": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DQPFQB5knVKdCtoFjiflsBSNkk/ff60bea8-29aa-4970-90a4-d898f8bebb40.mp4",
- "10": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DQPFQB5knVKdCtoFjiflsBSNkk/b2151b84-3ffd-4192-85f3-82a55eba2af0.mp4",
- "1": "media/l2k-module-1.mp4"
-};
+  /* Lesson video links, locked with the course access code. */
+  var VIDEOS = {};
+  var PASS = '';
+  var VPAYLOAD = {"salt":"wdIaj6lQt53ox18rZ+h45Q==","iv":"Bx4z7MeyuU8061Ox","ct":"EgQkQnG/2SX6H6LQtsgoYNdnS7t94kB4mWWn+HYCzOi6bcGht3P3pCLIl2vVEsfFC6R1OnnybT2XeIEjHsAtCj0QXMeUZbJ1M6hFPkwz/sz2AJj+eqJWl4rsz6AltfP8/T+aec4ZviY0OzK5ToEYQEXGqL+J56rUQFZc3b/gm1CqENPKL7dmnNYci7I1ceuxnYswtAWy/8EhQ8YKXItJZgxevsx9zvCjB7UFUqcEfYKpt13ISBuYofSoPiLyKwv4GGfoakvWAa+yqOYxkj+PvcHW/TZFzZM4C1Xy8329iqaAo7GvYs3DgFZmMQUe0s6L9nd0HHGv5xM0NQhCS+ibLUsqQghlnDsq/BylGVSwspnPJyw74rZDdVW0WmNiFnUyJ4cLAsdv0AJujVJZNIwlL1EFQDxwq/lP8ctM0D4tZvz1tbh+SxO5oOAoMvc7G7Nhmj7UG11pcx4B25RnXKXyteYoGUNIllUiFa9Bau3Ouvdu1/JOAqAqkE1T8AigoBv2Hg1h8IqPhv8B6H1Lz/XWH6S6Bgy1o72e6wLf//31Wvju2W9Ma+Yy7xfkQ00Y+02BWquPEbuXWUaBF4SuWuyGneLzefwm7QRZY34Qyv+8NfjXFT+TQEF6ZTQqUIpLSs4AWuUr0Vu3JswjKj4juk++LJXgu36/7yi7shOyua9nVoDL+j/enrrFf2CZCZd4ZRX/Wb4Gxew2fuNPYYQo/awCWqkRrAkY5lACYk27jSUx72xkcZrThPoMQCcTDdTJAmRwlQNw6nIZ+chSxSks3VRExmaCVLDEekANP06Is2Bz//8bzNLH5uBe8d3t1Q3IFviorpsAFv7bbUk9BAuAicQJQTNTpNCKFvkXCCkwl3kRSa4Az/wjvva7dCpIIcsL7hkE+NosUwZcK5NMnk0fl/a0nAH2hNw0xCTUjIZ4N74jQVIITvJn60KCiNTJL3gYeFAY69gIiySjPMa4C3dRXDsP70ZBgkrvWATU4P6h1tKxWO4qs0c/WKpsF7aUzOqKYO+RaSsN9ItHck4Ck0O7Q5jxIP6croBNB9vfuHPeLK7KFG5gEc3FFxquyI4gIEeP83U5UmOzjsXqI6s3oGO4RdaSU7Z8surtziyM/Dy+1I2VlLyfm+v9rElV0Ch5F+BdOaSyzyow8hZHRIJ4oth1x51SFAihn+Qr1KuooPu3XCmg56qYjfNLX1EtO6s4gVS17VBMKqlvWRmZy4G7AOKNYSJ1EPrUQj3E1xan7pqoSuCZnAARQPQbCs9egrLiZz7sKaYxPyGPlEhvsK4BgYRbC/aiq+bxMcv1v7IOOEMjBhiulkNZ6LzoLn5R/+LwkoNyuBa2K9+0AGU1WXyB44kM3whplU9NEL/iKfi+UZKZnDUF652jvx12HE5SVITEBJD2CQER/WO4+p7hNYw66Flj2GHITVa2jGGeuLBaJXl6l2iXuO7u9U3MaIjvyWmhLsHO0Y0RBjYk"};
 
   /* Public URL of the certification / quiz page. Leave "" to grey the button out. */
   var CERT_URL = "lead-to-keys-certification.html";
@@ -339,22 +331,33 @@ button{font:inherit;color:inherit;cursor:pointer}
   function b2a(b64){ var s=atob(b64), u=new Uint8Array(s.length);
     for(var i=0;i<s.length;i++) u[i]=s.charCodeAt(i); return u; }
 
-  function decrypt(pass){
+  function decrypt(pass,P){
+    P=P||PAYLOAD;
     if(!window.crypto||!crypto.subtle) return Promise.reject(new Error('insecure'));
     var enc=new TextEncoder();
     return crypto.subtle.importKey('raw',enc.encode(pass),'PBKDF2',false,['deriveKey'])
       .then(function(base){
         return crypto.subtle.deriveKey(
-          {name:'PBKDF2',salt:b2a(PAYLOAD.salt),iterations:250000,hash:'SHA-256'},
+          {name:'PBKDF2',salt:b2a(P.salt),iterations:250000,hash:'SHA-256'},
           base,{name:'AES-GCM',length:256},false,['decrypt']);
       })
       .then(function(key){
-        return crypto.subtle.decrypt({name:'AES-GCM',iv:b2a(PAYLOAD.iv)},key,b2a(PAYLOAD.ct));
+        return crypto.subtle.decrypt({name:'AES-GCM',iv:b2a(P.iv)},key,b2a(P.ct));
       })
       .then(function(buf){ return new TextDecoder().decode(buf); });
   }
 
   /* ---------- video ---------- */
+  function loadLocked(v,path){
+    fetch(path).then(function(r){ return r.arrayBuffer(); }).then(function(ab){
+      var u=new Uint8Array(ab);
+      return crypto.subtle.importKey('raw',new TextEncoder().encode(PASS),'PBKDF2',false,['deriveKey'])
+        .then(function(base){ return crypto.subtle.deriveKey({name:'PBKDF2',salt:u.slice(0,16),iterations:250000,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']); })
+        .then(function(k){ return crypto.subtle.decrypt({name:'AES-GCM',iv:u.slice(16,28)},k,u.slice(28)); });
+    }).then(function(buf){ v.src=URL.createObjectURL(new Blob([buf],{type:'video/mp4'})); })
+      .catch(function(){ v.insertAdjacentHTML('afterend','<p>This video did not load. Refresh the page, or email hello@aireestate.com.</p>'); });
+  }
+
   function videoNode(url){
     var w=document.createElement('div'); w.className='vwrap';
     var yt=url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
@@ -368,7 +371,8 @@ button{font:inherit;color:inherit;cursor:pointer}
       w.appendChild(f);
     } else {
       var v=document.createElement('video');
-      v.src=url; v.controls=true; v.preload='metadata'; v.playsInline=true;
+      if(url.indexOf('enc:')===0){ loadLocked(v,url.slice(4)); } else { v.src=url; }
+      v.controls=true; v.preload='metadata'; v.playsInline=true;
       w.appendChild(v);
     }
     return w;
@@ -512,7 +516,9 @@ button{font:inherit;color:inherit;cursor:pointer}
     gerr.textContent='';
     var btn=gform.querySelector('button');
     btn.textContent='Unlocking…';
-    return decrypt(String(code||'').trim().toUpperCase()).then(function(htmlStr){
+    var pass=String(code||'').trim().toUpperCase();
+    return Promise.all([decrypt(pass),decrypt(pass,VPAYLOAD)]).then(function(r){
+      var htmlStr=r[0]; VIDEOS=JSON.parse(r[1]); PASS=pass;
       try{ sessionStorage.setItem('aire-k2',String(code).trim().toUpperCase()); }catch(e){}
       mount(htmlStr);
     }).catch(function(err){
