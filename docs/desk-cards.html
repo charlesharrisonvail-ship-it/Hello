@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>AiRE Desk Cards</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Mono:wght@500;600&family=Manrope:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ink:#04070d; --panel:#080e18; --panel3:#0e1726; --edge:#17233a; --edge2:#22314c;
+  --sig:#38bdf8; --sig-hi:#7dd3fc; --rec:#ff453a;
+  --head:#f4f8fd; --body:#c3d2e4; --slate:#8aa0bd;
+  --wm:'Archivo',system-ui,sans-serif; --bd:'Manrope',system-ui,sans-serif;
+  --mn:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--body);font-family:var(--bd);font-size:16px;line-height:1.5}
+a{color:var(--sig)}
+.lk{font-family:var(--wm);font-weight:700;letter-spacing:-.05em;font-size:1.25rem;color:var(--head);white-space:nowrap}
+.lk .dl{position:relative;display:inline-block}
+.lk .dl svg{position:absolute;left:50%;transform:translateX(-50%);bottom:.84em}
+.lk .re{color:var(--sig)}
+.lk .est{margin-left:.24em;font-weight:500;letter-spacing:-.025em;color:var(--slate)}
+#gate{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 16px}
+.gbox{width:100%;max-width:460px;background:var(--panel);border:1px solid var(--edge);border-radius:14px;padding:30px 26px}
+.gtag{font-family:var(--mn);font-size:.72rem;letter-spacing:.17em;text-transform:uppercase;color:var(--sig-hi);margin:18px 0 8px}
+h1{font-family:var(--wm);font-weight:800;letter-spacing:-.045em;line-height:1;color:var(--head);font-size:2rem;margin:0 0 10px}
+.gl{margin:0 0 18px;color:var(--slate)}
+.gf{display:flex;flex-direction:column;gap:10px}
+.gf input{font-family:var(--mn);font-size:1rem;letter-spacing:.12em;padding:14px;border-radius:8px;border:1px solid var(--edge2);background:var(--panel3);color:var(--head);min-height:48px}
+.gf button,.dl-btn{font-family:var(--mn);font-weight:600;font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;padding:15px 18px;border:0;border-radius:8px;background:var(--sig);color:#03060d;cursor:pointer;min-height:48px;text-decoration:none;display:inline-block;text-align:center}
+.gerr{min-height:1.4em;color:var(--rec);font-size:.92rem}
+#app{display:none;max-width:1180px;margin:0 auto;padding:22px 16px 60px}
+.top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+.top .sp{flex:1}
+.top a.back{font-family:var(--mn);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);text-decoration:none;border:1px solid var(--edge2);border-radius:7px;padding:10px 14px}
+.intro{max-width:720px;margin:0 0 28px}
+.intro h1{font-size:clamp(2rem,6vw,3.2rem)}
+.intro h1 em{font-style:normal;color:var(--sig)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.card{background:var(--panel);border:1px solid var(--edge);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:10px}
+.card img{width:100%;height:auto;border-radius:8px;display:block;background:#fff}
+.card .n{font-family:var(--mn);font-size:.7rem;letter-spacing:.15em;color:var(--sig-hi)}
+.card .t{font-family:var(--wm);font-weight:700;color:var(--head);font-size:1.05rem;letter-spacing:-.02em}
+.card .dl-btn{padding:12px 14px;font-size:.7rem}
+.note{margin-top:34px;padding-top:18px;border-top:1px solid var(--edge);color:var(--slate);font-size:.9rem;max-width:760px}
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="gbox">
+    <span class="lk" id="glk"></span>
+    <div class="gtag">Course bonus</div>
+    <h1>AiRE Desk Cards</h1>
+    <p class="gl">Enter the access code from either course receipt. It is not case sensitive.</p>
+    <form class="gf" id="gform" autocomplete="off">
+      <label for="gin" style="position:absolute;left:-9999px">Access code</label>
+      <input id="gin" type="text" placeholder="ACCESS CODE" autocapitalize="characters" spellcheck="false">
+      <button type="submit" id="gbtn">Unlock the cards</button>
+      <div class="gerr" id="gerr" role="status" aria-live="polite"></div>
+    </form>
+    <p class="gl" style="margin:14px 0 0;font-size:.9rem"><b>Lost your code?</b> Reply to your receipt email and it will be resent.</p>
+  </div>
+</div>
+
+<div id="app">
+  <div class="top">
+    <span class="lk" id="nlk"></span>
+    <span class="sp"></span>
+    <a class="back" href="course.html">Part One</a>
+    <a class="back" href="lead-to-keys-course.html">Lead to Keys</a>
+  </div>
+  <div class="intro">
+    <div class="gtag" style="margin-top:0">Course bonus &middot; 13 cards</div>
+    <h1>The AiRE <em>Desk Cards</em></h1>
+    <p>Thirteen one-page graphics on turning AI into working habits at your desk. Save them, print them, or keep them on your phone. Each one stands on its own.</p>
+  </div>
+  <div class="grid" id="grid"></div>
+  <p class="note">These cards are licensed to the purchaser for their own use, the same as the course. Please do not post or redistribute them. They are general education, not legal advice: check your brokerage&rsquo;s and your state&rsquo;s rules on advertising, fair housing, texting and AI disclosure before you act on them. The icons on the cards are AI-generated.</p>
+</div>
+
+<script>
+(function(){
+  var MARK='A<span class="dl">&#305;<svg width="0.44em" height="0.44em" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="34" fill="none" stroke="#38bdf8" stroke-width="17" stroke-linecap="round" stroke-dasharray="160 54" transform="rotate(-38 50 50)"/><circle cx="50" cy="50" r="15" fill="#38bdf8"/></svg></span><span class="re">RE</span><span class="est">Estate</span>';
+  document.getElementById('glk').innerHTML=MARK;
+  document.getElementById('nlk').innerHTML=MARK;
+
+  /* One locked file per course. Each holds the same 13 cards, locked with that course's access code. */
+  var FILES=['media/desk-cards-1.bin','media/desk-cards-2.bin'];
+  var TITLES=['Desk Workflow','Toolbox','Which Extension','Skills vs Files','Plain Asks','First Agent','Five Drawers','Weekend Builds','Video Channel','Website That Moves','Lead to Keys','Three Assistants','Ten Days'];
+  var SLUGS=['desk-workflow','toolbox','which-extension','skills-vs-files','plain-asks','first-agent','five-drawers','weekend-builds','video-channel','website-that-moves','lead-to-keys','three-assistants','ten-days'];
+  var cache={};
+
+  function load(path){
+    if(cache[path]) return cache[path];
+    cache[path]=fetch(path,{cache:'no-cache'}).then(function(r){ if(!r.ok) throw new Error('missing'); return r.arrayBuffer(); });
+    return cache[path];
+  }
+  /* File layout: 16 bytes salt, 12 bytes iv, then AES-GCM ciphertext.
+     Same key derivation as the course pages. */
+  function open(pass,buf){
+    var u=new Uint8Array(buf), enc=new TextEncoder();
+    return crypto.subtle.importKey('raw',enc.encode(pass),'PBKDF2',false,['deriveKey'])
+      .then(function(base){
+        return crypto.subtle.deriveKey({name:'PBKDF2',salt:u.slice(0,16),iterations:250000,hash:'SHA-256'},
+          base,{name:'AES-GCM',length:256},false,['decrypt']); })
+      .then(function(key){ return crypto.subtle.decrypt({name:'AES-GCM',iv:u.slice(16,28)},key,u.slice(28)); });
+  }
+  /* Unlocked layout: 4-byte count, then for each card a 4-byte length and the JPEG bytes. */
+  function unpack(buf){
+    var dv=new DataView(buf), n=dv.getUint32(0), p=4, out=[];
+    for(var i=0;i<n;i++){ var len=dv.getUint32(p); p+=4; out.push(new Blob([buf.slice(p,p+len)],{type:'image/jpeg'})); p+=len; }
+    return out;
+  }
+  function tryFiles(pass,i,missing){
+    if(i>=FILES.length) return Promise.reject(new Error(missing===FILES.length?'missing':'bad'));
+    return load(FILES[i]).then(function(buf){ return open(pass,buf); })
+      .then(unpack, function(e){ return tryFiles(pass,i+1,missing+(e&&e.message==='missing'?1:0)); });
+  }
+  function show(blobs){
+    var g=document.getElementById('grid'); g.textContent='';
+    blobs.forEach(function(b,i){
+      var url=URL.createObjectURL(b), num=(i<9?'0':'')+(i+1), name=TITLES[i]||('Card '+num);
+      var c=document.createElement('div'); c.className='card';
+      var im=document.createElement('img'); im.src=url; im.alt='AiRE Desk Card '+num+': '+name; im.loading='lazy';
+      var n=document.createElement('div'); n.className='n'; n.textContent='CARD '+num;
+      var t=document.createElement('div'); t.className='t'; t.textContent=name;
+      var a=document.createElement('a'); a.className='dl-btn'; a.href=url; a.download='aire-desk-card-'+num+'-'+(SLUGS[i]||'card')+'.jpg'; a.textContent='Download';
+      c.appendChild(im); c.appendChild(n); c.appendChild(t); c.appendChild(a); g.appendChild(c);
+    });
+    document.getElementById('gate').style.display='none';
+    document.getElementById('app').style.display='block';
+  }
+
+  var gerr=document.getElementById('gerr'), btn=document.getElementById('gbtn');
+  function attempt(code,quiet){
+    var pass=String(code||'').trim().toUpperCase();
+    if(!pass) return Promise.resolve(false);
+    if(!window.crypto||!crypto.subtle){ if(!quiet) gerr.textContent='This page must be opened over https to unlock.'; return Promise.resolve(false); }
+    btn.disabled=true; btn.textContent='Unlocking…'; gerr.textContent='';
+    return tryFiles(pass,0,0).then(function(blobs){ show(blobs); return true; }, function(e){
+      btn.disabled=false; btn.textContent='Unlock the cards';
+      if(!quiet) gerr.textContent = e&&e.message==='missing'
+        ? 'The cards are not posted yet. Email hello@aireestate.com if this continues.'
+        : 'That code did not work. Check your purchase confirmation, or email hello@aireestate.com.';
+      return false;
+    });
+  }
+  document.getElementById('gform').addEventListener('submit',function(e){ e.preventDefault(); attempt(document.getElementById('gin').value,false); });
+
+  /* Auto-unlock with a code already entered on either course page in this browser tab. */
+  var known=[];
+  try{ ['aire-k','aire-k2'].forEach(function(k){ var v=sessionStorage.getItem(k); if(v) known.push(v); }); }catch(e){}
+  (function next(i){ if(i<known.length) attempt(known[i],true).then(function(ok){ if(!ok) next(i+1); }); })(0);
+})();
+</script>
+</body>
+</html>
