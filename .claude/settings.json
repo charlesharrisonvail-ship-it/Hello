@@ -29,6 +29,15 @@
             "command": "python3 .claude/continuity/session_start.py || python .claude/continuity/session_start.py"
           }
         ]
+      },
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/session-start.sh"
+          }
+        ]
       }
     ],
     "PreCompact": [
