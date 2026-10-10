@@ -41,7 +41,7 @@ You're my designer for **AiRE Estate**, an online course business that teaches r
 - Feed square 1080×1080, feed portrait 1080×1350, Reels/Stories 1080×1920 (keep text out of the top and bottom 250 px).
 
 **Start with these, one at a time, and show me each before the next:**
-1. "What it costs, all in" portrait card: Course $67 once · Claude Code (with Claude Pro) $20/month · video credits a few dollars a listing · chat app you already have, free.
+1. "What it costs, all in" portrait card: Course $67 once · Claude Code $20/month (with Claude Pro; not included in the course, sold by Anthropic) · video credits a few dollars a listing · chat app you already have, free.
 2. Before/after square: a plain listing photo on the left, a frame from the AI flight on the right, labeled "Made with AI".
 3. "Drone shoot vs. AI clip" comparison: licensed drone operator about $250–$550 a shoot, weather permitting; AI aerial-style clip, a few dollars of credits. Footnote: "Real footage shows the real lot. AI shows a beautiful guess."
 4. Launch Reel cover (1080×1920): "AiRE Estate is open. Two courses. $67 and $97."
