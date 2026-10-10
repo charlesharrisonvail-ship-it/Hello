@@ -257,6 +257,7 @@ button{font:inherit;color:inherit;cursor:pointer}
   .tx .rd{background:none;box-shadow:none}
   .foot{border-top:1px solid #ccc;color:#555}
 }
+.how{border:1px solid var(--edge2);border-left:3px solid var(--sig);border-radius:10px;padding:16px 18px;margin:0 0 22px;background:var(--panel)}.how h4{margin:0 0 8px;font-family:var(--wm);font-weight:700;color:var(--head);font-size:1.02rem}.how ul{margin:0;padding-left:1.1em}.how li{margin:5px 0;font-size:.93rem;line-height:1.55;color:var(--body)}.how a{color:var(--sig)}@media print{.how{display:none}}
 </style>
 </head>
 <body>
@@ -266,7 +267,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     <span class="lk" id="glk"></span>
     <div class="gtag"><i></i>Course access</div>
     <h1>Enter your access code</h1>
-    <p class="gl">The code came with your purchase receipt. It is not case sensitive.</p>
+    <p class="gl">Your code was shown on the confirmation page right after you paid. It is not case sensitive. Once you unlock, this browser remembers it.</p>
     <form class="gf" id="gform" autocomplete="off">
       <input id="gin" type="text" placeholder="ACCESS CODE" aria-label="Access code"
              autocapitalize="characters" spellcheck="false">
@@ -274,8 +275,7 @@ button{font:inherit;color:inherit;cursor:pointer}
       <div class="gerr" id="gerr" role="status" aria-live="polite"></div>
     </form>
     <div class="ghelp">
-      <p><b>Lost your code?</b> Reply to your receipt email and it will be resent to the
-      address the order was placed from.</p>
+      <p><b>Lost your code?</b> Email hello@aireestate.com from the address you bought with, and it will be sent back to you.</p>
     </div>
   </div>
 </div>
@@ -459,6 +459,8 @@ button{font:inherit;color:inherit;cursor:pointer}
     var tmp=document.createElement('div'); tmp.innerHTML=htmlStr;
     document.getElementById('railmount').appendChild(tmp.querySelector('#navlist'));
     var mods=tmp.querySelector('#mods');
+    var how=document.createElement('div'); how.className='how'; how.innerHTML='<h4>How this course works</h4><ul><li><b>You read every lesson right here on this page.</b> Nothing downloads into Claude, and nothing is added to a Claude Project.</li><li><b>Claude is where you do the steps.</b> Part One is built in Claude Code. Claude Code is a separate program from the Claude chat app, so having the chat app is not the same as having Claude Code. <a href=\'install-claude-code.html\'>The free install lesson</a> sets it up.</li><li><b>Coming back later:</b> bookmark this page. This browser remembers your access code until you press Lock.</li></ul>';
+    document.getElementById('main').appendChild(how);
     document.getElementById('main').appendChild(mods);
 
     /* certificate panel */
@@ -513,6 +515,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     return Promise.all([decrypt(pass),decrypt(pass,VPAYLOAD)]).then(function(r){
       var htmlStr=r[0]; VIDEOS=JSON.parse(r[1]);
       try{ sessionStorage.setItem('aire-k',String(code).trim().toUpperCase()); }catch(e){}
+      try{ localStorage.setItem('aire-k',String(code).trim().toUpperCase()); }catch(e){}
       mount(htmlStr);
     }).catch(function(err){
       btn.textContent='Unlock the course';
@@ -528,14 +531,16 @@ button{font:inherit;color:inherit;cursor:pointer}
   gform.addEventListener('submit',function(e){ e.preventDefault(); attempt(gin.value,false); });
   document.getElementById('lockbtn').addEventListener('click',function(){
     try{ sessionStorage.removeItem('aire-k'); }catch(e){}
+    try{ localStorage.removeItem('aire-k'); }catch(e){}
     location.reload();
   });
 
   /* auto-unlock: ?k=CODE on the URL (used by the post-payment redirect),
-     or a code already unlocked earlier in this browser tab. */
+     or a code already unlocked earlier in this browser. */
   var q=(location.search.match(/[?&]k=([^&]+)/)||[])[1];
   var remembered=null;
   try{ remembered=sessionStorage.getItem('aire-k'); }catch(e){}
+  if(!remembered){ try{ remembered=localStorage.getItem('aire-k'); }catch(e){} }
   var auto = q ? decodeURIComponent(q) : remembered;
   if(auto){
     attempt(auto,true).then(function(){
