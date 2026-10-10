@@ -36,9 +36,10 @@ The owner role and the email sign-off are his own words. Correct anything wrong.
 
 - **Names:** "AiRE Estate"; its AI instructor and narrator is "AiRE"; the legal
   entity is "AiRE Estate, LLC"; contact is hello@aireestate.com.
-- **Charles here** is its owner and representative, shown on the site as "Charles
-  Harrison, Endorsed Representative & Instructor at AiRE Estate", credentials
-  "RSPS · MRP · AI PRO". The site never mentions Epique or EpiVail; keep it that way.
+- **Charles here** is its owner. **His name is never fronted** on the website,
+  ads, social posts, post images or checkout pictures: say "a licensed, practicing
+  agent (RSPS · MRP · AI PRO)" instead. Inside the course videos it is fine
+  (Charles, 2026-10-10). The site never mentions Epique or EpiVail; keep it that way.
 - **Sign AiRE Estate emails exactly: `AiRE Estate Academy`.** It is not the
   EpiVail signature, and the two are never swapped.
 - **Voice:** plain, numbers first, no hype. Say what it costs and what it is not.
