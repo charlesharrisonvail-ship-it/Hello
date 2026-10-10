@@ -35,12 +35,13 @@ provider type, treatment, diagnosis, statistic, or contact detail.
    `content/nbmh/POSTING_LOG.md`. Pick a topic, objective, SEO target, and — most
    importantly — a visual concept that is genuinely different from recent work.
    Changing the background and the wording is not a new concept.
-2. **Build the graphic — every day is a real, colorful photograph.** Generate it
-   with Higgsfield (see *Imagery* below), save it as
-   `content/nbmh/<date>/photo.jpg`, then copy `templates/photo.html` to
-   `content/nbmh/<date>/build.html` and fill in the `{{...}}` placeholders.
-   The template keeps all text on solid surfaces; never set white text
-   directly on the photo.
+2. **Build the graphic — every day is a real, colorful photograph.** Take the
+   lowest-numbered photo in `content/nbmh/library/` and `git mv` it to
+   `content/nbmh/<date>/photo.jpg` (see *Imagery* below). Copy
+   `templates/photo.html` to `content/nbmh/<date>/build.html` and fill the
+   `{{...}}` placeholders; set `{{CARD_CLASS}}` to `top` when the subject sits
+   low in the frame, otherwise leave it empty. Never set white text directly
+   on the photo.
 3. **Render and check the size:**
    ```
    node .claude/skills/nbmh-social/scripts/render.mjs \
@@ -70,15 +71,17 @@ the week, is a vivid, colorful photograph.** There is no code-only day. Plain
 gradients, typography-only cards, star fields, and abstract shapes have been
 rejected outright; do not fall back to them for any reason, budget included.
 
-Charles encourages free models. Each morning call `mcp__HIGGSFIELD__models_explore`
-(`action: "list"`, `type: "image"`, `unlim: true`). If its `unlim.available` is
-true, generate free with `use_unlim: true` on a listed model that offers 4:5
-(`nano_banana_pro` preferred). Otherwise use `gpt_image_2_5`,
-`aspect_ratio: "4:5"` — the cheapest paid option at 0.25 credits (as of
-2026-10-07 the account had no free allowance). Check
-`mcp__HIGGSFIELD__balance` first. If Higgsfield is unavailable or out of
-credits, say so at the top of the report and do not publish a text-only card
-in its place.
+**Higgsfield is for EpiVail only — never use it for New Beginnings** (Charles,
+2026-10-10). New Beginnings photos come from the free, open-source
+**Z-Image Turbo** model, the one in Charles's Open Generative AI app.
+
+Photos are **pre-made 30 at a time** into `content/nbmh/library/` with
+`scripts/make-library.py` (subjects in `scripts/library-prompts.txt`). Set the
+model up on a fresh machine with `scripts/setup-free-model.sh <dir>`. On this
+cloud server (4 CPUs, no GPU) one photo takes about 57 minutes, so refill the
+library in the background whenever it drops below 10. If the library is ever
+empty on a posting morning, generate one photo with the same script before
+posting and say so in the report; never fall back to Higgsfield or a text card.
 
 Prompt for a photorealistic, saturated, sunlit image, and leave the lower third
 calm enough to sit under the text card. No people, faces, or hands. The

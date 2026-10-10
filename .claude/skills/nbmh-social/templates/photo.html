@@ -23,6 +23,8 @@
   border-radius: 10px; padding: 44px 52px 40px;
   box-shadow: 0 18px 50px rgba(0,0,0,.28);
 }
+/* Card class "top" when the photo's subject sits low, so the card fills the empty sky instead. */
+.card.top { top: 196px; bottom: auto; }
 .card .eyebrow { display: block; color: var(--pine); font-size: 18px; margin-bottom: 16px; }
 .card .headline { font-size: 66px; color: var(--forest); }
 .card .rule { margin: 26px 0 20px; }
@@ -44,7 +46,7 @@
   </div>
   <div class="datestamp">{{DATESTAMP}}</div>
 
-  <div class="card">
+  <div class="card {{CARD_CLASS}}">
     <span class="eyebrow">{{EYEBROW}}</span>
     <h1 class="headline">{{HEADLINE}}</h1>
     <div class="rule"></div>
