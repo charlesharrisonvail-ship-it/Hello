@@ -29,3 +29,9 @@ not rule on it, so ask rather than pick.
 3. Charles installed Open Generative AI v2.0.0 on Windows (hash verified,
    2026-10-08). Next for him: sd.cpp engine + first local model. Fix the notes
    with whatever he hits
+
+## Working thread (auto-banked)
+
+### banked 2026-10-10 18:54
+(compaction point -- the thread above this line was summarised; anything not written down here is gone)
+
