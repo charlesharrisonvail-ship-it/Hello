@@ -3,6 +3,9 @@ name: two-audiences
 description: Charles's two content audiences and the rule that one piece never addresses both
 ---
 
+**EpiVail content only** - AiRE Estate is a separate business with its own
+audience, not covered here.
+
 1. **Primary - agent attraction.** Real estate agents nationally and
    internationally who might join Epique Realty. Angle: transparent economics,
    AI-forward tools, mountain-market lifestyle, the Epique X toolset.

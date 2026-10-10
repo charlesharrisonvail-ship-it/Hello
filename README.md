@@ -22,3 +22,9 @@ The first run signs you in with your Claude account. Update later with `claude u
 
 **In the browser:** open [claude.ai/code](https://claude.ai/code) and pick this repository.
 Nothing needs installing there.
+
+## Tech Stack & Languages
+
+- **Version Control:** Git / GitHub
+- **Languages:** Markdown, Python, HTML/CSS
+- **Tools:** Claude Code, GitHub Pages

@@ -1,23 +1,26 @@
 ---
 name: signoff-and-byline
-description: Which signature, sign-off or byline goes on an email, DM, SMS or LinkedIn post - two different strings, and the config files disagree
+description: The signature, sign-off or byline for any email, DM, SMS, call script or LinkedIn post - one for EpiVail work, a different one for AiRE Estate
 ---
 
-Two different strings for two different artifacts, and the repo currently
-contradicts itself. Read this before signing anything.
+Two businesses, two signatures. Never swap them.
 
-**Messages to clients and leads** (email, DM, SMS) - `CLAUDE.md`:
-
-    Charles Harrison | EpiVail | Epique Realty
-
-**LinkedIn post byline** - `linkedin-content.md`:
+**EpiVail** (agent recruiting, listings, Lofty, LinkedIn) - messages AND post
+bylines:
 
     Charles Harrison, Epique Area/Growth Leader
 
-...never with a regional descriptor appended.
+Never append a regional descriptor. Charles settled this. It is set in `CLAUDE.md`
+and matches `recruitment-outreach.md`, `linkedin-content.md` and the
+`linkedin-optimizer` skill.
 
-**The conflict:** `recruitment-outreach.md` also mandates the byline form
-("always exactly") for cold emails, DMs and SMS - which ARE lead messages, so
-`CLAUDE.md`'s sign-off governs there. `CLAUDE.md` is the authority and is newer
-(PR #15). Until Charles reconciles the two files, use the `CLAUDE.md` sign-off on
-any message sent to a person, and the byline only on published posts.
+**AiRE Estate** (the course business) - emails:
+
+    AiRE Estate Academy
+
+Charles gave this on 2026-10-04. Read it as the whole sign-off. Set in `CLAUDE.md`.
+
+**History, so it is not reopened by accident:** `CLAUDE.md` previously set the
+EpiVail lead-message sign-off to `Charles Harrison | EpiVail | Epique Realty`,
+which contradicted the agent files that mandated the form above. That
+pipe-separated form is retired. If you find it in a file or a draft, it is stale.
