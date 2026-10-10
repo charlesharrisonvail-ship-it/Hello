@@ -29,3 +29,14 @@ not rule on it, so ask rather than pick.
 3. Charles installed Open Generative AI v2.0.0 on Windows (hash verified,
    2026-10-08). Next for him: sd.cpp engine + first local model. Fix the notes
    with whatever he hits
+
+## Working thread (auto-banked)
+
+### banked 2026-10-10 09:30
+(compaction point -- the thread above this line was summarised; anything not written down here is gone)
+
+AiRE Desk Cards bonus (13 graphics) is built on branch `claude/aire-desk-playbook`:
+`docs/desk-cards.html` plus links on both course and sales pages. Not published.
+Waiting on Charles to run the Locker and send `desk-cards-1.bin` and
+`desk-cards-2.bin` for `docs/media/`; then ask his go-ahead before merging into
+the live branch `claude/stan-store-access-k4hjdu`. Facebook logo and cover delivered.
