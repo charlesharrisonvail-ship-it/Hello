@@ -61,7 +61,7 @@ def page_token(q):
     pid, want = q["page_id"], q["page_name"].lower()
     data = call(f"{GRAPH}/me/accounts?fields=id,name,access_token&limit=100", token=TOKEN or None).get("data", [])
     for p in data:
-        if p["id"] == pid or p["name"].lower() == want:
+        if p["id"] == pid:
             if want not in p["name"].lower():
                 raise RuntimeError(f"page {p['id']} is named {p['name']!r}, not {q['page_name']!r}; refusing to post")
             return p["id"], p["access_token"]
@@ -80,8 +80,10 @@ def publish(post, pid, ptok):
         body, h = multipart({"description": cap, "title": post["title"]}, path)
         r = call(f"https://graph-video.facebook.com/v21.0/{pid}/videos", body, h, ptok)
     else:
-        body, h = multipart({"caption": cap}, path)
-        r = call(f"{GRAPH}/{pid}/photos", body, h, ptok)
+        # The proxy replaces the Authorization header on graph.facebook.com with the
+        # user-level credential, so the Page token must travel in the form body.
+        body, h = multipart({"caption": cap, "access_token": ptok}, path)
+        r = call(f"{GRAPH}/{pid}/photos", body, h)
     return r.get("post_id") or r.get("id")
 
 
