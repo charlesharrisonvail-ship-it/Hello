@@ -24,6 +24,7 @@ sd = StableDiffusion(
 
 for i, line in enumerate(l for l in prompts.read_text().splitlines() if l.strip()):
     slug, subject = line.split("|", 1)
+    subject = subject.split(": ", 1)[-1]  # drop the series label (FOX:, DEER:, ...)
     dest = out / f"{i + 1:02d}-{slug}.jpg"
     made_before = subprocess.run(["git", "-C", str(repo), "log", "-1", "--format=%h", "--", str(dest)],
                                  capture_output=True, text=True).stdout.strip()

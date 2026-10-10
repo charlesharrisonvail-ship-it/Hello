@@ -1,30 +1,30 @@
-red-fox-asters|a red fox sitting alert in a sunlit Colorado mountain meadow of purple asters and golden autumn grass, golden aspens and bright blue sky behind
-elk-aspens|a bull elk grazing beside a grove of glowing golden aspens, snow-dusted peaks and deep blue sky behind
-hummingbird-columbines|a broad-tailed hummingbird hovering at blue and white Colorado columbine flowers, bright sunlit garden
-alpine-lake-sunrise|a turquoise alpine lake at sunrise mirroring pink and orange clouds and rugged snowy peaks, evergreen shoreline
-mountain-bluebird|a bright blue mountain bluebird perched on a weathered fence post, wildflower meadow and blue mountains behind
-sunflower-field|a field of tall golden sunflowers under a clear blue sky, Colorado foothills behind, warm afternoon light
-deer-meadow|a mule deer doe standing in a green mountain meadow dotted with yellow and purple wildflowers, soft morning light
-waterfall-ferns|a gentle cascading waterfall in a lush green Colorado canyon, mossy rocks, ferns, sunlight streaming through
-golden-retriever-meadow|a happy golden retriever running through a sunny wildflower meadow, mountains and blue sky behind
-butterflies-flowers|monarch and swallowtail butterflies on bright pink and orange zinnias in a sunlit garden, blue sky
-river-canyon-autumn|a clear blue-green mountain river winding through a canyon lined with red and gold autumn trees, sunny day
-bighorn-sheep|a bighorn sheep standing on a sunlit rocky ridge above a valley of golden aspens and evergreens, blue sky
-lupine-meadow|a meadow full of purple lupines and red Indian paintbrush beneath snow-capped peaks, clear summer sky
-horses-pasture|two chestnut horses grazing in a green mountain pasture with a red barn and blue mountains behind, golden hour
-moose-willows|a bull moose standing in a sunlit willow marsh with golden autumn leaves and a calm blue pond, peaks behind
-lavender-field|rows of blooming purple lavender in bright sunshine, Colorado foothills and blue sky behind
-chipmunk-rock|a curious chipmunk sitting on a sunny granite boulder surrounded by wildflowers, soft green background
-sunrise-valley|golden sunrise light spilling across a misty Colorado mountain valley, evergreens and meadows glowing
-otter-river|a river otter floating on its back in a sparkling clear mountain stream, sunlit evergreen banks
-rainbow-falls|a rainbow arcing through the spray of a mountain waterfall on a bright sunny day, green forest
-aspen-trail|a soft dirt trail curving through a tunnel of brilliant golden aspen trees, blue sky above, sun flares
-bald-eagle|a bald eagle perched on a pine branch above a sparkling blue mountain lake, sunny day
-tulip-garden|a garden of vivid red, pink and yellow tulips in full bloom, sunlit, soft green trees behind
-calf-meadow|a fluffy highland calf with reddish fur standing in a sunny green mountain meadow with wildflowers
-sunset-peaks|alpenglow sunset painting snowy mountain peaks pink and orange above a calm reflective lake
-songbird-blossoms|a yellow warbler singing on a branch of white and pink spring blossoms, bright blue sky
-kayak-free-lake|a calm emerald mountain lake with a small wooden dock, pine trees and puffy white clouds, bright morning
-pika-wildflowers|a tiny pika sitting among alpine wildflowers and rocks high in the Colorado mountains, sunny
-cherry-orchard|a sunlit orchard of blossoming cherry trees with soft pink petals, green grass, blue sky
-bison-prairie|a bison grazing on a golden prairie with the Rocky Mountains on the horizon, big blue sky, sunny
+red-fox-asters|FOX: a slender red fox with a bright orange coat, white chest and muzzle, black-tipped ears and black legs, and a white-tipped bushy tail, sitting in a sunlit Colorado meadow of purple asters and golden autumn grass, golden aspens behind
+deer-fawn-meadow|DEER: a gentle mule deer doe with large ears, a soft gray-brown coat and a white throat patch, standing beside her spotted fawn in a green mountain meadow full of yellow and purple wildflowers, soft morning light
+bluebird-aspen|BLUEBIRD: a bright sky-blue male mountain bluebird perched on a slender aspen branch with glowing golden leaves, clear blue sky behind
+fox-leaping|FOX: a slender red fox with a bright orange coat, white chest and muzzle, black-tipped ears and black legs, and a white-tipped bushy tail, joyfully leaping mid-air over a patch of purple wildflowers in a golden meadow, mountains and blue sky behind
+deer-lake-sunrise|DEER: a gentle mule deer doe with large ears, a soft gray-brown coat and a white throat patch, standing at the edge of a calm mountain lake at sunrise, pink and gold sky reflected in the water, evergreens behind
+hummingbird-penstemon|HUMMINGBIRD: a broad-tailed hummingbird with iridescent emerald feathers and a rose-red throat, sipping from bright red penstemon flowers in a sunny mountain garden, soft green background
+fox-napping-leaves|FOX: a slender red fox with a bright orange coat, white chest and muzzle, black-tipped ears and black legs, and a white-tipped bushy tail, curled up napping peacefully in warm sunshine on a bed of golden aspen leaves, tail wrapped around its nose
+deer-aspens|DEER: a gentle mule deer doe with large ears, a soft gray-brown coat and a white throat patch, grazing among white-trunked aspens with brilliant golden leaves, sun rays through the trees
+bluebird-pair-fence|BLUEBIRD: two bright sky-blue mountain bluebirds perched side by side on a rustic wooden fence post, wildflower meadow and blue mountains behind, sunny
+fox-trail-aspens|FOX: a slender red fox with a bright orange coat, white chest and muzzle, black-tipped ears and black legs, and a white-tipped bushy tail, trotting happily along a dirt mountain trail lined with golden aspens, blue sky above
+deer-leaping-creek|DEER: a gentle mule deer doe with large ears, a soft gray-brown coat and a white throat patch, gracefully leaping across a sparkling clear mountain creek, green meadow and evergreens behind, sunny
+hummingbird-hovering-orange|HUMMINGBIRD: a broad-tailed hummingbird with iridescent emerald feathers and a rose-red throat, hovering beside bright orange trumpet flowers, wings blurred, sunlit garden, blue sky
+fox-sunrise-rock|FOX: a slender red fox with a bright orange coat, white chest and muzzle, black-tipped ears and black legs, and a white-tipped bushy tail, sitting proudly on a lichen-covered boulder at sunrise, looking out over a misty golden mountain valley
+deer-wildflowers-gaze|DEER: a gentle mule deer doe with large ears, a soft gray-brown coat and a white throat patch, standing in tall purple lupines and red paintbrush, looking calmly toward the camera, snowy peaks behind, clear sky
+bluebird-flight|BLUEBIRD: a bright sky-blue male mountain bluebird in graceful flight with wings spread over a sunny green meadow, blue mountains behind
+fox-stream-drinking|FOX: a slender red fox with a bright orange coat, white chest and muzzle, black-tipped ears and black legs, and a white-tipped bushy tail, drinking from a clear sparkling mountain stream among mossy rocks, sunlit autumn trees behind
+deer-forest-sunbeams|DEER: a gentle mule deer doe with large ears, a soft gray-brown coat and a white throat patch, walking along a forest path lit by golden sunbeams through tall pines, green ferns
+hummingbird-resting-twig|HUMMINGBIRD: a broad-tailed hummingbird with iridescent emerald feathers and a rose-red throat, perched resting on a thin twig among pink blossoms, bright morning light
+fox-playing-leaves|FOX: a slender red fox with a bright orange coat, white chest and muzzle, black-tipped ears and black legs, and a white-tipped bushy tail, playfully pouncing into a pile of red and golden autumn leaves, sunny forest clearing
+deer-resting-grass|DEER: a gentle mule deer doe with large ears, a soft gray-brown coat and a white throat patch, resting peacefully in tall golden grass on a sunny hillside, aspens and blue sky behind
+bluebird-singing-blossoms|BLUEBIRD: a bright sky-blue male mountain bluebird singing on a branch of white and pink spring blossoms, beak open, bright blue sky
+fox-peeking-flowers|FOX: a slender red fox with a bright orange coat, white chest and muzzle, black-tipped ears and black legs, and a white-tipped bushy tail, peeking out curiously from a field of tall yellow and purple wildflowers, sunny meadow
+deer-fawn-nuzzle|DEER: a gentle mule deer doe with large ears, a soft gray-brown coat and a white throat patch, gently nuzzling her spotted fawn in a sunlit green clearing, wildflowers around
+hummingbird-columbines|HUMMINGBIRD: two broad-tailed hummingbirds with iridescent emerald feathers hovering near blue and white Colorado columbine flowers, sunlit mountain garden
+fox-stretching-sun|FOX: a slender red fox with a bright orange coat, white chest and muzzle, black-tipped ears and black legs, and a white-tipped bushy tail, stretching and yawning in warm morning sunshine on a grassy knoll, golden aspens and blue sky behind
+deer-sunflowers|DEER: a gentle mule deer doe with large ears, a soft gray-brown coat and a white throat patch, standing in a field of tall bright sunflowers, Colorado foothills and blue sky behind
+bluebird-birdbath|BLUEBIRD: a bright sky-blue male mountain bluebird splashing happily in a stone birdbath, droplets sparkling in the sunlight, flowers around
+fox-butterflies|FOX: a slender red fox with a bright orange coat, white chest and muzzle, black-tipped ears and black legs, and a white-tipped bushy tail, sitting in a summer meadow watching two orange butterflies flutter near its nose
+deer-first-snow|DEER: a gentle mule deer doe with large ears, a soft gray-brown coat and a white throat patch, standing in a light dusting of fresh snow beside golden aspens under a brilliant blue sky
+fox-snow-pounce|FOX: a slender red fox with a bright orange coat, white chest and muzzle, black-tipped ears and black legs, and a white-tipped bushy tail, playfully pouncing into fresh powdery snow, sparkling crystals, bright blue sky and evergreens behind
