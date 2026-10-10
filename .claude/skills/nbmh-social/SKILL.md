@@ -89,6 +89,13 @@ headline belongs in the template, not in the generated image.
 
 ## Creative rotation
 
+**Recurring animal series** (Charles, 2026-10-10: "use the fox for more posts...like it doing
+different things. Same thing with other animals...deer, birds"). The library follows one fox,
+one mule deer doe, a mountain bluebird and a hummingbird through different moments. Keep each
+animal's description identical in `scripts/library-prompts.txt` so it reads as the same
+character, and rotate series day to day.
+
+
 Never repeat yesterday's subject. Rotate the subject, season, color, and light
 every day, across:
 

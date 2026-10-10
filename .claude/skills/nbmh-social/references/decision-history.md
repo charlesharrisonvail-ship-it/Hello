@@ -98,3 +98,5 @@ Only claim the last two when there is visible evidence.
 - 2026-10-06: In captions, say "New Beginnings Mental Health" / "New Beginnings" rather than naming Dr. Vandenberg and her credentials.
 - 2026-10-07, after a plain navy text card ran: `Starting tomorrow make each post authentic...use pics of nature, animals, landscape, or positive pictures. Stop making bland and ugly posts.` Every day is a colorful photograph; there are no code-only days.
 - 2026-10-10: `Higgsfield is NOW ONLY for EpiVail.` New Beginnings photos come from the free Z-Image Turbo model (Charles's Open Generative AI app), pre-made 30 at a time. Charles and the practice loved the first free test (red fox in asters).
+- 2026-10-10: `use the fox for more posts...like it doing different things. Same thing with other animals...deer, birds.` Library is now recurring fox, deer and bird series.
+- 2026-10-10: `the fonts look elementary and small.` Template now uses Playfair Display headlines (~100px) and Montserrat for all other text, set larger.

@@ -4,33 +4,50 @@
 <link rel="stylesheet" href="../../../.claude/skills/nbmh-social/templates/base.css">
 <style>
 /* Standing photo layout: full-bleed photograph, text on solid surfaces only.
-   White text is never set directly on the photo; bright skies made it unreadable (2026-10-06). */
+   White text is never set directly on the photo; bright skies made it unreadable (2026-10-06).
+   Type: Playfair Display headlines, Montserrat for everything else, set large (2026-10-10:
+   the earlier Archivo set "looked elementary and small"). */
+@font-face { font-family: Playfair; font-weight: 500; src: url("../../../.claude/skills/nbmh-social/assets/fonts/PlayfairDisplay-500.ttf"); }
+@font-face { font-family: Playfair; font-weight: 600; src: url("../../../.claude/skills/nbmh-social/assets/fonts/PlayfairDisplay-600.ttf"); }
+@font-face { font-family: Montserrat; font-weight: 500; src: url("../../../.claude/skills/nbmh-social/assets/fonts/Montserrat-500.ttf"); }
+@font-face { font-family: Montserrat; font-weight: 600; src: url("../../../.claude/skills/nbmh-social/assets/fonts/Montserrat-600.ttf"); }
+@font-face { font-family: Montserrat; font-weight: 700; src: url("../../../.claude/skills/nbmh-social/assets/fonts/Montserrat-700.ttf"); }
+body { font-family: Montserrat, sans-serif; }
 
 .photo { position: absolute; inset: 0; z-index: 0; }
 .photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; display: block; }
 
 .top-scrim {
-  position: absolute; left: 0; right: 0; top: 0; height: 230px; z-index: 1;
-  background: linear-gradient(180deg, rgba(10,30,22,.72) 0%, rgba(10,30,22,.38) 60%, rgba(10,30,22,0) 100%);
+  position: absolute; left: 0; right: 0; top: 0; height: 260px; z-index: 1;
+  background: linear-gradient(180deg, rgba(10,30,22,.75) 0%, rgba(10,30,22,.4) 60%, rgba(10,30,22,0) 100%);
 }
-.masthead .n1, .masthead .n2, .datestamp { color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,.45); }
-.datestamp { opacity: .9; }
-.masthead img { box-shadow: 0 2px 10px rgba(0,0,0,.35); }
+.masthead { top: 56px; gap: 22px; }
+.masthead img { width: 84px; height: 84px; box-shadow: 0 2px 12px rgba(0,0,0,.35); }
+.masthead .n1 { font-size: 33px; font-weight: 700; letter-spacing: .06em; color: #fff; }
+.masthead .n2 { font-size: 22px; font-weight: 500; letter-spacing: .24em; color: #fff; }
+.masthead .n1, .masthead .n2, .datestamp { text-shadow: 0 1px 8px rgba(0,0,0,.5); }
+.datestamp { top: 84px; font-size: 21px; font-weight: 600; letter-spacing: .2em; color: #fff; opacity: .95; }
 
 .card {
-  position: absolute; z-index: 4; left: var(--gutter); right: var(--gutter); bottom: 188px;
-  background: rgba(250,246,240,.96);
-  border-radius: 10px; padding: 44px 52px 40px;
-  box-shadow: 0 18px 50px rgba(0,0,0,.28);
+  position: absolute; z-index: 4; left: var(--gutter); right: var(--gutter); bottom: 186px;
+  background: rgba(250,246,240,.97);
+  border-radius: 12px; padding: 54px 60px 50px;
+  box-shadow: 0 20px 56px rgba(0,0,0,.3);
 }
 /* Card class "top" when the photo's subject sits low, so the card fills the empty sky instead. */
-.card.top { top: 196px; bottom: auto; }
-.card .eyebrow { display: block; color: var(--pine); font-size: 18px; margin-bottom: 16px; }
-.card .headline { font-size: 66px; color: var(--forest); }
-.card .rule { margin: 26px 0 20px; }
-.card .service { font-size: 18px; font-weight: 700; letter-spacing: .14em; color: var(--ink); }
+.card.top { top: 188px; bottom: auto; }
+.card .eyebrow { display: block; font-family: Montserrat; font-size: 22px; font-weight: 700; letter-spacing: .2em; color: var(--pine); margin-bottom: 18px; }
+.card .headline {
+  font-family: Playfair, serif; font-weight: 600; font-size: 100px; line-height: 1.04;
+  letter-spacing: -.012em; color: var(--forest); text-wrap: balance;
+}
+.card .rule { width: 84px; height: 6px; margin: 30px 0 24px; }
+.card .service { font-size: 20px; font-weight: 700; letter-spacing: .13em; color: var(--ink); }
 
-.footer { background: var(--forest); color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.3); }
+.footer {
+  background: var(--forest); color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.3);
+  font-family: Montserrat; font-size: 31px; font-weight: 600; letter-spacing: .01em; padding: 30px 44px;
+}
 </style>
 
 <div class="canvas">
