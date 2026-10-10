@@ -25,7 +25,9 @@ sd = StableDiffusion(
 for i, line in enumerate(l for l in prompts.read_text().splitlines() if l.strip()):
     slug, subject = line.split("|", 1)
     dest = out / f"{i + 1:02d}-{slug}.jpg"
-    if dest.exists() or any(repo.glob(f"content/nbmh/20*/photo-{slug}.jpg")):
+    made_before = subprocess.run(["git", "-C", str(repo), "log", "-1", "--format=%h", "--", str(dest)],
+                                 capture_output=True, text=True).stdout.strip()
+    if dest.exists() or made_before:
         continue
     t = time.time()
     img = sd.generate_image(prompt=f"{subject}. {STYLE}", width=768, height=960,
