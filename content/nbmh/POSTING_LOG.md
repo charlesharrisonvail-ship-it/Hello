@@ -21,6 +21,7 @@ Status values: `drafted` · `delivered` (handed to Charles to post) ·
 | 2026-10-07 | Rest Begins With Understanding — sleep routine and insomnia education | created | created | PASS | **published** | Post `1236318822895617_122131687311383194`, published 2026-10-07 12:50 UTC via minimalist night composition. [permalink](https://www.facebook.com/1236318822895617_122131687311383194) |
 | 2026-10-08 | Care Within Reach — insurance and telehealth access | Higgsfield gpt_image_2_5 (paid, 0.25 cr; no free allowance) | created | PASS | **published** | Post `1236318822895617_122131983933383194`, published 2026-10-08 ~12:52 UTC. Bull elk in golden aspens. [permalink](https://www.facebook.com/1236318822895617_122131983933383194) |
 | 2026-10-09 | A Gentle First Step — what a first Medication Management visit covers | Higgsfield gpt_image_2_5 (paid, 0.25 cr; no free allowance) | created | PASS | **published** | Post `1236318822895617_122132235621383194`, published 2026-10-09 ~12:53 UTC. Hummingbird at pink and violet wildflowers. [permalink](https://www.facebook.com/1236318822895617_122132235621383194) |
+| 2026-10-10 | Notice What Changes — tracking side effects between visits | Higgsfield gpt_image_2_5 (paid, 0.25 cr; no free allowance) | created | PASS | **published** | Post `1236318822895617_122132487555383194`, published 2026-10-10 ~12:51 UTC. Turquoise alpine lake with autumn reflection. [permalink](https://www.facebook.com/1236318822895617_122132487555383194) |
 
 ## Publishing — live
 
