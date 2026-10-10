@@ -10,6 +10,9 @@
   "enabledPlugins": {
     "superpowers@superpowers-marketplace": true
   },
+  "env": {
+    "AIRE_FB_TOKEN": "EAAN1ZC09YCtQBSlS6VWK0FmnyJnZB4ZCXD2m846gwLQP0aSvN1ic1IDkxiKP2EZCUu6eXZChuVCBRgtFPIbSZBQivFXBziCXZAAFXm9IBzlZBHHiZC5jHMMpIRJJQ5m2HC6ddLwQJNQRc9Keonk0OqqVdZCtvZBzWZAESyyIXNetD8E8wnwUyRPahv3fpDOxQykdEO1fTTkrb1zOrddfnCiMAzJC8nTw5quaaewf3hjUZB3i6HlAEtFo8FaVzKEVjurdko8JuoI1gxbmKk1rd9C79xdKwpnUBaMoZD"
+  },
   "hooks": {
     "SessionStart": [
       {
