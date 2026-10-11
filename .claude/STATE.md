@@ -14,6 +14,15 @@ notes use the free local Image Studio plus Cinema Studio's camera wording. Charl
 pays for no AI tools (`recall.py paid`). #24 also stopped `verify.py` leaving test
 entries in this file.
 
+AiRE Estate Facebook (2026-10-10): posts go out via `marketing/social/post.py` to the
+AIRE Estate page, ID 1345476315318631 only, using the "Aire Poster" system-user token
+(Aire Estate business portfolio) set as the environment's graph.facebook.com
+credential. NBMH has its own business and can never post there. A Mon/Wed/Fri
+Routine posts the queue from branch `ccr-754bcf55-qiikmr`. The live site publishes
+from `claude/stan-store-access-k4hjdu`, not `main`. ChatGPT makes cards from
+`marketing/chatgpt-brief.md`; check every image (no name, Claude Code "(not
+included)", $67/$97) before queuing.
+
 ## Open question for Charles
 
 The agents say "powered by Epique X"; some skills say "EpiqueAI". `CLAUDE.md` does
