@@ -34,17 +34,24 @@ body { font-family: Montserrat, sans-serif; }
 }
 .service { font-size: 19px; font-weight: 700; letter-spacing: .16em; color: var(--ink); }
 
-/* Coverage is fixed copy on every post, always above the CTA (approved-facts.md). */
-.coverage { font-size: 23px; font-weight: 500; line-height: 1.45; color: var(--ink); }
-.coverage .label { display: block; font-size: 18px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #B23A63; margin-bottom: 4px; }
-.coverage .plan { font-weight: 700; color: var(--forest); white-space: nowrap; }
-.coverage .private { display: block; font-size: 21px; }
-.coverage .sep { color: #B23A63; font-weight: 700; }
-.cta {
-  margin-top: 14px; padding-top: 14px; border-top: 1.5px solid rgba(18,64,45,.2);
-  font-size: 26px; font-weight: 700; letter-spacing: 0; color: var(--forest); white-space: nowrap;
+/* Coverage is fixed copy on every post, always above the CTA (approved-facts.md).
+   Charles, 2026-10-11: green was too small and dull; plans glow butter-yellow, contact glows pastel purple. */
+.coverage { line-height: 1.2; }
+.coverage .label { display: block; font-size: 19px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: #5B2A86; margin-bottom: 12px; }
+.coverage .plans { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 10px; }
+.coverage .plan {
+  display: inline-block; white-space: nowrap; font-size: 25px; font-weight: 700; color: #3B2350;
+  background: #FFF1A8; padding: 7px 18px; border-radius: 999px;
+  box-shadow: 0 0 16px 3px rgba(255,214,80,.85), inset 0 0 0 1px rgba(214,170,30,.35);
 }
-.cta .sep { color: #B23A63; margin: 0 14px; }
+.coverage .private { display: block; margin-top: 12px; font-size: 21px; font-weight: 600; color: #3B2350; }
+.cta {
+  display: inline-block; margin-top: 14px; white-space: nowrap;
+  font-size: 25px; font-weight: 700; color: #3B2350;
+  background: #E9DCFF; padding: 9px 24px; border-radius: 999px;
+  box-shadow: 0 0 18px 4px rgba(190,150,255,.8), inset 0 0 0 1px rgba(140,100,210,.35);
+}
+.cta .sep { color: #8A5BC7; margin: 0 12px; }
 </style>
 
 <div class="canvas">
@@ -60,7 +67,7 @@ body { font-family: Montserrat, sans-serif; }
   </div>
 
   <div class="band bottom">
-    <div class="coverage"><span class="label">In-network with</span> <span class="plan">Aetna</span> <span class="sep">·</span> <span class="plan">Anthem Blue Cross Blue Shield</span> <span class="sep">·</span> <span class="plan">UnitedHealthcare</span> <span class="sep">·</span> <span class="plan">Cigna</span> <span class="sep">·</span> <span class="plan">Mountain Strong EAP</span> <span class="sep">·</span> <span class="plan">Olivia's Fund</span>.<span class="private">Private-pay appointments are also available.</span></div>
+    <div class="coverage"><span class="label">In-network with</span><div class="plans"><span class="plan">Aetna</span><span class="plan">Anthem Blue Cross Blue Shield</span><span class="plan">UnitedHealthcare</span><span class="plan">Cigna</span><span class="plan">Mountain Strong EAP</span><span class="plan">Olivia's Fund</span></div><span class="private">Private-pay appointments are also available.</span></div>
     <div class="cta">NBMentalHealth.com<span class="sep">·</span>970-470-2939<span class="sep">·</span>charles@nbmentalhealth.com</div>
   </div>
 </div>
