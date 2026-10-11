@@ -8,8 +8,8 @@ from pathlib import Path
 from stable_diffusion_cpp import StableDiffusion
 
 STYLE = ("Photorealistic, vivid saturated color, bright natural sunlight, joyful and peaceful mood, "
-         "professional nature photography. The main subject sits in the upper two-thirds of the frame; "
-         "the lower third is soft, calm, out-of-focus foreground. No people, no faces, no text, no logos.")
+         "professional nature photography. The main subject is centered in the middle of the frame with space around it; "
+         "the top fifth is open sky or soft background and the bottom fifth is soft foreground. No people, no faces, no text, no logos.")
 
 models, prompts, out = Path(sys.argv[1]), Path(sys.argv[2]), Path(sys.argv[3])
 out.mkdir(parents=True, exist_ok=True)

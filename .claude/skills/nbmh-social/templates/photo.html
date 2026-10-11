@@ -3,11 +3,9 @@
 <title>NBMH {{DATE}}</title>
 <link rel="stylesheet" href="../../../.claude/skills/nbmh-social/templates/base.css">
 <style>
-/* Standing photo layout: full-bleed photograph, text on solid surfaces only.
-   White text is never set directly on the photo; bright skies made it unreadable (2026-10-06).
-   Type: Playfair Display headlines, Montserrat for everything else, set large (2026-10-10:
-   the earlier Archivo set "looked elementary and small"). */
-@font-face { font-family: Playfair; font-weight: 500; src: url("../../../.claude/skills/nbmh-social/assets/fonts/PlayfairDisplay-500.ttf"); }
+/* Standing photo layout (Charles's reference, 2026-10-11): a frosted header band at the top
+   (logo, headline, service line) and a matching frosted band at the bottom (coverage, then CTA).
+   Light translucent glass, centered, dark green type. Text never sits directly on the photo. */
 @font-face { font-family: Playfair; font-weight: 600; src: url("../../../.claude/skills/nbmh-social/assets/fonts/PlayfairDisplay-600.ttf"); }
 @font-face { font-family: Montserrat; font-weight: 500; src: url("../../../.claude/skills/nbmh-social/assets/fonts/Montserrat-500.ttf"); }
 @font-face { font-family: Montserrat; font-weight: 600; src: url("../../../.claude/skills/nbmh-social/assets/fonts/Montserrat-600.ttf"); }
@@ -15,79 +13,55 @@
 body { font-family: Montserrat, sans-serif; }
 
 .photo { position: absolute; inset: 0; z-index: 0; }
-.photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; display: block; }
+.photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 50%; display: block; }
 
-.top-scrim {
-  position: absolute; left: 0; right: 0; top: 0; height: 260px; z-index: 1;
-  background: linear-gradient(180deg, rgba(10,30,22,.75) 0%, rgba(10,30,22,.4) 60%, rgba(10,30,22,0) 100%);
-}
-.masthead { top: 56px; gap: 22px; }
-.masthead img { width: 84px; height: 84px; box-shadow: 0 2px 12px rgba(0,0,0,.35); }
-.masthead .n1 { font-size: 33px; font-weight: 700; letter-spacing: .06em; color: #fff; }
-.masthead .n2 { font-size: 22px; font-weight: 500; letter-spacing: .24em; color: #fff; }
-.masthead .n1, .masthead .n2, .datestamp { text-shadow: 0 1px 8px rgba(0,0,0,.5); }
-.datestamp { top: 84px; font-size: 21px; font-weight: 600; letter-spacing: .2em; color: #fff; opacity: .95; }
-
-.card {
-  position: absolute; z-index: 4; left: var(--gutter); right: var(--gutter); bottom: 226px;
-  background: rgba(250,246,240,.5);
+.band {
+  position: absolute; z-index: 4; left: 36px; right: 36px; text-align: center;
+  background: rgba(250,246,240,.55);
   backdrop-filter: blur(16px) saturate(1.15); -webkit-backdrop-filter: blur(16px) saturate(1.15);
-  border-radius: 12px; padding: 54px 60px 50px;
-  box-shadow: 0 20px 56px rgba(0,0,0,.22);
+  border-radius: 18px; box-shadow: 0 12px 40px rgba(0,0,0,.18);
 }
-/* Card class "top" when the photo's subject sits low, so the card fills the empty sky instead. */
-.card.top { top: 188px; bottom: auto; }
-.card .eyebrow { display: block; font-family: Montserrat; font-size: 22px; font-weight: 700; letter-spacing: .2em; color: var(--pine); margin-bottom: 18px; }
-.card .headline {
-  font-family: Playfair, serif; font-weight: 600; font-size: 94px; line-height: 1.04;
-  letter-spacing: -.012em; color: var(--forest); text-wrap: balance;
-}
-.card .rule { width: 84px; height: 6px; margin: 30px 0 24px; }
-.card .service { font-size: 20px; font-weight: 700; letter-spacing: .13em; color: var(--ink); }
+.band.top { top: 30px; padding: 26px 44px 30px; }
+.band.bottom { bottom: 30px; padding: 24px 44px 26px; }
 
-/* Bottom bar sits flush on the bottom edge, as low as possible, so it covers little of the photo. */
-.footer {
-  left: 0; right: 0; bottom: 0; border-radius: 0;
-  background: rgba(18,64,45,.55);
-  backdrop-filter: blur(14px) saturate(1.1); -webkit-backdrop-filter: blur(14px) saturate(1.1);
-  color: #fff; flex-direction: column; align-items: stretch; padding: 20px 72px 24px; font-family: Montserrat;
-  text-shadow: 0 1px 4px rgba(0,0,0,.45);
+.brand { display: inline-flex; align-items: center; gap: 16px; text-align: left; }
+.brand img { width: 76px; height: 76px; border-radius: 50%; display: block; box-shadow: 0 2px 8px rgba(0,0,0,.18); }
+.brand .n1 { font-size: 29px; font-weight: 700; letter-spacing: .06em; color: var(--forest); line-height: 1.12; }
+.brand .n2 { font-size: 20px; font-weight: 500; letter-spacing: .24em; color: var(--pine); line-height: 1.12; }
+
+.headline {
+  font-family: Playfair, serif; font-weight: 600; font-size: 104px; line-height: 1.02;
+  letter-spacing: -.012em; color: var(--forest); margin: 14px 0 14px; text-wrap: balance;
 }
-/* Coverage is fixed copy on every post, always above the CTA (approved-facts.md).
-   Plan names are gold so they stand out (2026-10-11). */
-.footer .coverage {
-  font-size: 22px; font-weight: 500; line-height: 1.42;
-  padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,.28);
+.service { font-size: 19px; font-weight: 700; letter-spacing: .16em; color: var(--ink); }
+
+/* Coverage is fixed copy on every post, always above the CTA (approved-facts.md). */
+.coverage { font-size: 23px; font-weight: 500; line-height: 1.45; color: var(--ink); }
+.coverage .label { display: block; font-size: 18px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #B23A63; margin-bottom: 4px; }
+.coverage .plan { font-weight: 700; color: var(--forest); white-space: nowrap; }
+.coverage .private { display: block; font-size: 21px; }
+.coverage .sep { color: #B23A63; font-weight: 700; }
+.cta {
+  margin-top: 14px; padding-top: 14px; border-top: 1.5px solid rgba(18,64,45,.2);
+  font-size: 31px; font-weight: 700; letter-spacing: .01em; color: var(--forest);
 }
-.footer .coverage .label { font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #fff; margin-right: 6px; }
-.footer .coverage .plan, .footer .coverage .keep { white-space: nowrap; }
-.footer .coverage .plan { font-weight: 700; color: #FFD27A; }
-.footer .coverage .sep { color: rgba(255,255,255,.6); }
-.footer .cta { display: flex; justify-content: space-between; align-items: center; font-size: 29px; font-weight: 600; letter-spacing: .01em; }
+.cta .sep { color: #B23A63; margin: 0 18px; }
 </style>
 
 <div class="canvas">
   <div class="photo"><img src="./photo.jpg" alt=""></div>
-  <div class="top-scrim"></div>
 
-  <div class="masthead">
-    <img src="../../../.claude/skills/nbmh-social/assets/nbmh-logo.png" alt="New Beginnings Mental Health">
-    <div class="wordmark">
-      <div class="n1">NEW BEGINNINGS</div>
-      <div class="n2">MENTAL HEALTH</div>
+  <div class="band top">
+    <div class="brand">
+      <img src="../../../.claude/skills/nbmh-social/assets/nbmh-logo.png" alt="New Beginnings Mental Health">
+      <div><div class="n1">NEW BEGINNINGS</div><div class="n2">MENTAL HEALTH</div></div>
     </div>
-  </div>
-  <div class="datestamp">{{DATESTAMP}}</div>
-
-  <div class="card {{CARD_CLASS}}">
-    <span class="eyebrow">{{EYEBROW}}</span>
     <h1 class="headline">{{HEADLINE}}</h1>
-    <div class="rule"></div>
     <div class="service">{{SERVICE}}</div>
   </div>
 
-  <div class="footer">
-    <div class="coverage"><span class="label">In-network with</span> <span class="plan">Aetna</span> <span class="sep">·</span> <span class="plan">Anthem Blue Cross Blue Shield</span> <span class="sep">·</span> <span class="plan">UnitedHealthcare</span> <span class="sep">·</span> <span class="plan">Cigna</span> <span class="sep">·</span> <span class="plan">Mountain Strong EAP</span> <span class="sep">·</span> <span class="plan">Olivia's Fund</span>. <span class="keep">Private-pay appointments</span> are also available.</div>
-    <div class="cta"><span>NBMentalHealth.com</span><span>970-470-2939</span></div>
+  <div class="band bottom">
+    <div class="coverage"><span class="label">In-network with</span> <span class="plan">Aetna</span> <span class="sep">·</span> <span class="plan">Anthem Blue Cross Blue Shield</span> <span class="sep">·</span> <span class="plan">UnitedHealthcare</span> <span class="sep">·</span> <span class="plan">Cigna</span> <span class="sep">·</span> <span class="plan">Mountain Strong EAP</span> <span class="sep">·</span> <span class="plan">Olivia's Fund</span>.<span class="private">Private-pay appointments are also available.</span></div>
+    <div class="cta">NBMentalHealth.com<span class="sep">·</span>970-470-2939</div>
   </div>
 </div>

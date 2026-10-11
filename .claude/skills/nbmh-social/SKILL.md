@@ -39,9 +39,10 @@ provider type, treatment, diagnosis, statistic, or contact detail.
    lowest-numbered photo in `content/nbmh/library/` and `git mv` it to
    `content/nbmh/<date>/photo.jpg` (see *Imagery* below). Copy
    `templates/photo.html` to `content/nbmh/<date>/build.html` and fill the
-   `{{...}}` placeholders; set `{{CARD_CLASS}}` to `top` when the subject sits
-   low in the frame, otherwise leave it empty. Never set white text directly
-   on the photo.
+   `{{...}}` placeholders. The layout is fixed: a light frosted header band
+   (logo, headline, service line) at the top and a matching band (insurance
+   plans, then website and phone) at the bottom. Never set text directly on
+   the photo, and never remove the insurance plans.
 3. **Render and check the size:**
    ```
    node .claude/skills/nbmh-social/scripts/render.mjs \
@@ -83,8 +84,8 @@ library in the background whenever it drops below 10. If the library is ever
 empty on a posting morning, generate one photo with the same script before
 posting and say so in the report; never fall back to Higgsfield or a text card.
 
-Prompt for a photorealistic, saturated, sunlit image, and leave the lower third
-calm enough to sit under the text card. No people, faces, or hands. The
+Prompt for a photorealistic, saturated, sunlit image with the subject centered in
+the middle of the frame, clear of the top and bottom bands. No people, faces, or hands. The
 headline belongs in the template, not in the generated image.
 
 ## Creative rotation
