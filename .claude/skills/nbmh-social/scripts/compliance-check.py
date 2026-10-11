@@ -81,9 +81,14 @@ def check(text):
     # Coverage must sit above the contact CTA when both appear.
     cov = min((text.find(c) for c in CARRIERS if c in text), default=-1)
     cta = min((p for p in (text.find("NBMentalHealth.com"),
-                           text.find("970-470-2939")) if p >= 0), default=-1)
+                           text.find("970-470-2939"),
+                           low.find("charles@nbmentalhealth.com")) if p >= 0), default=-1)
     if cov >= 0 and cta >= 0 and cov > cta:
         problems.append("coverage appears below the contact CTA; coverage must come first")
+
+    # Charles, 2026-10-11: every post always carries the email.
+    if "charles@nbmentalhealth.com" not in low:
+        problems.append("missing the email charles@nbmentalhealth.com; every post must include it")
 
     # Credential string, when the provider is named, must be exact.
     if "vandenberg" in low and "DNP, PMHNP-BC, FNP" not in text:

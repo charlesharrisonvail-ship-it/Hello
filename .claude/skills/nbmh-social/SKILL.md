@@ -52,7 +52,9 @@ provider type, treatment, diagnosis, statistic, or contact detail.
 4. **Look at the rendered JPEG** with the Read tool before showing it to Charles.
    Text collisions, muddy contrast, and motifs that read as something unintended
    are only visible in the render. Fix and re-render as many times as it takes.
-5. **Write the caption** into `content/nbmh/<date>/caption.md`.
+5. **Write the caption** into `content/nbmh/<date>/caption.md`. The CTA always
+   carries the website, phone, **and charles@nbmentalhealth.com** (Charles,
+   2026-10-11: "both need this email always"); the graphic carries all three too.
 6. **Run the compliance gate** on the caption *and* on the graphic's copy:
    ```
    python3 .claude/skills/nbmh-social/scripts/compliance-check.py content/nbmh/<date>/caption.md
