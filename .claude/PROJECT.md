@@ -22,7 +22,7 @@ site is plain HTML.
   `linkedin-content`, `lofty-crm`. They chain: enrich -> Lofty -> write.
 - `.claude/skills/linkedin-optimizer/` - LinkedIn analytics and profile work.
   It measures; `linkedin-content` creates.
-- `.claude/settings.json` - enables the Superpowers plugin AND registers the
+- `.claude/settings.json` - enables the Superpowers and Karpathy-skills plugins AND registers the
   continuity hooks. Both key sets must survive any edit.
 - `.claude/ROLE.md`, `PROJECT.md`, `DECISIONS.md`, `STATE.md` - force-loaded at
   every session start. Keep each short enough to survive whole.
