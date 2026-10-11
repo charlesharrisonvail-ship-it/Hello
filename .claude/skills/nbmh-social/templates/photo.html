@@ -43,6 +43,12 @@ body { font-family: Montserrat, sans-serif; }
 }
 .card .rule { width: 84px; height: 6px; margin: 30px 0 24px; }
 .card .service { font-size: 20px; font-weight: 700; letter-spacing: .13em; color: var(--ink); }
+/* Coverage is fixed copy on every post, always above the CTA bar (approved-facts.md). */
+.card .coverage {
+  margin-top: 26px; padding-top: 24px; border-top: 2px solid rgba(18,64,45,.14);
+  font-size: 21px; font-weight: 500; line-height: 1.5; color: var(--ink);
+}
+.card .coverage b { font-weight: 700; color: var(--pine); }
 
 .footer {
   background: var(--forest); color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.3);
@@ -68,6 +74,7 @@ body { font-family: Montserrat, sans-serif; }
     <h1 class="headline">{{HEADLINE}}</h1>
     <div class="rule"></div>
     <div class="service">{{SERVICE}}</div>
+    <div class="coverage"><b>In-network with</b> Aetna, Anthem Blue Cross Blue Shield, UnitedHealthcare, Cigna, Mountain Strong EAP, and Olivia's Fund. Private-pay appointments are also available.</div>
   </div>
 
   <div class="footer">
