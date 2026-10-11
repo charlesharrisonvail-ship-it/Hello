@@ -32,3 +32,11 @@ access code (no redirect). Both require accepting the terms of service
 `https://learn.aireestate.com/#start`). Product descriptions now read "Seven
 modules and a Capstone" and name the Claude requirements; new product
 pictures are in `assets/stripe/` for Charles to upload.
+
+**Stripe confirmation messages, saved by Charles 2026-10-11:** both now carry
+"Your access code is below. It is not the 6-digit Link code Stripe may text
+you." (first buyer mistook Stripe Link's SMS code for the access code). The
+messages are short; the box is small, so no blank lines. When Charles asks for
+text he will paste into Stripe, give it ready to paste with the real code in
+it, never a placeholder; he was frustrated twice by "YOUR-CODE". Still keep
+codes out of files and commits.
