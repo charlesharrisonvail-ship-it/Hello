@@ -43,6 +43,10 @@ provider type, treatment, diagnosis, statistic, or contact detail.
    (logo, headline, service line) at the top and a matching band (insurance
    plans, then website and phone) at the bottom. Never set text directly on
    the photo, and never remove the insurance plans.
+   **Frame the animal fully between the strips** (clear window about y 290-1060):
+   set `{{PHOTO_SHIFT}}` (e.g. `-155px` moves the photo up, `150px` down, `0px`
+   none), render, look, and adjust until no part of the animal touches either
+   strip. Charles, 2026-10-11: "both fox and hummingbird are out of frame."
 3. **Render and check the size:**
    ```
    node .claude/skills/nbmh-social/scripts/render.mjs \
