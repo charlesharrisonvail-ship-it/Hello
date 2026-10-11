@@ -21,9 +21,8 @@
    "n": 3,
    "date": "2026-10-16",
    "title": "I'm a working agent",
-   "media": null,
-   "caption": "I've sold real estate in the Vail Valley for 25 years. I got tired of paying hundreds per listing for marketing, so I learned to make it myself, and now I teach it. No hype. I'll tell you what it costs and what it won't do.\n\nhttps://learn.aireestate.com\n\n#realestateagent #coloradorealestate",
-   "needs": "Needs Charles on camera, 20-30 seconds. Save it as media/03-working-agent.mp4 and set \"media\" to that name."
+   "media": "03-working-agent.mp4",
+   "caption": "I've sold real estate in the Vail Valley for 25 years. I got tired of paying hundreds per listing for marketing, so I learned to make it myself, and now I teach it. No hype. I'll tell you what it costs and what it won't do.\n\nhttps://learn.aireestate.com\n\n#realestateagent #coloradorealestate"
   },
   {
    "n": 4,
@@ -87,9 +86,8 @@
    "n": 12,
    "date": "2026-11-06",
    "title": "Free first step",
-   "media": null,
-   "caption": "Never opened a terminal? You don't need to have. The free lesson installs Claude Code in about 20 minutes, step by step.\n\nThe lesson is free. Claude Code (not included) runs on a Claude Pro plan from Anthropic, $20 a month, if you don't already have one: https://claude.com/pricing\n\nhttps://learn.aireestate.com\n\n#realtortips #realestateagent",
-   "needs": "Needs Charles on camera or a screen recording. Save it as media/12-free-first-step.mp4 and set \"media\" to that name."
+   "media": "12-free-first-step.mp4",
+   "caption": "Never opened a terminal? You don't need to have. The free lesson installs Claude Code in about 20 minutes, step by step.\n\nThe lesson is free. Claude Code (not included) runs on a Claude Pro plan from Anthropic, $20 a month, if you don't already have one: https://claude.com/pricing\n\nhttps://learn.aireestate.com\n\n#realtortips #realestateagent"
   },
   {
    "n": 13,
