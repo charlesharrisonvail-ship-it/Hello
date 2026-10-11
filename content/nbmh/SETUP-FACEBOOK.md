@@ -37,6 +37,13 @@ A second credential on the same host is ignored and the UI says so — permissio
 names such as `pages_read_engagement` are Facebook scopes, not credentials, and
 do not belong here.
 
+**If publishing suddenly fails with `(#10) ... requires the 'pages_read_engagement'
+permission`** while nothing changed in Meta: check the environment's Network
+secrets for a second secret on `graph.facebook.com`. On 2026-10-11 an
+`AIRE_FB_TOKEN` (another business) was added there, and the UI said
+"Not sent: requests to these hosts use AIRE_FB_TOKEN instead". Only one secret
+per host is sent. AIRE now lives in its own cloud environment; keep it there.
+
 ### Verify
 
 ```bash

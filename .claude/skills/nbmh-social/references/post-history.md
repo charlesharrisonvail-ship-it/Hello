@@ -26,7 +26,7 @@ The point is not the record; it is making sure today is genuinely different.
 | 2026-10-08 | Insurance and telehealth access | Photo: bull elk in a golden aspen meadow, snow-dusted peaks, blue sky (wildlife, autumn gold). templates/photo.html. | Care Within Reach (published) |
 | 2026-10-09 | What a first Medication Management visit covers | Photo: emerald hummingbird at magenta penstemon, bee balm and columbines, soft mountains behind (wildlife + flowers, pink/violet/green). templates/photo.html. | A Gentle First Step (published) |
 | 2026-10-10 | Side-effect tracking between visits | Photo: still turquoise alpine lake mirroring snowy peaks, shoreline of crimson, orange and gold autumn color (landscape, blue/red/gold). templates/photo.html. | Notice What Changes (published) |
-| 2026-10-11 | Small steps in Medication Management | Photo: the red fox (series #1) in purple asters and golden aspens, frosted top/bottom strips, glowing plan pills. | Small Steps Matter (not published — Meta token permission error) |
+| 2026-10-11 | Small steps in Medication Management | Photo: the red fox (series #1) in purple asters and golden aspens, frosted top/bottom strips, glowing plan pills. | Small Steps Matter (published) |
 
 ## Rejected directions — do not return to these
 
