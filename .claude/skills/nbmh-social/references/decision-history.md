@@ -109,3 +109,5 @@ Only claim the last two when there is visible evidence.
 - 2026-10-11: `the green is too small and green sucks...it need to glow yellow or something or purple pastel`. Bottom strip: each plan is a glowing butter-yellow pill (25px, plum text); website · phone · email sit in a glowing pastel-purple pill. No small green text in the bottom strip.
 - 2026-10-11: `make the top headline glow too`. Headline is deep plum (#3B2350) with a golden glow; brand name and service line switched from green to plum.
 - 2026-10-11: `both fox and hummingbird are out of frame. Use your skills`. Template gained PHOTO_SHIFT plus a blurred photo fill under the strips; every post must show the whole animal in the clear window between the strips (fox -155px, hummingbird 150px).
+- 2026-10-11: `these are cleared and look great. use as template for the rest`. The fox/hummingbird design (frosted strips, glowing plum headline, yellow plan pills, purple contact pill with email, whole animal framed) is the approved standing template. Do not change it unasked.
+- 2026-10-11: Tested Pollinations.ai (free, no key): rejected — anatomically wrong animal, 686x858, forced watermark.
