@@ -29,10 +29,11 @@ body { font-family: Montserrat, sans-serif; }
 .datestamp { top: 84px; font-size: 21px; font-weight: 600; letter-spacing: .2em; color: #fff; opacity: .95; }
 
 .card {
-  position: absolute; z-index: 4; left: var(--gutter); right: var(--gutter); bottom: 300px;
-  background: rgba(250,246,240,.97);
+  position: absolute; z-index: 4; left: var(--gutter); right: var(--gutter); bottom: 350px;
+  background: rgba(250,246,240,.5);
+  backdrop-filter: blur(16px) saturate(1.15); -webkit-backdrop-filter: blur(16px) saturate(1.15);
   border-radius: 12px; padding: 54px 60px 50px;
-  box-shadow: 0 20px 56px rgba(0,0,0,.3);
+  box-shadow: 0 20px 56px rgba(0,0,0,.22);
 }
 /* Card class "top" when the photo's subject sits low, so the card fills the empty sky instead. */
 .card.top { top: 188px; bottom: auto; }
@@ -50,7 +51,7 @@ body { font-family: Montserrat, sans-serif; }
 }
 /* Coverage is fixed copy on every post, always above the CTA (approved-facts.md). */
 .footer .coverage {
-  font-size: 19px; font-weight: 500; line-height: 1.45; color: rgba(255,255,255,.92);
+  font-size: 25px; font-weight: 500; line-height: 1.42; color: #fff;
   padding-bottom: 18px; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,.22);
 }
 .footer .coverage b { font-weight: 700; color: #fff; }
