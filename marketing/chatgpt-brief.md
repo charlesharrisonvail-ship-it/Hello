@@ -12,7 +12,8 @@ You're my designer for **AiRE Estate**, an online course business that teaches r
 - Website: **learn.aireestate.com**
 - **Part One, Listing Media Without the Invoice ($67, one-time):** turn one listing photo into an AI aerial-style ("drone-style") listing video, a Listing Showcase, and a month of social posts. 7 modules + Capstone, Prompt Playbook, Certificate.
 - **Part Two, Lead to Keys ($97):** the rest of the desk: listings, clients, comps, follow-up and contracts. 7 modules + Capstone, Prompt Playbook, Certificate.
-- **Free first lesson:** installs Claude Code in about 20 minutes, no credit card.
+- **Free first lesson:** installs Claude Code in about 20 minutes. The lesson is free.
+- **Claude Code is NOT ours and NOT included.** It's Anthropic's tool, on a Claude Pro plan ($20/month). We don't sell it; we point people to claude.com/pricing in case they don't already have it.
 - Audience: working real estate agents in the US who are tired of paying hundreds per listing for marketing.
 
 **Look**
@@ -35,16 +36,17 @@ You're my designer for **AiRE Estate**, an online course business that teaches r
 5. No Zillow, MLS, OpenAI, Anthropic or Claude logos, and nothing that suggests a partnership or endorsement.
 6. Fair housing: no wording or imagery about who "should" live in a home. Show places, not demographics.
 7. Don't show the actual prompts or step-by-step method. Show the result, not the recipe.
-8. Spell every price exactly: **$67** and **$97**. Double-check all text in the image before you hand it to me; small text and prices must be crisp and correct.
+8. Whenever Claude Code or its $20/month appears, it says **(not included)**, and where there's room, "claude.com/pricing". Never make it look like part of what we sell.
+9. Spell every price exactly: **$67** and **$97**. Double-check all text in the image before you hand it to me; small text and prices must be crisp and correct.
 
 **Sizes**
 - Feed square 1080×1080, feed portrait 1080×1350, Reels/Stories 1080×1920 (keep text out of the top and bottom 250 px).
 
 **Start with these, one at a time, and show me each before the next:**
-1. "What it costs, all in" portrait card: Course $67 once · Claude Pro $20/month · video credits a few dollars a listing · chat app you already have, free.
+1. "What it costs, all in" portrait card: Course $67 once · Claude Code (not included) $20/month on a Claude Pro plan, claude.com/pricing · video credits a few dollars a listing · chat app you already have, free.
 2. Before/after square: a plain listing photo on the left, a frame from the AI flight on the right, labeled "Made with AI".
 3. "Drone shoot vs. AI clip" comparison: licensed drone operator about $250–$550 a shoot, weather permitting; AI aerial-style clip, a few dollars of credits. Footnote: "Real footage shows the real lot. AI shows a beautiful guess."
 4. Launch Reel cover (1080×1920): "AiRE Estate is open. Two courses. $67 and $97."
-5. Free lesson ad: "Never opened a terminal? You don't need to have. Free, 20 minutes, no card."
+5. Free lesson ad: "Never opened a terminal? You don't need to have. Free lesson, about 20 minutes." Small print: "Claude Code (not included) needs a Claude Pro plan from Anthropic."
 
 Ask me before adding any claim, number or wording that isn't in this brief.

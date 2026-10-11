@@ -44,7 +44,7 @@
    "date": "2026-10-23",
    "title": "What it costs, all in",
    "media": "06-part-one.png",
-   "caption": "What you actually pay:\n• The course: $67 once\n• Claude Pro: $20 a month, from Anthropic\n• Video credits: a few dollars a listing\n• Any chat app you already have: free\n\nThat's the whole list. learn.aireestate.com\n\n#realtorbusiness #realestateagent"
+   "caption": "What you actually pay:\n• The course: $67 once\n• Claude Code (not included): runs on a Claude Pro plan, $20 a month from Anthropic. Already have one? You're set. If not: claude.com/pricing\n• Video credits: a few dollars a listing\n• Any chat app you already have: free\n\nThat's the whole list. learn.aireestate.com\n\n#realtorbusiness #realestateagent"
   },
   {
    "n": 7,
@@ -88,7 +88,7 @@
    "date": "2026-11-06",
    "title": "Free first step",
    "media": null,
-   "caption": "Never opened a terminal? You don't need to have. The free lesson installs Claude Code in about 20 minutes, step by step.\n\nFree, no card. learn.aireestate.com\n\n#realtortips #realestateagent",
+   "caption": "Never opened a terminal? You don't need to have. The free lesson installs Claude Code in about 20 minutes, step by step.\n\nThe lesson is free. Claude Code (not included) runs on a Claude Pro plan from Anthropic, $20 a month, if you don't already have one: claude.com/pricing\n\nlearn.aireestate.com\n\n#realtortips #realestateagent",
    "needs": "Needs Charles on camera or a screen recording. Save it as media/12-free-first-step.mp4 and set \"media\" to that name."
   },
   {
@@ -96,7 +96,42 @@
    "date": "2026-10-10",
    "title": "Now open: two courses",
    "media": "13-launch.jpg",
-   "caption": "AiRE Estate is open.\n\nPart One, Listing Media Without the Invoice: one listing photo in, a drone-style flight out. 7 modules + Capstone. $67 once.\n\nLead to Keys: the desk work. Fact sheets, seller updates, buyer comparisons, the follow-up you meant to make. 7 modules + Capstone. $97.\n\nNot ready to buy? The free lesson installs Claude Code in about 20 minutes. No card.\n\nImage made with AI. learn.aireestate.com\n\n#realestateagent #AIforrealtors #realtortips"
+   "caption": "AiRE Estate is open.\n\nPart One, Listing Media Without the Invoice: one listing photo in, a drone-style flight out. 7 modules + Capstone. $67 once.\n\nLead to Keys: the desk work. Fact sheets, seller updates, buyer comparisons, the follow-up you meant to make. 7 modules + Capstone. $97.\n\nNot ready to buy? The free lesson installs Claude Code in about 20 minutes. The lesson is free. Claude Code (not included) runs on a Claude Pro plan from Anthropic, $20 a month, if you don't already have one: claude.com/pricing\n\nImage made with AI. learn.aireestate.com\n\n#realestateagent #AIforrealtors #realtortips"
+  },
+  {
+   "n": 14,
+   "date": "2026-10-14",
+   "title": "AiRE Estate is open (launch cover)",
+   "media": "14-launch-cover.png",
+   "caption": "AiRE Estate is open. Two courses for working agents.\n\nPart One, Listing Media Without the Invoice: $67 once.\nLead to Keys, the rest of the desk: $97.\n\nlearn.aireestate.com\n\n#realestateagent #AIforrealtors #realtortips"
+  },
+  {
+   "n": 15,
+   "date": "2026-10-21",
+   "title": "What it costs, all in (card)",
+   "media": "15-all-in-costs.png",
+   "caption": "What you actually pay:\n• The course: $67 once\n• Claude Code (not included) runs on a Claude Pro plan from Anthropic, $20 a month, if you don't already have one: claude.com/pricing\n• Video credits: a few dollars a listing, bought from the video tool\n• Any chat app you already have: free\n\nThat's the whole list. learn.aireestate.com\n\n#realtorbusiness #realestateagent"
+  },
+  {
+   "n": 16,
+   "date": "2026-10-23",
+   "title": "Before/after",
+   "media": "16-before-after.png",
+   "caption": "One photo in. A drone-style flight out.\n\nA demonstration, made with AI: the listing photo on the left, and the kind of aerial view a drone-style flight gives you on the right. No pilot, no weather window.\n\nOn a real listing: your own photo, check every frame, label it as AI.\n\nPart One teaches it. $67 once. learn.aireestate.com\n\n#realestateagent #listingvideo #AIforrealtors"
+  },
+  {
+   "n": 17,
+   "date": "2026-10-26",
+   "title": "Drone shot vs. AI clip",
+   "media": "17-drone-vs-ai.png",
+   "caption": "A licensed drone operator runs about $250 to $550 a shoot, weather permitting. An AI aerial-style clip runs a few dollars of video credits (not included; you buy them from the video tool).\n\nReal footage shows the real lot. AI shows a beautiful guess. Know which one your listing needs.\n\nlearn.aireestate.com\n\n#realestatemarketing #dronevideo #realtortips"
+  },
+  {
+   "n": 18,
+   "date": "2026-10-28",
+   "title": "Free first lesson ad",
+   "media": "18-free-lesson.png",
+   "caption": "Never opened a terminal? You don't need to have.\n\nThe free first lesson walks you through installing Claude Code, step by step, in about 20 minutes. The lesson is free. Claude Code (not included) runs on a Claude Pro plan from Anthropic, $20 a month, if you don't already have one: claude.com/pricing\n\nlearn.aireestate.com\n\n#realtortips #realestateagent"
   }
  ]
 }
