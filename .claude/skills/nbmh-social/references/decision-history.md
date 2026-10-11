@@ -101,3 +101,4 @@ Only claim the last two when there is visible evidence.
 - 2026-10-10: `use the fox for more posts...like it doing different things. Same thing with other animals...deer, birds.` Library is now recurring fox, deer and bird series.
 - 2026-10-10: `the fonts look elementary and small.` Template now uses Playfair Display headlines (~100px) and Montserrat for all other text, set larger.
 - 2026-10-11: `these are missing the insurance companies and plans we work with`. Every graphic now carries the in-network list and private-pay line in the green bar above the website and phone (fixed in templates/photo.html).
+- 2026-10-11: `make the insurance text bigger. and the large white text boxes semi-translucent 50% more`. Coverage text is 25px; the text card is 50% linen with a frosted blur.
