@@ -29,7 +29,7 @@ body { font-family: Montserrat, sans-serif; }
 .datestamp { top: 84px; font-size: 21px; font-weight: 600; letter-spacing: .2em; color: #fff; opacity: .95; }
 
 .card {
-  position: absolute; z-index: 4; left: var(--gutter); right: var(--gutter); bottom: 350px;
+  position: absolute; z-index: 4; left: var(--gutter); right: var(--gutter); bottom: 196px;
   background: rgba(250,246,240,.5);
   backdrop-filter: blur(16px) saturate(1.15); -webkit-backdrop-filter: blur(16px) saturate(1.15);
   border-radius: 12px; padding: 54px 60px 50px;
@@ -45,17 +45,24 @@ body { font-family: Montserrat, sans-serif; }
 .card .rule { width: 84px; height: 6px; margin: 30px 0 24px; }
 .card .service { font-size: 20px; font-weight: 700; letter-spacing: .13em; color: var(--ink); }
 
+/* Bottom bar sits flush on the bottom edge, as low as possible, so it covers little of the photo. */
 .footer {
-  background: var(--forest); color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.3);
-  flex-direction: column; align-items: stretch; padding: 26px 44px 28px; font-family: Montserrat;
+  left: 0; right: 0; bottom: 0; border-radius: 0;
+  background: rgba(18,64,45,.55);
+  backdrop-filter: blur(14px) saturate(1.1); -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  color: #fff; flex-direction: column; align-items: stretch; padding: 20px 72px 24px; font-family: Montserrat;
+  text-shadow: 0 1px 4px rgba(0,0,0,.45);
 }
-/* Coverage is fixed copy on every post, always above the CTA (approved-facts.md). */
+/* Coverage is fixed copy on every post, always above the CTA (approved-facts.md).
+   Plan names are gold so they stand out (2026-10-11). */
 .footer .coverage {
-  font-size: 25px; font-weight: 500; line-height: 1.42; color: #fff;
-  padding-bottom: 18px; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,.22);
+  font-size: 22px; font-weight: 500; line-height: 1.42;
+  padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,.28);
 }
-.footer .coverage b { font-weight: 700; color: #fff; }
-.footer .cta { display: flex; justify-content: space-between; align-items: center; font-size: 31px; font-weight: 600; letter-spacing: .01em; }
+.footer .coverage .label { font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #fff; margin-right: 6px; }
+.footer .coverage .plan { font-weight: 700; color: #FFD27A; }
+.footer .coverage .sep { color: rgba(255,255,255,.6); margin: 0 4px; }
+.footer .cta { display: flex; justify-content: space-between; align-items: center; font-size: 29px; font-weight: 600; letter-spacing: .01em; }
 </style>
 
 <div class="canvas">
@@ -79,7 +86,7 @@ body { font-family: Montserrat, sans-serif; }
   </div>
 
   <div class="footer">
-    <div class="coverage"><b>In-network with</b> Aetna, Anthem Blue Cross Blue Shield, UnitedHealthcare, Cigna, Mountain Strong EAP, and Olivia's Fund. Private-pay appointments are also available.</div>
+    <div class="coverage"><span class="label">In-network with</span> <span class="plan">Aetna</span><span class="sep">·</span><span class="plan">Anthem Blue Cross Blue Shield</span><span class="sep">·</span><span class="plan">UnitedHealthcare</span><span class="sep">·</span><span class="plan">Cigna</span><span class="sep">·</span><span class="plan">Mountain Strong EAP</span><span class="sep">·</span><span class="plan">Olivia's Fund</span>. Private-pay appointments are also available.</div>
     <div class="cta"><span>NBMentalHealth.com</span><span>970-470-2939</span></div>
   </div>
 </div>
