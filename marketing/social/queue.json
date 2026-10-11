@@ -116,25 +116,22 @@
    "n": 16,
    "date": "2026-10-23",
    "title": "Before/after",
-   "media": null,
-   "caption": null,
-   "needs": "ChatGPT's After shows a lake and different mountains that aren't in the Before. Needs an After of the same house and setting. Draft: media/16-before-after-DRAFT.png"
+   "media": "16-before-after.png",
+   "caption": "One photo in. A drone-style flight out.\n\nA demonstration, made with AI: the listing photo on the left, and the kind of aerial view a drone-style flight gives you on the right. No pilot, no weather window.\n\nOn a real listing: your own photo, check every frame, label it as AI.\n\nPart One teaches it. $67 once. learn.aireestate.com\n\n#realestateagent #listingvideo #AIforrealtors"
   },
   {
    "n": 17,
    "date": "2026-10-26",
    "title": "Drone shot vs. AI clip",
-   "media": null,
-   "caption": null,
-   "needs": "Fix the stray dot in 'lot' in the footnote and the smudge in the lower box. Draft: media/17-drone-vs-ai-DRAFT.png"
+   "media": "17-drone-vs-ai.png",
+   "caption": "A licensed drone operator runs about $250 to $550 a shoot, weather permitting. An AI aerial-style clip runs a few dollars of video credits (not included; you buy them from the video tool).\n\nReal footage shows the real lot. AI shows a beautiful guess. Know which one your listing needs.\n\nlearn.aireestate.com\n\n#realestatemarketing #dronevideo #realtortips"
   },
   {
    "n": 18,
    "date": "2026-10-28",
    "title": "Free first lesson ad",
-   "media": null,
-   "caption": null,
-   "needs": "Replace 'Free, 20 minutes, no card.' with 'Free lesson, about 20 minutes.' and add small print 'Claude Code (not included) needs a Claude Pro plan from Anthropic.' Draft: media/18-free-lesson-DRAFT.png"
+   "media": "18-free-lesson.png",
+   "caption": "Never opened a terminal? You don't need to have.\n\nThe free first lesson walks you through installing Claude Code, step by step, in about 20 minutes. The lesson is free. Claude Code (not included) runs on a Claude Pro plan from Anthropic, $20 a month, if you don't already have one: claude.com/pricing\n\nlearn.aireestate.com\n\n#realtortips #realestateagent"
   }
  ]
 }
