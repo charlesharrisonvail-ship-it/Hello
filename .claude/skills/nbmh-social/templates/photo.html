@@ -25,14 +25,16 @@ body { font-family: Montserrat, sans-serif; }
 
 .brand { display: inline-flex; align-items: center; gap: 16px; text-align: left; }
 .brand img { width: 76px; height: 76px; border-radius: 50%; display: block; box-shadow: 0 2px 8px rgba(0,0,0,.18); }
-.brand .n1 { font-size: 29px; font-weight: 700; letter-spacing: .06em; color: var(--forest); line-height: 1.12; }
-.brand .n2 { font-size: 20px; font-weight: 500; letter-spacing: .24em; color: var(--pine); line-height: 1.12; }
+.brand .n1 { font-size: 29px; font-weight: 700; letter-spacing: .06em; color: #3B2350; line-height: 1.12; }
+.brand .n2 { font-size: 20px; font-weight: 500; letter-spacing: .24em; color: #5B2A86; line-height: 1.12; }
 
 .headline {
   font-family: Playfair, serif; font-weight: 600; font-size: 90px; line-height: 1.02;
-  letter-spacing: -.012em; color: var(--forest); margin: 16px 0 12px; text-wrap: balance;
+  letter-spacing: -.012em; color: #3B2350; margin: 16px 0 12px; text-wrap: balance;
+  /* Charles, 2026-10-11: "make the top headline glow too" */
+  text-shadow: 0 0 14px rgba(255,214,80,.95), 0 0 30px rgba(255,214,80,.7), 0 0 52px rgba(255,236,150,.55);
 }
-.service { font-size: 19px; font-weight: 700; letter-spacing: .16em; color: var(--ink); }
+.service { font-size: 19px; font-weight: 700; letter-spacing: .16em; color: #3B2350; }
 
 /* Coverage is fixed copy on every post, always above the CTA (approved-facts.md).
    Charles, 2026-10-11: green was too small and dull; plans glow butter-yellow, contact glows pastel purple. */
