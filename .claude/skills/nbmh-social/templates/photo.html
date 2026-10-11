@@ -29,7 +29,7 @@ body { font-family: Montserrat, sans-serif; }
 .datestamp { top: 84px; font-size: 21px; font-weight: 600; letter-spacing: .2em; color: #fff; opacity: .95; }
 
 .card {
-  position: absolute; z-index: 4; left: var(--gutter); right: var(--gutter); bottom: 186px;
+  position: absolute; z-index: 4; left: var(--gutter); right: var(--gutter); bottom: 300px;
   background: rgba(250,246,240,.97);
   border-radius: 12px; padding: 54px 60px 50px;
   box-shadow: 0 20px 56px rgba(0,0,0,.3);
@@ -38,22 +38,23 @@ body { font-family: Montserrat, sans-serif; }
 .card.top { top: 188px; bottom: auto; }
 .card .eyebrow { display: block; font-family: Montserrat; font-size: 22px; font-weight: 700; letter-spacing: .2em; color: var(--pine); margin-bottom: 18px; }
 .card .headline {
-  font-family: Playfair, serif; font-weight: 600; font-size: 100px; line-height: 1.04;
+  font-family: Playfair, serif; font-weight: 600; font-size: 94px; line-height: 1.04;
   letter-spacing: -.012em; color: var(--forest); text-wrap: balance;
 }
 .card .rule { width: 84px; height: 6px; margin: 30px 0 24px; }
 .card .service { font-size: 20px; font-weight: 700; letter-spacing: .13em; color: var(--ink); }
-/* Coverage is fixed copy on every post, always above the CTA bar (approved-facts.md). */
-.card .coverage {
-  margin-top: 26px; padding-top: 24px; border-top: 2px solid rgba(18,64,45,.14);
-  font-size: 21px; font-weight: 500; line-height: 1.5; color: var(--ink);
-}
-.card .coverage b { font-weight: 700; color: var(--pine); }
 
 .footer {
   background: var(--forest); color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.3);
-  font-family: Montserrat; font-size: 31px; font-weight: 600; letter-spacing: .01em; padding: 30px 44px;
+  flex-direction: column; align-items: stretch; padding: 26px 44px 28px; font-family: Montserrat;
 }
+/* Coverage is fixed copy on every post, always above the CTA (approved-facts.md). */
+.footer .coverage {
+  font-size: 19px; font-weight: 500; line-height: 1.45; color: rgba(255,255,255,.92);
+  padding-bottom: 18px; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,.22);
+}
+.footer .coverage b { font-weight: 700; color: #fff; }
+.footer .cta { display: flex; justify-content: space-between; align-items: center; font-size: 31px; font-weight: 600; letter-spacing: .01em; }
 </style>
 
 <div class="canvas">
@@ -74,11 +75,10 @@ body { font-family: Montserrat, sans-serif; }
     <h1 class="headline">{{HEADLINE}}</h1>
     <div class="rule"></div>
     <div class="service">{{SERVICE}}</div>
-    <div class="coverage"><b>In-network with</b> Aetna, Anthem Blue Cross Blue Shield, UnitedHealthcare, Cigna, Mountain Strong EAP, and Olivia's Fund. Private-pay appointments are also available.</div>
   </div>
 
   <div class="footer">
-    <span>NBMentalHealth.com</span>
-    <span>970-470-2939</span>
+    <div class="coverage"><b>In-network with</b> Aetna, Anthem Blue Cross Blue Shield, UnitedHealthcare, Cigna, Mountain Strong EAP, and Olivia's Fund. Private-pay appointments are also available.</div>
+    <div class="cta"><span>NBMentalHealth.com</span><span>970-470-2939</span></div>
   </div>
 </div>
