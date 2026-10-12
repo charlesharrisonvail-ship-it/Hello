@@ -103,6 +103,12 @@ one mule deer doe, a mountain bluebird and a hummingbird through different momen
 animal's description identical in `scripts/library-prompts.txt` so it reads as the same
 character, and rotate series day to day.
 
+Mix in **scenery and uplifting "love" scenes** (Charles, 2026-10-12: "Nature Scenery,
+mountains, rivers, Sunlight, Love...anything positive!"): sunrises over peaks, rivers,
+sunbeams, alpine lakes, rainbows, golden meadows, and gentle love images such as two
+swans forming a heart or two cardinals together. Never people. In the library one
+scenery/love subject follows every two animal subjects.
+
 
 Never repeat yesterday's subject. Rotate the subject, season, color, and light
 every day, across:

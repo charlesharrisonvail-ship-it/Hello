@@ -3,28 +3,42 @@ deer-fawn-meadow|DEER: a gentle mule deer doe with large ears, a soft gray-brown
 bluebird-aspen|BLUEBIRD: a bright sky-blue male mountain bluebird perched on a slender aspen branch with glowing golden leaves, clear blue sky behind
 fox-leaping|FOX: a slender red fox with a bright orange coat, white chest and muzzle, black-tipped ears and black legs, and a white-tipped bushy tail, joyfully leaping mid-air over a patch of purple wildflowers in a golden meadow, mountains and blue sky behind
 deer-lake-sunrise|DEER: a gentle mule deer doe with large ears, a soft gray-brown coat and a white throat patch, standing at the edge of a calm mountain lake at sunrise, pink and gold sky reflected in the water, evergreens behind
+sunrise-peaks|SCENERY: golden sunrise light spilling over snow-capped Colorado peaks, pink and orange sky, a misty valley of evergreens glowing below
 hummingbird-penstemon|HUMMINGBIRD: a broad-tailed hummingbird with iridescent emerald feathers and a rose-red throat, sipping from bright red penstemon flowers in a sunny mountain garden, soft green background
 fox-napping-leaves|FOX: a slender red fox with a bright orange coat, white chest and muzzle, black-tipped ears and black legs, and a white-tipped bushy tail, curled up napping peacefully in warm sunshine on a bed of golden aspen leaves, tail wrapped around its nose
+river-bend|SCENERY: a sparkling clear mountain river curving through a sunlit green valley, wildflowers along the banks, blue sky with soft white clouds
 deer-aspens|DEER: a gentle mule deer doe with large ears, a soft gray-brown coat and a white throat patch, grazing among white-trunked aspens with brilliant golden leaves, sun rays through the trees
 bluebird-pair-fence|BLUEBIRD: two bright sky-blue mountain bluebirds perched side by side on a rustic wooden fence post, wildflower meadow and blue mountains behind, sunny
+swans-heart|LOVE: two white swans on a calm blue lake at golden hour, their necks curving together to form a heart shape, soft warm reflections
 fox-trail-aspens|FOX: a slender red fox with a bright orange coat, white chest and muzzle, black-tipped ears and black legs, and a white-tipped bushy tail, trotting happily along a dirt mountain trail lined with golden aspens, blue sky above
 deer-leaping-creek|DEER: a gentle mule deer doe with large ears, a soft gray-brown coat and a white throat patch, gracefully leaping across a sparkling clear mountain creek, green meadow and evergreens behind, sunny
+sunbeams-forest|SCENERY: warm sunbeams streaming through a tall evergreen forest onto a mossy path with ferns and small wildflowers, peaceful morning light
 hummingbird-hovering-orange|HUMMINGBIRD: a broad-tailed hummingbird with iridescent emerald feathers and a rose-red throat, hovering beside bright orange trumpet flowers, wings blurred, sunlit garden, blue sky
 fox-sunrise-rock|FOX: a slender red fox with a bright orange coat, white chest and muzzle, black-tipped ears and black legs, and a white-tipped bushy tail, sitting proudly on a lichen-covered boulder at sunrise, looking out over a misty golden mountain valley
+alpine-lake-reflection|SCENERY: a still turquoise alpine lake perfectly reflecting jagged snowy peaks and a bright blue sky, colorful wildflowers on the shore
 deer-wildflowers-gaze|DEER: a gentle mule deer doe with large ears, a soft gray-brown coat and a white throat patch, standing in tall purple lupines and red paintbrush, looking calmly toward the camera, snowy peaks behind, clear sky
 bluebird-flight|BLUEBIRD: a bright sky-blue male mountain bluebird in graceful flight with wings spread over a sunny green meadow, blue mountains behind
+cardinals-pair|LOVE: two bright red cardinals perched side by side on a snowy pine branch, sunlight and soft blue sky behind
 fox-stream-drinking|FOX: a slender red fox with a bright orange coat, white chest and muzzle, black-tipped ears and black legs, and a white-tipped bushy tail, drinking from a clear sparkling mountain stream among mossy rocks, sunlit autumn trees behind
 deer-forest-sunbeams|DEER: a gentle mule deer doe with large ears, a soft gray-brown coat and a white throat patch, walking along a forest path lit by golden sunbeams through tall pines, green ferns
+waterfall-rainbow|SCENERY: a tall waterfall cascading into a green canyon pool with a vivid rainbow arcing through the mist on a sunny day
 hummingbird-resting-twig|HUMMINGBIRD: a broad-tailed hummingbird with iridescent emerald feathers and a rose-red throat, perched resting on a thin twig among pink blossoms, bright morning light
 fox-playing-leaves|FOX: a slender red fox with a bright orange coat, white chest and muzzle, black-tipped ears and black legs, and a white-tipped bushy tail, playfully pouncing into a pile of red and golden autumn leaves, sunny forest clearing
+golden-hour-meadow|SCENERY: a wide mountain meadow of tall grass and wildflowers glowing in golden-hour sunlight, distant blue mountains, warm hopeful mood
 deer-resting-grass|DEER: a gentle mule deer doe with large ears, a soft gray-brown coat and a white throat patch, resting peacefully in tall golden grass on a sunny hillside, aspens and blue sky behind
 bluebird-singing-blossoms|BLUEBIRD: a bright sky-blue male mountain bluebird singing on a branch of white and pink spring blossoms, beak open, bright blue sky
+heart-flowers|LOVE: a heart shape naturally formed by red and pink wildflowers in a sunny green meadow, soft mountains behind
 fox-peeking-flowers|FOX: a slender red fox with a bright orange coat, white chest and muzzle, black-tipped ears and black legs, and a white-tipped bushy tail, peeking out curiously from a field of tall yellow and purple wildflowers, sunny meadow
 deer-fawn-nuzzle|DEER: a gentle mule deer doe with large ears, a soft gray-brown coat and a white throat patch, gently nuzzling her spotted fawn in a sunlit green clearing, wildflowers around
+aspen-gold-road|SCENERY: a winding mountain road through a brilliant tunnel of golden aspen trees under a deep blue sky, sun flares through the leaves
 hummingbird-columbines|HUMMINGBIRD: two broad-tailed hummingbirds with iridescent emerald feathers hovering near blue and white Colorado columbine flowers, sunlit mountain garden
 fox-stretching-sun|FOX: a slender red fox with a bright orange coat, white chest and muzzle, black-tipped ears and black legs, and a white-tipped bushy tail, stretching and yawning in warm morning sunshine on a grassy knoll, golden aspens and blue sky behind
+sunset-lake-dock|SCENERY: a calm mountain lake at sunset with a small wooden dock, the sky glowing orange, pink and purple, mirror reflections
 deer-sunflowers|DEER: a gentle mule deer doe with large ears, a soft gray-brown coat and a white throat patch, standing in a field of tall bright sunflowers, Colorado foothills and blue sky behind
 bluebird-birdbath|BLUEBIRD: a bright sky-blue male mountain bluebird splashing happily in a stone birdbath, droplets sparkling in the sunlight, flowers around
+horses-love|LOVE: two horses standing nose to nose in a sunlit green pasture, mountains and blue sky behind, warm gentle mood
 fox-butterflies|FOX: a slender red fox with a bright orange coat, white chest and muzzle, black-tipped ears and black legs, and a white-tipped bushy tail, sitting in a summer meadow watching two orange butterflies flutter near its nose
 deer-first-snow|DEER: a gentle mule deer doe with large ears, a soft gray-brown coat and a white throat patch, standing in a light dusting of fresh snow beside golden aspens under a brilliant blue sky
+rainbow-valley|SCENERY: a bright rainbow over a lush green Colorado valley after a summer rain, sunlight breaking through clouds
 fox-snow-pounce|FOX: a slender red fox with a bright orange coat, white chest and muzzle, black-tipped ears and black legs, and a white-tipped bushy tail, playfully pouncing into fresh powdery snow, sparkling crystals, bright blue sky and evergreens behind
+starry-sunrise-dawn|SCENERY: first light of dawn over layered blue mountain ridges, soft pastel pink and lavender sky, peaceful and hopeful
