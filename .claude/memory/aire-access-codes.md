@@ -40,3 +40,10 @@ messages are short; the box is small, so no blank lines. When Charles asks for
 text he will paste into Stripe, give it ready to paste with the real code in
 it, never a placeholder; he was frustrated twice by "YOUR-CODE". Still keep
 codes out of files and commits.
+
+**hello@aireestate.com forwarding verified 2026-10-12:** ImprovMX (MX and SPF
+correct) forwards to charlesharrisonvail@gmail.com. A test from outside
+(nbmentalhealth.com) arrived, first in spam. Tests from Charles's own Gmail or
+epique.me (same mailbox) are dropped by Gmail's loop rule, so never test that
+way. His @epivail TikTok is tied to that Gmail; the AiRE TikTok needs its own
+email (hello@aireestate.com, or a +aire alias).
