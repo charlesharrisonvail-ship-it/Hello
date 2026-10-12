@@ -13,12 +13,15 @@
 body { font-family: Montserrat, sans-serif; }
 
 /* The animal must sit wholly in the clear window between the strips (about y 290-1060).
-   PHOTO_SHIFT slides the photo up (negative) or down (positive) to frame it; a blurred copy
+   PHOTO_SHIFT slides the photo up (negative) or down (positive); PHOTO_SCALE (e.g. 0.84) shrinks a
+   tall subject so it fits, with soft side edges. A blurred copy
    fills any gap, and it only ever shows through the frosted strips. */
 .photo-fill { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
 .photo-fill img { width: 100%; height: 100%; object-fit: cover; filter: blur(28px) saturate(1.1); transform: scale(1.15); display: block; }
 .photo { position: absolute; inset: 0; z-index: 1; }
-.photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 50%; display: block; transform: translateY({{PHOTO_SHIFT}}); }
+.photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 50%; display: block; transform: translateY({{PHOTO_SHIFT}}) scale({{PHOTO_SCALE}});
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%); }
 
 .band {
   position: absolute; z-index: 4; left: 0; right: 0; text-align: center;
