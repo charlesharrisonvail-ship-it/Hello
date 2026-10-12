@@ -17,3 +17,11 @@ hello@aireestate.com. No cost to Charles ("I am not paying anything else").
 **Needs from Charles:** a free Cloudflare account (about 10 minutes). Not built
 yet. Page titles and schema already carry "AiRE Estate AI" and "AiRE AI"
 (2026-10-11). Best done in a fresh session.
+
+**Update 2026-10-12:** ChatGPT built a review package (Cloudflare Worker + D1,
+fixed approved answers, AI only classifies the question, lead capture OFF by
+default). Claude reviewed it: facts match the site, its 11 tests and the
+concurrency test pass, no codes or banned names in it. Not deployed, not in the
+repo. Before going live: Charles creates a free Cloudflare account; privacy.html
+needs the bot/email paragraph first; a 1B classifier often answers "unknown", so
+loosen ID matching. Keep lead capture off until privacy is published.
