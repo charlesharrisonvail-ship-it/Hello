@@ -28,6 +28,7 @@ The point is not the record; it is making sure today is genuinely different.
 | 2026-10-10 | Side-effect tracking between visits | Photo: still turquoise alpine lake mirroring snowy peaks, shoreline of crimson, orange and gold autumn color (landscape, blue/red/gold). templates/photo.html. | Notice What Changes (published) |
 | 2026-10-11 | Small steps in Medication Management | Photo: the red fox (series #1) in purple asters and golden aspens, frosted top/bottom strips, glowing plan pills. | Small Steps Matter (published) |
 | 2026-10-12 | Partnership and support in Medication Management | Photo: the deer series #1 — doe and spotted fawn in yellow and purple wildflowers, soft green hills. | Growing Together (published) |
+| 2026-10-15 | Pausing to check in with yourself | Photo: the bluebird series #1 — sky-blue bluebird on a golden aspen branch, clear blue sky. | Take a Breath (published) |
 
 ## Rejected directions — do not return to these
 
