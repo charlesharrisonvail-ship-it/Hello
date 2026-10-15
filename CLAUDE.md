@@ -22,7 +22,7 @@ and the site is plain HTML.
   - `lofty-crm.md` — Lofty contacts, tiers, tags, recruit pipeline stages, and follow-up tasks
 - `.claude/skills/linkedin-optimizer/` — LinkedIn analytics and profile optimization
 - `.claude/skills/` also holds five general skills from ComposioHQ/awesome-claude-skills (commit `be2a406`, Apache-2.0): `lead-research-assistant`, `content-research-writer`, `competitive-ads-extractor`, `meeting-insights-analyzer`, `domain-name-brainstormer`. They are third-party and brand-neutral; EpiVail and AiRE Estate rules in this file still govern anything they produce.
-- `.claude/settings.json` — project settings; enables the Superpowers and Ponytail (DietrichGebert/ponytail, MIT; "lazy senior dev" minimal-code mode, needs `node`) plugins and registers the Continuity session-orientation hooks
+- `.claude/settings.json` — project settings; enables the Superpowers, Ponytail (DietrichGebert/ponytail, MIT; "lazy senior dev" minimal-code mode, needs `node`), and ECC (affaan-m/ECC v2.2.3, MIT; `ecc@ecc` — 71 agents, 311 skills, and its own lifecycle hooks) plugins and registers the Continuity session-orientation hooks
 - `.claude/continuity/` — the Continuity kit that loads `ROLE.md`, `PROJECT.md`, `DECISIONS.md`, and `STATE.md` at every session start
 - `.claude/memory/` — one fact per file, searched with `python3 .claude/continuity/recall.py <terms>`
 - `docs/` — the AiRE Estate site (public; carries pricing, refund terms, privacy, and terms of service)
@@ -34,7 +34,7 @@ and the site is plain HTML.
 
 - Agents and skills use YAML frontmatter (`name`, `description`) followed by Markdown instructions.
 - Work on a feature branch and merge through a pull request.
-- Never overwrite `.claude/settings.json`; it holds the Superpowers and Ponytail plugins and the Continuity hooks, so merge into it.
+- Never overwrite `.claude/settings.json`; it holds the Superpowers, Ponytail, and ECC plugins and the Continuity hooks, so merge into it.
 
 ## EpiVail conventions
 
