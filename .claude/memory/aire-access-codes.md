@@ -47,3 +47,10 @@ correct) forwards to charlesharrisonvail@gmail.com. A test from outside
 epique.me (same mailbox) are dropped by Gmail's loop rule, so never test that
 way. His @epivail TikTok is tied to that Gmail; the AiRE TikTok needs its own
 email (hello@aireestate.com, or a +aire alias).
+
+**Gift codes (2026-10-15):** free Part One goes through Stripe, not the site:
+one 100%-off coupon per person ("AiRE Estate Guest Pass", Part One only, coupon
+and code each limited to 1 use; a coupon's limit covers all its codes, so each
+gift needs a new coupon). "Allow promotion codes" is on for the $67 link
+(cNi14m...kw00). Issued: AIRE-GUEST-67 (Adriana Azar), AIRE-GUEST-67B (Steve
+Bichel); emails drafted in Gmail, Charles sends. Chelsea Boone on hold.
