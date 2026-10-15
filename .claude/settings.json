@@ -11,11 +11,18 @@
         "source": "github",
         "repo": "DietrichGebert/ponytail"
       }
+    },
+    "ecc": {
+      "source": {
+        "source": "github",
+        "repo": "affaan-m/ECC"
+      }
     }
   },
   "enabledPlugins": {
     "superpowers@superpowers-marketplace": true,
-    "ponytail@ponytail": true
+    "ponytail@ponytail": true,
+    "ecc@ecc": true
   },
   "hooks": {
     "SessionStart": [
