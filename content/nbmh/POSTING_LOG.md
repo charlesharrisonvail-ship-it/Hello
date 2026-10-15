@@ -51,11 +51,11 @@ Status is `verified` only after reading the post back from the page with
 
 ## Daily automation
 
-Routine `trig_01HfQzfm8TRNfcofTq8kJmfb` — "NBMH daily Facebook post", 6:49 a.m.
-America/Denver, persistent session (fires into this session). It drafts the day's
-graphic and caption, runs the compliance gate, logs the result, and pushes to
-`claude/newbeginnings-social-media-manager-4s9d6n`.
+**From 2026-10-16:** routine `trig_01SEU3abHpbCACPQwzMjeZzk` — "NBMH daily Facebook post
+(fresh session)", 6:49 a.m. America/Denver, **starts a fresh session every morning**. It
+clones the repo, sets up the free Z-Image Turbo model, makes the day's photo (about an hour),
+publishes, logs, pushes, and notifies Charles by push and email. Posts land around 8:00 a.m.
 
-**From 2026-10-08, every post is a real Higgsfield photograph** (nature,
-animals, landscapes, positive scenes) set in `templates/photo.html`. Charles
-rejected the code-built text cards. A photo costs 0.25 credits.
+The old routine `trig_01HfQzfm8TRNfcofTq8kJmfb` (fired into one long-running session) is
+**disabled**: its wake-ups were held for one to two days when that session went idle, so
+10-13 and 10-14 were missed, and server restarts kept killing the photo generator.
