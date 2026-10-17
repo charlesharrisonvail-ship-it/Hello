@@ -25,3 +25,8 @@ concurrency test pass, no codes or banned names in it. Not deployed, not in the
 repo. Before going live: Charles creates a free Cloudflare account; privacy.html
 needs the bot/email paragraph first; a 1B classifier often answers "unknown", so
 loosen ID matching. Keep lead capture off until privacy is published.
+
+**Update 2026-10-17:** package now lives in tools/aire-bot/ (not public; not
+deployed), answer matching loosened, 12 tests pass, DEPLOY.md has the steps.
+Blocked only on Charles adding CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID
+to the cloud environment settings (never in chat). Email capture stays off.
