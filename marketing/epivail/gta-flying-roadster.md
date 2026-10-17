@@ -3,8 +3,25 @@
 EpiVail only. Vertical 9:16, about 45 seconds, for Reels, Shorts, and LinkedIn.
 The pitch starts when the car leaves the ground.
 
-**Status:** draft. Nothing has been generated yet. Generation spends Charles's
-Higgsfield credits and waits on his "go".
+**Status:** rendered 2026-10-17 after Charles's go. The final cut is
+`media/gta-flying-roadster-buyer-agency.mp4` (37s, 1080x1920, with voice).
+It has not been posted.
+
+### What was actually used
+
+- **Presenter:** HeyGen avatar Charles2, look "Professional in a black suit"
+  (`deee28fd1f61429c991bce7682c34e8f`), default voice, Brand Glossary on. This is
+  the same look as the Agency/Vail video "Fresh Energy for Vail". It appears as a
+  gold-framed picture-in-picture card. HeyGen ignored the green background
+  (photo avatars keep their own), so there is no cutout. Avatar video:
+  `c8ea78d33701827d7bc64720dd50d503`.
+- **Start frames:** Higgsfield `nano_banana_2`, 5 × 1.5 credits. His face came
+  from the avatar look, and the suit lining from the Epique pattern.
+- **Motion:** HeyGen `image_to_video`, 5 clips of 8s each at 1080p. Higgsfield
+  refused the Kling clips with a "grace period daily generation limit", so the
+  plan below that names Kling was not used.
+- **Cut:** ffmpeg in the session. Shot 2 is cropped to the queue and crowd,
+  because the generated car showed a real automaker's grille and badge.
 
 ## Why a flying roadster, and what is real
 
