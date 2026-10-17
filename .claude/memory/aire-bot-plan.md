@@ -42,3 +42,5 @@ answers.mjs). Keyword routing (topicGuess) runs before the 1B model. Email form
 removed from the page; LEAD_CAPTURE_ENABLED=false. Old "purple-dew-1d3c" Worker
 in the account is unrelated. Pending: Charles to approve a privacy.html line about
 Cloudflare processing chat questions.
+
+**Privacy updated 2026-10-17:** privacy.html now has an "AiRE, our AI assistant" section (Cloudflare processes questions; no chat stored). Email capture still needs its own privacy wording before turning on.
