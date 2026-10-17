@@ -12,4 +12,3 @@ memories that exist.
     The fact itself.
 
 Search with `python .claude/continuity/recall.py <terms>`.
-- `heygen-avatar-looks.md` — Charles's EpiVail HeyGen presenter look; Higgsfield grace-period block
