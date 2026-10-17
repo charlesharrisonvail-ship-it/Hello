@@ -30,3 +30,15 @@ loosen ID matching. Keep lead capture off until privacy is published.
 deployed), answer matching loosened, 12 tests pass, DEPLOY.md has the steps.
 Blocked only on Charles adding CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID
 to the cloud environment settings (never in chat). Email capture stays off.
+
+**LIVE 2026-10-17.** Worker `aire-course-assistant` at
+https://aire-course-assistant.charlesharrisonvail.workers.dev (account
+f2722396b874ae0bdf1f3eaeb5721365, D1 aire-assistant 25b56708-...). Page:
+learn.aireestate.com/ask-aire.html, linked in the home footer and sitemap.
+Deployed by REST API: the Cloudflare token is a session network secret
+(Bearer, api.cloudflare.com/client/v4/), never seen. Redeploy = PUT
+/workers/scripts/aire-course-assistant multipart (metadata + worker.mjs +
+answers.mjs). Keyword routing (topicGuess) runs before the 1B model. Email form
+removed from the page; LEAD_CAPTURE_ENABLED=false. Old "purple-dew-1d3c" Worker
+in the account is unrelated. Pending: Charles to approve a privacy.html line about
+Cloudflare processing chat questions.
