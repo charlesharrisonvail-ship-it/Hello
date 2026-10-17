@@ -10,7 +10,7 @@ caption works on each.
 - Numbers match the site: drone video $250–550, premium packages $400–950
   (reported ranges, Sept. 2026), Part One $67, Lead to Keys $97, Claude Pro $20/month.
 - Link in bio: `learn.aireestate.com`
-- If you mention Higgsfield with your referral link, write "(referral link)" next to it.
+- If you mention Higgsfield with your referral link, write "(affiliate link)" next to it.
 
 **Media you already have** (in `docs/media/` and on the home page)
 - A: the Paris flight clip (AI aerial-style video)

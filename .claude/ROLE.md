@@ -44,7 +44,7 @@ The owner role and the email sign-off are his own words. Correct anything wrong.
   EpiVail signature, and the two are never swapped.
 - **Voice:** plain, numbers first, no hype. Say what it costs and what it is not.
   Source every number. Label AI as AI.
-- **Referral links** (Higgsfield) carry a visible "(referral link)" label where
+- **Referral links** (Higgsfield) carry a visible "(affiliate link)" label (Charles chose this wording 2026-10-17) where
   they appear; the site's terms promise it.
 - **Do not give away the method** on public pages: show the proof, not the
   verbatim prompt.
