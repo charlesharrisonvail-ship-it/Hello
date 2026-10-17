@@ -1,0 +1,24 @@
+name = "aire-course-assistant"
+main = "worker.mjs"
+compatibility_date = "2026-10-01"
+workers_dev = true
+
+[ai]
+binding = "AI"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "aire-assistant"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+
+[vars]
+DAILY_CHAT_CAP = "100"
+DAILY_LEAD_CAP = "25"
+# Enable only after the approved privacy text is published.
+LEAD_CAPTURE_ENABLED = "false"
+
+[observability]
+enabled = false
+
+[triggers]
+crons = ["15 0 * * *"]
