@@ -1,15 +1,16 @@
 ---
 name: heygen-avatar-looks
-description: Which HeyGen avatar look Charles uses for EpiVail talking-head videos, and that Higgsfield video can be blocked by a grace-period limit
+description: HeyGen avatar look and voice warnings for Charles - the Charles2 default voice is WRONG (Australian); the GTA flying-car video concept was rejected
 ---
 
-**EpiVail presenter:** HeyGen group Charles2 (`fee07b42718e44faadd36639a049ac13`),
-look "Professional in a black suit" (`deee28fd1f61429c991bce7682c34e8f`): seated,
-black suit, open white shirt. It is the look from the Agency/Vail video "Fresh
-Energy for Vail". When Charles says "my HeyGen avatar from the Agency video", this
-is the one. Use the default voice and Brand Glossary `7c1690df50b34e199813a8ac7e19af97`.
-It is a photo avatar, so a background color is ignored.
+**Voice:** never use the Charles2 group's default voice (`b5bd92d295f34bc4aa1496105d476570`).
+It sounds Australian, and Charles is not. Before any voiceover, ask him which voice
+is his, or have him record it himself. Do not guess. (2026-10-17)
 
-On 2026-10-17 Higgsfield refused video generation with a "grace period daily
-generation limit" (likely a billing issue). Image generation still worked.
-HeyGen `image_to_video` animated the frames instead. (2026-10-17)
+**Look:** Charles2 "Professional in a black suit" (`deee28fd1f61429c991bce7682c34e8f`)
+is the seated black-suit look from the Agency/Vail video "Fresh Energy for Vail".
+
+**Rejected:** the GTA-style flying-roadster buyer-agency video (2026-10-17). Charles
+said it "makes zero sense" and wasted credits. Don't revive the concept. Before
+spending credits on a creative concept, show him a 2-3 frame storyboard and get a
+yes on the concept itself, not just on the budget.
