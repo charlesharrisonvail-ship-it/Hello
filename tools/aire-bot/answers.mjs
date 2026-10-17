@@ -30,4 +30,27 @@ export function guard(question) {
  if (/(discount|coupon|bundle|promo|team|brokerage)/.test(q)) return 'contact';
  return null;
 }
+// Common questions matched by plain keywords before the AI model is asked.
+// Order matters: the first rule that matches wins. Only approved answer IDs.
+const TOPICS=[
+ ['prerequisites',/(part one (first|before)|need part one|before lead to keys|prerequisite|take .*lead to keys .*(alone|without|first)|without part one)/],
+ ['refund',/(refund|money back|cancel|charged twice|duplicate charge)/],
+ ['certificate',/(certificat|\bce\b|continuing ed|credit hours?|designation|accredit)/],
+ ['duration',/(how long|hours?|minutes|time does it take|self.paced)/],
+ ['setup',/(install|set ?up|windows|mac\b|terminal|computer)/],
+ ['tools',/(pay for claude|claude (cost|plan|subscription|price)|claude pro|subscription|extra cost|other costs?|higgsfield|chatgpt|what tools|requirements?)/],
+ ['choose',/(which course|which one|difference|compare|recommend|right for me|start with)/],
+ ['prices',/(price|cost|how much|\$\d|cheap|expensive)/],
+ ['leads',/(lead to keys|part two|comps|contracts?|follow.?up)/],
+ ['media',/(part one|listing media|drone|aerial|video|showcase|social)/],
+ ['instructor',/(who (teaches|made|runs|is the instructor)|instructor|are you (a )?(bot|human|ai))/],
+ ['updates',/(update|lifetime|forever|keep access)/],
+ ['guides',/(guide|free article|blog)/],
+ ['contact',/(contact|email|phone|talk to|support)/]
+];
+export function topicGuess(question){
+ const q=question.normalize('NFKC').toLowerCase();
+ for(const [id,re] of TOPICS) if(re.test(q)) return id;
+ return null;
+}
 export function safeAnswer(id) { return Object.hasOwn(answers,id)?answers[id]:answers.unknown; }

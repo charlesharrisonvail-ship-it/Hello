@@ -1,4 +1,4 @@
-import {answers, guard, safeAnswer} from './answers.mjs';
+import {answers, guard, topicGuess, safeAnswer} from './answers.mjs';
 const SUPPORT='AiRE is unavailable right now. Please email hello@aireestate.com.';
 const CAP='AiRE has reached its daily limit. Please email hello@aireestate.com.';
 const ALLOWED=new Set(['https://learn.aireestate.com','https://aireestate.com','https://www.aireestate.com']);
@@ -39,7 +39,7 @@ export default {
    }
    if(typeof data.message!=='string'||!data.message.trim()||data.message.length>600)return reply({answer:'Please enter a question of 1–600 characters.'},400);
    if(!await reserve(env.DB,'chat',day,limit(env.DAILY_CHAT_CAP,100,100)))return reply({answer:CAP},429);
-   let id=guard(data.message);
+   let id=guard(data.message)||topicGuess(data.message);
    if(!id){
     // Workers AI binding lives only here. No API key is needed in the browser
     // or this source file. Model output is NEVER displayed to visitors.
