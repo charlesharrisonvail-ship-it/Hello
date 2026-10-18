@@ -44,3 +44,5 @@ in the account is unrelated. Pending: Charles to approve a privacy.html line abo
 Cloudflare processing chat questions.
 
 **Privacy updated 2026-10-17:** privacy.html now has an "AiRE, our AI assistant" section (Cloudflare processes questions; no chat stored). Email capture still needs its own privacy wording before turning on.
+
+**Chat button 2026-10-18:** docs/aire-chat.js adds a floating AiRE mark (bottom-right) to index, lead-to-keys, install-claude-code and all guides; eases in on load, one-time "Ask AiRE" greeting after 25% scroll (sessionStorage), opens a chat panel calling the Worker. Not on course, certificate, terms or privacy pages.
