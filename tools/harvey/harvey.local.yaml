@@ -1,0 +1,73 @@
+# Harvey config for EpiVail agent recruiting -- LEADS ONLY.
+#
+# Copy this into your Harvey folder as harvey.local.yaml (see README.md).
+# Harvey reads harvey.local.yaml before its own harvey.yaml, and git ignores it.
+#
+# Email and LinkedIn are switched OFF below, so Harvey finds and scores leads
+# but cannot send anything. Leave them off.
+
+persona:
+  name: "Charles Harrison"
+  company: "Epique Realty"            # must not be "Your Company" or Harvey re-runs setup
+  role: "Epique Area/Growth Leader"
+  email: ""                           # not used: email is off
+  linkedin: ""
+  tone: "courteous, warm, confident, direct, generous, never hypey"
+
+product:
+  name: "Joining Epique Realty, Colorado Mountain Region"
+  description: >-
+    Recruiting licensed real estate agents and brokers in the Colorado
+    mountain region to join Epique Realty. A good prospect is a working,
+    licensed agent or broker associate at a local brokerage.
+  # Fill these from the epique-agent-recruitment skill if you ever use Harvey
+  # to write. For leads only, they are not needed.
+  pricing: "See current Epique agent plans"
+  key_benefits:
+    - "Fill in from the epique-agent-recruitment skill"
+  objection_responses: {}
+  offer:
+    goal: "book_call"
+    booking_method: "suggest_times"
+
+icp:
+  # These become the search words: "<industry> in <city>".
+  industries:
+    - "real estate brokerage"
+    - "real estate agent"
+  company_size: "1-50 agents"
+  titles:
+    - "Real Estate Agent"
+    - "Broker Associate"
+    - "Employing Broker"
+    - "Managing Broker"
+    - "Realtor"
+  geography:
+    - "Vail, CO"
+    - "Avon, CO"
+    - "Edwards, CO"
+    - "Eagle, CO"
+  hiring_signals: []
+
+channels:
+  email:
+    enabled: false              # OFF: nothing is ever sent
+    provider: "gmail"
+    max_daily_sends: 0
+    require_approval: true
+    send_to_risky: false
+    max_bounce_rate: 0.05
+  linkedin:
+    enabled: false              # OFF: automating LinkedIn breaks its terms
+
+usage:
+  max_daily_claude_percent: 50  # leaves half your Claude plan for your own work
+  heartbeat_interval_minutes: 15
+  quiet_hours:
+    start: "21:00"
+    end: "07:00"
+    timezone: "America/Denver"
+
+compliance:
+  precleared:
+    enabled: false
