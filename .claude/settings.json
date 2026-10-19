@@ -5,10 +5,24 @@
         "source": "github",
         "repo": "obra/superpowers-marketplace"
       }
+    },
+    "ponytail": {
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail"
+      }
+    },
+    "ecc": {
+      "source": {
+        "source": "github",
+        "repo": "affaan-m/ECC"
+      }
     }
   },
   "enabledPlugins": {
-    "superpowers@superpowers-marketplace": true
+    "superpowers@superpowers-marketplace": true,
+    "ponytail@ponytail": true,
+    "ecc@ecc": true
   },
   "hooks": {
     "SessionStart": [
