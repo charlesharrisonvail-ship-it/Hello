@@ -37,7 +37,7 @@ Are you comfortable with ChatGPT or Claude? Do you want to use AI to save time o
 
 If yes, buy it. You'll get it.
 
-If you're not sure, call Charles at 970-904-0600. He'll give you a straight answer. Including 'don't buy it' if it's not for you.
+If you're not sure, ask AiRE on the site or email hello@aireestate.com. You'll get a straight answer. Including 'don't buy it' if it's not for you.
 
 That's all. Back to the course."
 
@@ -49,7 +49,7 @@ That's all. Back to the course."
 - **Avatar:** Eva Vail (professional, trustworthy)
 - **Background:** Clean, professional (office or real estate setting)
 - **Pacing:** Slow and clear. Agents need to absorb this.
-- **Call-to-action:** Include phone number (970-904-0600) on screen when mentioned
+- **Call-to-action:** Show hello@aireestate.com on screen when mentioned (no phone number)
 - **End frame:** "Still interested? Details at lead-to-keys.html"
 - **Publish location:** Place before the course pricing section on lead-to-keys.html
 - **Platform:** Higgsfield (affiliate link in description)
