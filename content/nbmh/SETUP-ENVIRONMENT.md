@@ -41,3 +41,13 @@ Tell Claude it is done. Claude then:
 
 Then the `NBMH_FB_USER_TOKEN` secret can come out of the Default Cloud
 Environment, which is left for EpiVail work.
+
+## 2026-10-19: no "Add environment" option on Charles's screen
+
+Charles's app shows only the Edit screen for the Default Cloud Environment, with
+no way to add a second one. Decision: New Beginnings stays in the Default Cloud
+Environment. That is safe as long as `graph.facebook.com` holds exactly one
+secret, the New Beginnings token (true as of today: only that one and
+`api.cloudflare.com`). Never add a second `graph.facebook.com` secret there. Any
+other Facebook token (AIRE, EpiVail) waits until a separate environment can be
+made.
