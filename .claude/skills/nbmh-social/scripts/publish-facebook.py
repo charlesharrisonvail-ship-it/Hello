@@ -159,6 +159,19 @@ def resolve(page_id, page_token, user_token):
     return page["id"], page_token, name
 
 
+def _recent_posts(page_id, token, n):
+    q = {"fields": "created_time,message", "limit": str(n)}
+    if token:
+        q["access_token"] = token
+    res = _call(f"{GRAPH}/{page_id}/posts?" + urllib.parse.urlencode(q))
+    out = []
+    for p in res.get("data", []):
+        t = datetime.strptime(p["created_time"], "%Y-%m-%dT%H:%M:%S%z")
+        p["local_date"] = t.astimezone(ZoneInfo("America/Denver")).date().isoformat()
+        out.append(p)
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--image")
@@ -167,6 +180,10 @@ def main():
     ap.add_argument("--tz", default="America/Denver")
     ap.add_argument("--check", action="store_true",
                     help="verify credentials and the page identity, post nothing")
+    ap.add_argument("--recent", type=int, metavar="N",
+                    help="list the page's N most recent posts (date + first line), post nothing")
+    ap.add_argument("--allow-second", action="store_true",
+                    help="publish even if the page already has a post today (Denver)")
     args = ap.parse_args()
 
     page_id = os.environ.get("NBMH_FB_PAGE_ID")
@@ -177,6 +194,19 @@ def main():
     if args.check:
         print(f"OK — resolves to {page_name} (id {page_id}). Nothing was posted.")
         return
+
+    recent = _recent_posts(page_id, token, max(args.recent or 0, 5))
+    if args.recent:
+        for p in recent[:args.recent]:
+            first = (p.get("message") or "").strip().splitlines()[:1]
+            print(f"{p['local_date']}  {first[0] if first else '(no text)'}")
+        return
+
+    # Fresh routine sessions keep no memory between mornings; never post twice in a day.
+    today = datetime.now(ZoneInfo("America/Denver")).date().isoformat()
+    if not args.allow_second and not args.schedule and any(p["local_date"] == today for p in recent):
+        sys.exit(f"REFUSED — the page already has a post dated {today} (Denver). "
+                 "Nothing was posted. Use --allow-second only if a second post is intended.")
 
     if not args.image or not args.caption:
         sys.exit("--image and --caption are required unless --check is given")

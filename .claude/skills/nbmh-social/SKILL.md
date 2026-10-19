@@ -35,6 +35,12 @@ provider type, treatment, diagnosis, statistic, or contact detail.
    `content/nbmh/POSTING_LOG.md`. Pick a topic, objective, SEO target, and — most
    importantly — a visual concept that is genuinely different from recent work.
    Changing the background and the wording is not a new concept.
+2. **Know what already ran.** `python3 scripts/publish-facebook.py --recent 10`
+   lists the page's latest posts; never repeat one of those headlines or topics.
+   The daily photo comes from the date:
+   `make-library.py <models> scripts/library-prompts.txt content/nbmh/<date>/photo.jpg --for-date <date>`
+   (fresh routine sessions keep no memory between mornings; see decision-history 10-19).
+   The publisher refuses a second post on the same Denver day.
 2. **Build the graphic — every day is a real, colorful photograph.** Take the
    lowest-numbered photo in `content/nbmh/library/` and `git mv` it to
    `content/nbmh/<date>/photo.jpg` (see *Imagery* below). Copy
