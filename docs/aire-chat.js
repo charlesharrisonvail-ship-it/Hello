@@ -134,6 +134,14 @@
     tip.querySelector('button').addEventListener('click', function (e) { e.stopPropagation(); hideTip(true); });
     tip.addEventListener('click', open);
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && panel.classList.contains('open')) close(); });
+    // Any link marked data-ask-aire opens the assistant here instead of leaving the page.
+    document.addEventListener('click', function (e) {
+      var t = e.target.closest ? e.target.closest('[data-ask-aire]') : null;
+      if (!t) return;
+      e.preventDefault();
+      btn.classList.add('in');
+      open();
+    });
 
     // The button eases in shortly after the page opens.
     setTimeout(function () { btn.classList.add('in'); }, 900);

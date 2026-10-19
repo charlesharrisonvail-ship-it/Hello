@@ -23,3 +23,5 @@ front." The website and the AiRE bot no longer describe the owner at all: no
 the Vail Valley, no "the instructor's own toolkit". AiRE, the AI Instructor, is
 the face. Leave alone (his call): Eva's screening video (says his name) and
 the social posts with him on camera. Course videos fine. Buyer quotes stay.
+
+**Phone removed 2026-10-19 (Charles):** no phone number anywhere on the public site; questions go to the AiRE bot first, then hello@aireestate.com. "Ask AiRE" links use data-ask-aire (opens the chat; falls back to ask-aire.html). Team & Brokerage is "Email to arrange". Support is described as email support. Eva's video still says the number (left alone by his choice).
