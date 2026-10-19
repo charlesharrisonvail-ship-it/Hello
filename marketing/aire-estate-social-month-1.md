@@ -35,9 +35,10 @@ On-screen text: "$250–550 per drone shoot" → "a few dollars of AI credits"
 > They are not the same thing. Real footage shows the real lot. AI shows a beautiful guess. Know which one your listing needs.
 > Made with AI. #realestatemarketing #dronevideo #realtorlife
 
-**3. Friday: "Meet AiRE" (media: D, the first 20 seconds of Eva's video, or a text card)**
-> AiRE is our AI instructor, and we say so up front. The lessons are written for agents doing the job today: plain English, real numbers, and what each tool won't do.
-> Link in bio. #realestateagent #AIforrealtors
+**3. Friday: "I'm a working agent" (media: you on camera, 20–30 seconds)**
+Say it in your own words:
+> "I've sold real estate in the Vail Valley for 25 years. I got tired of paying hundreds per listing for marketing, so I learned to make it myself, and now I teach it. No hype. I'll tell you what it costs and what it won't do."
+> Link in bio. #realestateagent #coloradorealestate
 
 ## Week 2: show the lesson
 

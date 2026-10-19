@@ -38,7 +38,7 @@ The owner role and the email sign-off are his own words. Correct anything wrong.
   entity is "AiRE Estate, LLC"; contact is hello@aireestate.com.
 - **Charles here** is its owner. **His name is never fronted** on the website,
   ads, social posts, post images or checkout pictures, and since 2026-10-19 the
-  site does not describe him at all (no "working agent", credentials or years):
+  website itself does not describe him at all (social posts and Eva's video may) (no "working agent", credentials or years):
   AiRE, the AI Instructor, is the face. Inside the course videos he is fine
   (Charles, 2026-10-10 and 2026-10-19). The site never mentions Epique or EpiVail; keep it that way.
 - **Sign AiRE Estate emails exactly: `AiRE Estate Academy`.** It is not the
