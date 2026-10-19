@@ -16,3 +16,9 @@ description: AiRE Estate never puts Charles's name out front - not on the websit
 On 2026-10-10 his name had to be stripped from the site, from two posted
 Facebook images (posts 6 and 9, deleted and reposted), and from both Stripe
 product pictures.
+
+**Tightened 2026-10-19 (Charles):** "I want to stay out of the main advertising
+front." The site, bot, ads and posts no longer describe the owner at all: no
+"working agent", no "licensed, practicing agent", no RSPS/MRP/AI PRO, no years in
+the Vail Valley, no "the instructor's own toolkit". AiRE, the AI Instructor, is
+the face. Inside the course videos he is still fine. Buyer quotes (Darrell) stay.

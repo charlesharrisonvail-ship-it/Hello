@@ -28,7 +28,7 @@ Privacy and terms are dated September 25, 2026.
 
 - Name is "AiRE Estate". "AiRE" alone is the AI instructor who narrates lessons and
   "tells you plainly that it's AI". Never "Aire" or "AIRE".
-- The instructor is "a licensed, practicing agent", credentials "RSPS · MRP ·
+- (Retired 2026-10-19: the site no longer describes the instructor; see aire-name-not-fronted.) Was "a licensed, practicing agent", credentials "RSPS · MRP ·
   AI PRO", "25 years selling real estate in Colorado's Vail Valley". **Charles's
   name is never fronted** on the site, ads, posts or images (see
   `aire-name-not-fronted`); it may appear inside course videos. No Epique, no EpiVail.
