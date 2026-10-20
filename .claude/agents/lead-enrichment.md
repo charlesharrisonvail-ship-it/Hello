@@ -1,5 +1,6 @@
 ---
 name: lead-enrichment
+model: sonnet
 description: >
   Lead enrichment specialist for Charles Harrison (EpiVail / Epique Realty).
   Use this agent whenever Charles drops a name, company, LinkedIn URL, email,

@@ -1,5 +1,6 @@
 ---
 name: linkedin-content
+model: sonnet
 description: >
   LinkedIn content creation agent for Charles Harrison (EpiVail / Epique
   Realty). Use this agent whenever Charles wants LinkedIn posts written,

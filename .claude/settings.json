@@ -22,7 +22,7 @@
   "enabledPlugins": {
     "superpowers@superpowers-marketplace": true,
     "ponytail@ponytail": true,
-    "ecc@ecc": true
+    "ecc@ecc": false
   },
   "hooks": {
     "SessionStart": [
@@ -64,6 +64,11 @@
           }
         ]
       }
+    ]
+  },
+  "permissions": {
+    "deny": [
+      "Read(./docs/media/**)"
     ]
   }
 }

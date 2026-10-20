@@ -1,5 +1,6 @@
 ---
 name: recruitment-outreach
+model: sonnet
 description: >
   Agent recruitment outreach specialist for Charles Harrison (EpiVail /
   Epique Realty Colorado Mountain Region). Use this agent whenever Charles
