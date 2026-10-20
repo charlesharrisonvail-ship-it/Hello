@@ -42,6 +42,9 @@ icp:
     - "Employing Broker"
     - "Managing Broker"
     - "Realtor"
+    - "Team Leader"
+    - "Area Leader"
+    - "Management"
   # Colorado ski towns. The first four come first on purpose.
   geography:
     - "Breckenridge, CO"
