@@ -9,7 +9,7 @@ file only**; Harvey's source is not vendored here. Written against upstream
 commit `e114e95` (2026-10-15).
 
 **What this setup does:** Harvey finds and scores real estate agents and
-brokerages in the Vail Valley, then saves them to a spreadsheet (CSV).
+brokerages in Colorado ski towns, then saves them to a spreadsheet (CSV).
 **What it does not do:** send anything. Email and LinkedIn are switched off in
 the config file, so Harvey cannot send.
 
@@ -21,7 +21,7 @@ the config file, so Harvey cannot send.
 |---|---|---|
 | Harvey itself | Yes | MIT licence |
 | Its thinking | Uses your Claude plan | Runs on the Claude Pro or Max plan you already sign in to Claude Code with. No API key, no per-use bill. The config holds it to 50% of your daily plan. |
-| Finding brokerages | Yes, with Serper | **Serper** gives 2,500 free searches with no card. One run of this config uses about 24 of them. |
+| Finding brokerages | Yes, with Serper | **Serper** gives 2,500 free searches with no card. One full run of this config uses about 140 of them. |
 | Harvey's default free source (OpenStreetMap) | Can't be used | It only knows roofers, plumbers, HVAC, electricians, dentists, lawyers, contractors and landscapers. It has **no real estate category**, so we use Serper instead. |
 | Checking email addresses | Optional, free | A free **Reoon** key gives 600 checks a month. Without it, addresses are marked "guess". |
 | DataForSEO | Skip | It needs a $50 deposit to go live |
@@ -83,9 +83,15 @@ Open **PowerShell** (not as Administrator) and run these one at a time.
    Copy-Item "$env:USERPROFILE\src\Hello\tools\harvey\harvey.local.yaml" .
    ```
 
-   It searches for real estate brokerages and agents in Vail, Avon, Edwards and
-   Eagle. To add towns, open it in Notepad and add lines under `geography:`,
-   such as `- "Breckenridge, CO"`. Each town adds two searches.
+   It searches for real estate brokerages and agents in 23 Colorado ski towns,
+   starting with Breckenridge, Aspen, Telluride and Steamboat Springs, then the
+   Vail Valley, Summit County, Crested Butte, Winter Park, Durango and others.
+   To add a town, open it in Notepad and add a line under `geography:`, such as
+   `- "Leadville, CO"`. Each town adds two searches, about 6 of your free
+   Serper searches.
+
+   To search only some towns, name them with `--city`, separated by
+   semicolons: `harvey discover --provider serper --city "Aspen, CO;Telluride, CO"`.
 
    Leave `enabled: false` under both `email:` and `linkedin:`. Those two lines
    are what keep Harvey from sending.
@@ -126,7 +132,7 @@ Do these with `.venv` active. Each new PowerShell window needs
    harvey discover --provider serper
    ```
 
-   The preview should show 8 searches. Its "Estimated cost" comes out of your
+   The preview should show 46 searches (two per town). Its "Estimated cost" comes out of your
    2,500 free Serper searches, not your wallet. Lines saying *no coordinates*
    are harmless for Serper. It also reads each brokerage's website for free.
 

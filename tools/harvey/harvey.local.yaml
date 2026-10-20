@@ -42,11 +42,31 @@ icp:
     - "Employing Broker"
     - "Managing Broker"
     - "Realtor"
+  # Colorado ski towns. The first four come first on purpose.
   geography:
+    - "Breckenridge, CO"
+    - "Aspen, CO"
+    - "Telluride, CO"
+    - "Steamboat Springs, CO"
     - "Vail, CO"
     - "Avon, CO"
     - "Edwards, CO"
     - "Eagle, CO"
+    - "Snowmass Village, CO"
+    - "Basalt, CO"
+    - "Crested Butte, CO"
+    - "Gunnison, CO"
+    - "Mountain Village, CO"
+    - "Winter Park, CO"
+    - "Granby, CO"
+    - "Frisco, CO"
+    - "Dillon, CO"
+    - "Silverthorne, CO"
+    - "Keystone, CO"
+    - "Durango, CO"
+    - "Pagosa Springs, CO"
+    - "Salida, CO"
+    - "Glenwood Springs, CO"
   hiring_signals: []
 
 channels:
