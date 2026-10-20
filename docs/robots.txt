@@ -1,7 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /media/l2k-m1.bin
-Disallow: /preview-home.html
-Disallow: /preview-lead-to-keys.html
 
 Sitemap: https://learn.aireestate.com/sitemap.xml
