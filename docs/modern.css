@@ -1,0 +1,46 @@
+/* Modern skin for AiRE Estate pages: softer, rounded, sans-serif labels in the
+   style of 21st.dev / shadcn components. Loaded after each page's own styles,
+   so it only adjusts look and never changes content. Delete the <link> to undo. */
+
+:root{ --mn:'Manrope','Helvetica Neue',Helvetica,Arial,sans-serif; --r-lg:18px; --r-md:12px }
+
+/* Labels: keep them small and calm, not typewriter caps. */
+.kick,.htag,.figlab,.mod .mk,.mod .rt,.cell .cl,.cell .cn,.contact .cl,.grid .n,
+.tier .flag,.tier .nm,.finalsale .ic,.svc .rate span,.cardtop .ct1,.cardfoot,
+.badge .bt,.card .holder,.pipehd,.quote .rl,.railbar .ct,.scrollmark,.tkr,
+.truth .tn,.vnote,.st .sn,.pc .pt,.peek .t,.howmade .pl,.promptbox .pl{
+  letter-spacing:.06em; font-weight:600 }
+
+/* Navigation reads like a modern app bar. */
+.navlinks a{ text-transform:none; letter-spacing:0; font-size:.94rem; font-weight:500 }
+.mtoggle{ border-radius:999px; text-transform:none; letter-spacing:0 }
+
+/* Buttons: pill shape, sentence case, a soft glow. */
+.btn{ border-radius:999px; text-transform:none; letter-spacing:0; font-weight:700;
+  box-shadow:0 8px 24px -10px rgba(56,189,248,.55) }
+.btn.sec{ box-shadow:none }
+
+/* Cards and panels: rounded corners and a faint glass edge. */
+.card,.tier,.mod,.pc,.peek figure,.promptbox,.quote,.st,.stats,.truth,.howmade,
+.need,.pipe,.contact,.finalsale,.svc>div,.grid>div,.badge{
+  border-radius:var(--r-lg) }
+.card,.tier,.mod,.pc,.quote,.truth,.svc>div,.grid>div{
+  background-image:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,0));
+  box-shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 20px 40px -24px rgba(0,0,0,.6) }
+.stats{ overflow:hidden }
+.stats>*{ border-radius:0 }
+.card,.tier{ overflow:hidden }
+video,.peek img{ border-radius:var(--r-md) }
+
+/* Prompt text stays monospaced on purpose: it is something you type. */
+.promptbox p{ font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace }
+
+/* Questions and answers read as soft rows. */
+details{ border-radius:var(--r-md) }
+
+/* The Enroll button in the top bar matches the other buttons. */
+.apply{ border-radius:999px; text-transform:none; letter-spacing:0; font-weight:700;
+  box-shadow:0 8px 24px -10px rgba(56,189,248,.55) }
+
+/* The "Start here" tag tucks into the rounded corner. */
+.tier .flag{ border-radius:0 0 0 var(--r-md) }

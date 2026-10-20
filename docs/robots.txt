@@ -3,3 +3,5 @@ Allow: /
 Disallow: /media/l2k-m1.bin
 
 Sitemap: https://learn.aireestate.com/sitemap.xml
+Disallow: /preview-home.html
+Disallow: /preview-lead-to-keys.html
