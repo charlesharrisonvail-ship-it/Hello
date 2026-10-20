@@ -28,6 +28,7 @@ and the site is plain HTML.
 - `docs/` — the AiRE Estate site (public; carries pricing, refund terms, privacy, and terms of service)
 - `tools/jarvis/` — Windows setup script and notes for installing Jarvis (third-party local voice assistant); source is not vendored
 - `tools/open-generative-ai/` — free Windows setup notes for Open Generative AI (Anil Matcha's AI image/video studio with Cinema Studio); local models only, no paid MuAPI key; source is not vendored
+- `tools/harvey/` — free Windows setup notes and a leads-only config for Harvey (ethanplusai/harvey, MIT; AI lead-finding agent that runs on the Claude plan); finds Vail Valley agents and brokerages via Serper's free tier, email and LinkedIn off; source is not vendored
 - `is-this-for-you-script.md` — script for the Lead to Keys screening video
 
 ## Conventions
