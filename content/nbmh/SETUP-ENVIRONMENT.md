@@ -47,7 +47,10 @@ Environment, which is left for EpiVail work.
 Charles's app shows only the Edit screen for the Default Cloud Environment, with
 no way to add a second one. Decision: New Beginnings stays in the Default Cloud
 Environment. That is safe as long as `graph.facebook.com` holds exactly one
-secret, the New Beginnings token (true as of today: only that one and
-`api.cloudflare.com`). Never add a second `graph.facebook.com` secret there. Any
+secret, the New Beginnings token.
+
+**Correction, 2026-10-20:** the one `graph.facebook.com` secret there turned out
+to be the AIRE token ("Aire Poster", AIRE Estate page only), not New Beginnings.
+It must be replaced with the New Beginnings token. Never add a second `graph.facebook.com` secret there. Any
 other Facebook token (AIRE, EpiVail) waits until a separate environment can be
 made.
