@@ -526,7 +526,7 @@
 
 <!-- ============ HERO ============ -->
 <header class="hero" id="top">
-  <div class="mx-herovid" aria-hidden="true"><video src="https://d2ol7oe51mr4n9.cloudfront.net/user_3DQPFQB5knVKdCtoFjiflsBSNkk/467aeb60-94b8-498e-8ecc-b194287b62ec.mp4" poster="/media/aire-flight-poster.jpg" autoplay muted loop playsinline preload="metadata"></video><span class="mx-ailabel">AI drone-style flight, made from one photo &middot; Made with AI</span></div>
+  <canvas id="cloud" aria-label="A modern mountain retreat assembling from points of light"></canvas>
   <div class="hscan" aria-hidden="true"></div>
   <div class="hglow" aria-hidden="true"></div>
 
@@ -775,36 +775,83 @@
     var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;
     return((t^t>>>14)>>>0)/4294967296;};}
 
-  /* ============ 1. HERO — point-cloud house ============ */
-  /* Hand-rolled 3D: points sampled on a modern house's massing, projected with
-     perspective and depth-sorted. They begin scattered and settle into the
-     building — photographs becoming dimensional space, which is the product. */
+  /* ============ 1. HERO — a modern mountain retreat assembles from light ============ */
   (function(){
     var cv=document.getElementById('cloud'); if(!cv) return;
     var ctx=cv.getContext('2d'), W=0,H=0,DPR=1, pts=[], t0=performance.now(), raf=null;
     function OFF(){ return document.documentElement.getAttribute('data-motion')==='off'; }
-
-    function box(r,cx,cy,cz,sx,sy,sz,n){
-      for(var i=0;i<n;i++){
-        var f=Math.floor(r()*6), u=r()-0.5, v=r()-0.5, x,y,z;
-        if(f===0||f===1){x=u*sx; y=v*sy; z=(f===0?0.5:-0.5)*sz;}
-        else if(f===2||f===3){x=(f===2?0.5:-0.5)*sx; y=v*sy; z=u*sz;}
-        else{x=u*sx; y=(f===4?0.5:-0.5)*sy; z=v*sz;}
-        pts.push({x:cx+x,y:cy+y,z:cz+z,
-                  sx:(r()-0.5)*9,sy:(r()-0.5)*7,sz:(r()-0.5)*9,
-                  d:r(),w:r()<0.06});
-      }
+    var r=rnd(20261020);
+    function add(x,y,z,k){ pts.push({x:x,y:y,z:z,k:k,d:r(),
+      sx:(r()-0.5)*12, sy:(r()-0.5)*9-2, sz:(r()-0.5)*12, tw:r()*6.28}); }
+    function line(a,b,n,k){ for(var i=0;i<n;i++){ var t=r(); add(a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t,k); } }
+    function quad(a,b,c,n,k){ /* parallelogram a + u(b-a) + v(c-a) */
+      for(var i=0;i<n;i++){ var u=r(), v=r();
+        add(a[0]+(b[0]-a[0])*u+(c[0]-a[0])*v, a[1]+(b[1]-a[1])*u+(c[1]-a[1])*v, a[2]+(b[2]-a[2])*u+(c[2]-a[2])*v, k); } }
+    function boxEdges(x0,y0,z0,x1,y1,z1,n,k){
+      var c=[[x0,y0,z0],[x1,y0,z0],[x1,y1,z0],[x0,y1,z0],[x0,y0,z1],[x1,y0,z1],[x1,y1,z1],[x0,y1,z1]];
+      [[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]].forEach(function(e){ line(c[e[0]],c[e[1]],n,k); });
     }
-    var r=rnd(20260921);
-    box(r, 0,   0.30, 0,    3.30,0.92,1.70, 2900);   /* main bar   */
-    box(r, 1.05,-0.52, 0.16,1.35,1.02,1.45, 1550);   /* upper mass */
-    box(r,-1.35,-0.22,-0.30,0.74,0.10,1.10,  420);   /* canopy     */
-    for(var i=0;i<1000;i++){                         /* ground plane */
-      var a=r()*Math.PI*2, rad=1.6+r()*4.4;
-      pts.push({x:Math.cos(a)*rad, y:0.80, z:Math.sin(a)*rad*0.62,
-                sx:(r()-0.5)*11, sy:(r()-0.5)*6, sz:(r()-0.5)*11, d:r(), w:false, g:true});
-    }
+    var G=0.8; /* ground level (y grows downward) */
 
+    /* Main lodge: tall glass great-room under a steep gable roof. */
+    boxEdges(-1.7,-0.35,-0.9, 1.1,G,0.9, 70,'e');
+    quad([-1.7,-0.35,-0.9],[1.1,-0.35,-0.9],[-1.7,G,-0.9],260,'f');           /* back wall */
+    quad([-1.7,-0.35,0.9],[-1.7,G,0.9],[-1.7,-0.35,-0.9],200,'f');            /* side wall */
+    /* Floor-to-ceiling glass on the front, with mullions, glowing warm. */
+    quad([-1.6,-0.28,0.9],[1.0,-0.28,0.9],[-1.6,G-0.04,0.9],900,'w');
+    for(var m=0;m<7;m++){ var mx=-1.6+m*(2.6/6); line([mx,-0.3,0.91],[mx,G,0.91],40,'e'); }
+    line([-1.6,0.25,0.91],[1.0,0.25,0.91],60,'e');
+    /* Gable roof with deep overhangs. */
+    var R0=-0.35, RT=-1.45, OV=0.35;
+    var fl=[-2.0,R0,1.05+OV-0.2], fr=[1.4,R0,1.05+OV-0.2], bl=[-2.0,R0,-1.05], br=[1.4,R0,-1.05];
+    var tl=[-2.0,RT,0], tr=[1.4,RT,0];
+    line(tl,tr,140,'e'); line(fl,fr,120,'e'); line(bl,br,90,'e');
+    line(fl,tl,70,'e'); line(fr,tr,70,'e'); line(bl,tl,60,'e'); line(br,tr,60,'e');
+    quad(tl,tr,fl,700,'r'); quad(tl,tr,bl,420,'r');
+    /* Gable-end glass triangle above the great room. */
+    for(var i=0;i<380;i++){ var u=r(), v=r(); if(u+v>1){u=1-u;v=1-v;}
+      add(1.1, R0+(RT-R0)*v*0.95, -0.9*u+0.9*(1-u-v)*0.95, 'w'); }
+
+    /* Cantilevered bedroom wing floating over the slope. */
+    boxEdges(1.1,-0.95,-0.7, 3.2,-0.05,0.6, 55,'e');
+    quad([1.15,-0.88,0.6],[3.15,-0.88,0.6],[1.15,-0.12,0.6],420,'w');
+    quad([1.1,-0.95,-0.7],[3.2,-0.95,-0.7],[1.1,-0.95,0.6],260,'r');        /* flat roof */
+    line([3.2,-0.05,0.6],[3.2,G,0.6],50,'e');                                /* steel column */
+    line([2.4,-0.05,0.6],[2.4,G,0.6],45,'e');
+
+    /* Stone chimney through the roof. */
+    boxEdges(-1.25,-1.85,-0.35,-0.85,G,0.05,40,'c');
+    quad([-1.25,-1.85,0.05],[-0.85,-1.85,0.05],[-1.25,G,0.05],260,'c');
+
+    /* Wrap-around deck with railing. */
+    quad([-2.1,0.55,0.9],[2.2,0.55,0.9],[-2.1,0.55,1.75],520,'f');
+    line([-2.1,0.25,1.75],[2.2,0.25,1.75],120,'e');
+    for(var p=0;p<9;p++){ var px=-2.1+p*(4.3/8); line([px,0.25,1.75],[px,0.55,1.75],12,'e'); }
+
+    /* Pines around the site. */
+    function pine(x,z,h){ var base=G, top=G-h, rad=h*0.28;
+      line([x,base,z],[x,top,z],18,'t');
+      for(var i=0;i<130;i++){ var t=Math.pow(r(),0.8), y=top+(base-0.15-top)*t, rr=rad*t, a=r()*6.283;
+        add(x+Math.cos(a)*rr, y, z+Math.sin(a)*rr, 't'); } }
+    [[-3.3,-0.6,2.1],[-3.9,0.7,1.6],[-2.8,-1.9,2.4],[3.9,-1.2,2.0],[4.4,0.4,1.5],[3.6,1.6,1.2],[-4.6,-1.4,1.9],[0.3,-2.4,2.3],[-1.2,-2.6,2.0],[2.2,-2.3,1.8]]
+      .forEach(function(t){ pine(t[0],t[1],t[2]); });
+
+    /* Mountains behind: two ridgelines with snowy peaks. */
+    function ridge(z, peaks, n, base){
+      for(var i=0;i<n;i++){ var x=-11+r()*22, y=base;
+        peaks.forEach(function(pk){ var d=Math.abs(x-pk[0]); y=Math.min(y, base-pk[1]*Math.max(0,1-d/pk[2])); });
+        if(y<base) y+=Math.sin(x*3.1)*0.16+Math.sin(x*7.7+1.3)*0.09+Math.sin(x*13.1)*0.04;
+        add(x,y,z,'s');                                   /* ridgeline */
+        add(x,y+r()*(base-y),z,'m');                      /* mountain face */
+        if(y<base-4.0) add(x,y+r()*0.45,z,'n');            /* snow on high peaks */
+      } }
+    ridge(-7.5, [[-6,7.4,4.6],[-1.5,8.6,5.2],[3.5,6.8,4.2],[8,8.0,4.8]], 3200, G);
+    ridge(-5.0, [[-8,4.2,3.8],[-3.5,5.0,3.9],[2,3.8,3.5],[6.5,4.8,4.1]], 1800, G);
+    for(var g=0;g<900;g++){ var a=r()*6.283, rad=1.5+r()*5;
+      add(Math.cos(a)*rad, G, Math.sin(a)*rad*0.6+0.4, 'g'); }
+
+    /* The camera looks toward +z: put the glass front facing it and the mountains behind. */
+    pts.forEach(function(p){ p.z=-p.z; });
     function size(){
       var b=cv.getBoundingClientRect();
       DPR=Math.min(window.devicePixelRatio||1,2);
@@ -812,53 +859,45 @@
       cv.width=Math.round(W*DPR); cv.height=Math.round(H*DPR);
       ctx.setTransform(DPR,0,0,DPR,0,0);
     }
-
+    var COL={e:[200,236,255],f:[120,170,220],r:[150,200,240],w:[255,190,110],c:[180,170,160],t:[80,190,150],m:[90,120,165],n:[235,245,255],s:[110,140,185],g:[80,105,140]};
+    var ALPHA={e:.95,f:.32,r:.42,w:.85,c:.5,t:.7,m:.38,n:.95,s:.75,g:.22};
     var scrollK=0;
     function draw(now){
       var el=(now-t0)/1000;
-      var form=Math.min(1,Math.max(0,(el-0.25)/2.6));
-      form=1-Math.pow(1-form,3);                       /* ease-out cubic */
+      var form=Math.min(1,Math.max(0,(el-0.2)/3.0)); form=1-Math.pow(1-form,3);
       if(RM) form=1;
-      var spin=-0.45+el*(RM?0.045:0.155);
-
+      var spin=-0.42+Math.sin(el*0.22)*0.30;
       ctx.clearRect(0,0,W,H);
-      var cxp=W*(W<760?0.5:0.625), cyp=H*(W<760?0.42:0.50);
-      var scale=Math.min(W,H)*(W<760?0.86:1.46);
-      var cs=Math.cos(spin), sn=Math.sin(spin);
-      var tilt=0.20+scrollK*0.16, ct=Math.cos(tilt), st=Math.sin(tilt);
-      var camZ=7.2+scrollK*2.4;
-
-      var out=[],k,p,x,z,y,y2,z2,pz,s;
-      for(k=0;k<pts.length;k++){
-        p=pts[k];
-        x=p.x+p.sx*(1-form); y=p.y+p.sy*(1-form); z=p.z+p.sz*(1-form);
-        var rx=x*cs - z*sn, rz=x*sn + z*cs;           /* yaw   */
-        y2=y*ct - rz*st;  z2=y*st + rz*ct;            /* pitch */
-        pz=z2+camZ; if(pz<0.6) continue;
-        s=scale/pz;
-        out.push({X:cxp+rx*s, Y:cyp+y2*s, S:s, P:p, Z:pz});
+      var mob=W<760;
+      var T=window.__RT||{};
+      var cxp=W*(mob?0.5:(T.cx||0.73)), cyp=H*(mob?0.22:(T.cy||0.27));
+      var scale=Math.min(W,H)*(mob?0.55:(T.sc||0.50));
+      var cs=Math.cos(spin), sn=Math.sin(spin), tilt=0.16+scrollK*0.14, ct=Math.cos(tilt), st=Math.sin(tilt);
+      var camZ=8.2+scrollK*2.2;
+      var out=[];
+      for(var k=0;k<pts.length;k++){
+        var p=pts[k], f=(p.k==='m'||p.k==='n'||p.k==='s')? Math.min(1,form*1.4) : form;
+        var x=p.x+p.sx*(1-f), y=p.y+p.sy*(1-f), z=p.z+p.sz*(1-f);
+        var rx=x*cs-z*sn, rz=x*sn+z*cs, y2=y*ct-rz*st, z2=y*st+rz*ct, pz=z2+camZ;
+        if(pz<0.8) continue;
+        var s=scale/pz;
+        out.push({X:cxp+rx*s,Y:cyp+y2*s,S:s,P:p,Z:pz});
       }
       out.sort(function(a,b){return b.Z-a.Z;});
-
-      for(k=0;k<out.length;k++){
-        var o=out[k], dep=Math.max(0,Math.min(1,(12.5-o.Z)/6.5));
-        var sz=Math.max(0.7, o.S*0.0085*(0.55+o.P.d*0.85));
-        var al=(o.P.g?0.26:0.86)*dep*(0.45+o.P.d*0.55)*(0.30+form*0.70);
-        if(o.P.w){ ctx.fillStyle='rgba(255,196,128,'+Math.min(1,al*2.1).toFixed(3)+')'; sz*=1.5; }
-        else if(o.P.g){ ctx.fillStyle='rgba(90,118,155,'+al.toFixed(3)+')'; }
-        else { ctx.fillStyle='rgba('+(120+dep*135)+','+(200+dep*40)+',252,'+al.toFixed(3)+')'; }
-        ctx.fillRect(o.X-sz/2, o.Y-sz/2, sz, sz);
+      for(var j=0;j<out.length;j++){
+        var o=out[j], k2=o.P.k, c=COL[k2];
+        var a=ALPHA[k2]*(0.5+o.P.d*0.5)*(0.35+form*0.65);
+        if(k2==='w'){ a=Math.min(1,a*1.25)*(0.75+0.25*Math.sin(el*1.6+o.P.tw)); sz*=1.3; }
+        var sz=Math.max(0.8, o.S*0.0095*(0.6+o.P.d*0.7)); if(k2==='e') sz*=1.05; if(k2==='m'||k2==='s'||k2==='n') sz*=1.25;
+        ctx.fillStyle='rgba('+c[0]+','+c[1]+','+c[2]+','+Math.min(1,a).toFixed(3)+')';
+        ctx.fillRect(o.X-sz/2,o.Y-sz/2,sz,sz);
       }
-      if(!OFF()) { raf=requestAnimationFrame(draw); } else { raf=null; }
+      if(!OFF()) raf=requestAnimationFrame(draw); else raf=null;
     }
-
     size();
     window.addEventListener('resize',size,{passive:true});
     if(window.ResizeObserver) new ResizeObserver(size).observe(cv);
-    window.addEventListener('scroll',function(){
-      var h=cv.getBoundingClientRect();
-      scrollK=Math.max(0,Math.min(1,-h.top/Math.max(1,h.height)));
-    },{passive:true});
+    window.addEventListener('scroll',function(){ var h=cv.getBoundingClientRect(); scrollK=Math.max(0,Math.min(1,-h.top/Math.max(1,h.height))); },{passive:true});
     raf=requestAnimationFrame(draw);
     window.__heroRedraw=function(){ if(!raf) raf=requestAnimationFrame(draw); };
   })();
