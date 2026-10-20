@@ -1,5 +1,6 @@
 ---
 name: lofty-crm
+model: sonnet
 description: >
   Lofty CRM helper for Charles Harrison (EpiVail / Epique Realty Colorado
   Mountain Region). Use this agent whenever Charles wants to add, update,
