@@ -91,3 +91,6 @@ html[data-motion="off"] .btn.pri,html[data-motion="off"] .apply{animation:none!i
 @media (max-width:760px){.mx-herovid video{width:100%;height:56vh;opacity:.45;-webkit-mask-image:none;mask-image:none}.mx-ailabel{display:none}}
 html[data-motion="off"] .mx-herovid video{animation:none}
 @media (prefers-reduced-motion:reduce){.mx-herovid video{animation:none}}
+
+/* "Real Estate" gets the same weight as "Claude Code", in a warm-to-blue blend. */
+h1 em.cc.re{background-image:linear-gradient(90deg,#fbbf24,#f472b6,#38bdf8,#f472b6,#fbbf24)!important}
