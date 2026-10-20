@@ -29,6 +29,8 @@ The point is not the record; it is making sure today is genuinely different.
 | 2026-10-11 | Small steps in Medication Management | Photo: the red fox (series #1) in purple asters and golden aspens, frosted top/bottom strips, glowing plan pills. | Small Steps Matter (published) |
 | 2026-10-12 | Partnership and support in Medication Management | Photo: the deer series #1 — doe and spotted fawn in yellow and purple wildflowers, soft green hills. | Growing Together (published) |
 | 2026-10-15 | Pausing to check in with yourself | Photo: the bluebird series #1 — sky-blue bluebird on a golden aspen branch, clear blue sky. | Take a Breath (published) |
+| 2026-10-16 → 10-19 | Small leaps (repeat) | Photo: the leaping fox, same graphic four days | Leap Forward (published, duplicate) |
+| 2026-10-20 | Follow-up visits; care changes over time | Photo: the deer series #2 — mule deer doe at a calm lake, pink and gold sunrise | A Fresh Start (published) |
 
 ## Rejected directions — do not return to these
 

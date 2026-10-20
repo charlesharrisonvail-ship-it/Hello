@@ -1,0 +1,84 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>NBMH 2026-10-20</title>
+<link rel="stylesheet" href="../../../.claude/skills/nbmh-social/templates/base.css">
+<style>
+/* Standing photo layout (Charles's reference, 2026-10-11): a frosted header band at the top
+   (logo, headline, service line) and a matching frosted band at the bottom (coverage, then CTA).
+   Light translucent glass, centered, dark green type. Text never sits directly on the photo. */
+@font-face { font-family: Playfair; font-weight: 600; src: url("../../../.claude/skills/nbmh-social/assets/fonts/PlayfairDisplay-600.ttf"); }
+@font-face { font-family: Montserrat; font-weight: 500; src: url("../../../.claude/skills/nbmh-social/assets/fonts/Montserrat-500.ttf"); }
+@font-face { font-family: Montserrat; font-weight: 600; src: url("../../../.claude/skills/nbmh-social/assets/fonts/Montserrat-600.ttf"); }
+@font-face { font-family: Montserrat; font-weight: 700; src: url("../../../.claude/skills/nbmh-social/assets/fonts/Montserrat-700.ttf"); }
+body { font-family: Montserrat, sans-serif; }
+
+/* The animal must sit wholly in the clear window between the strips (about y 290-1060).
+   PHOTO_SHIFT slides the photo up (negative) or down (positive); PHOTO_SCALE (e.g. 0.84) shrinks a
+   tall subject so it fits, with soft side edges. A blurred copy
+   fills any gap, and it only ever shows through the frosted strips. */
+.photo-fill { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+.photo-fill img { width: 100%; height: 100%; object-fit: cover; filter: blur(28px) saturate(1.1); transform: scale(1.15); display: block; }
+.photo { position: absolute; inset: 0; z-index: 1; }
+.photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 50%; display: block; transform: translateY(-185px) scale(0.84);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%); }
+
+.band {
+  position: absolute; z-index: 4; left: 0; right: 0; text-align: center;
+  background: rgba(255,255,255,.42);
+  backdrop-filter: blur(10px) saturate(1.2); -webkit-backdrop-filter: blur(10px) saturate(1.2);
+}
+.band.top { top: 0; padding: 34px 60px 30px; }
+.band.bottom { bottom: 0; padding: 26px 60px 32px; }
+
+.brand { display: inline-flex; align-items: center; gap: 16px; text-align: left; }
+.brand img { width: 76px; height: 76px; border-radius: 50%; display: block; box-shadow: 0 2px 8px rgba(0,0,0,.18); }
+.brand .n1 { font-size: 29px; font-weight: 700; letter-spacing: .06em; color: #3B2350; line-height: 1.12; }
+.brand .n2 { font-size: 20px; font-weight: 500; letter-spacing: .24em; color: #5B2A86; line-height: 1.12; }
+
+.headline {
+  font-family: Playfair, serif; font-weight: 600; font-size: 90px; line-height: 1.02;
+  letter-spacing: -.012em; color: #3B2350; margin: 16px 0 12px; text-wrap: balance;
+  /* Charles, 2026-10-11: "make the top headline glow too" */
+  text-shadow: 0 0 14px rgba(255,214,80,.95), 0 0 30px rgba(255,214,80,.7), 0 0 52px rgba(255,236,150,.55);
+}
+.service { font-size: 19px; font-weight: 700; letter-spacing: .16em; color: #3B2350; }
+
+/* Coverage is fixed copy on every post, always above the CTA (approved-facts.md).
+   Charles, 2026-10-11: green was too small and dull; plans glow butter-yellow, contact glows pastel purple. */
+.coverage { line-height: 1.2; }
+.coverage .label { display: block; font-size: 19px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: #5B2A86; margin-bottom: 12px; }
+.coverage .plans { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 10px; }
+.coverage .plan {
+  display: inline-block; white-space: nowrap; font-size: 25px; font-weight: 700; color: #3B2350;
+  background: #FFF1A8; padding: 7px 18px; border-radius: 999px;
+  box-shadow: 0 0 16px 3px rgba(255,214,80,.85), inset 0 0 0 1px rgba(214,170,30,.35);
+}
+.coverage .private { display: block; margin-top: 12px; font-size: 21px; font-weight: 600; color: #3B2350; }
+.cta {
+  display: inline-block; margin-top: 14px; white-space: nowrap;
+  font-size: 25px; font-weight: 700; color: #3B2350;
+  background: #E9DCFF; padding: 9px 24px; border-radius: 999px;
+  box-shadow: 0 0 18px 4px rgba(190,150,255,.8), inset 0 0 0 1px rgba(140,100,210,.35);
+}
+.cta .sep { color: #8A5BC7; margin: 0 12px; }
+</style>
+
+<div class="canvas">
+  <div class="photo-fill"><img src="./photo.jpg" alt=""></div>
+  <div class="photo"><img src="./photo.jpg" alt=""></div>
+
+  <div class="band top">
+    <div class="brand">
+      <img src="../../../.claude/skills/nbmh-social/assets/nbmh-logo.png" alt="New Beginnings Mental Health">
+      <div><div class="n1">NEW BEGINNINGS</div><div class="n2">MENTAL HEALTH</div></div>
+    </div>
+    <h1 class="headline">A Fresh Start</h1>
+    <div class="service">MEDICATION MANAGEMENT · TELEHEALTH ACROSS COLORADO</div>
+  </div>
+
+  <div class="band bottom">
+    <div class="coverage"><span class="label">In-network with</span><div class="plans"><span class="plan">Aetna</span><span class="plan">Anthem Blue Cross Blue Shield</span><span class="plan">UnitedHealthcare</span><span class="plan">Cigna</span><span class="plan">Mountain Strong EAP</span><span class="plan">Olivia's Fund</span></div><span class="private">Private-pay appointments are also available.</span></div>
+    <div class="cta">NBMentalHealth.com<span class="sep">·</span>970-470-2939<span class="sep">·</span>charles@nbmentalhealth.com</div>
+  </div>
+</div>
