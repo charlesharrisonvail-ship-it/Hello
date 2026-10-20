@@ -83,47 +83,6 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    // Buttons explode where they are pressed.
-    document.addEventListener('pointerdown', function (e) {
-      var t = e.target.closest && e.target.closest('.btn,.apply,[data-buy],[data-ask-aire],#aire-chat-btn');
-      if (t) burst(e.clientX, e.clientY, { count: 90, power: 8 });
-    });
-
-    // Headings and prices burst once as they arrive.
-    if ('IntersectionObserver' in window) {
-      var seen = new WeakSet();
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) {
-          if (!en.isIntersecting || seen.has(en.target)) return;
-          seen.add(en.target);
-          var r = en.target.getBoundingClientRect();
-          var isPrice = en.target.matches('.pr,.amt');
-          setTimeout(function () {
-            if (isPrice) {
-              en.target.classList.add('mx-pop');
-              burst(r.left + r.width / 2, r.top + r.height / 2, { count: 120, power: 9, colors: ['#fbbf24', '#38bdf8', '#f472b6', '#ffffff'] });
-            } else {
-              burst(r.left + Math.min(r.width, 420) * 0.5, r.top + r.height / 2, { count: 45, power: 5 });
-            }
-          }, 250);
-        });
-      }, { threshold: 0.6 });
-      document.querySelectorAll('section h2, .pr, .amt').forEach(function (el) { io.observe(el); });
-    }
-
-    // Fireworks over the hero every few seconds while it is on screen.
-    var hero = document.querySelector('header, .hero, section');
-    var heroOn = true;
-    if (hero && 'IntersectionObserver' in window) {
-      new IntersectionObserver(function (es) { heroOn = es[0].isIntersecting; }).observe(hero);
-    }
-    setInterval(function () {
-      if (!heroOn || document.hidden) return;
-      var x = innerWidth * (0.55 + Math.random() * 0.4), y = innerHeight * (0.15 + Math.random() * 0.45);
-      burst(x, y, { count: 55, power: 5.5 });
-    }, 3200);
-    setTimeout(function () { burst(innerWidth * 0.72, innerHeight * 0.35, { count: 110, power: 8 }); }, 700);
-
     // Cards light up and tilt toward the cursor (mouse and trackpad only).
     if (window.matchMedia && window.matchMedia('(hover: hover)').matches) {
       document.querySelectorAll('.card,.tier,.mod,.pc,.quote,.truth,.svc>div,.grid>div').forEach(function (el) {
