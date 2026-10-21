@@ -21,6 +21,7 @@ and the site is plain HTML.
   - `linkedin-content.md` — LinkedIn posts, content calendars, and carousel/Reel concepts
   - `lofty-crm.md` — Lofty contacts, tiers, tags, recruit pipeline stages, and follow-up tasks
 - `.claude/skills/linkedin-optimizer/` — LinkedIn analytics and profile optimization
+- `.claude/skills/aire-social/` and `aire-reel-edit/` — AiRE Estate only: captions, hooks, carousels, Stories, plans and audits for Instagram, TikTok and Facebook; and free ffmpeg reel editing (9:16, captions, AI label, covers). Account setup is `marketing/social/instagram-tiktok-setup.md`
 - `.claude/skills/` also holds five general skills from ComposioHQ/awesome-claude-skills (commit `be2a406`, Apache-2.0): `lead-research-assistant`, `content-research-writer`, `competitive-ads-extractor`, `meeting-insights-analyzer`, `domain-name-brainstormer`. They are third-party and brand-neutral; EpiVail and AiRE Estate rules in this file still govern anything they produce.
 - `.claude/settings.json` — project settings; enables the Superpowers, Ponytail (DietrichGebert/ponytail, MIT; "lazy senior dev" minimal-code mode, needs `node`), and ECC (affaan-m/ECC v2.2.3, MIT; `ecc@ecc` — 71 agents, 311 skills, and its own lifecycle hooks) plugins and registers the Continuity session-orientation hooks
 - `.claude/continuity/` — the Continuity kit that loads `ROLE.md`, `PROJECT.md`, `DECISIONS.md`, and `STATE.md` at every session start

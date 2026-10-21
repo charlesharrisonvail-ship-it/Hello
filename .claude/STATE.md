@@ -23,6 +23,9 @@ from `claude/stan-store-access-k4hjdu`, not `main`. ChatGPT makes cards from
 `marketing/chatgpt-brief.md`; check every image (no name, Claude Code "(not
 included)", $67/$97) before queuing.
 
+AiRE Instagram/TikTok: skills `aire-social` + `aire-reel-edit`; Charles makes
+the accounts (handles not chosen yet). `recall.py tiktok`
+
 ## Open question for Charles
 
 The agents say "powered by Epique X"; some skills say "EpiqueAI". `CLAUDE.md` does
