@@ -10,7 +10,8 @@ and nobody here has read it. Two AiRE-only skills were built instead:
 
 - `aire-social` - captions, hooks, reel scripts, carousels, Stories, plans,
   repurposing and audits, with every AiRE rule built in.
-- `aire-reel-edit` - `reel.py`, free and ffmpeg-only: 9:16, AiRE grade, captions
+- `aire-reel-edit` - `reel.py`, free and ffmpeg-only: ten edit styles and three
+  cover looks standing in for his twelve (mapped by name and thumbnail), captions
   timed from a script against the audio's pauses (no transcription), "Made with
   AI" tag, covers. Fonts fall back to DejaVu Sans in the cloud box.
 
