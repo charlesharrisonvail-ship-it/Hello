@@ -16,40 +16,42 @@ A 1080×1920 Reel, about 12 seconds:
 - **Right:** the clip. The lot starts empty and the home assembles piece by piece
   until it matches the photo exactly.
 - **Top:** "MADE WITH AI · DEMONSTRATION" and the headline "One photo in."
-- **Bottom:** "Part One · $67 once" and `learn.aireestate.com`, with no text in the
+- **Bottom:** "AiRE Estate" and `learn.aireestate.com`, with no text in the
   top or bottom 250 px.
 
 ## Steps
 
 1. **The photo (end frame).** Use an AI-generated mountain-modern home, not a real
-   listing. Use daylight with no people, no signs and no house numbers.
+   listing. Shoot it at dusk with no people, no signs and no house numbers.
 2. **The empty lot (start frame).** Edit the same photo so the house is gone and
    the site is graded dirt. Sky, trees, road, poles and power lines stay
    pixel-for-pixel. (The prompt is below.)
-3. **The clip.** Generate it from the empty-lot start frame to the photo end frame
-   with a first/last-frame video model. (The prompt is below.)
-4. **Assemble the Reel** (free; this needs only `ffmpeg`):
+3. **The clip (free, on the laptop's GPU).** In Wan2GP, pick an image-to-video
+   model that takes both a **start image and an end image** (Wan's first/last-frame
+   models do). Start image: the empty lot. End image: the finished photo. Paste
+   the clip prompt below and set it to vertical 9:16, about 5 seconds, 16–24 fps.
+   The first run downloads the model weights, which are large, so give it time.
+   If the house melts or the trees move, run it again with a new seed before you
+   change the prompt.
+4. **Assemble the Reel** (free; this needs only `ffmpeg`, or send the photo and
+   clip to a Claude session and it runs this step):
 
        python3 marketing/build-reveal/compose.py home.jpg clip.mp4 build-reveal.mp4
 
-   `--headline` and `--offer` change the two big lines, and `--seconds` sets the
+   `--headline` and `--offer` change the two big lines (the offer defaults to
+   "AiRE Estate"), and `--seconds` sets the
    length. If Archivo, Manrope or IBM Plex Mono `.ttf` files are put in
    `marketing/build-reveal/fonts/`, the script uses them. Without them, it falls
    back to DejaVu or Arial.
 5. **Check every frame** before it goes in the queue. Look for the "Made with AI"
-   label, the $67 price, no name or face, no warped house, and an end frame that
+   label, no name or face, no warped house, and an end frame that
    matches the photo.
 
-## Free vs. paid
+## Cost
 
-| Step | Free route | Paid route (needs Charles's go) |
-|---|---|---|
-| End photo | ChatGPT (free tier), or the Open Generative AI Image Studio on the laptop | n/a |
-| Empty-lot frame | ChatGPT image edit | n/a |
-| Clip | Wan2GP (Wan first/last-frame) through Open Generative AI, **only with an NVIDIA/AMD GPU** (see `tools/open-generative-ai/README.md`) | Higgsfield/HeyGen credits from this session. I quote the cost first and spend nothing without a "go". |
-| Assembly | `compose.py` + ffmpeg | n/a |
-
-The clip is the only step with no free route unless the laptop has a GPU.
+All of it is free. Charles's laptop has the GPU Wan2GP needs (he confirmed this
+2026-10-21), so the clip renders locally. Images come from ChatGPT's free tier or
+the Open Generative AI Image Studio. Nothing here spends credits.
 
 ## Prompts (internal, do not post)
 
@@ -83,11 +85,5 @@ The clip is the only step with no free route unless the laptop has a GPU.
 >
 > This is a demonstration, not a real listing. Made with AI.
 >
-> Part One teaches agents to turn one listing photo into a cinematic,
-> drone-style video. $67, once. learn.aireestate.com
-
-## Open question
-
-Part One teaches the drone-style flight, not this build-reveal effect. Before
-posting, Charles decides whether the offer line stays "Part One · $67 once" or
-becomes something neutral, such as `--offer "AiRE Estate"`.
+> AiRE Estate teaches working agents to make listing media with AI.
+> learn.aireestate.com

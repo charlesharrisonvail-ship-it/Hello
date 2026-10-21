@@ -52,7 +52,7 @@ def main():
     ap.add_argument("out")
     ap.add_argument("--seconds", type=float, default=12)
     ap.add_argument("--headline", default="One photo in.")
-    ap.add_argument("--offer", default="Part One  \u00b7  $67 once")
+    ap.add_argument("--offer", default="AiRE Estate")
     a = ap.parse_args()
     if not shutil.which("ffmpeg"):
         sys.exit("ffmpeg not found on PATH")
