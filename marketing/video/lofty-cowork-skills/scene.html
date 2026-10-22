@@ -1,0 +1,269 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- EpiVail walkthrough: loading Claude skills into Lofty Cowork, then chatting.
+     Frame-driven: render.mjs calls window.renderAt(seconds) for every frame. -->
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=DM+Sans:wght@400;500;700&display=block" rel="stylesheet">
+<style>
+  :root {
+    --navy:#0a1628; --navyMid:#0f1f3d; --navyLight:#172847;
+    --gold:#c9a84c; --goldBright:#e8c66a; --goldDim:#8a6f2e;
+    --cream:#f5f0e8; --white:#fff; --muted:#7a8ba8;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html, body { width:1920px; height:1080px; overflow:hidden; background:var(--navy); }
+  body { font-family:'DM Sans', sans-serif; color:var(--white); }
+  .scene { position:absolute; inset:0; opacity:0; }
+  .eyebrow { font-family:'Bebas Neue'; letter-spacing:.25em; color:var(--gold); font-size:30px; }
+  .display { font-family:'Cormorant Garamond'; font-weight:600; }
+  .gold-i { color:var(--gold); font-style:italic; }
+  .rule { height:2px; background:var(--gold); transform-origin:left; }
+
+  /* Title + end cards */
+  .card { display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+          background:radial-gradient(ellipse at 50% 40%, var(--navyLight), var(--navy) 70%); }
+  .card h1 { font-size:110px; line-height:1.05; margin:28px 0; }
+  .card p { font-size:34px; color:var(--cream); opacity:.85; }
+
+  /* App mock */
+  #app { background:var(--navyMid); }
+  .window { position:absolute; left:120px; top:130px; width:1680px; height:860px; border-radius:22px;
+            background:var(--cream); color:#1b2433; overflow:hidden; box-shadow:0 40px 120px rgba(0,0,0,.55); }
+  .topbar { height:62px; background:#fff; border-bottom:1px solid #e5ded0; display:flex; align-items:center; padding:0 28px; gap:14px; }
+  .dot { width:14px; height:14px; border-radius:50%; background:#d9d2c3; }
+  .topbar .title { margin-left:18px; font-weight:700; font-size:22px; color:var(--navy); }
+  .topbar .tag { margin-left:auto; font-family:'Bebas Neue'; letter-spacing:.2em; font-size:18px; color:var(--goldDim); }
+  .side { position:absolute; left:0; top:62px; bottom:0; width:260px; background:var(--navy); padding:30px 22px; }
+  .nav { font-size:22px; color:var(--muted); padding:14px 18px; border-radius:10px; margin-bottom:6px; }
+  .nav.on { background:var(--navyLight); color:var(--goldBright); }
+  .main { position:absolute; left:260px; top:62px; right:0; bottom:0; }
+  .pane { position:absolute; inset:0; padding:40px 50px; }
+
+  /* Skills pane */
+  .pane h2 { font-size:38px; color:var(--navy); margin-bottom:6px; }
+  .pane .sub { font-size:21px; color:#5b6678; margin-bottom:30px; }
+  .addbtn { position:absolute; right:50px; top:44px; background:var(--navy); color:var(--goldBright);
+            font-size:22px; font-weight:700; padding:16px 28px; border-radius:12px; }
+  .grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:20px; }
+  .skill { background:#fff; border:1px solid #e5ded0; border-radius:16px; padding:22px 26px; }
+  .skill b { font-size:24px; color:var(--navy); }
+  .skill span { display:block; font-size:18px; color:#5b6678; margin-top:6px; }
+  .skill .ok { float:right; font-family:'Bebas Neue'; letter-spacing:.15em; font-size:18px; color:#2f7a4b; }
+  .empty { border:2px dashed #d9d2c3; border-radius:16px; padding:60px; text-align:center; font-size:24px; color:#8a93a3; }
+
+  /* Import modal */
+  .shade { position:absolute; inset:0; background:rgba(10,22,40,.45); }
+  .modal { position:absolute; left:50%; top:50%; width:820px; transform:translate(-50%,-50%);
+           background:#fff; border-radius:20px; padding:38px 44px; box-shadow:0 30px 80px rgba(0,0,0,.35); }
+  .modal h3 { font-size:32px; color:var(--navy); }
+  .modal .sub { font-size:19px; margin:6px 0 24px; }
+  .row { display:flex; align-items:center; gap:18px; padding:14px 6px; border-bottom:1px solid #eee7da; font-size:23px; }
+  .box { width:28px; height:28px; border-radius:7px; border:2px solid #b9b1a2; display:flex; align-items:center; justify-content:center;
+         font-size:20px; color:#fff; font-weight:700; }
+  .box.on { background:var(--gold); border-color:var(--gold); }
+  .row small { margin-left:auto; color:#8a93a3; font-size:17px; }
+  .go { margin-top:26px; background:var(--navy); color:var(--goldBright); text-align:center; font-weight:700; font-size:24px;
+        padding:18px; border-radius:12px; position:relative; overflow:hidden; }
+  .go i { position:absolute; left:0; top:0; bottom:0; background:rgba(201,168,76,.35); }
+
+  /* Chat pane */
+  .chat { position:absolute; left:50px; right:50px; top:30px; bottom:130px; overflow:hidden; display:flex; flex-direction:column; justify-content:flex-end; gap:22px; }
+  .msg { max-width:78%; padding:20px 26px; border-radius:18px; font-size:23px; line-height:1.45; }
+  .me { align-self:flex-end; background:var(--navy); color:var(--cream); border-bottom-right-radius:4px; }
+  .ai { align-self:flex-start; background:#fff; border:1px solid #e5ded0; border-bottom-left-radius:4px; }
+  .chip { display:inline-block; font-family:'Bebas Neue'; letter-spacing:.15em; font-size:17px; color:var(--goldDim);
+          background:#f6efdc; border-radius:8px; padding:4px 10px; margin-bottom:10px; }
+  .ai ol { margin-left:28px; }
+  .ai li { margin:4px 0; }
+  .sig { margin-top:10px; font-style:italic; color:var(--navy); }
+  .draft { display:inline-block; margin-top:12px; font-size:17px; font-weight:700; color:#9a5a12; background:#fdf1dc; padding:5px 12px; border-radius:8px; }
+  .input { position:absolute; left:50px; right:50px; bottom:36px; height:72px; background:#fff; border:2px solid #e5ded0; border-radius:16px;
+           display:flex; align-items:center; padding:0 26px; font-size:23px; color:#1b2433; }
+  .input .ph { color:#a3a9b4; }
+  .caret { display:inline-block; width:2px; height:28px; background:var(--navy); margin-left:2px; vertical-align:middle; }
+
+  /* Caption + cursor */
+  .caption { position:absolute; left:0; right:0; top:40px; text-align:center; }
+  .caption .eyebrow { font-size:26px; }
+  .caption div:last-child { font-size:40px; font-family:'Cormorant Garamond'; font-weight:600; color:var(--cream); margin-top:2px; }
+  #cursor { position:absolute; width:34px; height:34px; z-index:50; pointer-events:none; }
+  #cursor svg { filter:drop-shadow(0 3px 6px rgba(0,0,0,.4)); }
+  .fine { position:absolute; bottom:26px; left:0; right:0; text-align:center; font-size:17px; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<!-- Scene 1: title -->
+<section class="scene card" id="s1">
+  <div class="eyebrow" id="s1e">New in Lofty · Cowork</div>
+  <h1 class="display" id="s1h">Bring your Claude skills.<br>Then just <span class="gold-i">chat.</span></h1>
+  <div class="rule" id="s1r" style="width:320px"></div>
+</section>
+
+<!-- Scenes 2-3: the app -->
+<section class="scene" id="app">
+  <div class="caption" id="cap"><div class="eyebrow" id="capE"></div><div id="capT"></div></div>
+  <div class="window">
+    <div class="topbar"><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="title">Lofty · Cowork</div><div class="tag">EpiVail · Colorado Mountain Region</div></div>
+    <div class="side">
+      <div class="nav" id="navChat">Chat</div>
+      <div class="nav" id="navSkills">Skills</div>
+      <div class="nav">Leads</div>
+      <div class="nav">Tasks</div>
+      <div class="nav">Transactions</div>
+    </div>
+    <div class="main">
+      <!-- Skills pane -->
+      <div class="pane" id="skillsPane">
+        <h2>Skills</h2>
+        <div class="sub">Workflows Cowork can run for you.</div>
+        <div class="addbtn" id="addBtn">+ Add skill</div>
+        <div class="empty" id="empty">No custom skills yet. Import the ones you built in Claude.</div>
+        <div class="grid" id="grid"></div>
+        <div class="shade" id="shade"></div>
+        <div class="modal" id="modal">
+          <h3>Import from Claude</h3>
+          <div class="sub">Pick the skills to bring into Cowork.</div>
+          <div id="rows"></div>
+          <div class="go" id="go"><i id="goBar"></i><span id="goTxt">Import skills</span></div>
+        </div>
+      </div>
+      <!-- Chat pane -->
+      <div class="pane" id="chatPane">
+        <div class="chat" id="chat">
+          <div class="msg me" id="m1">Who needs my attention today?</div>
+          <div class="msg ai" id="a1">
+            <div class="chip">Skill · lofty-crm</div>
+            <div id="a1t">Three recruits need a dated next step today:</div>
+            <ol id="a1l">
+              <li><b>Agent A, Vail</b>: past due on the culture call. Call by 2 pm.</li>
+              <li><b>Agent B, Breckenridge</b>: opened your email twice. Send a short text.</li>
+              <li><b>Agent C, Frisco</b>: new inbound lead. Enrich first, then tier.</li>
+            </ol>
+          </div>
+          <div class="msg me" id="m2">Draft a warm text to Agent B about joining us in Breckenridge.</div>
+          <div class="msg ai" id="a2">
+            <div class="chip">Skill · recruitment-outreach</div>
+            <div id="a2t">Hi there, I saw you've been looking over our note. No pressure at all. If you'd enjoy a cup of coffee in Breck this week, I'd be glad to share how our agents are growing here.</div>
+            <div class="sig" id="a2s">Charles Harrison, Epique Area/Growth Leader</div>
+            <div class="draft" id="a2d">Draft only · you review and send</div>
+          </div>
+        </div>
+        <div class="input"><span id="inTxt"></span><span class="caret" id="caret"></span></div>
+      </div>
+    </div>
+  </div>
+  <div id="cursor"><svg viewBox="0 0 24 24" width="34" height="34"><path d="M3 2l7 19 2.5-7.5L20 11z" fill="#fff" stroke="#0a1628" stroke-width="1.5"/></svg></div>
+</section>
+
+<!-- Scene 4: end card -->
+<section class="scene card" id="s4">
+  <div class="eyebrow">EpiVail · Epique Realty Colorado Mountain Region</div>
+  <h1 class="display">Your skills. Your voice.<br><span class="gold-i">Inside your CRM.</span></h1>
+  <div class="rule" style="width:320px; margin-bottom:34px"></div>
+  <p>Charles Harrison, Epique Area/Growth Leader</p>
+  <div class="fine">Illustrated walkthrough. Screens are a mockup, not Lofty's actual interface. Lead names are placeholders.</div>
+</section>
+
+<script>
+const SKILLS = [
+  ['lofty-crm', 'Tiers, tags, recruit pipeline, follow-up tasks'],
+  ['recruitment-outreach', 'Emails, DMs, texts and call scripts'],
+  ['lead-enrichment', 'Name or email into a full contact card'],
+  ['linkedin-content', 'Posts, calendars and carousel ideas'],
+];
+const $ = id => document.getElementById(id);
+const clamp = (x, a=0, b=1) => Math.min(b, Math.max(a, x));
+const ease = x => { x = clamp(x); return x < .5 ? 2*x*x : 1 - Math.pow(-2*x+2, 2)/2; };
+const ramp = (t, a, b) => ease((t - a) / (b - a));          // 0 -> 1 between a and b
+const win = (t, a, b, f=.4) => Math.min(ramp(t, a, a+f), 1 - ramp(t, b-f, b)); // fade in/out window
+const typed = (s, t, a, cps=26) => s.slice(0, Math.max(0, Math.floor((t - a) * cps)));
+const show = (el, o, dy=0) => { el.style.opacity = o; el.style.transform = `translateY(${(1-o)*dy}px)`; };
+
+$('rows').innerHTML = SKILLS.map((s, i) =>
+  `<div class="row"><div class="box" id="bx${i}">✓</div><b>${s[0]}</b><small>SKILL.md</small></div>`).join('');
+$('grid').innerHTML = SKILLS.map((s, i) =>
+  `<div class="skill" id="sk${i}"><span class="ok">Loaded</span><b>${s[0]}</b><span>${s[1]}</span></div>`).join('');
+
+// Cursor keyframes [time, x, y] in page pixels.
+const CUR = [[4.6,1300,700],[6.0,1690,236],[6.6,1690,236],[7.6,758,505],[8.2,758,568],[8.8,758,631],[9.4,758,694],
+             [10.2,960,800],[11.4,960,800],[16.0,520,325],[17.0,520,325],[18.0,1000,920]];
+function cursorAt(t) {
+  if (t <= CUR[0][0]) return CUR[0].slice(1);
+  for (let i = 1; i < CUR.length; i++) if (t <= CUR[i][0]) {
+    const [t0,x0,y0] = CUR[i-1], [t1,x1,y1] = CUR[i], k = ease((t-t0)/(t1-t0));
+    return [x0+(x1-x0)*k, y0+(y1-y0)*k];
+  }
+  return CUR[CUR.length-1].slice(1);
+}
+
+const CAPS = [
+  [4.2, 15.6, 'Step 1', 'Import the skills you built in Claude'],
+  [15.6, 22.6, 'Step 2', 'Open Cowork chat and ask in plain words'],
+  [22.6, 30.5, 'Step 3', 'Your skills do the work, in your voice'],
+];
+
+window.DURATION = 36;
+window.renderAt = function (t) {
+  // Scene 1
+  show($('s1'), win(t, 0, 4.4));
+  show($('s1e'), ramp(t, .2, .8), 20); show($('s1h'), ramp(t, .5, 1.3), 30);
+  $('s1r').style.transform = `scaleX(${ramp(t, 1.2, 2.0)})`;
+
+  // App scenes
+  $('app').style.opacity = win(t, 4.0, 30.8);
+  const cap = CAPS.find(c => t >= c[0] && t < c[1]);
+  if (cap) { $('capE').textContent = cap[2]; $('capT').textContent = cap[3]; show($('cap'), win(t, cap[0], cap[1], .3), 12); }
+  else $('cap').style.opacity = 0;
+
+  const onChat = t >= 16.6;
+  $('skillsPane').style.opacity = onChat ? 0 : 1;
+  $('chatPane').style.opacity = onChat ? 1 : 0;
+  $('navSkills').className = 'nav' + (onChat ? '' : ' on');
+  $('navChat').className = 'nav' + (onChat ? ' on' : '');
+
+  // Modal: opens on click at 6.3, rows tick 7.6-9.4, import 10.2-11.4, closes 11.6
+  const modalO = Math.min(ramp(t, 6.3, 6.7), 1 - ramp(t, 11.5, 11.9));
+  $('shade').style.opacity = modalO; $('modal').style.opacity = modalO;
+  $('modal').style.transform = `translate(-50%, calc(-50% + ${(1-modalO)*30}px))`;
+  [7.6, 8.2, 8.8, 9.4].forEach((k, i) => $('bx'+i).className = 'box' + (t >= k ? ' on' : ''));
+  const prog = ramp(t, 10.3, 11.4);
+  $('goBar').style.width = (prog * 100) + '%';
+  $('goTxt').textContent = t < 10.3 ? 'Import 4 skills' : prog < 1 ? 'Importing…' : 'Imported';
+  $('addBtn').style.transform = `scale(${t > 6.0 && t < 6.3 ? .95 : 1})`;
+  $('empty').style.display = t < 11.8 ? 'block' : 'none';
+  SKILLS.forEach((_, i) => show($('sk'+i), t < 11.8 ? 0 : ramp(t, 11.9 + i*.25, 12.4 + i*.25), 20));
+
+  // Chat: type, send, reply, type, send, reply
+  const q1 = $('m1').textContent, q2 = 'Draft a warm text to Agent B about joining us in Breckenridge.';
+  let inTxt = '';
+  if (t >= 17.2 && t < 19.2) inTxt = typed(q1, t, 17.2);
+  if (t >= 22.8 && t < 25.6) inTxt = typed(q2, t, 22.8);
+  $('inTxt').innerHTML = inTxt || '<span class="ph">Ask Cowork anything…</span>';
+  $('caret').style.opacity = inTxt && Math.floor(t*2) % 2 === 0 ? 1 : 0;
+  show($('m1'), ramp(t, 19.2, 19.6), 20);
+  show($('a1'), ramp(t, 19.9, 20.4), 20);
+  $('a1').style.display = t < 19.9 ? 'none' : 'block';
+  [...$('a1l').children].forEach((li, i) => li.style.opacity = ramp(t, 20.6 + i*.6, 21.0 + i*.6));
+  $('m2').style.display = t < 25.6 ? 'none' : 'block';
+  show($('m2'), ramp(t, 25.6, 26.0), 20);
+  $('a2').style.display = t < 26.3 ? 'none' : 'block';
+  show($('a2'), ramp(t, 26.3, 26.7), 20);
+  const body = 'Hi there, I saw you\'ve been looking over our note. No pressure at all. If you\'d enjoy a cup of coffee in Breck this week, I\'d be glad to share how our agents are growing here.';
+  $('a2t').textContent = typed(body, t, 26.8, 60);
+  $('a2s').style.opacity = ramp(t, 29.6, 29.9);
+  $('a2d').style.opacity = ramp(t, 30.0, 30.3);
+
+  const [cx, cy] = cursorAt(t);
+  $('cursor').style.transform = `translate(${cx}px, ${cy}px)`;
+  $('cursor').style.opacity = t > 4.6 && t < 18.2 ? 1 : 0;
+
+  // End card
+  show($('s4'), ramp(t, 30.6, 31.4), 0);
+};
+window.renderAt(0);
+</script>
+</body>
+</html>
