@@ -29,6 +29,7 @@ and the site is plain HTML.
 - `tools/jarvis/` — Windows setup script and notes for installing Jarvis (third-party local voice assistant); source is not vendored
 - `tools/open-generative-ai/` — free Windows setup notes for Open Generative AI (Anil Matcha's AI image/video studio with Cinema Studio); local models only, no paid MuAPI key; source is not vendored
 - `tools/harvey/` — free Windows setup notes and a leads-only config for Harvey (ethanplusai/harvey, MIT; AI lead-finding agent that runs on the Claude plan); finds agents and brokerages in 23 Colorado ski towns via Serper's free tier, email and LinkedIn off; source is not vendored
+- `vail-3d/` — Vail 3D (EpiVail): browser ski/snowboard game over real Vail terrain (USGS elevation + OpenStreetMap runs, lifts, woods), Front Side, Back Bowls and Blue Sky Basin; static three.js, no keys; `build/` re-bakes the data each season; credit lines (OSM ODbL, USGS, "not an official Vail Resorts map") must stay visible
 - `is-this-for-you-script.md` — script for the Lead to Keys screening video
 
 ## Conventions
