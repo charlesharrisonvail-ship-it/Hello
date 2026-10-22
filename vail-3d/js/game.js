@@ -961,7 +961,7 @@ addEventListener('resize', () => {
 });
 
 // test hook for automated checks
-window.__vail = { S, step: (sec) => { for (let t = 0; t < sec; t += 1 / 240) stepRide(1 / 240); }, keys, heightAt, lifts, boardLift };
+window.__vail = { S, step: (sec) => { for (let t = 0; t < sec; t += 1 / 240) stepRide(1 / 240); }, keys, heightAt, lifts, boardLift, camera, snapCam: () => updateCamera(0, true), startRide, MAP: () => MAP, orbit: () => orbit, hideSigns: () => scene.traverse((o) => { if (o.isSprite) o.visible = false; }) };
 
 (async function init() {
   try {

@@ -24,3 +24,11 @@ Higgsfield video for it spends his credits (277.79 on the basic plan at 2026-10-
 his history: Kling v3.0 6 or 12 per clip, Kling 2.6 10, Nano Banana Pro 2, FLUX 3 Video 110);
 propose with an estimate and wait for his "go". FreeLLMAPI offers no video
 generation (checked 2026-10-22).
+
+Done 2026-10-22 with his "go A and B": 7 Kling v3.0 clips, 60 credits, started from
+real game frames (Pro mode needs Higgsfield Plus; he is on Basic, so Standard).
+Kling kept the game's 3D look rather than going photoreal. Trailer (38 s) and the
+9 s homepage loop are in `vail-3d/media/`, every AI clip tagged "AI-GENERATED
+FOOTAGE"; re-cut with `vail-3d/build/assemble_trailer.py`. The game went live at
+learn.aireestate.com/vail-3d/ (pushed to the live branch with his OK). The loop is
+not on the AiRE homepage yet; where it goes is his call.
