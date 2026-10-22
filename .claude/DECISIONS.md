@@ -11,6 +11,7 @@ his course business, published from `docs/` at `learn.aireestate.com`.
 Every rule in the EpiVail section below - naming, signature, voice, positioning, the
 banned phrase - applies to EpiVail work only. AiRE Estate's rules are in `ROLE.md`.
 Stated by Charles 2026-10-02, after the two had been conflated. (2026-10-02)
+Exception: `recall.py epivail-links-aire`. (2026-10-22)
 
 ## EpiVail: brand, voice and sending
 
