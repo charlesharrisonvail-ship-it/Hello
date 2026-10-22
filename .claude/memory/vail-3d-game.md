@@ -42,3 +42,6 @@ real AAA ski/snowboard game look (think Steep, SSX, GTA-level visuals), not simp
 shapes. He said "Pause" - do not resume, regenerate, or spend until he reopens it.
 The game and the homepage "Play Vail 3D" section are still live on the AiRE site;
 ask him before removing or keeping them.
+Reference he gave (2026-10-22): **Steep** (Ubisoft, 2016) - open-world, photoreal Alps
+and Alaska; players praise its snow and mountain graphics most. His Perplexity link is
+private (sign-in wall), so its content is still unknown.
