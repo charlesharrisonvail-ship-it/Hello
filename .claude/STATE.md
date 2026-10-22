@@ -46,8 +46,9 @@ EpiVail homepage, round 3. Charles: the stock ski clips were obviously NOT Vail
 ("people can tell"). Rule: footage on his site must read as Vail. Now a 40s film
 (Higgsfield, Kling 2.6, 10 credits/clip, ~280 credits left): 4 real Vail photos
 from Unsplash (location-verified: Bridge St/Pepi Sports, Village rooftops, valley
-aerial, pink-sunset runs) animated image-to-video, plus 6 AI apres clips (deck,
-fire pit, champagne, fondue, covered bridge at night, hot tub). All Pexels stock
+aerial, pink-sunset runs) animated image-to-video, plus 5 AI apres clips (deck,
+fire pit, champagne, fondue, hot tub). AI covered bridge PULLED - Charles: Vail
+landmarks MUST be the real thing; waiting on his photo of the real bridge. All Pexels stock
 removed. Hosted in his Higgsfield storage. Added motion layer: custom cursor with
 Book/View/Learn labels, magnetic buttons, 3D tilt + glare, word-by-word headline,
 heading wipes, hero parallax + pointer spotlight, scroll progress, hide-on-scroll
