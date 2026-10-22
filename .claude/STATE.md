@@ -41,6 +41,19 @@ not rule on it, so ask rather than pick.
 
 ## Working thread (auto-banked)
 
+### banked 2026-10-22 02:40
+EpiVail homepage, round 3. Charles: the stock ski clips were obviously NOT Vail
+("people can tell"). Rule: footage on his site must read as Vail. Now a 40s film
+(Higgsfield, Kling 2.6, 10 credits/clip, ~280 credits left): 4 real Vail photos
+from Unsplash (location-verified: Bridge St/Pepi Sports, Village rooftops, valley
+aerial, pink-sunset runs) animated image-to-video, plus 6 AI apres clips (deck,
+fire pit, champagne, fondue, covered bridge at night, hot tub). All Pexels stock
+removed. Hosted in his Higgsfield storage. Added motion layer: custom cursor with
+Book/View/Learn labels, magnetic buttons, 3D tilt + glare, word-by-word headline,
+heading wipes, hero parallax + pointer spotlight, scroll progress, hide-on-scroll
+glass header, scroll-speed ticker. No Vail footage in his Google Drive; this cloud
+session cannot reach his C: drive. Best next upgrade: his own phone clips of Vail.
+
 ### banked 2026-10-22 02:00
 EpiVail homepage (Lofty custom-code block, charlesharrison.epiquerealty.com).
 Charles called the plain and photo heroes boring; he wants real ski/apres footage.
