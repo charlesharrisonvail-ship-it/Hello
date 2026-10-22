@@ -5,8 +5,8 @@ import os, subprocess
 from PIL import Image, ImageDraw, ImageFont
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-FR = os.path.join(HERE, "frames")
-FONTS = os.path.join(HERE, "..", "trailer")
+FR = os.path.join(HERE, "raw", "reel-frames")  # written by reel_capture.js
+FONTS = os.path.join(HERE, "fonts")  # Archivo, Manrope, IBM Plex Mono (Google Fonts, OFL)
 os.chdir(HERE)
 W, H, FPS = 1080, 1920, 30
 INK, SIG, TXT, DIM = (4, 7, 13), (56, 189, 248), (240, 245, 252), (150, 165, 185)

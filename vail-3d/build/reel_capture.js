@@ -1,7 +1,8 @@
 // Records real gameplay frame by frame (fixed 1/30 s steps) from the AiRE copy of Vail 3D.
 const { chromium } = require(require('child_process').execSync('npm root -g').toString().trim() + '/playwright');
 const fs = require('fs');
-const OUT = '/tmp/claude-0/-home-user-Hello/c50d89cf-8d23-5f11-8425-ce4a2e60c0ba/scratchpad/reel/frames/';
+const OUT = require('path').join(__dirname, 'raw', 'reel-frames') + '/';
+// serve docs/ first:  cd docs && python3 -m http.server 8766
 const only = process.argv[2] ? process.argv[2].split(',') : null, limit = +process.argv[3] || 0;
 (async () => {
   const b = await chromium.launch({ args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
