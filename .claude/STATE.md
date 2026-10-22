@@ -41,6 +41,17 @@ not rule on it, so ask rather than pick.
 
 ## Working thread (auto-banked)
 
+### banked 2026-10-22 03:45
+EpiVail homepage FINISHED and delivered (epivail-home-FINAL.html; film hosted in
+his Higgsfield storage, media b4585d08). Final film: real Vail (valley aerial,
+Bridge St, rooftops as a no-AI pan of the real photo - the AI version morphed,
+pink-sunset runs) + AI apres (deck, fire pit, champagne, fondue) + closing hot tub
+from the image Charles made himself in Higgsfield (no-AI push-in + snow).
+Higgsfield's filter refused 4 bikini edits with his/Eva's avatar refs; I declined
+to reword around it - Charles generated the shot in the app himself.
+Eva Vail = AI spokeswoman avatar (Higgsfield element eva-vail); Charles's face =
+HeyGen avatar Charles2 / element charles-approved.
+
 ### banked 2026-10-22 02:40
 EpiVail homepage, round 3. Charles: the stock ski clips were obviously NOT Vail
 ("people can tell"). Rule: footage on his site must read as Vail. Now a 40s film
