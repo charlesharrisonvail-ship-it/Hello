@@ -101,3 +101,12 @@ html[data-motion="off"] .mx-herovid video{animation:none}
 
 /* "Real Estate" gets the same weight as "Claude Code", in a warm-to-blue blend. */
 h1 em.cc.re{background-image:linear-gradient(90deg,#fbbf24,#f472b6,#38bdf8,#f472b6,#fbbf24)!important}
+
+/* "Compared with the top AI programs": text beside a phone-shaped video. */
+#compare .cmp{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:48px;align-items:center}
+#compare .cmp-note{font-size:.82rem;color:var(--dim,#8496b2);max-width:60ch}
+#compare .cmp-vid{margin:0;justify-self:center;width:100%;max-width:320px}
+#compare .cmp-vid video{display:block;width:100%;aspect-ratio:9/16;background:#04070d;border-radius:22px;
+  border:1px solid rgba(255,255,255,.14);box-shadow:0 24px 50px -20px rgba(56,189,248,.55)}
+#compare .cmp-vid figcaption{margin-top:10px;text-align:center;font:600 12px/1 Manrope,system-ui,sans-serif;letter-spacing:.06em;color:#8496b2}
+@media (max-width:760px){#compare .cmp{grid-template-columns:1fr;gap:28px}#compare .cmp-vid{max-width:300px}}
