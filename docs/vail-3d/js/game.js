@@ -461,7 +461,7 @@ const flakeGeo = new THREE.BufferGeometry();
 const flakePos = new Float32Array(FLAKES * 3);
 for (let i = 0; i < FLAKES * 3; i++) flakePos[i] = (Math.random() - 0.5) * 120;
 flakeGeo.setAttribute('position', new THREE.BufferAttribute(flakePos, 3));
-const flakes = new THREE.Points(flakeGeo, new THREE.PointsMaterial({ color: 0xffffff, size: 0.18, transparent: true, opacity: 0.8, depthWrite: false }));
+const flakes = new THREE.Points(flakeGeo, new THREE.PointsMaterial({ color: 0xffffff, map: softDot(), size: 0.22, transparent: true, opacity: 0.8, depthWrite: false }));
 flakes.frustumCulled = false; scene.add(flakes);
 
 // ---------- game state ----------
@@ -619,7 +619,11 @@ function updateCamera(dt, snap) {
   const back = headingVec(S.heading, new THREE.Vector3());
   const sp = S.vel.length();
   let want, look;
-  if (S.mode === 'lift') {
+  if (S.mode === 'lift' && camera.aspect < 1) {
+    // tall screens: ride just behind the chair, looking up the line at the chairs ahead
+    want = S.pos.clone().addScaledVector(S.lift.side, 1.6).addScaledVector(S.lift.dir, -6); want.y += 2.2;
+    look = S.pos.clone().addScaledVector(S.lift.dir, 40); look.y += 6;
+  } else if (S.mode === 'lift') {
     want = S.pos.clone().addScaledVector(S.lift.side, 9).addScaledVector(S.lift.dir, -14); want.y += 5;
     look = S.pos.clone().addScaledVector(S.lift.dir, 30);
   } else if (S.cam === 'pov') {
@@ -639,6 +643,8 @@ function updateCamera(dt, snap) {
     const gy = heightAt(want.x, want.z) + 1.5; if (want.y < gy) want.y = gy;
     look = S.pos.clone().addScaledVector(back, 6); look.y += 1.4;
   }
+  // on tall phone screens, rise a little and look further down the slope so the hill fills the frame
+  if (camera.aspect < 1 && S.mode !== 'lift' && S.cam !== 'pov') { want.y += 1.4; look.y -= 2.2; }
   const k = snap ? 1 : 1 - Math.exp(-dt * (S.cam === 'pov' ? 20 : 5));
   camPos.lerp(want, k); camLook.lerp(look, snap ? 1 : 1 - Math.exp(-dt * 8));
   camera.position.copy(camPos); camera.lookAt(camLook);
@@ -994,8 +1000,13 @@ function layTrack() {
 
 // ---------- main ----------
 const clock = new THREE.Clock();
+let manualClock = false; // recording: the capture script advances time one frame at a time
 function frame() {
-  const dt = Math.min(clock.getDelta(), 1 / 20);
+  if (manualClock) return;
+  tick(Math.min(clock.getDelta(), 1 / 20));
+  requestAnimationFrame(frame);
+}
+function tick(dt) {
   if (S.mode === 'ride') { for (let i = 0; i < 4; i++) stepRide(dt / 4); }
   else if (S.mode === 'lift') stepLift(dt);
   if (lifts.length) animateLifts(dt);
@@ -1037,7 +1048,6 @@ function frame() {
   if (S.mode !== 'ride' && S.mode !== 'lift') updateTreeLOD(camera.position.x, camera.position.z);
   sky.position.copy(camera.position);
   composer.render();
-  requestAnimationFrame(frame);
 }
 addEventListener('resize', () => {
   renderer.setSize(innerWidth, innerHeight); composer.setSize(innerWidth, innerHeight);
@@ -1046,7 +1056,7 @@ addEventListener('resize', () => {
 });
 
 // test hook for automated checks
-window.__vail = { S, step: (sec) => { for (let t = 0; t < sec; t += 1 / 240) stepRide(1 / 240); }, keys, heightAt, lifts, boardLift, camera, snapCam: () => updateCamera(0, true), startRide, MAP: () => MAP, orbit: () => orbit, hideSigns: () => scene.traverse((o) => { if (o.isSprite) o.visible = false; }) };
+window.__vail = { S, step: (sec) => { for (let t = 0; t < sec; t += 1 / 240) stepRide(1 / 240); }, keys, heightAt, lifts, boardLift, camera, snapCam: () => updateCamera(0, true), startRide, MAP: () => MAP, orbit: () => orbit, record: (on) => { manualClock = on; if (!on) { clock.getDelta(); frame(); } }, tick, jump: () => { jumpQueued = true; }, openMap, closeMap, hideSigns: () => scene.traverse((o) => { if (o.isSprite) o.visible = false; }) };
 
 (async function init() {
   try {
