@@ -4,8 +4,13 @@ description: Vail 3D - the interactive ski/snowboard game map of Vail Mountain i
 ---
 
 Charles asked (2026-10-22) for a game-style 3D Vail Mountain map, accurate down to
-the Back Bowls, to run on his website as an attraction for his business. It is
-EpiVail work, not AiRE Estate - keep it out of `docs/`.
+the Back Bowls, as a website attraction. He then chose **AiReEstate.com** as its
+home, so it ships in two looks from one engine: `vail-3d/` (EpiVail credit) and
+`docs/vail-3d/` (AiRE Estate look, credited "Built in Claude Code by AiRE Estate",
+no Epique/EpiVail/Charles). Regenerate the AiRE copy with
+`python3 vail-3d/build/make_aire.py` after any game or data change.
+The live site publishes from `claude/stan-store-access-k4hjdu`; pushing there needs
+his explicit OK.
 
 Built in `vail-3d/` as plain three.js (no build, no keys, free to host): USGS
 elevation via AWS Terrain Tiles plus OpenStreetMap pistes, lifts and woods, baked
@@ -15,6 +20,7 @@ Never copy Vail Resorts' official trail map art or James Niehues' painting; they
 are copyrighted. Keep the OSM (ODbL), USGS and "not an official Vail Resorts map"
 lines visible.
 
-Higgsfield video for it spends his credits (279.79 on the basic plan at 2026-10-22);
+Higgsfield video for it spends his credits (277.79 on the basic plan at 2026-10-22;
+his history: Kling v3.0 6 or 12 per clip, Kling 2.6 10, Nano Banana Pro 2, FLUX 3 Video 110);
 propose with an estimate and wait for his "go". FreeLLMAPI offers no video
 generation (checked 2026-10-22).
