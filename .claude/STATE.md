@@ -41,6 +41,17 @@ not rule on it, so ask rather than pick.
 
 ## Working thread (auto-banked)
 
+### banked 2026-10-22 04:30
+Live-page fixes (epivail-home-FINAL-v2.html, 112 KB): Lofty's custom-code box
+silently truncates around 1 MB, so the 1.5 MB page (base64 photos) was cut off
+after "Epique Estates". All photos now hosted in his Higgsfield storage; NEVER
+embed base64 images in Lofty code again. Also: removed stray </div> that closed
+Lofty's wrapper, forced full-bleed sections (Lofty padding made a frame round the
+hero), fixed heading-reveal bug (IntersectionObserver never fires on a
+clip-path-hidden target - observe the parent), added dark Featured Areas section
+(Edwards/Avon/Eagle/Gypsum, location-verified Unsplash photos, links to his
+/neighborhood/ pages). Charles should delete Lofty's own Featured Areas block.
+
 ### banked 2026-10-22 03:45
 EpiVail homepage FINISHED and delivered (epivail-home-FINAL.html; film hosted in
 his Higgsfield storage, media b4585d08). Final film: real Vail (valley aerial,
