@@ -53,5 +53,5 @@ Built in `js/visuals.js` (sky, far ranges from `build/bake_far.py`, clouds, LOD 
 articulated `Rider` with 4 outfits, film grade) and `js/buildings.js` (lodge rebuilt
 from `docs/media/aire-retreat-poster.jpg` on the live branch, shack, lift terminal).
 He asked for an `/img2threejs` command; it is not installed anywhere (skills, plugins,
-directory), so the image-to-procedural-model process was done by hand. Not pushed live
-until he says so.
+directory), so the image-to-procedural-model process was done by hand. Pushed live at
+learn.aireestate.com/vail-3d with his OK (2026-10-22).
