@@ -31,4 +31,7 @@ Kling kept the game's 3D look rather than going photoreal. Trailer (38 s) and th
 9 s homepage loop are in `vail-3d/media/`, every AI clip tagged "AI-GENERATED
 FOOTAGE"; re-cut with `vail-3d/build/assemble_trailer.py`. The game went live at
 learn.aireestate.com/vail-3d/ (pushed to the live branch with his OK). The loop is
-not on the AiRE homepage yet; where it goes is his call.
+on the AiRE homepage as a "Play Vail 3D" section after "Have it built for you"
+(his choice, 2026-10-22); it pauses when the site's Motion toggle is off. A free 9:16
+cut (reframed, no new credits) is `vail-3d/media/vail-3d-trailer-9x16.mp4`. The
+snowboard clip has a brief ghost-rider AI artifact in both cuts.
