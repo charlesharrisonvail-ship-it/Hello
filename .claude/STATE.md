@@ -50,7 +50,7 @@ Lofty's wrapper, forced full-bleed sections (Lofty padding made a frame round th
 hero), fixed heading-reveal bug (IntersectionObserver never fires on a
 clip-path-hidden target - observe the parent), added dark Featured Areas section
 (Edwards/Avon/Eagle/Gypsum, location-verified Unsplash photos, links to his
-/neighborhood/ pages). Charles should delete Lofty's own Featured Areas block.
+/neighborhood/ pages). v3 hides Lofty's own Featured Areas block automatically (JS finds the "FEATURED AREAS" heading outside .ev-areas and hides its top-level block).
 
 ### banked 2026-10-22 03:45
 EpiVail homepage FINISHED and delivered (epivail-home-FINAL.html; film hosted in
