@@ -25,14 +25,19 @@ function progress(p, t) { loadbar.style.width = (p * 100).toFixed(0) + '%'; if (
 async function loadData() {
   progress(0.05, 'Loading elevation…');
   const meta = await (await fetch('data/meta.json')).json();
-  const hb = await (await fetch('data/height.bin')).arrayBuffer();
+  // grid.png packs the 16-bit height in R/G and the forest mask in B (lossless)
+  const bmp = await createImageBitmap(await (await fetch('data/grid.png')).blob(), { colorSpaceConversion: 'none', premultiplyAlpha: 'none' });
+  const cv = new OffscreenCanvas(bmp.width, bmp.height), cx = cv.getContext('2d', { willReadFrequently: true });
+  cx.drawImage(bmp, 0, 0);
+  const px = cx.getImageData(0, 0, bmp.width, bmp.height, { colorSpace: 'srgb' }).data;
+  const heights = new Uint16Array(bmp.width * bmp.height), mask = new Uint8Array(bmp.width * bmp.height);
+  for (let i = 0; i < heights.length; i++) { heights[i] = (px[i * 4] << 8) | px[i * 4 + 1]; mask[i] = px[i * 4 + 2] > 127 ? 1 : 0; }
   progress(0.35, 'Loading runs and lifts…');
   const map = await (await fetch('data/map.json')).json();
-  const mb = await (await fetch('data/mask.bin')).arrayBuffer();
   progress(0.5, 'Painting snow…');
   const tex = await new THREE.TextureLoader().loadAsync(LOW ? 'data/terrain_2k.jpg' : 'data/terrain.jpg');
   progress(0.8, 'Planting trees…');
-  return { meta, heights: new Uint16Array(hb), mask: new Uint8Array(mb), map, tex };
+  return { meta, heights, mask, map, tex };
 }
 
 // ---------- terrain sampling ----------

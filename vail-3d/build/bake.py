@@ -5,7 +5,7 @@ Inputs (made by fetch_osm.py and fetch_dem.py, kept out of git):
   raw/osm/*.json   OpenStreetMap elements: pistes, lifts, woods, restaurants
 
 Outputs in ../data/:
-  meta.json, height.bin (uint16), mask.bin (uint8), map.json,
+  meta.json, grid.png (16-bit height in R/G, forest in B), map.json,
   terrain.jpg (4096 wide) and terrain_2k.jpg (phones)
 
 Run:  python3 bake.py   (needs numpy and Pillow)
@@ -85,7 +85,7 @@ gx_off = -W_M / 2
 minE = float(np.floor(g.min()))
 scale = 20.0  # 5 cm steps
 os.makedirs(OUT, exist_ok=True)
-np.round((g - minE) * scale).astype("<u2").tofile(os.path.join(OUT, "height.bin"))
+hq = np.round((g - minE) * scale).astype(np.uint16)  # packed into grid.png below with the forest mask
 GW, GD = (cols - 1) * cell, (rows - 1) * cell
 
 def to_game(x, z):
@@ -174,7 +174,11 @@ im.resize((2048, round(2048 * TEX_H / TEX_W)), Image.LANCZOS).save(os.path.join(
 # ---------- game mask: bit0 forest ----------
 fm = Image.fromarray((forest_a * 255).astype(np.uint8)).resize((cols, rows), Image.BILINEAR)
 mask = (np.asarray(fm) > 140).astype(np.uint8)
-mask.tofile(os.path.join(OUT, "mask.bin"))
+# one lossless PNG: R = height high byte, G = height low byte, B = 255 where forest
+rgb = np.dstack([(hq >> 8).astype(np.uint8), (hq & 255).astype(np.uint8), mask * 255])
+Image.fromarray(rgb, "RGB").save(os.path.join(OUT, "grid.png"), optimize=True)
+for old in ("height.bin", "mask.bin"):
+    if os.path.exists(os.path.join(OUT, old)): os.remove(os.path.join(OUT, old))
 
 # ---------- zones, spawns ----------
 def runs_named(*names):
