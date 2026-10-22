@@ -1,0 +1,24 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Lodge preview</title>
+<style>html,body{margin:0;height:100%;background:#0b1530}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+</head><body>
+<!-- Quality-gate render: the procedural lodge from the poster's camera angle (front-left, low). ?mode=dusk|day -->
+<script type="module">
+import * as THREE from 'three';
+import { buildLodge, buildShack, buildTerminal } from '../js/buildings.js';
+const dusk = new URLSearchParams(location.search).get('mode') !== 'day';
+const r = new THREE.WebGLRenderer({ antialias: true }); r.setSize(innerWidth, innerHeight); r.toneMapping = THREE.ACESFilmicToneMapping;
+r.toneMappingExposure = dusk ? 0.8 : 0.9; r.shadowMap.enabled = true; document.body.appendChild(r.domElement);
+const s = new THREE.Scene(); s.background = new THREE.Color(dusk ? 0x1a2a55 : 0x7fb2ee);
+s.add(new THREE.HemisphereLight(dusk ? 0x5a6fa8 : 0x9cc4ff, 0x404040, dusk ? 0.6 : 1.1));
+const sun = new THREE.DirectionalLight(dusk ? 0x8090c0 : 0xfff1de, dusk ? 0.6 : 2.8); sun.position.set(-20, 30, 25); sun.castShadow = true;
+Object.assign(sun.shadow.camera, { left: -30, right: 30, top: 30, bottom: -30 }); s.add(sun);
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(200, 200), new THREE.MeshStandardMaterial({ color: dusk ? 0x3a4030 : 0xf2f6fb })); ground.rotation.x = -Math.PI / 2; ground.position.y = -2.4; ground.receiveShadow = true; s.add(ground);
+const lodge = buildLodge({ snow: !dusk }); s.add(lodge);
+if (!dusk) { const sh = buildShack(); sh.position.set(22, 0, 4); s.add(sh); const t = buildTerminal(); t.position.set(-30, 0, -6); s.add(t); }
+const cam = new THREE.PerspectiveCamera(38, innerWidth / innerHeight, 0.1, 500);
+cam.position.set(-17, 1.5, 30); cam.lookAt(3, 5, 0);
+r.render(s, cam);
+let tris = 0; lodge.traverse((o) => { if (o.isMesh) tris += (o.geometry.index ? o.geometry.index.count : o.geometry.attributes.position.count) / 3; });
+document.title = 'tris=' + tris;
+</script></body></html>

@@ -133,15 +133,15 @@ lx, ly, lz = math.sin(az) * math.cos(alt), -math.cos(az) * math.cos(alt), math.s
 nx, ny, nz = -dzdx, dzdy, np.ones_like(H)
 nl = np.sqrt(nx * nx + ny * ny + 1)
 shade = np.clip((nx * lx + ny * -ly + nz * lz) / nl, 0, 1)
-shade = 0.55 + 0.45 * shade
+shade = 0.78 + 0.22 * shade   # live lighting does most of the shading; keep the bake bright
 
 rng = np.random.default_rng(3)
 noise = np.asarray(Image.fromarray((rng.random((TEX_H // 4, TEX_W // 4)) * 255).astype(np.uint8))
                    .resize((TEX_W, TEX_H), Image.BICUBIC), np.float32) / 255
 fine = rng.random((TEX_H, TEX_W)).astype(np.float32)
 
-snow_lit = np.array([252, 253, 255], np.float32)
-snow_dark = np.array([150, 172, 210], np.float32)
+snow_lit = np.array([255, 255, 255], np.float32)
+snow_dark = np.array([196, 214, 240], np.float32)
 img = snow_dark + (snow_lit - snow_dark) * shade[..., None]
 img *= (0.97 + 0.03 * noise)[..., None]
 

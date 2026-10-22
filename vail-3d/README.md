@@ -71,3 +71,25 @@ Maps of Vail reviewed while building this:
 - EverySki's 3D viewer (everyski.com/resorts/us/vail/3d).
 - OpenSkiMap.
 - OnTheSnow, Skiresort.info and WeSki map pages.
+
+## Buildings (procedural, from a reference image)
+
+`js/buildings.js` rebuilds the house in `docs/media/aire-retreat-poster.jpg` (live-site
+branch) as a procedural Three.js model, then reuses its materials for a ski shack and a
+lift terminal. The game places a lodge at each on-mountain restaurant in the OSM data,
+glazed front down the fall line; a terminal at both ends of every lift; and a patrol shack
+beside each drop-in point. Riders bump off all of them.
+
+- **Kept from the poster:** the 48° main gable with a fully glazed end and a 4 × 2 black
+  mullion grid, the low side wing with a shallow roof, the cantilevered deck with a glass
+  rail on a dark steel beam, the fieldstone plinth, and an exterior fieldstone chimney
+  standing 1.6 m past the ridge. Proportions are measured off the image: gable face about
+  1.06 × the floor-to-ridge height, eave at about 42% of ridge height, low wing about 0.75
+  of the main width.
+- **Colors:** each was sampled from the poster and lifted from dusk to daylight, keeping its hue.
+- **Inferred (not visible in the poster):** building depth (14 m main, 8 m wing), the rear
+  cedar gable, the wing's back wall, the room behind the glass (painted as a texture:
+  timber ceiling, pendants, fireplace, sofas), and the winter snow load on the roofs.
+- **Budget:** about 500 triangles per lodge.
+- **Check it:** `build/lodge-preview.html` renders the lodge from the poster's camera angle;
+  add `?mode=day` for the daylight, snow-roofed version.

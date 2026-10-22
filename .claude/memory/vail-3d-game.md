@@ -45,3 +45,13 @@ ask him before removing or keeping them.
 Reference he gave (2026-10-22): **Steep** (Ubisoft, 2016) - open-world, photoreal Alps
 and Alaska; players praise its snow and mountain graphics most. His Perplexity link is
 private (sign-in wall), so its content is still unknown.
+
+**Resumed 2026-10-22: "I love 90%... it's just fine tuning."** Visual target is
+**Shredders** (FoamPunch, Steam 1874170): deep blue sky, cumulus, valley cloud seas,
+white snow with blue shadows, snow-laden spruce, riders in baggy outerwear, filmer cam.
+Built in `js/visuals.js` (sky, far ranges from `build/bake_far.py`, clouds, LOD spruce,
+articulated `Rider` with 4 outfits, film grade) and `js/buildings.js` (lodge rebuilt
+from `docs/media/aire-retreat-poster.jpg` on the live branch, shack, lift terminal).
+He asked for an `/img2threejs` command; it is not installed anywhere (skills, plugins,
+directory), so the image-to-procedural-model process was done by hand. Not pushed live
+until he says so.
