@@ -35,3 +35,10 @@ on the AiRE homepage as a "Play Vail 3D" section after "Have it built for you"
 (his choice, 2026-10-22); it pauses when the site's Motion toggle is off. A free 9:16
 cut (reframed, no new credits) is `vail-3d/media/vail-3d-trailer-9x16.mp4`. The
 snowboard clip has a brief ghost-rider AI artifact in both cuts.
+
+**Charles's verdict, 2026-10-22: "elementary... not at all what I had in mind."** He
+rejected the low-poly three.js look and the Kling clips built from it. His bar is a
+real AAA ski/snowboard game look (think Steep, SSX, GTA-level visuals), not simple
+shapes. He said "Pause" - do not resume, regenerate, or spend until he reopens it.
+The game and the homepage "Play Vail 3D" section are still live on the AiRE site;
+ask him before removing or keeping them.
