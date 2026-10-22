@@ -47,4 +47,4 @@ Charles asked for a modern hero. Delivered a full paste-in page with a new hero
 (Inter Tight headline, gold "finally works", CSS aurora instead of the Three.js
 rainbow shader, "Included from day one" glass card) and an "AiRE Estate" top-nav
 tab to learn.aireestate.com (`recall.py epivail-links-aire`). Page lives only in
-Lofty; nothing in this repo. Offered next: full-bleed Colorado mountain photo hero.
+Lofty; nothing in this repo. Charles found that version plain; replaced with a full-bleed Vail sunset photo (Unsplash, free licence, hotlinked), slow zoom and canvas snowfall.
