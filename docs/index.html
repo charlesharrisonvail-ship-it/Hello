@@ -587,6 +587,18 @@
   .peek small{color:rgba(255,255,255,.62);font-size:.8rem;line-height:1.45}
   .peek a{color:var(--sig)}
   @media (max-width:760px){.peek{grid-template-columns:1fr}}
+  /* Vail 3D card */
+  .v3d{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(26px,4vw,56px);align-items:center}
+  @media (max-width:900px){.v3d{grid-template-columns:1fr}}
+  .v3d .facts{display:flex;flex-wrap:wrap;gap:8px 22px;margin:22px 0 26px;font-family:var(--mn);font-size:.74rem;letter-spacing:.08em;color:var(--slate)}
+  .v3d .facts b{color:var(--head);font-weight:600}
+  .v3d .shot{position:relative;display:block;border:1px solid var(--edge2);border-radius:14px;overflow:hidden;background:var(--panel);aspect-ratio:16/9;max-width:100%}
+  .v3d .shot video{display:block;width:100%;height:100%;object-fit:cover}
+  .v3d .shot .play{position:absolute;right:16px;bottom:16px;display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;
+    background:rgba(4,7,13,.78);color:#fff;font-family:var(--mn);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;transition:background .2s}
+  .v3d .shot:hover .play{background:var(--sig);color:#03060d}
+  .v3d .shot:focus-visible{outline:2px solid var(--sig);outline-offset:3px}
+  .v3d .note{font-size:.8rem;color:var(--slate2);margin-top:12px}
 </style>
 <link rel="stylesheet" href="/modern.css">
 </head>
@@ -872,6 +884,39 @@
         <p>Tell us what you need and you'll get a straight answer about whether we can help. Email <a href="mailto:hello@aireestate.com">hello@aireestate.com</a>.</p></div>
     </div>
   </div>
+</section>
+
+<!-- ============ VAIL 3D ============ -->
+<section class="band" id="vail3d">
+  <div class="inner v3d">
+    <div>
+      <p class="kick rv">Built in Claude Code</p>
+      <h2 class="rv">Play <em>Vail Mountain</em> in 3D</h2>
+      <p class="lede rv">Ski or snowboard the real mountain in your browser. The terrain is USGS elevation data, and every run and lift sits where it does on the hill: the Front Side, the Back Bowls and Blue Sky Basin. Free, no sign-up.</p>
+      <p class="facts rv"><span><b>283</b> named runs</span><span><b>31</b> lifts you can ride</span><span><b>11,249 ft</b> at the top of Mountaintop</span></p>
+      <div class="hcta rv">
+        <a class="btn pri" href="/vail-3d/">Play Vail 3D <span class="ar">&rarr;</span></a>
+      </div>
+      <p class="note rv">Not an official Vail Resorts map. AiRE Estate is independent of Vail Resorts.</p>
+    </div>
+    <a class="shot rv" href="/vail-3d/" aria-label="Play Vail 3D">
+      <video id="v3dvid" muted loop playsinline preload="metadata" poster="/vail-3d/media/vail-3d-loop-poster.jpg">
+        <source src="/vail-3d/media/vail-3d-loop.webm" type="video/webm">
+        <source src="/vail-3d/media/vail-3d-loop.mp4" type="video/mp4">
+      </video>
+      <span class="play">Play in your browser &rarr;</span>
+    </a>
+  </div>
+  <script>
+  (function(){
+    // the loop plays only while motion is on and the card is on screen
+    var v=document.getElementById('v3dvid'),h=document.documentElement,seen=false;
+    var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)');
+    function sync(){ if(seen&&h.getAttribute('data-motion')!=='off'&&!(rm&&rm.matches)){var p=v.play();if(p&&p.catch)p.catch(function(){});} else v.pause(); }
+    if('IntersectionObserver' in window){ new IntersectionObserver(function(e){seen=e[0].isIntersecting;sync();},{threshold:.25}).observe(v); } else { seen=true; sync(); }
+    new MutationObserver(sync).observe(h,{attributes:true,attributeFilter:['data-motion']});
+  })();
+  </script>
 </section>
 
 <!-- ============ HOW IT'S BUILT ============ -->
