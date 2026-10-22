@@ -41,10 +41,10 @@ not rule on it, so ask rather than pick.
 
 ## Working thread (auto-banked)
 
-### banked 2026-10-10 18:54
-(compaction point -- the thread above this line was summarised; anything not written down here is gone)
-
-
-### banked 2026-10-10 19:18
-(compaction point -- the thread above this line was summarised; anything not written down here is gone)
-
+### banked 2026-10-22 01:20
+EpiVail homepage (Lofty custom-code block, charlesharrison.epiquerealty.com):
+Charles asked for a modern hero. Delivered a full paste-in page with a new hero
+(Inter Tight headline, gold "finally works", CSS aurora instead of the Three.js
+rainbow shader, "Included from day one" glass card) and an "AiRE Estate" top-nav
+tab to learn.aireestate.com (`recall.py epivail-links-aire`). Page lives only in
+Lofty; nothing in this repo. Offered next: full-bleed Colorado mountain photo hero.
