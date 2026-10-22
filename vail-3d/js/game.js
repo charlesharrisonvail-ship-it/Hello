@@ -17,6 +17,11 @@ const DIFF = {
   park: { c: '#ff8a00', label: 'Terrain park' },
 };
 const M2FT = 3.28084, MS2MPH = 2.23694;
+// brand accent and display face come from the page's CSS tokens, so each site can theme the game
+const rootCss = getComputedStyle(document.documentElement);
+const ACCENT = rootCss.getPropertyValue('--gold').trim() || '#ffcf3f';
+const DISPLAY = rootCss.getPropertyValue('--display').trim() || "'Bebas Neue', sans-serif";
+const BODY = rootCss.getPropertyValue('--body').trim() || 'Inter, sans-serif';
 
 // ---------- loading ----------
 const loadbar = $('loadbar').firstElementChild, loadtxt = $('loadtxt');
@@ -325,7 +330,7 @@ function makeSign(text, diff) {
   const x = c.getContext('2d');
   x.fillStyle = 'rgba(8,14,28,.78)'; roundRect(x, 4, 8, 504, 96, 18); x.fill();
   drawBadge(x, 56, 56, 30, diff);
-  x.fillStyle = '#fff'; x.font = '800 42px Inter, sans-serif'; x.textBaseline = 'middle';
+  x.fillStyle = '#fff'; x.font = `800 42px ${BODY}`; x.textBaseline = 'middle';
   let t = text; while (x.measureText(t).width > 400 && t.length > 4) t = t.slice(0, -2) + '…';
   x.fillText(t, 100, 58);
   const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace;
@@ -545,8 +550,8 @@ function land(gy) {
     S.vel.multiplyScalar(0.25); S.heading = dirV; trick('WIPEOUT', '#ff4a3d');
   } else {
     if (spins >= 180) S.heading = dirV + (off > 1.6 ? Math.PI : 0) * 0;
-    if (spins >= 180) trick(spins + '!', '#ffcf3f');
-    else if (S.airT > 0.7) trick(S.airT.toFixed(1) + 's AIR', '#ffcf3f');
+    if (spins >= 180) trick(spins + '!', ACCENT);
+    else if (S.airT > 0.7) trick(S.airT.toFixed(1) + 's AIR', ACCENT);
     emitSpray(S.pos, S.vel.clone().multiplyScalar(0.2), 30);
   }
 }
@@ -739,7 +744,7 @@ function drawMini() {
   c.drawImage(mapCanvas, -px, -pz);
   if (S.waypoint) {
     const wx = (S.waypoint.x - T.x0) * mapScale - px, wz = (S.waypoint.z - T.z0) * mapScale - pz;
-    c.fillStyle = '#ffcf3f'; c.beginPath(); c.arc(wx, wz, 9, 0, 7); c.fill(); c.strokeStyle = '#000'; c.lineWidth = 2; c.stroke();
+    c.fillStyle = ACCENT; c.beginPath(); c.arc(wx, wz, 9, 0, 7); c.fill(); c.strokeStyle = '#000'; c.lineWidth = 2; c.stroke();
   }
   c.restore();
   // rider arrow
@@ -748,12 +753,12 @@ function drawMini() {
   // north marker on the rim
   const a = -S.heading - Math.PI / 2;
   c.fillStyle = '#000'; c.beginPath(); c.arc(R + Math.cos(a) * (R - 22), R + Math.sin(a) * (R - 22), 16, 0, 7); c.fill();
-  c.fillStyle = '#fff'; c.font = '400 22px Bebas Neue'; c.textAlign = 'center'; c.textBaseline = 'middle';
+  c.fillStyle = '#fff'; c.font = `400 22px ${DISPLAY}`; c.textAlign = 'center'; c.textBaseline = 'middle';
   c.fillText('N', R + Math.cos(a) * (R - 22), R + Math.sin(a) * (R - 22) + 1);
   if (S.waypoint) {
     const d = Math.hypot(S.waypoint.x - S.pos.x, S.waypoint.z - S.pos.z);
     c.fillStyle = 'rgba(0,0,0,.6)'; c.fillRect(R - 52, W - 58, 104, 28);
-    c.fillStyle = '#ffcf3f'; c.font = '400 22px Bebas Neue'; c.fillText(Math.round(d * M2FT).toLocaleString() + ' FT', R, W - 43);
+    c.fillStyle = ACCENT; c.font = `400 22px ${DISPLAY}`; c.fillText(Math.round(d * M2FT).toLocaleString() + ' FT', R, W - 43);
   }
 }
 
@@ -781,14 +786,14 @@ function drawBigMap() {
   const zoneLabels = [];
   for (const zn of [...MAP.zones].sort((p, q) => q.r - p.r)) {
     const [a, b] = P(zn.x, zn.z), t = zn.n.toUpperCase();
-    c.font = `400 ${Math.round(Math.min(26, 13 + 6 * s) * dpr)}px Bebas Neue`;
+    c.font = `400 ${Math.round(Math.min(26, 13 + 6 * s) * dpr)}px ${DISPLAY}`;
     const tw = c.measureText(t).width, th = 18 * dpr;
     if (free(a - tw / 2, b - th / 2, tw, th)) zoneLabels.push([t, a, b, c.font]);
   }
   for (const l of lifts) {
     const [a, b] = P(l.top.x, l.top.z);
     c.fillStyle = '#e8452c'; c.beginPath(); c.arc(a, b, 6 * dpr, 0, 7); c.fill(); c.strokeStyle = '#fff'; c.lineWidth = 2 * dpr; c.stroke();
-    c.font = `700 ${Math.round(10 * dpr)}px Inter`;
+    c.font = `700 ${Math.round(10 * dpr)}px ${BODY}`;
     const tw = c.measureText(l.name).width;
     if (!free(a - tw / 2, b - 20 * dpr, tw, 14 * dpr)) continue;
     c.lineWidth = 3 * dpr; c.strokeStyle = 'rgba(0,0,0,.8)';
@@ -801,11 +806,11 @@ function drawBigMap() {
   if (S.mode !== 'menu') {
     const [a, b] = P(S.pos.x, S.pos.z);
     c.save(); c.translate(a, b); c.rotate(S.heading);
-    c.fillStyle = '#ffcf3f'; c.strokeStyle = '#000'; c.lineWidth = 2 * dpr;
+    c.fillStyle = ACCENT; c.strokeStyle = '#000'; c.lineWidth = 2 * dpr;
     c.beginPath(); c.moveTo(0, -12 * dpr); c.lineTo(8 * dpr, 9 * dpr); c.lineTo(0, 4 * dpr); c.lineTo(-8 * dpr, 9 * dpr); c.closePath(); c.fill(); c.stroke();
     c.restore();
   }
-  if (S.waypoint) { const [a, b] = P(S.waypoint.x, S.waypoint.z); c.fillStyle = '#ffcf3f'; c.beginPath(); c.arc(a, b, 7 * dpr, 0, 7); c.fill(); }
+  if (S.waypoint) { const [a, b] = P(S.waypoint.x, S.waypoint.z); c.fillStyle = ACCENT; c.beginPath(); c.arc(a, b, 7 * dpr, 0, 7); c.fill(); }
 }
 // drag to pan, wheel or pinch to zoom
 const ptrs = new Map(); let dragged = 0, pinch0 = 0;

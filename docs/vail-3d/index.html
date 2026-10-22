@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2722%27 fill=%27%2304070d%27/%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2730%27 fill=%27none%27 stroke=%27%2338bdf8%27 stroke-width=%2714%27 stroke-linecap=%27round%27 stroke-dasharray=%27140 50%27 transform=%27rotate(-38 50 50)%27/%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2712%27 fill=%27%2338bdf8%27/%3E%3C/svg%3E">
+<link rel="canonical" href="https://learn.aireestate.com/vail-3d/">
+<title>Vail Mountain 3D</title>
+<meta name="description" content="Ski or ride a true-to-elevation 3D Vail Mountain: the Front Side, the Back Bowls and Blue Sky Basin, built from USGS terrain and OpenStreetMap run data.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800;900&family=IBM+Plex+Mono:wght@500&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#04070d; --snow:#f4f8ff; --glass:rgba(8,14,24,.74); --line:rgba(255,255,255,.14);
+  --green:#2fb344; --blue:#1f6fe0; --black:#111; --gold:#38bdf8; --red:#ff4a3d;
+  --display:'Archivo',system-ui,sans-serif; --body:'Manrope',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:#0b1220;color:var(--snow);font-family:var(--body);
+  -webkit-user-select:none;user-select:none;touch-action:none}
+canvas#gl{position:fixed;inset:0;width:100%;height:100%;display:block}
+.hud{position:fixed;pointer-events:none;z-index:5}
+.panel{background:var(--glass);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:12px}
+
+/* top-left: where am I */
+#where{top:16px;left:16px;padding:10px 14px;min-width:220px;max-width:min(380px,60vw)}
+#where .zone{font:400 15px/1 var(--display);letter-spacing:.14em;opacity:.8}
+#where .run{display:flex;align-items:center;gap:10px;margin-top:6px;font:800 19px/1.15 var(--body)}
+.badge{flex:none;width:22px;height:22px;display:inline-grid;place-items:center}
+.badge svg{width:22px;height:22px}
+
+/* top-right: stats */
+#stats{top:16px;right:16px;padding:10px 14px;text-align:right;font-variant-numeric:tabular-nums}
+#stats .spd{font:400 54px/0.9 var(--display)}
+#stats .spd small{font-size:20px;margin-left:4px;opacity:.75}
+#stats .row{font-size:12px;opacity:.85;margin-top:4px;letter-spacing:.04em}
+
+/* bottom-left minimap */
+#mini{left:16px;bottom:16px;width:210px;height:210px;border-radius:50%;overflow:hidden;
+  border:3px solid rgba(255,255,255,.85);box-shadow:0 6px 24px rgba(0,0,0,.45)}
+#mini canvas{width:100%;height:100%}
+
+/* banners */
+#banner{top:24%;left:0;right:0;text-align:center;opacity:0;transition:opacity .6s}
+#banner .t{font:400 clamp(44px,8vw,96px)/1 var(--display);letter-spacing:.06em;color:#fff;
+  text-shadow:0 3px 0 #000,0 0 30px rgba(0,0,0,.6)}
+#banner .s{font:600 14px/1.4 var(--body);letter-spacing:.3em;text-transform:uppercase;opacity:.9;text-shadow:0 2px 6px #000}
+#trick{top:38%;left:0;right:0;text-align:center;font:400 40px/1 var(--display);color:var(--gold);
+  text-shadow:0 3px 0 #000;opacity:0;transition:opacity .3s}
+#prompt{bottom:96px;left:50%;transform:translateX(-50%);padding:10px 16px;font-weight:600;display:none;white-space:nowrap}
+#prompt kbd,.keys kbd{display:inline-block;min-width:22px;padding:2px 6px;margin-right:6px;border-radius:5px;background:#fff;color:#000;
+  font:800 12px/1.2 var(--body);text-align:center}
+#keys{right:16px;bottom:16px;padding:10px 12px;font-size:12px;line-height:1.9;opacity:.9}
+#credit{left:240px;bottom:18px;font-size:11px;opacity:.75;max-width:calc(100vw - 480px)}
+#credit b{font-weight:800}
+
+/* start + map overlays */
+.overlay{position:fixed;inset:0;z-index:20;display:none}
+.overlay.on{display:block}
+#start{background:radial-gradient(ellipse at 50% 30%,rgba(10,20,40,.15),rgba(5,9,18,.8));place-items:center;overflow:auto}
+#start.on{display:grid}
+.card{width:min(760px,calc(100vw - 32px));padding:28px;margin:16px}
+.card h1{font:400 clamp(56px,11vw,120px)/.85 var(--display);letter-spacing:.04em}
+.card h1 span{color:var(--gold)}
+.card p.lede{margin:10px 0 22px;font-size:15px;line-height:1.55;opacity:.9;max-width:60ch}
+.choose{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.btn{pointer-events:auto;cursor:pointer;border:1px solid var(--line);background:rgba(255,255,255,.08);color:#fff;
+  padding:12px 16px;border-radius:10px;font:700 14px var(--body);letter-spacing:.02em}
+.btn:hover{background:rgba(255,255,255,.16)}
+.btn.sel{background:#fff;color:#000}
+.btn.go{background:var(--gold);color:#000;border-color:var(--gold);font-size:16px;padding:14px 22px}
+.label{font:400 16px var(--display);letter-spacing:.16em;opacity:.7;margin:14px 0 8px}
+#spawns{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+#loadbar{height:4px;background:rgba(255,255,255,.12);border-radius:2px;margin-top:18px;overflow:hidden}
+#loadbar i{display:block;height:100%;width:0;background:var(--gold);transition:width .2s}
+#loadtxt{font-size:12px;opacity:.7;margin-top:6px}
+.fine{font-size:11px;opacity:.6;margin-top:16px;line-height:1.5}
+
+#map{background:rgba(5,9,18,.9)}
+#map canvas{position:absolute;inset:0;width:100%;height:100%;cursor:crosshair}
+#map .head{position:absolute;top:0;left:0;right:0;padding:14px 16px 26px;background:linear-gradient(rgba(5,9,18,.92),rgba(5,9,18,0));display:flex;justify-content:space-between;align-items:center;gap:12px;pointer-events:none}
+#map .head h2{font:400 34px/1 var(--display);letter-spacing:.08em}
+#map .head .btn{pointer-events:auto}
+#legend{position:absolute;left:16px;bottom:16px;padding:10px 12px;font-size:12px;line-height:1.8}
+#legend i{display:inline-block;width:14px;height:4px;border-radius:2px;margin-right:8px;vertical-align:middle}
+
+/* touch controls */
+#touch{display:none}
+.touch #touch{display:block}
+.touch #keys{display:none}
+#stick{position:fixed;left:24px;bottom:250px;width:120px;height:120px;border-radius:50%;z-index:6;
+  background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.3)}
+#stick i{position:absolute;left:35px;top:35px;width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.55)}
+.tbtn{position:fixed;z-index:6;width:68px;height:68px;border-radius:50%;background:rgba(255,255,255,.14);
+  border:2px solid rgba(255,255,255,.4);color:#fff;font:400 18px var(--display);letter-spacing:.08em}
+#tJump{right:24px;bottom:120px}#tBrake{right:104px;bottom:60px}#tTuck{right:104px;bottom:150px}
+#tRide{right:24px;bottom:210px}#tMap{right:24px;top:150px;width:54px;height:54px}
+
+@media (max-width:700px){
+  #mini{width:140px;height:140px;left:12px;bottom:12px}
+  #credit{display:none}
+  #stats .spd{font-size:40px}
+  #where{min-width:0;left:12px;top:12px}
+  #stats{right:12px;top:12px}
+  #stick{bottom:170px}
+  #spawns{grid-template-columns:1fr 1fr}
+  #stats .row{display:none}
+  #stats{padding:8px 10px}
+  #where .run{font-size:15px}
+  .card{padding:20px}
+}
+/* AiRE Estate: Archivo needs weight where Bebas Neue did not */
+#banner .t,.card h1,#stats .spd{font-weight:900;letter-spacing:-.04em}
+#where .zone,.label,#map .head h2{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:12px;letter-spacing:.22em}
+#credit a{pointer-events:auto;color:var(--gold);font-weight:800;text-decoration:none}
+</style>
+<script type="importmap">
+{"imports":{
+  "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+}}
+</script>
+</head>
+<body>
+<canvas id="gl"></canvas>
+
+<div id="where" class="hud panel"><div class="zone" id="zoneName">VAIL MOUNTAIN</div><div class="run"><span class="badge" id="runBadge"></span><span id="runName">—</span></div></div>
+<div id="stats" class="hud panel"><div class="spd"><span id="spd">0</span><small>MPH</small></div>
+  <div class="row"><span id="elev">0</span> FT ELEV · TOP <span id="top">0</span> MPH</div>
+  <div class="row"><span id="vert">0</span> VERT FT SKIED · <span id="air">0.0</span>s BEST AIR</div></div>
+<div id="mini" class="hud"><canvas width="420" height="420"></canvas></div>
+<div id="banner" class="hud"><div class="t" id="bannerT"></div><div class="s" id="bannerS"></div></div>
+<div id="trick" class="hud"></div>
+<div id="prompt" class="hud panel"></div>
+<div id="keys" class="hud panel keys">
+  <kbd>A</kbd><kbd>D</kbd>carve · <kbd>W</kbd>tuck · <kbd>S</kbd>brake<br>
+  <kbd>Space</kbd>jump · <kbd>E</kbd>ride lift · <kbd>M</kbd>map<br>
+  <kbd>C</kbd>camera · <kbd>R</kbd>respawn · <kbd>Esc</kbd>menu
+</div>
+<div id="credit" class="hud">Built in Claude Code by <a href="/">AiRE Estate</a></div>
+
+<div id="touch">
+  <div id="stick"><i></i></div>
+  <button class="tbtn" id="tJump">JUMP</button>
+  <button class="tbtn" id="tBrake">BRAKE</button>
+  <button class="tbtn" id="tTuck">TUCK</button>
+  <button class="tbtn" id="tRide">RIDE</button>
+  <button class="tbtn" id="tMap">MAP</button>
+</div>
+
+<div id="start" class="overlay on">
+  <div class="card panel">
+    <h1>VAIL <span>3D</span></h1>
+    <p class="lede">The real mountain, played like a game. Every lift and named run sits where it does on the hill, laid over true elevation:
+      the Front Side, all seven Back Bowls and Blue Sky Basin. Pick your gear, pick a lift, and drop in.</p>
+    <div class="label">Gear</div>
+    <div class="choose" id="gear">
+      <button class="btn sel" data-gear="ski">Skis</button>
+      <button class="btn" data-gear="board">Snowboard</button>
+    </div>
+    <div class="label">Drop in at</div>
+    <div id="spawns"></div>
+    <div class="choose" style="margin-top:18px">
+      <button class="btn go" id="play" disabled>Loading…</button>
+      <button class="btn" id="fly" disabled>Fly over the mountain</button>
+      <button class="btn" id="openMap" disabled>Trail map</button>
+    </div>
+    <div id="loadbar"><i></i></div><div id="loadtxt">Loading terrain…</div>
+    <p class="fine">Not an official Vail Resorts map. Run and lift positions come from OpenStreetMap and may lag changes on the hill;
+      always follow posted signage and ski patrol. AiRE Estate is independent of Vail Resorts and Anthropic. Built in Claude Code; no AI imagery in the game itself. Terrain: USGS 3DEP via AWS Terrain Tiles. Runs &amp; lifts © OpenStreetMap contributors (ODbL).</p>
+  </div>
+</div>
+
+<div id="map" class="overlay">
+  <canvas></canvas>
+  <div class="head"><h2>VAIL MOUNTAIN · TRAIL MAP</h2><div><button class="btn" id="mapClose">Back to the hill (M)</button></div></div>
+  <div id="legend" class="panel">
+    <div><i style="background:var(--green)"></i>Easiest</div>
+    <div><i style="background:var(--blue)"></i>More difficult</div>
+    <div><i style="background:#000;outline:1px solid #fff"></i>Most difficult / ◆◆ expert</div>
+    <div><i style="background:#e8452c"></i>Lift — tap a lift top to drop in</div>
+    <div style="opacity:.75">Tap anywhere else to set a waypoint</div>
+  </div>
+</div>
+
+<script type="module" src="js/game.js"></script>
+</body>
+</html>

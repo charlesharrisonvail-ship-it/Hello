@@ -12,9 +12,10 @@
 :root{
   --ink:#0b1220; --snow:#f4f8ff; --glass:rgba(8,14,28,.62); --line:rgba(255,255,255,.14);
   --green:#2fb344; --blue:#1f6fe0; --black:#111; --gold:#ffcf3f; --red:#ff4a3d;
+  --display:'Bebas Neue',sans-serif; --body:Inter,system-ui,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;overflow:hidden;background:#0b1220;color:var(--snow);font-family:Inter,system-ui,sans-serif;
+html,body{height:100%;overflow:hidden;background:#0b1220;color:var(--snow);font-family:var(--body);
   -webkit-user-select:none;user-select:none;touch-action:none}
 canvas#gl{position:fixed;inset:0;width:100%;height:100%;display:block}
 .hud{position:fixed;pointer-events:none;z-index:5}
@@ -22,14 +23,14 @@ canvas#gl{position:fixed;inset:0;width:100%;height:100%;display:block}
 
 /* top-left: where am I */
 #where{top:16px;left:16px;padding:10px 14px;min-width:220px;max-width:min(380px,60vw)}
-#where .zone{font:400 15px/1 'Bebas Neue',sans-serif;letter-spacing:.14em;opacity:.8}
-#where .run{display:flex;align-items:center;gap:10px;margin-top:6px;font:800 19px/1.15 Inter,sans-serif}
+#where .zone{font:400 15px/1 var(--display);letter-spacing:.14em;opacity:.8}
+#where .run{display:flex;align-items:center;gap:10px;margin-top:6px;font:800 19px/1.15 var(--body)}
 .badge{flex:none;width:22px;height:22px;display:inline-grid;place-items:center}
 .badge svg{width:22px;height:22px}
 
 /* top-right: stats */
 #stats{top:16px;right:16px;padding:10px 14px;text-align:right;font-variant-numeric:tabular-nums}
-#stats .spd{font:400 54px/0.9 'Bebas Neue',sans-serif}
+#stats .spd{font:400 54px/0.9 var(--display)}
 #stats .spd small{font-size:20px;margin-left:4px;opacity:.75}
 #stats .row{font-size:12px;opacity:.85;margin-top:4px;letter-spacing:.04em}
 
@@ -40,14 +41,14 @@ canvas#gl{position:fixed;inset:0;width:100%;height:100%;display:block}
 
 /* banners */
 #banner{top:24%;left:0;right:0;text-align:center;opacity:0;transition:opacity .6s}
-#banner .t{font:400 clamp(44px,8vw,96px)/1 'Bebas Neue',sans-serif;letter-spacing:.06em;color:#fff;
+#banner .t{font:400 clamp(44px,8vw,96px)/1 var(--display);letter-spacing:.06em;color:#fff;
   text-shadow:0 3px 0 #000,0 0 30px rgba(0,0,0,.6)}
-#banner .s{font:600 14px/1.4 Inter;letter-spacing:.3em;text-transform:uppercase;opacity:.9;text-shadow:0 2px 6px #000}
-#trick{top:38%;left:0;right:0;text-align:center;font:400 40px/1 'Bebas Neue';color:var(--gold);
+#banner .s{font:600 14px/1.4 var(--body);letter-spacing:.3em;text-transform:uppercase;opacity:.9;text-shadow:0 2px 6px #000}
+#trick{top:38%;left:0;right:0;text-align:center;font:400 40px/1 var(--display);color:var(--gold);
   text-shadow:0 3px 0 #000;opacity:0;transition:opacity .3s}
 #prompt{bottom:96px;left:50%;transform:translateX(-50%);padding:10px 16px;font-weight:600;display:none;white-space:nowrap}
 #prompt kbd,.keys kbd{display:inline-block;min-width:22px;padding:2px 6px;margin-right:6px;border-radius:5px;background:#fff;color:#000;
-  font:800 12px/1.2 Inter;text-align:center}
+  font:800 12px/1.2 var(--body);text-align:center}
 #keys{right:16px;bottom:16px;padding:10px 12px;font-size:12px;line-height:1.9;opacity:.9}
 #credit{left:240px;bottom:18px;font-size:11px;opacity:.75;max-width:calc(100vw - 480px)}
 #credit b{font-weight:800}
@@ -58,16 +59,16 @@ canvas#gl{position:fixed;inset:0;width:100%;height:100%;display:block}
 #start{background:radial-gradient(ellipse at 50% 30%,rgba(10,20,40,.15),rgba(5,9,18,.8));place-items:center;overflow:auto}
 #start.on{display:grid}
 .card{width:min(760px,calc(100vw - 32px));padding:28px;margin:16px}
-.card h1{font:400 clamp(56px,11vw,120px)/.85 'Bebas Neue';letter-spacing:.04em}
+.card h1{font:400 clamp(56px,11vw,120px)/.85 var(--display);letter-spacing:.04em}
 .card h1 span{color:var(--gold)}
 .card p.lede{margin:10px 0 22px;font-size:15px;line-height:1.55;opacity:.9;max-width:60ch}
 .choose{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
 .btn{pointer-events:auto;cursor:pointer;border:1px solid var(--line);background:rgba(255,255,255,.08);color:#fff;
-  padding:12px 16px;border-radius:10px;font:700 14px Inter;letter-spacing:.02em}
+  padding:12px 16px;border-radius:10px;font:700 14px var(--body);letter-spacing:.02em}
 .btn:hover{background:rgba(255,255,255,.16)}
 .btn.sel{background:#fff;color:#000}
 .btn.go{background:var(--gold);color:#000;border-color:var(--gold);font-size:16px;padding:14px 22px}
-.label{font:400 16px 'Bebas Neue';letter-spacing:.16em;opacity:.7;margin:14px 0 8px}
+.label{font:400 16px var(--display);letter-spacing:.16em;opacity:.7;margin:14px 0 8px}
 #spawns{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
 #loadbar{height:4px;background:rgba(255,255,255,.12);border-radius:2px;margin-top:18px;overflow:hidden}
 #loadbar i{display:block;height:100%;width:0;background:var(--gold);transition:width .2s}
@@ -77,7 +78,7 @@ canvas#gl{position:fixed;inset:0;width:100%;height:100%;display:block}
 #map{background:rgba(5,9,18,.9)}
 #map canvas{position:absolute;inset:0;width:100%;height:100%;cursor:crosshair}
 #map .head{position:absolute;top:0;left:0;right:0;padding:14px 16px 26px;background:linear-gradient(rgba(5,9,18,.92),rgba(5,9,18,0));display:flex;justify-content:space-between;align-items:center;gap:12px;pointer-events:none}
-#map .head h2{font:400 34px/1 'Bebas Neue';letter-spacing:.08em}
+#map .head h2{font:400 34px/1 var(--display);letter-spacing:.08em}
 #map .head .btn{pointer-events:auto}
 #legend{position:absolute;left:16px;bottom:16px;padding:10px 12px;font-size:12px;line-height:1.8}
 #legend i{display:inline-block;width:14px;height:4px;border-radius:2px;margin-right:8px;vertical-align:middle}
@@ -90,7 +91,7 @@ canvas#gl{position:fixed;inset:0;width:100%;height:100%;display:block}
   background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.3)}
 #stick i{position:absolute;left:35px;top:35px;width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.55)}
 .tbtn{position:fixed;z-index:6;width:68px;height:68px;border-radius:50%;background:rgba(255,255,255,.14);
-  border:2px solid rgba(255,255,255,.4);color:#fff;font:400 18px 'Bebas Neue';letter-spacing:.08em}
+  border:2px solid rgba(255,255,255,.4);color:#fff;font:400 18px var(--display);letter-spacing:.08em}
 #tJump{right:24px;bottom:120px}#tBrake{right:104px;bottom:60px}#tTuck{right:104px;bottom:150px}
 #tRide{right:24px;bottom:210px}#tMap{right:24px;top:150px;width:54px;height:54px}
 
