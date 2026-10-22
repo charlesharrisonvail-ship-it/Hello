@@ -18,3 +18,5 @@ retry succeeded. Updates: `npx --yes img2threejs@latest update`. Needs Node 18+,
 Python 3.10+ (its scripts are standard-library Python only).
 
 It is not installed in cloud sessions (ephemeral container) and not vendored in this repo.
+
+Full Windows setup notes: `tools/img2threejs/README.md`.
