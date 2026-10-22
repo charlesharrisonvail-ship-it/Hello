@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AiRE Mountain Retreat</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #0b2a5c; overflow: hidden; font-family: system-ui, sans-serif; }
+  canvas { display: block; }
+  #hud { position: fixed; left: 16px; bottom: 16px; color: #dfe7f5; font-size: 12px; opacity: .75; }
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div id="hud">Procedural rebuild of aire-retreat-poster.jpg · drag to orbit · add ?still for the poster camera</div>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { buildRetreat, lightScene } from './retreat.js';
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.shadowMap.enabled = true;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.1;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+lightScene(THREE, scene);
+const model = buildRetreat(THREE);
+scene.add(model);
+
+// Camera placed to match the poster: low, front-left, looking up at the glass gable.
+const camera = new THREE.PerspectiveCamera(42, innerWidth / innerHeight, 0.1, 1200);
+camera.position.set(-17, 1.5, 27);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.target.set(-4.5, 3.4, -6);
+controls.enableDamping = true;
+controls.update();
+
+addEventListener('resize', () => {
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+
+let tris = 0;
+model.traverse((o) => { if (o.isMesh) tris += (o.geometry.index ? o.geometry.index.count : o.geometry.attributes.position.count) / 3; });
+window.__retreatStats = { triangles: Math.round(tris) };
+
+const still = new URLSearchParams(location.search).has('still');
+renderer.setAnimationLoop(() => {
+  if (!still) controls.update();
+  renderer.render(scene, camera);
+  window.__retreatReady = true;
+});
+</script>
+</body>
+</html>
