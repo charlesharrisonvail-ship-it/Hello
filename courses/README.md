@@ -67,8 +67,9 @@ courses/
 
 1. **Lesson content and quiz answers are plain text in the draft readers.** The live
    courses encrypt lesson text with the access code (AES-GCM, PBKDF2) inside the page.
-   The tool that produced those encrypted payloads is not in this repository, so release
-   needs that tool (or a replacement) and a new access code per course.
+   The original tool isn't in this repository; its replacement is
+   `tools/course-lock/lock.mjs` (same format, tested 2026-10-23). Release needs a new
+   access code per course.
 2. **Certificate pages weren't inspected.** `docs/certification.html` and
    `docs/lead-to-keys-certification.html` are encrypted; their behavior couldn't be
    checked without the access codes, so the new courses aren't wired into them. The draft
@@ -82,7 +83,7 @@ courses/
 ## Launch inputs the owner must supply or approve
 
 - [ ] Price for each course (pages say "Price pending").
-- [ ] Final narrator and authorized voice/avatar; decision on Eva Vail demonstrations.
+- [x] Presenter: **Eva Vail** (Charles, 2026-10-23). Still needs his approved Eva assets and voice.
 - [ ] Demonstration spokesperson for Course 2 and its rights.
 - [ ] HeyGen access and a generation budget (nothing has been spent).
 - [ ] Stripe products/payment links, access codes, confirmation messages, release date.

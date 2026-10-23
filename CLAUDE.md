@@ -26,6 +26,8 @@ and the site is plain HTML.
 - `.claude/continuity/` — the Continuity kit that loads `ROLE.md`, `PROJECT.md`, `DECISIONS.md`, and `STATE.md` at every session start
 - `.claude/memory/` — one fact per file, searched with `python3 .claude/continuity/recall.py <terms>`
 - `docs/` — the AiRE Estate site (public; carries pricing, refund terms, privacy, and terms of service)
+- `courses/` — drafts of two new AiRE Estate courses (unpublished; see `courses/README.md`)
+- `tools/course-lock/` — locks AiRE course lessons with an access code, in the live pages' format
 - `tools/jarvis/` — Windows setup script and notes for installing Jarvis (third-party local voice assistant); source is not vendored
 - `tools/open-generative-ai/` — free Windows setup notes for Open Generative AI (Anil Matcha's AI image/video studio with Cinema Studio); local models only, no paid MuAPI key; source is not vendored
 - `is-this-for-you-script.md` — script for the Lead to Keys screening video
