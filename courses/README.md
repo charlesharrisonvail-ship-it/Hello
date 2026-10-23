@@ -55,7 +55,7 @@ courses/
 ## What the drafts do (checked Oct. 23, 2026, desktop 1280 px and phone 390 px)
 
 - Landing pages: outcome, audience, prerequisites, seven-module curriculum, deliverables,
-  software-cost disclosure, certificate description, support scope. "Price pending";
+  software-cost disclosure, certificate description, support scope. $97 each (set by Charles 2026-10-23);
   checkout button disabled. `noindex`. Draft banner on every page.
 - Course readers: every module's full text, copyable prompts, downloads (22 resource
   files; all links return 200), and module checks: pass 5 of 7, explanations shown,
@@ -82,7 +82,7 @@ courses/
 
 ## Launch inputs the owner must supply or approve
 
-- [ ] Price for each course (pages say "Price pending").
+- [x] Price: **$97 each, sold separately. No bundles, no sales or discounts** (Charles, 2026-10-23).
 - [x] Presenter: **Eva Vail** (Charles, 2026-10-23). Still needs his approved Eva assets and voice.
 - [ ] Demonstration spokesperson for Course 2 and its rights.
 - [ ] HeyGen access and a generation budget (nothing has been spent).

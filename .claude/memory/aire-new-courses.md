@@ -10,7 +10,8 @@ Charles's decisions, 2026-10-23:
 - **Eva Vail** is the presenter/demonstrator for these courses (needs his approved Eva
   assets and voice; never substitute another voice).
 - **Order:** finish everything else first (videos, lock tool, certificate wiring);
-  **prices and Stripe come last**. He asked for recommended prices; nothing is set.
+  **Stripe comes last**.
+- **Price: $97 each, sold separately. No bundles, no sales, no discounts** (Charles, 2026-10-23).
 - OK to build a replacement for the lesson-locking (encryption) tool and to sort out
   the certificate pages.
 - The paid Facebook ad for the comparison video is on hold until he says go.

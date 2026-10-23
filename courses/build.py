@@ -261,7 +261,7 @@ def head(title, style):
 {EXTRA_CSS}
 </head>
 <body>
-<div class="draftbar">DRAFT PREVIEW &middot; not published &middot; price and checkout pending owner approval &middot; lesson videos not yet recorded</div>
+<div class="draftbar">DRAFT PREVIEW &middot; not published &middot; checkout not set up yet &middot; lesson videos not yet recorded</div>
 """
 
 
@@ -330,10 +330,10 @@ def landing(c, mods, style, lock, footer):
 <section class="band glow" id="pricing">
   <div class="inner">
     <p class="kick rv">Pricing</p>
-    <h2 class="rv">Price to be <em>announced</em></h2>
+    <h2 class="rv">One price. <em>Yours to keep.</em></h2>
     <div class="tiers" style="grid-template-columns:minmax(0,440px);justify-content:center">
       <div class="tier feat pricecard rv">
-        <span class="flag">New</span><span class="nm">{html.escape(c['title'])}</span><div class="pr">Price pending</div>
+        <span class="flag">New</span><span class="nm">{html.escape(c['title'])}</span><div class="pr">$97</div>
         <p class="sub">Sold on its own. Parts One and Two are not required.</p>
         <p class="sub" style="margin-top:8px"><b>Software is separate.</b> {html.escape(c['software'])}</p>{chat}
         <ul><li>Seven modules and a Capstone, with read-along lesson text</li><li>Templates, checklists and fictional practice data</li>
@@ -454,7 +454,7 @@ def reader(c, mods, style, lock, footer):
 
 def catalog(style, lock, footer):
     cards = "".join(f'<div class="tier rv" style="opacity:1"><span class="flag">New &middot; Draft</span><span class="nm">{html.escape(c["title"])}</span>'
-                    f'<p class="sub">{html.escape(c["card"])}</p><p class="sub"><b>Price:</b> owner decision pending.</p>'
+                    f'<p class="sub">{html.escape(c["card"])}</p><p class="sub"><b>$97</b> &middot; one payment</p>'
                     f'<a class="btn sec" href="{c["slug"]}.html">Course details</a></div>' for c in COURSES)
     return head("Catalog cards", style) + nav(lock, []) + f"""
 <section class="band" style="padding-top:140px"><div class="inner">
