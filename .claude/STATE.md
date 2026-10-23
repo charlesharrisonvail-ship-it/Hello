@@ -41,6 +41,14 @@ not rule on it, so ask rather than pick.
 
 ## Working thread (auto-banked)
 
+### banked 2026-10-23
+EpiVail homepage v4 (epivail-home-FINAL-v4.html, ~119 KB): comparison -> footer now
+sit over a fixed animated backdrop (gold topographic contour lines via marching
+squares on a canvas, drifting gold/blue glows, grain); those sections are
+transparent, table/calculator/FAQ on dark glass. Charles: never touch his AiRE
+site (docs/ or the live-site branch) unless he asks. The models/aire-retreat
+Three.js rebuild was rejected ("looks like shit"); folder kept pending his call.
+
 ### banked 2026-10-22 04:30
 Live-page fixes (epivail-home-FINAL-v2.html, 112 KB): Lofty's custom-code box
 silently truncates around 1 MB, so the 1.5 MB page (base64 photos) was cut off
