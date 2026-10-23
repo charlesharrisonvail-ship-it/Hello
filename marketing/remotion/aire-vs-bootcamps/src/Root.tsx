@@ -3,6 +3,7 @@ import { Composition } from 'remotion';
 import { AireVsBootcamps, TOTAL } from './AireVsBootcamps';
 
 export const Root: React.FC = () => (
+  <>
   <Composition
     id="AireVsBootcamps"
     component={AireVsBootcamps}
@@ -11,4 +12,14 @@ export const Root: React.FC = () => (
     width={1080}
     height={1920}
   />
+  <Composition
+    id="AireVsBootcampsAd"
+    component={AireVsBootcamps}
+    durationInFrames={TOTAL}
+    fps={30}
+    width={1080}
+    height={1920}
+    defaultProps={{ adSafe: true }}
+  />
+  </>
 );

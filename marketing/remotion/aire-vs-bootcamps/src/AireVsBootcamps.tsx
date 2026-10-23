@@ -16,6 +16,9 @@ loadFont({ family: BODY, url: staticFile('manrope.woff2'), weight: '200 800' });
 const C = { bg: '#04070d', card: '#0d1524', line: 'rgba(255,255,255,.12)', text: '#dbe2ec', dim: '#8496b2',
   blue: '#38bdf8', pink: '#f472b6', violet: '#a78bfa', amber: '#fbbf24' };
 
+/* Ad-safe cut: no school names, no Forbes scores, for paid placement. */
+const AdSafe = React.createContext(false);
+
 const S = 30; // fps
 const SCENES = [
   { id: 'hook', len: 4 * S },
@@ -74,13 +77,19 @@ const Pad: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 /* 1. Hook */
 const Hook: React.FC<{ len: number }> = ({ len }) => (
   <Pad>
-    <div style={{ ...useEnter(0, len) }}><Kicker>Forbes Advisor &middot; Best AI Certification Programs</Kicker></div>
+    <div style={{ ...useEnter(0, len) }}><Kicker>{React.useContext(AdSafe) ? 'AI certification programs' : <>Forbes Advisor &middot; Best AI Certification Programs</>}</Kicker></div>
     <div style={{ ...useEnter(8, len) }}><Big size={124}>The top AI programs are <Grad>excellent.</Grad></Big></div>
     <div style={{ ...useEnter(22, len) }}><Big size={124} style={{ color: C.text }}>Here&rsquo;s where <Grad warm>AiRE</Grad> fits.</Big></div>
   </Pad>
 );
 
 /* 2. What the top programs are */
+const AD_PROGRAMS = [
+  { name: 'An agentic AI program', meta: '10 weeks · multi-agent AI systems', score: '' },
+  { name: 'An AI adoption course', meta: '6 weeks · 4–6 hours a week', score: '' },
+  { name: 'A generative AI program', meta: 'Build GenAI apps, agents and RAG', score: '' },
+  { name: 'An enterprise AI program', meta: '17 weeks · 6–8 hours a week', score: '' },
+];
 const PROGRAMS = [
   { name: 'Virginia Tech · Applied Agentic AI', meta: '10 weeks · multi-agent AI systems', score: '9.8' },
   { name: 'MIT · AI Adoption', meta: '6 weeks · 4–6 hours a week', score: '9.7' },
@@ -89,10 +98,11 @@ const PROGRAMS = [
 ];
 const Programs: React.FC<{ len: number }> = ({ len }) => {
   const head = useEnter(0, len);
+  const list = React.useContext(AdSafe) ? AD_PROGRAMS : PROGRAMS;
   return (
     <Pad>
       <div style={head}><Kicker>Built for</Kicker><Big size={86} style={{ marginTop: 14 }}>AI careers and enterprise strategy</Big></div>
-      {PROGRAMS.map((p, i) => <ProgramCard key={p.name} {...p} delay={16 + i * 12} len={len} />)}
+      {list.map((p, i) => <ProgramCard key={p.name} {...p} delay={16 + i * 12} len={len} />)}
     </Pad>
   );
 };
@@ -103,7 +113,7 @@ const ProgramCard: React.FC<{ name: string; meta: string; score: string; delay: 
       <div style={{ fontFamily: HEAD, fontWeight: 700, fontSize: 40, color: '#fff' }}>{name}</div>
       <div style={{ fontFamily: BODY, fontSize: 32, color: C.dim, marginTop: 8 }}>{meta}</div>
     </div>
-    <div style={{ fontFamily: HEAD, fontWeight: 800, fontSize: 52, color: C.blue }}>{score}</div>
+    {score && <div style={{ fontFamily: HEAD, fontWeight: 800, fontSize: 52, color: C.blue }}>{score}</div>}
   </div>
 );
 
@@ -137,7 +147,7 @@ const DOES = ['A drone-style listing video from one photo', 'A month of social p
 const Claude: React.FC<{ len: number }> = ({ len }) => (
   <Pad>
     <div style={useEnter(0, len)}><Kicker>Same tool, different job</Kicker></div>
-    <div style={useEnter(8, len)}><Big size={92}>Two top programs feature <Grad>Claude&nbsp;Code.</Grad></Big></div>
+    <div style={useEnter(8, len)}><Big size={92}>{React.useContext(AdSafe) ? 'Top AI programs now teach ' : 'Two top programs feature '}<Grad>Claude&nbsp;Code.</Grad></Big></div>
     <div style={useEnter(24, len)}><Big size={92} style={{ color: C.text }}>AiRE teaches it for <Grad warm>Real&nbsp;Estate.</Grad></Big></div>
     {DOES.map((d, i) => (
       <div key={d} style={{ ...useEnter(44 + i * 10, len), display: 'flex', gap: 22, alignItems: 'center', fontFamily: BODY, fontWeight: 700, fontSize: 42, color: '#fff' }}>
@@ -165,7 +175,7 @@ const Honest: React.FC<{ len: number }> = ({ len }) => (
           fontWeight: ci === 0 ? 700 : 500, fontSize: 38, lineHeight: 1.25, color: ci === 0 ? C.dim : ci === 2 ? '#fff' : C.text }}>{cell}</div>
       )))}
     </div>
-    <Source>Program lengths from Forbes Advisor&rsquo;s list. AiRE lesson time from learn.aireestate.com.</Source>
+    <Source>{React.useContext(AdSafe) ? 'Program lengths from published course listings, Oct. 2026.' : <>Program lengths from Forbes Advisor&rsquo;s list.</>} AiRE lesson time from learn.aireestate.com.</Source>
   </Pad>
 );
 
@@ -177,7 +187,7 @@ const Cta: React.FC = () => (
     <div style={{ ...useEnter(22), fontFamily: BODY, fontWeight: 700, fontSize: 44, color: '#fff' }}>Part One $67 &middot; Lead to Keys $97</div>
     <div style={{ ...useEnter(32), alignSelf: 'flex-start', background: C.blue, color: C.bg, fontFamily: HEAD, fontWeight: 800, fontSize: 48,
       padding: '26px 44px', borderRadius: 999 }}>learn.aireestate.com</div>
-    <Source>Claude subscription not included. Not affiliated with or endorsed by Forbes or any program shown.</Source>
+    <Source>Claude subscription not included. {React.useContext(AdSafe) ? 'Not affiliated with any program described.' : 'Not affiliated with or endorsed by Forbes or any program shown.'}</Source>
   </Pad>
 );
 
@@ -191,10 +201,11 @@ const AiLabel: React.FC = () => (
     color: '#e0f2fe', background: 'rgba(4,7,13,.6)', border: '1px solid rgba(255,255,255,.2)', borderRadius: 999, padding: '10px 18px' }}>Made with AI</div>
 );
 
-export const AireVsBootcamps: React.FC = () => {
+export const AireVsBootcamps: React.FC<{ adSafe?: boolean }> = ({ adSafe = false }) => {
   const parts: Record<string, React.FC<{ len: number }>> = { hook: Hook, programs: Programs, cost: Cost, claude: Claude, honest: Honest, cta: Cta };
   let at = 0;
   return (
+    <AdSafe.Provider value={adSafe}>
     <AbsoluteFill style={{ background: C.bg }}>
       <Backdrop />
       {SCENES.map(({ id, len }) => {
@@ -206,5 +217,6 @@ export const AireVsBootcamps: React.FC = () => {
       <ProgressBar />
       <AiLabel />
     </AbsoluteFill>
+    </AdSafe.Provider>
   );
 };
