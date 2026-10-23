@@ -18,7 +18,7 @@ output and its boundaries, and write acceptance criteria that someone else could
 *Narrator: Charles's AI avatar, using his own approved avatar and voice. Inside the course only; never on the public site. Target read time about 6 minutes; actual runtime is measured after recording.*
 
 Hi, I'm Charles. Quick note before we start: you're watching an AI avatar of me, made
-from my own recording and my own voice. And everything the assistant makes in these
+from my own photo and my own cloned voice. And everything the assistant makes in these
 lessons is a draft that a licensed human reviews.
 
 Let's begin with the single most common reason AI assistants disappoint agents. It
