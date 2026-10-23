@@ -37,7 +37,7 @@ fabricated fact, someone's private information in a draft, or a setup that can s
 without you. Any one of those means not yet, whatever the score.
 
 And I want to be straight with you: this is a self-assessment. I'm not reviewing your
-work, and neither is anyone else at AiRE Estate. The rubric is there so you know what
+work, and neither is anyone else at AiRE Estate Academy. The rubric is there so you know what
 "working" actually means. Be honest with yourself; you're the one who'll be relying on it
 next Friday.
 

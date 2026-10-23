@@ -34,7 +34,7 @@ will silently produce wrong work in some future session.
 Mostly taken from the live site (identical to `docs/`) at Charles's direction.
 The owner role and the email sign-off are his own words. Correct anything wrong.
 
-- **Names:** "AiRE Estate"; its AI instructor and narrator is "AiRE"; the legal
+- **Names:** "AiRE Estate Academy" on the whole website (Charles, 2026-10-23; short form "AiRE Estate"); its AI instructor and narrator is "AiRE"; the legal
   entity is "AiRE Estate, LLC"; contact is hello@aireestate.com.
 - **Charles here** is its owner. **His name is never fronted** on the website,
   ads, social posts, post images or checkout pictures, and since 2026-10-19 the

@@ -17,12 +17,12 @@ failed output without endless re-rendering.
 - `resources/pre-render-checklist.md`.
 
 **Primary workflow:** HeyGen. Optional B-roll from another tool you already use (for
-example, Higgsfield, where AiRE Estate has a labeled affiliate link) is never required to
+example, Higgsfield, where AiRE Estate Academy has a labeled affiliate link) is never required to
 complete the course.
 
 ## 2. Narrated lesson script
 
-*Narrator: Eva Vail, AiRE Estate's AI presenter, using owner-approved Eva assets and voice. Target read time about 7–8 minutes.*
+*Narrator: Eva Vail, AiRE Estate Academy's AI presenter, using owner-approved Eva assets and voice. Target read time about 7–8 minutes.*
 
 Everything up to now was preparation: the route, the look, the voice and the script.
 This is where it becomes a video. We'll make one, start to finish, and then we'll talk

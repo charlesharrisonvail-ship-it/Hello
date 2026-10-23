@@ -18,7 +18,7 @@ separate vertical export for each video, with a clean version where practical.
 
 ## 2. Narrated lesson script
 
-*Narrator: Eva Vail, AiRE Estate's AI presenter, using owner-approved Eva assets and voice. Target read time about 6–7 minutes.*
+*Narrator: Eva Vail, AiRE Estate Academy's AI presenter, using owner-approved Eva assets and voice. Target read time about 6–7 minutes.*
 
 You've got a talking video. Now let's make it work where people actually watch: on a
 phone, scrolling, often with the sound off.

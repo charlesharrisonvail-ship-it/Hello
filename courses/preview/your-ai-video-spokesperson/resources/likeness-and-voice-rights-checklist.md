@@ -34,7 +34,7 @@ Provider requirements checked October 23, 2026 against HeyGen's help center
 
 - [ ] I am not cloning anyone else's face or voice, including a colleague, a client, a
       family member, or a public figure.
-- [ ] I am not using AiRE's instructors (Eva Vail, or AiRE's narrator) or AiRE Estate's
+- [ ] I am not using AiRE's instructors (Eva Vail, or AiRE's narrator) or AiRE Estate Academy's
       owner as my spokesperson or voice. The course demonstrates with them; it grants you
       no rights to copy them.
 - [ ] I am not using a voice that "sounds like" a real person to imply they said something.

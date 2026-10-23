@@ -16,7 +16,7 @@ aloud.
 
 ## 2. Narrated lesson script
 
-*Narrator: Eva Vail, AiRE Estate's AI presenter, using owner-approved Eva assets and voice. Target read time about 7 minutes.*
+*Narrator: Eva Vail, AiRE Estate Academy's AI presenter, using owner-approved Eva assets and voice. Target read time about 7 minutes.*
 
 A short video has about three seconds to earn the next three. Most agent videos spend
 those seconds on "Hey everyone, happy Tuesday, so today I wanted to talk about..." By

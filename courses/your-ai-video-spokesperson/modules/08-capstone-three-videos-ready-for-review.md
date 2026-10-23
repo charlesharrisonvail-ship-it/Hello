@@ -19,7 +19,7 @@ automatically; you decide whether and when to post.
 
 ## 2. Narrated script
 
-*Narrator: Eva Vail, AiRE Estate's AI presenter, using owner-approved Eva assets and voice. Target read time about 3 minutes.*
+*Narrator: Eva Vail, AiRE Estate Academy's AI presenter, using owner-approved Eva assets and voice. Target read time about 3 minutes.*
 
 Three videos. That's the capstone. Not one great one; three that hold together as the
 same spokesperson, saying accurate things, clearly, with a clear next step.

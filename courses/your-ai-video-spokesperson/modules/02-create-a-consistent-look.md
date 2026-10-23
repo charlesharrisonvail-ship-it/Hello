@@ -16,7 +16,7 @@ spokesperson recognizable.
 
 ## 2. Narrated lesson script
 
-*Narrator: Eva Vail, AiRE Estate's AI presenter, using owner-approved Eva assets and voice. Target read time about 6–7 minutes.*
+*Narrator: Eva Vail, AiRE Estate Academy's AI presenter, using owner-approved Eva assets and voice. Target read time about 6–7 minutes.*
 
 Think about the agents whose videos you recognize in your feed. You probably know them
 in half a second, before they say a word. Same framing, same kind of light, often the

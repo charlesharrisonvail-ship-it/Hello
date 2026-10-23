@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build draft previews of the two new AiRE Estate courses.
+"""Build draft previews of the two new AiRE Estate Academy courses.
 
     python3 courses/build.py            build courses/preview/ and the quiz JSON files
     python3 courses/build.py --check    validate manuscripts and quizzes only
@@ -51,7 +51,7 @@ COURSES = [
         "sub": "Build a consistent on-camera presence with AI.",
         "card": "Create a consistent AI spokesperson and produce three short videos with clear scripts, captions, and your brand.",
         "audience": "Agents who want repeatable talking-avatar videos for educational and marketing content.",
-        "outcome": "Three finished short videos, using your own authorized likeness and voice or a properly licensed fictional spokesperson. Presented by Eva Vail, AiRE Estate's AI presenter.",
+        "outcome": "Three finished short videos, using your own authorized likeness and voice or a properly licensed fictional spokesperson. Presented by Eva Vail, AiRE Estate Academy's AI presenter.",
         "prereq": [
             "A HeyGen account (the course's primary talking-avatar workflow; it has a free tier, and plans and limits are set by HeyGen).",
             "Your own footage and consent, or a licensed fictional character and voice.",
@@ -63,7 +63,7 @@ COURSES = [
         "software": "HeyGen is a separate service with its own plans, credits and limits. Optional B-roll tools are never required. Course tuition does not include any software, and render costs depend on your plan.",
         "chat_route": "",
         "honest": [
-            ("Your likeness, or a licensed character. No one else.", "You never clone a colleague, a client or a public figure, and the course gives you no rights to copy AiRE Estate's presenters or voices. Providers require the person's own consent video."),
+            ("Your likeness, or a licensed character. No one else.", "You never clone a colleague, a client or a public figure, and the course gives you no rights to copy AiRE Estate Academy's presenters or voices. Providers require the person's own consent video."),
             ("Every video says it's AI", "An on-screen \"Made with AI\" label and a plain caption line, on every video. Your brokerage's advertising rules still apply."),
             ("No guaranteed views or leads", "The course teaches a repeatable, honest process and basic measurement. It doesn't promise performance, because nobody can."),
         ],
@@ -253,7 +253,7 @@ def head(title, style):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>{html.escape(title)} · Draft · AiRE Estate</title>
+<title>{html.escape(title)} · Draft · AiRE Estate Academy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 {style}
@@ -356,7 +356,7 @@ def landing(c, mods, style, lock, footer):
   <div class="inner narrow">
     <p class="kick rv">Certificate and support</p>
     <h2 class="rv">What the <em>certificate</em> means</h2>
-    <p class="rv">Pass each of the seven module checks (five of seven correct; wrong answers explain why, and you can retry), and record your self-assessed Capstone. Then you can print a <b>private certificate of completion</b> from AiRE Estate. It is not a license, a state-approved continuing-education credit, or a designation from any real estate commission or association.</p>
+    <p class="rv">Pass each of the seven module checks (five of seven correct; wrong answers explain why, and you can retry), and record your self-assessed Capstone. Then you can print a <b>private certificate of completion</b> from AiRE Estate Academy. It is not a license, a state-approved continuing-education credit, or a designation from any real estate commission or association.</p>
     <p class="rv"><b>Support scope (draft):</b> course access and content questions by email at <a href="mailto:hello@aireestate.com">hello@aireestate.com</a>. We teach real estate use, not software: for account, billing or technical help with Claude or HeyGen, use their help centers.</p>
   </div>
 </section>
