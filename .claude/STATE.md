@@ -43,7 +43,7 @@ not rule on it, so ask rather than pick.
 
 ### banked 2026-10-23
 EpiVail homepage v4 (epivail-home-FINAL-v4.html, ~119 KB): comparison -> footer now
-sit over a fixed animated backdrop (gold topographic contour lines via marching
+sit over a fixed animated backdrop (topographic contour lines, v5: colour cycles 9 hues, 5 s hold + 2 s ease fade, via marching
 squares on a canvas, drifting gold/blue glows, grain); those sections are
 transparent, table/calculator/FAQ on dark glass. Charles: never touch his AiRE
 site (docs/ or the live-site branch) unless he asks. The models/aire-retreat
