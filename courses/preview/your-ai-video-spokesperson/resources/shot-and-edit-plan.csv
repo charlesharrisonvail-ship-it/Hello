@@ -1,0 +1,12 @@
+video,shot,time_in,time_out,source,on_screen_text,caption_note,b_roll_or_graphic,audio,check
+V1 Introduction,1,00:00,00:03,Avatar - Office setting,"Selling in Willow Fork?",Bold caption starts immediately,None,Voice only,Hook lands in first 3 s
+V1 Introduction,2,00:03,00:12,Avatar - Office setting,Sam Reyes · Willow Fork Realty,Name and brokerage spelled correctly,Lower-third name card,Voice only,Brokerage ID as required
+V1 Introduction,3,00:12,00:20,Avatar - Office setting,Made with AI,Disclosure line captioned word for word,AI label top corner (whole video),Voice only,Disclosure audible and visible
+V1 Introduction,4,00:20,00:24,Avatar - Office setting,Send me a message,One CTA,Logo end card 2 s,Voice + soft music under,Music 15-20 dB below speech
+V2 Tip,1,00:00,00:03,Avatar - Office setting,Find your HOA documents,Hook as caption,None,Voice only,Hook in 3 s
+V2 Tip,2,00:03,00:15,Avatar - Office setting,"Budget · Fee · Assessments",Captions match speech,Simple icon list (licensed),Voice + music under,No claims beyond script
+V2 Tip,3,00:15,00:22,Avatar - Office setting,Comment HOA,One CTA,End card,Voice + music under,Captions corrected
+V3 Listing invitation,1,00:00,00:03,B-roll: backyard photo (seller-permitted),A backyard you'll actually use,Hook caption,Slow push-in on listing photo,Music in,Photo matches listing
+V3 Listing invitation,2,00:03,00:12,Avatar - Outdoor setting,"4 bd · 2.5 ba · ~2,240 sq ft",Numbers match listing sheet,Fact card,Voice + music under,Facts verified against sheet
+V3 Listing invitation,3,00:12,00:16,B-roll: exterior photo (seller-permitted),Open house Sun 1-3,Date/time correct,None,Voice + music under,Date checked
+V3 Listing invitation,4,00:16,00:20,Avatar - Outdoor setting,Sam Reyes · Willow Fork Realty,Brokerage ID,Logo end card,Voice + music out,Required disclosures present

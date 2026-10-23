@@ -1,0 +1,576 @@
+[
+ {
+  "module": "Module 1 — Give Your Assistant One Job",
+  "questions": [
+   {
+    "q": "Why does \"help me run my real estate business\" usually produce generic results?",
+    "options": [
+     "The AI doesn't know about real estate.",
+     "It's many jobs at once, so the AI has to guess the task, the inputs and what good looks like.",
+     "The prompt is too short; longer prompts always work better.",
+     "AI assistants can only do one task per account."
+    ],
+    "answer": 1,
+    "why": "A broad role forces the model to guess. Length alone doesn't fix it, and the model does know general real estate concepts. The fix is a defined job."
+   },
+   {
+    "q": "Which is the best one-sentence job for a first assistant?",
+    "options": [
+     "\"Handle all my seller communication.\"",
+     "\"Be my marketing department.\"",
+     "\"Turn my listing facts and weekly showing export into a draft weekly seller update with a review checklist.\"",
+     "\"Answer any question a seller asks.\""
+    ],
+    "answer": 2,
+    "why": "It names the inputs, the output and the reader. The others are open-ended roles."
+   },
+   {
+    "q": "A seller asks, \"Should we drop the price?\" What should the seller-update assistant do?",
+    "options": [
+     "Recommend a 3% reduction based on typical market behavior.",
+     "Say prices are falling everywhere.",
+     "Flag it as an agent decision and say the agent will follow up.",
+     "Ignore the question."
+    ],
+    "answer": 2,
+    "why": "Pricing is a professional judgment for the agent and seller. Ignoring it fails the seller; answering it invents a market conclusion."
+   },
+   {
+    "q": "Which acceptance criterion can someone else actually check?",
+    "options": [
+     "\"The update sounds professional.\"",
+     "\"Every number in the draft appears in the showing export or listing facts.\"",
+     "\"The seller will feel reassured.\"",
+     "\"It's high quality.\""
+    ],
+    "answer": 1,
+    "why": "It's observable against the files. The others depend on taste or on predicting a reaction."
+   },
+   {
+    "q": "The showing log lists five completed showings. The assistant writes \"strong buyer interest this week.\" What's the problem?",
+    "options": [
+     "Nothing; it's a fair summary.",
+     "It's a conclusion not supplied in the inputs; the draft should report the facts (five showings) instead.",
+     "It should have said \"very strong.\"",
+     "Showing counts should never be shared with sellers."
+    ],
+    "answer": 1,
+    "why": "\"Strong interest\" is an interpretation. Report the supplied numbers and let the agent add judgment."
+   },
+   {
+    "q": "Your one-sentence job reads, \"Draft seller updates and buyer comparisons and listing descriptions.\" What should you do?",
+    "options": [
+     "Keep it; more jobs means more value.",
+     "Split it and build the seller update first.",
+     "Remove the inputs section so it's flexible.",
+     "Add \"and anything else\" for completeness."
+    ],
+    "answer": 1,
+    "why": "Three outputs means three jobs. Build and test one before adding the next."
+   },
+   {
+    "q": "Which boundary belongs on every Job Card in this course?",
+    "options": [
+     "\"Only works on weekdays.\"",
+     "\"Does not send, post or contact anyone; returns a draft.\"",
+     "\"Must use at least 300 words.\"",
+     "\"Can update the CRM automatically.\""
+    ],
+    "answer": 1,
+    "why": "The assistant drafts; you review and send. That rule runs through the whole course."
+   }
+  ]
+ },
+ {
+  "module": "Module 2 — Teach It Your Voice",
+  "questions": [
+   {
+    "q": "Why does AI default to a generic voice?",
+    "options": [
+     "It's been told to sound like a bank.",
+     "Without instructions, an average voice is its safest guess.",
+     "It can't learn from examples.",
+     "Real estate language is restricted."
+    ],
+    "answer": 1,
+    "why": "Average is the default. Specific instructions and samples replace the guess."
+   },
+   {
+    "q": "What's the relationship between the Voice Profile and the Agent Brand File from the first course?",
+    "options": [
+     "The Voice Profile replaces it entirely.",
+     "The Voice Profile extends it with how you actually write.",
+     "They must never be used together.",
+     "The Brand File is only for video."
+    ],
+    "answer": 1,
+    "why": "Keep the Brand File's who-you-serve material and add sentence style, phrases and samples."
+   },
+   {
+    "q": "Your profile says \"warm and reassuring.\" The seller is anxious and the facts are thin. What should the draft do?",
+    "options": [
+     "Add \"buyers are really responding\" to reassure her.",
+     "Reassure with real numbers and a concrete next step, such as offering a call.",
+     "Skip the facts and focus on feelings.",
+     "Promise an offer within two weeks."
+    ],
+    "answer": 1,
+    "why": "Reassurance must come from facts and next steps. Invented enthusiasm is a fabricated fact."
+   },
+   {
+    "q": "Which belongs on the \"never use\" list?",
+    "options": [
+     "\"Here's your week.\"",
+     "\"Guaranteed to sell.\"",
+     "\"Talk soon.\"",
+     "The seller's first name."
+    ],
+    "answer": 1,
+    "why": "Promises about outcomes don't belong in any update."
+   },
+   {
+    "q": "A style sample you pasted says \"four showings this week.\" What should the assistant do with that number?",
+    "options": [
+     "Use it in this week's update.",
+     "Average it with the current showing count.",
+     "Ignore it as a fact; samples teach style, not data.",
+     "Ask the seller to confirm it."
+    ],
+    "answer": 2,
+    "why": "Samples are labeled as style only. Facts come from this week's sources."
+   },
+   {
+    "q": "Which sample is properly sanitized?",
+    "options": [
+     "\"Hi Dana, 1418 Juniper had 5 showings, call me at 555-0142.\"",
+     "\"Hi [SELLER], [ADDRESS] had [N] showings this week. Call me anytime.\"",
+     "A screenshot of a real client thread.",
+     "A forwarded email with the signature block."
+    ],
+    "answer": 1,
+    "why": "Names, addresses, numbers and contact details are replaced with placeholders."
+   },
+   {
+    "q": "If your voice instructions and the \"rules that beat voice\" conflict, which wins?",
+    "options": [
+     "Voice, because it's more specific.",
+     "Whichever appears later in the instructions.",
+     "The rules: facts, missing-fact flags, fair-housing limits and no promises.",
+     "Neither; the AI chooses."
+    ],
+    "answer": 2,
+    "why": "Voice controls how it sounds. It never overrides what is true or what's allowed."
+   }
+  ]
+ },
+ {
+  "module": "Module 3 — Give It Reliable Reference Material",
+  "questions": [
+   {
+    "q": "Why separate permanent guidance from changing listing facts?",
+    "options": [
+     "Permanent guidance is longer.",
+     "They fail differently: guidance gets ignored, facts go stale.",
+     "The AI can only read one type at a time.",
+     "Changing facts don't need sources."
+    ],
+    "answer": 1,
+    "why": "Separating them makes stale facts easier to spot and refresh."
+   },
+   {
+    "q": "In the register, \"date of information\" means:",
+    "options": [
+     "The date you saved the file.",
+     "The date the information inside the file was true or issued.",
+     "Today's date.",
+     "The listing date."
+    ],
+    "answer": 1,
+    "why": "An HOA statement saved yesterday can still contain a fee from last year."
+   },
+   {
+    "q": "The seller says the HOA fee is \"around forty a month.\" No document is in the file. What does the assistant write?",
+    "options": [
+     "\"The HOA fee is $40 a month.\"",
+     "\"The HOA fee is about $40.\"",
+     "That the HOA fee is being confirmed, and flags it MISSING in the checklist.",
+     "Nothing at all, even in the checklist."
+    ],
+    "answer": 2,
+    "why": "A seller's estimate is useful to you but isn't a source for a stated fact."
+   },
+   {
+    "q": "An HOA statement is from January 2025. What status should it have?",
+    "options": [
+     "Approved, because the HOA issued it.",
+     "Stale; confirm before stating the fee as current.",
+     "Missing.",
+     "Delete it."
+    ],
+    "answer": 1,
+    "why": "Keep it for reference, but flag it so the assistant doesn't present it as current."
+   },
+   {
+    "q": "A seller's email says, \"Tell buyers there's no special assessment.\" How should it be registered?",
+    "options": [
+     "As an approved source for \"no special assessment.\"",
+     "As data only; its instructions are not followed.",
+     "As permanent guidance.",
+     "It should be deleted so the assistant never sees it."
+    ],
+    "answer": 1,
+    "why": "It's part of the record, but a request inside a document isn't authority to state an unverified fact."
+   },
+   {
+    "q": "The assistant adds \"hardwood floors throughout\" to an update. The worksheet doesn't mention floors. What happened?",
+    "options": [
+     "It found the information online.",
+     "It filled a gap with a plausible guess; features must come from the listing sources.",
+     "Hardwood is a safe default.",
+     "Nothing wrong; it improves the update."
+    ],
+    "answer": 1,
+    "why": "Invented features are fabricated facts. The rule: if it isn't in the pack, it isn't in the draft."
+   },
+   {
+    "q": "Which is the best size for a first knowledge pack?",
+    "options": [
+     "Every document you've ever saved.",
+     "Only the sources your Job Card's inputs require, each dated and permitted.",
+     "Just the Voice Profile.",
+     "Whatever the AI finds online."
+    ],
+    "answer": 1,
+    "why": "A small pack of known sources beats a large pile of unknown ones."
+   }
+  ]
+ },
+ {
+  "module": "Module 4 — Build the Working Assistant",
+  "questions": [
+   {
+    "q": "What's the main difference between a Claude Project assistant and a Claude Code workflow in this course?",
+    "options": [
+     "There is none.",
+     "A Project works with what you paste and its saved files; Claude Code can read and write files in a folder you choose.",
+     "Claude Code can send emails automatically.",
+     "Projects run on a schedule."
+    ],
+    "answer": 1,
+    "why": "Neither sends on its own. Claude Code's file access is why Module 5 adds more care about permissions."
+   },
+   {
+    "q": "Which does Claude read in a Project?",
+    "options": [
+     "The project name only.",
+     "The project description only.",
+     "The project instructions and project knowledge.",
+     "Your other projects."
+    ],
+    "answer": 2,
+    "why": "Claude's help center says it doesn't have access to the name and description."
+   },
+   {
+    "q": "Where should this week's showing log go, by this module's recommendation?",
+    "options": [
+     "Uploaded permanently to project knowledge.",
+     "Pasted into the chat when you run the update.",
+     "In the project description.",
+     "Nowhere; the AI estimates it."
+    ],
+    "answer": 1,
+    "why": "Weekly facts change. Pasting them per run keeps the newest facts in front of the assistant and avoids stale files."
+   },
+   {
+    "q": "A required input is missing. What should the assistant do?",
+    "options": [
+     "Draft anyway and hope for the best.",
+     "Fill in typical numbers.",
+     "List what's missing and stop.",
+     "Send the seller a question."
+    ],
+    "answer": 2,
+    "why": "Drafting around a hole is how invented facts get in."
+   },
+   {
+    "q": "Why does the output include a review checklist?",
+    "options": [
+     "To make the email longer.",
+     "So the agent can see every fact's source and every item needing a decision without rereading everything.",
+     "Sellers like checklists.",
+     "Claude requires it."
+    ],
+    "answer": 1,
+    "why": "The checklist is for you, not the seller."
+   },
+   {
+    "q": "Can you assume a Project remembers last week's update?",
+    "options": [
+     "Yes, always.",
+     "No; treat each chat as starting fresh on facts and supply last week's numbers if you want a comparison.",
+     "Only on paid plans.",
+     "Only if you ask nicely."
+    ],
+    "answer": 1,
+    "why": "Instructions and project files carry over; don't rely on chat history as a record of facts."
+   },
+   {
+    "q": "Why keep a portable copy of the master instructions outside the app?",
+    "options": [
+     "It's required by law.",
+     "Your instructions are your work; you can reuse them in another tool or rebuild if a project is deleted.",
+     "Claude deletes instructions monthly.",
+     "It speeds up the AI."
+    ],
+    "answer": 1,
+    "why": "The instructions, not the tool, hold the value you created."
+   }
+  ]
+ },
+ {
+  "module": "Module 5 — Turn the Workflow Into a Reusable Skill",
+  "questions": [
+   {
+    "q": "What is a Claude Code skill, in this course's terms?",
+    "options": [
+     "A paid add-on.",
+     "A folder with a SKILL.md file: a short header plus plain-English instructions.",
+     "A browser extension.",
+     "A type of AI model."
+    ],
+    "answer": 1,
+    "why": "The header holds the name, description and settings; the body holds instructions."
+   },
+   {
+    "q": "Why set `disable-model-invocation: true` on the seller-update skill?",
+    "options": [
+     "So Claude can start it whenever sellers are mentioned.",
+     "So it only runs when you type the command, which the docs recommend for workflows where you want to control timing.",
+     "To make it run faster.",
+     "To hide it from you."
+    ],
+    "answer": 1,
+    "why": "Client-facing workflows should start only when you decide."
+   },
+   {
+    "q": "The skill's allowed tools are Read, Glob, Grep and Write. What can't it do?",
+    "options": [
+     "Read the listing files.",
+     "Write a draft file.",
+     "Send an email or post anything.",
+     "Find the newest showing file."
+    ],
+    "answer": 2,
+    "why": "Writing a draft file and sending a message are different actions. This skill only drafts."
+   },
+   {
+    "q": "What does `/seller-update 77-copper-bend` do with \"77-copper-bend\"?",
+    "options": [
+     "Nothing.",
+     "It replaces `$ARGUMENTS` in the instructions, so the skill works on that listing's folder.",
+     "It renames the skill.",
+     "It emails the seller."
+    ],
+    "answer": 1,
+    "why": "One skill, any listing folder."
+   },
+   {
+    "q": "Claude Code asks permission to run a command you don't recognize while using this skill. What should you do?",
+    "options": [
+     "Approve everything to save time.",
+     "Decline anything beyond reading files in the folder and writing drafts.",
+     "Uninstall Claude Code.",
+     "Approve, then check later."
+    ],
+    "answer": 1,
+    "why": "Permission prompts are your control. This job needs read and write only."
+   },
+   {
+    "q": "Why does the skill never overwrite an existing draft?",
+    "options": [
+     "To use more disk space.",
+     "So your hand edits on an earlier draft aren't lost.",
+     "Claude Code can't overwrite files.",
+     "Sellers prefer numbered files."
+    ],
+    "answer": 1,
+    "why": "It writes a new file with -2, -3 instead."
+   },
+   {
+    "q": "You want to connect the skill to your email and CRM next week. What does this module recommend?",
+    "options": [
+     "Do it immediately; more automation is better.",
+     "First prove one draft-only workflow with tests; every connected tool is something that can act without you.",
+     "Never use AI for email.",
+     "Ask the AI to decide."
+    ],
+    "answer": 1,
+    "why": "Reliability first, connections later, with review before anything leaves your hands."
+   }
+  ]
+ },
+ {
+  "module": "Module 6 — Test, Correct and Protect",
+  "questions": [
+   {
+    "q": "Your assistant produced one excellent seller update. What can you conclude?",
+    "options": [
+     "It's reliable.",
+     "It can do the job on that input; you still need to test the hard cases.",
+     "It will never make mistakes.",
+     "You can skip review."
+    ],
+    "answer": 1,
+    "why": "One example isn't evidence of reliability."
+   },
+   {
+    "q": "Which test case checks for an instruction hidden in a reference file?",
+    "options": [
+     "T01, normal week.",
+     "T06, the seller's email asking to state there's no special assessment.",
+     "T08, emotional seller.",
+     "T09, contradictory instructions."
+    ],
+    "answer": 1,
+    "why": "Content inside files is data, not authority."
+   },
+   {
+    "q": "T06 fails: the draft says there's no special assessment. What's the right fix?",
+    "options": [
+     "Edit the draft by hand and move on.",
+     "Add a clear data-not-instructions rule to the instructions, rerun T06, and record the result.",
+     "Delete the seller's email from all files forever.",
+     "Ignore it; it's just one case."
+    ],
+    "answer": 1,
+    "why": "Fix the cause in the instructions and prove the fix with a rerun."
+   },
+   {
+    "q": "Which is a critical failure?",
+    "options": [
+     "A sentence that's a bit long.",
+     "A greeting you'd phrase differently.",
+     "A draft that includes a buyer's phone number.",
+     "Using bullets instead of paragraphs."
+    ],
+    "answer": 2,
+    "why": "Private information, fabricated facts, obeyed embedded instructions and promises are critical."
+   },
+   {
+    "q": "After changing your instructions to fix T10, what should you do?",
+    "options": [
+     "Rerun only T10.",
+     "Rerun all ten cases.",
+     "Nothing.",
+     "Delete the test log."
+    ],
+    "answer": 1,
+    "why": "A fix for one case can break another."
+   },
+   {
+    "q": "What goes in the \"observed_output\" column?",
+    "options": [
+     "What you hoped it would say.",
+     "What the assistant actually produced.",
+     "The expected behavior again.",
+     "The seller's reply."
+    ],
+    "answer": 1,
+    "why": "Record observations, not expectations."
+   },
+   {
+    "q": "Your assistant passes all ten cases. Is it a security guarantee?",
+    "options": [
+     "Yes.",
+     "No; a human still reads every draft before it goes out, and you retest after changes.",
+     "Yes, if it's in Claude Code.",
+     "Only on weekdays."
+    ],
+    "answer": 1,
+    "why": "Tests reduce risk; they don't remove it."
+   }
+  ]
+ },
+ {
+  "module": "Module 7 — Make It Part of Your Week",
+  "questions": [
+   {
+    "q": "You've fixed the same issue by hand three Fridays in a row. What does that tell you?",
+    "options": [
+     "You're too picky.",
+     "The instructions need updating; then rerun the tests.",
+     "The assistant is broken and should be deleted.",
+     "Nothing."
+    ],
+    "answer": 1,
+    "why": "Repeated hand edits are a signal to fix the instructions."
+   },
+   {
+    "q": "Which is never the assistant's decision?",
+    "options": [
+     "Formatting showing counts as digits.",
+     "Whether to recommend a price reduction.",
+     "Paraphrasing feedback without names.",
+     "Keeping the draft under 220 words."
+    ],
+    "answer": 1,
+    "why": "Pricing is the agent's and seller's decision."
+   },
+   {
+    "q": "Why keep a change history with dates and versions?",
+    "options": [
+     "It's required by Claude.",
+     "So when something odd happens later, you can tell whether the tool, the sources or an instruction change caused it.",
+     "To make the instructions longer.",
+     "Sellers ask for it."
+    ],
+    "answer": 1,
+    "why": "Change history makes problems traceable."
+   },
+   {
+    "q": "What should the monthly check include?",
+    "options": [
+     "Only reading the Voice Profile.",
+     "Rerunning the test log, reviewing the voice, removing closed listings, and recording changes.",
+     "Deleting the project.",
+     "Asking the AI whether it's still working."
+    ],
+    "answer": 1,
+    "why": "Testing and cleanup keep it reliable."
+   },
+   {
+    "q": "You want a buyer-comparison assistant. What's the right approach?",
+    "options": [
+     "Copy the seller-update instructions and use them unchanged.",
+     "Run the same pattern: Job Card, voice, sources, instructions, test set, routine.",
+     "Skip testing because the first assistant worked.",
+     "Let it recommend which home to buy."
+    ],
+    "answer": 1,
+    "why": "The pattern transfers; the tests don't. Each new assistant gets its own."
+   },
+   {
+    "q": "A seller asks whether a crack in the foundation must be disclosed. What does the checklist say?",
+    "options": [
+     "The assistant answers based on general knowledge.",
+     "AGENT DECISION; the agent consults the broker or an attorney as needed.",
+     "Nothing; it's not in the inputs.",
+     "\"No disclosure needed.\""
+    ],
+    "answer": 1,
+    "why": "Disclosure questions carry legal weight. A human decides."
+   },
+   {
+    "q": "What's the test of a good Operating Guide?",
+    "options": [
+     "It's at least five pages.",
+     "A colleague could run Friday's updates from it.",
+     "It uses technical terms.",
+     "It's stored only in your head."
+    ],
+    "answer": 1,
+    "why": "If someone else can run it, you've written it down well enough."
+   }
+  ]
+ }
+]

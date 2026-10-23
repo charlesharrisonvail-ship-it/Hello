@@ -1,0 +1,112 @@
+/* Modern skin for AiRE Estate pages: softer, rounded, sans-serif labels in the
+   style of 21st.dev / shadcn components. Loaded after each page's own styles,
+   so it only adjusts look and never changes content. Delete the <link> to undo. */
+
+:root{ --mn:'Manrope','Helvetica Neue',Helvetica,Arial,sans-serif; --r-lg:18px; --r-md:12px }
+
+/* Labels: keep them small and calm, not typewriter caps. */
+.kick,.htag,.figlab,.mod .mk,.mod .rt,.cell .cl,.cell .cn,.contact .cl,.grid .n,
+.tier .flag,.tier .nm,.finalsale .ic,.svc .rate span,.cardtop .ct1,.cardfoot,
+.badge .bt,.card .holder,.pipehd,.quote .rl,.railbar .ct,.scrollmark,.tkr,
+.truth .tn,.vnote,.st .sn,.pc .pt,.peek .t,.howmade .pl,.promptbox .pl{
+  letter-spacing:.06em; font-weight:600 }
+
+/* Navigation reads like a modern app bar. */
+.navlinks a{ text-transform:none; letter-spacing:0; font-size:.94rem; font-weight:500 }
+.mtoggle{ border-radius:999px; text-transform:none; letter-spacing:0 }
+
+/* Buttons: pill shape, sentence case, a soft glow. */
+.btn{ border-radius:999px; text-transform:none; letter-spacing:0; font-weight:700;
+  box-shadow:0 8px 24px -10px rgba(56,189,248,.55) }
+.btn.sec{ box-shadow:none }
+
+/* Cards and panels: rounded corners and a faint glass edge. */
+.card,.tier,.mod,.pc,.peek figure,.promptbox,.quote,.st,.stats,.truth,.howmade,
+.need,.pipe,.contact,.finalsale,.svc>div,.grid>div,.badge{
+  border-radius:var(--r-lg) }
+.card,.tier,.mod,.pc,.quote,.truth,.svc>div,.grid>div{
+  background-image:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,0));
+  box-shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 20px 40px -24px rgba(0,0,0,.6) }
+.stats{ overflow:hidden }
+.stats>*{ border-radius:0 }
+.card,.tier{ overflow:hidden }
+video,.peek img{ border-radius:var(--r-md) }
+
+/* Prompt text stays monospaced on purpose: it is something you type. */
+.promptbox p{ font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace }
+
+/* Questions and answers read as soft rows. */
+details{ border-radius:var(--r-md) }
+
+/* The Enroll button in the top bar matches the other buttons. */
+.apply{ border-radius:999px; text-transform:none; letter-spacing:0; font-weight:700;
+  box-shadow:0 8px 24px -10px rgba(56,189,248,.55) }
+
+/* The "Start here" tag tucks into the rounded corner. */
+.tier .flag{ border-radius:0 0 0 var(--r-md) }
+
+/* ---------- Motion layer (used with modern-motion.js) ---------- */
+.mx-aurora{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden;mix-blend-mode:screen;opacity:.18}
+.mx-aurora i{position:absolute;width:55vmax;height:55vmax;border-radius:50%;filter:blur(90px);opacity:.9;
+  animation:mx-drift 22s ease-in-out infinite alternate}
+.mx-aurora i:nth-child(1){background:#0ea5e9;left:-15vmax;top:-20vmax}
+.mx-aurora i:nth-child(2){background:#db2777;right:-20vmax;top:10vmax;animation-duration:28s;animation-delay:-6s}
+.mx-aurora i:nth-child(3){background:#7c3aed;left:20vmax;bottom:-30vmax;animation-duration:32s;animation-delay:-12s}
+@keyframes mx-drift{0%{transform:translate(0,0) scale(1)}50%{transform:translate(8vmax,6vmax) scale(1.15)}100%{transform:translate(-6vmax,10vmax) scale(.95)}}
+
+.mx-progress{position:fixed;left:0;right:0;top:0;height:3px;z-index:120;transform-origin:0 50%;transform:scaleX(0);
+  background:linear-gradient(90deg,#38bdf8,#a78bfa,#f472b6);box-shadow:0 0 12px rgba(56,189,248,.8)}
+.mx-burst{position:fixed;inset:0;width:100vw;height:100vh;z-index:95;pointer-events:none}
+
+/* Headline gradient shimmers. */
+h1 em.cc{background-image:linear-gradient(90deg,#38bdf8,#a78bfa,#f472b6,#a78bfa,#38bdf8)!important;background-size:200% auto!important;animation:mx-shimmer 6s linear infinite}
+@keyframes mx-shimmer{to{background-position:200% center}}
+
+/* Cards: a spotlight follows the cursor, and they tilt gently. */
+.mx-lit{transition:transform .25s ease, box-shadow .25s ease;will-change:transform}
+.mx-lit:hover{box-shadow:0 30px 60px -28px rgba(56,189,248,.45), 0 0 0 1px rgba(56,189,248,.25)}
+.mx-lit{background-image:radial-gradient(420px circle at var(--mx,-999px) var(--my,-999px),rgba(56,189,248,.16),transparent 45%),
+  linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,0))!important}
+
+/* Prices pop when they arrive; buttons breathe. */
+.mx-pop{animation:mx-pop .7s cubic-bezier(.2,1.6,.4,1)}
+@keyframes mx-pop{0%{transform:scale(.6)}60%{transform:scale(1.12)}100%{transform:scale(1)}}
+.btn.pri,.apply{animation:mx-breathe 3.2s ease-in-out infinite}
+@keyframes mx-breathe{0%,100%{box-shadow:0 8px 24px -10px rgba(56,189,248,.55)}50%{box-shadow:0 10px 34px -6px rgba(56,189,248,.9)}}
+
+/* Off switches: the page's Motion toggle and the visitor's own setting. */
+html[data-motion="off"] .mx-aurora i,html[data-motion="off"] h1 em,html[data-motion="off"] .cc,
+html[data-motion="off"] .btn.pri,html[data-motion="off"] .apply{animation:none!important}
+@media (prefers-reduced-motion:reduce){.mx-aurora i,h1 em,.cc,.btn.pri,.apply,.mx-pop{animation:none!important}.mx-lit{transition:none}}
+
+/* Hero: the real AI drone flight replaces the point cloud. */
+.mx-herovid{position:absolute;inset:0;z-index:0;overflow:hidden}
+.mx-herovid video{position:absolute;right:0;top:0;width:74%;height:min(100vh,860px);object-fit:cover;object-position:62% 45%;opacity:.95;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 38%,#000 100%);mask-image:linear-gradient(90deg,transparent 0%,#000 38%,#000 100%);
+  animation:mx-slowzoom 18s ease-in-out infinite alternate}
+.mx-herovid::after{content:"";position:absolute;left:0;right:0;top:0;height:min(100vh,860px);background:linear-gradient(180deg,rgba(4,7,13,0) 55%,rgba(4,7,13,1) 100%)}
+.mx-ailabel{position:absolute;right:20px;top:calc(min(100vh,860px) - 120px);z-index:2;font:600 11px/1 Manrope,system-ui,sans-serif;letter-spacing:.06em;
+  color:#e0f2fe;background:rgba(4,7,13,.6);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:7px 11px}
+@keyframes mx-slowzoom{from{transform:scale(1)}to{transform:scale(1.08)}}
+/* Phones: the house gets its own clear, full-color frame above the headline. */
+@media (max-width:760px){
+  .mx-herovid{position:relative;inset:auto;z-index:3;margin:0 16px 22px;aspect-ratio:16/10;border-radius:18px;
+    border:1px solid rgba(255,255,255,.14);box-shadow:0 24px 50px -20px rgba(56,189,248,.55)}
+  .mx-herovid video{inset:0;width:100%;height:100%;opacity:1;object-position:60% 50%;-webkit-mask-image:none;mask-image:none}
+  .mx-herovid::after{display:none}
+  .mx-ailabel{top:auto;bottom:10px;right:10px;font-size:10px;padding:5px 9px}
+}
+html[data-motion="off"] .mx-herovid video{animation:none}
+@media (prefers-reduced-motion:reduce){.mx-herovid video{animation:none}}
+
+/* "Real Estate" gets the same weight as "Claude Code", in a warm-to-blue blend. */
+h1 em.cc.re{background-image:linear-gradient(90deg,#fbbf24,#f472b6,#38bdf8,#f472b6,#fbbf24)!important}
+
+/* "Compared with the top AI programs": text beside a phone-shaped video. */
+#compare .cmp{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:48px;align-items:center}
+#compare .cmp-note{font-size:.82rem;color:var(--dim,#8496b2);max-width:60ch}
+#compare .cmp-vid{margin:0;justify-self:center;width:100%;max-width:320px}
+#compare .cmp-vid video{display:block;width:100%;aspect-ratio:9/16;background:#04070d;border-radius:22px;
+  border:1px solid rgba(255,255,255,.14);box-shadow:0 24px 50px -20px rgba(56,189,248,.55)}
+#compare .cmp-vid figcaption{margin-top:10px;text-align:center;font:600 12px/1 Manrope,system-ui,sans-serif;letter-spacing:.06em;color:#8496b2}
+@media (max-width:760px){#compare .cmp{grid-template-columns:1fr;gap:28px}#compare .cmp-vid{max-width:300px}}

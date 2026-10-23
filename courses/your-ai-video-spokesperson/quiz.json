@@ -1,0 +1,576 @@
+[
+ {
+  "module": "Module 1 — Choose Who Appears On Camera",
+  "questions": [
+   {
+    "q": "Which are the two routes for an AI spokesperson in this course?",
+    "options": [
+     "Your own likeness, or a properly licensed fictional spokesperson.",
+     "Your own likeness, or a colleague's.",
+     "A celebrity look-alike, or a stock photo of a real person.",
+     "Any face you find online."
+    ],
+    "answer": 0,
+    "why": "Only you, or a fictional character you have commercial rights to."
+   },
+   {
+    "q": "A real person's photos are publicly available online. Does that give you permission to clone them?",
+    "options": [
+     "Yes, if the photos are public.",
+     "Yes, if you credit them.",
+     "No; public availability isn't permission, and providers require the person's own consent.",
+     "Only for non-commercial videos."
+    ],
+    "answer": 2,
+    "why": "Consent comes from the person, not from where the image is posted."
+   },
+   {
+    "q": "Per HeyGen's help center (checked Oct. 23, 2026), who records the consent video for a digital twin?",
+    "options": [
+     "The account owner, for anyone.",
+     "The person whose avatar is being created.",
+     "The provider's staff.",
+     "No consent video is needed."
+    ],
+    "answer": 1,
+    "why": "The consent video must feature the same person as the footage."
+   },
+   {
+    "q": "A fictional spokesperson says, \"When I sold my first home...\" What's wrong?",
+    "options": [
+     "Nothing.",
+     "It's a firsthand experience the character didn't have.",
+     "It's too short.",
+     "Fictional characters can't speak."
+    ],
+    "answer": 1,
+    "why": "Fictional spokespeople don't claim real experiences or licenses."
+   },
+   {
+    "q": "Which disclosure approach does this module recommend?",
+    "options": [
+     "None; viewers can tell.",
+     "An on-screen \"Made with AI\" label plus a plain line in the caption.",
+     "A disclosure only in your profile bio.",
+     "Mention it once a year."
+    ],
+    "answer": 1,
+    "why": "Visible and plain, on every video."
+   },
+   {
+    "q": "Can students use Eva Vail as their spokesperson?",
+    "options": [
+     "Yes, she's in the course.",
+     "Yes, with a different name.",
+     "No; the course grants no rights to copy AiRE Estate's presenters, their voices, or its owner.",
+     "Only on Instagram."
+    ],
+    "answer": 2,
+    "why": "Your spokesperson must be yours."
+   },
+   {
+    "q": "Do your brokerage's advertising rules apply to AI avatar videos?",
+    "options": [
+     "No, AI videos are exempt.",
+     "Yes; brokerage identification and required disclosures still apply.",
+     "Only if the video is longer than a minute.",
+     "Only for listings over $1 million."
+    ],
+    "answer": 1,
+    "why": "AI is a production method, not an exemption."
+   }
+  ]
+ },
+ {
+  "module": "Module 2 — Create a Consistent Look",
+  "questions": [
+   {
+    "q": "Why lock a master look?",
+    "options": [
+     "To save storage.",
+     "Repeated videos feel like one recognizable person; small changes compound.",
+     "Providers require it.",
+     "It makes videos longer."
+    ],
+    "answer": 1,
+    "why": "Consistency builds recognition."
+   },
+   {
+    "q": "Which change is controlled?",
+    "options": [
+     "New jacket, new hair and new background together.",
+     "Only the background changes; everything else stays the same.",
+     "Different person.",
+     "New framing, new outfit and outdoor light."
+    ],
+    "answer": 1,
+    "why": "One element at a time."
+   },
+   {
+    "q": "Per HeyGen's filming guidance (checked Oct. 23, 2026), what minimum recording quality is suggested?",
+    "options": [
+     "480p at 15 fps.",
+     "At least 1080p at 30 fps.",
+     "8K at 120 fps only.",
+     "Any quality."
+    ],
+    "answer": 1,
+    "why": "Higher (e.g., 4K, 60 fps) is better, but 1080p/30 is the floor."
+   },
+   {
+    "q": "You stumble on a word during your recording. What does HeyGen's guidance say to do?",
+    "options": [
+     "Stop, cut out the mistake, and splice the clip.",
+     "Keep speaking naturally or restart from the beginning; don't stitch clips.",
+     "Add a filter.",
+     "Submit two separate clips."
+    ],
+    "answer": 1,
+    "why": "The footage must be one continuous recording."
+   },
+   {
+    "q": "Why avoid clothing with large logos or text?",
+    "options": [
+     "Brands may sue.",
+     "It can cause artifacts or distortions in the avatar, and distracts from you.",
+     "It's illegal.",
+     "It reduces resolution."
+    ],
+    "answer": 1,
+    "why": "HeyGen's FAQ notes logos and text may cause artifacts."
+   },
+   {
+    "q": "What may students take from the Eva Vail example?",
+    "options": [
+     "Eva's face.",
+     "Eva's voice.",
+     "The method: lock identity, vary the setting.",
+     "Eva's name."
+    ],
+    "answer": 2,
+    "why": "Copy the method, never the person."
+   },
+   {
+    "q": "How many planned settings does this module suggest starting with?",
+    "options": [
+     "Ten.",
+     "Two.",
+     "None.",
+     "One per video."
+    ],
+    "answer": 1,
+    "why": "Two controlled settings are plenty to start."
+   }
+  ]
+ },
+ {
+  "module": "Module 3 — Set Up the Voice and Delivery",
+  "questions": [
+   {
+    "q": "Why test pronunciation with a short preview before rendering a full video?",
+    "options": [
+     "Previews are always free.",
+     "It catches most problems cheaply, before spending on a full render.",
+     "Providers require it.",
+     "Full renders can't be changed."
+    ],
+    "answer": 1,
+    "why": "Short previews are the cheap place to find problems."
+   },
+   {
+    "q": "The voice says \"HAIR-on Point\" instead of the local \"Heron Point.\" What's the fix?",
+    "options": [
+     "Change the caption to \"Herron.\"",
+     "Respell it in the spoken script (or use a pronunciation setting), keep the caption correct, and preview again.",
+     "Rename the street.",
+     "Ignore it."
+    ],
+    "answer": 1,
+    "why": "Spoken script and caption serve different jobs."
+   },
+   {
+    "q": "Which voice is authorized for a fictional spokesperson?",
+    "options": [
+     "A voice that imitates a famous actor.",
+     "A stock or licensed voice whose terms allow commercial use.",
+     "Your colleague's voice without asking.",
+     "Eva Vail's voice."
+    ],
+    "answer": 1,
+    "why": "Keep the license."
+   },
+   {
+    "q": "Per HeyGen's guidance (Oct. 23, 2026), why should your filming footage include you speaking even if you'll use a different voice?",
+    "options": [
+     "It's needed for lip sync.",
+     "It sets the background.",
+     "It isn't necessary.",
+     "It changes the price."
+    ],
+    "answer": 0,
+    "why": "The help center flags speech in footage as crucial for lip sync."
+   },
+   {
+    "q": "How should you write \"$612,000\" in the spoken script?",
+    "options": [
+     "Exactly as \"$612K.\"",
+     "The way you want it said, e.g., \"six hundred twelve thousand dollars,\" while the caption shows \"$612,000.\"",
+     "Leave numbers out of videos.",
+     "Round to \"about six hundred thousand.\""
+    ],
+    "answer": 1,
+    "why": "Spell numbers for speech; keep figures correct in captions."
+   },
+   {
+    "q": "Where should you test playback most carefully?",
+    "options": [
+     "Studio monitors only.",
+     "A phone speaker at normal volume, where most viewers listen.",
+     "A car stereo.",
+     "No need to listen."
+    ],
+    "answer": 1,
+    "why": "Plus laptop and headphones."
+   },
+   {
+    "q": "Voice consent requirements and features...",
+    "options": [
+     "Never change.",
+     "Should be verified with the provider before you rely on them.",
+     "Don't apply to real estate.",
+     "Are the same at every provider."
+    ],
+    "answer": 1,
+    "why": "Check current terms and features in your account."
+   }
+  ]
+ },
+ {
+  "module": "Module 4 — Write a Short Script That Holds Attention",
+  "questions": [
+   {
+    "q": "Which is the strongest hook for sellers?",
+    "options": [
+     "\"Hey everyone, happy Tuesday!\"",
+     "\"Selling in Willow Fork next year? Start here.\"",
+     "\"So, um, today I wanted to talk about something.\"",
+     "\"I'm Sam.\""
+    ],
+    "answer": 1,
+    "why": "It tells the right viewer it's for them, in the first seconds."
+   },
+   {
+    "q": "You have three tips. What should you do?",
+    "options": [
+     "Squeeze all three into 20 seconds.",
+     "Make three videos, one point each.",
+     "Pick the longest one.",
+     "Use a faster voice."
+    ],
+    "answer": 1,
+    "why": "One useful point per video."
+   },
+   {
+    "q": "An AI draft says \"Homes with HOA documents ready sell 22% faster.\" You have no source. What do you do?",
+    "options": [
+     "Keep it; it sounds right.",
+     "Delete it, or replace it with careful general wording.",
+     "Round it to 20%.",
+     "Add \"studies show.\""
+    ],
+    "answer": 1,
+    "why": "Unsourced statistics don't go in your videos."
+   },
+   {
+    "q": "How should you determine a script's length?",
+    "options": [
+     "150 words always equals one minute.",
+     "Read it aloud at the spokesperson's pace and time it.",
+     "Count characters.",
+     "Let the provider decide."
+    ],
+    "answer": 1,
+    "why": "Word counts are only a starting guess."
+   },
+   {
+    "q": "Which line belongs in a fictional spokesperson's script?",
+    "options": [
+     "\"When I bought my first home...\"",
+     "\"My clients always tell me...\" (no real quote)",
+     "\"Before you list, find your HOA documents.\"",
+     "\"We guarantee a sale in 30 days.\""
+    ],
+    "answer": 2,
+    "why": "Useful and true; no invented experiences, testimonials or guarantees."
+   },
+   {
+    "q": "A listing invitation states the HOA fee as \"$40/month.\" The fee isn't confirmed. What's the problem?",
+    "options": [
+     "None.",
+     "It's an unconfirmed fact; leave it out until it's documented.",
+     "It should be $45.",
+     "HOA fees are never mentioned."
+    ],
+    "answer": 1,
+    "why": "Facts come from approved sources only."
+   },
+   {
+    "q": "How many calls to action should a 20-second video have?",
+    "options": [
+     "One.",
+     "Two.",
+     "Three.",
+     "None."
+    ],
+    "answer": 0,
+    "why": "Two CTAs compete; one gets done."
+   }
+  ]
+ },
+ {
+  "module": "Module 5 — Produce the Talking Video",
+  "questions": [
+   {
+    "q": "In HeyGen's own-likeness flow (checked Oct. 23, 2026), which option creates an avatar of you?",
+    "options": [
+     "Clone a Real Person.",
+     "Clone a Celebrity.",
+     "Import a stranger's video.",
+     "Generate from a LinkedIn photo."
+    ],
+    "answer": 0,
+    "why": "From Avatars → New Avatar."
+   },
+   {
+    "q": "According to HeyGen's help center, how often can you recreate an avatar in the same slot?",
+    "options": [
+     "Unlimited times per day.",
+     "Once per billing cycle (month).",
+     "Never.",
+     "Once per year."
+    ],
+    "answer": 1,
+    "why": "And deleting an avatar removes all its looks, so fix footage before uploading."
+   },
+   {
+    "q": "Which aspect ratio fits Reels, Stories and TikTok?",
+    "options": [
+     "16:9.",
+     "9:16.",
+     "4:3.",
+     "1:1."
+    ],
+    "answer": 1,
+    "why": "Vertical."
+   },
+   {
+    "q": "Lip sync drifts on one long sentence. What's the best first fix?",
+    "options": [
+     "Re-render five times.",
+     "Split the sentence and re-render once.",
+     "Delete the avatar.",
+     "Change the background."
+    ],
+    "answer": 1,
+    "why": "Diagnose, make one change, re-render."
+   },
+   {
+    "q": "The face looks wrong in every video. Where's the likely problem?",
+    "options": [
+     "The script.",
+     "The source footage; re-rendering won't fix it.",
+     "The caption font.",
+     "The music."
+    ],
+    "answer": 1,
+    "why": "Fix the footage at the source."
+   },
+   {
+    "q": "Why does this course favor a stationary presenter with B-roll cuts over an avatar walking around?",
+    "options": [
+     "Walking is impossible.",
+     "Natural, stationary delivery with purposeful cuts holds up better than repeated artificial walking.",
+     "Walking costs extra.",
+     "Viewers prefer static images."
+    ],
+    "answer": 1,
+    "why": "Movement should have a purpose."
+   },
+   {
+    "q": "What's the rule for re-rendering the same problem?",
+    "options": [
+     "Keep going until it's perfect.",
+     "Two attempts, then stop and diagnose.",
+     "Never re-render.",
+     "Ask the AI to decide."
+    ],
+    "answer": 1,
+    "why": "Endless re-rendering costs money without fixing causes."
+   }
+  ]
+ },
+ {
+  "module": "Module 6 — Finish It for Social",
+  "questions": [
+   {
+    "q": "Where should captions sit on a vertical social video?",
+    "options": [
+     "At the very bottom edge.",
+     "In the middle band, clear of the platform's buttons and text.",
+     "Across the speaker's face.",
+     "Captions aren't needed."
+    ],
+    "answer": 1,
+    "why": "Bottom and right edges are often covered by platform UI."
+   },
+   {
+    "q": "Auto-captions spelled the street \"Herring Point.\" What should you do?",
+    "options": [
+     "Leave it; viewers will understand.",
+     "Correct every caption by hand against the script and source.",
+     "Remove all captions.",
+     "Re-render the avatar."
+    ],
+    "answer": 1,
+    "why": "Automated transcription is a start, not a finish."
+   },
+   {
+    "q": "How loud should music be?",
+    "options": [
+     "As loud as the voice.",
+     "Clearly under speech; every word understandable on a phone speaker.",
+     "Louder for energy.",
+     "Music is required."
+    ],
+    "answer": 1,
+    "why": "Speech first."
+   },
+   {
+    "q": "Why export three separate 9:16 videos instead of one merged grid?",
+    "options": [
+     "Grids aren't allowed.",
+     "Separate files let you post, test and fix each one independently.",
+     "It's cheaper to render.",
+     "Platforms delete grids."
+    ],
+    "answer": 1,
+    "why": "One idea, one video, one file."
+   },
+   {
+    "q": "A caption shows a detail the voice didn't say. What's the issue?",
+    "options": [
+     "None; more information is better.",
+     "Captions must match the spoken facts; a mismatch invites errors and confusion.",
+     "It should be bigger.",
+     "It should be in a different color."
+    ],
+    "answer": 1,
+    "why": "Not more, not less."
+   },
+   {
+    "q": "Which B-roll is appropriate for a real listing video?",
+    "options": [
+     "Any home photo from the internet.",
+     "Listing photos you're authorized to use, with fact cards matched to the listing sheet.",
+     "Photos of a different, nicer house.",
+     "A competitor's listing photos."
+    ],
+    "answer": 1,
+    "why": "Permission and accuracy."
+   },
+   {
+    "q": "Why keep a clean version (no captions or music)?",
+    "options": [
+     "It's required by law.",
+     "To make future edits without re-rendering the talking video.",
+     "To post twice.",
+     "Clean versions get more views."
+    ],
+    "answer": 1,
+    "why": "It saves time and credits later."
+   }
+  ]
+ },
+ {
+  "module": "Module 7 — Reuse the Process",
+  "questions": [
+   {
+    "q": "What is a \"production kit\" in this course?",
+    "options": [
+     "A camera bundle.",
+     "Your saved templates plus all your sheets and checklists, kept together.",
+     "A paid add-on.",
+     "A single video."
+    ],
+    "answer": 1,
+    "why": "It makes the next video faster and consistent."
+   },
+   {
+    "q": "You want a winter look. What's the right approach?",
+    "options": [
+     "Change wardrobe, hair and background together.",
+     "Add a planned setting that changes one element; test against the master.",
+     "Create a new avatar.",
+     "Use a different person."
+    ],
+    "answer": 1,
+    "why": "Controlled variation keeps identity."
+   },
+   {
+    "q": "Why batch production?",
+    "options": [
+     "Platforms require it.",
+     "It saves setup time and lets you check facts in one focused pass.",
+     "It guarantees more views.",
+     "Batching isn't recommended."
+    ],
+    "answer": 1,
+    "why": "Efficiency and accuracy, no guarantees."
+   },
+   {
+    "q": "When can a calendar row be marked \"Approved\"?",
+    "options": [
+     "As soon as the script is written.",
+     "After the finished file passes all checks and you've reviewed it on your phone.",
+     "When the render finishes.",
+     "When a colleague likes the topic."
+    ],
+    "answer": 1,
+    "why": "Approval follows review of the finished video."
+   },
+   {
+    "q": "A saved listing template contains last week's open-house time. What does this tell you?",
+    "options": [
+     "Templates are always accurate.",
+     "A template doesn't validate its claims; every new video needs fact checks.",
+     "Don't use templates.",
+     "Keep the old time."
+    ],
+    "answer": 1,
+    "why": "Templates save time, not verification."
+   },
+   {
+    "q": "What can platform analytics tell you?",
+    "options": [
+     "Exactly how the next video will perform.",
+     "What happened with past videos, to inform your next topics and hooks.",
+     "Guaranteed lead counts.",
+     "Nothing useful."
+    ],
+    "answer": 1,
+    "why": "Numbers describe; they don't promise."
+   },
+   {
+    "q": "Which statement is consistent with this course?",
+    "options": [
+     "\"This hook guarantees 10,000 views.\"",
+     "\"Posting at 7 p.m. guarantees leads.\"",
+     "\"No template or posting time guarantees views, leads or listings.\"",
+     "\"AI video always outperforms live video.\""
+    ],
+    "answer": 2,
+    "why": "Measure, learn and adjust; don't promise."
+   }
+  ]
+ }
+]
