@@ -16,8 +16,7 @@ the words that matter, adjust pacing and pauses, and preview before rendering.
 
 ## 2. Narrated lesson script
 
-*Narrator: AiRE. Target read time about 6 minutes. Narration must use an owner-approved
-voice; never substitute another voice for Eva or the owner.*
+*Narrator: Eva Vail, AiRE Estate's AI presenter, using owner-approved Eva assets and voice. Target read time about 6 minutes.*
 
 Viewers forgive a lot in a short video. A slightly stiff gesture, a plain background.
 What they don't forgive is a voice that gets your own town wrong. Say "Willow Fork"

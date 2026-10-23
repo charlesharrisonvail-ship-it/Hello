@@ -83,8 +83,7 @@ courses/
 ## Launch inputs the owner must supply or approve
 
 - [x] Price: **$97 each, sold separately. No bundles, no sales or discounts** (Charles, 2026-10-23).
-- [x] Presenter: **Eva Vail** (Charles, 2026-10-23). Still needs his approved Eva assets and voice.
-- [ ] Demonstration spokesperson for Course 2 and its rights.
+- [x] Presenters (Charles, 2026-10-23): **Eva Vail** presents Your AI Video Spokesperson; **Charles's own AI avatar** presents Build Your AI Assistant (inside the course only, never on the public pages). Still needed: the approved avatar looks and voices.
 - [ ] HeyGen access and a generation budget (nothing has been spent).
 - [ ] Stripe products/payment links, access codes, confirmation messages, release date.
 - [ ] Support scope and certificate/capstone policy (drafts: email support for course

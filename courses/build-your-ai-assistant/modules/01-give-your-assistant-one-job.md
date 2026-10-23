@@ -15,11 +15,11 @@ output and its boundaries, and write acceptance criteria that someone else could
 
 ## 2. Narrated lesson script
 
-*Narrator: AiRE, the AI Instructor. Target read time about 6 minutes; actual runtime
-is measured after recording.*
+*Narrator: Charles's AI avatar, using his own approved avatar and voice. Inside the course only; never on the public site. Target read time about 6 minutes; actual runtime is measured after recording.*
 
-Hi, I'm AiRE, the AI instructor for this course. Quick reminder before we start: I'm AI,
-and everything I make in these lessons is a draft that a licensed human reviews.
+Hi, I'm Charles. Quick note before we start: you're watching an AI avatar of me, made
+from my own recording and my own voice. And everything the assistant makes in these
+lessons is a draft that a licensed human reviews.
 
 Let's begin with the single most common reason AI assistants disappoint agents. It
 isn't the software. It's the job description.
@@ -99,7 +99,7 @@ change the facts.
 
 | # | Script cue | On screen | Notes |
 | --- | --- | --- | --- |
-| 1 | "Hi, I'm AiRE" | AiRE title card with "AI instructor" label | Show "Made with AI" label |
+| 1 | "Hi, I'm Charles" | Charles's AI avatar, master look | "Made with AI" label for the whole video |
 | 2 | "run my business" | Claude chat: type the broad prompt, show the generic reply | Use a fresh chat; fictional context only |
 | 3 | "forty jobs" | Animated list of tasks splitting out of "run my business" | Motion graphic, 5 s |
 | 4 | "weekly seller update" | Calendar graphic: Friday, three listing cards | |

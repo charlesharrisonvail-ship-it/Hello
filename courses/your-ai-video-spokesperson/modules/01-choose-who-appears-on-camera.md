@@ -15,12 +15,11 @@ the permissions you have.
 
 ## 2. Narrated lesson script
 
-*Narrator: AiRE, the AI Instructor. Target read time about 6 minutes. Where the script
-calls for an Eva Vail example, use only owner-approved Eva assets and voice; otherwise
-cut the example.*
+*Narrator: Eva Vail, AiRE Estate's AI presenter, using owner-approved Eva assets and voice. Target read time about 6 minutes.*
 
-Hi, I'm AiRE. I'm an AI instructor, and this whole course is about making videos with AI
-on-camera presenters, so let's start with the honest part.
+Hi, I'm Eva Vail. I'm an AI presenter for AiRE Estate. I'm not a real person, and this
+whole course is about making videos with AI on-camera presenters like me, so let's start
+with the honest part.
 
 Before you pick a tool, a background or a script, you decide one thing: who appears on
 camera. There are two routes, and only two.
@@ -45,8 +44,8 @@ the person being cloned, reading the provider's exact consent text, submitted al
 the footage, as of the help center we checked for this lesson. If someone else wants an
 avatar, they record their own consent. Not you on their behalf.
 
-Same for AiRE Estate's own presenters. You'll see Eva Vail and me in this course as
-examples. You get no rights to copy Eva's look or voice, mine, or the owner's. Your
+Same for AiRE Estate's own presenters. You'll see me throughout this course as the
+example. You get no rights to copy my look or my voice, or the owner's. Your
 spokesperson has to be yours.
 
 Once you've picked a route, write the Spokesperson Brief. It's one page.
@@ -84,11 +83,11 @@ the world isn't worth a likeness you didn't have the right to use.
 
 | # | Script cue | On screen | Notes |
 | --- | --- | --- | --- |
-| 1 | "I'm AiRE" | AiRE title card, "AI Instructor" + "Made with AI" | |
+| 1 | "I'm Eva Vail" | Eva, master look; "AI presenter" + "Made with AI" | Owner-approved Eva assets |
 | 2 | "two routes" | Split card: Own likeness / Fictional spokesperson | |
 | 3 | "There is no route three" | Crossed-out icons: colleague, celebrity, client, stock photo of a real person | |
 | 4 | Consent requirement | HeyGen help article "Recording your Consent Video," requirements list | Screen capture on recording day; show date |
-| 5 | Eva example | Eva Vail clip with label "AiRE Estate instructor — not licensed to students" | **Owner-approved Eva asset required** |
+| 5 | "no rights to copy my look" | Eva with label "AiRE Estate presenter — not licensed to students" | **Owner-approved Eva asset required** |
 | 6 | Brief | `spokesperson-brief.md` sections 1–5 | |
 | 7 | Disclosure | Example video frame with "Made with AI" label + caption line | Fictional agent |
 | 8 | Rights checklist | Checklist A and B sections | |

@@ -16,7 +16,7 @@ and run a first seller update.
 
 ## 2. Narrated lesson script
 
-*Narrator: AiRE. Target read time about 7–8 minutes.*
+*Narrator: Charles's AI avatar, using his own approved avatar and voice. Inside the course only; never on the public site. Target read time about 7–8 minutes.*
 
 Time to build. Everything you've done so far was the hard part: deciding the job,
 writing down your voice, and choosing your sources. Now we put it in one place so you

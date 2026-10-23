@@ -16,8 +16,7 @@ spokesperson recognizable.
 
 ## 2. Narrated lesson script
 
-*Narrator: AiRE. Target read time about 6–7 minutes. Eva examples require owner-approved
-assets.*
+*Narrator: Eva Vail, AiRE Estate's AI presenter, using owner-approved Eva assets and voice. Target read time about 6–7 minutes.*
 
 Think about the agents whose videos you recognize in your feed. You probably know them
 in half a second, before they say a word. Same framing, same kind of light, often the
@@ -55,9 +54,9 @@ is a softly out-of-focus bookshelf. Still clearly the same person. Now here's an
 uncontrolled one: new jacket, different hairstyle, outdoors, closer framing. Each change
 was reasonable on its own. Together, it reads as somebody else.
 
-With Eva, AiRE Estate's instructor, the team keeps the face, hair and framing locked and
-lets the setting change for different topics. You'll see the setting change and the
-person stay the same. Please don't copy Eva; copy the method.
+That's exactly how my own look is managed. My face, hair and framing stay locked, and only
+the setting changes for different topics. Watch the setting change and the person stay
+the same. Please don't copy me; copy the method.
 
 Now plan two settings. On the Style Sheet, each planned setting lists what changes and
 what stays locked. For example: Office, where only the background changes, for

@@ -51,7 +51,7 @@ COURSES = [
         "sub": "Build a consistent on-camera presence with AI.",
         "card": "Create a consistent AI spokesperson and produce three short videos with clear scripts, captions, and your brand.",
         "audience": "Agents who want repeatable talking-avatar videos for educational and marketing content.",
-        "outcome": "Three finished short videos, using your own authorized likeness and voice or a properly licensed fictional spokesperson.",
+        "outcome": "Three finished short videos, using your own authorized likeness and voice or a properly licensed fictional spokesperson. Presented by Eva Vail, AiRE Estate's AI presenter.",
         "prereq": [
             "A HeyGen account (the course's primary talking-avatar workflow; it has a free tier, and plans and limits are set by HeyGen).",
             "Your own footage and consent, or a licensed fictional character and voice.",

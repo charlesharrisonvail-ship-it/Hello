@@ -15,7 +15,7 @@ professional must decide, and adapt the pattern to a second job.
 
 ## 2. Narrated lesson script
 
-*Narrator: AiRE. Target read time about 6 minutes.*
+*Narrator: Charles's AI avatar, using his own approved avatar and voice. Inside the course only; never on the public site. Target read time about 6 minutes.*
 
 An assistant that works in a lesson and an assistant that works in your week are
 different things. The second one has to survive busy Fridays, price changes, a new

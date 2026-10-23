@@ -16,7 +16,7 @@ facts, with a register that marks what's stale or missing.
 
 ## 2. Narrated lesson script
 
-*Narrator: AiRE. Target read time about 7 minutes.*
+*Narrator: Charles's AI avatar, using his own approved avatar and voice. Inside the course only; never on the public site. Target read time about 7 minutes.*
 
 An assistant is only as reliable as what you hand it. Give it a messy folder with three
 versions of the same fact sheet, an HOA statement from last year and a seller's wishful

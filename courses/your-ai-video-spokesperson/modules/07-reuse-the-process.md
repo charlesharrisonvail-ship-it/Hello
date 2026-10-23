@@ -14,7 +14,7 @@ approval status, and measure results without expecting guaranteed performance.
 
 ## 2. Narrated lesson script
 
-*Narrator: AiRE. Target read time about 6 minutes.*
+*Narrator: Eva Vail, AiRE Estate's AI presenter, using owner-approved Eva assets and voice. Target read time about 6 minutes.*
 
 You've made three videos. The fourth one should be faster, and the tenth should feel
 routine. That only happens if you save what you've built and turn it into a process.

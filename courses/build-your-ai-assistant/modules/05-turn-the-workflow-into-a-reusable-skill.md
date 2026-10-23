@@ -21,7 +21,7 @@ pointing at folders.
 
 ## 2. Narrated lesson script
 
-*Narrator: AiRE. Target read time about 7 minutes.*
+*Narrator: Charles's AI avatar, using his own approved avatar and voice. Inside the course only; never on the public site. Target read time about 7 minutes.*
 
 In the last module, your assistant lived in a Claude Project. Every Friday you paste in
 the week, copy out the draft. That works. But if you have five listings, that's five

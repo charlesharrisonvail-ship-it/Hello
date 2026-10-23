@@ -6,9 +6,10 @@ production documents, not finished videos.
 
 ## Narration
 
-- Narrator: AiRE, the AI Instructor (as in the existing courses). **Missing:** owner
-  approval of the narrator voice and avatar for these courses. Never substitute an
-  unrelated voice.
+- Presenter: **Charles's own AI avatar and his own voice** (Charles, 2026-10-23). Inside
+  the course videos only: the public website, sales page and ads never name, show or
+  describe him. Never substitute an unrelated voice.
+- Each video opens by saying it's an AI avatar made from his own recording.
 - Target runtime: 45–65 minutes total. Script read-time targets: M1 ~6, M2 ~6–7, M3 ~7,
   M4 ~7–8, M5 ~7, M6 ~7–8, M7 ~6, Capstone ~3 minutes. Actual runtimes must be measured
   from finished media before any runtime appears on a page.
@@ -28,7 +29,7 @@ production documents, not finished videos.
 
 ## Missing assets (owner must supply or approve)
 
-- Approved narrator voice/avatar for AiRE in these courses.
+- Charles's approved avatar look(s) and cloned voice in HeyGen (or the account where his avatar lives).
 - A test Claude account for screen recordings (no real client data visible).
 - Recording-day verification of Claude Projects and Claude Code screens.
 - Optional: intro/welcome video (the existing courses open with one).

@@ -15,7 +15,7 @@ rubric and record that you've completed it. It is separate from the module check
 
 ## 2. Narrated script
 
-*Narrator: AiRE. Target read time about 3 minutes.*
+*Narrator: Charles's AI avatar, using his own approved avatar and voice. Inside the course only; never on the public site. Target read time about 3 minutes.*
 
 This is the capstone. There's nothing new to learn here. It's where you show yourself
 that the assistant works.

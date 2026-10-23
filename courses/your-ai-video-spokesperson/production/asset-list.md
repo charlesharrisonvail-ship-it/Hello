@@ -6,9 +6,9 @@ Scripts and shot lists in each module are production documents, not finished vid
 
 ## Narration and demonstrations
 
-- Narrator: AiRE, the AI Instructor. **Missing:** owner-approved narrator voice/avatar.
-- Eva Vail demonstrations (Modules 1, 2, 5) are **optional** and require owner-approved
-  Eva assets and voice. If not approved, cut those shots; the scripts still work.
+- Presenter: **Eva Vail**, AiRE Estate's AI presenter (Charles, 2026-10-23). She narrates
+  every module and is the worked example of a consistent spokesperson (Modules 1, 2, 5).
+  **Missing:** the owner-approved Eva look(s) and voice to render with.
 - Never substitute an unrelated voice for Eva, AiRE or the owner.
 - Target runtime 45–65 minutes. Script read-time targets: M1 ~6, M2 ~6–7, M3 ~6, M4 ~7,
   M5 ~7–8, M6 ~6–7, M7 ~6, Capstone ~3 minutes. Measure real runtimes after production.
@@ -28,16 +28,11 @@ Scripts and shot lists in each module are production documents, not finished vid
 
 ## Who appears in demonstrations
 
-The course needs a demonstration spokesperson. Options for the owner:
-1. A **fictional licensed stock avatar** (simplest rights position).
-2. The owner's own likeness, with the owner's consent (note: the AiRE Estate website does
-   not front the owner; course videos may).
-3. Eva Vail, with owner-approved assets.
+Decided: **Eva Vail** (Charles, 2026-10-23). Students get no rights to copy her look or voice.
 
 ## Missing assets (owner must supply or approve)
 
-- Narrator voice/avatar approval.
-- Choice of demonstration spokesperson (above) and rights confirmation.
+- Eva's approved look(s) and voice, and where they live.
 - HeyGen account access for recording, and a generation budget.
 - Recording-day verification of HeyGen's editor labels (aspect ratio, captions, export) —
   not verified in this draft.

@@ -22,8 +22,7 @@ complete the course.
 
 ## 2. Narrated lesson script
 
-*Narrator: AiRE. Target read time about 7–8 minutes. Any Eva demonstration requires
-owner-approved Eva assets and voice.*
+*Narrator: Eva Vail, AiRE Estate's AI presenter, using owner-approved Eva assets and voice. Target read time about 7–8 minutes.*
 
 Everything up to now was preparation: the route, the look, the voice and the script.
 This is where it becomes a video. We'll make one, start to finish, and then we'll talk
@@ -96,7 +95,7 @@ first, then make one change and re-render once.
 | 7 | Render and review | Four-pass review: identity, lip sync, pronunciation, unintended changes | |
 | 8 | Movement | Walking avatar clip vs. stationary + B-roll cut | Licensed/fictional only |
 | 9 | Diagnosis | Table: symptom → cause → one change | |
-| 10 | Eva demo (optional) | Eva full render, start to finish | **Owner-approved Eva assets and voice required** |
+| 10 | Eva demo | Eva full render, start to finish | **Owner-approved Eva assets and voice required** |
 
 ## 4. Written walkthrough
 

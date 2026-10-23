@@ -7,8 +7,9 @@ Drafts live in `courses/` (outside `docs/`, so unpublished). `courses/README.md`
 file map and launch list; `python3 courses/build.py` validates and rebuilds previews.
 
 Charles's decisions, 2026-10-23:
-- **Eva Vail** is the presenter/demonstrator for these courses (needs his approved Eva
-  assets and voice; never substitute another voice).
+- Presenters: **Eva Vail** presents Your AI Video Spokesperson; **Charles's own AI avatar
+  and voice** present Build Your AI Assistant. His avatar is inside the course videos only
+  (the public site and ads still never name, show or describe him). Never substitute voices.
 - **Order:** finish everything else first (videos, lock tool, certificate wiring);
   **Stripe comes last**.
 - **Price: $97 each, sold separately. No bundles, no sales, no discounts** (Charles, 2026-10-23).
