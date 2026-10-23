@@ -2,7 +2,7 @@
 """Publish the next due AiRE Estate post to the AiRE Estate Facebook page.
 
     post.py --check     show access and what is due, change nothing
-    post.py             publish every post that is due and not yet posted
+    post.py             publish the oldest post that is due and not yet posted
     post.py --only 4    publish post 4 now, whatever its date
 
 Posts live in queue.json; what has gone out is recorded in posted.json.
@@ -98,6 +98,9 @@ def main():
     by = {p["n"]: p for p in q["posts"]}
     today = datetime.now(ZoneInfo(q["tz"])).date().isoformat()
     due = [by[a.only]] if a.only else [p for p in q["posts"] if p["date"] <= today and p["n"] not in sent]
+    # One post per scheduled run, oldest first, so a missed week never floods the page.
+    if not a.only:
+        due = sorted(due, key=lambda p: (p["date"], p["n"]))[:1]
     print(f"Today {today}. Due: {', '.join(str(p['n']) for p in due) or 'nothing'}.")
     try:
         pid, ptok = page_token(q)
