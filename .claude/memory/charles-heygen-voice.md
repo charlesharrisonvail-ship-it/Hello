@@ -7,6 +7,11 @@ description: Which HeyGen voice is really Charles's - the "Charles Harrison" voi
 "Charles Harrison" (b5bd92d295f34bc4aa1496105d476570, Starfish engine), the default voice
 on his "Charles2" avatar. Charles: "that is NOT my voice!! that voice is Australian."
 
+2026-10-24: Charles listened to the stored previews and said **"A is my voice"** — i.e. the
+"Charles Harrison" clone (b5bd92d…) IS his. So the clone is right; the Australian sound came
+from how the sample render synthesized it (engine/settings). Three test clips of the same line
+were made (Starfish, HeyGen Voice, ElevenLabs multilingual v2) for him to pick by ear.
+
 Other saved voice: "CHAiRLES" (bb8c375509e74fe780dcd327101dd027, ElevenLabs).
 Not yet confirmed either.
 
