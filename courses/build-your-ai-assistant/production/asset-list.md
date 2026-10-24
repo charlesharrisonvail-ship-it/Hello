@@ -10,7 +10,7 @@ production documents, not finished videos.
   the course videos only: the public website, sales page and ads never name, show or
   describe him. Never substitute an unrelated voice.
 - Each video opens by saying it's an AI avatar made from his own photo and cloned voice.
-- Look chosen by Charles (2026-10-23): HeyGen "Charles2" → **"Confident man in a suit"** (look id 982636ebbc234c75be129a8b650dabf5), voice "Charles Harrison" (b5bd92d295f34bc4aa1496105d476570).
+- Look chosen by Charles (2026-10-23): HeyGen "Charles2" → **"Confident man in a suit"** (look id 982636ebbc234c75be129a8b650dabf5), voice **NOT CONFIRMED** — the "Charles Harrison" voice (b5bd92d…) used in the M1 sample sounded Australian and was rejected by Charles (2026-10-23). Confirm a voice by ear before any further render.
 - Target runtime: 45–65 minutes total. Script read-time targets: M1 ~6, M2 ~6–7, M3 ~7,
   M4 ~7–8, M5 ~7, M6 ~7–8, M7 ~6, Capstone ~3 minutes. Actual runtimes must be measured
   from finished media before any runtime appears on a page.
