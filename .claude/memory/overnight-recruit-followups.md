@@ -12,7 +12,7 @@ description: The weekday 4:40 AM scheduled task that drafts recruit follow-ups w
   New-lead finding (Apollo) stays off until Charles sets a nightly credit cap.
 - Composio is not needed for it: the cloud task uses the Lofty and Gmail
   connectors directly. The Ubuntu Composio CLI only runs while his PC is on.
-- **Gap at creation:** it was created with no connectors and no repo attached
-  (the creating session could not pass them). Charles must add the Lofty MCP and
-  Gmail connectors and the Hello repo to it in the claude.ai scheduled-tasks
-  page, or each run will just report the missing tools.
+- It clones the Hello repo itself (like the Facebook tasks), so no repo needs
+  attaching. **Gap at creation:** no connectors (the creating session could not
+  pass them). Charles must add the Lofty MCP and Gmail connectors to it on the
+  claude.ai scheduled-tasks page, or each run only reports the missing tools.
