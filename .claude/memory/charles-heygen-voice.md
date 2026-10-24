@@ -1,6 +1,6 @@
 ---
 name: charles-heygen-voice
-description: Which HeyGen voice is really Charles's - the "Charles Harrison" voice sounded Australian and was rejected (2026-10-23); never render his avatar again until he confirms a voice by ear
+description: Charles's real HeyGen voice is the "Charles Harrison" clone on the Starfish engine only (other engines and script-to-video renders sound Australian); make Starfish audio first, then lip-sync the avatar to it
 ---
 
 2026-10-23: the Module 1 sample of Build Your AI Assistant used HeyGen voice
@@ -11,6 +11,12 @@ on his "Charles2" avatar. Charles: "that is NOT my voice!! that voice is Austral
 "Charles Harrison" clone (b5bd92d…) IS his. So the clone is right; the Australian sound came
 from how the sample render synthesized it (engine/settings). Three test clips of the same line
 were made (Starfish, HeyGen Voice, ElevenLabs multilingual v2) for him to pick by ear.
+
+2026-10-24: Charles picked **Test 1 = Starfish** ("test 1 starfish is me... all the others
+are Australian"). HeyGen Voice and ElevenLabs renders of the same clone sound Australian, and
+so did the Avatar IV video render from script. **Method:** synthesize the narration with
+`create_speech` engine "starfish", then make the avatar video from that audio (`audioUrl`),
+never from `script` + voiceId.
 
 Other saved voice: "CHAiRLES" (bb8c375509e74fe780dcd327101dd027, ElevenLabs).
 Not yet confirmed either.
