@@ -2,7 +2,7 @@
 """Build the HyperFrames project for Module 1: narration avatar on the right, on-screen
 beats on the left, each beat timed to its narration paragraph (word-proportional).
 
-    python3 build_m1.py <avatar.mp4> <script.txt> <out_dir>
+    python3 build_m1.py <avatar.mp4> <script.txt> <out_dir> [starts.json]
 """
 import json, re, shutil, subprocess, sys
 from pathlib import Path
@@ -16,8 +16,11 @@ dur = float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", 
 words = [len(p.split()) for p in paras]
 total = sum(words)
 starts, t = [], 0.0
-for w in words:
-    starts.append(round(t, 2)); t += dur * w / total
+if len(sys.argv) > 4:  # exact paragraph start times (JSON list), e.g. from the narration's chunk timings
+    starts = json.load(open(sys.argv[4]))
+else:
+    for w in words:
+        starts.append(round(t, 2)); t += dur * w / total
 lens = [round((starts[i + 1] if i + 1 < len(starts) else dur) - starts[i], 2) for i in range(len(starts))]
 
 if out.exists(): shutil.rmtree(out)
