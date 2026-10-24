@@ -11,8 +11,11 @@ description: Where Composio is installed and why it cannot run in cloud sessions
   Claude Code inside Ubuntu.
 - **Claude Code on that PC runs in Windows PowerShell** (`C:\Users\charl\Hello`,
   binary in `%USERPROFILE%\.local\bin`). Windows-side Claude Code cannot see the
-  Ubuntu Composio CLI; run `claude` from Ubuntu to use it, or use the claude.ai
-  Composio connector.
+  Ubuntu Composio CLI. **Claude Code is also installed inside Ubuntu** (2.1.310,
+  signed in to Claude Pro, `composio setup --target auto --yes` run), so start
+  `claude` from Ubuntu (`cd /mnt/c/Users/charl/Hello`) to use Composio. In WSL
+  the sign-in browser does not open; copy the URL into Windows and paste the
+  code back.
 - **Cloud sessions cannot install the CLI**: the installer downloads from
   ComposioHQ's GitHub releases, which the container's GitHub scoping blocks (403).
   The claude.ai Composio connector is the cloud route; on 2026-10-24 it failed to
