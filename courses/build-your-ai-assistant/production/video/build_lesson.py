@@ -1,15 +1,22 @@
 #!/usr/bin/env python3
-"""Build the HyperFrames project for Module 1: narration avatar on the right, on-screen
-beats on the left, each beat timed to its narration paragraph (word-proportional).
+"""Build the HyperFrames project for one lesson: narration avatar on the right, on-screen
+beats on the left, each beat timed to its narration paragraph.
 
-    python3 build_m1.py <avatar.mp4> <script.txt> <out_dir> [starts.json]
+    python3 build_lesson.py <beats_module> <module_label> <avatar.mp4> <script.txt> <out_dir> [starts.json]
+    e.g. python3 build_lesson.py beats_m2 "MODULE 2" avatar.mp4 m2-script.txt out/m2 m2-starts.json
+
+Paragraph start times come from starts.json (exact, from the narration timings) or,
+without it, are spread across the narration in proportion to word count.
 """
 import json, re, shutil, subprocess, sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
-from beats_m1 import BEATS
+import importlib
 
-avatar, script, out = Path(sys.argv[1]), Path(sys.argv[2]), Path(sys.argv[3])
+BEATS = importlib.import_module(sys.argv[1]).BEATS
+label = sys.argv[2]
+avatar, script, out = Path(sys.argv[3]), Path(sys.argv[4]), Path(sys.argv[5])
+sys.argv = sys.argv[2:]  # keep the optional starts.json at sys.argv[4]
 paras = [p for p in script.read_text().split("\n\n") if p.strip()]
 assert len(paras) == len(BEATS), (len(paras), len(BEATS))
 dur = float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(avatar)]).decode())
@@ -123,7 +130,7 @@ index = f"""<!doctype html>
   <video id="avatar" class="clip" src="assets/avatar.mp4" data-start="0" data-duration="{round(dur,2)}" data-track-index="1" data-has-audio="true" playsinline></video>
   <div id="fade"></div>
   <div id="label">Made with AI</div>
-  <div id="brand">AiRE ESTATE ACADEMY &middot; BUILD YOUR AI ASSISTANT</div>
+  <div id="brand">AiRE ESTATE ACADEMY &middot; BUILD YOUR AI ASSISTANT &middot; {label}</div>
   {chr(10).join(hosts)}
 </div>
 <script>window.__timelines = window.__timelines || {{}}; window.__timelines["main"] = gsap.timeline({{ paused: true }});</script>

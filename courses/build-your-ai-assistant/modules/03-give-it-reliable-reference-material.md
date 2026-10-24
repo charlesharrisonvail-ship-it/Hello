@@ -18,6 +18,8 @@ facts, with a register that marks what's stale or missing.
 
 *Narrator: Charles's AI avatar, using his own approved avatar and voice. Inside the course only; never on the public site. Target read time about 7 minutes.*
 
+Hi, it's Charles again, still as an AI avatar made from my own photo and my own cloned voice.
+
 An assistant is only as reliable as what you hand it. Give it a messy folder with three
 versions of the same fact sheet, an HOA statement from last year and a seller's wishful
 email, and it will do its best. Its best will include the wrong number.

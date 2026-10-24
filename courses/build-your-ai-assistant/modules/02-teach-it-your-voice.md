@@ -19,6 +19,8 @@ sound like you, and explain why voice never overrides factual accuracy.
 
 *Narrator: Charles's AI avatar, using his own approved avatar and voice. Inside the course only; never on the public site. Target read time about 6–7 minutes.*
 
+Hi, it's Charles again. Same as before: this is an AI avatar of me, made from my own photo and my own cloned voice.
+
 Here's a test you can run right now. Ask any AI to write a seller update, and read the
 first line. I'll bet it says something like, "I hope this message finds you well!" and
 the second line says, "I wanted to take a moment to provide you with an update." Your
