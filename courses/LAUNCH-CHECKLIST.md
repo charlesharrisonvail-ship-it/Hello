@@ -37,6 +37,10 @@ Who does each step: **C** = Charles, **Claude** = done in a Claude session.
 - [ ] **Claude** — Produce Modules 1–7 and the Capstone (~45–65 min total)
 - [ ] **C** — Licensed music for the examples, or "no music"
 - [ ] **C** — Watch and approve each module
+- [x] Bonus: *100 Visual Prompts* PDF added to this course's downloads (Charles, 2026-10-25)
+- [ ] **C** — Corrected PDF: page 1 "your supplied" and page 3 "user-supplied … catalog" wording removed
+      (optional: "Academy" in the logo, "Made with AI" on the cover's AI image)
+- [ ] **C** — Decide whether the sales page mentions the bonus (it doesn't yet)
 
 ## 3. Course pages and lessons (after the videos are approved)
 

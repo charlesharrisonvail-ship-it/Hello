@@ -44,6 +44,7 @@ courses/
     quiz.json                      49 questions
     resources/                     spokesperson-brief.md, likeness-and-voice-rights-checklist.md,
                                    visual-style-sheet.md, pronunciation-sheet.md,
+                                   bonus-100-visual-prompts.pdf (bonus; wording fixes pending),
                                    short-script-templates.md (3 worked fictional examples),
                                    shot-and-edit-plan.csv, pre-render-checklist.md,
                                    captions-and-audio-checklist.md, video-content-calendar.csv
