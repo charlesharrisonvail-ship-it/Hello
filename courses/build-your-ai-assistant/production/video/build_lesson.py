@@ -3,16 +3,26 @@
 beats on the left, each beat timed to its narration paragraph.
 
     python3 build_lesson.py <beats_module> <module_label> <avatar.mp4> <script.txt> <out_dir> [starts.json]
-    e.g. python3 build_lesson.py beats_m2 "MODULE 2" avatar.mp4 m2-script.txt out/m2 m2-starts.json
+                            [--visuals M2 --images <dir with 201.png, 202.png ...>]
+    e.g. python3 build_lesson.py beats_m2 "MODULE 2" avatar.mp4 m2-script.txt out/m2 m2-starts.json --visuals M2 --images imgs
 
 Paragraph start times come from starts.json (exact, from the narration timings) or,
 without it, are spread across the narration in proportion to word count.
+With --visuals, each beat gets its image from images.py: a photo backdrop with a slow
+push-in, or a hand-drawn sketch card (which replaces the beat's text) that draws in.
 """
 import json, re, shutil, subprocess, sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 import importlib
 
+VIS, IMGS = {}, None
+if "--visuals" in sys.argv:
+    k = sys.argv.index("--visuals"); key = sys.argv[k + 1]; del sys.argv[k:k + 2]
+    k = sys.argv.index("--images"); IMGS = Path(sys.argv[k + 1]); del sys.argv[k:k + 2]
+    images = importlib.import_module("images")
+    VIS = {b: (kind, images.CAPTIONS.get((key, b), "")) for b, (kind, _) in getattr(images, key).items()}
+    mnum = int(key[1:])
 BEATS = importlib.import_module(sys.argv[1]).BEATS
 label = sys.argv[2]
 avatar, script, out = Path(sys.argv[3]), Path(sys.argv[4]), Path(sys.argv[5])
@@ -37,6 +47,12 @@ shutil.copy(Path(__file__).parent / "gsap.min.js", out / "assets" / "gsap.min.js
 fonts = Path(__file__).resolve().parents[4] / "marketing/remotion/aire-vs-bootcamps/public"
 shutil.copy(fonts / "archivo.woff2", out / "assets/fonts/archivo.woff2")
 shutil.copy(fonts / "manrope.woff2", out / "assets/fonts/manrope.woff2")
+if VIS:  # photos to 1600px JPEG, sketches to 2048px, so renders stay quick
+    (out / "assets" / "v").mkdir()
+    for b, (kind, _) in VIS.items():
+        src = IMGS / f"{mnum * 100 + b}.png"
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(src), "-vf", f"scale={2048 if kind == 'sketch' else 1600}:-1",
+                        "-q:v", "2", str(out / "assets" / "v" / f"{b:02d}.jpg")], check=True)
 
 CSS = """
 @font-face{font-family:'ArchivoX';src:url('assets/fonts/archivo.woff2');font-weight:100 900}
@@ -83,22 +99,52 @@ CSS = """
 #root .quote.ok{border-left-color:#34d399}
 #root .quote.no{border-left-color:#f87171;color:#fecaca}
 #root .hl{color:#fbbf24;text-decoration:underline;text-decoration-thickness:4px}
+#root h1,#root h2,#root .lede,#root .steps,#root .checks,#root .miss{text-shadow:0 2px 18px rgba(0,0,0,.65)}
+#root .card,#root .quote,#root .pill,#root .msg.a,#root .grid span{background:rgba(9,14,26,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 18px 50px rgba(0,0,0,.35)}
+#root .kline{position:absolute;left:96px;top:58px;width:120px;height:3px;background:linear-gradient(90deg,#fbbf24,#38bdf8);transform-origin:left center}
+#root .chat{padding:26px 28px 30px;border-radius:26px;background:rgba(9,14,26,.7);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.14);box-shadow:0 24px 70px rgba(0,0,0,.45)}
+#root .chat::before{content:'';display:block;height:14px;width:62px;margin-bottom:6px;background:radial-gradient(circle at 7px 7px,#f87171 6px,transparent 7px),radial-gradient(circle at 31px 7px,#fbbf24 6px,transparent 7px),radial-gradient(circle at 55px 7px,#34d399 6px,transparent 7px)}
+#root .phone{align-self:center;width:520px;padding:64px 26px 40px;border-radius:56px;background:rgba(9,14,26,.78);backdrop-filter:blur(14px);border:3px solid rgba(255,255,255,.22);box-shadow:0 30px 80px rgba(0,0,0,.5);position:relative}
+#root .phone::before{content:'';position:absolute;top:22px;left:50%;width:110px;height:22px;margin-left:-55px;border-radius:12px;background:#000}
+#root .phone .bub{font-size:28px;line-height:1.42;padding:20px 22px;border-radius:24px 24px 24px 8px;background:#1d2a40;color:#fff}
+#root .phone .from{font-size:24px;font-weight:700;color:#7dd3fc;margin:0 0 12px 6px}
+#root .sheet{position:absolute;left:-30px;top:40px;width:1150px;height:647px;border-radius:26px;overflow:hidden;background:#fff;box-shadow:0 30px 90px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.4)}
+#root .sheet img{width:100%;height:100%;object-fit:cover;display:block}
+#root .cap{position:absolute;left:0;top:722px;width:1120px;font-family:'ArchivoX';font-weight:800;font-size:44px;line-height:1.15;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.6)}
 """
 
 hosts = []
 for i, ((kick, body), st, ln) in enumerate(zip(BEATS, starts, lens), 1):
     cid = f"b{i:02d}"
+    kind, cap = VIS.get(i, ("", ""))
+    if kind == "sketch":  # the drawing explains the beat; a one-line caption carries the point
+        body = f'<div class="sheet r" data-at="0.02"><img src="assets/v/{i:02d}.jpg"></div>' + (f'<div class="cap r" data-at="0.3">{cap}</div>' if cap else "")
     ids = []
     def tag(m):
-        ids.append(len(ids))
-        return f'{m.group(1)} id="{cid}-r{len(ids)}" '
-    body2 = re.sub(r'(<[a-z0-9]+)(?= class="[^"]*\br\b)', tag, body)
+        ids.append((m.group(1)[1:], m.group(2).split()))
+        return f'{m.group(1)} id="{cid}-r{len(ids)}" class="{m.group(2)}"'
+    body2 = re.sub(r'(<[a-z0-9]+) class="([^"]*\br\b[^"]*)"', tag, body)
     ats = [float(a) for a in re.findall(r'data-at="([0-9.]+)"', body2)]
-    tw = "\n".join(f'tl.fromTo("#{cid}-r{k+1}",{{opacity:0,y:24}},{{opacity:1,y:0,duration:0.45,ease:"power2.out"}},{round(a*ln,2)});' for k, a in enumerate(ats))
+
+    def enter(k, el, cls, at):
+        sel, t = f'"#{cid}-r{k}"', round(at * ln, 2)
+        if "sheet" in cls:  # the drawing appears as if sketched left to right, then breathes slowly
+            return (f'tl.fromTo({sel},{{opacity:0,y:30,clipPath:"inset(0% 100% 0% 0%)"}},{{opacity:1,y:0,clipPath:"inset(0% 0% 0% 0%)",duration:1.4,ease:"power2.inOut"}},{t});'
+                    f'tl.fromTo("#{cid}-r{k} img",{{scale:1.0}},{{scale:1.045,duration:{max(1, ln - t)},ease:"none"}},{t});')
+        if "tag" in cls:  # lands like a rubber stamp
+            return f'tl.fromTo({sel},{{opacity:0,scale:1.7,rotation:-9}},{{opacity:1,scale:1,rotation:-3,duration:0.42,ease:"back.out(2.2)"}},{t});'
+        if el in ("h1", "h2"):  # headline wipes up from a mask
+            return f'tl.fromTo({sel},{{opacity:0,y:50,clipPath:"inset(0% 0% 100% 0%)"}},{{opacity:1,y:0,clipPath:"inset(0% 0% -20% 0%)",duration:0.8,ease:"power3.out"}},{t});'
+        if el == "li" or "pill" in cls:
+            return f'tl.fromTo({sel},{{opacity:0,x:-40}},{{opacity:1,x:0,duration:0.5,ease:"power3.out"}},{t});'
+        return f'tl.fromTo({sel},{{opacity:0,y:34,filter:"blur(8px)"}},{{opacity:1,y:0,filter:"blur(0px)",duration:0.65,ease:"power3.out"}},{t});'
+    tw = "\n".join(enter(k + 1, el, cls, a) for k, ((el, cls), a) in enumerate(zip(ids, ats)))
+    tw = f'tl.fromTo("#{cid}-kl",{{scaleX:0}},{{scaleX:1,duration:0.6,ease:"power3.out"}},0);tl.fromTo("#{cid}-kk",{{opacity:0,x:-20}},{{opacity:1,x:0,duration:0.5}},0.1);\n' + tw
     html = f"""<template>
 <style>{CSS}</style>
 <div id="root" data-composition-id="{cid}" data-width="1920" data-height="1080">
-  <div class="kick">{kick}</div>
+  <div class="kline" id="{cid}-kl"></div>
+  <div class="kick" id="{cid}-kk">{kick}</div>
   <div class="stage">{body2}</div>
 </div>
 <script>
@@ -112,6 +158,21 @@ window.__timelines["{cid}"] = tl;
     (out / "compositions" / f"{cid}.html").write_text(html)
     hosts.append(f'<div id="{cid}" data-composition-id="{cid}" data-composition-src="compositions/{cid}.html" data-start="{st}" data-duration="{ln}" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:3"></div>')
 
+# Backdrop per beat, stacked in order: each fades in over the one before it, then pushes in slowly.
+bds, mtw = [], [f'm.fromTo("#prog",{{scaleX:0}},{{scaleX:1,duration:{round(dur, 2)},ease:"none"}},0);']
+for i, (st, ln) in enumerate(zip(starts, lens), 1):
+    kind = VIS.get(i, ("", ""))[0]
+    t0 = max(0, round(st - 0.5, 2))
+    if kind == "photo":
+        bds.append(f'<div class="bd" id="bd{i}"><img src="assets/v/{i:02d}.jpg"><div class="shade"></div></div>')
+        dx = 40 if i % 2 else -40
+        mtw.append(f'm.fromTo("#bd{i} img",{{scale:1.06,x:{-dx}}},{{scale:1.2,x:{dx},duration:{round(ln + 1.5, 2)},ease:"none"}},{t0});')
+    else:
+        bds.append(f'<div class="bd deep" id="bd{i}"></div>')
+    mtw.append(f'm.fromTo("#bd{i}",{{opacity:0}},{{opacity:1,duration:{0.01 if i == 1 else 0.9},ease:"power1.inOut"}},{t0});')
+    if i + 1 < len(starts):  # hide once the next two have covered it, to keep the page light
+        mtw.append(f'm.set("#bd{i}",{{display:"none"}},{round(starts[i + 1] + 1, 2)});')
+
 index = f"""<!doctype html>
 <html>
 <head><meta charset="utf-8">
@@ -120,20 +181,29 @@ index = f"""<!doctype html>
 @font-face{{font-family:'ManropeX';src:url('assets/fonts/manrope.woff2');font-weight:200 800}}
 #bg{{position:absolute;inset:0;background:radial-gradient(1200px 800px at 20% 10%,#0c2236 0%,#04070d 60%)}}
 #avatar{{position:absolute;left:1313px;top:0;width:607px;height:1080px;object-fit:cover;z-index:2}}
-#fade{{position:absolute;left:1213px;top:0;width:140px;height:1080px;background:linear-gradient(90deg,#04070d,rgba(4,7,13,0));z-index:2}}
+#fade{{position:absolute;left:1243px;top:0;width:140px;height:1080px;background:linear-gradient(90deg,rgba(4,7,13,0),rgba(4,7,13,.7) 50%,rgba(4,7,13,0));z-index:2}}
 #label{{position:absolute;right:28px;top:28px;z-index:4;font:700 28px 'ManropeX';letter-spacing:.04em;color:#e0f2fe;background:rgba(4,7,13,.6);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:8px 14px}}
-#brand{{position:absolute;left:96px;bottom:44px;z-index:4;font:700 28px 'ManropeX';letter-spacing:.08em;color:#64748b}}
+#brand{{position:absolute;left:96px;bottom:44px;z-index:4;font:700 28px 'ManropeX';letter-spacing:.08em;color:#94a3b8;text-shadow:0 2px 10px rgba(0,0,0,.7)}}
+.bd{{position:absolute;left:0;top:0;width:1360px;height:1080px;overflow:hidden;z-index:1}}
+.bd img{{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}}
+.bd .shade{{position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,6,12,.9) 0%,rgba(3,6,12,.66) 48%,rgba(3,6,12,.3) 100%),linear-gradient(180deg,rgba(3,6,12,.55) 0%,rgba(3,6,12,0) 22%,rgba(3,6,12,0) 70%,rgba(3,6,12,.8) 100%)}}
+.bd.deep{{background:radial-gradient(900px 600px at 30% 35%,#123049 0%,#060b14 62%,#03060c 100%)}}
+#prog{{position:absolute;left:0;bottom:0;width:1313px;height:5px;z-index:4;background:linear-gradient(90deg,#38bdf8,#fbbf24);transform-origin:left center}}
 </style></head>
 <body>
 <div id="root" data-composition-id="main" data-start="0" data-duration="{round(dur,2)}" data-width="1920" data-height="1080">
   <div id="bg"></div>
+  {chr(10).join(bds)}
+  <div id="prog"></div>
   <video id="avatar" class="clip" src="assets/avatar.mp4" data-start="0" data-duration="{round(dur,2)}" data-track-index="1" data-has-audio="true" playsinline></video>
   <div id="fade"></div>
   <div id="label">Made with AI</div>
   <div id="brand">AiRE ESTATE ACADEMY &middot; BUILD YOUR AI ASSISTANT &middot; {label}</div>
   {chr(10).join(hosts)}
 </div>
-<script>window.__timelines = window.__timelines || {{}}; window.__timelines["main"] = gsap.timeline({{ paused: true }});</script>
+<script>window.__timelines = window.__timelines || {{}}; const m = gsap.timeline({{ paused: true }});
+{chr(10).join(mtw)}
+window.__timelines["main"] = m;</script>
 </body></html>
 """
 (out / "index.html").write_text(index)

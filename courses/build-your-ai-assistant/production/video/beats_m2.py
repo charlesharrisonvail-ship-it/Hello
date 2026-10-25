@@ -28,7 +28,7 @@ BEATS = [
  ("Same update, twice", """<div class="card wide r" data-at="0.15"><b>77 Copper Bend Road &middot; fictional</b><span>Seller Margaret &middot; week three felt quiet &middot; her sister says switch agents</span></div>"""),
  ("Generic", """<div class="quote no r" data-at="0.1">&ldquo;I hope this message finds you well&hellip; a productive week&hellip; rest assured we are doing everything we can.&rdquo;</div>
   <h2 class="r" data-at="0.65">Nice words. <em>No information.</em></h2>"""),
- ("Profiled", """<div class="quote ok r" data-at="0.08">Hi Margaret, three showings this week. Online views were 410, down from 655. Two agents gave feedback: buyers liked the updates; some mentioned road noise. One may write something &mdash; no written offer yet.</div>
+ ("Profiled", """<div class="phone r" data-at="0.06"><div class="from">Your agent &middot; Friday</div><div class="bub">Hi Margaret, three showings this week. Online views were 410, down from 655. Two agents gave feedback: buyers liked the updates; some mentioned road noise. One may write something &mdash; no written offer yet.</div></div>
   <p class="lede r" data-at="0.7">Calm because it's specific. Then: next steps and an offer to talk.</p>"""),
  ("Your exercise", """<ol class="steps sm"><li class="r" data-at="0.1">Fill in the Voice Profile</li><li class="r" data-at="0.25">Add three sanitized samples</li><li class="r" data-at="0.4">Ask Claude for a voice guide (prompt in the lesson)</li><li class="r" data-at="0.55">Edit it &mdash; you're the authority</li><li class="r" data-at="0.7">Before-and-after test on Property B</li></ol>"""),
  ("Next", """<h2 class="r" data-at="0.1">Module 3 &middot; <em>Reliable Reference Material</em></h2>
