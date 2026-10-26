@@ -1,1 +1,5 @@
 checkpoints/
+
+# Chief of Staff contact files hold personal details; only the template is tracked
+.claude/chief-of-staff/contacts/*
+!.claude/chief-of-staff/contacts/example-contact.md
