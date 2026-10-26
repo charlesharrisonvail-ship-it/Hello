@@ -24,3 +24,10 @@ Not yet confirmed either.
 Rule: before any render with Charles's avatar, play him a short preview of the exact
 voice and engine and get a yes. A voice's name, or being an avatar's default, is not proof
 it's his. If neither voice is right, he records a fresh voice sample (his own) in HeyGen.
+
+2026-10-26: the ORIGINAL course videos (Listing Media Without the Invoice; the welcome,
+Module 1, is his suit avatar) use a voice that is NOT his and not the Starfish one. I re-cut
+that welcome over its old narration and sent it; Charles: "That is not my voice, nor the same
+one we used in the last modules!!! wtf". Rule: never reuse an existing narration track
+of his avatar unless he has confirmed it by ear. Re-voice old videos with Starfish first,
+sample to him, then lip-sync.
