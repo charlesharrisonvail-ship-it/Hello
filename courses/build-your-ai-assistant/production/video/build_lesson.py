@@ -140,8 +140,11 @@ if FULL:
 #root .cap{left:155px;top:704px;width:1410px;text-align:center}
 """
 
+SRC = [i for i, (_, body) in enumerate(BEATS, 1) if body == "@source"]  # beats that show the original footage
 hosts = []
 for i, ((kick, body), st, ln) in enumerate(zip(BEATS, starts, lens), 1):
+    if i in SRC:
+        continue
     cid = f"b{i:02d}"
     kind, cap = VIS.get(i, ("", ""))
     if kind == "sketch":  # the drawing explains the beat; a one-line caption carries the point
@@ -190,6 +193,13 @@ bds, mtw = [], [f'm.fromTo("#prog",{{scaleX:0}},{{scaleX:1,duration:{round(dur, 
 for i, (st, ln) in enumerate(zip(starts, lens), 1):
     kind = VIS.get(i, ("", ""))[0]
     t0 = max(0, round(st - 0.5, 2))
+    if i in SRC:  # original footage full-screen; the overlay labels step aside (the footage has its own captions)
+        end = round(st + ln, 2)
+        mtw.append(f'm.set("#avatar",{{left:0,top:0,width:1920,height:1080,opacity:1,zIndex:6}},{st});m.set("#avatar",{{left:1313,top:0,width:{2 if FULL else 607},height:{2 if FULL else 1080},opacity:{0 if FULL else 1},zIndex:2}},{end});')
+        mtw.append(f'm.set("#label,#brand,#narr",{{opacity:0}},{st});m.set("#label,#brand,#narr",{{opacity:1}},{end});')
+        bds.append(f'<div class="bd deep" id="bd{i}" style="opacity:0"></div>')
+        mtw.append(f'm.set("#bd{i}",{{opacity:1}},{st});')
+        continue
     if kind == "photo":
         bds.append(f'<div class="bd" id="bd{i}"><img src="assets/v/{i:02d}.jpg"><div class="shade"></div></div>')
         dx = 40 if i % 2 else -40
@@ -209,6 +219,8 @@ if CAPS:  # short phrases, broken at pauses and punctuation, shown as the words 
         nxt = cw[k + 1] if k + 1 < len(cw) else None
         if len(cur) >= 7 or x["text"][-1:] in ".?!:" or (nxt and nxt["start"] - x["end"] > 0.5) or not nxt:
             groups.append(cur); cur = []
+    srcr = [(starts[i - 1], starts[i - 1] + lens[i - 1]) for i in SRC]
+    groups = [g for g in groups if not any(a - 0.2 <= g[0]["start"] < b for a, b in srcr)]
     for k, g in enumerate(groups):
         txt = " ".join(x["text"] for x in g).replace("&", "&amp;").replace("<", "&lt;")
         end = groups[k + 1][0]["start"] if k + 1 < len(groups) and groups[k + 1][0]["start"] - g[-1]["end"] < 1.2 else g[-1]["end"] + 0.4
@@ -232,7 +244,7 @@ index = f"""<!doctype html>
 .bd.deep{{background:radial-gradient(900px 600px at 30% 35%,#123049 0%,#060b14 62%,#03060c 100%)}}
 .cc{{position:absolute;left:50%;bottom:98px;transform:translateX(-50%);z-index:5;opacity:0;max-width:1500px;text-align:center;font:700 34px 'ManropeX';color:#fff;background:rgba(3,6,12,.72);padding:8px 20px;border-radius:12px;white-space:nowrap}}
 #narr{{position:absolute;right:28px;bottom:36px;z-index:4;font:700 24px 'ManropeX';color:#e0f2fe;background:rgba(4,7,13,.6);border:1px solid rgba(56,189,248,.45);border-radius:999px;padding:8px 16px}}
-{".bd{width:1920px !important} #prog{width:1920px !important} #avatar{width:2px !important;height:2px !important;opacity:0}" if FULL else ""}
+{".bd{width:1920px !important} #prog{width:1920px !important} #avatar{width:2px;height:2px;opacity:0}" if FULL else ""}
 #prog{{position:absolute;left:0;bottom:0;width:1313px;height:5px;z-index:4;background:linear-gradient(90deg,#38bdf8,#fbbf24);transform-origin:left center}}
 </style></head>
 <body>

@@ -1,0 +1,35 @@
+Let's make a drone shot. Here's what that normally costs you. Aerial stills from a licensed operator run about 150 to 350. Add a video flyover and you're realistically at 250 to 550 and a premium aerial package goes higher. I want to be precise about that because you'll hear people quote 500 for a drone shoot and that's the top of the range, not the middle. In a lot of markets it's closer to 200
+
+but it isn't only the money. You schedule around their calendar and around the weather. You wait for the footage and if the light was wrong that morning you do it again.
+
+What we're about to do costs a few dollars of credits at most. Takes 90 seconds and you can redo it tonight. We're going to skip all of that. One photograph, about 90 seconds.
+
+Pick the right photo. This matters more than anything else in the module so listen close. You want an exterior shot taken from a slight angle rather than straight on so the house has some depth to it. Good light, sharp focus, no motion blur. A flat dead-on badly lit photo will give you a flat dead-on badly lit video. The tool amplifies what you give it. It does not rescue it.
+
+Draw the flight path. This next part comes straight from a live IRE class. Watch how it's done then do it yourself. On Windows Paint works fine. On a Mac Preview's mock-up tool does the same job. Here
+
+I just took the downloaded picture in my general program like you have a basic program like Paint or something it's called and you just draw a line how you want the drone to go and the arrows that I put there's already arrows already in there so you don't have to individually make the arrows like they have little arrows you can just drop in boom boom boom boom boom and the arrows are and you can use different colors. There's no reason I use these particular colors other than to just it's the ones I use but the red of course is the the flight path of the drone and the white lines are going to be where the drone's looking and how you want it to pan and again this is very rudimentary it's very elementary that it's basic but it's to show you how how it works.
+
+Write the prompt. Now you have two pictures the original and your marked up copy. Upload both to your chat app ChatGPT or the Claude app and ask it to write the prompt. Tell it you'll run it in Higgsfield with the Sedence 2.0 model. I went
+
+into ChatGPT and I said to the top sorry I said help me write an expert cinematic drone prompt for this Paris picture which I had loaded right there and I said follow the red line for the flight path and the white arrows or for the camera to pan and you can add anything in there you can be like I want it to be a bird in flight or simulate you know I don't know simulate whatever a stork and and again you can you can put I want it to be like Disney Pixar style or I want it to be I wanted this to look more realistic so I just said expert cinematic drone and and it'll and each one will take this prompt and and read them differently it's it's kind of funny. Make the
+
+video. Now paste that prompt where the work happens. The Claude code terminal window. Ask Claude code to use Higgsfield with Sedence 2.0 on your photo and paste the prompt after it. Claude code sends it to Higgsfield and the flight comes back to your IRE folder. The result here's what came back
+
+from that one photograph. That's kind of cool. So yeah I can see how the prompting is. You can play with it and yeah and you can take the sound out but I mean it just it understood a lot more and you can see how more cinematic it was. It's just I was like wow that's pretty good and it didn't use hardly any credits so in my in my opinion just from the general prompt that I gave and understanding and the one connector that I used throughout except for in Google flow I think ChatGPT is the winner in my opinion and then Google flow.
+
+So here's the takeaway. In that class ChatGPT wrote the strongest drone prompt. Google flow came second and it has a free daily allowance. Claude came last on this one. Whichever one writes it the video gets made in Claude code through Higgsfield and sedence 2.0. Then ask Claude code to reframe it to 9x16 for reels and TikTok. Same clip one more sentence.
+
+One note on that example. The Paris photo was itself AI generated for practice and no real view of Paris looks quite like it. That's fine for a lesson. On a listing it isn't and that's the next part.
+
+Now the honest part. I need you to hear this one clearly because it is the difference between a great marketing tool and a complaint to your commission. These models invent detail. They will occasionally add a window that isn't there or smooth out a roof line or invent a view past the tree line. That is fine on a lifestyle post. It is not fine in a property advertisement so watch the finished clip before you post it every single time. If the tool added something the house does not actually have throw the clip out and generate another one.
+
+You are licensed. Advertising a property with features it doesn't have is misrepresentation and it doesn't matter that a computer made it up. And remember what this is. An illustration made from one photo not a survey. Never use it to show lot lines views or the neighbors. Keep it out of the MLS photos unless your MLS allows AI media and get your sellers okay before you post it.
+
+Now the part that changed this year. Being accurate is not enough anymore. You also have to say that it's AI. California passed a law that took effect this January. If you publish a digitally altered listing image there you have to say so and online you have to show the original photo too. Routine lighting and color fixes don't count. Other states are looking at the same thing and by the time you watch this yours may be one of them. If you're a real tour the code of ethics already requires you to present a true picture and many MLSs have their own rules on altered images.
+
+So here's the rule I want you to follow everywhere. Whatever your state says today label it every time. Put the words on the clip itself in the caption and in the MLS remarks. AI generated from listing photography. Four words. It takes 10 seconds and it removes the entire problem.
+
+And check two things before your first listing goes out. Your own state's disclosure law and your own MLS's rule on altered images. They are not the same rule and you have to satisfy both. If you're not sure what yours require ask a local attorney. It's a short conversation and it's a lot cheaper than a complaint.
+
+I'm not trying to scare you off this. Agents who use it well use it on every listing. I'm telling you because the agents who get hurt by this in the next two years will be the ones who didn't know there was anything to disclose. Do it right and this is the cheapest fastest listing asset you will ever produce. Next module we do the whole house.

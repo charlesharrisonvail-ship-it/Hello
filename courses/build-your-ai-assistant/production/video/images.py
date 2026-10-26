@@ -16,7 +16,7 @@ Constraints: One image explains only one core structure. Main subject around 40-
 """
 
 # Listing Media Without the Invoice (original AiRE course). Image files numbered from BASE.
-BASE = {"LM1": 1100, "LM2": 1200, "LM3": 1300}
+BASE = {"LM1": 1100, "LM2": 1200, "LM3": 1300, "LM4": 1400}
 LM1 = {
  1: ("photo", "A wide mountain valley with a small ski town at golden hour, aspens turning gold, a winding river, peaks with first snow."),
  2: ("photo", "A mountain resort town main street at dusk in autumn, warm shop windows, pines and peaks behind, no signs readable."),
@@ -31,6 +31,24 @@ LM1 = {
  11: ("photo", "A row of thick law books on a dark wooden shelf with a brass desk lamp, spines blurred and unreadable, warm library light."),
  12: ("sketch", "Core idea: from here an AI instructor takes over teaching. Composition: Xiaohei hands a microphone to a box-shaped assistant with dot eyes that has small signal lines around it. Labels: \"AiRE\" (blue, on the assistant), \"AI instructor\" (blue), \"your turn\" (orange)."),
  13: ("photo", "A new timber-frame house foundation and ground floor deck under construction on a mountain lot at sunrise, clean and orderly."),
+}
+
+LM4 = {  # beats 6, 8 and 10 keep the original footage (no image)
+ 1: ("photo", "A professional camera drone hovering over a mountain home at golden hour, pine forest, peaks behind, cinematic."),
+ 2: ("sketch", "Core idea: hiring a drone operator costs more than money. Composition: Xiaohei stands in the rain under a small cloud, holding an umbrella and a wall calendar, waiting; a tiny drone sits grounded in a box. Labels: \"their calendar\" (black), \"the weather\" (blue), \"do it again\" (red)."),
+ 3: ("photo", "A single printed photograph of a mountain home lying on a desk next to a stopwatch, warm light, simple and calm."),
+ 4: ("sketch", "Core idea: the tool amplifies the photo you give it. Composition: Xiaohei holds up two photos of a house: on the left a crisp photo taken from a slight angle with a check mark; on the right a flat, straight-on, blurry photo with an X. Labels: \"slight angle, sharp\" (black, left), \"flat and blurry\" (red, right), \"amplifies, doesn't rescue\" (blue)."),
+ 5: ("photo", "A hand drawing a red arrow path on a printed photo of a house with a marker, desk lamp light, shallow focus, playful planning mood."),
+ 7: ("sketch", "Core idea: give the chat app both pictures and let it write the prompt. Composition: Xiaohei feeds two photos into a chat window, the plain photo and the same photo with a red line drawn on it; a long note comes out the other side. Labels: \"original\" (black), \"marked-up copy\" (red), \"chat app\" (blue), \"expert prompt\" (orange)."),
+ 9: ("photo", "A laptop on a mountain cabin desk at dusk with a glowing screen, a printed house photo beside it, screen blurred, focused work mood."),
+ 11: ("photo", "Three tablets side by side on a wooden table showing soft blurred aerial images, morning light, comparison mood, screens unreadable."),
+ 12: ("photo", "A dreamy, obviously artistic illustration-style river city scene printed on paper, pinned to a studio wall, soft light, text unreadable."),
+ 13: ("sketch", "Core idea: AI video models invent details, so check every clip. Composition: Xiaohei inspects a small house with a big magnifying glass and finds an extra window that was drawn in; Xiaohei tosses a film strip into a bin. Labels: \"invented window\" (red), \"watch every clip\" (orange), \"throw it out\" (red)."),
+ 14: ("photo", "A wooden gavel and a set of house keys on a desk beside a printed listing sheet with blurred text, serious, warm light."),
+ 15: ("photo", "A wall calendar turned to January beside a law book on a desk, crisp winter light through a mountain window, text unreadable."),
+ 16: ("photo", "A smartphone showing a vertical home video with a small blurred caption bar, held in a hand at a cafe, screen unreadable."),
+ 17: ("photo", "Two thick binders side by side on a desk, one with a state seal shape and one with a house shape embossed, warm light, no readable text."),
+ 18: ("photo", "A sweeping aerial view of a mountain home and its land at sunrise, mist in the valley, cinematic and hopeful."),
 }
 
 LM3 = {
@@ -137,6 +155,10 @@ def request(beat, kind, prompt):
 
 
 CAPTIONS = {
+ ('LM4', 2): 'It isn\'t only the money. <em>It\'s the waiting.</em>',
+ ('LM4', 4): 'The tool amplifies what you give it. <em>It does not rescue it.</em>',
+ ('LM4', 7): 'Two pictures in. <em>One expert prompt out.</em>',
+ ('LM4', 13): 'These models invent detail. <em>Watch every clip before you post.</em>',
  ('LM3', 3): 'One makes the video. One runs the numbers. <em>Three make it look like a firm made it.</em>',
  ('LM3', 4): 'Taste fixes what you can feel <em>but can\'t name.</em>',
  ('LM3', 7): 'Build it once. <em>Reuse it forever.</em>',
