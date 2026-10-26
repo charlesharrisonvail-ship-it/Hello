@@ -1,0 +1,23 @@
+This is the module you bought the course for. The big listing platforms sell premium listing packages, and they aren't cheap. Depending on the platform and the price of the home, you're looking at somewhere between $400 and $950 for one listing. And you pay it again on the next one. Those packages include things like placement on the site, which this won't give you. What it gives you is the video.
+
+We're going to build our own. We call it an AIRE listing showcase. First, what this is
+
+and what it is not. What we're building is a cinematic walkthrough video, room by room, each one with its own camera move, stitched into one finished piece that looks like a production worth a couple thousand dollars. What it is not is a three-dimensional tour you can click through and walk around in. That's a different product, and it needs different equipment. I am not going to tell you otherwise. What I will tell you is that a beautiful 90-second walkthrough video outperforms a clunky 3D tour on every social platform you post it to. Different tool, different job.
+
+The install. This is built by a developer named Charlie Dove, and it's open source under the MIT license. Credit where it's due. He did the hard part. We're just using it well.
+
+One honest note before you install it. This tool is at version 0.1, the first release. That's normal for something this new. And it works. But pre-version one software changes. If a command looks different on your screen than it does on mine, check the project page first. That's not you doing it wrong. And if it ever stops being maintained, the method still holds. The tool automates steps you could do by hand. It doesn't own them.
+
+You'll need Higgsfield, which animates the rooms you connected it in module 3, and FFmpeg, which stitches it together. Appify is optional. It's what pulls the photos from a live listing link. If you already have your photos, skip it. Higgsfield runs on paid credits. Appify has a free tier. The sign-up links are under this video, and if any of them is ever a referral link, it'll say so. Expect a few dollars of video credits per listing, not hundreds. FFmpeg is free. The install line for Mac and Windows is under this video, or just ask Claude Code to install it for you. Restart Claude Code after all that, and you're ready.
+
+Running it. In Claude Code, paste in a live listing link, or point it at a folder of your own photos. It pulls every photo, picks the best shot of each room, throws out the floor plans and the duplicates, and works out what kind of room it's looking at.
+
+Then it assigns a camera move to each one, a drone approach for the exterior, a steadicam glide down the hallways, an orbit for the great room, a window approach where there's a view worth revealing, a rising shot for the backyard. Then it stitches the whole thing in walkthrough order and hands you a finished video. 16x9 for the web, and 9x16 for reels, if you ask for it.
+
+You get a folder with the final video, every individual room clip, and a property summary. Use the room clips on their own, too. Each one is a post.
+
+And now the part I need you to actually hear. Those listing photos belong to somebody, usually the photographer, sometimes the listing brokerage. Not to you, and not to the website showing them. So run this on your own listings, with photos you're licensed to use. Hiring a photographer doesn't make you the copyright owner, so check that their license allows edits and AI versions. If you want to do it for another agent's listing, ask them first, and get a yes you could show somebody. Do not scrape a stranger's listing, build a video out of their photographs, and publish it. That's somebody else's copyrighted work, and using a computer to do it doesn't change whose it is.
+
+And the same labeling rule from module 4 applies here. Harder because a full walkthrough looks more real than a five second clip does. Label it. On the video, in the caption, in the MLS remarks, AI generated from listing photography. Same four words. A buyer who watches this, and then walks the house, should never feel like they were sold something different. That feeling is where complaints come from, and the label is what prevents it.
+
+On your own listings, disclosed properly, this is the single best marketing asset in this course. Next module, we put Claude to work on your social media.

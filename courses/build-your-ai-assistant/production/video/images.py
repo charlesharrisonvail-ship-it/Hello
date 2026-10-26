@@ -16,7 +16,7 @@ Constraints: One image explains only one core structure. Main subject around 40-
 """
 
 # Listing Media Without the Invoice (original AiRE course). Image files numbered from BASE.
-BASE = {"LM1": 1100, "LM2": 1200, "LM3": 1300, "LM4": 1400}
+BASE = {"LM1": 1100, "LM2": 1200, "LM3": 1300, "LM4": 1400, "LM5": 1500}
 LM1 = {
  1: ("photo", "A wide mountain valley with a small ski town at golden hour, aspens turning gold, a winding river, peaks with first snow."),
  2: ("photo", "A mountain resort town main street at dusk in autumn, warm shop windows, pines and peaks behind, no signs readable."),
@@ -31,6 +31,21 @@ LM1 = {
  11: ("photo", "A row of thick law books on a dark wooden shelf with a brass desk lamp, spines blurred and unreadable, warm library light."),
  12: ("sketch", "Core idea: from here an AI instructor takes over teaching. Composition: Xiaohei hands a microphone to a box-shaped assistant with dot eyes that has small signal lines around it. Labels: \"AiRE\" (blue, on the assistant), \"AI instructor\" (blue), \"your turn\" (orange)."),
  13: ("photo", "A new timber-frame house foundation and ground floor deck under construction on a mountain lot at sunrise, clean and orderly."),
+}
+
+LM5 = {
+ 1: ("photo", "A luxurious mountain-modern great room at golden hour seen through a cinema camera viewfinder frame, warm light, floor-to-ceiling windows, peaks."),
+ 2: ("photo", "A film director's chair and a small camera rig in an empty bright modern home interior, ready to shoot, warm afternoon light."),
+ 3: ("sketch", "Core idea: the showcase is a cinematic walkthrough, not a clickable 3D tour. Composition: Xiaohei sews small room pictures together into one long film strip with a big needle and thread; nearby a wireframe 3D house cube is crossed out. Labels: \"room by room\" (black), \"one camera move each\" (orange), \"3D tour\" (black, on the cube), \"not this\" (red)."),
+ 4: ("photo", "A tidy desk with an open laptop and a small terminal-style window glow, a coffee and a notepad, evening mountain cabin light, screen blurred."),
+ 5: ("photo", "A newly sprouted seedling in a small pot on a windowsill with mountains behind, early and promising, morning light."),
+ 6: ("photo", "A neat flat-lay of a laptop, a small external drive and a camera on a wooden desk, warm light, screens blurred."),
+ 7: ("sketch", "Core idea: the tool picks the best photo of each room and discards the rest. Composition: Xiaohei sorts a pile of listing photos, holding up one per room and tossing floor plans and duplicate photos into a bin. Labels: \"best shot per room\" (orange), \"floor plans\" (black, on the bin pile), \"duplicates\" (red)."),
+ 8: ("photo", "Reuses image 1306 (camera on a slider rail in a mountain living room)."),  # the sketch version was blocked twice by the image filter
+ 9: ("photo", "An open file folder on a desk holding several printed video stills of rooms in a modern home, warm light, everything blurred and unreadable."),
+ 10: ("sketch", "Core idea: listing photos belong to their photographer; ask before using someone else's. Composition: Xiaohei politely holds out a request note to a photographer figure holding a camera and a stack of photos marked with a small copyright symbol; on the other side a crossed-out grabbing hand reaches for a stranger's listing. Labels: \"photographer's photos\" (black), \"ask first\" (orange), \"don't scrape\" (red)."),
+ 11: ("photo", "A couple walking up to the front door of a mountain home at golden hour, seen from behind, faces not visible, hopeful mood."),
+ 12: ("photo", "A beautiful mountain-modern home at blue hour with every window glowing warmly, reflections in a pond, premium and calm."),
 }
 
 LM4 = {  # beats 6, 8 and 10 keep the original footage (no image)
@@ -155,6 +170,9 @@ def request(beat, kind, prompt):
 
 
 CAPTIONS = {
+ ('LM5', 3): 'A cinematic walkthrough &mdash; <em>not a 3D tour.</em>',
+ ('LM5', 7): 'The best shot of each room. <em>The rest gets thrown out.</em>',
+ ('LM5', 10): 'Your listings. <em>Photos you\'re licensed to use.</em>',
  ('LM4', 2): 'It isn\'t only the money. <em>It\'s the waiting.</em>',
  ('LM4', 4): 'The tool amplifies what you give it. <em>It does not rescue it.</em>',
  ('LM4', 7): 'Two pictures in. <em>One expert prompt out.</em>',
