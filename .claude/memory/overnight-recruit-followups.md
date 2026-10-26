@@ -15,3 +15,9 @@ description: The weekday 4:40 AM scheduled task that drafts recruit follow-ups w
   connectors directly. The Ubuntu Composio CLI only runs while his PC is on.
 - A first fresh-session version had no connectors and did not show in Charles's
   scheduled list; it was deleted. Do not recreate it that way.
+- **First run 2026-10-26: no drafts.** Lofty had no `agent-recruit` tag (the
+  API says the tag does not exist) and no recruit stage in use; Charles's
+  overdue tasks were all buyers (Tiki Halachev, Scott Bingel, Jan Vessa -
+  Jan is unsubscribed). "recruit" keyword hits are FSBO/expired sellers whose
+  emails happen to be at recruiting firms - not agent recruits. Until recruits
+  are tagged `agent-recruit` in Lofty, each run has nothing to draft.
