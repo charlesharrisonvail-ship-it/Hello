@@ -15,6 +15,25 @@ Color use: Black for main line art and Xiaohei. Orange for main flow/path/arrows
 Constraints: One image explains only one core structure. Main subject around 40-60% of the canvas, at least 35% blank white space. Only the handwritten English labels listed, spelled exactly; no other words anywhere, and never write the character's name. No title in the top-left corner. Not a formal diagram, course slide, or dense explainer. Clear but not instructional, strange but clean.
 """
 
+M1 = {
+ 1: ("photo", "A tidy mountain-modern home office at dawn, a single clipboard with one blank sheet on a large wooden desk, snowy peaks through the window."),
+ 2: ("sketch", "Core idea: assistants disappoint because the job description is vague. Composition: Xiaohei pins a huge, almost empty job posting to a wall; a box-shaped assistant with dot eyes stares at it, surrounded by small question marks. Labels: \"run my business\" (black, on the posting), \"job description\" (black), \"too vague\" (red)."),
+ 3: ("photo", "An overwhelmed desk with dozens of colorful blank sticky notes covering a laptop and the wall behind it, evening lamp light, chaotic."),
+ 4: ("sketch", "Core idea: give the assistant one job. Composition: Xiaohei snips a single thread out of a huge tangled ball of yarn with big scissors and hands that one thread to a box-shaped assistant with dot eyes. Labels: \"40 jobs\" (black, on the tangle), \"one job\" (orange, on the thread), \"clear edges\" (blue)."),
+ 5: ("photo", "Three blank for-sale yard sign posts in front of three different mountain homes on a sunny autumn Friday afternoon, aspen trees, signs blank."),
+ 6: ("sketch", "Core idea: define the assistant's job like hiring someone. Composition: Xiaohei sits behind a tiny interview desk holding a clipboard, interviewing a box-shaped assistant with dot eyes sitting on a chair. Labels on the clipboard: \"what goes in?\", \"what comes out?\", \"what's good?\", \"where does it end?\"."),
+ 7: ("sketch", "Core idea: only approved inputs get in. Composition: Xiaohei is a serious doorman at a small door, letting a short line of folders walk in while pushing away a cloud and a speech bubble. Labels: \"listing facts\", \"showings\", \"feedback\" (black, on folders), \"the internet\" (red, on the cloud), \"a guess\" (red, on the bubble)."),
+ 8: ("sketch", "Core idea: the output has two parts and the second keeps you safe. Composition: a box-shaped assistant with dot eyes pushes out two sheets; Xiaohei inspects the second sheet closely with a big magnifying glass. Labels: \"draft email\" (black), \"checklist\" (orange), \"every source\" (blue), \"your decision\" (red)."),
+ 9: ("photo", "A brass ruler and precision calipers resting on a printed page on a dark desk, page text blurred and unreadable, crisp side light."),
+ 10: ("sketch", "Core idea: the assistant drafts, the agent decides. Composition: Xiaohei stands exactly at a painted line on the floor holding a draft; beyond the line sits a desk with a big rubber stamp. Labels: \"drafts\" (orange, by Xiaohei), \"price\", \"promises\", \"sending\" (red, beyond the line), \"agent decision\" (red, on the stamp)."),
+ 11: ("photo", "A charming craftsman home on a quiet tree-lined lane at golden hour, autumn leaves, porch with two chairs, small mountain town."),
+ 12: ("photo", "An open manila file folder with a few neatly clipped papers and some empty slots on a wooden desk, warm lamp light, all text blurred and unreadable."),
+ 13: ("sketch", "Core idea: organize supplied facts, never invent conclusions. Composition: before/after. Left: Xiaohei neatly stacks two labeled blocks. Right: Xiaohei sculpts a new block out of clay. Labels: \"5 showings\", \"14 groups\" (black, on left blocks), \"organize\" (orange, left), \"market moving fast\" (black, on the clay block), \"invent\" (red, right)."),
+ 14: ("photo", "A single blank index card and a fountain pen on a walnut desk by a mountain-view window in soft morning light."),
+ 15: ("sketch", "Core idea: if the job sentence has two ands, split it. Composition: Xiaohei cuts a long paper strip with big scissors exactly at a circled word, the two halves falling apart. Labels: \"and\" (red, circled on the strip), \"split it\" (orange), \"job 1\", \"job 2\" (black, on the halves)."),
+ 16: ("photo", "A vintage studio microphone in a warm home studio with a large window onto mountain peaks at dusk."),
+}
+
 M2 = {
  1: ("photo", "A vintage studio microphone and an open leather notebook on a walnut desk in a mountain-modern home office at dusk, floor-to-ceiling window with snowy peaks behind."),
  2: ("photo", "A laptop on an empty glass desk glowing cold blue, dim sterile office at night, lonely mood, screen out of focus."),
@@ -66,6 +85,14 @@ def request(beat, kind, prompt):
 
 
 CAPTIONS = {
+ ('M1', 2): "It isn't the software. <em>It's the job description.</em>",
+ ('M1', 4): 'One job. <em>Clear inputs, clear output, clear edges.</em>',
+ ('M1', 6): 'Four questions, <em>like a new hire.</em>',
+ ('M1', 7): 'Not in the inputs? <em>Not in the update.</em>',
+ ('M1', 8): 'Draft email <em>+ your checklist.</em>',
+ ('M1', 10): 'It drafts. <em>You decide.</em>',
+ ('M1', 13): 'Organize what you have. <em>Never invent.</em>',
+ ('M1', 15): 'Two "and"s? <em>Split it.</em>',
  ('M2', 3): 'No instructions &rarr; the <em>average</em> voice.',
  ('M2', 4): 'Who you are <em>+</em> how you actually write.',
  ('M2', 5): 'Reader &middot; Tone &middot; Style &middot; Phrases &middot; Rules &middot; Samples',

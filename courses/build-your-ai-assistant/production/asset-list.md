@@ -1,6 +1,6 @@
 # Video Production Asset List — Build Your AI Assistant
 
-Status as of October 24, 2026: **Modules 1–3 are produced** (5:07, 5:31, 5:13; Starfish voice; review copies sent to Charles). Modules 4–7 and the capstone wait for the HeyGen credit resets on Nov 1 and Dec 1 (109 credits left after Modules 2–3). Every module
+Status as of October 26, 2026: **Modules 1–3 are produced** (5:07, 5:31, 5:13; Starfish voice), and all three were re-cut with AI sketch and photo visuals on every slide (Charles: "1000% better"). Modules 4–7 and the capstone wait for the HeyGen credit resets on Nov 1 and Dec 1 (109 credits left after Modules 2–3). Every module
 manuscript contains a narration script (section 2) and a shot list (section 3). Those are
 production documents, not finished videos.
 
