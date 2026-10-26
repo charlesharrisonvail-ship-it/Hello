@@ -4,6 +4,7 @@ beats on the left, each beat timed to its narration paragraph.
 
     python3 build_lesson.py <beats_module> <module_label> <avatar.mp4> <script.txt> <out_dir> [starts.json]
                             [--visuals M2 --images <dir with 201.png, 202.png ...>] [--course "COURSE NAME"]
+                            [--full] [--captions transcript.json]
     e.g. python3 build_lesson.py beats_m2 "MODULE 2" avatar.mp4 m2-script.txt out/m2 m2-starts.json --visuals M2 --images imgs
 
 Paragraph start times come from starts.json (exact, from the narration timings) or,
@@ -16,7 +17,11 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 import importlib
 
-VIS, IMGS, COURSE = {}, None, "BUILD YOUR AI ASSISTANT"
+VIS, IMGS, COURSE, FULL, CAPS = {}, None, "BUILD YOUR AI ASSISTANT", False, None
+if "--full" in sys.argv:  # narrator-only lesson (AiRE): no presenter on screen, slides use the full width
+    sys.argv.remove("--full"); FULL = True
+if "--captions" in sys.argv:  # word timings (hyperframes transcribe JSON) -> on-screen captions
+    k = sys.argv.index("--captions"); CAPS = Path(sys.argv[k + 1]); del sys.argv[k:k + 2]
 if "--course" in sys.argv:
     k = sys.argv.index("--course"); COURSE = sys.argv[k + 1]; del sys.argv[k:k + 2]
 if "--visuals" in sys.argv:
@@ -113,6 +118,26 @@ CSS = """
 #root .sheet{position:absolute;left:-30px;top:40px;width:1150px;height:647px;border-radius:26px;overflow:hidden;background:#fff;box-shadow:0 30px 90px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.4)}
 #root .sheet img{width:100%;height:100%;object-fit:cover;display:block}
 #root .cap{position:absolute;left:0;top:722px;width:1120px;font-family:'ArchivoX';font-weight:800;font-size:44px;line-height:1.15;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.6)}
+#root .term{width:1000px;border-radius:18px;overflow:hidden;background:rgba(6,10,18,.88);border:1px solid rgba(255,255,255,.16);box-shadow:0 26px 80px rgba(0,0,0,.55);font-family:ui-monospace,Menlo,Consolas,monospace}
+#root .term .tbar{height:44px;background:rgba(255,255,255,.07);display:flex;align-items:center;gap:10px;padding:0 18px;font:600 22px 'ManropeX';color:#94a3b8}
+#root .term .tbar i{width:14px;height:14px;border-radius:50%;background:#f87171;display:inline-block}
+#root .term .tbar i+i{background:#fbbf24}#root .term .tbar i+i+i{background:#34d399;margin-right:12px}
+#root .term .ln{font-size:32px;line-height:1.6;padding:0 28px;color:#e2e8f0;white-space:pre}
+#root .term .ln:first-of-type{padding-top:20px}#root .term .ln:last-child{padding-bottom:24px}
+#root .term .pr{color:#38bdf8}#root .term .cm{color:#64748b}
+#root .term .cur{display:inline-block;width:18px;height:34px;background:#fbbf24;vertical-align:middle}
+#root .dialog{width:820px;padding:36px 40px;border-radius:24px;background:rgba(245,248,252,.96);color:#0f172a;box-shadow:0 30px 90px rgba(0,0,0,.55)}
+#root .dialog b{display:block;font-family:'ArchivoX';font-size:38px;margin-bottom:14px}
+#root .dialog p{font-size:28px;line-height:1.45;margin:0 0 26px;color:#334155}
+#root .dialog .btns{display:flex;justify-content:flex-end;gap:16px}
+#root .dialog .btns span{font:700 26px 'ManropeX';padding:12px 26px;border-radius:12px;background:#e2e8f0}
+#root .dialog .btns span.go{background:#0ea5e9;color:#fff}
+"""
+if FULL:
+    CSS += """
+#root .stage{width:1560px}
+#root .sheet{left:255px;top:4px;width:1209px;height:680px}
+#root .cap{left:155px;top:704px;width:1410px;text-align:center}
 """
 
 hosts = []
@@ -175,6 +200,21 @@ for i, (st, ln) in enumerate(zip(starts, lens), 1):
     if i + 1 < len(starts):  # hide once the next two have covered it, to keep the page light
         mtw.append(f'm.set("#bd{i}",{{display:"none"}},{round(starts[i + 1] + 1, 2)});')
 
+caps = []
+if CAPS:  # short phrases, broken at pauses and punctuation, shown as the words are spoken
+    cw = json.load(open(CAPS)); cw = cw if isinstance(cw, list) else cw["words"]
+    groups, cur = [], []
+    for k, x in enumerate(cw):
+        cur.append(x)
+        nxt = cw[k + 1] if k + 1 < len(cw) else None
+        if len(cur) >= 7 or x["text"][-1:] in ".?!:" or (nxt and nxt["start"] - x["end"] > 0.5) or not nxt:
+            groups.append(cur); cur = []
+    for k, g in enumerate(groups):
+        txt = " ".join(x["text"] for x in g).replace("&", "&amp;").replace("<", "&lt;")
+        end = groups[k + 1][0]["start"] if k + 1 < len(groups) and groups[k + 1][0]["start"] - g[-1]["end"] < 1.2 else g[-1]["end"] + 0.4
+        caps.append(f'<div class="cc" id="cc{k}">{txt}</div>')
+        mtw.append(f'm.set("#cc{k}",{{opacity:1}},{round(g[0]["start"], 2)});m.set("#cc{k}",{{opacity:0}},{round(end, 2)});')
+
 index = f"""<!doctype html>
 <html>
 <head><meta charset="utf-8">
@@ -190,6 +230,9 @@ index = f"""<!doctype html>
 .bd img{{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}}
 .bd .shade{{position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,6,12,.9) 0%,rgba(3,6,12,.66) 48%,rgba(3,6,12,.3) 100%),linear-gradient(180deg,rgba(3,6,12,.55) 0%,rgba(3,6,12,0) 22%,rgba(3,6,12,0) 70%,rgba(3,6,12,.8) 100%)}}
 .bd.deep{{background:radial-gradient(900px 600px at 30% 35%,#123049 0%,#060b14 62%,#03060c 100%)}}
+.cc{{position:absolute;left:50%;bottom:98px;transform:translateX(-50%);z-index:5;opacity:0;max-width:1500px;text-align:center;font:700 34px 'ManropeX';color:#fff;background:rgba(3,6,12,.72);padding:8px 20px;border-radius:12px;white-space:nowrap}}
+#narr{{position:absolute;right:28px;bottom:36px;z-index:4;font:700 24px 'ManropeX';color:#e0f2fe;background:rgba(4,7,13,.6);border:1px solid rgba(56,189,248,.45);border-radius:999px;padding:8px 16px}}
+{".bd{width:1920px !important} #prog{width:1920px !important} #avatar{width:2px !important;height:2px !important;opacity:0}" if FULL else ""}
 #prog{{position:absolute;left:0;bottom:0;width:1313px;height:5px;z-index:4;background:linear-gradient(90deg,#38bdf8,#fbbf24);transform-origin:left center}}
 </style></head>
 <body>
@@ -198,7 +241,8 @@ index = f"""<!doctype html>
   {chr(10).join(bds)}
   <div id="prog"></div>
   <video id="avatar" class="clip" src="assets/avatar.mp4" data-start="0" data-duration="{round(dur,2)}" data-track-index="1" data-has-audio="true" playsinline></video>
-  <div id="fade"></div>
+  {'<div id="narr">Narrated by AiRE &middot; AI instructor</div>' if FULL else '<div id="fade"></div>'}
+  {chr(10).join(caps)}
   <div id="label">Made with AI</div>
   <div id="brand">AiRE ESTATE ACADEMY &middot; {COURSE} &middot; {label}</div>
   {chr(10).join(hosts)}

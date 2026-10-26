@@ -1,0 +1,29 @@
+Before we install a single thing, we're going to spend a few minutes on the ground floor. If you already live in a terminal, skip ahead. If you don't, this is the most important six minutes in the course, and I want you to watch it twice.
+
+First, the accounts. You need a paid Claude account. Pro is $20 a month. And I'll be straight with you, the free plan does not include the tool we're using. That's not me upselling you. That's just how it's built. So that's 20 a month on top of the course. That's the only subscription this course requires. But you should know the number before you spend it, not after.
+
+One thing to get straight right now, because it trips people up. Claude comes in two forms. There's the Claude chat, the app on the website and on your phone, where you type and it talks back. And there's Claude code, the version that runs in your terminal and actually builds things. It installs tools, makes files and runs the skills in this course. Everything we build here happens in Claude code. When I mean the chat, I'll say the chat.
+
+Second, the terminal. The terminal is a window where you type instructions instead of clicking buttons. That's the whole idea. It looks intimidating and it isn't. On Windows, hit the start menu and type PowerShell. On a Mac, hit command and space and type terminal. A window opens with some text and a blinking cursor. That text ending in a bracket is called the prompt. It's the computer telling you where you're standing and waiting for you to say something.
+
+Two commands and you know enough. Type cd space then a folder name and you move into that folder. Type cd space dot dot and you back out of it. That's it. That's the terminal.
+
+Third, and write this one down. There are two different things that both look like typing into a window and mixing them up is the single most common way people get stuck.
+
+The terminal takes commands. Short, exact, no English sentences. Claude code takes English. Full sentences like you're talking to a person. If you paste a paragraph of English into the terminal, you'll get errors. On Windows, it's angry red text. On a Mac, it says command not found. Nothing is broken. You just spoke the wrong language to the wrong window. Everybody does it. It happens to people who've been doing this for years
+
+and here's the habit that saves you the most time and money in this whole course. Before you make anything, open your chat app, chat GPT or the Claude app, whichever you use and ask it to write the prompt for you. Tell it what you want to make and which tool you'll run it in. Then paste that prompt into the platform doing the work. In this course, that's almost always Claude code right there in your terminal window.
+
+Fourth, installing. Three things go on your computer. Claude code itself and two free programs the course tools rely on called Node and Git. Every line is written out under this video with a copy button so you don't have to pause and squint. On a Mac, Node comes from nodagez.org and Git installs itself the first time you ask for it. On Windows, it's one line each in PowerShell, then the part that trips everybody.
+
+Close the window, open a new one so the computer notices what changed. Make a folder called IRE, step into it and type the word Claude. When it asks how to log in, choose Claude account with subscription. That's your $20 plan. The other choice bills you by the use and if it ever asks to use an API key, say no. If it says the term is not recognized, you're in an old window. Close it and open a new one.
+
+Fifth, what a skill is and where it comes from. A skill is a set of instructions somebody wrote that teaches Claude to do one job well, like handing a good assistant a checklist. They live on a site called GitHub which is where people put code they're sharing. You don't need an account. You don't need to understand it. You just need to know that when I give you a command with a name in it, that name is where the instructions are coming from and you should know who wrote the thing you're installing. I'll name every author in this course. If somebody ever hands you a command without telling you whose code it runs, don't run it.
+
+Sixth, connectors and what you're agreeing to. In module 3, we connect Claude code to Higgsfield, the tool that makes your video. More connections follow the same pattern. The way that works is you run one line, a browser window opens and it asks whether you'd like to grant access. That's called authorizing. You're the one holding the door open and you can close it anytime from the same settings page. Read what it's asking for before you click yes. If a connector wants to read and send email, that's what it's going to do. That's usually exactly what you want, just don't click through it blind.
+
+Last one, and this is the one that actually matters. Some tools give you a key, a long string of letters and numbers that proves you're you and that builds to your card. Treat that key like the key to your house. Never read it out loud in a video, never post it in a screenshot, never paste it into a chat, a prompt or a public page. And when a tool offers to sign in through your browser, use that instead of a key.
+
+If you ever think one got out, go to that tool's website and delete it. They'll make you a new one in 10 seconds. I'm telling you this now because we're about to make videos and the number of people who have accidentally filmed their own key is higher than you'd think.
+
+That's the ground floor, an account, a terminal, the two languages, the install, node and git, what a skill is, what authorizing means and how to hold a key. Next, a short lesson on how to prompt, then we install the five and it'll go quick.

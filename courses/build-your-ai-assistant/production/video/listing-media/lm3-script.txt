@@ -1,0 +1,25 @@
+Welcome to module three. This is the setup module. It is the least exciting one, and it is the most important one. Everything you build in the next four modules runs on what we install right here. So take your time with this. There's no prize for finishing fast.
+
+Two things before we start. First, Node and Git must already be on your computer from module two. Second, these install lines go in the terminal, not inside Claude code. If you see Claude's box, type slash exit first. Every line is under this video with a copy
+
+button. Here's how I want you to think about the five tools. One of them makes the video. One of them runs the numbers. The other three are what make your work look like a firm made it instead of a guy at his kitchen table.
+
+First, taste. Taste fixes the thing you can feel but can't name. You look at your own flyer and something about it says amateur. You can't point at what. Taste can. It teaches Claude what good spacing, good typography, and good layout actually look like and more importantly, why?
+
+Second, impeccable. This one's built by Paul Bacaus. Think of it as a second set of eyes. Type npx impeccable install, and when it asks, pick Claude code, then global. You finish something. You type slash impeccable, then one word polish, or audit, or critique, and it tells you what's wrong before a client sees it. About two dozen commands like that.
+
+Third, Emil Kowalski. Emil is a design engineer. His skill is about motion, how things move. The difference between a listing video that looks cheap and one that looks cinematic is almost never the photography. It's the movement, how the camera drifts, how text arrives on screen.
+
+Fourth, remotion. Remotion builds video with code, listing reels, route maps, captions, market updates. Once it's built, you change the address and the price and you have a new video. You build it once and you reuse it forever.
+
+Fifth, AI real estate. This one installs differently and the easy way is to let Claude code do it. Start Claude code, paste the line under this video, and it reads the instructions and installs what it needs, including Python if it's missing. It does comps, rental analysis, investment numbers, flip math, neighborhood breakdowns, and it writes them into a PDF report you can hand
+
+somebody. Now, I need to be straight with you about this one, the same way module 1 was. What this produces is analysis. It is not an appraisal and it is not a substitute for your own comparative market analysis. Use it to think faster and to prepare better. Do not hand it to a client as though a licensed appraiser prepared it. And do not let it replace the judgment you were licensed for.
+
+Here's 30 seconds of it running. In Claude code, type slash real estate comps and the address of a home you know well. Paste in five recent sales from your MLS when it asks. It lines them up, notes the differences, and writes a one-page report. Now check every number against your MLS. If a figure isn't in what you gave it, it doesn't go in front of a client.
+
+Last, connect Higgsfield. Modules 4 and 5 make video through Higgsfield, so we connect it now, one line in the terminal. Then start Claude code. Type slash mcp, choose Higgsfield, and sign in through your browser. No key needed. Quit Claude code and start it again so it loads everything. Under this video, there's a try it line for each tool. Run each one once so you know
+
+they work. One more thing before you go. These are tools built by other people, and they get updated. If something looks different on your screen than it does on mine, check the project page. That's normal, and it's not you doing it wrong.
+
+Next module is the fun one. We're going to take one photograph of a house and turn it into a drone shot. See you there.

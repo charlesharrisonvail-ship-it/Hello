@@ -16,7 +16,7 @@ Constraints: One image explains only one core structure. Main subject around 40-
 """
 
 # Listing Media Without the Invoice (original AiRE course). Image files numbered from BASE.
-BASE = {"LM1": 1100}
+BASE = {"LM1": 1100, "LM2": 1200, "LM3": 1300}
 LM1 = {
  1: ("photo", "A wide mountain valley with a small ski town at golden hour, aspens turning gold, a winding river, peaks with first snow."),
  2: ("photo", "A mountain resort town main street at dusk in autumn, warm shop windows, pines and peaks behind, no signs readable."),
@@ -31,6 +31,40 @@ LM1 = {
  11: ("photo", "A row of thick law books on a dark wooden shelf with a brass desk lamp, spines blurred and unreadable, warm library light."),
  12: ("sketch", "Core idea: from here an AI instructor takes over teaching. Composition: Xiaohei hands a microphone to a box-shaped assistant with dot eyes that has small signal lines around it. Labels: \"AiRE\" (blue, on the assistant), \"AI instructor\" (blue), \"your turn\" (orange)."),
  13: ("photo", "A new timber-frame house foundation and ground floor deck under construction on a mountain lot at sunrise, clean and orderly."),
+}
+
+LM3 = {
+ 1: ("photo", "A craftsman's workbench at dawn with five different tools laid out in a neat row, mountain workshop window, calm and orderly."),
+ 2: ("photo", "A laptop on a wooden desk showing a dark window with a blinking cursor, screen softly blurred, morning light, mountain view."),
+ 3: ("sketch", "Core idea: five tools, three jobs. Composition: Xiaohei stands behind a table with five small objects in a row: a film camera, a calculator, and three items that make work look professional (a ruler, a magnifying glass, a film reel). Labels: \"makes the video\" (black, by the camera), \"runs the numbers\" (black, by the calculator), \"looks like a firm made it\" (orange, over the last three)."),
+ 4: ("sketch", "Core idea: taste fixes what you can feel but can't name. Composition: Xiaohei carefully nudges the parts of a simple flyer into better alignment with a big ruler; a small before-version beside it looks crooked. Labels: \"spacing\", \"typography\", \"layout\" (black), \"and why\" (blue)."),
+ 5: ("photo", "A large magnifying glass resting on printed design proofs on a desk, warm light, all text blurred and unreadable, careful inspection mood."),
+ 6: ("photo", "A camera on a smooth slider rail drifting across a modern mountain living room at golden hour, cinematic motion, shallow focus."),
+ 7: ("sketch", "Core idea: build a video template once, reuse it forever. Composition: Xiaohei swaps a small address tag on a strange machine that keeps printing film strips; a stack of finished film strips piles up on the other side. Labels: \"build once\" (black, on the machine), \"new address, new price\" (blue, on the tag), \"new video\" (orange, on the film strips)."),
+ 8: ("photo", "A printed real estate analysis report with charts on a desk beside a calculator and a coffee, text and numbers blurred and unreadable, warm light."),
+ 9: ("photo", "A wooden desk with a closed appraisal folder and reading glasses, a serious, professional mood, soft window light, all text unreadable."),
+ 10: ("sketch", "Core idea: comps are lined up from the sales you supply, then you check every number. Composition: Xiaohei lines up five small house cards in a row, then holds a big magnifying glass over a one-page report. Labels: \"5 recent sales\" (black), \"one-page report\" (orange), \"check against your MLS\" (red)."),
+ 11: ("photo", "A browser sign-in moment: a laptop on a cabin desk at dusk with a softly glowing screen and a hand on the trackpad, screen blurred."),
+ 12: ("photo", "A set of well-used tools being updated: a workbench with a new tool beside an older version of the same tool, warm light, mountain cabin."),
+ 13: ("photo", "An aerial drone view of a mountain home at golden hour, seen from high above with long shadows across pine forest."),
+}
+
+LM2 = {
+ 1: ("photo", "A freshly poured concrete foundation of a mountain home at dawn, rebar and clean forms, snowy peaks behind, calm and solid."),
+ 2: ("photo", "A laptop and a credit card resting on a wooden desk by a window with mountain views, morning light, screen softly blurred."),
+ 3: ("sketch", "Core idea: Claude comes in two forms. Composition: Xiaohei stands between two boxes; the left box has a speech bubble coming out of it, the right box holds a small hammer and is building a tiny house. Labels: \"the chat\" (black, left), \"talks back\" (blue, left), \"Claude Code\" (black, right), \"builds things\" (orange, right)."),
+ 4: ("photo", "A dark, calm home office at night with a single monitor glowing softly on a wooden desk, keyboard, screen out of focus, mountain window."),
+ 5: ("photo", "Close-up of hands on a keyboard in warm lamp light, shallow depth of field, screen glow blurred in the background."),
+ 6: ("photo", "Two identical windows side by side on a dark wall at dusk, warm light in one and cool light in the other, minimal and architectural."),
+ 7: ("sketch", "Core idea: the terminal takes short commands, Claude Code takes English. Composition: two small windows; Xiaohei slides a short card into the left window, and a long scroll into the right window; a long scroll stuck in the left window has a red X. Labels: \"terminal\" and \"commands\" (black, left), \"Claude Code\" and \"English\" (black, right), \"wrong window\" (red)."),
+ 8: ("sketch", "Core idea: have a chat app write the prompt, then paste it where the work happens. Composition: Xiaohei holds out a notepad to a small chat window that writes on it; an orange arrow carries the written note to a second window with a hammer. Labels: \"chat app\" (blue), \"writes the prompt\" (orange), \"Claude Code\" (black)."),
+ 9: ("photo", "A tidy toolbox open on a workbench with a few clean tools laid out in a row, warm workshop light, mountain cabin."),
+ 10: ("photo", "A hand closing a laptop lid halfway at a desk, then a second laptop open beside it, evening light, screens blurred."),
+ 11: ("sketch", "Core idea: a skill is a checklist someone wrote; know who wrote it. Composition: Xiaohei hands a clipboard checklist to a box-shaped assistant with dot eyes; a tiny name tag is clipped to the checklist. Labels: \"skill\" (black, on the checklist), \"author\" (blue, on the name tag), \"know who wrote it\" (red)."),
+ 12: ("photo", "An open front door of a mountain home at golden hour, warm light spilling out, a hand on the door handle, welcoming but deliberate."),
+ 13: ("sketch", "Core idea: guard your API key like a house key. Composition: Xiaohei hides a big house key behind its back while a video camera on a tripod points at it. Labels: \"API key\" (black, on the key), \"never on camera\" (red), \"sign in with browser\" (blue)."),
+ 14: ("photo", "A single brass house key on a dark slate surface under a narrow beam of light, minimal and serious."),
+ 15: ("photo", "A finished timber-frame ground floor of a mountain home at sunrise, solid deck and posts, clean and ready for the next level."),
 }
 
 M1 = {
@@ -103,6 +137,15 @@ def request(beat, kind, prompt):
 
 
 CAPTIONS = {
+ ('LM3', 3): 'One makes the video. One runs the numbers. <em>Three make it look like a firm made it.</em>',
+ ('LM3', 4): 'Taste fixes what you can feel <em>but can\'t name.</em>',
+ ('LM3', 7): 'Build it once. <em>Reuse it forever.</em>',
+ ('LM3', 10): 'If it isn\'t in what you gave it, <em>it doesn\'t go in front of a client.</em>',
+ ('LM2', 3): 'Everything we build happens in <em>Claude Code.</em>',
+ ('LM2', 7): 'Wrong language, wrong window. <em>Nothing is broken.</em>',
+ ('LM2', 8): 'Have the chat write the prompt. <em>Paste it where the work happens.</em>',
+ ('LM2', 11): 'Know who wrote <em>what you install.</em>',
+ ('LM2', 13): 'Treat it like <em>the key to your house.</em>',
  ('LM1', 3): '$400&ndash;$950 to make <em>one</em> listing look premium. <em>Then again.</em>',
  ('LM1', 4): 'Built from what you already have. <em>For pennies.</em>',
  ('LM1', 9): 'A cinematic video &mdash; <em>not a 3D tour.</em>',
