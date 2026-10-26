@@ -15,6 +15,24 @@ Color use: Black for main line art and Xiaohei. Orange for main flow/path/arrows
 Constraints: One image explains only one core structure. Main subject around 40-60% of the canvas, at least 35% blank white space. Only the handwritten English labels listed, spelled exactly; no other words anywhere, and never write the character's name. No title in the top-left corner. Not a formal diagram, course slide, or dense explainer. Clear but not instructional, strange but clean.
 """
 
+# Listing Media Without the Invoice (original AiRE course). Image files numbered from BASE.
+BASE = {"LM1": 1100}
+LM1 = {
+ 1: ("photo", "A wide mountain valley with a small ski town at golden hour, aspens turning gold, a winding river, peaks with first snow."),
+ 2: ("photo", "A mountain resort town main street at dusk in autumn, warm shop windows, pines and peaks behind, no signs readable."),
+ 3: ("sketch", "Core idea: listing platforms charge again for every listing. Composition: a tired Xiaohei drops a big coin into the slot of a tall, odd machine; behind Xiaohei a short line of tiny houses waits, each needing its own coin. Labels: \"$400-$950\" (red, on the coin), \"listing 1\", \"listing 2\", \"listing 3\" (black, on the houses), \"pay again\" (red)."),
+ 4: ("sketch", "Core idea: one photograph becomes three kinds of listing media. Composition: Xiaohei holds up a single small photo; three orange arrows fan out to a tiny drone, a film strip and a phone. Labels: \"one photo\" (black), \"drone shot\", \"walkthrough video\", \"social posts\" (black), \"pennies\" (blue)."),
+ 5: ("photo", "An aerial view of a mountain-modern home on a forested ridge at sunset, seen from above as if from a drone, long shadows."),
+ 6: ("photo", "A leather-bound brand book open on a walnut desk beside color swatches and a fountain pen, warm light, all text blurred and unreadable."),
+ 7: ("photo", "Three coffee mugs and an open laptop on a living-room coffee table by a stone fireplace, evening, cozy, screen blurred."),
+ 8: ("photo", "Two hands in a firm handshake over a rustic wooden table, faces out of frame, warm window light, mountain view blurred behind."),
+ 9: ("sketch", "Core idea: the walkthrough is a cinematic video, not a 3D tour. Composition: Xiaohei proudly holds up a big film reel; next to it a small wireframe 3D house cube is crossed out. Labels: \"cinematic video\" (orange), \"3D tour\" (black, on the cube), \"not this\" (red)."),
+ 10: ("photo", "A few coins stacked beside a smartphone on a slate countertop, soft morning light, minimal and calm."),
+ 11: ("photo", "A row of thick law books on a dark wooden shelf with a brass desk lamp, spines blurred and unreadable, warm library light."),
+ 12: ("sketch", "Core idea: from here an AI instructor takes over teaching. Composition: Xiaohei hands a microphone to a box-shaped assistant with dot eyes that has small signal lines around it. Labels: \"AiRE\" (blue, on the assistant), \"AI instructor\" (blue), \"your turn\" (orange)."),
+ 13: ("photo", "A new timber-frame house foundation and ground floor deck under construction on a mountain lot at sunrise, clean and orderly."),
+}
+
 M1 = {
  1: ("photo", "A tidy mountain-modern home office at dawn, a single clipboard with one blank sheet on a large wooden desk, snowy peaks through the window."),
  2: ("sketch", "Core idea: assistants disappoint because the job description is vague. Composition: Xiaohei pins a huge, almost empty job posting to a wall; a box-shaped assistant with dot eyes stares at it, surrounded by small question marks. Labels: \"run my business\" (black, on the posting), \"job description\" (black), \"too vague\" (red)."),
@@ -85,6 +103,10 @@ def request(beat, kind, prompt):
 
 
 CAPTIONS = {
+ ('LM1', 3): '$400&ndash;$950 to make <em>one</em> listing look premium. <em>Then again.</em>',
+ ('LM1', 4): 'Built from what you already have. <em>For pennies.</em>',
+ ('LM1', 9): 'A cinematic video &mdash; <em>not a 3D tour.</em>',
+ ('LM1', 12): 'From here: <em>AiRE</em>, your AI instructor.',
  ('M1', 2): "It isn't the software. <em>It's the job description.</em>",
  ('M1', 4): 'One job. <em>Clear inputs, clear output, clear edges.</em>',
  ('M1', 6): 'Four questions, <em>like a new hire.</em>',

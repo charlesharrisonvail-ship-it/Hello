@@ -3,7 +3,7 @@
 beats on the left, each beat timed to its narration paragraph.
 
     python3 build_lesson.py <beats_module> <module_label> <avatar.mp4> <script.txt> <out_dir> [starts.json]
-                            [--visuals M2 --images <dir with 201.png, 202.png ...>]
+                            [--visuals M2 --images <dir with 201.png, 202.png ...>] [--course "COURSE NAME"]
     e.g. python3 build_lesson.py beats_m2 "MODULE 2" avatar.mp4 m2-script.txt out/m2 m2-starts.json --visuals M2 --images imgs
 
 Paragraph start times come from starts.json (exact, from the narration timings) or,
@@ -16,13 +16,15 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 import importlib
 
-VIS, IMGS = {}, None
+VIS, IMGS, COURSE = {}, None, "BUILD YOUR AI ASSISTANT"
+if "--course" in sys.argv:
+    k = sys.argv.index("--course"); COURSE = sys.argv[k + 1]; del sys.argv[k:k + 2]
 if "--visuals" in sys.argv:
     k = sys.argv.index("--visuals"); key = sys.argv[k + 1]; del sys.argv[k:k + 2]
     k = sys.argv.index("--images"); IMGS = Path(sys.argv[k + 1]); del sys.argv[k:k + 2]
     images = importlib.import_module("images")
     VIS = {b: (kind, images.CAPTIONS.get((key, b), "")) for b, (kind, _) in getattr(images, key).items()}
-    mnum = int(key[1:])
+    base = getattr(images, "BASE", {}).get(key) or int(key[1:]) * 100  # image files are <base + beat>.png
 BEATS = importlib.import_module(sys.argv[1]).BEATS
 label = sys.argv[2]
 avatar, script, out = Path(sys.argv[3]), Path(sys.argv[4]), Path(sys.argv[5])
@@ -50,7 +52,7 @@ shutil.copy(fonts / "manrope.woff2", out / "assets/fonts/manrope.woff2")
 if VIS:  # photos to 1600px JPEG, sketches to 2048px, so renders stay quick
     (out / "assets" / "v").mkdir()
     for b, (kind, _) in VIS.items():
-        src = IMGS / f"{mnum * 100 + b}.png"
+        src = IMGS / f"{base + b}.png"
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(src), "-vf", f"scale={2048 if kind == 'sketch' else 1600}:-1",
                         "-q:v", "2", str(out / "assets" / "v" / f"{b:02d}.jpg")], check=True)
 
@@ -198,7 +200,7 @@ index = f"""<!doctype html>
   <video id="avatar" class="clip" src="assets/avatar.mp4" data-start="0" data-duration="{round(dur,2)}" data-track-index="1" data-has-audio="true" playsinline></video>
   <div id="fade"></div>
   <div id="label">Made with AI</div>
-  <div id="brand">AiRE ESTATE ACADEMY &middot; BUILD YOUR AI ASSISTANT &middot; {label}</div>
+  <div id="brand">AiRE ESTATE ACADEMY &middot; {COURSE} &middot; {label}</div>
   {chr(10).join(hosts)}
 </div>
 <script>window.__timelines = window.__timelines || {{}}; const m = gsap.timeline({{ paused: true }});
