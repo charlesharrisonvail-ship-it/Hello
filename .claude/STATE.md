@@ -23,6 +23,10 @@ from `claude/stan-store-access-k4hjdu`, not `main`. ChatGPT makes cards from
 `marketing/chatgpt-brief.md`; check every image (no name, Claude Code "(not
 included)", $67/$97) before queuing.
 
+OpenMontage (calesthio, AGPL-3.0, agentic video studio) has free Windows notes in
+`tools/openmontage/` (2026-10-26). It is cloned on his laptop and opened as its own
+Claude Code folder, not vendored here. Paid keys stay blank (`recall.py openmontage`).
+
 ## Open question for Charles
 
 The agents say "powered by Epique X"; some skills say "EpiqueAI". `CLAUDE.md` does

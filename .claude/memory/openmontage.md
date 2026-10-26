@@ -1,0 +1,14 @@
+---
+name: openmontage
+description: OpenMontage (calesthio, AGPL-3.0) video studio - free Windows setup notes live in tools/openmontage/, source not vendored
+---
+
+Charles asked for OpenMontage ("Open Montage") on 2026-10-26. It is a whole
+Claude Code workspace (164 MB, its own CLAUDE.md and .claude/), not a single
+skill, so it is cloned on his laptop and opened as its own folder. It is not
+copied into this repo. Notes: `tools/openmontage/README.md`.
+
+Free route only (see `no-paid-ai-tools`): Piper narration, Archive.org, NASA,
+Wikimedia and free stock keys, Remotion, HyperFrames and FFmpeg. Every paid key
+in its `.env` stays blank. A cloud session can't run its installer (denied
+2026-10-26), and the container wipes anyway.
