@@ -144,7 +144,7 @@ When uncertain:
 
 - **Name:** Charles
 - **Role:** Area/Growth Leader, Epique Realty Colorado Mountain Region (operating as **EpiVail**); also owner of **AiRE Estate** (real estate courses, `learn.aireestate.com`). Two separate businesses: never blend them (repo `CLAUDE.md`).
-- **Email (work):** {{WORK_EMAIL}}
+- **Email (work):** charlesharrison@epique.me
 - **Email (personal):** {{PERSONAL_EMAIL}}
 - **AiRE Estate contact:** hello@aireestate.com
 - **Partner/Family:** {{FAMILY_INFO}} <!-- e.g., "Partner: Alex | Kids: Sam (age 5)" -->
@@ -157,7 +157,8 @@ When uncertain:
   Examples:
 -->
 - HOME by {{DINNER_TIME}} daily for dinner — flag any conflicts
-- No meetings before {{EARLIEST_MEETING_TIME}}
+- No meetings before 9:00 AM
+- No meetings after 4:00 PM
 - {{ADD_YOUR_CONSTRAINTS}}
 
 ### Personal Themes / Values
@@ -196,9 +197,8 @@ When uncertain:
 
 | Name | Role | Notes |
 |------|------|-------|
-| {{PERSON_1}} | {{ROLE_1}} | {{NOTES_1}} |
-| {{PERSON_2}} | {{ROLE_2}} | {{NOTES_2}} |
-| {{PERSON_3}} | {{ROLE_3}} | {{NOTES_3}} |
+| Charles Harrison | Area/Growth Leader, Epique Realty Colorado Mountain Region | Owner of this setup |
+| Darrell Chavez | Epique Realty | Role to confirm |
 
 ### Board / Key Stakeholders
 
