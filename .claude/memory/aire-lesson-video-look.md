@@ -19,3 +19,15 @@ What that became (production/video/images.py + build_lesson.py --visuals):
 - Message beats: phone / chat-window mockups built in HTML.
 - Higgsfield rate limit: about 4 image jobs at a time; extras fail with 429 (no charge).
 Still "Made with AI" label, no fireworks, no dot/particle drawings.
+
+Progress 2026-10-26 (review copies in production/video/review/, nothing live yet):
+- Build Your AI Assistant M1-M3 re-cut (Charles: "1000% better").
+- Listing Media Without the Invoice (original course) M1-M5 re-cut. M1 re-voiced in his Starfish
+  voice (old narration was not his voice). M2-M5 keep AiRE's narration, use --full layout and
+  word captions; M4 keeps the live-class footage as '@source' beats.
+- Original videos live in Higgsfield's CDN (links in docs/course.html and
+  docs/lead-to-keys-course.html before commit eafa3ee), not GitHub. Map in course.html: M2=course-1,
+  M4=course-2, M6=course-3, M5=course-4, M3=course-5, Prompt Playbook bonus=course-6 (also Lead to
+  Keys bonus), M7=course-7, M1=course-8 (download order of unique URLs).
+- Next on the list: Listing Media M6, M7, bonus; then Lead to Keys. Needs Higgsfield credits
+  (~20 per module). Swapping the live course videos needs Charles's go and the access code.
