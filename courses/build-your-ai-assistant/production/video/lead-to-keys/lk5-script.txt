@@ -1,0 +1,21 @@
+Now buyers. How to talk to them, how to compare homes for them and how to answer them when they push back.
+
+Buyer communication. Buyers are drowning in listings. Every portal sends them 40 homes a day. Your job is to be the one message worth reading.
+
+So when you send a buyer homes, don't send links, send a reason, give the model the buyer's profile and the listing, and ask for three sentences. Why this home fits their must haves and what the one honest drawback is. That drawback line is what makes buyers trust you. An agent who only says good things gets ignored. An agent who says great kitchen but it backs onto a busy road gets read every time.
+
+Property comparisons. When a buyer is down to two or three homes, build them a side by side. Give the model the fact sheets and the buyer's profile and ask for a comparison table on the things this buyer said matter in the order they ranked them. Price, size and condition. Then commute, yard, whatever came up in their profile. Then a short paragraph on the real trade-off.
+
+And watch this carefully. Compare the homes, not the neighborhood's people. Quieter street, larger lot and newer roof are fine. Better area, safer. More your kind of neighborhood are exactly the words that turn into a steering complaint.
+
+If a buyer asks about crime or schools, give them the official source and let them decide. The model will reach for better area if you let it. Tell it not to in the prompt and check anyway.
+
+Objection handling. Buyers push back. It's overpriced. We want to wait for rates to drop. We saw something cheaper online. You can use the model to practice. Tell it to play a skeptical buyer with this client's profile and have the conversation. Then ask it what you missed.
+
+But know what objection handling actually is. It isn't a script for getting past a no. It's finding out what the real concern is and answering it honestly. It's overpriced might really mean I'm scared of overpaying. The answer to that is your Module 10 comps, not a clever line.
+
+We'll wait for rates might mean the payment scares me. The answer is to send them to a lender for real numbers, not to predict rates, which nobody can do. Never let the model promise where the market is going.
+
+If an honest answer means the buyer should wait or walk away, say so. You'll keep that client for life.
+
+Next, staying in front of everyone automatically without becoming spam.

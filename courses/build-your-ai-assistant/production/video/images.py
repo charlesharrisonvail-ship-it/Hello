@@ -78,8 +78,22 @@ LK4 = {
  12: ("photo", "A front porch of a mountain home at dusk with two chairs facing each other, warm porch light, inviting, no people."),
 }
 
+LK5 = {
+ 1: ("photo", "A couple walking up a stone path to an open-house front door of a mountain-modern home, seen from behind, faces not visible, golden hour."),
+ 2: ("sketch", "Core idea: buyers are drowning in listings; be the one message worth reading. Composition: a small buyer figure is swimming in a sea of tiny listing cards; Xiaohei on the shore throws a single short note tied to a life ring. Labels: \"40 homes a day\" (red), \"one message worth reading\" (orange, on the note)."),
+ 3: ("photo", "A smartphone on a cafe table showing a short message preview beside a cup of coffee, warm light, mountain town window, screen blurred."),
+ 4: ("photo", "Two printed listing sheets with house photos laid side by side on a table with a pen between them, warm light, text blurred and unreadable."),
+ 5: ("sketch", "Core idea: compare the homes, never the neighborhood's people. Composition: Xiaohei measures two little houses with a tape measure; neat black check labels sit on the houses, while crossed-out red labels float off to the side. Labels: \"quieter street\", \"larger lot\", \"newer roof\" (black, with small checks), \"better area\", \"safer\", \"your kind of neighborhood\" (red, crossed out)."),
+ 6: ("photo", "A laptop showing a blurred official government website next to a notepad, calm office light, screen unreadable."),
+ 7: ("photo", "Two chairs at a coffee table in a mountain living room set for a conversation, two cups of tea, warm afternoon light, no people."),
+ 8: ("sketch", "Core idea: an objection often hides the real concern. Composition: Xiaohei gently lifts a flat mask off a small buyer figure; the mask has a frown and the face underneath looks worried. Labels: \"it's overpriced\" (black, on the mask), \"scared of overpaying\" (red, by the face), \"the real concern\" (orange)."),
+ 9: ("photo", "A comp grid printout and a lender's rate sheet side by side on a desk, warm lamp light, all numbers blurred and unreadable."),
+ 10: ("photo", "A handshake on a front porch of a mountain home at sunset, faces out of frame, warm and trusting."),
+ 11: ("photo", "A laptop showing a softly blurred calendar of scheduled messages on a desk in a mountain office at morning, coffee cup, screen unreadable."),
+}
+
 # Listing Media Without the Invoice (original AiRE course). Image files numbered from BASE.
-BASE = {"LM1": 1100, "LM2": 1200, "LM3": 1300, "LM4": 1400, "LM5": 1500, "LM6": 1600, "LM7": 1700, "LMB": 1800, "LK1": 2100, "LK2": 2200, "LK3": 2300, "LK4": 2400}
+BASE = {"LM1": 1100, "LM2": 1200, "LM3": 1300, "LM4": 1400, "LM5": 1500, "LM6": 1600, "LM7": 1700, "LMB": 1800, "LK1": 2100, "LK2": 2200, "LK3": 2300, "LK4": 2400, "LK5": 2500}
 LM1 = {
  1: ("photo", "A wide mountain valley with a small ski town at golden hour, aspens turning gold, a winding river, peaks with first snow."),
  2: ("photo", "A mountain resort town main street at dusk in autumn, warm shop windows, pines and peaks behind, no signs readable."),
@@ -287,6 +301,9 @@ def request(beat, kind, prompt):
 
 
 CAPTIONS = {
+ ('LK5', 2): 'Forty homes a day. <em>Be the one worth reading.</em>',
+ ('LK5', 5): 'Compare the homes. <em>Never the people.</em>',
+ ('LK5', 8): 'Find the real concern. <em>Answer it honestly.</em>',
  ('LK4', 2): 'Worth, how, and cost. <em>Not forty slides about you.</em>',
  ('LK4', 5): 'Their own house, already marketed. <em>Before they sign.</em>',
  ('LK4', 8): 'Sellers aren\'t lost on price. <em>They\'re lost on silence.</em>',
