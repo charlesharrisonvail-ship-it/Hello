@@ -1,0 +1,23 @@
+This Module is about sellers. Winning the listing and keeping the seller's trust after you have it.
+
+The listing presentation. Most listing presentations are the same 40 slides about the agent. Sellers don't want that. They want to know three things. What's my house worth, how will you sell it, and what will it cost me?
+
+So, build the presentation around those three questions. Give the model three things. Your Module 10 report, the seller's profile from Module 9, and your brand file. Ask it to outline a presentation that answers the seller's three questions in the order the seller cares about them and no more than 10 slides.
+
+Then comes the Part your competition can't match. The plan section isn't a promise. It's a demonstration. Before the appointment, take one exterior photo of their house from the street and with permission. And if you took Part one, make the drone clip from Module 4. Label it as AI generated. The way Part one taught you.
+
+Then, play it at the table. You aren't telling the seller you market listings well. You're showing them their own house already marketed before they've signed anything.
+
+Client presentations. More broadly, the same method works for any presentation. A price reduction talk, an investor meeting, a buyer consultation. Profile first, facts second, one question per slide, and your brand file on top.
+
+If you took Part one, run it through the Impeccable skill in Claude Code. Type slash Impeccable critique and fix what it flags before a client sees it.
+
+Seller communication. Here's where most agents lose sellers. Not on price, on silence. A seller with no news assumes bad news.
+
+So set a rhythm, weekly at least, and let the model carry it. Every week, give it the facts. Showings, online views, feedback you actually received, and any new competing listings. Ask for a short update in the seller's preferred style from their profile. What happened? What it means? What's next?
+
+Two rules for these updates. First, feedback is quoted, not invented. If a buyer's agent said kitchen felt dated, the update says that. The model doesn't add encouragement nobody gave.
+
+Second, hard news is written by you. A price reduction conversation. A deal falling apart. An inspection problem. Let the model draft the facts if you want, but you make that call on the phone and the written note follows your voice, not the other way around.
+
+A seller who hears from you every week, with real information, doesn't leave. Next, the other side of the table.

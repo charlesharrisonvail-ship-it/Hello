@@ -63,8 +63,23 @@ LK3 = {
  13: ("photo", "An agent's leather portfolio and a printed report on a kitchen island in a bright mountain home, coffee cups, ready for a meeting, no people."),
 }
 
+LK4 = {
+ 1: ("photo", "A mountain-modern home with a small tasteful for-sale sign post at the edge of the lawn at golden hour, sign blank, no people."),
+ 2: ("sketch", "Core idea: sellers don't want forty slides about the agent; they want three answers. Composition: Xiaohei holds a towering stack of slides, each showing a tiny self-portrait of an agent; across from it a small seller figure yawns and holds up three question marks. Labels: \"40 slides about the agent\" (red), \"worth?\", \"how?\", \"cost?\" (orange, by the question marks)."),
+ 3: ("photo", "A printed presentation booklet and a tablet on a dining table in a bright mountain home, coffee cups, ready for a meeting, screen and text unreadable."),
+ 4: ("photo", "A smartphone held up to photograph a mountain home from the street at golden hour, seen from behind the hand, screen blurred."),
+ 5: ("sketch", "Core idea: show the seller their own house already marketed, before they sign. Composition: at a kitchen table Xiaohei turns a tablet toward a small seller figure; the tablet plays a drone video of the seller's own house; the seller's eyes go wide. Labels: \"their own house\" (orange), \"AI-generated\" (red, a small tag on the video), \"before they sign\" (blue)."),
+ 6: ("photo", "A small conference table in a mountain office with a laptop open to a slide and two chairs, morning light, screen blurred."),
+ 7: ("photo", "A laptop on a dark desk with a terminal window glowing softly, a coffee mug, evening mountain cabin light, screen blurred and unreadable."),
+ 8: ("sketch", "Core idea: sellers are lost to silence, not price. Composition: a small seller figure sits beside a phone that never rings, a dark storm cloud growing over their head; far away Xiaohei is busy and unaware. Labels: \"no news\" (black, by the silent phone), \"= bad news\" (red, by the cloud)."),
+ 9: ("photo", "A phone on a kitchen counter lighting up with a message, morning coffee beside it, a seller's mountain home kitchen, screen blurred."),
+ 10: ("photo", "A notepad with handwritten quotation marks and a pen on a desk, warm light, writing blurred and unreadable."),
+ 11: ("photo", "A phone held to an ear by a hand at a window overlooking mountains, serious mood, face out of frame, evening light."),
+ 12: ("photo", "A front porch of a mountain home at dusk with two chairs facing each other, warm porch light, inviting, no people."),
+}
+
 # Listing Media Without the Invoice (original AiRE course). Image files numbered from BASE.
-BASE = {"LM1": 1100, "LM2": 1200, "LM3": 1300, "LM4": 1400, "LM5": 1500, "LM6": 1600, "LM7": 1700, "LMB": 1800, "LK1": 2100, "LK2": 2200, "LK3": 2300}
+BASE = {"LM1": 1100, "LM2": 1200, "LM3": 1300, "LM4": 1400, "LM5": 1500, "LM6": 1600, "LM7": 1700, "LMB": 1800, "LK1": 2100, "LK2": 2200, "LK3": 2300, "LK4": 2400}
 LM1 = {
  1: ("photo", "A wide mountain valley with a small ski town at golden hour, aspens turning gold, a winding river, peaks with first snow."),
  2: ("photo", "A mountain resort town main street at dusk in autumn, warm shop windows, pines and peaks behind, no signs readable."),
@@ -272,6 +287,9 @@ def request(beat, kind, prompt):
 
 
 CAPTIONS = {
+ ('LK4', 2): 'Worth, how, and cost. <em>Not forty slides about you.</em>',
+ ('LK4', 5): 'Their own house, already marketed. <em>Before they sign.</em>',
+ ('LK4', 8): 'Sellers aren\'t lost on price. <em>They\'re lost on silence.</em>',
  ('LK3', 2): 'A language model <em>is not a database.</em>',
  ('LK3', 5): 'The tool doesn\'t know the street. <em>You do.</em>',
  ('LK3', 10): 'A comparative market analysis. <em>Never an appraisal.</em>',
