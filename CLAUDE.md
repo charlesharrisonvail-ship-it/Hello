@@ -21,14 +21,15 @@ and the site is plain HTML.
   - `linkedin-content.md` — LinkedIn posts, content calendars, and carousel/Reel concepts
   - `lofty-crm.md` — Lofty contacts, tiers, tags, recruit pipeline stages, and follow-up tasks
 - `.claude/skills/linkedin-optimizer/` — LinkedIn analytics and profile optimization
-- `.claude/skills/` also holds five general skills from ComposioHQ/awesome-claude-skills (commit `be2a406`, Apache-2.0): `lead-research-assistant`, `content-research-writer`, `competitive-ads-extractor`, `meeting-insights-analyzer`, `domain-name-brainstormer`. They are third-party and brand-neutral; EpiVail and AiRE Estate rules in this file still govern anything they produce.
-- `.claude/settings.json` — project settings; enables the Superpowers, Ponytail (DietrichGebert/ponytail, MIT; "lazy senior dev" minimal-code mode, needs `node`), and ECC (affaan-m/ECC v2.2.3, MIT; `ecc@ecc` — 71 agents, 311 skills, and its own lifecycle hooks) plugins and registers the Continuity session-orientation hooks
+- `.claude/skills/` also holds five general skills from ComposioHQ/awesome-claude-skills (commit `be2a406`, Apache-2.0): `lead-research-assistant`, `content-research-writer`, `competitive-ads-extractor`, `meeting-insights-analyzer`, `domain-name-brainstormer`. They are third-party and brand-neutral; EpiVail and AiRE Estate rules in this file still govern anything they produce. `.claude/skills/threejs-*` are 13 Three.js skills from CloudAI-X/threejs-skills (MIT, commit `0e18186`; license in `.claude/skills/LICENSE-threejs-skills.txt`), vendored the same way.
+- `.claude/settings.json` — project settings; enables the Superpowers, Ponytail (DietrichGebert/ponytail, MIT; "lazy senior dev" minimal-code mode, needs `node`), ECC (affaan-m/ECC v2.2.3, MIT; `ecc@ecc` — 71 agents, 311 skills, and its own lifecycle hooks), and GSAP (greensock/gsap-skills, MIT; `gsap-skills@gsap-skills`) plugins and registers the Continuity session-orientation hooks
 - `.claude/continuity/` — the Continuity kit that loads `ROLE.md`, `PROJECT.md`, `DECISIONS.md`, and `STATE.md` at every session start
 - `.claude/memory/` — one fact per file, searched with `python3 .claude/continuity/recall.py <terms>`
 - `docs/` — the AiRE Estate site (public; carries pricing, refund terms, privacy, and terms of service)
 - `tools/jarvis/` — Windows setup script and notes for installing Jarvis (third-party local voice assistant); source is not vendored
 - `tools/open-generative-ai/` — free Windows setup notes for Open Generative AI (Anil Matcha's AI image/video studio with Cinema Studio); local models only, no paid MuAPI key; source is not vendored
 - `tools/harvey/` — free Windows setup notes and a leads-only config for Harvey (ethanplusai/harvey, MIT; AI lead-finding agent that runs on the Claude plan); finds agents and brokerages in 23 Colorado ski towns via Serper's free tier, email and LinkedIn off; source is not vendored
+- `tools/motion-graphics/` — status of the 28 motion-graphics Claude Code installs from a Prakhar Saxena post (2026-10-27): what is in place, what is held (paid, needs an account, or unclear license), and what Charles can install on his laptop; no packages installed here
 - `is-this-for-you-script.md` — script for the Lead to Keys screening video
 
 ## Conventions

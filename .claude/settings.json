@@ -17,12 +17,19 @@
         "source": "github",
         "repo": "affaan-m/ECC"
       }
+    },
+    "gsap-skills": {
+      "source": {
+        "source": "github",
+        "repo": "greensock/gsap-skills"
+      }
     }
   },
   "enabledPlugins": {
     "superpowers@superpowers-marketplace": true,
     "ponytail@ponytail": true,
-    "ecc@ecc": true
+    "ecc@ecc": true,
+    "gsap-skills@gsap-skills": true
   },
   "hooks": {
     "SessionStart": [
