@@ -1,0 +1,25 @@
+Welcome to Part 2. I'm AiRE, your AI instructor.
+
+One thing before we start. What you get here is practical advice from people who do this work. It is not legal advice. Laws on advertising, texting, privacy and contracts differ from state to state, and they change. So before you rely on anything with legal weight, check it with a real estate attorney where you practice.
+
+And one rule for everything in Part 2. Never paste account numbers, loan documents or social security numbers into any AI tool.
+
+Most of this course happens in your chat app, ChatGPT or the Claude app, whichever you use. Part 1 taught you to make the marketing. Part 2 covers everything else an agent does all day. The words, the people, the numbers, the paperwork.
+
+We start with the listing itself. First, the fact sheet. Every listing starts as a pile– seller notes, tax records, your walkthrough, the old listing from 12 years ago. Most agents write the description straight from that pile. That's where the mistakes come from.
+
+So, before you write a single sentence of marketing, have the model build a fact sheet, paste in your notes and ask it to organize them into fields. Beds, baths, square footage and where that number came from, year built, lot size, systems and their ages, recent updates, HOA, inclusions and exclusions.
+
+Then tell it one more thing. Mark anything that conflicts and anything that's missing. That last line matters. Do not fill any gaps. Without it, a model will cheerfully guess the year the roof was replaced. With it, you get a list of questions to ask your seller before anything goes public.
+
+Square footage is the big one, tax records, an old appraisal and the seller's memory will often give you three different numbers. The fact sheet shows you that on day one, not after a buyer's appraisal, comes in short.
+
+Now, the description. Once the fact sheet is clean, the description writes itself. Give the model the fact sheet, not your raw notes, and ask for three versions. One for the MLS, one for social. And, if you took part one, one for your listing showcase. Each one has a different job. The MLS version is precise and within the character limit. The social version leads with one feeling. The showcase version walks a buyer through the house in order.
+
+Then read it like a regulator. Listing descriptions are advertising and the Fair Housing Act applies to every word. Describe the property. Never the people who should live there. Perfect for a young family. Ideal for empty nesters. Walking distance to the church. Each of those points, at a protected class, and models write phrases like that all the time, because they learned from decades of listings that did. Three bedrooms, a fenced yard, a quarter mile from the elementary school. That's a fact about the property, and it's fine.
+
+Here's how to make that automatic. Ask the model to review its own draft for fair housing risk before you do. Then read it yourself anyway. It catches most of them. You're the one who's licensed.
+
+One last check. Every claim in the description should trace back to a line on the fact sheet. If the draft says, new roof, the fact sheet has to say when and who installed it. If it doesn't, the words come out. Describe the house that's there, not the one the model imagined.
+
+Next, the people.

@@ -1,0 +1,23 @@
+Every good message you'll ever send starts with knowing who's reading it. This module builds that, a client profile, and a fair way to qualify a lead.
+
+The client profile. A profile is one page per client that the model reads before it writes anything for them.
+
+It keeps five things. What they're trying to do, buy, sell, or both, and by when. Their must-haves and their deal-breakers in their own words. How they like to hear from you, text, call, or email. And how often. Where they are right now. Pre-approved. Listed. Under contract. And what they've already told you, so they never have to say it twice.
+
+Then, every time you need to write to that client, you give the model the profile first. The message comes out in their language, at their pace, about their priorities. That's the difference between a message that sounds personal and one that sounds like a template, even though both came from a model.
+
+What never goes in a profile? This part isn't optional. A profile holds what the client wants in a home. It never holds who the client is in any way the law protects. No race, religion, or national origin. No notes about kids, pregnancy, or a disability, even if they mentioned it. No, they'd fit in on the east side.
+
+Here's why this matters more with AI than it ever did with a notepad. The model reads the whole profile every time it writes. If something protected is in there, it can quietly shape which homes get suggested, and which neighborhoods get described warmly. That's steering, and it doesn't matter that the software did it.
+
+The rule is simple. If it isn't about the property, it isn't in the profile.
+
+And the private information rule from the start of Part 2 applies here first. Account numbers, loan documents, and social security numbers stay out of every AI tool, before you store profiles anywhere, check the tool's data settings, and ask a local attorney what your state requires for client records.
+
+Qualifying a lead, fairly. Qualification means one thing. Can I help this person, and when? It is not deciding who deserves your time.
+
+Have the model write you one set of questions, the same questions for every single lead, timeline, financing status, whether they're already working with an agent, what made them reach out today. Same questions, same order, for everybody.
+
+Consistency is what keeps qualification fair, and it's also what makes it useful, because now you can compare leads honestly, then let the model sort the answers into now, soon, and later, based only on those answers. Don't let it guess from a name, a zip code, or the way somebody writes. You'll see why that matters in Module 13, when we automate the follow-up.
+
+You now know who you're talking to. Next, you're going to know the numbers.

@@ -15,8 +15,56 @@ Color use: Black for main line art and Xiaohei. Orange for main flow/path/arrows
 Constraints: One image explains only one core structure. Main subject around 40-60% of the canvas, at least 35% blank white space. Only the handwritten English labels listed, spelled exactly; no other words anywhere, and never write the character's name. No title in the top-left corner. Not a formal diagram, course slide, or dense explainer. Clear but not instructional, strange but clean.
 """
 
+# Lead to Keys (Part 2). Files numbered from 2100 (LK1), 2200 (LK2) and so on.
+LK1 = {
+ 1: ("photo", "A set of house keys on a walnut table in front of a window with a mountain-modern home outside at golden hour, warm and welcoming."),
+ 2: ("photo", "A row of law books and a brass desk lamp on a dark shelf, warm library light, spines blurred and unreadable."),
+ 3: ("sketch", "Core idea: never paste sensitive financial documents into an AI tool. Composition: Xiaohei stands firmly in front of a chat window with arms out, blocking a small stack of papers that is trying to walk into it. Labels: \"account numbers\", \"loan documents\", \"social security numbers\" (black, on the papers), \"never paste\" (red)."),
+ 4: ("photo", "A real estate agent's desk at morning with a phone, a notebook, a closing folder and a calculator, mountain view, all text blurred and unreadable."),
+ 5: ("sketch", "Core idea: turn the messy pile into a clean fact sheet before writing anything. Composition: on the left a messy pile of papers; Xiaohei pulls pieces from it and files them into a tidy form with neat boxes on the right. Labels: \"seller notes\", \"tax records\", \"your walkthrough\", \"old listing\" (black, on the pile), \"fact sheet\" (orange, on the form)."),
+ 6: ("photo", "A clean clipboard with a blank form on a kitchen island in an empty staged mountain home, morning light, nothing readable."),
+ 7: ("photo", "A roof of a mountain home with snow melting off it, seen from below against a blue sky, crisp detail, no people."),
+ 8: ("sketch", "Core idea: three sources give three different square footages; the fact sheet shows it on day one. Composition: three small figures (a tax record page, an old appraisal folder, and a thought bubble from a seller) each hold up a sign with a different number; Xiaohei stands in the middle with a tape measure, frowning. Labels: \"tax record\", \"old appraisal\", \"seller's memory\" (black), \"3 different numbers\" (red), \"day one\" (orange)."),
+ 9: ("photo", "A bright living room in a mountain-modern home staged for sale, large windows, peaks outside, golden light, no people."),
+ 10: ("photo", "A quiet suburban street in a mountain town with a school building far in the distance and a fenced yard in front, afternoon light, no people, no readable signs."),
+ 11: ("photo", "A pen and a printed draft beside a laptop on a desk at evening, a reading lamp, careful review mood, text blurred."),
+ 12: ("sketch", "Core idea: every claim in the description must trace back to the fact sheet. Composition: Xiaohei draws orange lines from each sentence of a description page back to lines on a fact sheet page (every sentence drawn as plain squiggly lines, no readable words); one sentence has no matching line and Xiaohei is cutting it out with big scissors. Labels: \"description\" (black), \"fact sheet\" (black), \"new roof?\" (red, on the cut sentence), \"comes out\" (red)."),
+ 13: ("photo", "Two people shaking hands at the front door of a mountain home, seen from a distance, faces not visible, warm evening light."),
+}
+
+LK2 = {
+ 1: ("photo", "A handwritten note card and an envelope on a walnut desk beside a phone, morning light in a mountain home office, writing blurred and unreadable."),
+ 2: ("sketch", "Core idea: the model reads one page about the client before it writes anything. Composition: Xiaohei hands a single page to a box-shaped assistant with dot eyes; only after reading it does the assistant start writing a letter. Labels: \"one page per client\" (black, on the page), \"read first\" (orange), \"then write\" (blue)."),
+ 3: ("photo", "A tidy client folder on a desk with tabbed pages and a pen, warm lamp light, mountain window behind, all text blurred and unreadable."),
+ 4: ("photo", "A phone on a cafe table showing a blurred text conversation, a coffee beside it, warm light, screen unreadable."),
+ 5: ("photo", "A closed leather folder with a small brass lock on a dark desk, serious, warm light, no text."),
+ 6: ("sketch", "Core idea: something protected in a profile can quietly steer what the model suggests. Composition: a box-shaped assistant with dot eyes reads a profile page with a small hidden red note tucked in it; from the note a red arrow quietly bends a road on a small town map toward only one neighborhood; Xiaohei notices with alarm. Labels: \"reads the whole profile\" (blue), \"hidden note\" (red), \"steering\" (red)."),
+ 7: ("photo", "A beautiful mountain-modern home exterior at golden hour, the property alone in frame, no people, calm and factual."),
+ 8: ("photo", "A shredder beside a small stack of documents and a laptop with a lock icon shape on a desk, cool light, all text unreadable."),
+ 9: ("photo", "An empty chair across a desk from a notepad and a pen in a bright office with mountain views, waiting for a conversation."),
+ 10: ("photo", "A clipboard with a short printed checklist of four lines on a desk, a pen beside it, morning light, text blurred and unreadable."),
+ 11: ("sketch", "Core idea: sort leads only on their answers, never on a name, a zip code or how they write. Composition: Xiaohei sorts answer cards into three trays; on the floor a name tag, a zip code tag and a handwriting sample are crossed out and pushed aside. Labels: \"now\", \"soon\", \"later\" (orange, on the trays), \"answers only\" (blue), \"name\", \"zip code\", \"the way they write\" (red, crossed out)."),
+ 12: ("photo", "A calculator, a printed spreadsheet and a cup of coffee on a walnut desk at evening, mountain window, numbers blurred and unreadable."),
+}
+
+LK3 = {
+ 1: ("photo", "A laptop showing a softly blurred spreadsheet and a printed comp grid beside a calculator on a walnut desk, mountain window at dusk, all numbers unreadable."),
+ 2: ("sketch", "Core idea: a language model is not a database; ask it for a sale price and it may invent one. Composition: Xiaohei asks a box-shaped assistant with dot eyes a question; the assistant confidently pulls a price tag out of a top hat like a magic trick. Labels: \"what did it sell for?\" (black), \"made up\" (red, on the price tag), \"not a database\" (blue)."),
+ 3: ("photo", "A stack of printed MLS reports and a pen beside an open laptop, warm desk lamp, mountain office, all text blurred and unreadable."),
+ 4: ("photo", "A row of mountain homes of similar size on one street at golden hour, seen from across the road, no people, no readable signs."),
+ 5: ("sketch", "Core idea: you check every adjustment because you know what the tool doesn't. Composition: Xiaohei with a red pen stands over a comp grid on the ground; next to it two tiny houses: one sits right beside a highway with cars, the other has a cutaway showing an old dated kitchen; Xiaohei crosses out one number in the grid. Labels: \"backs onto the highway\" (red), \"1987 kitchen\" (red), \"your judgment\" (orange)."),
+ 6: ("photo", "A small rental duplex in a mountain town with a pencil and a notepad on a porch railing in the foreground, afternoon light, nothing readable."),
+ 7: ("photo", "An insurance quote and a property tax bill lying on a desk beside a calculator, warm light, all text blurred and unreadable."),
+ 8: ("photo", "A single printed one-page market report with a simple line chart, on a coffee table in a mountain living room, text blurred and unreadable."),
+ 9: ("photo", "A rule book with a ribbon bookmark on a desk beside a laptop, cool evening light, text unreadable."),
+ 10: ("sketch", "Core idea: the report is a comparative market analysis, never an appraisal, and your judgment sits between the model's range and the list price. Composition: Xiaohei stamps a big red stamp on a report; beside it Xiaohei's arm holds back an arrow labeled with a range from reaching a sign. Labels: \"comparative market analysis\" (black, title on the report), \"not an appraisal\" (red, the stamp), \"the model's range\" (blue, on the arrow), \"list price\" (black, on the sign), \"your judgment\" (orange)."),
+ 11: ("photo", "A rubber stamp and an ink pad beside a bound report on a desk, warm light, text unreadable."),
+ 12: ("photo", "A polished bound printed report with a mountain home photo on its cover lying on a walnut table, premium and professional, text unreadable."),
+ 13: ("photo", "An agent's leather portfolio and a printed report on a kitchen island in a bright mountain home, coffee cups, ready for a meeting, no people."),
+}
+
 # Listing Media Without the Invoice (original AiRE course). Image files numbered from BASE.
-BASE = {"LM1": 1100, "LM2": 1200, "LM3": 1300, "LM4": 1400, "LM5": 1500, "LM6": 1600, "LM7": 1700, "LMB": 1800}
+BASE = {"LM1": 1100, "LM2": 1200, "LM3": 1300, "LM4": 1400, "LM5": 1500, "LM6": 1600, "LM7": 1700, "LMB": 1800, "LK1": 2100, "LK2": 2200, "LK3": 2300}
 LM1 = {
  1: ("photo", "A wide mountain valley with a small ski town at golden hour, aspens turning gold, a winding river, peaks with first snow."),
  2: ("photo", "A mountain resort town main street at dusk in autumn, warm shop windows, pines and peaks behind, no signs readable."),
@@ -224,6 +272,16 @@ def request(beat, kind, prompt):
 
 
 CAPTIONS = {
+ ('LK3', 2): 'A language model <em>is not a database.</em>',
+ ('LK3', 5): 'The tool doesn\'t know the street. <em>You do.</em>',
+ ('LK3', 10): 'A comparative market analysis. <em>Never an appraisal.</em>',
+ ('LK2', 2): 'The model reads the profile <em>before it writes a word.</em>',
+ ('LK2', 6): 'It reads the whole profile. <em>That\'s how steering happens.</em>',
+ ('LK2', 11): 'Sort on the answers. <em>Never a name or a zip code.</em>',
+ ('LK1', 3): 'One rule for all of Part 2: <em>never paste these into any AI tool.</em>',
+ ('LK1', 5): 'Every listing starts as a pile. <em>Most mistakes start there too.</em>',
+ ('LK1', 8): 'Three sources, three numbers. <em>Find out on day one.</em>',
+ ('LK1', 12): 'No line on the fact sheet? <em>The words come out.</em>',
  ('LMB', 2): 'The chat writes the prompt. <em>The tool makes the thing.</em>',
  ('LMB', 5): 'Miss the facts and it makes things up. <em>Miss the rules, it wanders.</em>',
  ('LMB', 6): 'The more it can see, <em>the less it has to guess.</em>',

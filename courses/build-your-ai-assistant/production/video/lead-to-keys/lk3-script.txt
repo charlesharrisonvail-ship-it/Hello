@@ -1,0 +1,25 @@
+In Part 1, Module 3, you installed a tool called AI Real Estate. Today you use it in Claude Code. If you don't own Part 1, the one-line install is under this video. This is the numbers module, market research, property analysis, comps, and a report you can hand to a client.
+
+Rule 1. Before anything runs, a language model is not a database. Ask one what home sold for on your street last month, and it may answer confidently with numbers it made up. So the rule for this whole module is this.
+
+The numbers come from you, and the model does the work on them. You pull the sales from your MLS. You pull the listing data. You bring the facts. And the model handles the arithmetic, the organization, and the writing.
+
+Comparable analysis. Export your comps from the MLS. Recent sales, similar size, similar age, close by, the same way you'd pick them by hand. Give that export to the AI Real Estate tool, along with your subject property's fact sheet from Module 8. Watch what it does. It lines the comps up against your subject, notes the differences in size, condition, garage, and lot, and suggests adjustments. Then it gives you a range.
+
+Now, your part. Look at every adjustment and ask whether you'd make it. The tool doesn't know the comp on Elm backs onto the highway, or that the one on Oak had a kitchen from 1987. You do. Change what's wrong. That judgment is the reason a licensee runs comps and a website doesn't.
+
+Property analysis. The same tool runs investment math, rental estimates, cash flow, cap rate, flip numbers. It's genuinely useful when an investor client asks, does this pencil?
+
+The same rule applies. Rents come from real rental comps you can point to. Expenses come from real taxes and real insurance quotes. If an input is a guess, label it as a guess right in the report.
+
+Market research and market reports. For a monthly market update, pull your area statistics from the MLS or your local association. Median price, days on market, inventory, list to sale ratio. Give them to the model and ask for a one page update in plain English. What changed? What it means for a seller? What it means for a buyer?
+
+Before you upload an MLS export or publish MLS numbers, check your MLS's rules. Some limit feeding MLS data into AI tools. Then put the source under every number. Source, your MLS. Closed sales. Last 30 days. It takes seconds and it's what makes a client trust the page and forward it.
+
+Now the line you don't cross. You heard this in module 3 and it matters more now that you've seen the tool run. What this produces is a comparative market analysis or a broker's opinion prepared by you, a licensee. It is not an appraisal. Never call it one. Never let a client think it's one and never let the model's range become your list price without your judgment in between. Most states have specific rules about who can call a valuation what, so learn yours.
+
+Title the report comparative market analysis and add a line saying it isn't an appraisal. That line costs you nothing and it protects you.
+
+The report. Last step. The tool writes all of this into a PDF, cover page, subject property, comp grid, your adjusted range, the market snapshot and sources. Put your brand file from module 6 on it and you have something that looks like a firm made it, built from numbers you can defend line by line.
+
+Next, we take that report to a seller.
