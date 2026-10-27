@@ -8,8 +8,11 @@ Summary of the decisions:
 
 - Added to the repo: the three.js skills (`.claude/skills/threejs-*`, MIT) and the
   GSAP plugin (`gsap-skills@gsap-skills` in `.claude/settings.json`, MIT). (2026-10-27)
-- Remotion's official skill pack was not copied in: it has no LICENSE file, and the
-  post says Remotion charges teams of 4 or more. Ask Charles before adding it. (2026-10-27)
+- Remotion is cleared: Charles works solo, and Remotion's license is free for
+  individuals and companies of up to 3 people. Its skill pack is not committed here
+  (3.5 MB, no LICENSE file of its own); Charles installs it on his laptop with
+  `npx -y skills@latest add remotion-dev/skills -g -y`. Don't wire that installer
+  into a hook. (2026-10-27)
 - Held under the no-paid-AI-tools rule: ElevenLabs skills (needs an account and key),
   21st.dev Magic MCP (needs a key), After Effects MCP (needs paid Adobe software).
   Ask Charles before setting any of them up. (2026-10-27)

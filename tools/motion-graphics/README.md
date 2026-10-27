@@ -36,7 +36,7 @@ project that needs them, not to this notes repo.
 | 6 | gsap | Times every move to the frame | **Added** (`gsap-skills` plugin) | Per project: `npm install gsap` (free, plugins included per the skill) |
 | **Render** | | | | |
 | 7 | ffmpeg | Cuts, joins, converts video | Have in the cloud container; not on the laptop | **Laptop:** `winget install Gyan.FFmpeg` (run `winget search ffmpeg` first if the ID differs) |
-| 8 | remotion | Makes MP4s from React | Partly **Have** (`remotion-epivail-video` skill) | **Hold** the official pack: it has no LICENSE file, and the post says Remotion charges at 4+ staff. Read remotion.dev/license first. Install command, when cleared: `npx skills add remotion-dev/skills` |
+| 8 | remotion | Makes MP4s from React | Partly **Have** (`remotion-epivail-video` skill); official pack **cleared** | **Laptop:** `npx -y skills@latest add remotion-dev/skills -g -y`. Free: Remotion's license is free for individuals and companies of up to 3 people (remotion.dev/docs/license/pricing, checked 2026-10-27), and Charles works solo |
 | 9 | hyperframes | Turns an HTML page into an MP4 | **Have** (HyperFrames MCP connected) | Optional local skills: `npx skills add heygen-com/hyperframes` (license not checked) |
 | 10 | manim | Math and diagram animations (Python) | Not installed | **Laptop:** `pip install manim`. LaTeX (MiKTeX, free) only for math text |
 | 11 | motion-canvas | Explainer animation, live preview | Not installed | Scaffold with `npm init @motion-canvas@latest` (check its README) |
@@ -56,7 +56,7 @@ project that needs them, not to this notes repo.
 | 22 | anthropics/skills | Art, canvas, GIF and document skills | **Have** (`anthropic-skills:*` in session) | None |
 | 23 | mcp-for-blender | Claude drives Blender (3D) | **Hold** | Needs Blender (free) and the MCP. License not checked |
 | 24 | gsap-skills | Teaches Claude correct GSAP | **Added** (plugin enabled) | Takes effect on the next session start |
-| 25 | remotion/skills | Teaches Claude Remotion | Same as #8 | Same hold |
+| 25 | remotion/skills | Teaches Claude Remotion | Same as #8 | Same laptop command |
 | 26 | threejs-skills | Teaches Claude Three.js | **Added** (13 skills, MIT) | None |
 | 27 | after-effects-mcp | Drives After Effects | **Hold** | Needs Adobe After Effects, which is paid software |
 | 28 | motion-graphics-skills | 13 launch-grade motion skills | Not added | The post does not name the repo. Send the link and it can be reviewed and added |
@@ -65,9 +65,13 @@ project that needs them, not to this notes repo.
 
 - **No npm or pip packages were installed here.** They are project dependencies,
   not Claude Code installs. Add them in the project that needs them.
-- **Remotion's pack was not copied in.** It has no LICENSE file, and the post notes
-  paid use at 4+ staff. Charles should read the license first.
-- **Held items (8/9 remotion pack, 17, 21, 23, 27) were not set up.** Each one is
+- **Remotion's pack is cleared but not copied in.** Charles is solo, so the license
+  is free for him. The pack is 3.5 MB (285 files), carries no LICENSE file of its
+  own, and lives in Remotion's source-available monorepo, so it is installed with
+  Remotion's own command on the laptop rather than committed here. Running that
+  installer from a cloud session was blocked as outside code, and it was not
+  added to the session-start hook for the same reason.
+- **Held items (17, 21, 23, 27) were not set up.** Each one is
   paid, needs an account, or has an unclear license. Charles said no paid AI tools
   (memory: `no-paid-ai-tools`).
 - **Items marked "not checked here"** come from general knowledge, not from a
