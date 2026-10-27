@@ -36,7 +36,7 @@ project that needs them, not to this notes repo.
 | 6 | gsap | Times every move to the frame | **Added** (`gsap-skills` plugin) | Per project: `npm install gsap` (free, plugins included per the skill) |
 | **Render** | | | | |
 | 7 | ffmpeg | Cuts, joins, converts video | Have in the cloud container; not on the laptop | **Laptop:** `winget install Gyan.FFmpeg` (run `winget search ffmpeg` first if the ID differs) |
-| 8 | remotion | Makes MP4s from React | Partly **Have** (`remotion-epivail-video` skill); official pack **cleared** | **Laptop:** `npx -y skills@latest add remotion-dev/skills -g -y`. Free: Remotion's license is free for individuals and companies of up to 3 people (remotion.dev/docs/license/pricing, checked 2026-10-27), and Charles works solo |
+| 8 | remotion | Makes MP4s from React | Partly **Have** (`remotion-epivail-video` skill); official pack **cleared** | **Laptop:** `npx -y skills@latest add remotion-dev/skills -g -y -a claude-code`. Free: Remotion's license is free for individuals and companies of up to 3 people (remotion.dev/docs/license/pricing, checked 2026-10-27), and Charles works solo |
 | 9 | hyperframes | Turns an HTML page into an MP4 | **Have** (HyperFrames MCP connected) | Optional local skills: `npx skills add heygen-com/hyperframes` (license not checked) |
 | 10 | manim | Math and diagram animations (Python) | Not installed | **Laptop:** `pip install manim`. LaTeX (MiKTeX, free) only for math text |
 | 11 | motion-canvas | Explainer animation, live preview | Not installed | Scaffold with `npm init @motion-canvas@latest` (check its README) |

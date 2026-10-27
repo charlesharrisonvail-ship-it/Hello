@@ -11,7 +11,7 @@ Summary of the decisions:
 - Remotion is cleared: Charles works solo, and Remotion's license is free for
   individuals and companies of up to 3 people. Its skill pack is not committed here
   (3.5 MB, no LICENSE file of its own); Charles installs it on his laptop with
-  `npx -y skills@latest add remotion-dev/skills -g -y`. Don't wire that installer
+  `npx -y skills@latest add remotion-dev/skills -g -y -a claude-code`. Don't wire that installer
   into a hook. (2026-10-27)
 - Held under the no-paid-AI-tools rule: ElevenLabs skills (needs an account and key),
   21st.dev Magic MCP (needs a key), After Effects MCP (needs paid Adobe software).
