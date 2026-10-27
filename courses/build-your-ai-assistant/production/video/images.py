@@ -16,7 +16,7 @@ Constraints: One image explains only one core structure. Main subject around 40-
 """
 
 # Listing Media Without the Invoice (original AiRE course). Image files numbered from BASE.
-BASE = {"LM1": 1100, "LM2": 1200, "LM3": 1300, "LM4": 1400, "LM5": 1500}
+BASE = {"LM1": 1100, "LM2": 1200, "LM3": 1300, "LM4": 1400, "LM5": 1500, "LM6": 1600, "LM7": 1700, "LMB": 1800}
 LM1 = {
  1: ("photo", "A wide mountain valley with a small ski town at golden hour, aspens turning gold, a winding river, peaks with first snow."),
  2: ("photo", "A mountain resort town main street at dusk in autumn, warm shop windows, pines and peaks behind, no signs readable."),
@@ -31,6 +31,60 @@ LM1 = {
  11: ("photo", "A row of thick law books on a dark wooden shelf with a brass desk lamp, spines blurred and unreadable, warm library light."),
  12: ("sketch", "Core idea: from here an AI instructor takes over teaching. Composition: Xiaohei hands a microphone to a box-shaped assistant with dot eyes that has small signal lines around it. Labels: \"AiRE\" (blue, on the assistant), \"AI instructor\" (blue), \"your turn\" (orange)."),
  13: ("photo", "A new timber-frame house foundation and ground floor deck under construction on a mountain lot at sunrise, clean and orderly."),
+}
+
+LMB = {  # the Prompt Playbook bonus
+ 1: ("photo", "A leather notebook open on a walnut desk beside a laptop and a fountain pen, a mountain view through the window at dawn, pages and screen blurred and unreadable."),
+ 2: ("sketch", "Core idea: ask the chat app to write the prompt, then run it in the tool that does the work. Composition: Xiaohei asks a plain, unbranded chat window (no logos or icons anywhere), which hands back a long note; Xiaohei carries the note over to a sturdy workshop machine that is building a small house. Labels: \"write me the prompt\" (black, Xiaohei's request), \"the chat writes\" (orange), \"the tool makes\" (orange), \"Claude Code\" (blue, on the machine)."),
+ 3: ("photo", "Two screens side by side on a mountain cabin desk at morning, one a chat window and one a dark terminal window, both softly blurred and unreadable, a coffee cup."),
+ 4: ("photo", "Four smooth river stones balanced in a careful stack on a wooden desk beside a window with mountains, calm and deliberate."),
+ 5: ("sketch", "Core idea: a prompt needs all four parts or it falls over. Composition: Xiaohei sits on a four-legged stool whose legs are labeled; one leg is missing and the stool is tipping. Labels: \"goal\", \"facts\", \"rules\", \"shape\" (black, one on each leg, \"facts\" on the missing leg drawn dashed), \"makes things up\" (red)."),
+ 6: ("sketch", "Core idea: give the model files, not just words, so it guesses less. Composition: Xiaohei feeds three things into a plain, unbranded chat window (no logos or icons anywhere): a house photo, the same photo with a red line drawn across it, and a single page. Labels: \"photo\" (black), \"marked-up photo\" (red), \"brand file\" (orange), \"less guessing\" (blue)."),
+ 7: ("photo", "A friendly conversation setting: two coffee cups on a kitchen island in a mountain home, morning light, a notepad with blurred questions, no people visible."),
+ 8: ("photo", "An editor's red pencil resting on a printed draft with a few marks, laptop behind, warm desk lamp, text blurred and unreadable."),
+ 9: ("sketch", "Core idea: save prompts that work and reuse them. Composition: Xiaohei files neat index cards into a small wooden card drawer; one card is pulled out and only needs blanks filled in; a big clock shrinks to a small clock beside it. Labels: \"prompt library\" (orange, on the drawer), \"listing description\", \"seller update\", \"market report\" (black, on cards), \"an hour\" (black), \"five minutes\" (blue)."),
+ 10: ("photo", "Reading glasses resting on a printed listing description with blurred text, a magnifying glass beside it, careful review mood, warm light."),
+ 11: ("photo", "A neatly organized desk in a mountain home office at golden hour, a closed notebook and a pen squared up, peaceful, ready to work."),
+}
+
+LM7 = {
+ 1: ("photo", "A winding mountain road at dawn leading toward a small town in a valley, mist lifting, long view, patient and hopeful."),
+ 2: ("sketch", "Core idea: search takes months but compounds. Composition: Xiaohei patiently waters a small sapling; beside it three panels show the same tree growing taller over time while a coin pile under it grows; off to the side a crossed-out sign is held by a hurried figure. Labels: \"months\" (black), \"compounds\" (orange), \"same-week SEO\" (red, on the crossed-out sign)."),
+ 3: ("photo", "A storefront-style view of a small mountain town main street at golden hour, a smartphone in the foreground showing a blurred map, screen unreadable."),
+ 4: ("sketch", "Core idea: a steady trickle of reviews beats a pile posted in one week. Composition: Xiaohei stands under a small tap that drips one star at a time into a jar beside a long row of blank calendar pages for many months (no words or day names on them); on the other side a big heap of stars dumped all at once looks suspicious, with a raised eyebrow drawn above it. Labels: \"steady trickle\" (orange), \"all in one week\" (red), \"real clients\" (blue)."),
+ 5: ("photo", "A quiet mountain neighborhood street in February snow at morning, a school bus far in the distance, warm windows, no people, no readable signs."),
+ 6: ("sketch", "Core idea: Claude drafts the page, you rewrite it with what only you know. Composition: a box-shaped assistant with dot eyes hands Xiaohei a plain draft page; Xiaohei writes new lines into it from a small notebook full of local sketches (a mountain, a coffee cup, a snowy road). Labels: \"Claude drafts\" (blue), \"what only you know\" (orange), \"can't be copied\" (black)."),
+ 7: ("photo", "A trail map board at the edge of a park with aspens, mountain peaks behind, golden light, the map blurred and unreadable, no people."),
+ 8: ("sketch", "Core idea: many thin AI pages fail; a few real pages win. Composition: on the left a tall stack of flimsy see-through pages blows away in the wind; on the right Xiaohei stands beside five thick, solid pages that stay put. Labels: \"50 hollow pages\" (red, above the blowing stack on the left), \"can hurt you\" (red, also on the left beside the blowing stack), \"5 real pages\" (orange, beside the solid pages on the right)."),
+ 9: ("photo", "A person in a mountain kitchen at evening holding a phone up to ask a question, seen from behind, face not visible, warm light, screen blurred."),
+ 10: ("sketch", "Core idea: write so an AI can quote you accurately. Composition: Xiaohei hands a neat index card to a box-shaped assistant with dot eyes, which reads it aloud through a small megaphone to a tiny listening figure. Labels: \"answer first\" (orange), \"real numbers\" (black), \"name the source\" (black), \"quoted\" (blue)."),
+ 11: ("photo", "A wide open alpine meadow at sunrise with a single trail leading forward toward the peaks, fresh and uncrowded."),
+ 12: ("photo", "A tidy desk at dusk with a laptop, a printed photo of a mountain home, a small camera drone and a phone, all screens blurred, satisfied mood."),
+ 13: ("photo", "A set of house keys on a wooden table beside a closed folder, warm late-afternoon light, mountain window behind, no readable text."),
+ 14: ("photo", "An open laptop beside a handwritten thank-you note and a cup of coffee, morning light in a mountain cabin, all text blurred and unreadable."),
+ 15: ("photo", "A creator's camera on a tripod on a mountain overlook at golden hour, ready to shoot, sweeping peaks behind, inviting."),
+}
+
+LM6 = {
+ 1: ("photo", "A smartphone lying on a walnut desk beside a coffee cup in a mountain home office at morning, its screen glowing softly with a blurred photo feed, unreadable."),
+ 2: ("sketch", "Core idea: posting constantly with no system; the casual video of the dog did best. Composition: Xiaohei, surrounded by a messy scattered pile of posts, films a happy dog with a phone; small hearts float up from the dog video while a stack of listing posts and market update posts beside it gets none. Labels: \"posted constantly\" (black), \"no system\" (red), \"the dog\" (orange), \"listings\", \"market updates\" (black, on the ignored stack)."),
+ 3: ("sketch", "Core idea: typing one generic request gets the same post everyone else gets. Composition: Xiaohei drops a coin into a tall vending machine; out of the bottom slot tumble many identical post cards. Labels: \"write me a post about the market\" (black, on a note Xiaohei holds), \"same as everyone\" (red, on the identical cards), \"vending machine\" (blue)."),
+ 4: ("photo", "A calm, organized creative workspace at golden hour with a planner open, a camera and a laptop, mountain view through the window, screens and pages blurred."),
+ 5: ("sketch", "Core idea: shared tools make everyone's work look the same; a brand file makes it yours. Composition: on the left, three identical neat houses come out of the same machine; on the right, Xiaohei slides a single page into the machine and one house comes out with its own distinct shape. Labels: \"same tools\" (black), \"same handsome work\" (red), \"brand file\" (orange, on the page), \"yours\" (orange)."),
+ 6: ("photo", "A single printed page on a walnut desk surrounded by color swatches, a font specimen card and a fountain pen, warm light, all text blurred and unreadable."),
+ 7: ("photo", "An hourglass on a desk beside a blank form on a clipboard and a pen, soft window light, mountain view, focused and calm, no readable text."),
+ 8: ("sketch", "Core idea: when the output is wrong, fix the file, not just the piece. Composition: Xiaohei ignores a crumpled wrong draft on the floor and instead writes one new line at the bottom of a long page; a small calendar shows a month passing and a target with an arrow dead center. Labels: \"sounds wrong\" (red, on the draft), \"add a line\" (orange), \"stops missing\" (blue, by the target)."),
+ 9: ("sketch", "Core idea: every post falls into one of four buckets. Composition: Xiaohei stands before four buckets in a row, dropping a post card into the one that is nearly empty. Labels: \"market update\" (black), \"listings\" (black), \"education\" (black), \"lifestyle\" (orange), \"which one am I short on?\" (blue)."),
+ 10: ("sketch", "Core idea: posts with a person in them got a response; hashtag-only posts went nowhere. Composition: two post cards side by side; on the left a card showing a dog and a bicycle with many hearts floating up and Xiaohei pointing at it; on the right a card full of only hashtag symbols with a tumbleweed rolling past. Labels: \"a person in it\" (orange), \"lifestyle\" (orange), \"only hashtags\" (red), \"nowhere\" (red)."),
+ 11: ("photo", "A person at a cafe table holding a phone, scrolling, seen over the shoulder, face not visible, warm mountain town light, screen blurred."),
+ 12: ("photo", "A wall calendar of a whole month with neat colored sticky notes in every square, beside a desk with a laptop, morning light, no readable text."),
+ 13: ("sketch", "Core idea: one idea becomes three shapes for three audiences. Composition: Xiaohei feeds one small light bulb into a funnel; three orange arrows come out to a vertical phone video, a short caption card and a long article page. Labels: \"one market insight\" (black), \"TikTok script\", \"Reel caption\", \"LinkedIn post\" (black), \"three shapes\" (orange)."),
+ 14: ("photo", "Three neat objects in a row on a walnut desk: a single printed page, four small stacked trays, and a desk calendar, warm light, minimal, no readable text."),
+ 15: ("photo", "A red pen resting on a printed page with blurred text on a desk, a magnifying glass beside it, careful proofreading mood, warm light."),
+ 16: ("photo", "A wooden gavel and a small model house on a desk beside a law book, serious, warm light, text unreadable."),
+ 17: ("photo", "A sunny family-friendly street of mountain homes with aspen trees, empty sidewalks, no people, warm afternoon light, inviting."),
+ 18: ("photo", "A checklist on a clipboard with a pen beside a laptop on a desk, evening lamp light, careful and calm, all text blurred and unreadable."),
+ 19: ("photo", "A mountain-modern home at dusk seen from above in a sweeping wide shot, one road leading to it through the trees, warm windows glowing."),
 }
 
 LM5 = {
@@ -170,6 +224,22 @@ def request(beat, kind, prompt):
 
 
 CAPTIONS = {
+ ('LMB', 2): 'The chat writes the prompt. <em>The tool makes the thing.</em>',
+ ('LMB', 5): 'Miss the facts and it makes things up. <em>Miss the rules, it wanders.</em>',
+ ('LMB', 6): 'The more it can see, <em>the less it has to guess.</em>',
+ ('LMB', 9): 'Next time you\'re not writing a prompt. <em>You\'re filling in blanks.</em>',
+ ('LM7', 2): 'Search takes months. <em>But it compounds.</em>',
+ ('LM7', 4): 'A steady trickle of reviews <em>beats a pile in one week.</em>',
+ ('LM7', 6): 'Claude drafts. <em>You rewrite it with what only you know.</em>',
+ ('LM7', 8): 'Five real pages <em>beat fifty hollow ones.</em>',
+ ('LM7', 10): 'Answer first. Real numbers. <em>Name your sources.</em>',
+ ('LM6', 2): 'Posted constantly. No system. <em>The dog did best.</em>',
+ ('LM6', 3): 'That isn\'t a social media manager. <em>It\'s a vending machine.</em>',
+ ('LM6', 5): 'The tools have taste. <em>They just don\'t have yours.</em>',
+ ('LM6', 8): 'Sounds wrong? <em>Add a line to the file.</em>',
+ ('LM6', 9): 'Never a blank screen. <em>Which bucket are you short on?</em>',
+ ('LM6', 10): 'Lifestyle isn\'t the throwaway pillar. <em>It did the work.</em>',
+ ('LM6', 13): 'Same thought. <em>Three shapes, three audiences.</em>',
  ('LM5', 3): 'A cinematic walkthrough &mdash; <em>not a 3D tour.</em>',
  ('LM5', 7): 'The best shot of each room. <em>The rest gets thrown out.</em>',
  ('LM5', 10): 'Your listings. <em>Photos you\'re licensed to use.</em>',

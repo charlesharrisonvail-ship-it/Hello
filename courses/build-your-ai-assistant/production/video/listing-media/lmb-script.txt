@@ -1,0 +1,21 @@
+Every module in this course has the same skill underneath it. It isn't the tools. The tools change every few months. The skill is how you ask. So, before we build anything, here's how to prompt like someone who does this for a living.
+
+First, ask for the prompt. Here's the habit that saves you the most time and the most money. Before you make anything, open the chat and ask it to write the prompt for you. Tell it what you're trying to make. Then ask it which model or tool to use. It will write a better prompt than you would, because it knows how those tools read instructions.
+
+Tell it the tool you'll run it in, so it picks a model you actually have. Then, copy that prompt into the platform, doing the work in this course, usually Claude Code. The chat writes, the tool makes.
+
+Second, the four parts. A good prompt has four parts, and you can remember them as goal, facts, rules, shape. Goal is what you want, and who it's for. Facts are the real details, and you paste them in, because the model can't know your listing. Rules are what it must not do. Don't invent features, don't describe the buyer, don't fill gaps. And shape is the format. How long, what platform, what tone.
+
+Miss the facts, and it makes things up. Miss the rules, and it wanders. Miss the shape, and you end up rewriting it yourself.
+
+Third, hand it the files. Words aren't the only input. Give it the photo. Give it the marked up photo with your red line on it. Give it your brand file. The more it can see, the less it has to guess, and guessing is where the mistakes come from.
+
+Fourth, let it ask you first. Add one line to the end of any big prompt. Before you start, ask me any questions you need. Instead of guessing, it'll ask about the price point, the audience, the one detail you forgot. Answer them, and the first draft comes back close.
+
+Fifth, fix it, don't restart. When something comes back wrong, don't throw it away and start over. Tell it exactly what to change. Shorter, warmer, drop the second paragraph. Use the square footage from the appraisal, not the tax record. It keeps everything that was right and fixes what wasn't. Two or three rounds and you're there.
+
+Sixth, save your winners. When a prompt works, keep it. Paste it into a document called your prompt library with a note on what it's for, your listing description, your seller update, your market report. Next time you're not writing a prompt, you're filling in the blanks. That's how an hour becomes five minutes.
+
+Last, you still check it. No matter how good the prompt is, you read what comes back before anyone else does. Every number, every claim, every word about the neighborhood. These models are confident when they're wrong, and your license is the one on the line. A great prompt gets you a great draft. You make it final.
+
+That's the playbook. Ask for the prompt. Give it goal, facts, rules, and shape. Hand it the files. Let it ask you first. Fix instead of restarting. Save what works and check everything. Every module from here uses it.
