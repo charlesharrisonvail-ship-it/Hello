@@ -29,5 +29,10 @@ Progress 2026-10-26 (review copies in production/video/review/, nothing live yet
   docs/lead-to-keys-course.html before commit eafa3ee), not GitHub. Map in course.html: M2=course-1,
   M4=course-2, M6=course-3, M5=course-4, M3=course-5, Prompt Playbook bonus=course-6 (also Lead to
   Keys bonus), M7=course-7, M1=course-8 (download order of unique URLs).
-- Next on the list: Listing Media M6, M7, bonus; then Lead to Keys. Needs Higgsfield credits
-  (~20 per module). Swapping the live course videos needs Charles's go and the access code.
+- 2026-10-27: Listing Media M6, M7 and the Prompt Playbook bonus re-cut (bonus footer says
+  "THE PROMPT PLAYBOOK" since Lead to Keys shares it). ~84 credits incl. redos. M7's narration
+  reads a phone number; the slide shows only the email (flagged to Charles).
+- Sketch QA catches: labels on the wrong object, day names muddling "over time", and a ChatGPT
+  logo drawn in chat windows - say "plain, unbranded chat window (no logos or icons)".
+- Next: Lead to Keys lessons (lead-to-keys-course-2..9 = page keys "3".."10"). Swapping the live
+  course videos needs Charles's go and the access code.
