@@ -28,3 +28,10 @@ from the live branch `claude/stan-store-access-k4hjdu`):
    pay-as-you-go. That is a spend, so Charles decides (`recall.py paid`).
 3. GEO Optimizer (Auriti-Labs/geo-optimizer-skill): free, open source, scores a
    site 0-100 for AI citation. Free audit at geoready.dev.
+
+**Search Console baseline** (export 2026-10-28, Oct 9-26, web): 20 impressions,
+0 clicks. One query, "aireai" (pos 4). Pages shown: home (10, pos 2.4), terms
+(10), ask-aire (3), lead-to-keys (2), privacy (2). The three guides and the
+install lesson had **zero impressions**, likely not indexed yet. Charles was
+asked to request indexing for them, submit the sitemap, and re-export about
+mid-November; the near-top fix list needs that later data.
