@@ -17,6 +17,7 @@ numbered 8-14 in the originals because they follow Part 1's 1-7.
 | `lk4-*` | Module 11 · Sellers | lead-to-keys-course-5 |
 | `lk5-*` | Module 12 · Buyers | lead-to-keys-course-6 |
 | `lk6-*` | Module 13 · The fifth conversation | lead-to-keys-course-7 |
+| `lk7-*` | Module 14 · Under contract | lead-to-keys-course-8 |
 
 ```
 python3 build_lesson.py beats_lk1 "MODULE 8" lead-to-keys-course-2.mp4 lead-to-keys/lk1-script.txt out/lk1 \

@@ -109,8 +109,22 @@ LK6 = {
  14: ("photo", "A pen resting on a signed contract beside a set of house keys on a walnut table, warm light, text blurred and unreadable."),
 }
 
+LK7 = {
+ 1: ("photo", "A thick purchase contract with tabs and a pen on a walnut desk, a set of house keys beside it, warm serious light, text blurred and unreadable."),
+ 2: ("photo", "An attorney's office bookshelf with legal volumes and a desk lamp, a mountain window behind, calm and serious, spines unreadable."),
+ 3: ("sketch", "Core idea: a model summarizing a contract can drop or misread what matters, and the mistake is yours. Composition: a box-shaped assistant with dot eyes squeezes a thick contract into a tiny note; little pieces fall out onto the floor; Xiaohei stares at the pieces. Labels: \"contingency\" (red, on a falling piece), \"deadline\" (red, on another piece), \"the mistake is yours\" (red), \"summary\" (blue, on the note)."),
+ 4: ("photo", "A pair of reading glasses on top of an open contract on a desk at night, a single lamp, careful and serious, text blurred."),
+ 5: ("sketch", "Core idea: you read each offer and copy the terms yourself; the model only gets your sheet. Composition: Xiaohei sits among three closed offer folders, copying lines by hand onto one clean sheet, then hands only that sheet to a box-shaped assistant with dot eyes while the folders stay behind. Labels: \"you read each offer\" (black), \"your sheet\" (orange), \"not the contracts\" (red, by the folders)."),
+ 6: ("photo", "Three printed offer summaries laid side by side on a dining table in a mountain home, a pen and coffee, text blurred and unreadable."),
+ 7: ("photo", "A short printed cover letter with a calendar of dates on a desk beside a laptop, morning light, text blurred and unreadable."),
+ 8: ("sketch", "Core idea: let the model find dates, but confirm each one against the page yourself. Composition: a long scroll of a document unrolls across the ground; a few dates are highlighted by a small assistant box; Xiaohei walks along with a big magnifying glass checking each highlighted spot against the page. Labels: \"found by the model\" (blue), \"checked against the page\" (orange)."),
+ 9: ("photo", "A wall calendar with deadline days circled and a clipboard checklist on a desk in a mountain office, warm light, text blurred and unreadable."),
+ 10: ("photo", "A desk phone and a handwritten phone number on a notepad beside a laptop showing a blurred email, cautious mood, cool light, nothing readable."),
+ 11: ("photo", "A closing table with a stack of signed papers, a pen and a set of new house keys, warm celebratory light, mountain window, text unreadable."),
+}
+
 # Listing Media Without the Invoice (original AiRE course). Image files numbered from BASE.
-BASE = {"LM1": 1100, "LM2": 1200, "LM3": 1300, "LM4": 1400, "LM5": 1500, "LM6": 1600, "LM7": 1700, "LMB": 1800, "LK1": 2100, "LK2": 2200, "LK3": 2300, "LK4": 2400, "LK5": 2500, "LK6": 2600}
+BASE = {"LM1": 1100, "LM2": 1200, "LM3": 1300, "LM4": 1400, "LM5": 1500, "LM6": 1600, "LM7": 1700, "LMB": 1800, "LK1": 2100, "LK2": 2200, "LK3": 2300, "LK4": 2400, "LK5": 2500, "LK6": 2600, "LK7": 2700}
 LM1 = {
  1: ("photo", "A wide mountain valley with a small ski town at golden hour, aspens turning gold, a winding river, peaks with first snow."),
  2: ("photo", "A mountain resort town main street at dusk in autumn, warm shop windows, pines and peaks behind, no signs readable."),
@@ -318,6 +332,9 @@ def request(beat, kind, prompt):
 
 
 CAPTIONS = {
+ ('LK7', 3): 'Don\'t hand a client an AI summary. <em>The mistake is yours.</em>',
+ ('LK7', 5): 'You read the offers. <em>The model gets your sheet.</em>',
+ ('LK7', 8): 'Find with the model. <em>Confirm with your own eyes.</em>',
  ('LK6', 3): 'A two-hour event. <em>Plan it backwards.</em>',
  ('LK6', 9): 'Texting has stricter rules. <em>Check current law first.</em>',
  ('LK6', 11): 'If it\'s automated, <em>it says so.</em>',

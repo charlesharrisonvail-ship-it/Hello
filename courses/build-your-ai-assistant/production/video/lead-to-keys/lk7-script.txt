@@ -1,0 +1,21 @@
+You're under contract. This is where a mistake stops being embarrassing and starts being expensive. So this module is as much about what the model doesn't do as what it does.
+
+And the reminder matters most here. This is practical advice, not legal advice. What your state's contracts mean is for a local real estate attorney to explain.
+
+The line, first. You'll see courses that teach you to upload a contract and ask AI to summarize it for your client. Don't. Here's why. A model summarizing a contract will sometimes drop a contingency, misread a deadline, or smooth over a clause that matters. If you send that summary to a client and they rely on it, the mistake is yours, not the software's.
+
+And explaining what contract terms mean for someone's legal rights edges toward practicing law, which your license doesn't cover. So here's the rule. You read the contract. The model helps you organize what you read. Legal questions go to an attorney.
+
+Offer summaries, done right. When multiple offers come in, your seller needs to compare them. That's real work, and the model can help. You read each offer and pull the terms onto a simple sheet. Price, financing type, earnest money, concessions, closing date, and each contingency with its deadline. You type those in yourself.
+
+Then give the model your sheet, not the contracts, and ask it to build a side-by-side comparison and a neutral one-paragraph summary of the differences. Everything in that comparison came from your own reading, so you can stand behind every cell. And the summary describes differences. It doesn't recommend which offer to take. That conversation belongs to you and your seller.
+
+Contract summaries, done right. Same approach for your own client after acceptance. You read the executed contract and list the key dates and obligations. The model turns your list into a plain English cover note. Here are the dates we're working toward, and the note says clearly that the contract itself controls and that legal questions go to an attorney.
+
+If you use a model to help you find dates in a long document, fine. But every date it finds gets checked against the page before it goes anywhere. Find with the model, confirm with your own eyes.
+
+Transaction checklists. This is where the model really earns its place. Give it your confirmed dates and ask it to build the transaction checklist. Every deadline, who's responsible, and the reminder a few days before each one. Earnest money due. Inspection, objection. Appraisal. Loan conditions. Title. Final walkthrough. Closing.
+
+Then add one line to every single checklist and every client email in this stage. Wiring instructions come only from the title company, and they will never change by email. Before you wire, call the title company at a number you look up yourself. Wire fraud targets closings, and AI has made fake emails far more convincing. That line protects your client's down payment.
+
+That's the working day, from the first fact sheet to the closing table. One more section, and it's yours to build.
