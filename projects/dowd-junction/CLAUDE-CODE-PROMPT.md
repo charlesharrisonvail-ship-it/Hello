@@ -1,0 +1,13 @@
+Read CLAUDE.md, DESIGN-BRIEF.md, RESEARCH-AND-SOURCES.md and ASSET-PLAN.md in this folder. Then build a substantially better replacement for the rejected original-site/index.html.
+
+I am Charles Harrison, EpiVail / Epique Realty. I want to use a beautiful website to open a conversation about marketing or representing the potential Dowd Junction development near Avon, Colorado. The first version looked basic and ugly. Do not copy its visual design or make a cosmetic reskin.
+
+Create an exceptional, photo-led mountain real estate presentation: cinematic imagery, editorial typography, restrained luxury, generous space, excellent mobile behavior, real attention to detail. Make the place and opportunity tangible. The primary audience is the developer/project decision-maker. Explain the marketing value I would bring without inventing credentials or promising results.
+
+Use the source ledger for facts. The 100/200/300-home figures are planning goals, not approved inventory. Corum has a sign on the site according to my observation, but its future developer appointment is unconfirmed. Do not invent buildings, pricing, floor plans, dates, eligibility rules, listings, logos, testimonials, or exclusive representation. Be especially careful not to use Southface Vail imagery as this development. Use one tasteful concept-status statement and a concise footer, rather than covering the site in disclaimers.
+
+Build it in a new redesign/ directory. Prefer a fast, portable static build with Vite; choose React only if it improves implementation. No paid services, API keys, accounts, or new subscriptions. Make reasonable design choices and complete a working site without repeatedly asking me questions. Use legitimate local landscape imagery with documented rights and location, or clearly marked atmospheric imagery; keep missing official assets in an explicit list. Do not turn an asset gap into a reason to stop the rest of the build.
+
+Include working navigation, responsive layouts, a useful development-phase interaction, a source-document viewer/link section and a real contact pathway to my website. If you demonstrate a lead form, explicitly label it as a demo and do not pretend submissions are received. Do not publish, buy a domain, contact anyone, or connect a CRM as part of this handoff.
+
+Run it locally, check desktop and mobile layouts, keyboard accessibility, contrast, overflow and interactions, and fix observed defects. Deliver the full source, run/build instructions, local preview, screenshots if available, a brief verification record, and a concise list of assets or facts still needed before public launch.
