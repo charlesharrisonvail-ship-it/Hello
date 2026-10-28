@@ -37,3 +37,11 @@ and live 2026-10-28; Charles requested indexing for the guides, install lesson
 and Lead to Keys the same day (Lead to Keys was already indexed). Next:
 re-export about mid-November and compare to this baseline; the near-top fix
 list needs that later data.
+
+**Guides added 2026-10-28 (PR #44):** fair housing in AI listing copy, AI virtual
+staging disclosure, TCPA texting consent. HUD's 2024 AI advertising guidance was
+**withdrawn** effective 2025-09-17 (91 FR 17291); never cite it as current.
+Mid-November re-export reminder is scheduled for 2026-11-16.
+
+**Merging:** Charles's browser is often not signed in to GitHub, so he sees no
+merge button. When he says "merge it", merge the PR for him.
