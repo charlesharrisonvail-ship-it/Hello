@@ -19,8 +19,11 @@ from the live branch `claude/stan-store-access-k4hjdu`):
 
 **The three tools from the "SEO expert" graphic, as checked:**
 
-1. Search Console: Google verification file is in `docs/`. Not connected to Claude
-   yet (Windsor.ai shows only Facebook). Free.
+1. Search Console: Google verification file is in `docs/`. **Not through Windsor.ai**:
+   its free trial allows one account and the Facebook ad account holds it
+   (2026-10-28); more needs a paid plan. Free route: in Search Console,
+   Performance -> Export -> Google Sheets, and read the sheet with the Google
+   Sheets connector.
 2. OpenSEO (every-app/open-seo): open source, but its data is DataForSEO,
    pay-as-you-go. That is a spend, so Charles decides (`recall.py paid`).
 3. GEO Optimizer (Auriti-Labs/geo-optimizer-skill): free, open source, scores a
