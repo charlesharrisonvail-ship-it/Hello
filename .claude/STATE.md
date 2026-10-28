@@ -38,6 +38,7 @@ not rule on it, so ask rather than pick.
 3. Charles installed Open Generative AI v2.0.0 on Windows (hash verified,
    2026-10-08). Next for him: sd.cpp engine + first local model. Fix the notes
    with whatever he hits
+4. Voice clone (free, local): `tools/voice-clone/`, untested on his laptop - `recall.py voice`
 
 ## Working thread (auto-banked)
 

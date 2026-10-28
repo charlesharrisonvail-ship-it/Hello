@@ -1,0 +1,8 @@
+# Charles's recording and clone are his voiceprint - they stay on the laptop
+*.wav
+*.flac
+*.mp3
+*.m4a
+*.pt
+out/
+venv/
