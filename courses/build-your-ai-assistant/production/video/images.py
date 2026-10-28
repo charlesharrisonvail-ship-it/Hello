@@ -92,8 +92,25 @@ LK5 = {
  11: ("photo", "A laptop showing a softly blurred calendar of scheduled messages on a desk in a mountain office at morning, coffee cup, screen unreadable."),
 }
 
+LK6 = {
+ 1: ("photo", "A wooden porch table with five coffee cups from different visits over time, a mountain home behind at golden hour, warm and patient, no people."),
+ 2: ("photo", "A row of law books and a closed laptop on a dark desk, brass lamp, serious and calm, spines unreadable."),
+ 3: ("sketch", "Core idea: plan an open house backwards from the day. Composition: a small open-house flag stands near the right end of a long timeline; three stops lie to its left (a phone post, an envelope, a small story frame) and one stop lies to its RIGHT, after the flag (a thank-you note); Xiaohei walks backwards from the flag toward the left. Labels: \"a week out\", \"3 days out\", \"the morning of\" (black, at the three stops left of the flag, in that order from left to right), \"the day after\" (black, at the stop right of the flag), \"plan it backwards\" (orange)."),
+ 4: ("photo", "An open house in a mountain-modern home with the front door open, a small table with a blank sign-in clipboard and a vase of flowers, warm light, no people."),
+ 5: ("photo", "A sign-in clipboard on an entry table with two separate blank checkbox lines and a pen, warm light, all text blurred and unreadable."),
+ 6: ("photo", "An email newsletter softly blurred on a laptop on a kitchen counter in a mountain home, morning coffee, screen unreadable."),
+ 7: ("photo", "A mailbox at the end of a snowy mountain driveway at morning, a stack of envelopes in a hand, faces out of frame."),
+ 8: ("photo", "A large back yard of a mountain home with a wide lawn and aspens at golden hour, open and inviting, no people."),
+ 9: ("sketch", "Core idea: marketing texts need written consent, the do-not-call registry and quiet hours, and AI-voiced calls count. Composition: Xiaohei holds a phone with a small padlock on it in front of a signed paper; a clock with a moon is crossed out; a small robot speaker with sound waves sits nearby. Labels: \"written consent\" (orange, on the paper), \"do-not-call registry\" (black), \"quiet hours\" (blue, by the clock), \"AI-voiced calls count\" (red, by the robot speaker)."),
+ 10: ("photo", "A glowing laptop in a dark mountain home office at midnight, a moon in the window, empty chair, screen blurred."),
+ 11: ("sketch", "Core idea: if an automated system talks to a lead, it says it's automated. Composition: a box-shaped chatbot with dot eyes wears a big name tag and chats with a small figure under a moon; Xiaohei nods beside them. Labels: \"I'm automated\" (orange, on the name tag), \"midnight\" (blue, by the moon), \"in some states, the law\" (black)."),
+ 12: ("photo", "A set of balanced brass scales on a desk in a mountain office, warm light, serious and fair."),
+ 13: ("photo", "A phone lighting up on a nightstand at dawn with a mountain view through the window, calm and ready, screen blurred."),
+ 14: ("photo", "A pen resting on a signed contract beside a set of house keys on a walnut table, warm light, text blurred and unreadable."),
+}
+
 # Listing Media Without the Invoice (original AiRE course). Image files numbered from BASE.
-BASE = {"LM1": 1100, "LM2": 1200, "LM3": 1300, "LM4": 1400, "LM5": 1500, "LM6": 1600, "LM7": 1700, "LMB": 1800, "LK1": 2100, "LK2": 2200, "LK3": 2300, "LK4": 2400, "LK5": 2500}
+BASE = {"LM1": 1100, "LM2": 1200, "LM3": 1300, "LM4": 1400, "LM5": 1500, "LM6": 1600, "LM7": 1700, "LMB": 1800, "LK1": 2100, "LK2": 2200, "LK3": 2300, "LK4": 2400, "LK5": 2500, "LK6": 2600}
 LM1 = {
  1: ("photo", "A wide mountain valley with a small ski town at golden hour, aspens turning gold, a winding river, peaks with first snow."),
  2: ("photo", "A mountain resort town main street at dusk in autumn, warm shop windows, pines and peaks behind, no signs readable."),
@@ -301,6 +318,9 @@ def request(beat, kind, prompt):
 
 
 CAPTIONS = {
+ ('LK6', 3): 'A two-hour event. <em>Plan it backwards.</em>',
+ ('LK6', 9): 'Texting has stricter rules. <em>Check current law first.</em>',
+ ('LK6', 11): 'If it\'s automated, <em>it says so.</em>',
  ('LK5', 2): 'Forty homes a day. <em>Be the one worth reading.</em>',
  ('LK5', 5): 'Compare the homes. <em>Never the people.</em>',
  ('LK5', 8): 'Find the real concern. <em>Answer it honestly.</em>',

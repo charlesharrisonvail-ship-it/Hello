@@ -1,0 +1,27 @@
+Most business in real estate doesn't come from the first conversation, it comes from the fifth. This module covers what gets you to that fifth conversation. Open houses, email, follow up, and letting AI help manage your leads without letting it run them.
+
+This module touches texting and email law, so the same reminder applies. What follows is practical advice, not legal advice. Run your setup past a local attorney before you automate anything.
+
+Open house marketing. An open house is a marketing event with a two hour window, so plan it backwards. A week out, a social post with your drone clip from Module 4 and the date. Three days out, a neighborhood email and door hanger text. The morning of, a short story post. The day after, a follow up to everyone who signed in.
+
+Give the model the fact sheet and the date, and ask for that whole sequence at once. One prompt, one week of posts, all in your brand voice.
+
+For the sign in, ask for the minimum, name, and how they'd like to be contacted. And tell people plainly what you'll do with it. That honesty builds trust, but it is not consent for marketing texts. For texts, use a separate opt-in box nobody has to tick to sign in.
+
+Email campaigns. Pick one monthly email and do it well. The market update from Module 10 is perfect. It's useful, it's local, and people forward it.
+
+Commercial email has rules, and they apply to you. Identify who's sending, use an honest subject line, include a real postal address, and give people a way to unsubscribe that you actually honor promptly. Any real email platform handles most of that for you. Your job is not to fight it.
+
+Follow up messages. Follow up is where the client profile from Module 9 pays off. For each lead, the model reads their profile and drafts the next message. Short, specific, and about something they actually said. You mentioned a big yard, this one just listed with a half acre. That's a follow up. Just checking in is not.
+
+Texting has stricter rules than email. Before you send marketing texts, and especially automated ones, you need the person's written consent. You need to respect the do not call registry in quiet hours, and AI voiced calls count too. Rules on this have been changing, so check current law with a local attorney before you automate a single text.
+
+AI lead management. Now the part everyone's selling you. Chat bots that answer leads at midnight, and scoring that ranks your database. Here's how to use them without getting hurt.
+
+If an automated system talks to a lead, it says it's automated. In some states, that's the law. A lead who finds out later they were chatting with a bot when they thought it was you, doesn't come back.
+
+And no automated system decides who gets a human. Let AI sort leads by what they told you. The timeline and financing answers from Module 9. Never by name, zip code, language, or anything a model might read as a stand-in for who someone is. Scoring software can discriminate without anyone meaning it to, and the software did it is not a defense.
+
+Used that way, AI means no lead waits until morning, and no lead gets forgotten. That's the whole promise, and it's enough.
+
+Last module, you're under contract.
