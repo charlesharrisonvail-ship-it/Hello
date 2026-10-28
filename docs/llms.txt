@@ -1,0 +1,28 @@
+# AiRE Estate Academy
+
+> Online courses that teach real estate agents to use AI (ChatGPT, Claude and Claude Code) for listing media and the daily work of the desk. Lessons are narrated by AiRE, an AI instructor that says plainly it is AI.
+
+- Part One, Listing Media Without the Invoice: 7 modules and a Capstone, $67. AI aerial-style video from one photo, a Listing Showcase, a month of social posts, and getting found.
+- Part Two, Lead to Keys: 7 modules and a Capstone, $97. Listings, clients, comps, follow-up and contracts, done with AI inside the rules agents are licensed under.
+- Team & Brokerage: $599 for up to 10 agents, with a private 90-minute live workshop. Arranged by email.
+- A Claude plan is not included; it is bought directly from Anthropic.
+- All sales are final; access is delivered on purchase. Not legal advice.
+- AiRE Estate, LLC (Colorado) is independent and not affiliated with, endorsed by, or sponsored by any listing platform, brokerage, or software company. Contact: hello@aireestate.com
+
+## Courses
+
+- [AiRE Estate Academy home](https://learn.aireestate.com/): both courses, prices, and FAQ
+- [Lead to Keys](https://learn.aireestate.com/lead-to-keys.html): Part Two syllabus, limitations, and FAQ
+- [Install Claude Code, free](https://learn.aireestate.com/install-claude-code.html): a free 7-step lesson for Mac or Windows, about 20 minutes
+
+## Guides
+
+- [ChatGPT, Claude or Claude Code: which does a real estate agent need?](https://learn.aireestate.com/guides/chatgpt-claude-or-claude-code-for-real-estate-agents.html): what each costs and which jobs each is for
+- [How to make a listing video without hiring a drone](https://learn.aireestate.com/guides/how-to-make-a-listing-video-without-a-drone.html): three ways, what each costs, and where AI video stops being safe in a property ad
+- [Premium listing packages: what you can make yourself](https://learn.aireestate.com/guides/premium-listing-packages-what-you-can-make-yourself.html): what the packages include and which parts still need a professional
+
+## Optional
+
+- [Ask AiRE](https://learn.aireestate.com/ask-aire.html): AI course assistant, answering only from approved course information
+- [Terms of Service](https://learn.aireestate.com/terms.html)
+- [Privacy Policy](https://learn.aireestate.com/privacy.html)
