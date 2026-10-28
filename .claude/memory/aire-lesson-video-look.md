@@ -34,5 +34,8 @@ Progress 2026-10-26 (review copies in production/video/review/, nothing live yet
   reads a phone number; the slide shows only the email (flagged to Charles).
 - Sketch QA catches: labels on the wrong object, day names muddling "over time", and a ChatGPT
   logo drawn in chat windows - say "plain, unbranded chat window (no logos or icons)".
-- Next: Lead to Keys lessons (lead-to-keys-course-2..9 = page keys "3".."10"). Swapping the live
-  course videos needs Charles's go and the access code.
+- 2026-10-28: Lead to Keys re-cut too - Modules 8-14 (numbered after Part 1's 1-7) and the Capstone
+  (lead-to-keys-course-2..9 = page keys "3".."10"); files in production/video/lead-to-keys/.
+  Whisper medium.en can loop on a passage (Capstone) - check against the burned-in captions.
+- Everything is review copies only. Swapping the live course videos needs Charles's go and the
+  access code. Still open with him: the phone number in Listing Media M7's narration/captions.

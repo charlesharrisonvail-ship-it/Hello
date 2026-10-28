@@ -123,8 +123,18 @@ LK7 = {
  11: ("photo", "A closing table with a stack of signed papers, a pen and a set of new house keys, warm celebratory light, mountain window, text unreadable."),
 }
 
+LKC = {  # the Capstone
+ 1: ("photo", "A finished, beautifully organized desk at golden hour in a mountain home office, a laptop, a printed report and a set of house keys, accomplished mood, nothing readable."),
+ 2: ("photo", "A charming mountain home on a quiet street at golden hour, seen from across the road, inviting, no people, no readable signs."),
+ 3: ("photo", "A neat flat lay on a walnut table of a printed fact sheet, a bound report, a tablet, a small drone and a clipboard checklist, warm light, all text unreadable."),
+ 4: ("sketch", "Core idea: nine finished pieces, made yourself, and no invoice. Composition: Xiaohei proudly closes the lid of a box packed with nine small items (a fact sheet, description pages, a film strip, a tiny drone, a report, slides, a small flag, a note, a checklist); off to the side a crossed-out invoice blows away. Labels: \"nine pieces\" (orange), \"invoice\" (red, crossed out), \"every fact traced\" (blue)."),
+ 5: ("photo", "A framed certificate of completion leaning on a shelf beside a plant in a mountain home office, warm light, text blurred and unreadable."),
+ 6: ("photo", "A careful agent's hand checking boxes on a printed quiz page with a pen, warm desk lamp, text blurred and unreadable, face out of frame."),
+ 7: ("photo", "A sweeping mountain valley at sunrise with a road leading toward the light, a small town below, hopeful and wide open."),
+}
+
 # Listing Media Without the Invoice (original AiRE course). Image files numbered from BASE.
-BASE = {"LM1": 1100, "LM2": 1200, "LM3": 1300, "LM4": 1400, "LM5": 1500, "LM6": 1600, "LM7": 1700, "LMB": 1800, "LK1": 2100, "LK2": 2200, "LK3": 2300, "LK4": 2400, "LK5": 2500, "LK6": 2600, "LK7": 2700}
+BASE = {"LM1": 1100, "LM2": 1200, "LM3": 1300, "LM4": 1400, "LM5": 1500, "LM6": 1600, "LM7": 1700, "LMB": 1800, "LK1": 2100, "LK2": 2200, "LK3": 2300, "LK4": 2400, "LK5": 2500, "LK6": 2600, "LK7": 2700, "LKC": 2800}
 LM1 = {
  1: ("photo", "A wide mountain valley with a small ski town at golden hour, aspens turning gold, a winding river, peaks with first snow."),
  2: ("photo", "A mountain resort town main street at dusk in autumn, warm shop windows, pines and peaks behind, no signs readable."),
@@ -332,6 +342,7 @@ def request(beat, kind, prompt):
 
 
 CAPTIONS = {
+ ('LKC', 4): 'Nine pieces a firm would invoice you for. <em>You made every one.</em>',
  ('LK7', 3): 'Don\'t hand a client an AI summary. <em>The mistake is yours.</em>',
  ('LK7', 5): 'You read the offers. <em>The model gets your sheet.</em>',
  ('LK7', 8): 'Find with the model. <em>Confirm with your own eyes.</em>',
