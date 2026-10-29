@@ -23,7 +23,7 @@ from `claude/stan-store-access-k4hjdu`, not `main`. ChatGPT makes cards from
 `marketing/chatgpt-brief.md`; check every image (no name, Claude Code "(not
 included)", $67/$97) before queuing.
 
-OpenMontage: free notes in `tools/openmontage/` (`recall.py openmontage`).
+OpenMontage installed on his laptop 2026-10-29, demos render (`recall.py openmontage`).
 
 ## Open question for Charles
 

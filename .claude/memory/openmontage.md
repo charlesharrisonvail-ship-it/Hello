@@ -12,3 +12,7 @@ Free route only (see `no-paid-ai-tools`): Piper narration, Archive.org, NASA,
 Wikimedia and free stock keys, Remotion, HyperFrames and FFmpeg. Every paid key
 in its `.env` stays blank. A cloud session can't run its installer (denied
 2026-10-26), and the container wipes anyway.
+
+Installed on his Windows laptop 2026-10-29 at `C:\Users\charl\OpenMontage`;
+`python render_demo.py` rendered the no-key demos fine. Next: open that folder
+in Claude Code and ask for a first free video.
