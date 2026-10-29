@@ -23,3 +23,4 @@ card), AiRE Estate version second (no name, AI labeled as AI, narrator "AiRE";
 script says "no video credits, no crew" - never "$0", since Claude Pro is $20/mo).
 EpiVail agent-recruiting version also drafted (one audience: agents; no split
 numbers or "Epique X"/"EpiqueAI" naming until Charles confirms). All three 2026-10-29.
+EpiVail skill for it: `.claude/skills/openmontage-epivail-video/` (2026-10-29).
