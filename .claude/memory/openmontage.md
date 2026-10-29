@@ -16,3 +16,7 @@ in its `.env` stays blank. A cloud session can't run its installer (denied
 Installed on his Windows laptop 2026-10-29 at `C:\Users\charl\OpenMontage`;
 `python render_demo.py` rendered the no-key demos fine. Next: open that folder
 in Claude Code and ask for a first free video.
+
+First video (2026-10-29): 45s vertical, Vail and Colorado mountain towns in
+winter. Charles wants it for BOTH brands: EpiVail version first (signature end
+card), AiRE Estate version later (no name, AI labeled as AI).
