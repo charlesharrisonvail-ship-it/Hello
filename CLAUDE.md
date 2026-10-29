@@ -29,7 +29,7 @@ and the site is plain HTML.
 - `tools/jarvis/` — Windows setup script and notes for installing Jarvis (third-party local voice assistant); source is not vendored
 - `tools/open-generative-ai/` — free Windows setup notes for Open Generative AI (Anil Matcha's AI image/video studio with Cinema Studio); local models only, no paid MuAPI key; source is not vendored
 - `tools/harvey/` — free Windows setup notes and a leads-only config for Harvey (ethanplusai/harvey, MIT; AI lead-finding agent that runs on the Claude plan); finds agents and brokerages in 23 Colorado ski towns via Serper's free tier, email and LinkedIn off; source is not vendored
-- `tools/voice-clone/` — free local backup for Charles's voice (Chatterbox, Resemble AI, MIT; notes and `speak.py`, laptop only). His approved voice is the HeyGen clone "Charles Harrison"; its ID and rules: `recall.py voice`
+- `tools/voice-clone/` — free local backup for Charles's voice (Chatterbox, Resemble AI, MIT; notes and `speak.py`, laptop only). His official voice for EpiVail and AiRE Estate is the HeyGen Charles2 Starfish voice; its ID and rules: `recall.py voice`
 - `is-this-for-you-script.md` — script for the Lead to Keys screening video
 
 ## Conventions

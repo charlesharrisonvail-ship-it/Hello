@@ -38,7 +38,7 @@ not rule on it, so ask rather than pick.
 3. Charles installed Open Generative AI v2.0.0 on Windows (hash verified,
    2026-10-08). Next for him: sd.cpp engine + first local model. Fix the notes
    with whatever he hits
-4. His voice: HeyGen "Charles Harrison" (Starfish); local backup untested - `recall.py voice`
+4. Official voice (EpiVail + AiRE): HeyGen Charles2 Starfish - `recall.py voice`
 
 ## Working thread (auto-banked)
 

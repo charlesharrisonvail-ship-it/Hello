@@ -32,6 +32,8 @@ Privacy and terms are dated September 25, 2026.
   AI PRO", "25 years selling real estate in Colorado's Vail Valley". **Charles's
   name is never fronted** on the site, ads, posts or images (see
   `aire-name-not-fronted`); it may appear inside course videos. No Epique, no EpiVail.
+- Official audio voice: Charles's HeyGen Charles2 Starfish voice, the same as
+  EpiVail's (set 2026-10-29). ID and rules: `recall.py voice`.
 - Voice: plain, numbers first, anti-hype. Sections like "The arithmetic" and
   "Straight Talk"; "who I am, and what I'm not going to oversell you"; "source every
   number"; "it isn't free, and here's what it costs".
