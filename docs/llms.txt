@@ -20,6 +20,9 @@
 - [ChatGPT, Claude or Claude Code: which does a real estate agent need?](https://learn.aireestate.com/guides/chatgpt-claude-or-claude-code-for-real-estate-agents.html): what each costs and which jobs each is for
 - [How to make a listing video without hiring a drone](https://learn.aireestate.com/guides/how-to-make-a-listing-video-without-a-drone.html): three ways, what each costs, and where AI video stops being safe in a property ad
 - [Premium listing packages: what you can make yourself](https://learn.aireestate.com/guides/premium-listing-packages-what-you-can-make-yourself.html): what the packages include and which parts still need a professional
+- [Using AI to write listing descriptions: the fair housing rules still apply](https://learn.aireestate.com/guides/ai-listing-descriptions-and-fair-housing.html): what the Fair Housing Act requires of an AI-drafted ad
+- [AI virtual staging: do you have to disclose it?](https://learn.aireestate.com/guides/ai-virtual-staging-disclosure.html): the NAR Code, MLS rules and California's 2026 law on altered listing photos
+- [Texting real estate leads: the consent rules](https://learn.aireestate.com/guides/texting-real-estate-leads-consent-rules.html): TCPA consent, the 2025 changes, calling hours and opt-outs
 
 ## Optional
 

@@ -32,6 +32,16 @@ from the live branch `claude/stan-store-access-k4hjdu`):
 **Search Console baseline** (export 2026-10-28, Oct 9-26, web): 20 impressions,
 0 clicks. One query, "aireai" (pos 4). Pages shown: home (10, pos 2.4), terms
 (10), ask-aire (3), lead-to-keys (2), privacy (2). The three guides and the
-install lesson had **zero impressions**, likely not indexed yet. Charles was
-asked to request indexing for them, submit the sitemap, and re-export about
-mid-November; the near-top fix list needs that later data.
+install lesson had **zero impressions**, likely not indexed yet. PR #43 merged
+and live 2026-10-28; Charles requested indexing for the guides, install lesson
+and Lead to Keys the same day (Lead to Keys was already indexed). Next:
+re-export about mid-November and compare to this baseline; the near-top fix
+list needs that later data.
+
+**Guides added 2026-10-28 (PR #44):** fair housing in AI listing copy, AI virtual
+staging disclosure, TCPA texting consent. HUD's 2024 AI advertising guidance was
+**withdrawn** effective 2025-09-17 (91 FR 17291); never cite it as current.
+Mid-November re-export reminder is scheduled for 2026-11-16.
+
+**Merging:** Charles's browser is often not signed in to GitHub, so he sees no
+merge button. When he says "merge it", merge the PR for him.
