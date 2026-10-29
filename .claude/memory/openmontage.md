@@ -19,4 +19,6 @@ in Claude Code and ask for a first free video.
 
 First video (2026-10-29): 45s vertical, Vail and Colorado mountain towns in
 winter. Charles wants it for BOTH brands: EpiVail version first (signature end
-card), AiRE Estate version later (no name, AI labeled as AI).
+card), AiRE Estate version second (no name, AI labeled as AI, narrator "AiRE";
+script says "no video credits, no crew" - never "$0", since Claude Pro is $20/mo).
+Both prompts drafted 2026-10-29.
