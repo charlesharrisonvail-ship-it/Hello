@@ -8,6 +8,11 @@ Targets **Windows** (ThinkPad). This directory holds **notes and one script
 only** — Chatterbox's source is not vendored here. Written against upstream
 commit `5de7a54` (2026-07-21, package version 0.1.7).
 
+**This is the backup.** Charles's approved voice is his HeyGen clone,
+"Charles Harrison" (`recall.py voice`). Use this free route when HeyGen
+credits run out, or for drafts not worth a credit. A clean 10–20 second
+stretch of his own HeyGen source recording makes a good `my-voice.wav`.
+
 **Not yet tested on Charles's laptop.** `speak.py` was written from
 Chatterbox's source; nobody has run it end to end. Fix these notes with
 whatever goes wrong the first time.
