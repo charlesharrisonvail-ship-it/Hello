@@ -21,3 +21,8 @@ description: The weekday 4:40 AM scheduled task that drafts recruit follow-ups w
   Jan is unsubscribed). "recruit" keyword hits are FSBO/expired sellers whose
   emails happen to be at recruiting firms - not agent recruits. Until recruits
   are tagged `agent-recruit` in Lofty, each run has nothing to draft.
+- **Charles on the three buyers (2026-10-29):** Tiki Halachev used his site,
+  then bought through another agent - no follow-up, never draft for her. Scott
+  Bingel bought from Charles and is a good past client - keep him warm, but his
+  March mortgage-calculator tasks are stale. Jan Vessa - Charles doesn't know
+  who Jan is (cold Realty.com lead, unsubscribed) - leave alone.
