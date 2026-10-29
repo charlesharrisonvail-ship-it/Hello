@@ -21,4 +21,5 @@ First video (2026-10-29): 45s vertical, Vail and Colorado mountain towns in
 winter. Charles wants it for BOTH brands: EpiVail version first (signature end
 card), AiRE Estate version second (no name, AI labeled as AI, narrator "AiRE";
 script says "no video credits, no crew" - never "$0", since Claude Pro is $20/mo).
-Both prompts drafted 2026-10-29.
+EpiVail agent-recruiting version also drafted (one audience: agents; no split
+numbers or "Epique X"/"EpiqueAI" naming until Charles confirms). All three 2026-10-29.
