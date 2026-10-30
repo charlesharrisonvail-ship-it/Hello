@@ -22,6 +22,7 @@ and the site is plain HTML.
   - `lofty-crm.md` — Lofty contacts, tiers, tags, recruit pipeline stages, and follow-up tasks
 - `.claude/skills/linkedin-optimizer/` — LinkedIn analytics and profile optimization
 - `.claude/skills/` also holds five general skills from ComposioHQ/awesome-claude-skills (commit `be2a406`, Apache-2.0): `lead-research-assistant`, `content-research-writer`, `competitive-ads-extractor`, `meeting-insights-analyzer`, `domain-name-brainstormer`. They are third-party and brand-neutral; EpiVail and AiRE Estate rules in this file still govern anything they produce.
+- `.claude/skills/skill-inspector/` — NVIDIA/SkillSpector's own skill (commit `9adb1a6`, Apache-2.0). Use it to check a third-party skill before adding it here. It runs the `skillspector` CLI if that is installed (`uv tool install git+https://github.com/NVIDIA/skillspector.git`); if not, it reviews the source by hand and says so. Keep scans at `--no-llm` unless Charles asks, since the LLM mode spends on his plan.
 - `.claude/settings.json` — project settings; enables the Superpowers, Ponytail (DietrichGebert/ponytail, MIT; "lazy senior dev" minimal-code mode, needs `node`), and ECC (affaan-m/ECC v2.2.3, MIT; `ecc@ecc` — 71 agents, 311 skills, and its own lifecycle hooks) plugins and registers the Continuity session-orientation hooks
 - `.claude/continuity/` — the Continuity kit that loads `ROLE.md`, `PROJECT.md`, `DECISIONS.md`, and `STATE.md` at every session start
 - `.claude/memory/` — one fact per file, searched with `python3 .claude/continuity/recall.py <terms>`
