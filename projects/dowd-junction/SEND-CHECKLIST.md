@@ -8,13 +8,14 @@ Prepared 2026-10-31. Nothing has been sent; sending is Charles's call.
   2026-10-31 the page includes the 30-second reel (section `#reel`); the MP4 is
   in `deliverables/` if you'd rather attach it (11 MB).
 - **Gmail draft:** "Dowd Junction: a marketing concept for your consideration",
-  in Charles's drafts with no recipient yet.
+  in Charles's drafts, addressed to Patti Liermann, Town of Avon Housing Planner
+  (pliermann@avon.org), chosen by Charles on 2026-10-31.
 
 ## Before you press send
 
 1. Open the link on your phone and computer and look it over once.
 2. Share the link so anyone with it can view (Share menu on the page).
-3. In the Gmail draft, add the project manager's address and replace `[Name]`.
+3. Confirm on avon.org (Community Development) that Patti is still the Housing Planner.
 4. Confirm the recipient is the right person and still active, and check the
    "Do not contact" list in the repo `CLAUDE.md`.
 5. Optional before sending: swap in your EpiVail logo, a headshot, or your own
@@ -24,7 +25,7 @@ Prepared 2026-10-31. Nothing has been sent; sending is Charles's call.
 
 Subject: Dowd Junction: a marketing concept for your consideration
 
-Good afternoon [Name],
+Good afternoon Patti,
 
 I hope this finds you well. I'm Charles Harrison with EpiVail and Epique Realty
 here in the valley. I've been following the planning for community housing at
