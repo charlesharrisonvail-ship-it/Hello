@@ -4,7 +4,9 @@ Prepared 2026-10-31. Nothing has been sent; sending is Charles's call.
 
 - **Private preview link:** https://claude.ai/artifact/MDa1RgnnvxbGnFQgn5buHm
   (the built `redesign/dist/`, published privately). The project manager cannot
-  open it until Charles shares it from the page's **Share** menu.
+  open it until Charles shares it from the page's **Share** menu. Since
+  2026-10-31 the page includes the 30-second reel (section `#reel`); the MP4 is
+  in `deliverables/` if you'd rather attach it (11 MB).
 - **Gmail draft:** "Dowd Junction: a marketing concept for your consideration",
   in Charles's drafts with no recipient yet.
 
@@ -31,6 +33,10 @@ story might be told once it is ready to be shared.
 
 You can view it here:
 https://claude.ai/artifact/MDa1RgnnvxbGnFQgn5buHm
+
+If you only have a minute, there is also a 30-second reel on the page, the kind
+of short video I would make for the project:
+https://claude.ai/artifact/MDa1RgnnvxbGnFQgn5buHm#reel
 
 It is an independent proposal and nothing more. It draws only on the public
 record (Avon's July 2026 planning packet and related documents), and it doesn't

@@ -449,3 +449,17 @@ figcaption { font-size: 0.72rem; line-height: 1.5; color: var(--ink-soft); margi
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* ——— Reel ——— */
+.reel {
+  padding: var(--section) var(--gutter); background: var(--ivory);
+  display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: center;
+}
+.reel__text .body-lg { margin-top: 2rem; max-width: 34rem; color: var(--ink-soft); }
+.reel__note { margin-top: 1.5rem; font-size: 0.8rem; max-width: 30rem; }
+.reel__frame { justify-self: center; width: min(100%, 22rem); }
+.reel__frame video {
+  display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; background: var(--pine);
+  border-radius: 28px; border: 10px solid #0d1210; box-shadow: 18px 20px 0 rgba(22, 35, 31, 0.85);
+}
+@media (max-width: 900px) { .reel { grid-template-columns: 1fr; } }
