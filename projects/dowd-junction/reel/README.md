@@ -19,7 +19,7 @@ approves.
 In the cloud session, point Remotion at the pre-installed browser:
 `--browser-executable=/opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell`.
 
-The video is silent. Add trending audio in the Instagram or TikTok app.
+The video is silent by Charles's choice (2026-10-31); the burned-in captions carry the words.
 
 ## Scenes
 
