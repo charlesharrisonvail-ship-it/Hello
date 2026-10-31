@@ -1,7 +1,8 @@
 # Dowd Junction reel
 
 A 30-second vertical (1080×1920, 30 fps) reel that goes with the concept site in
-`../redesign`. It is built in Remotion and renders free, with no paid AI. It is
+`../redesign`. It is built in Remotion and renders free. The only paid step is
+two AI motion clips, listed under Credits. It is
 held to the video standard in `.claude/memory/video-minimum-bar.md`.
 
 It is a pitch piece for the developer or project manager, **not a public post**.
@@ -50,6 +51,13 @@ The video is silent. Add trending audio in the Instagram or TikTok app.
 
 - Eagle River at Minturn: Jeffrey Beall, CC BY 4.0.
 - Gore Range from Vail: David Herrera, CC BY 2.0.
+- AI motion: `public/eagle-river-motion.mp4` and `public/gore-range-motion.mp4`
+  were made from the two photos above (cropped to 9:16) with Higgsfield, Kling
+  3.0 image-to-video: 5 s each, standard mode, no sound. Job IDs are
+  e8e44b7e-1d89-4c07-9768-7b3f786ecc4c and 7a6bd484-90ce-43eb-bce1-60b76978265f.
+  They cost 15 credits in total, approved by Charles on 2026-10-31. The prompts
+  allowed motion only, with no new buildings, people or objects. The video
+  labels them "AI motion from the real photo".
 - Aerial: USDA/USGS The National Map, public domain. The phase areas are
   approximate and labeled as not boundaries.
 - Fonts: Manrope, Cormorant Garamond, JetBrains Mono (all SIL OFL).

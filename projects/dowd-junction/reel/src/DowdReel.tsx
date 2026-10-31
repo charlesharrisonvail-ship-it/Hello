@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  AbsoluteFill, Img, Sequence, continueRender, delayRender, interpolate, staticFile, useCurrentFrame, Easing,
+  AbsoluteFill, Img, OffthreadVideo, Sequence, continueRender, delayRender, interpolate, staticFile, useCurrentFrame, Easing,
 } from 'remotion';
 import '@fontsource/manrope/500.css';
 import '@fontsource/manrope/700.css';
@@ -61,14 +61,22 @@ const I = {
 };
 
 /* ——— Scene 1: hero ——— */
-const Hero: React.FC<{ src: string; dim?: number }> = ({ src, dim = 0.55 }) => {
+// `video` is an AI-motion clip made from the same real photo (Higgsfield, Kling
+// image-to-video); the still is the fallback when no clip is set.
+const Hero: React.FC<{ src: string; video?: string; rate?: number; dim?: number }> = ({ src, video, rate = 1, dim = 0.55 }) => {
   const f = useCurrentFrame();
   return (
     <>
-      <Img src={staticFile(src)} style={{
-        position: 'absolute', width: '100%', height: '100%', objectFit: 'cover', objectPosition: '32% 50%',
-        transform: `scale(${1.18 - f * 0.0006}) translateX(${f * 0.08}px)`,
-      }} />
+      {video ? (
+        <OffthreadVideo src={staticFile(video)} muted playbackRate={rate} style={{
+          position: 'absolute', width: '100%', height: '100%', objectFit: 'cover',
+        }} />
+      ) : (
+        <Img src={staticFile(src)} style={{
+          position: 'absolute', width: '100%', height: '100%', objectFit: 'cover', objectPosition: '32% 50%',
+          transform: `scale(${1.18 - f * 0.0006}) translateX(${f * 0.08}px)`,
+        }} />
+      )}
       <AbsoluteFill style={{ background: `linear-gradient(180deg, rgba(14,22,19,${dim + 0.15}) 0%, rgba(14,22,19,${dim * 0.75}) 34%, rgba(14,22,19,${dim * 0.4}) 52%, rgba(14,22,19,${dim * 0.9}) 72%, rgba(14,22,19,0.92) 100%)` }} />
     </>
   );
@@ -76,7 +84,7 @@ const Hero: React.FC<{ src: string; dim?: number }> = ({ src, dim = 0.55 }) => {
 
 const SceneHero: React.FC = () => (
   <SceneIn bg={C.pine}>
-    <Hero src="eagle-river-minturn-1600.webp" />
+    <Hero src="eagle-river-minturn-1600.webp" video="eagle-river-motion.mp4" />
     <Texture dark />
     <Eyebrow text="Dowd Junction · Avon, CO" color={C.bronzeLt} delay={4} />
     <Headline top={290} size={124} color={C.ivory} accent={C.bronzeLt} start={10} lines={[
@@ -89,7 +97,7 @@ const SceneHero: React.FC = () => (
     <Chip text="a concept by EpiVail" x={400} y={1000} rot={-2} delay={82} tone="bronze" />
     <Chip text="Jul 13, 2026 · Avon PZC" x={120} y={1110} rot={3} delay={102} tone="dark" />
     <div style={{ position: 'absolute', right: 180, top: 1240, fontFamily: brand.fonts.ui, fontSize: 20, color: 'rgba(245,240,230,0.6)' }}>
-      Eagle River at Minturn · Photo: Jeffrey Beall, CC BY 4.0
+      Eagle River at Minturn · Photo: Jeffrey Beall, CC BY 4.0 · AI motion from the real photo
     </div>
   </SceneIn>
 );
@@ -227,7 +235,7 @@ const SceneTalk: React.FC = () => {
   const line = useIn(70, 18);
   return (
     <SceneIn bg={C.pine}>
-      <Hero src="gore-range-vail-1400.webp" dim={0.7} />
+      <Hero src="gore-range-vail-1400.webp" video="gore-range-motion.mp4" rate={0.84} dim={0.7} />
       <Texture dark />
       <Eyebrow text="Let's talk" color={C.bronzeLt} />
       <Headline top={270} size={116} color={C.ivory} accent={C.bronzeLt} start={4} lines={[
@@ -248,7 +256,7 @@ const SceneTalk: React.FC = () => {
       <Chip text="independent concept" x={480} y={560} rot={4} delay={90} tone="light" />
       <Chip text="not an official listing" x={90} y={1080} rot={-3} delay={110} tone="rust" />
       <div style={{ position: 'absolute', left: 64, right: 180, top: 1200, fontFamily: brand.fonts.ui, fontSize: 19, lineHeight: 1.4, color: 'rgba(245,240,230,0.62)' }}>
-        Photos: Jeffrey Beall (CC BY 4.0), David Herrera (CC BY 2.0). Aerial: USGS, public domain. Figures: Town of Avon, Jul 13, 2026; planning goals, subject to change.
+        Photos: Jeffrey Beall (CC BY 4.0), David Herrera (CC BY 2.0); AI motion added to the real photos. Aerial: USGS, public domain. Figures: Town of Avon, Jul 13, 2026; planning goals, subject to change.
       </div>
     </SceneIn>
   );
