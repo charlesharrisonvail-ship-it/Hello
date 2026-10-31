@@ -23,10 +23,7 @@ from `claude/stan-store-access-k4hjdu`, not `main`. ChatGPT makes cards from
 `marketing/chatgpt-brief.md`; check every image (no name, Claude Code "(not
 included)", $67/$97) before queuing.
 
-Dowd Junction pitch (EpiVail, `projects/dowd-junction/`): concept site, 30 s reel
-and email done. Charles sent the email 2026-10-31 to Patti Liermann, Avon Housing
-Planner; the page (artifact MDa1RgnnvxbGnFQgn5buHm) is shared by link. Await her
-reply; do not follow up with pricing or service offers unless invited.
+Dowd Junction pitch sent to Avon 2026-10-31; awaiting reply (`recall.py dowd`).
 
 ## Open question for Charles
 
