@@ -73,3 +73,19 @@ if (!reduceMotion.matches && 'IntersectionObserver' in window) {
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
   reveals.forEach((el) => io.observe(el));
 }
+
+// Reel: plays silently on its own while on screen, pauses when scrolled away.
+// Reduced-motion visitors get the poster and the play button instead.
+const reel = document.querySelector('[data-reel]');
+if (reel) {
+  reel.muted = true;
+  if (reduceMotion.matches) {
+    reel.removeAttribute('autoplay');
+    reel.pause();
+  } else if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) reel.play().catch(() => {});
+      else reel.pause();
+    }, { threshold: 0.35 }).observe(reel);
+  }
+}
