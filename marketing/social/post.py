@@ -69,6 +69,24 @@ def page_token(q):
     raise RuntimeError(f"this access cannot post to the {q['page_name']} page (pages it can reach: {names})")
 
 
+def snippet(text):
+    """First line of a caption, whitespace-normalized, for matching against the page."""
+    return " ".join((text or "").split("\n")[0].split())[:80].lower()
+
+
+def live_snippets(pid, ptok):
+    """Openings of the page's recent posts and videos. The posting record can fail to
+    reach the repo (a run that cannot push), so the page itself is the last word on
+    what has already gone out."""
+    seen = set()
+    for edge, field in (("posts", "message"), ("videos", "description")):
+        q = urllib.parse.urlencode({"fields": field, "limit": 50, "access_token": ptok})
+        for item in call(f"{GRAPH}/{pid}/{edge}?{q}").get("data", []):
+            if item.get(field):
+                seen.add(snippet(item[field]))
+    return seen
+
+
 def publish(post, pid, ptok):
     cap, media = post["caption"], post.get("media")
     if not media:
@@ -98,10 +116,11 @@ def main():
     by = {p["n"]: p for p in q["posts"]}
     today = datetime.now(ZoneInfo(q["tz"])).date().isoformat()
     due = [by[a.only]] if a.only else [p for p in q["posts"] if p["date"] <= today and p["n"] not in sent]
-    # One post per scheduled run, oldest first, so a missed week never floods the page.
+    # One post per scheduled run: "priority" posts first, then oldest, so a missed
+    # week never floods the page. The cut to one happens after the live check below.
     if not a.only:
-        due = sorted(due, key=lambda p: (p["date"], p["n"]))[:1]
-    print(f"Today {today}. Due: {', '.join(str(p['n']) for p in due) or 'nothing'}.")
+        due = sorted(due, key=lambda p: (-p.get("priority", 0), p["date"], p["n"]))
+    print(f"Today {today}. Due, in order: {', '.join(str(p['n']) for p in due) or 'nothing'}.")
     try:
         pid, ptok = page_token(q)
         print(f"ACCESS OK: can post to {q['page_name']} ({pid}).")
@@ -110,6 +129,7 @@ def main():
         return 2
     if a.check:
         return 0
+    live = set() if a.only else live_snippets(pid, ptok)
     rc = 0
     for p in due:
         src = p
@@ -118,6 +138,13 @@ def main():
         if not src.get("media") or not src.get("caption"):
             print(f"SKIPPED post {p['n']} ({p['title']}): {p.get('needs', 'no media')}")
             rc = 1
+            continue
+        if src is p and snippet(src["caption"]) in live:
+            # Already on the page (an earlier run published it but its record never
+            # reached the repo). Record it and move on; never post it twice.
+            done.append({"n": p["n"], "date": today, "id": "already-live", "title": src["title"]})
+            (HERE / "posted.json").write_text(json.dumps(done, indent=1))
+            print(f"ALREADY LIVE post {p['n']} ({src['title']}): recorded, not reposted")
             continue
         try:
             fid = publish(src, pid, ptok)
@@ -128,6 +155,8 @@ def main():
         done.append({"n": p["n"], "date": today, "id": fid, "title": src["title"]})
         (HERE / "posted.json").write_text(json.dumps(done, indent=1))
         print(f"PUBLISHED post {p['n']} ({src['title']}): https://www.facebook.com/{fid}")
+        if not a.only:
+            break  # one new post per run
     return rc
 
 
