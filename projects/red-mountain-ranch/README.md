@@ -1,6 +1,6 @@
 # Red Mountain Ranch: EpiVail concept
 
-A private pitch for marketing Red Mountain Ranch, Parcel 1: 66 homes for sale on
+A private pitch for marketing Red Mountain Ranch, Parcel 1: 66 homes (sale or rental terms not yet published) on
 the Eagle River in Eagle, CO (Griffin Development, LLC; architect Tres Birds). It
 is built from the same template as `../dowd-junction/redesign`.
 
