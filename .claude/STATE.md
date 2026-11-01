@@ -23,7 +23,7 @@ from `claude/stan-store-access-k4hjdu`, not `main`. ChatGPT makes cards from
 `marketing/chatgpt-brief.md`; check every image (no name, Claude Code "(not
 included)", $67/$97) before queuing.
 
-Dowd Junction pitch sent to Avon 2026-10-31; awaiting reply (`recall.py dowd`).
+Pitches sent, awaiting replies: Dowd Junction (Avon), Red Mountain Ranch (Griffin) - `recall.py pitch`.
 
 ## Open question for Charles
 
