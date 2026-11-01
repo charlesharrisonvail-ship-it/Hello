@@ -13,7 +13,7 @@ footage" on screen:
 
 None of it is a real listing.
 
-Output: `marketing/social/media/22-six-skills.mp4` (+ `-cover.jpg`). **Not
+Output: `marketing/social/media/23-six-skills.mp4` (+ `-cover.jpg`). **Not
 queued**: it is added to `marketing/social/queue.json` only when Charles says so.
 
     npm install
