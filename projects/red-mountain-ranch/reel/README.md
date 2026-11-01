@@ -1,8 +1,8 @@
 # Red Mountain Ranch reel
 
 A 30-second vertical reel (1080×1920, 30 fps) that goes with the concept site in
-`../site`. It is built in Remotion from the Dowd Junction reel template, renders
-free with no paid AI, is silent with burned-in captions, and is held to the
+`../site`. It is built in Remotion from the Dowd Junction reel template, is
+silent with burned-in captions, and is held to the
 standard in `.claude/memory/video-minimum-bar.md`.
 
 It is a pitch piece for Griffin Development, **not a public post**. EpiVail has
@@ -33,5 +33,10 @@ published, so the reel does not say "for sale."
 ## Credits (shown in the video)
 
 - Eagle River in Eagle: Jeffrey Beall, CC BY 4.0 (in town, not the ranch site).
+- AI motion: `public/rmr-river-motion.mp4` and `public/rmr-water-motion.mp4` were
+  made from crops of that photo with Higgsfield (Kling 3.0 image-to-video, 5 s,
+  no sound). Jobs 5d2f9635-ea7f-44a4-9ae6-b56314e41825 and
+  6dd0a4d7-395d-4148-a7c0-410687be00b1. They cost 15 credits, approved by Charles
+  on 2026-11-01. Motion only, labeled "AI motion from the real photo".
 - Aerial: USDA/USGS The National Map, public domain. The frontage is approximate.
 - Fonts: Manrope, Cormorant Garamond, JetBrains Mono (SIL OFL).

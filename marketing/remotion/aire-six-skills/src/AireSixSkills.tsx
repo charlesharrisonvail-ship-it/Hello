@@ -3,7 +3,7 @@
    Descriptions restate the course narration (lm3-script.txt on the live-site
    branch). No owner name, no install lines, Claude Code marked (not included). */
 import React, { useEffect, useState } from 'react';
-import { AbsoluteFill, Sequence, continueRender, delayRender, interpolate, useCurrentFrame, Easing } from 'remotion';
+import { AbsoluteFill, OffthreadVideo, Sequence, continueRender, delayRender, interpolate, staticFile, useCurrentFrame, Easing } from 'remotion';
 import '@fontsource/archivo/700.css';
 import '@fontsource/archivo/800.css';
 import '@fontsource/archivo/900.css';
@@ -47,10 +47,28 @@ const Backdrop: React.FC = () => {
   );
 };
 
-const SceneIn: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+/* Optional AI footage (Higgsfield, Kling text-to-video) behind a scene, darkened
+   for legibility and always tagged as AI on screen. */
+const AiFootage: React.FC<{ src: string; rate?: number; dim?: number }> = ({ src, rate = 1, dim = 0.62 }) => (
+  <>
+    <OffthreadVideo src={staticFile(src)} muted playbackRate={rate} style={{ position: 'absolute', width: '100%', height: '100%', objectFit: 'cover' }} />
+    <AbsoluteFill style={{ background: `linear-gradient(180deg, rgba(4,7,13,${dim + 0.2}) 0%, rgba(4,7,13,${dim}) 30%, rgba(4,7,13,${dim * 0.75}) 55%, rgba(4,7,13,${dim + 0.25}) 80%, rgba(4,7,13,0.95) 100%)` }} />
+    <div style={{
+      position: 'absolute', right: 180, top: 140, fontFamily: brand.fonts.mono, fontSize: 20, color: C.ivory,
+      background: 'rgba(13,21,36,0.85)', border: '2px solid rgba(255,255,255,0.18)', borderRadius: 999, padding: '4px 14px',
+    }}>AI-generated footage</div>
+  </>
+);
+
+const SceneIn: React.FC<{ children: React.ReactNode; footage?: { src: string; rate?: number; dim?: number } }> = ({ children, footage }) => {
   const f = useCurrentFrame();
   const p = interpolate(f, [0, 9], [0, 1], { ...clamp, easing: Easing.out(Easing.cubic) });
-  return <AbsoluteFill style={{ opacity: p, transform: `scale(${1.04 - 0.04 * p})` }}>{children}<Texture dark /></AbsoluteFill>;
+  return (
+    <AbsoluteFill style={{ opacity: p, transform: `scale(${1.04 - 0.04 * p})` }}>
+      {footage && <AiFootage {...footage} />}
+      {children}<Texture dark />
+    </AbsoluteFill>
+  );
 };
 
 const Kicker: React.FC<{ n?: string; text: string }> = ({ n, text }) => {
@@ -83,7 +101,7 @@ const tileBg = '#0d1524';
 
 /* ——— 1. Hook ——— */
 const Hook: React.FC = () => (
-  <SceneIn>
+  <SceneIn footage={{ src: 'aire-hook-home.mp4', dim: 0.5 }}>
     <Kicker text="AiRE Estate · Claude Code for agents" />
     <Headline top={270} size={104} color={C.ivory} accent={G} start={8} lines={[
       [{ t: 'Six' }, { t: 'skills.' }],
@@ -121,7 +139,7 @@ const Look: React.FC = () => (
 
 /* ——— 3. Emil Kowalski + Remotion ——— */
 const Move: React.FC = () => (
-  <SceneIn>
+  <SceneIn footage={{ src: 'aire-move-room.mp4', rate: 0.72, dim: 0.46 }}>
     <Kicker n="3 · 4" text="Make it move" />
     <Headline top={270} size={112} color={C.ivory} accent={G} start={4} lines={[
       [{ t: "It's" }, { t: 'the' }],
@@ -191,7 +209,7 @@ const Plan: React.FC = () => (
 const Cta: React.FC = () => {
   const card = usePop(40);
   return (
-    <SceneIn>
+    <SceneIn footage={{ src: 'aire-cta-light.mp4', rate: 0.84, dim: 0.45 }}>
       <Kicker text="Set it up once" />
       <Headline top={270} size={112} color={C.ivory} accent={G} start={4} lines={[
         [{ t: 'Five' }, { t: 'of' }, { t: 'them,' }],

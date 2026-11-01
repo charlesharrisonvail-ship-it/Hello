@@ -2,7 +2,16 @@
 
 A 37-second vertical reel (1080×1920, 30 fps) in AiRE Estate's look (near-black,
 sky/violet/pink gradients, Archivo). It is built in Remotion from the EpiVail
-reel components, renders free, and is held to `.claude/memory/video-minimum-bar.md`.
+reel components and held to `.claude/memory/video-minimum-bar.md`.
+
+AI footage (Higgsfield, Kling 3.0 text-to-video, 5 s each, no sound; 22.5
+credits, approved by Charles on 2026-11-01). Each clip is tagged "AI-generated
+footage" on screen:
+- `public/aire-hook-home.mp4`: golden-hour drone glide toward a mountain home (job b3075c70-8c54-48e1-a1fd-c124c39021ef)
+- `public/aire-move-room.mp4`: dolly through a staged living room (job 68c76980-a21e-4219-b6b7-5f953a9ddbed)
+- `public/aire-cta-light.mp4`: abstract sky/violet/pink light (job a87ad978-fa7f-45ed-aa4c-c69d5ec7658c)
+
+None of it is a real listing.
 
 Output: `marketing/social/media/22-six-skills.mp4` (+ `-cover.jpg`). **Not
 queued**: it is added to `marketing/social/queue.json` only when Charles says so.
