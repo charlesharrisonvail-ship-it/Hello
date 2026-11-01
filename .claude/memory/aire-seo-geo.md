@@ -45,3 +45,7 @@ Mid-November re-export reminder is scheduled for 2026-11-16.
 
 **Merging:** Charles's browser is often not signed in to GitHub, so he sees no
 merge button. When he says "merge it", merge the PR for him.
+
+**Paid ads (2026-11-01):** Charles says the site advertises the week of 2026-11-02.
+The open items are in `marketing/ads/ad-launch-list.md`; read it before asking him
+anything about reels or ads.
