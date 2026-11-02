@@ -1,0 +1,19 @@
+You've got a talking video. Now let's make it work where people actually watch: on a phone, scrolling, often with the sound off.
+
+Captions first, because for many viewers, captions are the video. Bold, high contrast, big enough to read at arm's length. No more than two lines at a time. And placed in the safe area. Every platform puts its own buttons, profile picture and text over the bottom and right side of a vertical video. If your captions sit there, they're covered. Keep them in the middle band of the frame.
+
+Captions have to match what's spoken. Automatic transcription is a great start and a bad finish. It will spell your brokerage wrong, turn "Heron Point" into "Herring Point," and write "$612" when you said six hundred twelve thousand. Correct every caption by hand against the script and the source. Where your editor allows it, keep the captions as editable text in your project, so a typo next week doesn't mean a new render.
+
+Next, your brand. Logo in a corner that doesn't collide with captions or platform buttons. Brokerage identification as your rules require, in the same place every time. And the "Made with AI" label for the whole video.
+
+B-roll is where movement comes from. A listing photo with a slow push-in. A simple card with the facts: four bedrooms, two and a half baths. Cut to B-roll when it shows something the words describe. Only use photos you have permission to use, which for listings means the seller's authorization and your MLS rules, and match every fact card to the listing sheet.
+
+Music, if you use it, sits under speech. Speech first, always. A good starting point is music well below the voice; then trust your ears. Here's the test that matters: play it on your phone's speaker at a normal volume. If any word is hard to understand, the music is too loud. Use only music licensed for commercial social use.
+
+Now, a common shortcut I want you to skip: merging all three videos into one grid or one long video. Each idea gets its own nine-by-sixteen export. Separate files let you post them on different days, test which hook works, and fix one without touching the others.
+
+And keep a clean version where you can: the video without captions and music. When something changes next month, you'll be glad you have it.
+
+Finally, captions must match the spoken facts. Not more, not less. A caption that adds a detail the voice didn't say, or rounds a number differently, is a mismatch someone will notice. Check every number on screen against the source one more time.
+
+Your exercise: finish all three videos, using the shot and edit plan, and run the captions and audio checklist on each. Name your files clearly. Then watch all three on your phone, sound off, then sound on.

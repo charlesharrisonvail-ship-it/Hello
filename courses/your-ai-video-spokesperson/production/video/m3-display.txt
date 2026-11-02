@@ -1,0 +1,21 @@
+Viewers forgive a lot in a short video. A slightly stiff gesture, a plain background. What they don't forgive is a voice that gets your own town wrong. Say "Willow Fork" wrong once and every local viewer knows nobody checked.
+
+So this module is about the voice: getting the right one, and making it say things right.
+
+First, the right one. On the own-likeness route, the voice should be yours. With HeyGen, as of the help center we checked, each video avatar includes voice cloning from your footage, and you can also create a separate voice from a clean audio recording. Either way, it's your voice, recorded by you. One detail from HeyGen's guidance is easy to miss: even if you plan to use a different voice, your filming footage should include you speaking, because that helps lip sync.
+
+On the fictional route, use a stock or licensed voice whose terms allow commercial use, and keep a copy of those terms. Never a voice that imitates a real person. And consent requirements and voice features change, so verify them with the provider before you rely on them.
+
+Now, making it say things right. You'll build a short pronunciation sheet. Seven rows: your name, your brokerage, two towns or neighborhoods, the street names in this week's scripts, numbers, and your call-to-action line.
+
+Write a fifteen-second test script that uses all of them. Something like: "Hi, I'm Sam Reyes with Willow Fork Realty. This is Willow Fork, and I'm on Heron Point Court. If you're thinking about selling this spring, message me." Then preview just that. Not a full video. A short preview costs little or nothing, and it'll catch most problems.
+
+Here's what you'll hear in our example. "Willow Fork," fine. "Heron Point," said "HAIR-on." Not how locals say it. The fix: respell the word for the voice in the script, "Herron Point," and preview again. Your captions keep the correct spelling; only the spoken script gets the respelling. If your provider offers a pronunciation or phonetic setting, that's even better, but check how it works in your account; we didn't rely on one for this lesson.
+
+Numbers deserve their own test. "$612,000" can come out as "six one two thousand" or "six hundred twelve thousand dollars." Write numbers in the script the way you want them spoken, and keep the captions showing the correct figures.
+
+Then pacing. Most AI voices default to a steady, slightly fast read. For short real estate videos, slightly slower than you think usually lands better, with a pause after the hook and another before the call to action. Some providers let you insert pauses or adjust speed; others respond to punctuation, so a period or a line break creates a beat. Try both and listen.
+
+Listen three ways: laptop, headphones, and your phone's speaker at normal volume. The phone speaker is where most of your audience will hear it. If a word is mushy there, fix it.
+
+Your exercise: fill in the pronunciation sheet, write your fifteen-second test script, preview it, fix every problem, and record what you changed. Keep the sheet; you'll reuse it for every video.

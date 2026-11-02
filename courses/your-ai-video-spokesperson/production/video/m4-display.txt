@@ -1,0 +1,27 @@
+A short video has about three seconds to earn the next three. Most agent videos spend those seconds on "Hey everyone, happy Tuesday, so today I wanted to talk about..." By "talk," the viewer's gone.
+
+Every script in this course has four parts. A hook. One useful point. Evidence, where the point needs it. And one call to action.
+
+The hook is the first line, and it should tell the right viewer this is for them. "Selling in Willow Fork next year?" "Before you list, find your HOA documents." Not "Hi, I'm Sam." Your name can come second.
+
+One useful point. One. Not three tips, not a market overview. One thing the viewer can use. If you have three tips, you have three videos. That's good news, not a problem.
+
+Evidence. If your point includes a fact, the fact needs a source. "Buyers often ask for HOA documents early" is general, careful, and fine without a statistic. "Homes with HOA documents ready sell twenty-two percent faster" needs a real source you can name. If you don't have one, don't say it. AI tools will happily invent a confident percentage. Don't let them.
+
+One call to action. "Message me." "Comment HOA and I'll send the checklist." "Open house Sunday, one to three." Pick one. Two calls to action is zero calls to action.
+
+Now, length. People often say "a hundred and fifty words is a minute," and that's a rough starting point at best. Your spokesperson's pace, the pauses you added in Module 3, and how many numbers you say all change the time. So read every script aloud at the pace you'll use and time it. That's the real length. Aim for fifteen to thirty seconds.
+
+There are three patterns in the templates file, each with a fully worked fictional example.
+
+The introduction. Hook for who it's for, who you are, and a plain AI disclosure: "this is an AI version of me, made from my own recording, so I can post short tips more often. I write and review every one." Then one CTA.
+
+The educational tip. One mistake or question, the one thing to do, careful wording, one CTA. Notice the words "often" and "can." Not "always" and "will." Careful wording is how you stay accurate without a statistic.
+
+The listing invitation. Hook with one true, specific feature from the listing sheet. Then the facts: address, beds, baths, square feet, one more. Then the open house or "message me." Every fact must match the listing sheet. And if it's a real listing, you need the seller's permission to market it, and your MLS and brokerage rules apply.
+
+Now the list of things that never go in a script. Invented testimonials. "My clients always say..." unless it's a real, permitted, verifiable quote. Firsthand experiences the speaker didn't have, which matters a lot for fictional spokespeople. Guaranteed results. Anything about who should live somewhere, school quality claims, or neighborhood "type." And statistics without a source you can name.
+
+You can use AI to draft scripts. Here's the catch: AI drafts tend to break exactly those rules. They open with "Hey there!", they add a third tip, and they invent a percentage. The prompt in this lesson tells it the structure and the rules, and you still read every line against the listing sheet.
+
+Your exercise: write three scripts, one per pattern, for the fictional practice listing. Time each one aloud. Mark every fact and its source. That's your Approved Script Pack.

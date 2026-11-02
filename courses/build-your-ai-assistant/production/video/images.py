@@ -179,7 +179,7 @@ LKC = {  # the Capstone
 }
 
 # Listing Media Without the Invoice (original AiRE course). Image files numbered from BASE.
-BASE = {"LM1": 1100, "LM2": 1200, "LM3": 1300, "LM4": 1400, "LM5": 1500, "LM6": 1600, "LM7": 1700, "LMB": 1800, "LK1": 2100, "LK2": 2200, "LK3": 2300, "LK4": 2400, "LK5": 2500, "LK6": 2600, "LK7": 2700, "LKC": 2800}
+BASE = {"LM1": 1100, "LM2": 1200, "LM3": 1300, "LM4": 1400, "LM5": 1500, "LM6": 1600, "LM7": 1700, "LMB": 1800, "LK1": 2100, "LK2": 2200, "LK3": 2300, "LK4": 2400, "LK5": 2500, "LK6": 2600, "LK7": 2700, "LKC": 2800, "EV1": 3100, "EV2": 3200, "EV3": 3300, "EV4": 3400, "EV5": 3500, "EV6": 3600, "EV7": 3700, "EV8": 3800}
 LM1 = {
  1: ("photo", "A wide mountain valley with a small ski town at golden hour, aspens turning gold, a winding river, peaks with first snow."),
  2: ("photo", "A mountain resort town main street at dusk in autumn, warm shop windows, pines and peaks behind, no signs readable."),
@@ -385,6 +385,37 @@ def request(beat, kind, prompt):
         return {"model": "gpt_image_2_5", "aspect_ratio": "16:9", "quality": "high", "resolution": "2k", "prompt": SKETCH + prompt}
     return {"model": "gpt_image_2_5", "aspect_ratio": "4:3", "quality": "medium", "resolution": "2k", "prompt": prompt + PHOTO}
 
+
+# Your AI Video Spokesperson (Eva Vail). Title photos and one sketch per module.
+EV1 = {
+ 1: ("photo", "A small professional video setup in a bright mountain-view office: a phone on a tripod facing an empty chair, a soft ring light, calm morning light."),
+ 5: ("sketch", "Core idea: there is no third route; you never clone someone else. Composition: two open doors labeled as the only routes; Xiaohei firmly blocks a third door with a no-entry sign, while a photo of a stranger's face sits on the floor beside it. Labels: \"your own likeness\" (black, first door), \"fictional spokesperson\" (black, second door), \"no route three\" (red, on the blocked door)."),
+}
+EV2 = {
+ 1: ("photo", "A tidy wardrobe rail with three identical solid navy blazers hanging in a row, soft even light, minimal and consistent, mountain light through a window."),
+ 7: ("sketch", "Core idea: change one thing at a time. Composition: three small portrait frames in a row of the same simple figure; the second frame changes only the background; the third changes jacket, hair and background at once and the figure looks like a stranger. Labels: \"master look\" (black), \"one change\" (orange, second frame), \"same person\" (blue, second frame), \"somebody else\" (red, third frame)."),
+}
+EV3 = {
+ 1: ("photo", "A studio microphone with a pop filter on a wooden desk beside headphones and a phone, warm lamp light, mountain window softly blurred."),
+}
+EV4 = {
+ 1: ("photo", "A stopwatch resting on a printed script page on a walnut desk, a pen beside it, warm light, text unreadable."),
+ 2: ("sketch", "Core idea: every short script has four parts in order. Composition: Xiaohei walks along a short path of four stepping stones from left to right. Labels: \"hook\" (orange), \"one point\" (black), \"evidence\" (blue), \"one call to action\" (orange)."),
+}
+EV5 = {
+ 1: ("photo", "A laptop on a desk showing a blurred video editing timeline, a phone on a small tripod next to it, warm evening light, screens unreadable."),
+ 7: ("sketch", "Core idea: review the render four times, once for each thing. Composition: Xiaohei sits in front of a small screen holding a magnifying glass; four small numbered sticky notes line up beside the screen. Labels: \"identity\" (black), \"lip sync\" (black), \"pronunciation\" (black), \"unintended changes\" (red)."),
+}
+EV6 = {
+ 1: ("photo", "A hand holding a smartphone vertically while scrolling a social feed in a cozy mountain cafe, screen blurred and unreadable, warm light."),
+}
+EV7 = {
+ 1: ("photo", "A neat production kit on a desk: a labeled folder, a small tripod and a wall calendar with ten blocks marked, warm light, text unreadable."),
+}
+EV8 = {
+ 1: ("photo", "Three phones standing side by side on a desk, each showing the same blurred presenter video frame, warm light, screens unreadable."),
+ 3: ("sketch", "Core idea: pass is ten out of twelve with no critical failure. Composition: Xiaohei stands beside a simple scoreboard showing 10 out of 12 with a check; next to it a red stop light with two small warning icons. Labels: \"10 / 12\" (orange), \"unauthorized likeness or voice\" (red), \"material factual error\" (red), \"not yet\" (red)."),
+}
 
 CAPTIONS = {
  ('LKC', 4): 'Nine pieces a firm would invoice you for. <em>You made every one.</em>',

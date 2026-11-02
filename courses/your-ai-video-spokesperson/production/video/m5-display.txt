@@ -1,0 +1,27 @@
+Everything up to now was preparation: the route, the look, the voice and the script. This is where it becomes a video. We'll make one, start to finish, and then we'll talk about what to do when it comes out wrong, because sometimes it will.
+
+Step one is the avatar. On the own-likeness route in HeyGen, as of the help center we checked for this lesson, you go to the Avatars area, choose New Avatar, and then Clone a Real Person. You can record live or import footage. Use the continuous take you filmed in Module 2. Then comes the consent video: you read HeyGen's exact consent text, on camera, under thirty seconds, and it's submitted with the footage. HeyGen's help center says processing takes roughly ten to twenty minutes for non-4K footage. While you wait, re-read your script.
+
+A note worth knowing before you click: HeyGen's help center says each avatar slot can be recreated once per billing cycle, and deleting an avatar removes all of its looks. So don't upload footage you're unsure about just to see what happens. Fix the footage first.
+
+On the fictional route, you'll select your licensed character instead, and the voice you licensed.
+
+Step two: create the video. Pick your avatar and the look that matches your Style Sheet: the master look, or one of your two planned settings. Paste the approved script, the version with the respellings from your Pronunciation Sheet. Choose your authorized voice. Set the aspect ratio to vertical, nine by sixteen, for Reels, Stories and TikTok.
+
+Step three, before you render: the pre-render checklist. It takes two minutes, and every item is something that costs credits or minutes to discover afterward. Script timed, facts sourced, disclosure included, voice authorized, pronunciation tested, correct look, correct aspect ratio, and you know what this render costs on your plan.
+
+Step four: render, then review. Watch it four times, each time for one thing.
+
+First pass: identity. Does it look like the master look? Any warping around the eyes, mouth, hands, glasses or jewelry?
+
+Second pass: lip sync. Watch the mouth on words with p, b and m. Does the mouth close?
+
+Third pass: pronunciation. Your name, brokerage, places, numbers.
+
+Fourth pass: unintended changes. Did anything appear that you didn't ask for? A gesture pointing at nothing, an expression that doesn't fit the line, a background shift?
+
+Now, about movement. You'll see AI videos where the avatar strolls around a kitchen, turns, gestures at a window. It looks impressive once, and strange the third time. In this course we favor a natural, stationary presentation. When you want movement, cut to B-roll: a listing photo with a slow push-in, a simple graphic. Purposeful cuts beat artificial walking.
+
+And when it fails. Diagnose before you re-render. If lip sync drifts on one long sentence, shorten the sentence. If one word is wrong, fix the respelling and preview that line. If the face looks off in every video, the problem is the footage, not the script, and no number of re-renders will fix it. Set yourself a rule: two attempts at the same problem, then stop and diagnose. Endless re-rendering is how a free tool turns into an expensive one.
+
+Your exercise: make your first video from your approved introduction script. Do the four-pass review and write down what you found. If it needs a fix, write the diagnosis first, then make one change and re-render once.
