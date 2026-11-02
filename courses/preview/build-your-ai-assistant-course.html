@@ -583,12 +583,7 @@ Keep your answer under 200 words.
 <p><b>Acceptance criteria:</b></p>
 <ol><li>Every number in the draft appears in the showing export or listing facts.</li><li>Feedback is paraphrased with no buyer or agent names.</li><li>Questions the inputs can't answer are listed as MISSING or AGENT DECISION.</li><li>The draft is under 220 words and has a greeting, this week, feedback, next steps.</li></ol>
 <p><b>Seller questions:</b></p>
-<ul><li>Pending house down the street → not answerable from inputs. *Flag: "MISSING: no data</li></ul>
-<p>on the nearby sale. AGENT DECISION: whether to share a market update."*</p>
-<ul><li>School claim → not supported, and school-quality claims raise fair-housing and</li></ul>
-<p>accuracy concerns. <em>Flag: "AGENT DECISION: seller asked to advertise a school claim; no source; recommend declining."</em></p>
-<ul><li>Price drop → professional judgment. *Flag: "AGENT DECISION: seller asks about a price</li></ul>
-<p>reduction."*</p>
+<ul><li>Pending house down the street → not answerable from inputs. <em>Flag: "MISSING: no data on the nearby sale. AGENT DECISION: whether to share a market update."</em></li><li>School claim → not supported, and school-quality claims raise fair-housing and accuracy concerns. <em>Flag: "AGENT DECISION: seller asked to advertise a school claim; no source; recommend declining."</em></li><li>Price drop → professional judgment. <em>Flag: "AGENT DECISION: seller asks about a price reduction."</em></li></ul>
 <p><b>Why it meets the criteria:</b> the job is one sentence with one output. Each criterion can be checked by someone who has the files. And every question that requires judgment is routed to the agent rather than answered by the assistant.</p>
 <h3>8. Troubleshooting and completion checklist</h3>
 <p><b>"My task is too small to bother."</b> Small, repeated tasks are the best first assistants. You'll check the output faster and see mistakes sooner.</p>
@@ -599,9 +594,7 @@ Keep your answer under 200 words.
 <h3>1. Learning objective and required inputs</h3>
 <p><b>By the end of this module you can</b> write a Brand and Voice Profile that makes drafts sound like you, and explain why voice never overrides factual accuracy.</p>
 <p><b>You need:</b></p>
-<ul><li>Your Assistant Job Card from Module 1.</li><li>The Agent Voice Profile template (<code>resources/agent-voice-profile.md</code>).</li><li>If you took Listing Media Without the Invoice: your Agent Brand File.</li><li>Three short messages you wrote to clients, with names, addresses, phone numbers and</li></ul>
-<p>prices removed or replaced.</p>
-<ul><li>A Claude chat (free or paid account).</li></ul>
+<ul><li>Your Assistant Job Card from Module 1.</li><li>The Agent Voice Profile template (<code>resources/agent-voice-profile.md</code>).</li><li>If you took Listing Media Without the Invoice: your Agent Brand File.</li><li>Three short messages you wrote to clients, with names, addresses, phone numbers and prices removed or replaced.</li><li>A Claude chat (free or paid account).</li></ul>
 <h3>2. Narrated lesson script</h3>
 <p><em>Narrator: Charles's AI avatar, using his own approved avatar and voice. Inside the course only; never on the public site. Target read time about 6–7 minutes.</em></p>
 <p>Hi, it's Charles again. Same as before: this is an AI avatar of me, made from my own photo and my own cloned voice.</p>
@@ -722,9 +715,7 @@ Answer as five short lists.
 <h3>1. Learning objective and required inputs</h3>
 <p><b>By the end of this module you can</b> turn your Job Card, Voice Profile and Knowledge Pack into reusable instructions, set them up as a saved assistant in a Claude Project, and run a first seller update.</p>
 <p><b>You need:</b></p>
-<ul><li>A Claude account. Projects are available on free accounts (free users can create up to</li></ul>
-<p>five), per Claude's help center, checked October 23, 2026.</p>
-<ul><li>Your Job Card, Voice Profile and Knowledge Pack from Modules 1–3.</li><li><code>resources/assistant-master-instructions.md</code>.</li></ul>
+<ul><li>A Claude account. Projects are available on free accounts (free users can create up to five), per Claude's help center, checked October 23, 2026.</li><li>Your Job Card, Voice Profile and Knowledge Pack from Modules 1–3.</li><li><code>resources/assistant-master-instructions.md</code>.</li></ul>
 <h3>2. Narrated lesson script</h3>
 <p><em>Narrator: Charles's AI avatar, using his own approved avatar and voice. Inside the course only; never on the public site. Target read time about 7–8 minutes.</em></p>
 <p>Time to build. Everything you've done so far was the hard part: deciding the job, writing down your voice, and choosing your sources. Now we put it in one place so you don't have to explain it again every Friday.</p>
@@ -783,9 +774,7 @@ MY NOTES FOR THIS WEEK (next steps I&#x27;ve confirmed):
 <h3>1. Learning objective and required inputs</h3>
 <p><b>By the end of this module you can</b> store your seller-update workflow as a Claude Code skill, run it with one command on any listing folder, and explain the difference between drafting a file and sending a message.</p>
 <p><b>You need:</b></p>
-<ul><li>Claude Code installed and signed in. If you haven't installed it, follow AiRE's free</li></ul>
-<p>install guide first (learn.aireestate.com/install-claude-code.html). Claude Code needs a paid Claude plan; check Anthropic's current plans.</p>
-<ul><li>Your <code>seller-updates</code> folder from Module 3 with the three fictional listings.</li><li><code>resources/reusable-skill/</code> (the <code>seller-update</code> skill and its README).</li></ul>
+<ul><li>Claude Code installed and signed in. If you haven't installed it, follow AiRE's free install guide first (learn.aireestate.com/install-claude-code.html). Claude Code needs a paid Claude plan; check Anthropic's current plans.</li><li>Your <code>seller-updates</code> folder from Module 3 with the three fictional listings.</li><li><code>resources/reusable-skill/</code> (the <code>seller-update</code> skill and its README).</li></ul>
 <p><b>Chat-only route:</b> if you're not using Claude Code, read along, then do the chat version of the exercise in section 6. You'll get the same drafts; you'll paste instead of pointing at folders.</p>
 <h3>2. Narrated lesson script</h3>
 <p><em>Narrator: Charles's AI avatar, using his own approved avatar and voice. Inside the course only; never on the public site. Target read time about 7 minutes.</em></p>
@@ -840,9 +829,7 @@ Use only the facts in this message. Then list the facts you used with their sour
 <h3>1. Learning objective and required inputs</h3>
 <p><b>By the end of this module you can</b> run a ten-case test set against your assistant, record what it actually did, fix the instructions when a case fails, and rerun it.</p>
 <p><b>You need:</b></p>
-<ul><li>Your working assistant (Project or skill).</li><li><code>resources/assistant-test-log.csv</code> (ten scenarios with expected behavior; the</li></ul>
-<p>observed columns are blank for you to fill in).</p>
-<ul><li>The practice data.</li></ul>
+<ul><li>Your working assistant (Project or skill).</li><li><code>resources/assistant-test-log.csv</code> (ten scenarios with expected behavior; the observed columns are blank for you to fill in).</li><li>The practice data.</li></ul>
 <h3>2. Narrated lesson script</h3>
 <p><em>Narrator: Charles's AI avatar, using his own approved avatar and voice. Inside the course only; never on the public site. Target read time about 7–8 minutes.</em></p>
 <p>Your assistant wrote one good seller update. Congratulations. That proves almost nothing.</p>

@@ -25,6 +25,7 @@ COURSES = [
     {
         "slug": "build-your-ai-assistant",
         "title": "Build Your AI Assistant",
+        "buy": "https://buy.stripe.com/bJecN470I9B3fPxcSo2kw02",
         "sub": "Give AI your voice, your workflow, and a job to do.",
         "card": "Create a reusable AI assistant that follows your voice, uses your approved information, and helps with everyday real estate work.",
         "audience": "Agents who can use a basic AI chat but keep repeating instructions and getting generic answers.",
@@ -84,7 +85,14 @@ def inline(s):
 
 def md(text):
     """Small Markdown subset: headings, paragraphs, lists, task lists, tables, quotes, code."""
-    out, lines, i = [], text.split("\n"), 0
+    raw, lines, fence = text.split("\n"), [], False
+    for ln in raw:  # a list item wrapped onto an indented next line belongs to that item
+        if ln.startswith("```"): fence = not fence
+        if (not fence and lines and re.match(r"^ {2,}\S", ln) and not re.match(r"^\s*([-*]|\d+\.) ", ln)
+                and re.match(r"^\s*([-*]|\d+\.) ", lines[-1])):
+            lines[-1] += " " + ln.strip(); continue
+        lines.append(ln)
+    out, i = [], 0
     while i < len(lines):
         ln = lines[i]
         if ln.startswith("```"):
@@ -717,6 +725,23 @@ if __name__ == "__main__":
         outdir.mkdir(parents=True, exist_ok=True)
         (outdir / f"{slug}-course.html").write_text(release_reader(c, load(c), style, lock, footer, prefix))
         print("Built", outdir / f"{slug}-course.html")
+        if c.get("buy"):  # the sales page, with the real Stripe link and no draft markings
+            page = landing(c, load(c), style, lock, footer)
+            for a, b in [(" · Draft · ", " · "), ('<meta name="robots" content="noindex,nofollow">\n', ""),
+                         ("New course &middot; Draft", "New course"), ("Support scope (draft):", "Support scope:"),
+                         ('<a class="btn pri" aria-disabled="true" href="#pricing">Checkout not yet available</a>',
+                          f'<a class="btn pri" href="{c["buy"]}">Buy the course &middot; $97</a>'),
+                         (".nav{top:37px}", ".nav{top:0}"),
+                         ("Open the draft course</a>", "Students: open the course</a>"),
+                         ('<a class="btn sec" href="#course">See the seven modules</a>',
+                          f'<a class="btn pri" href="{c["buy"]}">Buy the course &middot; $97</a><a class="btn sec" href="#course">See the seven modules</a>'),
+                         ("Seven modules and a Capstone, with read-along lesson text",
+                          "Seven video lessons and a Capstone (37 minutes), with read-along lesson text")]:
+                assert a in page, a
+                page = page.replace(a, b)
+            page = re.sub(r'<div class="draftbar">.*?</div>\n', "", page)
+            (outdir / f"{slug}.html").write_text(page)
+            print("Built", outdir / f"{slug}.html")
     elif "--check" in sys.argv:
         check()
     else:
