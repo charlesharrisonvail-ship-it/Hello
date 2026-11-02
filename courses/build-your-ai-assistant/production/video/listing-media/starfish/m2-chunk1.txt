@@ -1,0 +1,5 @@
+Before we install a single thing, we're going to spend a few minutes on the ground floor. If you already live in a terminal, skip ahead. If you don't, this is the most important six minutes in the course, and I want you to watch it twice.
+
+First, the accounts. You need a paid Claude account. Pro is $20 a month. And I'll be straight with you, the free plan does not include the tool we're using. That's not me upselling you. That's just how it's built. So that's 20 a month on top of the course. That's the only subscription this course requires. But you should know the number before you spend it, not after.
+
+One thing to get straight right now, because it trips people up. Claude comes in two forms. There's the Claude chat, the app on the website and on your phone, where you type and it talks back. And there's Claude Code, the version that runs in your terminal and actually builds things. It installs tools, makes files and runs the skills in this course. Everything we build here happens in Claude Code. When I mean the chat, I'll say the chat.

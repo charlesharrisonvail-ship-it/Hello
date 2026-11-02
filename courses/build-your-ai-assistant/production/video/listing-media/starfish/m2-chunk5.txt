@@ -1,0 +1,5 @@
+Last one, and this is the one that actually matters. Some tools give you a key, a long string of letters and numbers that proves you're you and that bills to your card. Treat that key like the key to your house. Never read it out loud in a video, never post it in a screenshot, never paste it into a chat, a prompt or a public page. And when a tool offers to sign in through your browser, use that instead of a key.
+
+If you ever think one got out, go to that tool's website and delete it. They'll make you a new one in 10 seconds. I'm telling you this now because we're about to make videos and the number of people who have accidentally filmed their own key is higher than you'd think.
+
+That's the ground floor, an account, a terminal, the two languages, the install, Node and Git, what a skill is, what authorizing means and how to hold a key. Next, a short lesson on how to prompt, then we install the five and it'll go quick.

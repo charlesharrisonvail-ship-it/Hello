@@ -1,0 +1,7 @@
+Second, the terminal. The terminal is a window where you type instructions instead of clicking buttons. That's the whole idea. It looks intimidating and it isn't. On Windows, hit the start menu and type PowerShell. On a Mac, hit command and space and type terminal. A window opens with some text and a blinking cursor. That text ending in a bracket is called the prompt. It's the computer telling you where you're standing and waiting for you to say something.
+
+Two commands and you know enough. Type cd space then a folder name and you move into that folder. Type cd space dot dot and you back out of it. That's it. That's the terminal.
+
+Third, and write this one down. There are two different things that both look like typing into a window and mixing them up is the single most common way people get stuck.
+
+The terminal takes commands. Short, exact, no English sentences. Claude Code takes English. Full sentences like you're talking to a person. If you paste a paragraph of English into the terminal, you'll get errors. On Windows, it's angry red text. On a Mac, it says command not found. Nothing is broken. You just spoke the wrong language to the wrong window. Everybody does it. It happens to people who've been doing this for years.
