@@ -24,7 +24,9 @@ and no `npm install` — it has zero dependencies.
 1. Install **Node.js 22 or newer** (LTS) from <https://nodejs.org>. Check in
    PowerShell: `node --version` should print `v22…` or higher.
 2. Install **Git** from <https://git-scm.com> if `git --version` fails.
-3. In PowerShell:
+3. In PowerShell. Run the `cd` line first: PowerShell often opens in
+   `C:\Windows\System32`, where `git clone` fails with *could not create work
+   tree dir 'NullMotion': Permission denied*.
 
    ```powershell
    cd $env:USERPROFILE
