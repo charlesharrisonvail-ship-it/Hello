@@ -26,6 +26,7 @@ COURSES = [
         "slug": "build-your-ai-assistant",
         "title": "Build Your AI Assistant",
         "buy": "https://buy.stripe.com/bJecN470I9B3fPxcSo2kw02",
+        "ailabel": "Made with AI: the presenter is an AI avatar made from his own photo and cloned voice.",
         "sub": "Give AI your voice, your workflow, and a job to do.",
         "card": "Create a reusable AI assistant that follows your voice, uses your approved information, and helps with everyday real estate work.",
         "audience": "Agents who can use a basic AI chat but keep repeating instructions and getting generic answers.",
@@ -49,6 +50,7 @@ COURSES = [
     {
         "slug": "your-ai-video-spokesperson",
         "title": "Your AI Video Spokesperson",
+        "ailabel": "Made with AI: Eva Vail is AiRE Estate Academy's AI presenter, not a real person, with an AI voice.",
         "sub": "Build a consistent on-camera presence with AI.",
         "card": "Create a consistent AI spokesperson and produce three short videos with clear scripts, captions, and your brand.",
         "audience": "Agents who want repeatable talking-avatar videos for educational and marketing content.",
@@ -527,7 +529,7 @@ def release_reader(c, mods, style, lock, footer, prefix):
         rt = runtimes.get(mid, "")
         video = (f'<div class="vslot" data-v="media/{prefix}-m{n}.bin"><button class="play" type="button"><b>&#9654;</b>'
                  f'<span>Play the lesson video{" &middot; " + rt if rt else ""}</span></button></div>'
-                 '<p class="ailabel">Made with AI: the presenter is an AI avatar made from his own photo and cloned voice.</p>')
+                 f'<p class="ailabel">{c.get("ailabel", "Made with AI.")}</p>')
         quiz = ""
         if m["questions"]:
             quizzes[mid] = [{"answer": q["answer"]} for q in m["questions"]]

@@ -43,6 +43,11 @@ Re-cutting the two original courses with your avatar needs about 50 more min = ~
 
 ## 2. Your AI Video Spokesperson — Eva's videos
 
+**Nov 2: all 8 lessons made (29 min).** Eva in a black skirt suit, her approved Higgsfield voice;
+HeyGen lip-syncs her openings and closings, slides carry the middle. Locked with its own code
+(given in chat only). Still to do: Stripe product + link for this course (C), then release.
+
+
 - [ ] **C** — Confirm which Eva look and voice to use, and where they live (Higgsfield)
 - [ ] **Claude** — Check the Higgsfield balance and daily limit; give a cost estimate
 - [ ] **C** — Approve the spend
@@ -81,7 +86,8 @@ Your avatar in your Starfish voice, new visuals around you. The AiRE-narration c
 
 ## 4. Stripe and release (last)
 
-- [ ] **C** — Create two Stripe products at $97 each and give the payment links
+- [x] **C** — Build Your AI Assistant: Stripe product and payment link made (Nov 2)
+- [ ] **C** — Your AI Video Spokesperson: Stripe product and payment link
 - [ ] **C** — Write or approve the purchase confirmation message (where the access code goes)
 - [ ] **C** — Pick the release date
 - [ ] **Claude** — On release day: add the catalog cards to the home page, add the pages
