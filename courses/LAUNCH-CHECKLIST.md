@@ -14,7 +14,7 @@ Re-cutting the two original courses with your avatar needs about 50 more min = ~
 
 ## 0. Decision for C now
 
-- [ ] **C** — Which goes first with November's credits?
+- [x] **C** — Which goes first with November's credits? **(a), Build Your AI Assistant first** (Nov 2)
       (a) Build Your AI Assistant Modules 4–7 + Capstone (~580), then original-course re-cuts
       with what's left (~14 min), the rest after Dec 1; or
       (b) original-course re-cuts first, Build Your AI Assistant after Dec 1.
@@ -24,17 +24,17 @@ Re-cutting the two original courses with your avatar needs about 50 more min = ~
 - [x] Module 1 produced (5:07)
 - [x] Module 2 produced (5:31)
 - [x] Module 3 produced (5:13)
-- [ ] **C** — Watch Modules 2 and 3 and say "good" or what to change (you called the new look
+- [x] **C** — Watch Modules 2 and 3 and say "good" or what to change ("good", Nov 2) (you called the new look
       "1000% better" on Oct 26; this is the final sign-off)
 - [x] **Nov 1** — HeyGen renewed; measured ~19 credits per minute (~130–150 per module)
-- [ ] **C** — Approve the spend for the next modules (section 0)
+- [x] **C** — Approve the spend for the next modules (section 0)
 - [ ] **Claude** — For each module: make the Starfish narration, **C** listens to a short
       sample and confirms it's your voice, then lip-sync, add the slides and render
-  - [ ] Module 4 — Build the Working Assistant (~7–8 min)
-  - [ ] Module 5 — Turn the Workflow into a Reusable Skill (~7 min)
-  - [ ] Module 6 — Test, Correct and Protect (~7–8 min)
-  - [ ] Module 7 — Make It Part of Your Week (~6 min)
-  - [ ] Capstone (~3 min)
+  - [x] Module 4 — Build the Working Assistant (5:16)
+  - [x] Module 5 — Turn the Workflow into a Reusable Skill (4:42)
+  - [x] Module 6 — Test, Correct and Protect (4:55)
+  - [x] Module 7 — Make It Part of Your Week (4:14)
+  - [x] Capstone (1:51) — all five voiced in Starfish and lip-synced Nov 2; 37 min total
 - [ ] **Dec 1** — Second credit reset; finish whatever didn't fit in November
 - [ ] **C** — Watch each new module and approve it
 - [ ] **C** — Recording day: a test Claude account (no real client data) for the screen
@@ -70,10 +70,9 @@ Your avatar in your Starfish voice, new visuals around you. The AiRE-narration c
 
 ## 3. Course pages and lessons (after the videos are approved)
 
-- [ ] **C** — Choose a new access code for each course. Give it in chat only, never in a file
-- [ ] **Claude** — Lock each course's lessons with its code (`tools/course-lock`)
-- [ ] **Claude** — Put the videos into the course readers; replace "runtime after
-      recording" with the real runtimes
+- [x] Build Your AI Assistant access code chosen by Claude at Charles's word ("u choose it"), given in chat only (Nov 2). Eva's course: later
+- [x] **Claude** — Build Your AI Assistant locked: `python3 courses/build.py --release build-your-ai-assistant <dir>` (lessons, quiz answers, downloads) and `lock.mjs media` for each video
+- [x] **Claude** — Videos in the Build Your AI Assistant reader; real runtimes on its pages (`runtimes.json`)
 - [ ] **C** — Give the certificate access codes (chat only) so the certificate pages can
       be checked and the new courses added to them
 - [ ] **C** — Approve the support scope and certificate/capstone policy

@@ -13,3 +13,10 @@ description: Running log of mistakes that cost Charles credits, tokens or time -
 - 2026-11-02: Asked him for decisions and items he had already given (checklist questions,
   per-module voice samples after the Starfish voice was settled). Re-asking wastes his time
   and tokens. Check memory and the repo first; only ask what is truly open.
+
+## 2026-11-02 — render queue waited on itself (again)
+Queued BYA Modules 5–8 renders behind `while pgrep -f "m4a-lesson"`. pgrep matched the
+waiting shell's own command line, so the queue never started and ~15 minutes of render
+time were lost while Module 4 finished. Same mistake as the earlier self-matching wait loop.
+Rule: never wait with `pgrep -f` on a pattern that appears in the waiting command. Run
+queued renders in one sequential command (`for n in 5 6 7 8; do render; done`) instead.
