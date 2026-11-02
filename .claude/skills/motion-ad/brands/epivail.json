@@ -9,6 +9,11 @@
   },
   "logo": "assets/EpiVail_Logo_BlackNavy_Transparent.png",
   "logoSource": "Charles's Google Drive: EpiVail_Logo_BlackNavy_Transparent.png (file id 1U9Qa9LPFDgwt7Wzl3DOiDJp-Zu8wa5et). The real badge - never redraw or typeset it.",
+  "qr": {
+    "url": "https://app.heygen.com/card/charles-harrison",
+    "label": "Talk to my AI avatar",
+    "short": "app.heygen.com/card/charles-harrison"
+  },
   "fontsUrl": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=Bebas+Neue&display=swap",
   "css": {
     "bg": "#0a1628",

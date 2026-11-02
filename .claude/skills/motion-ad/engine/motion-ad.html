@@ -47,6 +47,14 @@
   .bug { position: absolute; top: 56px; left: 64px; width: 260px; z-index: 5; }
   .vertical .bug { top: 90px; left: 50%; margin-left: -150px; width: 300px; }
   .vertical .rule { width: 420px; }
+  .endwrap { gap: 110px; align-items: center; }
+  .qrpanel { display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 34px 34px 28px; border-radius: 28px;
+    background: linear-gradient(160deg, var(--tile-hi), var(--tile-lo)); border: 1px solid var(--tile-edge); box-shadow: 0 0 80px var(--glow); }
+  .qrpanel img { width: 300px; height: 300px; border-radius: 14px; display: block; }
+  .qrlabel { font-family: var(--label); letter-spacing: .22em; text-transform: uppercase; font-size: 34px; color: var(--accent); }
+  .qrshort { font-size: 22px; color: var(--muted); }
+  .vertical .endwrap { flex-direction: column; gap: 50px; }
+  .vertical .qrpanel img { width: 260px; height: 260px; }
   .badge { display: block; filter: drop-shadow(0 0 60px var(--glow)); }
   .wordmark { font-size: 150px; }
   .tagline { font-size: 34px; line-height: 1.25; color: var(--muted); text-align: left; }
@@ -198,7 +206,13 @@
           const sg = el('div', 'sig', esc(BRAND.signature)); col.appendChild(sg); rise(sg, 1.8 + lead, .8, 12, 6);
         }
       }
-      root.appendChild(col);
+      if (s.type === 'end' && BRAND.qrSrc && s.qr !== false) {
+        // Scannable link card beside the end card; an MP4 can't hold a clickable link.
+        const wrap = el('div', 'row endwrap');
+        const panel = el('div', 'qrpanel', `<img src="${BRAND.qrSrc}"><div class="qrlabel">${esc(BRAND.qr.label)}</div><div class="qrshort">${esc(BRAND.qr.short)}</div>`);
+        wrap.appendChild(col); wrap.appendChild(panel); root.appendChild(wrap);
+        add(u => { const p = outExpo(prog(u, 1.5 + lead, .9)); panel.style.opacity = p; panel.style.transform = `translateX(${(1 - p) * 60}px) scale(${.92 + .08 * p})`; });
+      } else root.appendChild(col);
     }
 
     if (s.type === 'stat') {

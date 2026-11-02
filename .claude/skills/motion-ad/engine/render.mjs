@@ -37,6 +37,13 @@ if (brand.parent) {
   brand.parentMarkSrc = await load(brand.parent.mark);
 }
 
+// QR code for the brand's link (e.g. the live avatar card), drawn by segno.
+if (brand.qr) {
+  const { execFileSync } = await import('node:child_process');
+  const png = execFileSync('python3', ['-c', "import segno,sys,io; b=io.BytesIO(); segno.make(sys.argv[1], error='m').save(b, kind='png', scale=12, border=2, dark='#0a1628', light='#ffffff'); sys.stdout.buffer.write(b.getvalue())", brand.qr.url]);
+  brand.qrSrc = 'data:image/png;base64,' + png.toString('base64');
+}
+
 // --- brand guards -----------------------------------------------------------
 const copy = JSON.stringify(spec.scenes);
 const problems = [];

@@ -16,3 +16,6 @@ description: AiRE Estate never puts Charles's name out front - not on the websit
 On 2026-10-10 his name had to be stripped from the site, from two posted
 Facebook images (posts 6 and 9, deleted and reposted), and from both Stripe
 product pictures.
+
+One exception, Charles's own (2026-11-02): the "Talk to my AI avatar" link to
+his HeyGen card may appear on the site (`live-avatar-card`).
