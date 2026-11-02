@@ -1,0 +1,31 @@
+It's Charles again, still as an AI avatar made from my own photo and my own cloned voice.
+
+In the last module, your assistant lived in a Claude Project. Every Friday you paste in the week, copy out the draft. That works. But if you have five listings, that's five rounds of copying and pasting, and the chance you paste Copper Bend's showings into Juniper Lane's update goes up every time.
+
+Claude Code can read files in a folder you choose and write files back. So instead of pasting, you point it at the listing folder, and it writes the draft into a drafts folder for you to review. The tool for packaging that is called a skill.
+
+A skill is a folder with one file in it, called SKILL dot M D. At the top of the file is a short header between three dashes. That header tells Claude Code the skill's name, a description of what it's for, and a few settings. Below the header are the instructions, written in plain English, the same way you've written everything so far. According to the Claude Code documentation, the folder name becomes the command you type. Our folder is called seller-update, so the command is slash seller-update.
+
+Let's look at the settings we chose, because each one is a decision.
+
+Description: what it does and when to use it. Claude uses the description to recognize when a skill is relevant.
+
+Disable model invocation, set to true. The documentation recommends this for workflows you want to control the timing of. It means Claude won't start this skill on its own because a conversation mentions sellers. It only runs when you type the command. For anything involving client communication, you want that.
+
+Allowed tools: Read, Glob, Grep and Write. In plain English: it can find and read files, and it can write a file. That's all this job needs. Notice what's not there. Nothing that sends email, posts, or contacts anyone. Writing a draft file and sending a message are completely different actions. This skill does the first. You do the second.
+
+And the argument. When you type slash seller-update, space, 1418-juniper, the word after the command gets dropped into the instructions wherever it says dollar sign ARGUMENTS. So one skill works for every listing folder.
+
+The instructions inside the skill follow the same pattern as your master instructions: gather inputs, follow the rules, write the draft and checklist, and report back. Two details are new because we're working with files now. First, it only reads the listing folder you named, not the others. That keeps facts from leaking between listings. Second, it never overwrites a draft. If a draft for today already exists, it adds a number to the new file name. You don't lose your edits.
+
+Where does the skill file go? The documentation lists a few locations. For this course, we use the project location: a dot-claude folder, then skills, then seller-update, inside your seller-updates folder. It loads when you start Claude Code in that folder. If you want it in every folder on your computer, there's a personal location in your home folder. Keep it simple: project location.
+
+Let's run it. Open a terminal in seller-updates, start Claude Code, and type slash. There it is: seller-update. Run it on Juniper Lane.
+
+Claude Code may ask permission before it does things. That's normal, and it's your protection. Read each request. Reading files in this folder and writing into drafts: fine. Anything else, especially anything that would send or post: say no.
+
+It reads the voice profile, the listing facts, the newest showing file, the seller's email and the register. It writes a draft file. And it reports back: here's the file, here are the items that need you, and nothing was sent.
+
+Now run it on Copper Bend and Heron Point. Three properties, one command each, three draft files. Open each one and compare them against your acceptance criteria. Is the verbal interest at Copper Bend described as not an offer? Is Heron Point's HOA fee flagged as stale? Did it refuse the seller's instruction about the special assessment and report it?
+
+That's the beginner project, on purpose. You'll see tutorials that chain a skill to your email, your CRM and your calendar. Don't, yet. Every tool you connect is another thing that can act without you. Get one reliable draft-only workflow first. Prove it with tests in the next module.

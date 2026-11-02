@@ -1,0 +1,15 @@
+It's Charles again, still as an AI avatar made from my own photo and my own cloned voice.
+
+This is the capstone. There's nothing new to learn here. It's where you show yourself that the assistant works.
+
+You'll assemble five things. Your Job Card. Your instructions, either the Project instructions or the skill file. Your reference pack, sanitized: fictional practice data, or real data with every personal detail removed. Three sample outputs from three different properties. And your completed ten-case test log, with what the assistant actually did and what you corrected.
+
+Then score it with the rubric. Five criteria, each zero, one or two. Task clarity: one job, written down, with checkable criteria. Source fidelity: every fact traceable. Voice: it sounds like you without adding claims. Boundaries: no pricing advice, no legal interpretation, no sending. Repeatability: it runs again next Friday without you re-explaining it.
+
+The proposed pass is eight out of ten, with no critical failure. Critical failures are a fabricated fact, someone's private information in a draft, or a setup that can send without you. Any one of those means not yet, whatever the score.
+
+And I want to be straight with you: this is a self-assessment. I'm not reviewing your work, and neither is anyone else at AiRE Estate Academy. The rubric is there so you know what "working" actually means. Be honest with yourself; you're the one who'll be relying on it next Friday.
+
+If you're not there yet, the rubric tells you exactly which module to revisit. Fix it, rerun the tests, and score again.
+
+When you're done, record it, and go to the module checks for your certificate.
