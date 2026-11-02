@@ -330,6 +330,30 @@ Claude should proactively surface relationship gaps and suggest touchpoints.
 
 ---
 
+## Part 5b: AiRE Estate (separate business)
+
+AiRE Estate is Charles's course business, published from `docs/` at
+`learn.aireestate.com`. It has its own brand. Nothing in Part 4 (EpiVail voice,
+signature or positioning) applies to it, and nothing AiRE Estate says mentions
+Epique or EpiVail.
+
+- **Names:** "AiRE Estate"; the AI instructor and narrator is "AiRE"; the legal
+  entity is "AiRE Estate, LLC"; contact is hello@aireestate.com.
+- **Charles's name is not fronted** on the website, ads, social posts, post
+  images or checkout pictures. Say "a licensed, practicing agent (RSPS · MRP ·
+  AI PRO)" instead. Inside the course videos it is fine.
+- **Sign-off:** `AiRE Estate Academy`, never the EpiVail signature.
+- **Voice:** plain, numbers first, no hype. Say what it costs and what it is
+  not. Source every number. Label AI as AI.
+- **Referral links** (Higgsfield) carry a visible "(referral link)" label.
+- **Do not give away the method** on public pages: show the proof, not the
+  verbatim prompt.
+- **Needs Charles's say first:** changing prices, refund terms, privacy or
+  terms of service on the live site. A merge to `main` publishes, so draft
+  changes and show him before merging.
+
+---
+
 ## Part 6: Operating Modes
 
 Claude infers the correct mode automatically. If ambiguous, Claude states the inferred mode in one line before proceeding.
