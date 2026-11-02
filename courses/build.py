@@ -272,6 +272,11 @@ def nav(lock, links):
 
 def landing(c, mods, style, lock, footer):
     graded = [m for m in mods if not m["capstone"]]
+    rt_path = ROOT / c["slug"] / "production" / "video" / "runtimes.json"
+    runtimes = json.loads(rt_path.read_text()) if rt_path.exists() else {}
+    secs = sum(int(v.split(":")[0]) * 60 + int(v.split(":")[1]) for v in runtimes.values())
+    total = (f"{round(secs / 60)} min", "Total video, measured. Every lesson also has its read-along script") if runtimes else \
+            ("45&ndash;65 min", "Target video length. Actual runtimes are measured after recording")
     cards = []
     for n, m in enumerate(mods, 1):
         name = re.sub(r"^(Module \d+ — |Capstone — )", "", m["title"])
@@ -281,7 +286,7 @@ def landing(c, mods, style, lock, footer):
         blurb = re.sub(r"\*\*", "", blurb).replace("\n", " ")
         num, mk = ("&#10003;", "Capstone") if m["capstone"] else (f"{n:02d}", f"Module {n:02d}")
         cards.append(f'<article class="mod"><span class="bignum">{num}</span><span class="mk">{mk}</span><h3>{html.escape(name)}</h3>'
-                     f'<p>{inline(blurb[:260])}</p><span class="rt">Video &middot; runtime after recording</span></article>')
+                     f'<p>{inline(blurb[:260])}</p><span class="rt">Video &middot; {runtimes.get(f"m{n}", "runtime after recording")}</span></article>')
     honest = "".join(f'<div class="rv"><span class="tn">{i:02d}</span><h3>{html.escape(h)}</h3><p>{html.escape(p)}</p></div>'
                      for i, (h, p) in enumerate(c["honest"], 1))
     prereq = "".join(f"<li>{p}</li>" for p in c["prereq"])
@@ -304,7 +309,7 @@ def landing(c, mods, style, lock, footer):
     <p class="lede rv"><b>Outcome:</b> {html.escape(c['outcome'])}</p>
     <div class="stats rv">
       <div><b>7</b><span>Short modules, plus a self-assessed Capstone</span></div>
-      <div><b>45&ndash;65 min</b><span>Target video length. Actual runtimes are measured after recording</span></div>
+      <div><b>{total[0]}</b><span>{total[1]}</span></div>
       <div><b>3&ndash;5 hrs</b><span>Rough practice time, to be confirmed by pilot testing</span></div>
       <div><b>{sum(len(m['questions']) for m in graded)}</b><span>Module-check questions with answers explained</span></div>
     </div>
@@ -466,6 +471,223 @@ def catalog(style, lock, footer):
 """ + footer + "\n</body>\n</html>\n"
 
 
+# ------------------------------------------------------------ Release reader -----
+# python3 courses/build.py --release <slug> <outdir>
+# Writes <outdir>/<slug>-course.html with every lesson, quiz answer and download locked
+# with the course access code (AIRE_LOCK_CODE, via tools/course-lock/lock.mjs), in the
+# live pages' format. Videos are referenced as media/<prefix>-m<n>.bin (lock those with
+# `lock.mjs media`). Runtimes come from <slug>/production/video/runtimes.json.
+# Nothing is written to docs/; copying the result there is the release step.
+
+RELEASE_CSS = """
+<style>
+.nav{top:0}
+#gate{min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:30px 20px}
+.gbox{width:100%;max-width:470px}
+.gbox h1{font-family:Archivo,sans-serif;font-weight:800;letter-spacing:-.035em;color:#fff;font-size:clamp(1.9rem,6vw,2.5rem);line-height:1.04;margin:14px 0}
+.gbox .gl{color:#8496b2;line-height:1.62;margin:0 0 26px}
+.gf{display:flex;flex-direction:column;gap:11px}
+.gf input{width:100%;background:#0d1524;border:1px solid rgba(255,255,255,.18);border-radius:9px;padding:16px 17px;color:#fff;font:1rem 'IBM Plex Mono',monospace;letter-spacing:.07em;box-sizing:border-box}
+.gf input:focus{outline:none;border-color:#38bdf8}
+.gf button{background:#38bdf8;color:#03060d;border:0;border-radius:9px;padding:16px 20px;font:600 .79rem 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;cursor:pointer}
+.gerr{min-height:1.4em;color:#f87171;font-size:.9rem}
+#app[hidden]{display:none}
+.vslot{position:relative;margin:8px 0 28px;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:#04070d;aspect-ratio:16/9}
+.vslot video{width:100%;height:100%;display:block;background:#000}
+.vslot .play{position:absolute;inset:0;width:100%;border:0;background:radial-gradient(circle at 50% 50%,rgba(56,189,248,.18),rgba(4,7,13,.9));color:#fff;font:700 1rem Manrope,sans-serif;cursor:pointer}
+.vslot .play b{display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;background:#38bdf8;color:#04070d;font-size:1.4rem;margin-bottom:10px}
+.vslot .play span{display:block;color:#cbd5e1;font-weight:600}
+.ailabel{font:600 12px Manrope,sans-serif;color:#8496b2;margin:-18px 0 26px}
+</style>"""
+
+
+def release_reader(c, mods, style, lock, footer, prefix):
+    import base64, mimetypes, os, subprocess, tempfile
+    rt_path = ROOT / c["slug"] / "production" / "video" / "runtimes.json"
+    runtimes = json.loads(rt_path.read_text()) if rt_path.exists() else {}
+    toc, secs, quizzes = [], [], {}
+    for n, m in enumerate(mods, 1):
+        mid = f"m{n}"
+        short = re.sub(r"^(Module \d+ — |Capstone — )", "", m["title"])
+        toc.append(f'<a href="#{mid}" data-m="{mid}">{n if not m["capstone"] else "&#10003;"}. {html.escape(short)}<span class="st" id="st-{mid}"></span></a>')
+        raw = m["body"].split("\n", 1)[1]
+        raw = re.sub(r"^\*\*Course:\*\*[^\n]*\n", "", raw.lstrip("\n"))                 # draft status line
+        raw = re.sub(r"\n\*Narrator:[^\n]*\*\n", "\n", raw)                                 # production note
+        raw = re.sub(r"\n## 3\. [^\n]*\n.*?(?=\n## 4\. )", "\n", raw, flags=re.S)          # shot list is production-only
+        raw = re.sub(r"\n## 2\. [^\n]*\n", "\n## 2. Read along: the lesson script\n", raw, count=1)
+        body = md(raw)
+        rt = runtimes.get(mid, "")
+        video = (f'<div class="vslot" data-v="media/{prefix}-m{n}.bin"><button class="play" type="button"><b>&#9654;</b>'
+                 f'<span>Play the lesson video{" &middot; " + rt if rt else ""}</span></button></div>'
+                 '<p class="ailabel">Made with AI: the presenter is an AI avatar made from his own photo and cloned voice.</p>')
+        quiz = ""
+        if m["questions"]:
+            quizzes[mid] = [{"answer": q["answer"]} for q in m["questions"]]
+            fs = []
+            for qi, q in enumerate(m["questions"]):
+                opts = "".join(f'<label><input type="radio" name="{mid}q{qi}" value="{oi}"> {"ABCD"[oi]}) {inline(o)}</label>' for oi, o in enumerate(q["options"]))
+                fs.append(f'<fieldset><legend>{qi + 1}. {inline(q["q"])}</legend>{opts}<p class="why"><b>Answer {"ABCD"[q["answer"]]}.</b> {inline(q["why"])}</p></fieldset>')
+            quiz = (f'<form class="quiz" data-m="{mid}"><h3>Module check</h3><p class="status">Pass: 5 of 7. Wrong answers show why. Retry as often as you like.</p>'
+                    + "".join(fs) + '<p class="res" aria-live="polite"></p><button class="btn pri" type="submit">Check my answers</button> '
+                    '<button class="btn sec" type="button" data-retry>Retry</button></form>')
+        elif m["capstone"]:
+            quiz = ('<div class="quiz"><h3>Record your capstone (self-assessed)</h3>'
+                    '<p class="status">No instructor reviews this. Tick only when your rubric score meets the pass mark with no critical failure.</p>'
+                    '<label><input type="checkbox" id="capdone"> I scored my capstone against the rubric, met the pass mark, and had no critical failure.</label></div>')
+        secs.append(f'<section class="lesson" id="{mid}"><h2>{html.escape(m["title"])}</h2>{video}{body}{quiz}</section><hr style="border-color:rgba(255,255,255,.08);margin:56px 0">')
+    rdir = ROOT / c["slug"] / "resources"
+    dl = []
+    for f in sorted(rdir.rglob("*")):
+        if f.is_file():
+            rel = f.relative_to(rdir).as_posix()
+            mt = mimetypes.guess_type(f.name)[0] or "text/plain"
+            uri = f"data:{mt};base64," + base64.b64encode(f.read_bytes()).decode()
+            dl.append(f'<li><a href="{uri}" download="{html.escape(f.name)}">{html.escape(rel)}</a></li>')
+    graded_ids = [f"m{n}" for n, m in enumerate(mods, 1) if m["questions"]]
+    inner = ("".join(secs) + f'<section class="lesson" id="downloads"><h2>Downloads</h2><ul class="downloads">{"".join(dl)}</ul></section>'
+             + '<section class="certbox" id="cert"><h2>Certificate of Completion</h2><p class="status"></p>'
+               '<p>Unlocks when all seven module checks are passed <b>and</b> the capstone is recorded. It is a private certificate of completion, not a CE credit or association designation.</p>'
+               '<div data-cert hidden><p><b>All requirements met.</b> Email hello@aireestate.com from the address you bought with, and your printable certificate of completion is sent back to you.</p></div>'
+               '<button class="btn sec" type="button" id="reset">Reset my progress</button></section>'
+             + '<script type="application/json" id="ans">' + json.dumps({"A": quizzes, "G": graded_ids}) + '</script>')
+    with tempfile.TemporaryDirectory() as td:
+        ip = Path(td) / "inner.html"
+        ip.write_text(inner)
+        out = subprocess.run(["node", str(ROOT.parent / "tools" / "course-lock" / "lock.mjs"), "text", str(ip)],
+                             capture_output=True, text=True, env=os.environ)
+    if out.returncode != 0 or '"ct"' not in out.stdout:
+        raise SystemExit("Locking failed: set AIRE_LOCK_CODE for this command. " + out.stderr[-300:])
+    payload = out.stdout.strip().splitlines()[-1]
+    skey = "aire-k-" + prefix
+    page = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>{html.escape(c["title"])} · Course · AiRE Estate Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+{style}
+<link rel="stylesheet" href="/modern.css">
+{EXTRA_CSS}
+{RELEASE_CSS}
+</head>
+<body>
+<div id="gate"><div class="gbox">
+  <p class="kick">{html.escape(c["title"])} &middot; Course access</p>
+  <h1>Enter your access code</h1>
+  <p class="gl">Your code was shown on the confirmation page right after you paid. It is not case sensitive. Once you unlock, this browser remembers it. It is not the 6-digit number Stripe&rsquo;s Link may text to your phone; that one is only for paying.</p>
+  <form class="gf" id="gform" autocomplete="off">
+    <input id="gin" type="text" placeholder="ACCESS CODE" aria-label="Access code" autocapitalize="characters" spellcheck="false">
+    <button type="submit">Unlock the course</button>
+    <div class="gerr" id="gerr" role="status" aria-live="polite"></div>
+  </form>
+  <p class="gl"><b>Lost your code?</b> Email hello@aireestate.com from the address you bought with, and it will be sent back to you.</p>
+</div></div>
+<div id="app" hidden>
+{nav(lock, [(f"/{c['slug']}.html", "Course page"), ("#downloads", "Downloads"), ("#cert", "Certificate"), ("#lock", "Lock")]).replace('href="#lock"', 'href="#lock" id="lockbtn"')}
+<main class="reader">
+  <nav class="toc" aria-label="Modules">{''.join(toc)}<a href="#downloads">Downloads</a><a href="#cert">Certificate</a></nav>
+  <div><p class="status">Your progress is saved in this browser.</p><div id="content"></div></div>
+</main>
+{footer}
+</div>
+<script>
+(function(){{
+  "use strict";
+  var PAYLOAD={payload}, PASS='', SK='{skey}', KEY='aire-{c["slug"]}';
+  function b2a(b){{var s=atob(b),u=new Uint8Array(s.length);for(var i=0;i<s.length;i++)u[i]=s.charCodeAt(i);return u;}}
+  function dk(pass,salt,use){{return crypto.subtle.importKey('raw',new TextEncoder().encode(pass),'PBKDF2',false,['deriveKey']).then(function(b){{
+    return crypto.subtle.deriveKey({{name:'PBKDF2',salt:salt,iterations:250000,hash:'SHA-256'}},b,{{name:'AES-GCM',length:256}},false,[use]);}});}}
+  function decrypt(pass){{
+    if(!window.crypto||!crypto.subtle) return Promise.reject(new Error('insecure'));
+    return dk(pass,b2a(PAYLOAD.salt),'decrypt').then(function(k){{return crypto.subtle.decrypt({{name:'AES-GCM',iv:b2a(PAYLOAD.iv)}},k,b2a(PAYLOAD.ct));}})
+      .then(function(buf){{return new TextDecoder().decode(buf);}});
+  }}
+  function playLocked(slot){{
+    var btn=slot.querySelector('.play'); btn.querySelector('span').textContent='Loading the video…';
+    fetch(slot.getAttribute('data-v')).then(function(r){{if(!r.ok)throw 0;return r.arrayBuffer();}}).then(function(ab){{
+      var u=new Uint8Array(ab);
+      return dk(PASS,u.slice(0,16),'decrypt').then(function(k){{return crypto.subtle.decrypt({{name:'AES-GCM',iv:u.slice(16,28)}},k,u.slice(28));}});
+    }}).then(function(buf){{
+      var v=document.createElement('video'); v.controls=true; v.playsInline=true;
+      v.src=URL.createObjectURL(new Blob([buf],{{type:'video/mp4'}})); btn.remove(); slot.appendChild(v); v.play().catch(function(){{}});
+    }}).catch(function(){{btn.querySelector('span').textContent='This video did not load. Refresh the page, or email hello@aireestate.com.';}});
+  }}
+  function mount(h){{
+    var box=document.getElementById('content'); box.innerHTML=h;
+    var J=JSON.parse(document.getElementById('ans').textContent), A=J.A, GRADED=J.G;
+    var st={{}}; try{{st=JSON.parse(localStorage.getItem(KEY))||{{}};}}catch(e){{}}
+    function save(){{try{{localStorage.setItem(KEY,JSON.stringify(st));}}catch(e){{}}}}
+    function paint(){{
+      GRADED.forEach(function(id){{var el=document.getElementById('st-'+id); if(el) el.textContent=st[id]?'passed':'';}});
+      var cap=document.getElementById('capdone'); if(cap) cap.checked=!!st.capstone;
+      var all=GRADED.every(function(id){{return st[id];}}), cb=document.getElementById('cert');
+      var n=GRADED.filter(function(id){{return st[id];}}).length;
+      cb.querySelector('.status').textContent='Module checks passed: '+n+' of '+GRADED.length+'. Capstone recorded: '+(st.capstone?'yes':'no')+'.';
+      cb.querySelector('[data-cert]').hidden=!(all&&st.capstone);
+    }}
+    box.querySelectorAll('form.quiz').forEach(function(f){{
+      var id=f.getAttribute('data-m');
+      f.addEventListener('submit',function(e){{
+        e.preventDefault(); var right=0;
+        A[id].forEach(function(q,i){{
+          var pick=f.querySelector('input[name="'+id+'q'+i+'"]:checked');
+          f.querySelectorAll('input[name="'+id+'q'+i+'"]').forEach(function(r){{
+            var l=r.parentNode; l.classList.remove('right','wrong');
+            if(+r.value===q.answer) l.classList.add('right'); else if(r.checked) l.classList.add('wrong');
+          }});
+          if(pick&&+pick.value===q.answer) right++;
+        }});
+        f.classList.add('done');
+        var pass=right>=5; f.querySelector('.res').textContent=right+' of 7 correct. '+(pass?'Passed.':'Not yet: read the explanations and retry.');
+        if(pass){{st[id]=true; save();}} paint();
+      }});
+      f.querySelector('[data-retry]').addEventListener('click',function(){{
+        f.reset(); f.classList.remove('done'); f.querySelector('.res').textContent='';
+        f.querySelectorAll('label').forEach(function(l){{l.classList.remove('right','wrong');}});
+      }});
+    }});
+    var cap=document.getElementById('capdone');
+    if(cap) cap.addEventListener('change',function(){{st.capstone=cap.checked; save(); paint();}});
+    box.querySelectorAll('.codebox .copy').forEach(function(b){{
+      b.addEventListener('click',function(){{var t=b.nextElementSibling.textContent;
+        (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){{b.textContent='Copied';setTimeout(function(){{b.textContent='Copy';}},1500);}},function(){{}});}});
+    }});
+    box.querySelectorAll('.vslot .play').forEach(function(b){{b.addEventListener('click',function(){{playLocked(b.parentNode);}});}});
+    document.getElementById('reset').addEventListener('click',function(){{st={{}}; save(); paint();}});
+    paint();
+    document.getElementById('gate').style.display='none';
+    document.getElementById('app').hidden=false;
+    if(location.hash){{var t=document.getElementById(location.hash.slice(1)); if(t) t.scrollIntoView();}}
+  }}
+  var gform=document.getElementById('gform'), gin=document.getElementById('gin'), gerr=document.getElementById('gerr');
+  function attempt(code,quiet){{
+    gerr.textContent=''; var btn=gform.querySelector('button'); btn.textContent='Unlocking…';
+    var pass=String(code||'').trim().toUpperCase();
+    return decrypt(pass).then(function(h){{
+      PASS=pass; try{{localStorage.setItem(SK,pass);}}catch(e){{}} mount(h);
+    }}).catch(function(err){{
+      btn.textContent='Unlock the course';
+      if(err&&err.message==='insecure') gerr.textContent='This page must be opened over https to unlock.';
+      else if(!quiet){{gerr.textContent='That code did not work. Check your purchase confirmation, or email hello@aireestate.com.'; gin.select();}}
+    }});
+  }}
+  gform.addEventListener('submit',function(e){{e.preventDefault(); attempt(gin.value,false);}});
+  document.getElementById('lockbtn').addEventListener('click',function(e){{e.preventDefault(); try{{localStorage.removeItem(SK);}}catch(x){{}} location.href=location.pathname;}});
+  var q=(location.search.match(/[?&]k=([^&]+)/)||[])[1], rem=null;
+  try{{rem=localStorage.getItem(SK);}}catch(e){{}}
+  var auto=q?decodeURIComponent(q):rem;
+  if(auto){{attempt(auto,true).then(function(){{if(q&&history.replaceState)history.replaceState(null,'',location.pathname+location.hash);}});}} else gin.focus();
+}})();
+</script>
+</body>
+</html>
+"""
+    return page
+
+
 def build():
     if not check():
         raise SystemExit("Fix the manuscripts first.")
@@ -487,4 +709,15 @@ def build():
 
 
 if __name__ == "__main__":
-    check() if "--check" in sys.argv else build()
+    if "--release" in sys.argv:
+        k = sys.argv.index("--release"); slug, outdir = sys.argv[k + 1], Path(sys.argv[k + 2])
+        c = next(x for x in COURSES if x["slug"] == slug)
+        prefix = {"build-your-ai-assistant": "bya", "your-ai-video-spokesperson": "yavs"}[slug]
+        style, lock, footer = template_parts()
+        outdir.mkdir(parents=True, exist_ok=True)
+        (outdir / f"{slug}-course.html").write_text(release_reader(c, load(c), style, lock, footer, prefix))
+        print("Built", outdir / f"{slug}-course.html")
+    elif "--check" in sys.argv:
+        check()
+    else:
+        build()

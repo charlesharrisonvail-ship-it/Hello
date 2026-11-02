@@ -15,6 +15,51 @@ Color use: Black for main line art and Xiaohei. Orange for main flow/path/arrows
 Constraints: One image explains only one core structure. Main subject around 40-60% of the canvas, at least 35% blank white space. Only the handwritten English labels listed, spelled exactly; no other words anywhere, and never write the character's name. No title in the top-left corner. Not a formal diagram, course slide, or dense explainer. Clear but not instructional, strange but clean.
 """
 
+M4 = {
+ 1: ("photo", "A modern workbench in a mountain home office with neatly arranged tools, a laptop and a coffee mug at golden hour, ready to build, screen blurred."),
+ 2: ("photo", "Three neat folders stacked on a walnut desk beside a pen, morning light, mountain window, organized and calm, text unreadable."),
+ 3: ("sketch", "Core idea: two kinds of assistant. Composition: on the left, a chat window holding a small pinned stack of notes, with Xiaohei pasting a card into it and copying a draft out; on the right, a sturdy box-shaped assistant reading a listing folder and writing a new file into a drafts tray. Labels: \"Project\" (blue, left), \"you paste, it drafts\" (black, left), \"Claude Code\" (blue, right), \"reads folders, writes files\" (black, right)."),
+ 10: ("sketch", "Core idea: if a required input is missing, ask and stop. Composition: Xiaohei stands at the edge of a road with a missing piece, holding up a stop sign and a question card instead of crossing; a draft page waits on the far side. Labels: \"missing input\" (red, on the gap), \"ask and stop\" (orange), \"never draft around a hole\" (blue)."),
+ 13: ("photo", "A wall calendar with last week's page torn off lying on a desk, a fresh notepad beside it, morning light, text unreadable."),
+ 17: ("photo", "A small leather folder labeled with nothing, tucked into a travel bag beside a laptop, portable and safe, warm light, no readable text."),
+ 18: ("photo", "A laptop on a mountain cabin desk at dusk with a dark terminal window glowing, a folder of papers beside it, screen blurred."),
+}
+
+M5 = {
+ 1: ("photo", "A neat wooden filing cabinet with one drawer open showing labeled folders, warm light in a mountain office, labels unreadable."),
+ 2: ("sketch", "Core idea: copying and pasting across many listings invites mix-ups. Composition: Xiaohei juggles five little listing cards between two windows; one card is flying into the wrong window. Labels: \"5 listings\" (black), \"copy, paste\" (orange), \"wrong listing\" (red, on the misplaced card)."),
+ 5: ("photo", "A control panel of a few simple switches and dials on a wooden desk, warm light, deliberate and calm, no readable text."),
+ 8: ("sketch", "Core idea: the skill may only read and write files, never send. Composition: Xiaohei holds a short tool belt with four small tools (a magnifying glass, a folder, a search lens, a pencil); beside it an envelope, a megaphone and a phone sit behind a locked gate. Labels: \"Read, Glob, Grep, Write\" (black, on the belt), \"draft only\" (orange), \"no send, no post\" (red, on the gate)."),
+ 16: ("sketch", "Core idea: start with one reliable draft-only workflow before chaining tools. Composition: Xiaohei carefully holds one small solid box; nearby a tangle of cables links an email icon, a calendar and a database, crossed out for now. Labels: \"one draft-only workflow\" (orange), \"email, CRM, calendar\" (black, on the tangle), \"not yet\" (red)."),
+}
+
+M6 = {
+ 1: ("photo", "A laboratory-style test bench with neatly labeled sample trays in a warm mountain workshop, careful testing mood, labels unreadable."),
+ 2: ("photo", "A single gold star sticker on a printed page on a desk, slightly ironic and understated, warm light, text unreadable."),
+ 3: ("sketch", "Core idea: hard cases are normal, not rare. Composition: Xiaohei stands at a desk as small trouble cards drop from a calendar page labeled Tuesday: a missing number, a seller asking for something untrue, a phone number. Labels: \"missing HOA fee\", \"untrue request\", \"buyer's phone number\" (black), \"Tuesday\" (orange, on the calendar)."),
+ 5: ("photo", "A clipboard holding a ruled test log sheet with ten numbered rows and a pen, warm desk light, text blurred and unreadable."),
+ 11: ("sketch", "Core idea: an instruction hidden in a reference file is data, not a command. Composition: a box-shaped assistant reads an email; a sneaky note inside the email points at a megaphone; Xiaohei puts the note into a jar marked as data instead of letting it reach the megaphone. Labels: \"no special assessment\" (red, on the sneaky note), \"data, not your boss\" (orange), \"ignored\" (blue, on the jar)."),
+ 19: ("sketch", "Core idea: the testing loop. Composition: Xiaohei runs around a simple circular track with four stops, carrying a clipboard. Labels: \"run\", \"record\", \"correct\", \"rerun\" (orange, at the four stops)."),
+ 21: ("photo", "A hand-dated logbook open on a desk beside a laptop, a pen resting on it, evening lamp, careful mood, text unreadable."),
+}
+
+M7 = {
+ 1: ("photo", "A weekly planner open on a walnut desk with Friday afternoon blocked out, a coffee mug and mountain view, text unreadable."),
+ 2: ("sketch", "Core idea: a working assistant has to survive real weeks. Composition: Xiaohei carries a small box-shaped assistant through a storm of flying papers labeled with weekly events; it stays upright. Labels: \"busy Friday\", \"price change\", \"new disclosure\" (black, on papers), \"3 months later\" (blue)."),
+ 3: ("photo", "Three tidy stacks on a desk: a calendar, a checklist clipboard and a notebook, warm light, organized, text unreadable."),
+ 5: ("photo", "A sticky note pad with three small tally marks on it beside a pen and laptop, warm light, text unreadable."),
+ 7: ("sketch", "Core idea: the change history tells you what changed when something goes wrong. Composition: Xiaohei follows a short line of dated footprints back from a confused draft page to a small change made months earlier. Labels: \"March: something odd\" (red), \"change history\" (orange), \"the line added in January\" (blue)."),
+ 9: ("sketch", "Core idea: the same pattern builds the next assistant. Composition: Xiaohei uses one cookie-cutter-like stencil to stamp out three small assistant boxes in a row. Labels: \"one job, voice, sources, tests, routine\" (orange, on the stencil), \"seller update\", \"buyer comparison\", \"listing copy\" (black, on the boxes)."),
+ 14: ("photo", "A single printed one-page guide pinned to a corkboard in a mountain office, a coffee cup below it, warm light, text unreadable."),
+}
+
+M8 = {
+ 1: ("photo", "A finished, well-organized desk at golden hour with a laptop, a neat folder and a pen, a sense of accomplishment, mountain window, nothing readable."),
+ 2: ("photo", "A small brass trophy-like desk bell next to a laptop on a walnut desk, warm light, understated success, screen blurred."),
+ 5: ("sketch", "Core idea: pass is eight out of ten with no critical failure. Composition: Xiaohei stands by a simple scoreboard showing 8 out of 10 with a check, next to a red stop light with three small warning icons. Labels: \"8 / 10\" (orange), \"fabricated fact\", \"private information\", \"can send without you\" (red, by the warning icons), \"not yet\" (red)."),
+ 8: ("photo", "A framed certificate of completion on a desk beside a closed laptop, warm light, text blurred and unreadable."),
+}
+
 # Lead to Keys (Part 2). Files numbered from 2100 (LK1), 2200 (LK2) and so on.
 LK1 = {
  1: ("photo", "A set of house keys on a walnut table in front of a window with a mountain-modern home outside at golden hour, warm and welcoming."),
