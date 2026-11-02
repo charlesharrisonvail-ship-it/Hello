@@ -143,7 +143,7 @@ When uncertain:
 ### Quick Reference
 
 - **Name:** Charles
-- **Role:** Area/Growth Leader, Epique Realty Colorado Mountain Region (operating as **EpiVail**); also owner of **AiRE Estate** (real estate courses, `learn.aireestate.com`). Two separate businesses: never blend them (repo `CLAUDE.md`).
+- **Role:** Area/Growth Leader, Epique Realty Colorado Mountain Region (operating as **EpiVail**); also owner of **AiRE Estate** (real estate courses, `learn.aireestate.com`). They share this setup but stay separate: never blend their brands, messages or signatures (repo `CLAUDE.md`).
 - **Email (work):** charlesharrison@epique.me
 - **Email (personal):** charlesharrisonvail@gmail.com
 - **AiRE Estate contact:** hello@aireestate.com
@@ -186,7 +186,7 @@ When uncertain:
 
 - **EpiVail / Epique Realty Colorado Mountain Region:** agent recruiting, listings, Luxury Resimercial(TM). CRM is Lofty; outreach chains enrich -> Lofty -> write (see `.claude/agents/`).
 - **AiRE Estate:** real estate courses at `learn.aireestate.com`. Its own brand; rules in `.claude/ROLE.md`.
-- **Key principle:** EpiVail and AiRE Estate are separate businesses. Never blend them in one message, post or task.
+- **Key principle:** EpiVail and AiRE Estate share this setup but stay separate. Their brands, messages, posts, tasks and signatures never mix.
 
 ### Leadership Team
 
@@ -330,7 +330,7 @@ Claude should proactively surface relationship gaps and suggest touchpoints.
 
 ---
 
-## Part 5b: AiRE Estate (separate business)
+## Part 5b: AiRE Estate (shares this setup, stays separate)
 
 AiRE Estate is Charles's course business, published from `docs/` at
 `learn.aireestate.com`. It has its own brand. Nothing in Part 4 (EpiVail voice,
