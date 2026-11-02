@@ -59,7 +59,10 @@ def multipart(fields, path):
 def page_token(q):
     """Find the AiRE Estate page among the pages this access can post to."""
     pid, want = q["page_id"], q["page_name"].lower()
-    data = call(f"{GRAPH}/me/accounts?fields=id,name,access_token&limit=100", token=TOKEN or None).get("data", [])
+    # The proxy overwrites the Authorization header on graph.facebook.com with the
+    # environment's own credential, so AIRE_FB_TOKEN must travel as a query parameter.
+    auth = "&access_token=" + urllib.parse.quote(TOKEN) if TOKEN else ""
+    data = call(f"{GRAPH}/me/accounts?fields=id,name,access_token&limit=100{auth}").get("data", [])
     for p in data:
         if p["id"] == pid:
             if want not in p["name"].lower():
