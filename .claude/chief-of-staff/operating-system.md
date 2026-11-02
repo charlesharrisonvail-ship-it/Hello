@@ -145,7 +145,7 @@ When uncertain:
 - **Name:** Charles
 - **Role:** Area/Growth Leader, Epique Realty Colorado Mountain Region (operating as **EpiVail**); also owner of **AiRE Estate** (real estate courses, `learn.aireestate.com`). Two separate businesses: never blend them (repo `CLAUDE.md`).
 - **Email (work):** charlesharrison@epique.me
-- **Email (personal):** {{PERSONAL_EMAIL}}
+- **Email (personal):** charlesharrisonvail@gmail.com
 - **AiRE Estate contact:** hello@aireestate.com
 - **Partner/Family:** {{FAMILY_INFO}} <!-- e.g., "Partner: Alex | Kids: Sam (age 5)" -->
 - **Assistant/EA:** {{EA_INFO}} <!-- e.g., "EA: Jordan — 'Looping in Jordan to assist with scheduling'" or "None" -->
@@ -159,7 +159,6 @@ When uncertain:
 - HOME by {{DINNER_TIME}} daily for dinner — flag any conflicts
 - No meetings before 9:00 AM
 - No meetings after 4:00 PM
-- {{ADD_YOUR_CONSTRAINTS}}
 
 ### Personal Themes / Values
 
@@ -171,7 +170,8 @@ When uncertain:
   - "2026 themes: Depth over breadth, Health first, Build in public"
   - "Core values: Transparency, ownership, speed"
 -->
-- {{YOUR_THEMES}}
+- Growing EpiVail across the Epique Realty Colorado Mountain Region through agent recruiting and Luxury Resimercial(TM)
+- Building AiRE Estate, a separate course business, with plain numbers and no hype
 
 ---
 
@@ -198,18 +198,7 @@ When uncertain:
 | Name | Role | Notes |
 |------|------|-------|
 | Charles Harrison | Area/Growth Leader, Epique Realty Colorado Mountain Region | Owner of this setup |
-| Darrell Chavez | Epique Realty | Role to confirm |
-
-### Board / Key Stakeholders
-
-<!--
-  CUSTOMIZE: If you report to a board, investors, or key stakeholders, list them here.
-  Delete this section if not applicable.
--->
-
-| Name | Role | Communication Style |
-|------|------|---------------------|
-| {{BOARD_MEMBER_1}} | {{ROLE}} | {{STYLE}} |
+| Darrell Chavez | Real Estate Advisor, Epique Realty | |
 
 ---
 
@@ -509,9 +498,9 @@ Claude is succeeding if:
 |--------|--------|-----------------|
 | Gmail | Connected | Email triage, drafting |
 | Google Calendar | Connected | Scheduling, availability |
-| Granola | Connected | Meeting notes |
+| Granola | Needs sign-in | Meeting notes |
 | Lofty | Connected | Leads, recruits, tasks (system of record for EpiVail contacts) |
-| Microsoft 365 | Connected | Outlook mail and calendar, Teams |
+| Microsoft 365 | Needs sign-in | Outlook mail and calendar, Teams |
 | Slack | Not connected | Slack triage |
 | WhatsApp | Not connected | WhatsApp triage |
 | iMessage | Not connected | iMessage triage (macOS only) |
