@@ -42,6 +42,11 @@
     box-shadow: 0 0 80px var(--glow), inset 0 2px 0 rgba(255,255,255,.08);
   }
   .tile svg { width: 120px; height: 120px; }
+  .parent { display: block; }
+  .rule { width: 520px; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); margin: 6px 0 4px; }
+  .bug { position: absolute; top: 56px; left: 64px; width: 260px; z-index: 5; }
+  .vertical .bug { top: 90px; left: 50%; margin-left: -150px; width: 300px; }
+  .vertical .rule { width: 420px; }
   .badge { display: block; filter: drop-shadow(0 0 60px var(--glow)); }
   .wordmark { font-size: 150px; }
   .tagline { font-size: 34px; line-height: 1.25; color: var(--muted); text-align: left; }
@@ -107,6 +112,11 @@
   const light = el('div', 'light'); stage.appendChild(light);
   stage.insertAdjacentHTML('beforeend', `<svg class="grain" width="${W}" height="${H}"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>`);
 
+  // Parent brand stays on screen in the corner whenever its full lockup isn't.
+  let bug = null;
+  if (BRAND.parentLogoSrc) {
+    bug = el('img', 'bug'); bug.src = BRAND.parentLogoSrc; stage.appendChild(bug);
+  }
   const animate = [];               // {scene, fn(u, dur)}
   const scenes = [];
   let t0 = 0;
@@ -146,12 +156,21 @@
 
     if (s.type === 'logo' || s.type === 'end') {
       const col = el('div', 'col');
+      // The parent brokerage (Epique) leads, bigger; the team brand follows.
+      const lead = BRAND.parentLogoSrc ? .55 : 0;
+      if (BRAND.parentLogoSrc) {
+        const pl = el('img', 'parent'); pl.src = BRAND.parentLogoSrc;
+        pl.style.width = (s.type === 'end' ? 760 : 1000) * (vertical ? .85 : 1) + 'px';
+        col.appendChild(pl); rise(pl, .1, .9, 40, 16);
+        const rule = el('div', 'rule'); col.appendChild(rule);
+        add(u => { rule.style.transform = `scaleX(${outExpo(prog(u, .5, .8))})`; });
+      }
       const row = el('div', 'row');
       // A brand with a real logo file shows that file, whole; nothing is redrawn.
       const tile = BRAND.logoSrc ? el('img', 'badge') : el('div', 'tile', BRAND.mark);
-      if (BRAND.logoSrc) { tile.src = BRAND.logoSrc; tile.style.width = tile.style.height = (s.type === 'end' ? 300 : 420) * (vertical ? 1.15 : 1) + 'px'; }
+      if (BRAND.logoSrc) { tile.src = BRAND.logoSrc; tile.style.width = tile.style.height = (s.type === 'end' ? 300 : 420) * (BRAND.parentLogoSrc ? .62 : 1) * (vertical ? 1.15 : 1) + 'px'; }
       add(u => {
-        const p = outExpo(prog(u, .1, .9));
+        const p = outExpo(prog(u, .1 + lead, .9));
         tile.style.opacity = p;
         tile.style.transform = `scale(${.6 + .4 * p}) rotate(${(1 - p) * -12}deg)`;
       });
@@ -165,17 +184,18 @@
       });
       row.appendChild(wm);
       const tag = s.tagline || (s.type === 'logo' ? BRAND.tagline : null);
-      if (tag) { const tg = el('div', 'tagline', tag.map(esc).join('<br>')); row.appendChild(tg); rise(tg, .9, .7, 20, 8); }
+      if (tag) { if (BRAND.parentLogoSrc) row.style.gap = '34px';
+        const tg = el('div', 'tagline', tag.map(esc).join('<br>')); row.appendChild(tg); rise(tg, .9 + lead, .7, 20, 8); }
       col.appendChild(row);
       if (s.type === 'end') {
         const lines = s.cta || [];
         lines.forEach((line, i) => {
           const c = el('div', 'mono ' + (i === 0 ? 'cta1' : 'cta2'), esc(line));
           if (i === 0) c.style.marginTop = '70px';
-          col.appendChild(c); rise(c, 1.2 + i * .25, .8, 16, 10);
+          col.appendChild(c); rise(c, 1.2 + lead + i * .25, .8, 16, 10);
         });
         if (BRAND.signature && s.signature !== false) {
-          const sg = el('div', 'sig', esc(BRAND.signature)); col.appendChild(sg); rise(sg, 1.8, .8, 12, 6);
+          const sg = el('div', 'sig', esc(BRAND.signature)); col.appendChild(sg); rise(sg, 1.8 + lead, .8, 12, 6);
         }
       }
       root.appendChild(col);
@@ -241,6 +261,12 @@
       sc.root.style.opacity = Math.min(fin, 1 - fout);
       sc.root.style.transform = `scale(${1.04 - .04 * outCubic(fin) - .03 * fout})`;
       sc.root.style.filter = fout > 0 ? `blur(${fout * 16}px)` : 'none';
+    }
+    if (bug) {
+      const cur = scenes.find(sc => t >= sc.start && t < sc.start + sc.dur);
+      const big = cur && (cur.spec.type === 'logo' || cur.spec.type === 'end');
+      const u = cur ? t - cur.start : 0;
+      bug.style.opacity = big ? Math.max(0, 1 - u / .3) * (u < .3 && cur !== scenes[0] ? .9 : 0) : .92;
     }
     for (const a of animate) {
       const u = t - a.sc.start;

@@ -31,6 +31,11 @@ businesses (`CLAUDE.md`).
 | Must have | `"audience"`: `agent-attraction` **or** `luxury-resimercial`, one per video | Any Claude Code mention says **(not included)**; prices are $67 (Part One) and $97 (Lead to Keys) unless Charles changes them |
 | Voice | Courteous, warm, confident, never hypey | Plain, numbers first, no hype; source every number |
 
+**EpiVail videos lead with Epique.** Epique Realty is the bigger, better-known
+brand. The official EPIQUE REALTY lockup opens the reveal and the end card, and
+it stays in the corner of every other scene. The EpiVail badge sits under it,
+smaller. This comes from `parent` in `brands/epivail.json`.
+
 **Logos are real files, never drawn.** EpiVail uses its badge PNG, whole. The
 badge already says EPIVAIL, so nothing gets typeset next to it. If a brand's logo
 file is missing, find it in Charles's Drive or ask him. Never draw a stand-in.

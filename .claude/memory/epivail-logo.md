@@ -19,5 +19,14 @@ said this about the EPIQUE wordmark. On 2026-11-02 I drew a mountain-peak mark
 and typeset "EpiVail" for the motion-ad videos instead, and Charles was rightly
 furious.
 
+**Epique leads, EpiVail follows** (Charles, 2026-11-02: "I am with Epique, that
+brand is bigger and better known"). On EpiVail video and graphics, the official
+EPIQUE REALTY lockup is the bigger logo, and the EpiVail badge sits under it,
+smaller. In motion-ad, the Epique lockup also stays in the corner of every scene
+that isn't a logo scene. The files, scaled down from his Drive originals, are
+`Epique_Realty_Logo_White.png` (from "Epique Realty Logo NEW Realty White.png")
+and `Epique_Q_White.png` (from "...POWER Logo NEW White.png") in the same assets
+folder.
+
 The same Drive folder holds the official Epique Realty logos (white, black, gold,
 "POWER" versions) and `EpiVail_QR_Scannable.png`.

@@ -31,6 +31,12 @@ if (brand.logo) {
   brand.logoSrc = 'data:image/png;base64,' + png.toString('base64');
 }
 
+if (brand.parent) {
+  const load = f => readFile(path.join(here, '..', 'brands', f)).then(b => 'data:image/png;base64,' + b.toString('base64')).catch(() => fail(`logo file missing: brands/${f}`));
+  brand.parentLogoSrc = await load(brand.parent.logo);
+  brand.parentMarkSrc = await load(brand.parent.mark);
+}
+
 // --- brand guards -----------------------------------------------------------
 const copy = JSON.stringify(spec.scenes);
 const problems = [];
@@ -75,7 +81,7 @@ await page.waitForTimeout(400);
 if (stills) {
   await mkdir(stills, { recursive: true });
   for (const [i, s] of scenes.entries()) {
-    await page.evaluate(t => MOTION.seek(t), s.start + Math.min(s.dur - .2, 2.4));
+    await page.evaluate(t => MOTION.seek(t), s.start + s.dur - .45);
     const f = path.join(stills, `${String(i + 1).padStart(2, '0')}-${s.label.replace(/\W+/g, '-').toLowerCase()}.jpg`);
     await page.screenshot({ path: f, type: 'jpeg', quality: 90 });
   }
