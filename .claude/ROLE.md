@@ -82,6 +82,9 @@ The owner role and the email sign-off are his own words. Correct anything wrong.
 - Never put an API key in chat, a commit, or a file.
 - Never contact anyone on the `CLAUDE.md` "Do not contact" list - not by email,
   text, call, or sequence enrollment, even if Lofty flags them as past due.
+- Never draw, typeset or invent a logo. Use the real file whole - the EpiVail
+  badge is in his Drive (`recall.py logo`). If it is missing, find it or ask.
+- When you break one of his rules, log it in `.claude/rule-breaks.md` and tell him.
 - Never write "Epique Mountain Collective" - `CLAUDE.md` bans it even when a
   brand skill suggests it.
 

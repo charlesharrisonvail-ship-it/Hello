@@ -42,6 +42,7 @@
     box-shadow: 0 0 80px var(--glow), inset 0 2px 0 rgba(255,255,255,.08);
   }
   .tile svg { width: 120px; height: 120px; }
+  .badge { display: block; filter: drop-shadow(0 0 60px var(--glow)); }
   .wordmark { font-size: 150px; }
   .tagline { font-size: 34px; line-height: 1.25; color: var(--muted); text-align: left; }
   .num { font-size: 260px; }
@@ -146,14 +147,17 @@
     if (s.type === 'logo' || s.type === 'end') {
       const col = el('div', 'col');
       const row = el('div', 'row');
-      const tile = el('div', 'tile', BRAND.mark);
+      // A brand with a real logo file shows that file, whole; nothing is redrawn.
+      const tile = BRAND.logoSrc ? el('img', 'badge') : el('div', 'tile', BRAND.mark);
+      if (BRAND.logoSrc) { tile.src = BRAND.logoSrc; tile.style.width = tile.style.height = (s.type === 'end' ? 300 : 420) * (vertical ? 1.15 : 1) + 'px'; }
       add(u => {
         const p = outExpo(prog(u, .1, .9));
         tile.style.opacity = p;
         tile.style.transform = `scale(${.6 + .4 * p}) rotate(${(1 - p) * -12}deg)`;
       });
       row.appendChild(tile);
-      const wm = el('div', 'display wordmark', BRAND.wordmark);
+      const wm = el('div', 'display wordmark', BRAND.wordmark || '');
+      if (!BRAND.wordmark) wm.style.display = 'none';
       add(u => {
         const p = outExpo(prog(u, .45, .9));
         wm.style.opacity = p; wm.style.transform = `translateX(${(1 - p) * -60}px)`;

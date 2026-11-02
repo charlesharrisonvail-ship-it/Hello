@@ -26,10 +26,15 @@ businesses (`CLAUDE.md`).
 | | EpiVail | AiRE Estate |
 |---|---|---|
 | Brand file | `brands/epivail.json` | `brands/aire-estate.json` |
-| Look | Navy `#0a1628`, gold `#c9a84c`, Cormorant Garamond / DM Sans / Bebas Neue, mountain-peak tile | Near-black `#04070d`, signal blue `#38bdf8`, Archivo / Manrope / IBM Plex Mono, the site's ring-dot tile |
+| Look | Navy `#0a1628`, gold `#c9a84c`, Cormorant Garamond / DM Sans / Bebas Neue, **the real EpiVail badge** (`brands/assets/`) | Near-black `#04070d`, signal blue `#38bdf8`, Archivo / Manrope / IBM Plex Mono, the ring-dot mark and wordmark copied exactly from `docs/index.html` |
 | End card | Signature added automatically: **Charles Harrison, Epique Area/Growth Leader** | No personal name. Never Charles, Epique, or EpiVail |
 | Must have | `"audience"`: `agent-attraction` **or** `luxury-resimercial`, one per video | Any Claude Code mention says **(not included)**; prices are $67 (Part One) and $97 (Lead to Keys) unless Charles changes them |
 | Voice | Courteous, warm, confident, never hypey | Plain, numbers first, no hype; source every number |
+
+**Logos are real files, never drawn.** EpiVail uses its badge PNG, whole. The
+badge already says EPIVAIL, so nothing gets typeset next to it. If a brand's logo
+file is missing, find it in Charles's Drive or ask him. Never draw a stand-in.
+See `recall.py logo`.
 
 The renderer enforces the hard rules in each brand file's `guards`: banned
 phrases (including "Epique Mountain Collective"), the AiRE no-name rule, the

@@ -25,6 +25,12 @@ const spec = JSON.parse(await readFile(specPath, 'utf8'));
 if (!spec.brand) fail('spec has no "brand" - pick exactly one: "epivail" or "aire-estate"');
 const brand = JSON.parse(await readFile(path.join(here, '..', 'brands', spec.brand + '.json'), 'utf8').catch(() => fail(`unknown brand "${spec.brand}"`)));
 
+// The real logo file, inlined so the preview HTML stands alone.
+if (brand.logo) {
+  const png = await readFile(path.join(here, '..', 'brands', brand.logo)).catch(() => fail(`logo file missing: brands/${brand.logo} - use the real file, never redraw it`));
+  brand.logoSrc = 'data:image/png;base64,' + png.toString('base64');
+}
+
 // --- brand guards -----------------------------------------------------------
 const copy = JSON.stringify(spec.scenes);
 const problems = [];
