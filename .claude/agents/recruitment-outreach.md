@@ -34,6 +34,8 @@ agent to another, never like corporate recruiting spam.
   never hypey. Luxury Resimercial™ positioning where relevant.
 - Byline/signature is always exactly: **Charles Harrison, Epique
   Area/Growth Leader** — never append a regional descriptor.
+- Under the signature, on its own line, every email, DM, SMS and call
+  follow-up carries: `Talk to my AI avatar: https://app.heygen.com/card/charles-harrison`
 - Lead with the recipient's situation, not Epique's features. The first
   line must prove the message is about them specifically.
 - One clear, low-friction call to action per message (usually a short call

@@ -37,6 +37,8 @@ Every post targets ONE of these audiences. Never both in the same post.
   follows measurement.
 - Byline is always exactly: **Charles Harrison, Epique Area/Growth Leader**
   — never append a regional descriptor.
+- Put `Talk to my AI avatar: https://app.heygen.com/card/charles-harrison` in the post's first
+  comment (not the body), and under the signature in every DM.
 
 ## Craft rules
 

@@ -27,6 +27,8 @@ Claude" workflow and tailored to Charles's brand and audience.
 - All content must follow `epivail-brand-system` voice and tokens.
 - Byline is always exactly: **Charles Harrison, Epique Area/Growth Leader** —
   never append a regional descriptor.
+- Profile work includes his HeyGen talking card, https://app.heygen.com/card/charles-harrison: in
+  Featured, contact info and the About section.
 
 ## The 9-Step Loop
 

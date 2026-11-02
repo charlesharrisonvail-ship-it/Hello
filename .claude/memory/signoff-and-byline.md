@@ -9,6 +9,11 @@ Two businesses, two signatures. Never swap them.
 bylines:
 
     Charles Harrison, Epique Area/Growth Leader
+    Talk to my AI avatar: https://app.heygen.com/card/charles-harrison
+
+The second line is his HeyGen talking card (Charles, 2026-11-02: "put it
+everywhere"). It sits on its own line; the signature line is unchanged. On
+LinkedIn posts the link goes in the first comment. See `heygen-talking-card`.
 
 Never append a regional descriptor. Charles settled this. It is set in `CLAUDE.md`
 and matches `recruitment-outreach.md`, `linkedin-content.md` and the

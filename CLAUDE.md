@@ -46,6 +46,11 @@ and the site is plain HTML.
   **Charles Harrison, Epique Area/Growth Leader** — never append a regional
   descriptor. This is the only EpiVail signature; it matches
   `recruitment-outreach.md` and `linkedin-content.md`.
+- Put Charles's HeyGen talking card on its own line directly under that
+  signature in every EpiVail email, DM and SMS:
+  `Talk to my AI avatar: https://app.heygen.com/card/charles-harrison`. The signature line itself stays
+  exactly as written. On LinkedIn posts, put the link in the first comment, not
+  the post body. Never on AiRE Estate materials (it carries his name).
 - Voice is courteous and warm, with Southern manners.
 
 ## AiRE Estate conventions

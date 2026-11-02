@@ -175,7 +175,8 @@ domain** (never your main email) with SPF, DKIM and DMARC set up and warmed up
 for 2–4 weeks. Every email waits for your approval by default. The
 "Do not contact" list would need to be blocked inside Harvey too. Any message
 Harvey writes for EpiVail must be signed exactly
-**Charles Harrison, Epique Area/Growth Leader**. Ask Claude to set this up
+**Charles Harrison, Epique Area/Growth Leader**, with
+`Talk to my AI avatar: https://app.heygen.com/card/charles-harrison` on the line below. Ask Claude to set this up
 properly first rather than flipping `enabled` to `true`.
 
 ## Troubleshooting

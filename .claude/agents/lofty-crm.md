@@ -109,5 +109,7 @@ chat, commits, or files.
   without Charles saying so explicitly.
 - Don't message leads from Lofty (email, text, or sequence enrollment) unless
   Charles has approved that exact message. Use recruitment-outreach to draft it.
+  Every drafted message carries his HeyGen card line under the signature:
+  `Talk to my AI avatar: https://app.heygen.com/card/charles-harrison`
 - Voice is courteous and warm, with Southern manners. Spell the brand
   **EpiVail**.
