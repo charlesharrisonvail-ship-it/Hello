@@ -50,7 +50,8 @@ and the site is plain HTML.
   signature in every EpiVail email, DM and SMS:
   `Talk to my AI avatar: https://app.heygen.com/card/charles-harrison`. The signature line itself stays
   exactly as written. On LinkedIn posts, put the link in the first comment, not
-  the post body. Never on AiRE Estate materials (it carries his name).
+  the post body. His HeyGen card features AiRE Estate as a
+  post, by his choice (2026-11-02).
 - Voice is courteous and warm, with Southern manners.
 
 ## AiRE Estate conventions

@@ -29,7 +29,7 @@ where `CLAUDE.md` said `Charles Harrison | EpiVail | Epique Realty` and the agen
 files said this form. The pipe-separated form is retired - if you meet it, it is
 stale. See `recall.py signature`. (2026-09)
 
-**HeyGen card link under every EpiVail signature; never AiRE Estate.** `recall.py heygen` (2026-11-02)
+**HeyGen card link under every EpiVail signature; the card features AiRE Estate.** `recall.py heygen` (2026-11-02)
 
 **Check the do-not-contact list before sending anything to anyone** - it lives in
 `CLAUDE.md` under "Do not contact", is deliberately NOT copied here so it cannot

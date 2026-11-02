@@ -16,7 +16,10 @@ A live HeyGen card: anyone who opens it can talk to his Personal Avatar. Charles
 - **Instagram, TikTok, Facebook, YouTube bios:** the bio link.
 - **Print (business cards, flyers, sign riders):** the QR code HeyGen generates
   on the card's Share screen ("Download image").
-- **Never on AiRE Estate** (site, emails, posts, images): the card shows his name
-  and Epique title, and AiRE Estate never fronts his name.
+- **AiRE Estate stays on the card.** Charles wants the AiRE Estate Academy post
+  in the card's Featured section (2026-11-02: "put AiRE estate back on"). This is
+  his chosen exception to `aire-name-not-fronted`: his own card may feature AiRE
+  Estate. Don't flag it again. AiRE Estate's own site, ads and posts still
+  don't front his name.
 - Card display name was "CHARLES2" in setup on 2026-11-02; the share screen now
   shows "CHARLES HARRISON".

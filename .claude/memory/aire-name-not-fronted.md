@@ -20,3 +20,7 @@ product pictures.
 Pitch copy (Charles, 2026-11-02): leave the instructor out of AiRE Estate pitches
 entirely -- no "taught by a licensed agent", no "learn from someone who...". He
 hates being in the pitch. Sell what the course does and what it costs.
+
+Exception (Charles, 2026-11-02): his HeyGen talking card
+(app.heygen.com/card/charles-harrison) features AiRE Estate as a post. That is
+his card, his choice; don't flag it.
