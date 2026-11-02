@@ -23,6 +23,10 @@ from `claude/stan-store-access-k4hjdu`, not `main`. ChatGPT makes cards from
 `marketing/chatgpt-brief.md`; check every image (no name, Claude Code "(not
 included)", $67/$97) before queuing.
 
+Motion ads (2026-11-02): Charles runs Null Motion on Windows (`tools/null-motion/`)
+and wants its launch-film style for both brands. `.claude/skills/motion-ad/` renders
+it to MP4, one brand per video, with brand guards (`recall.py motion`).
+
 ## Open question for Charles
 
 The agents say "powered by Epique X"; some skills say "EpiqueAI". `CLAUDE.md` does
@@ -40,11 +44,3 @@ not rule on it, so ask rather than pick.
    with whatever he hits
 
 ## Working thread (auto-banked)
-
-### banked 2026-10-10 18:54
-(compaction point -- the thread above this line was summarised; anything not written down here is gone)
-
-
-### banked 2026-10-10 19:18
-(compaction point -- the thread above this line was summarised; anything not written down here is gone)
-

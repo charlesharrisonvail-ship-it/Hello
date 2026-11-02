@@ -1,0 +1,259 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Motion ad</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; background: #000; overflow: hidden; }
+  #stage {
+    position: absolute; left: 0; top: 0; overflow: hidden;
+    background: var(--bg); color: var(--fg); font-family: var(--body);
+    transform-origin: 0 0;
+  }
+  .grid {
+    position: absolute; inset: -200px;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 240px 240px;
+  }
+  .diamond {
+    position: absolute; width: 22px; height: 22px; margin: -11px 0 0 -11px;
+    background: var(--diamond); transform: rotate(45deg);
+  }
+  .light {
+    position: absolute; width: 1700px; height: 1700px; margin: -850px 0 0 -850px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--glow) 0%, transparent 62%);
+  }
+  .grain { position: absolute; inset: 0; opacity: .09; mix-blend-mode: overlay; pointer-events: none; }
+  .scene { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .col { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px; }
+  .row { display: flex; align-items: center; gap: 44px; }
+  .eyebrow { font-family: var(--label); letter-spacing: .32em; text-transform: uppercase; font-size: 30px; color: var(--accent); }
+  .display { font-family: var(--display); font-weight: var(--display-weight); color: var(--head); line-height: 1; letter-spacing: var(--display-tracking); }
+  .word { display: inline-block; margin: 0 .14em; will-change: transform, filter, opacity; }
+  .accent { color: var(--accent); }
+  .tile {
+    width: 210px; height: 210px; border-radius: 52px; display: grid; place-items: center;
+    background: linear-gradient(160deg, var(--tile-hi), var(--tile-lo));
+    border: 2px solid var(--tile-edge);
+    box-shadow: 0 0 80px var(--glow), inset 0 2px 0 rgba(255,255,255,.08);
+  }
+  .tile svg { width: 120px; height: 120px; }
+  .wordmark { font-size: 150px; }
+  .tagline { font-size: 34px; line-height: 1.25; color: var(--muted); text-align: left; }
+  .num { font-size: 260px; }
+  .caption { font-size: 44px; color: var(--muted); max-width: 1300px; line-height: 1.3; }
+  .item { display: flex; align-items: center; gap: 30px; font-size: 64px; color: var(--head); font-family: var(--display); font-weight: var(--display-weight); }
+  .tick { width: 22px; height: 22px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 24px var(--accent); flex: none; }
+  .cards { display: flex; gap: 34px; }
+  .card {
+    width: 440px; padding: 44px 40px; border-radius: 30px; text-align: left;
+    background: linear-gradient(160deg, var(--tile-hi), var(--tile-lo));
+    border: 1px solid var(--tile-edge);
+  }
+  .card .k { font-family: var(--label); font-size: 24px; letter-spacing: .25em; color: var(--accent); text-transform: uppercase; }
+  .card .t { font-family: var(--display); font-weight: var(--display-weight); font-size: 52px; color: var(--head); margin-top: 22px; line-height: 1.05; }
+  .card .s { font-size: 28px; color: var(--muted); margin-top: 16px; line-height: 1.35; }
+  .mono { font-family: var(--label); letter-spacing: .28em; text-transform: uppercase; }
+  .cta1 { font-size: 40px; color: var(--muted); }
+  .cta2 { font-size: 46px; color: var(--head); }
+  .sig { font-size: 30px; color: var(--muted); margin-top: 18px; }
+  .fine { position: absolute; bottom: 54px; left: 0; right: 0; text-align: center; font-size: 24px; color: var(--muted); letter-spacing: .04em; }
+  /* vertical format overrides */
+  .vertical .wordmark { font-size: 120px; }
+  .vertical .row { flex-direction: column; gap: 34px; }
+  .vertical .tagline { text-align: center; }
+  .vertical .cards { flex-direction: column; }
+  .vertical .card { width: 820px; }
+  .vertical .num { font-size: 230px; }
+  .vertical .caption { max-width: 900px; }
+  .vertical .fine { font-size: 30px; bottom: 140px; padding: 0 70px; line-height: 1.4; }
+  .vertical .eyebrow { max-width: 900px; line-height: 1.6; }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script>
+// Deterministic motion engine: every frame is a pure function of time t,
+// so seek(t) renders frame-exactly for MP4 export and loops for preview.
+// Reads window.SPEC (scenes) and window.BRAND (tokens) injected by render.mjs.
+(() => {
+  const SPEC = window.SPEC, BRAND = window.BRAND;
+  const vertical = SPEC.format === 'vertical';
+  const W = vertical ? 1080 : 1920, H = vertical ? 1920 : 1080;
+  const stage = document.getElementById('stage');
+  stage.style.width = W + 'px'; stage.style.height = H + 'px';
+  if (vertical) stage.classList.add('vertical');
+  for (const [k, v] of Object.entries(BRAND.css)) stage.style.setProperty('--' + k, v);
+  if (BRAND.fontsUrl) document.head.appendChild(Object.assign(document.createElement('link'), { rel: 'stylesheet', href: BRAND.fontsUrl }));
+
+  const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+  const outExpo = x => x >= 1 ? 1 : 1 - Math.pow(2, -10 * x);
+  const outCubic = x => 1 - Math.pow(1 - x, 3);
+  const inOut = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+  const prog = (u, start, len) => clamp((u - start) / len);
+  const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  // Background: drifting grid, diamonds on intersections, a slow light sweep, grain.
+  const grid = el('div', 'grid'); stage.appendChild(grid);
+  const diamonds = [[.12, .11], [.5, .22], [.88, .2], [.27, .74], [.8, .55], [.62, .9]].map(([x, y]) => {
+    const d = el('div', 'diamond'); d.style.left = x * W + 'px'; d.style.top = y * H + 'px'; stage.appendChild(d); return d;
+  });
+  const light = el('div', 'light'); stage.appendChild(light);
+  stage.insertAdjacentHTML('beforeend', `<svg class="grain" width="${W}" height="${H}"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>`);
+
+  const animate = [];               // {scene, fn(u, dur)}
+  const scenes = [];
+  let t0 = 0;
+  for (const s of SPEC.scenes) {
+    const root = el('div', 'scene');
+    const sc = { root, start: t0, dur: s.dur, spec: s };
+    t0 += s.dur;
+    scenes.push(sc);
+    stage.appendChild(root);
+    const add = fn => animate.push({ sc, fn });
+    const rise = (e, at, len = .7, dy = 40, blur = 14) => add(u => {
+      const p = outExpo(prog(u, at, len));
+      e.style.opacity = p;
+      e.style.transform = `translateY(${(1 - p) * dy}px)`;
+      e.style.filter = `blur(${(1 - p) * blur}px)`;
+    });
+    const words = (text, at, step) => {
+      const box = el('div', 'display');
+      text.split(' ').forEach((w, i) => {
+        const span = el('span', 'word' + (s.accent && s.accent.includes(w.replace(/[.,!?]/g, '')) ? ' accent' : ''), esc(w));
+        box.appendChild(span); rise(span, at + i * step, .8, 60, 18);
+      });
+      return box;
+    };
+
+    if (s.type === 'hook') {
+      const col = el('div', 'col');
+      if (s.eyebrow) { const e = el('div', 'eyebrow', esc(s.eyebrow)); col.appendChild(e); rise(e, .1); }
+      const lines = Array.isArray(s.text) ? s.text : [s.text];
+      let at = .3;
+      lines.forEach(line => {
+        const b = words(line, at, .16); b.style.fontSize = (s.size || 170) * (vertical ? .64 : 1) + 'px'; col.appendChild(b);
+        at += line.split(' ').length * .16 + .25;
+      });
+      root.appendChild(col);
+    }
+
+    if (s.type === 'logo' || s.type === 'end') {
+      const col = el('div', 'col');
+      const row = el('div', 'row');
+      const tile = el('div', 'tile', BRAND.mark);
+      add(u => {
+        const p = outExpo(prog(u, .1, .9));
+        tile.style.opacity = p;
+        tile.style.transform = `scale(${.6 + .4 * p}) rotate(${(1 - p) * -12}deg)`;
+      });
+      row.appendChild(tile);
+      const wm = el('div', 'display wordmark', BRAND.wordmark);
+      add(u => {
+        const p = outExpo(prog(u, .45, .9));
+        wm.style.opacity = p; wm.style.transform = `translateX(${(1 - p) * -60}px)`;
+        wm.style.clipPath = `inset(0 ${(1 - p) * 100}% 0 0)`;
+      });
+      row.appendChild(wm);
+      const tag = s.tagline || (s.type === 'logo' ? BRAND.tagline : null);
+      if (tag) { const tg = el('div', 'tagline', tag.map(esc).join('<br>')); row.appendChild(tg); rise(tg, .9, .7, 20, 8); }
+      col.appendChild(row);
+      if (s.type === 'end') {
+        const lines = s.cta || [];
+        lines.forEach((line, i) => {
+          const c = el('div', 'mono ' + (i === 0 ? 'cta1' : 'cta2'), esc(line));
+          if (i === 0) c.style.marginTop = '70px';
+          col.appendChild(c); rise(c, 1.2 + i * .25, .8, 16, 10);
+        });
+        if (BRAND.signature && s.signature !== false) {
+          const sg = el('div', 'sig', esc(BRAND.signature)); col.appendChild(sg); rise(sg, 1.8, .8, 12, 6);
+        }
+      }
+      root.appendChild(col);
+    }
+
+    if (s.type === 'stat') {
+      const col = el('div', 'col');
+      if (s.eyebrow) { const e = el('div', 'eyebrow', esc(s.eyebrow)); col.appendChild(e); rise(e, .1); }
+      const n = el('div', 'display num');
+      col.appendChild(n);
+      const from = s.from || 0, to = s.value, dec = s.decimals || 0;
+      add(u => {
+        const p = inOut(prog(u, .3, s.countFor || 1.4));
+        const v = (from + (to - from) * p).toFixed(dec);
+        n.innerHTML = esc(s.prefix || '') + Number(v).toLocaleString('en-US', { minimumFractionDigits: dec }) + `<span class="accent">${esc(s.suffix || '')}</span>`;
+        const q = outExpo(prog(u, .2, .7)); n.style.opacity = q; n.style.transform = `scale(${.9 + .1 * q})`;
+      });
+      if (s.caption) { const c = el('div', 'caption', esc(s.caption)); col.appendChild(c); rise(c, .9); }
+      root.appendChild(col);
+    }
+
+    if (s.type === 'list') {
+      const col = el('div', 'col'); col.style.alignItems = 'flex-start'; col.style.textAlign = 'left';
+      if (s.eyebrow) { const e = el('div', 'eyebrow', esc(s.eyebrow)); col.appendChild(e); rise(e, .1); }
+      s.items.forEach((it, i) => {
+        const r = el('div', 'item'); r.appendChild(el('span', 'tick')); r.appendChild(el('span', '', esc(it)));
+        col.appendChild(r); rise(r, .35 + i * (s.step || .35), .7, 0, 10);
+        add(u => { if (r.style.opacity !== '0') r.style.transform = `translateX(${(1 - outExpo(prog(u, .35 + i * (s.step || .35), .7))) * -50}px)`; });
+      });
+      root.appendChild(col);
+    }
+
+    if (s.type === 'cards') {
+      const col = el('div', 'col');
+      if (s.eyebrow) { const e = el('div', 'eyebrow', esc(s.eyebrow)); col.appendChild(e); rise(e, .1); }
+      const row = el('div', 'cards');
+      s.cards.forEach((c, i) => {
+        const card = el('div', 'card', `<div class="k">${esc(c.k || '')}</div><div class="t">${esc(c.t)}</div>${c.s ? `<div class="s">${esc(c.s)}</div>` : ''}`);
+        row.appendChild(card); rise(card, .35 + i * .22, .9, 80, 12);
+      });
+      col.appendChild(row); root.appendChild(col);
+    }
+
+    if (s.fine) { const f = el('div', 'fine', esc(s.fine)); root.appendChild(f); rise(f, .6, .6, 0, 4); }
+  }
+  const DURATION = t0;
+
+  function seek(t) {
+    t = clamp(t, 0, DURATION - 1e-6);
+    // background motion
+    grid.style.transform = `translate(${(t * 6) % 240}px, ${(t * 3) % 240}px)`;
+    diamonds.forEach((d, i) => { d.style.opacity = .5 + .5 * Math.sin(t * 1.2 + i * 1.7); });
+    const lx = W * (.3 + .4 * Math.sin(t * .18)), ly = H * (.55 + .25 * Math.cos(t * .23));
+    light.style.left = lx + 'px'; light.style.top = ly + 'px';
+    // scenes: fade/scale between, children by local time
+    for (const sc of scenes) {
+      const u = t - sc.start;
+      const on = u >= -0.001 && u < sc.dur;
+      sc.root.style.display = on ? 'flex' : 'none';
+      if (!on) continue;
+      const last = sc === scenes[scenes.length - 1];
+      const fin = prog(u, 0, .35), fout = last ? 0 : prog(u, sc.dur - .35, .35);
+      sc.root.style.opacity = Math.min(fin, 1 - fout);
+      sc.root.style.transform = `scale(${1.04 - .04 * outCubic(fin) - .03 * fout})`;
+      sc.root.style.filter = fout > 0 ? `blur(${fout * 16}px)` : 'none';
+    }
+    for (const a of animate) {
+      const u = t - a.sc.start;
+      if (u >= -0.001 && u < a.sc.dur) a.fn(u, a.sc.dur);
+    }
+  }
+
+  function fit() {
+    const k = Math.min(innerWidth / W, innerHeight / H);
+    stage.style.transform = `translate(${(innerWidth - W * k) / 2}px, ${(innerHeight - H * k) / 2}px) scale(${k})`;
+  }
+  window.MOTION = { seek, DURATION, W, H, fps: SPEC.fps || 30, scenes: scenes.map(s => ({ label: s.spec.label || s.spec.type, start: s.start, dur: s.dur })) };
+  if (window.RENDER) { stage.style.transform = 'none'; seek(0); return; }
+  fit(); addEventListener('resize', fit);
+  const begin = performance.now();
+  (function loop() { seek(((performance.now() - begin) / 1000) % DURATION); requestAnimationFrame(loop); })();
+})();
+</script>
+</body>
+</html>

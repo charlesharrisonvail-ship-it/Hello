@@ -1,0 +1,17 @@
+{
+  "brand": "epivail",
+  "audience": "agent-attraction",
+  "format": "landscape",
+  "fps": 30,
+  "scenes": [
+    { "label": "Hook", "type": "hook", "dur": 3.4, "eyebrow": "For real estate agents", "text": ["Built for agents who", "outgrew their brokerage."], "accent": ["outgrew"], "size": 140 },
+    { "label": "Reveal", "type": "logo", "dur": 3.2 },
+    { "label": "Value", "type": "cards", "dur": 4.4, "eyebrow": "What you get", "cards": [
+      { "k": "Economics", "t": "Transparent splits", "s": "Know your numbers before you join." },
+      { "k": "Tools", "t": "An AI-forward desk", "s": "Modern tools, built in." },
+      { "k": "Market", "t": "Mountain markets", "s": "Vail Valley and Beaver Creek." }
+    ] },
+    { "label": "Reach", "type": "list", "dur": 3.6, "eyebrow": "Recruiting agents in", "items": ["United States", "France", "Germany", "Mexico"], "step": 0.3 },
+    { "label": "End card", "type": "end", "dur": 4.6, "cta": ["Let's talk", "Message me on LinkedIn"] }
+  ]
+}

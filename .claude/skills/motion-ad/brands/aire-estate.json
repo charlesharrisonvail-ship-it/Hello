@@ -1,0 +1,31 @@
+{
+  "id": "aire-estate",
+  "business": "AiRE Estate (course business, learn.aireestate.com) - separate from EpiVail",
+  "fontsUrl": "https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@300;400;500;600;700&display=swap",
+  "css": {
+    "bg": "#04070d",
+    "fg": "#dbe2ec",
+    "head": "#ffffff",
+    "muted": "#8496b2",
+    "accent": "#38bdf8",
+    "glow": "rgba(56,189,248,0.16)",
+    "line": "rgba(255,255,255,0.075)",
+    "diamond": "rgba(56,189,248,0.22)",
+    "tile-hi": "#111b2c",
+    "tile-lo": "#080e18",
+    "tile-edge": "rgba(255,255,255,0.12)",
+    "display": "'Archivo', 'Helvetica Neue', Arial, sans-serif",
+    "display-weight": "800",
+    "display-tracking": "-0.045em",
+    "body": "'Manrope', 'Helvetica Neue', Arial, sans-serif",
+    "label": "'IBM Plex Mono', ui-monospace, monospace"
+  },
+  "mark": "<svg viewBox=\"0 0 100 100\"><circle cx=\"50\" cy=\"50\" r=\"34\" fill=\"none\" stroke=\"#38bdf8\" stroke-width=\"12\" stroke-linecap=\"round\" stroke-dasharray=\"160 54\" transform=\"rotate(-38 50 50)\"/><circle cx=\"50\" cy=\"50\" r=\"14\" fill=\"#38bdf8\"/></svg>",
+  "wordmark": "Ai<span style=\"color:#38bdf8\">RE</span> <span style=\"font-weight:500;color:#8496b2;letter-spacing:-.025em\">Estate</span>",
+  "tagline": ["Real estate courses", "built in Claude Code"],
+  "signature": null,
+  "guards": {
+    "banned": ["Charles Harrison", "Charles", "Epique", "EpiVail", "Epique Mountain Collective", "Aire Estate", "AIRE Estate"],
+    "ifMentions": [{ "text": "Claude Code", "require": "(not included)", "except": ["built in Claude Code"] }]
+  }
+}

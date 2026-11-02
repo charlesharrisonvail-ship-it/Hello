@@ -1,0 +1,31 @@
+{
+  "id": "epivail",
+  "business": "EpiVail - Epique Realty Colorado Mountain Region - separate from AiRE Estate",
+  "fontsUrl": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=Bebas+Neue&display=swap",
+  "css": {
+    "bg": "#0a1628",
+    "fg": "#f5f0e8",
+    "head": "#ffffff",
+    "muted": "#a9b6cc",
+    "accent": "#c9a84c",
+    "glow": "rgba(201,168,76,0.14)",
+    "line": "rgba(201,168,76,0.11)",
+    "diamond": "rgba(201,168,76,0.28)",
+    "tile-hi": "#172847",
+    "tile-lo": "#0f1f3d",
+    "tile-edge": "rgba(201,168,76,0.3)",
+    "display": "'Cormorant Garamond', Georgia, serif",
+    "display-weight": "600",
+    "display-tracking": "-0.01em",
+    "body": "'DM Sans', 'Helvetica Neue', sans-serif",
+    "label": "'Bebas Neue', 'DM Sans', sans-serif"
+  },
+  "mark": "<svg viewBox=\"0 0 100 100\"><path d=\"M10 76 L38 34 L52 54 L64 40 L90 76\" fill=\"none\" stroke=\"#c9a84c\" stroke-width=\"7\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M31 45 L38 34 L45 45\" fill=\"none\" stroke=\"#f5f0e8\" stroke-width=\"5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg>",
+  "wordmark": "Epi<span style=\"color:#c9a84c;font-style:italic\">Vail</span>",
+  "tagline": ["Epique Realty", "Colorado Mountain Region"],
+  "signature": "Charles Harrison, Epique Area/Growth Leader",
+  "guards": {
+    "banned": ["Epique Mountain Collective", "Charles Harrison | EpiVail", "AiRE", "aireestate", "Epi Vail", "EpiVAIL", "Chuck"],
+    "ifMentions": []
+  }
+}

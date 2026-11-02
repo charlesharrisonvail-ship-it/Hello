@@ -1,0 +1,13 @@
+{
+  "brand": "aire-estate",
+  "format": "landscape",
+  "fps": 30,
+  "scenes": [
+    { "label": "Hook", "type": "hook", "dur": 3.4, "eyebrow": "For real estate agents", "text": ["A lead comes in.", "Then what?"], "accent": ["what"] },
+    { "label": "Reveal", "type": "logo", "dur": 3.2 },
+    { "label": "Course", "type": "stat", "dur": 3.8, "eyebrow": "Lead to Keys", "value": 7, "suffix": " modules", "countFor": 0.9, "caption": "plus a Capstone. Listings, clients, comps, seller updates, follow-up and contracts." },
+    { "label": "Method", "type": "list", "dur": 3.8, "eyebrow": "Done with AI, inside the rules you're licensed under", "items": ["Listings and comps", "Seller updates", "Follow-up", "Contracts"], "step": 0.3 },
+    { "label": "Price", "type": "stat", "dur": 3.6, "eyebrow": "Part Two", "prefix": "$", "value": 97, "countFor": 1.0, "caption": "One course. Seven modules and a Capstone.", "fine": "Runs in Claude Code (not included) - Claude Pro, $20/month from Anthropic. claude.com/pricing" },
+    { "label": "End card", "type": "end", "dur": 4.6, "cta": ["Start with the free lesson", "learn.aireestate.com"] }
+  ]
+}
