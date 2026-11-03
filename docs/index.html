@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2722%27 fill=%27%2304070d%27/%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2730%27 fill=%27none%27 stroke=%27%2338bdf8%27 stroke-width=%2714%27 stroke-linecap=%27round%27 stroke-dasharray=%27140 50%27 transform=%27rotate(-38 50 50)%27/%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2712%27 fill=%27%2338bdf8%27/%3E%3C/svg%3E">
 <title>AiRE Estate Academy | AiRE AI Courses for Real Estate Agents</title>
-<meta name="description" content="Two courses for real estate agents: make AI listing media (aerial-style video from one photo, a Listing Showcase, a month of social posts) and run the rest of the desk with Claude Code.">
+<meta name="description" content="Four AI courses for independent real estate agents, $67 or $97 each: listing media without the invoice, the rest of the desk, a seller-update assistant, and an AI video spokesperson.">
 
 <link rel="canonical" href="https://learn.aireestate.com/">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -184,7 +184,30 @@
   .hsub .c1{color:var(--sig);font-weight:600} .hsub .c2{color:var(--rasp-hi);font-weight:600}
   .need{max-width:900px;margin:14px 0 0;padding:12px 16px;border:1px solid var(--edge2);border-left:3px solid var(--sig);background:rgba(8,14,24,.82);font-size:.9rem;line-height:1.55;color:var(--slate)}
   .need b{color:var(--head)}
+  .v3d-mini{position:absolute;z-index:6;right:20px;top:calc(min(100vh,860px) - 200px);display:flex;align-items:center;gap:12px;padding:8px 14px 8px 8px;
+    background:rgba(4,7,13,.72);border:1px solid rgba(255,255,255,.18);border-radius:14px;text-decoration:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:border-color .2s,transform .2s}
+  .v3d-mini:hover{border-color:var(--sig);transform:translateY(-2px)}
+  .v3d-mini img{width:96px;height:60px;object-fit:cover;border-radius:8px;display:block}
+  .v3d-mini span{display:grid;gap:3px}
+  .v3d-mini small{font:600 .6rem/1 var(--mn);letter-spacing:.14em;text-transform:uppercase;color:var(--sig)}
+  .v3d-mini b{font:700 .9rem/1.2 var(--wm);color:#fff;white-space:nowrap}
+  @media (max-width:760px){.v3d-mini{position:relative;right:auto;top:auto;margin:-8px 16px 18px;width:max-content;max-width:calc(100% - 32px)}.v3d-mini img{width:72px;height:45px}}
   .pc{display:flex;flex-direction:column}.pc .pr{margin-top:auto}
+  .pc p.sw{font-size:.78rem;line-height:1.45;color:var(--slate2,#6b7a93);margin:-4px 0 12px}
+  .ctab{width:100%;border-collapse:collapse;margin:22px 0 10px;font-size:.92rem}
+  .ctab th,.ctab td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--edge);vertical-align:top}
+  .ctab th{font-family:var(--mn);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sig);font-weight:600}
+  .ctab td b{color:var(--head)} .ctab tr.us td{background:rgba(56,189,248,.07)}
+  .ctwrap{overflow-x:auto;max-width:980px}
+  .su{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.8vw,20px);margin-top:clamp(26px,4vw,40px)}
+  @media (max-width:860px){.su{grid-template-columns:1fr}}
+  .su .cd{background:var(--panel);border:1px solid var(--edge);border-top:3px solid #f5c518;padding:20px 20px 22px}
+  .su .sn{font-family:var(--mn);font-size:.62rem;letter-spacing:.2em;color:#f5c518;text-transform:uppercase}
+  .su h3{font-family:var(--wm);font-weight:800;letter-spacing:-.03em;font-size:1.15rem;color:var(--head);margin:6px 0 12px}
+  .su ul{margin:0;padding-left:18px;color:var(--text);font-size:.9rem;line-height:1.55}
+  .su blockquote{margin:0;font-size:.9rem;line-height:1.6;color:var(--text)}
+  .su .ed{display:inline-block;margin-top:8px;padding:2px 8px;background:rgba(245,197,24,.14);border:1px dashed #f5c518;color:#f5c518;font-family:var(--mn);font-size:.8rem}
+  .su .fine{margin-top:16px;font-size:.8rem;color:var(--slate)}
   @media (min-width:761px){
     .hero{padding-top:calc(var(--nav) + clamp(20px,3.5vh,60px))}
     .hero h1{font-size:min(clamp(2.2rem,5vw,3.9rem),7.5vh)}
@@ -637,19 +660,21 @@
 <!-- ============ HERO ============ -->
 <header class="hero" id="top">
   <div class="mx-herovid" aria-hidden="true"><video src="/media/aire-retreat-build.mp4?v=2" poster="/media/aire-retreat-poster.jpg" autoplay muted loop playsinline preload="auto"></video><span class="mx-ailabel">Made with AI</span></div>
+  <a class="v3d-mini" href="/vail-3d/"><img src="/vail-3d/media/vail-3d-loop-poster.jpg" alt="" width="96" height="60" loading="lazy"><span><small>Free &middot; Built in Claude Code</small><b>Play Vail Mountain in 3D &rarr;</b></span></a>
   <div class="hscan" aria-hidden="true"></div>
   <div class="hglow" aria-hidden="true"></div>
 
   <div class="inner">
     <div class="htxt">
-      <p class="htag">Four real estate courses, built with AI</p>
-      <h1>Run your <em class="cc re">Real&nbsp;Estate</em> business with <em class="cc">AI</em>.</h1>
-      <p class="hsub"><b>Four courses, each sold on its own.</b> Step by step, in plain English. Pick the one you need.</p>
+      <p class="htag">Geared for the independent agent</p>
+      <h1>Not for <em class="cc re">every</em> agent. Built for the ones who <em class="cc">learn</em>.</h1>
+      <p class="hsub"><b>If you&rsquo;re happy paying the platforms, the vendors and the add-ons forever, these courses aren&rsquo;t for you.</b> They&rsquo;re for agents who&rsquo;d rather learn AI and do the work themselves. Four courses, each sold on its own.</p>
       <div class="pick" id="courses">
         <div class="pc one">
           <span class="pt">Part One &middot; 7 modules + Capstone</span>
           <b>Listing Media Without the Invoice</b>
           <p>AI aerial-style video from one photo, a Listing Showcase, and a month of social posts drafted in one sitting.</p>
+          <p class="sw">Plus software: Claude Pro, $20 a month, and a few dollars of video credits per listing.</p>
           <div class="pr"><span class="amt">$67</span>
             <a class="btn pri" data-buy="course" href="#pricing">Buy <span class="ar">&rarr;</span></a>
             <a class="lk" href="#course">Details</a></div>
@@ -659,6 +684,7 @@
           <b>Lead to Keys</b>
           <p>Listings, clients, comps, follow-up and contracts: the rest of the desk.</p>
           <p class="pre" style="font-size:.95rem;opacity:1;margin-top:6px">Best after Part One: Modules 03–04 and the Capstone's video pieces use Part One's tools. Everything else works on its own.</p>
+          <p class="sw">Plus software: Claude Pro, $20 a month, for Modules 3&ndash;4. The rest works in the chat app you already have.</p>
           <div class="pr"><span class="amt">$97</span>
             <a class="btn pri" data-buy="l2k" href="lead-to-keys.html">Buy <span class="ar">&rarr;</span></a>
             <a class="lk" href="lead-to-keys.html">Details</a></div>
@@ -667,6 +693,7 @@
           <span class="pt">New &middot; 7 modules + Capstone</span>
           <b>Build Your AI Assistant</b>
           <p>Teach AI your voice and one real job: a tested weekly seller-update assistant. It drafts; it never sends.</p>
+          <p class="sw">Plus software: none required. Works on a free Claude account; the optional Claude Code route needs a paid plan.</p>
           <div class="pr"><span class="amt">$97</span>
             <a class="btn pri" data-buy="bya" href="build-your-ai-assistant.html">Buy <span class="ar">&rarr;</span></a>
             <a class="lk" href="build-your-ai-assistant.html">Details</a></div>
@@ -675,6 +702,7 @@
           <span class="pt">New &middot; 7 modules + Capstone</span>
           <b>Your AI Video Spokesperson</b>
           <p>A consistent AI spokesperson and three short, captioned videos in your brand. Presented by Eva Vail, our AI presenter.</p>
+          <p class="sw">Plus software: a HeyGen plan, bought from HeyGen.</p>
           <div class="pr"><span class="amt">$97</span>
             <a class="btn pri" data-buy="eva" href="your-ai-video-spokesperson.html">Buy <span class="ar">&rarr;</span></a>
             <a class="lk" href="your-ai-video-spokesperson.html">Details</a></div>
@@ -734,20 +762,21 @@
   </div>
 </section>
 
-<!-- ============ COMPARED WITH THE TOP AI PROGRAMS ============ -->
+<!-- ============ BEFORE YOU SPEND HUNDREDS: COMPARE ============ -->
 <section class="band" id="compare">
-  <div class="inner cmp">
-    <div class="cmp-txt">
-      <p class="kick rv">Compared with the top AI programs</p>
-      <h2 class="rv">Not a bootcamp. <em>A shortcut for agents.</em></h2>
-      <p class="lede rv">The programs on Forbes Advisor&rsquo;s list of the best AI certification programs are excellent: Virginia Tech, MIT, Duke. They run 6 to 17 weeks and teach AI engineering and strategy. Forbes Advisor put the median AI certification course at $9,500 (Nov. 2023).</p>
-      <p class="lede rv">AiRE is narrower on purpose: Claude Code for Real Estate agents, in about an hour of lessons. Part One is $67; Lead to Keys is $97. Your Claude plan is not included.</p>
-      <p class="cmp-note rv">Program details from Forbes Advisor (Oct. 2026). AiRE Estate Academy is not affiliated with or endorsed by Forbes or any program shown.</p>
-    </div>
-    <figure class="cmp-vid rv">
-      <video src="/media/aire-vs-ai-programs.mp4" poster="/media/aire-vs-ai-programs-poster.jpg" controls muted playsinline preload="none"></video>
-      <figcaption>Made with AI &middot; 38 seconds</figcaption>
-    </figure>
+  <div class="inner">
+    <p class="kick rv">Before you spend hundreds on an AI course</p>
+    <h2 class="rv">Compare first. <em>Then decide.</em></h2>
+    <p class="lede rv">Ask any AI course one question: what will I be able to do for my client when I finish? Here&rsquo;s how the real options for a residential agent line up.</p>
+    <div class="ctwrap rv"><table class="ctab">
+      <tr><th>Course</th><th>Price</th><th>Time</th><th>What you get</th></tr>
+      <tr><td><b>RRC</b> AI course, self-paced</td><td>$250&ndash;$300</td><td>8 credit hours</td><td><b>Credit toward the CRS Designation.</b> If you want designation credit, take this one; we don&rsquo;t offer CE.</td></tr>
+      <tr><td><b>VDCI</b> AI for Real Estate Professionals</td><td>$899</td><td>12 hours</td><td>A Claude workflow for real estate, with instructor messaging</td></tr>
+      <tr><td><b>eCornell</b> AI workshop</td><td>$449</td><td>2&ndash;3 hours</td><td>General AI skills, not specific to real estate</td></tr>
+      <tr class="us"><td><b>AiRE</b>, one course</td><td>$67 or $97</td><td>One job, start today</td><td>A finished listing showcase, a working desk, a seller-update assistant or three spokesperson videos. <b>See the result before you pay.</b></td></tr>
+    </table></div>
+    <p class="rv" style="margin-top:14px"><a href="guides/ai-courses-for-real-estate-agents-compared.html" style="color:var(--sig);font-weight:600">The full comparison: cost, time, credit, instructor access and enrollment &rarr;</a> &nbsp;&middot;&nbsp; <a href="guides/what-does-an-ai-listing-video-cost.html" style="color:var(--sig);font-weight:600">What an AI listing video really costs &rarr;</a></p>
+    <p class="cmp-note rv" style="font-size:.8rem;color:var(--slate)">Prices from each provider&rsquo;s course page, checked November 3, 2026. AiRE Estate Academy is not affiliated with or endorsed by any program shown. Already took one of these? Bring one listing photo and put it to work.</p>
   </div>
 </section>
 
@@ -789,6 +818,29 @@
       <span class="pn">The video service used here is <a href="https://higgsfield.ai/?fpr=charles-825a9d" rel="sponsored noopener" target="_blank">Higgsfield</a> (affiliate link) &mdash; a paid service you sign up for yourself, at your own cost. Referral links in the course are always labeled.</span>
     </div>
     <p class="demonote rv">The Paris photo is itself AI-generated, used for practice. On a real listing, use your own photo, check every frame, and label it as AI.</p>
+  </div>
+</section>
+
+<!-- ============ FRIDAY SELLER UPDATE (Build Your AI Assistant) ============ -->
+<section class="band glow" id="seller-update">
+  <div class="inner">
+    <p class="kick rv">Build Your AI Assistant &middot; $97</p>
+    <h2 class="rv">Build the assistant that drafts your <em>Friday seller update</em>.</h2>
+    <p class="lede rv">Every Friday a seller asks, &ldquo;What happened with my house this week?&rdquo; This course builds an assistant that answers in your voice, from your own notes. <b>It drafts. You decide what goes out, and you send it.</b> Here&rsquo;s a practice week from the course.</p>
+    <div class="su">
+      <div class="cd rv"><span class="sn">01 &middot; Your notes</span><h3>What you have on Friday</h3>
+        <ul><li>6 showings booked, 5 completed, 1 cancelled</li><li>Open house: 14 groups signed in</li><li>1,180 online views</li><li>Feedback from 3 agents: liked the kitchen and backyard; third bedroom small; price a stretch; second showing &ldquo;likely&rdquo;</li><li>Seller&rsquo;s email: should we drop the price? Can you say the school is the best?</li></ul></div>
+      <div class="cd rv"><span class="sn">02 &middot; The draft</span><h3>What it writes</h3>
+        <blockquote>&ldquo;Hi Dana and Luis, here&rsquo;s your week at 1418 Juniper Lane. Five showings were completed and one was cancelled by the buyer&rsquo;s agent. Fourteen groups signed in at Sunday&rsquo;s open house, and the listing had 1,180 online views. One agent expects a second showing next week (not yet booked). No offers yet.&rdquo;</blockquote></div>
+      <div class="cd rv"><span class="sn">03 &middot; Your call</span><h3>What it leaves to you</h3>
+        <ul><li><b>The price question.</b> Flagged for you and the seller, not answered.</li><li><b>The school claim.</b> Not repeated: no source, and a fair-housing concern.</li><li><b>The HOA fee.</b> Marked missing, not guessed.</li></ul>
+        <span class="ed">[AGENT: add next steps]</span><p style="margin:8px 0 0;font-size:.85rem;color:var(--slate)">The one line you write yourself before you send.</p></div>
+    </div>
+    <p class="su fine rv" style="display:block">The property, sellers and numbers are fictional practice data from the course. Draft shortened.</p>
+    <div class="hcta rv" style="margin-top:22px">
+      <a class="btn pri" href="build-your-ai-assistant.html">See Build Your AI Assistant &mdash; $97 <span class="ar">&rarr;</span></a>
+    </div>
+    <p class="rv" style="margin-top:10px;font-size:.85rem;color:var(--slate)">Software: none required. Works on a free Claude account.</p>
   </div>
 </section>
 
@@ -1017,9 +1069,12 @@
   <div class="inner">
     <p class="kick rv">Get started</p>
     <h2 class="rv">Ready when <em>you are</em>.</h2>
-    <p class="lede rv">Buy the course and start this afternoon, or email us and we'll talk about having it built for you. Either way you'll get a straight answer about whether it fits your business.</p>
+    <p class="lede rv">Pick the one job you want done, and start this afternoon. Or email us and we'll talk about having it built for you. Either way you'll get a straight answer about whether it fits your business.</p>
     <div class="hcta rv" style="margin-top:28px">
-      <a class="btn pri" data-buy="course" href="#pricing">Buy the course &mdash; $67 <span class="ar">&rarr;</span></a>
+      <a class="btn pri" data-buy="course" href="#pricing">Listing media &mdash; $67 <span class="ar">&rarr;</span></a>
+      <a class="btn sec" href="lead-to-keys.html">The rest of the desk &mdash; $97</a>
+      <a class="btn sec" href="build-your-ai-assistant.html">Friday seller updates &mdash; $97</a>
+      <a class="btn sec" href="your-ai-video-spokesperson.html">Video spokesperson &mdash; $97</a>
       <a class="btn sec" href="ask-aire.html" data-ask-aire>Ask AiRE</a>
     </div>
     <div class="contact rv">

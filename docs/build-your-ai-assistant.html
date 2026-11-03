@@ -482,6 +482,11 @@
     .mod .rt{margin-top:20px}
     .railbar{display:none}
   }
+  .rubric-badge{display:inline-flex;flex-direction:column;gap:3px;margin:6px 0 22px;padding:10px 16px;border:1px solid rgba(251,191,36,.55);border-radius:12px;background:rgba(251,191,36,.07);text-decoration:none;color:#fcd34d}
+  .rubric-badge:hover{background:rgba(251,191,36,.14)}
+  .rubric-badge .rb1{font:700 .74rem 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.18em}
+  .rubric-badge .rb2{font:600 .9rem Manrope,system-ui,sans-serif;color:#e2e8f0}
+  .rubric-badge .rb2:after{content:" →";color:#fcd34d}
 </style>
 <link rel="stylesheet" href="/modern.css">
 
@@ -527,6 +532,16 @@
 .rubric-badge .rb1{font:700 .74rem 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.18em}
 .rubric-badge .rb2{font:600 .9rem Manrope,system-ui,sans-serif;color:#e2e8f0}
 .rubric-badge .rb2:after{content:" →";color:#fcd34d}
+.sample{border:1px solid rgba(255,255,255,.12);border-top:3px solid #f5c518;border-radius:14px;background:rgba(8,14,24,.7);padding:22px 24px;font-size:.92rem;line-height:1.55}
+.sample .sl{font:600 .66rem 'IBM Plex Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:#f5c518}
+.sample .sh{margin:14px 0 4px;font-weight:700;color:#fff}
+.sample ul{margin:0;padding-left:18px;color:#cbd5e1}.sample blockquote{margin:0;color:#e2e8f0}
+.sample .ed{display:inline-block;margin-top:10px;padding:2px 8px;border:1px dashed #f5c518;color:#f5c518;font-family:'IBM Plex Mono',monospace;font-size:.8rem}
+.sample .sf{margin:6px 0 0;font-size:.8rem;color:#8496b2}
+.sample .vids{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.sample figure{margin:0}.sample video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:10px;background:#000;display:block}
+.sample figcaption{margin-top:6px;font-size:.78rem;color:#cbd5e1;line-height:1.35}
+@media (max-width:860px){.sampgrid{grid-template-columns:1fr!important}}
 .certbox{margin-top:40px;padding:28px;border-radius:18px;border:1px dashed rgba(251,191,36,.5)}
 @media (max-width:860px){.reader{grid-template-columns:1fr;padding-top:110px}.reader nav.toc{position:static;flex-direction:row;overflow-x:auto}.reader nav.toc a{white-space:nowrap}}
 </style>
@@ -578,8 +593,8 @@
   <div class="inner">
     <p class="kick rv">Pricing</p>
     <h2 class="rv">One price. <em>Yours to keep.</em></h2>
-    <div class="tiers" style="grid-template-columns:minmax(0,440px);justify-content:center">
-      <div class="tier feat pricecard rv">
+    <div class="tiers sampgrid" style="grid-template-columns:minmax(0,1fr) minmax(0,440px);justify-content:center;align-items:start">
+      <div class="sample rv"><span class="sl">A practice week from the course</span><p class="sh">Your notes</p><ul><li>6 showings booked, 5 completed, 1 cancelled</li><li>Open house: 14 groups signed in</li><li>1,180 online views</li><li>Seller asks: should we drop the price? Can you say the school is the best?</li></ul><p class="sh">The draft it writes</p><blockquote>&ldquo;Hi Dana and Luis, here&rsquo;s your week at 1418 Juniper Lane. Five showings were completed and one was cancelled by the buyer&rsquo;s agent. Fourteen groups signed in at Sunday&rsquo;s open house, and the listing had 1,180 online views. No offers yet.&rdquo;</blockquote><p class="sh">What it leaves to you</p><ul><li>The price question: flagged for you, not answered</li><li>The school claim: not repeated (no source; fair housing)</li><li>The HOA fee: marked missing, not guessed</li></ul><span class="ed">[AGENT: add next steps]</span><p class="sf">The one line you write yourself before you send. Fictional practice data; draft shortened.</p></div><div class="tier feat pricecard rv">
         <span class="flag">New</span><span class="nm">Build Your AI Assistant</span><div class="pr">$97</div>
         <p class="sub">Sold on its own. Parts One and Two are not required.</p>
         <p class="sub" style="margin-top:8px"><b>Software is separate.</b> Claude is a separate service from Anthropic with its own plans and prices; Projects are available on free accounts, and Claude Code needs a paid plan. Course tuition does not include any software. Prices are set by Anthropic and change.</p><p class="sub" style="margin-top:8px">A chat-only route (Claude Projects) is included. It can&#x27;t read your folders, save draft files or send anything: you paste facts in and copy the draft out.</p>
