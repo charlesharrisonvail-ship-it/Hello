@@ -40,6 +40,15 @@ COURSES = [
                          "Configured assistant plus portable instructions", "Reusable /seller-update skill (Claude Code route)",
                          "Ten-case Test Log", "Assistant Operating Guide"],
         "software": "Claude is a separate service from Anthropic with its own plans and prices; Projects are available on free accounts, and Claude Code needs a paid plan. Course tuition does not include any software. Prices are set by Anthropic and change.",
+        "sample": (
+            '<span class="sl">A practice week from the course</span>'
+            '<p class="sh">Your notes</p><ul><li>6 showings booked, 5 completed, 1 cancelled</li><li>Open house: 14 groups signed in</li><li>1,180 online views</li>'
+            '<li>Seller asks: should we drop the price? Can you say the school is the best?</li></ul>'
+            '<p class="sh">The draft it writes</p><blockquote>&ldquo;Hi Dana and Luis, here&rsquo;s your week at 1418 Juniper Lane. Five showings were completed and one was '
+            'cancelled by the buyer&rsquo;s agent. Fourteen groups signed in at Sunday&rsquo;s open house, and the listing had 1,180 online views. No offers yet.&rdquo;</blockquote>'
+            '<p class="sh">What it leaves to you</p><ul><li>The price question: flagged for you, not answered</li><li>The school claim: not repeated (no source; fair housing)</li>'
+            '<li>The HOA fee: marked missing, not guessed</li></ul><span class="ed">[AGENT: add next steps]</span>'
+            '<p class="sf">The one line you write yourself before you send. Fictional practice data; draft shortened.</p>'),
         "chat_route": "A chat-only route (Claude Projects) is included. It can't read your folders, save draft files or send anything: you paste facts in and copy the draft out.",
         "honest": [
             ("It drafts. It doesn't send.", "Nothing in this course runs unattended, sends email, posts or updates your CRM. You start it, it drafts, you review, you send."),
@@ -257,6 +266,13 @@ EXTRA_CSS = """
 .rubric-badge .rb1{font:700 .74rem 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.18em}
 .rubric-badge .rb2{font:600 .9rem Manrope,system-ui,sans-serif;color:#e2e8f0}
 .rubric-badge .rb2:after{content:" →";color:#fcd34d}
+.sample{border:1px solid rgba(255,255,255,.12);border-top:3px solid #f5c518;border-radius:14px;background:rgba(8,14,24,.7);padding:22px 24px;font-size:.92rem;line-height:1.55}
+.sample .sl{font:600 .66rem 'IBM Plex Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:#f5c518}
+.sample .sh{margin:14px 0 4px;font-weight:700;color:#fff}
+.sample ul{margin:0;padding-left:18px;color:#cbd5e1}.sample blockquote{margin:0;color:#e2e8f0}
+.sample .ed{display:inline-block;margin-top:10px;padding:2px 8px;border:1px dashed #f5c518;color:#f5c518;font-family:'IBM Plex Mono',monospace;font-size:.8rem}
+.sample .sf{margin:6px 0 0;font-size:.8rem;color:#8496b2}
+@media (max-width:860px){.sampgrid{grid-template-columns:1fr!important}}
 .certbox{margin-top:40px;padding:28px;border-radius:18px;border:1px dashed rgba(251,191,36,.5)}
 @media (max-width:860px){.reader{grid-template-columns:1fr;padding-top:110px}.reader nav.toc{position:static;flex-direction:row;overflow-x:auto}.reader nav.toc a{white-space:nowrap}}
 </style>"""
@@ -308,6 +324,8 @@ def landing(c, mods, style, lock, footer):
     prereq = "".join(f"<li>{p}</li>" for p in c["prereq"])
     deliv = "".join(f"<li>{html.escape(d)}</li>" for d in c["deliverables"])
     chat = f'<p class="sub" style="margin-top:8px">{html.escape(c["chat_route"])}</p>' if c["chat_route"] else ""
+    sample = (f'<div class="sample rv">{c["sample"]}</div>' if c.get("sample") else "")
+    tgrid = ("minmax(0,1fr) minmax(0,440px)" if sample else "minmax(0,440px)")
     return head(c["title"], style) + nav(lock, [("#course", "The Course"), ("#who", "Who It's For"), ("#pricing", "Pricing"), ("#honest", "Straight Talk")]) + f"""
 <header class="hero" id="top" style="min-height:auto;padding-bottom:60px">
   <div class="inner"><div class="htxt">
@@ -353,8 +371,8 @@ def landing(c, mods, style, lock, footer):
   <div class="inner">
     <p class="kick rv">Pricing</p>
     <h2 class="rv">One price. <em>Yours to keep.</em></h2>
-    <div class="tiers" style="grid-template-columns:minmax(0,440px);justify-content:center">
-      <div class="tier feat pricecard rv">
+    <div class="tiers sampgrid" style="grid-template-columns:{tgrid};justify-content:center;align-items:start">
+      {sample}<div class="tier feat pricecard rv">
         <span class="flag">New</span><span class="nm">{html.escape(c['title'])}</span><div class="pr">$97</div>
         <p class="sub">Sold on its own. Parts One and Two are not required.</p>
         <p class="sub" style="margin-top:8px"><b>Software is separate.</b> {html.escape(c['software'])}</p>{chat}
