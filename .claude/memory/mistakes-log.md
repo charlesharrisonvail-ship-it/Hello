@@ -20,3 +20,9 @@ waiting shell's own command line, so the queue never started and ~15 minutes of 
 time were lost while Module 4 finished. Same mistake as the earlier self-matching wait loop.
 Rule: never wait with `pgrep -f` on a pattern that appears in the waiting command. Run
 queued renders in one sequential command (`for n in 5 6 7 8; do render; done`) instead.
+
+- **2026-11-03 — cut too much from the homepage hero.** Removing the Paris "peek" block by
+  counting `</div>` tags also removed the software note, the "built for you" link and a
+  closing tag, which pushed the ticker over the course cards. Caught in the browser check
+  before publishing. Fix: cut by the block's own closing tag, assert the neighbours
+  (`.need`, `.hbuilt`) still exist, and measure layout before pushing.
