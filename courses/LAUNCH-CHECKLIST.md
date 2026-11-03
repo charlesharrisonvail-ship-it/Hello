@@ -3,6 +3,9 @@
 **Build Your AI Assistant is LIVE (Nov 3, 2026, Charles's go).** learn.aireestate.com/build-your-ai-assistant.html;
 checked live on phone and desktop: Buy button → Stripe, code unlocks lessons and videos. Still to do: C's test purchase.
 
+**Your AI Video Spokesperson is LIVE (Nov 3, 2026, Charles's go).** learn.aireestate.com/your-ai-video-spokesperson.html;
+same live check passed. Still to do: C's test purchase.
+
 For **Build Your AI Assistant** (Charles's avatar) and **Your AI Video Spokesperson** (Eva).
 Both $97, sold separately, no bundles or sales. Nothing goes live until Charles says so.
 Stripe is last.
