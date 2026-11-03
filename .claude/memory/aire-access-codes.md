@@ -54,3 +54,13 @@ and code each limited to 1 use; a coupon's limit covers all its codes, so each
 gift needs a new coupon). "Allow promotion codes" is on for the $67 link
 (cNi14m...kw00). Issued: AIRE-GUEST-67 (Adriana Azar), AIRE-GUEST-67B (Steve
 Bichel); emails drafted in Gmail, Charles sends. Chelsea Boone on hold.
+
+**Locked lesson videos (2026-11-03):** `docs/course.html` (Listing Media) now plays
+`enc:media/...bin` files like Lead to Keys does (`loadLocked`, same AES-GCM format as
+`tools/course-lock/lock.mjs media`). Modules 2, 3, 7 play `media/lm-m2.bin`,
+`lm-m3.bin`, `lm-m7.bin` (the course author's avatar, Starfish voice, 720p). To swap a
+lesson: lock the 720p MP4 with that course's code, then re-lock the VPAYLOAD map with
+the new `enc:` path. The Prompt Playbook is in both courses (key `P` in Listing Media,
+`2` in Lead to Keys), so it needs one `.bin` per course, each locked with its own code.
+Listing Media also gained a Capstone section (m9, TOTAL=9). Lead to Keys' lesson text was
+renumbered 01-07 to match its sales pages.
