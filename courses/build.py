@@ -252,6 +252,11 @@ EXTRA_CSS = """
 .quiz .res{font-weight:700;margin:12px 0}
 .downloads li a{color:#7dd3fc}
 .status{font:600 13px Manrope,sans-serif;color:#8496b2}
+.rubric-badge{display:inline-flex;flex-direction:column;gap:3px;margin:6px 0 22px;padding:10px 16px;border:1px solid rgba(251,191,36,.55);border-radius:12px;background:rgba(251,191,36,.07);text-decoration:none;color:#fcd34d}
+.rubric-badge:hover{background:rgba(251,191,36,.14)}
+.rubric-badge .rb1{font:700 .74rem 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.18em}
+.rubric-badge .rb2{font:600 .9rem Manrope,system-ui,sans-serif;color:#e2e8f0}
+.rubric-badge .rb2:after{content:" →";color:#fcd34d}
 .certbox{margin-top:40px;padding:28px;border-radius:18px;border:1px dashed rgba(251,191,36,.5)}
 @media (max-width:860px){.reader{grid-template-columns:1fr;padding-top:110px}.reader nav.toc{position:static;flex-direction:row;overflow-x:auto}.reader nav.toc a{white-space:nowrap}}
 </style>"""
@@ -308,6 +313,7 @@ def landing(c, mods, style, lock, footer):
   <div class="inner"><div class="htxt">
     <p class="htag">New course &middot; Draft</p>
     <h1>{html.escape(c['title'])}.</h1>
+    {badge(c)}
     <p class="hsub"><b>{html.escape(c['sub'])}</b> {html.escape(c['card'])}</p>
     <div class="hcta"><a class="btn sec" href="#course">See the seven modules</a><a class="btn sec" href="{c['slug']}-course.html">Open the draft course</a></div>
   </div></div>
@@ -353,7 +359,7 @@ def landing(c, mods, style, lock, footer):
         <p class="sub">Sold on its own. Parts One and Two are not required.</p>
         <p class="sub" style="margin-top:8px"><b>Software is separate.</b> {html.escape(c['software'])}</p>{chat}
         <ul><li>Seven modules and a Capstone, with read-along lesson text</li><li>Templates, checklists and fictional practice data</li>
-          <li>49 module-check questions with explanations</li><li>A private Certificate of Completion</li></ul>
+          <li>49 module-check questions with explanations</li><li>A rubric-based Capstone: <a href="/{c['slug']}-rubric.html">view the scoring rubric</a></li><li>A private Certificate of Completion</li></ul>
         <a class="btn pri" aria-disabled="true" href="#pricing">Checkout not yet available</a>
       </div>
     </div>
@@ -376,6 +382,32 @@ def landing(c, mods, style, lock, footer):
     <p class="rv"><b>Support scope (draft):</b> course access and content questions by email at <a href="mailto:hello@aireestate.com">hello@aireestate.com</a>. We teach real estate use, not software: for account, billing or technical help with Claude or HeyGen, use their help centers.</p>
   </div>
 </section>
+""" + footer + "\n</body>\n</html>\n"
+
+
+def badge(c):
+    """Rubric-based assessment badge: a course feature (not an accreditation seal) that opens the rubric."""
+    return (f'<a class="rubric-badge" href="/{c["slug"]}-rubric.html" title="Open the scoring rubric">'
+            '<span class="rb1">RUBRIC-BASED ASSESSMENT</span><span class="rb2">Clear criteria &middot; Transparent scoring</span></a>')
+
+
+def rubric_page(c, style, lock, footer):
+    """Public page with the course's capstone rubric and how the module checks are scored."""
+    body = md((ROOT / c["slug"] / "resources" / "capstone-rubric.md").read_text().split("\n", 1)[1])
+    top = head(c["title"] + " — Scoring rubric", style).replace(" · Draft · ", " · ").replace('<meta name="robots" content="noindex,nofollow">\n', "")
+    top = re.sub(r'<div class="draftbar">.*?</div>\n', "", top).replace(".nav{top:37px}", ".nav{top:0}")
+    return top + nav(lock, [(f"/{c['slug']}.html", "Course page")]) + f"""
+<main class="reader" style="grid-template-columns:1fr;max-width:900px">
+<div class="lesson">
+  <p class="kick">{html.escape(c['title'])} &middot; How you're assessed</p>
+  <h2>The scoring rubric</h2>
+  <p>You get the full rubric before you start the Capstone, not after. Two things decide your certificate:</p>
+  <ol><li><b>Seven module checks.</b> Seven questions each; pass with 5 of 7. Wrong answers show why, and you can retry.</li>
+      <li><b>The Capstone,</b> scored by you against the rubric below. No instructor grades it.</li></ol>
+  <p class="status">A course feature, not an accreditation: the certificate is a private certificate of completion, not a license, CE credit or association designation.</p>
+  {body}
+  <p><a class="btn pri" href="/{c['slug']}.html">Back to the course</a></p>
+</div></main>
 """ + footer + "\n</body>\n</html>\n"
 
 
@@ -543,6 +575,7 @@ def release_reader(c, mods, style, lock, footer, prefix):
                     '<button class="btn sec" type="button" data-retry>Retry</button></form>')
         elif m["capstone"]:
             quiz = ('<div class="quiz"><h3>Record your capstone (self-assessed)</h3>'
+                    f'<p><a href="/{c["slug"]}-rubric.html" target="_blank" rel="noopener">View the scoring rubric</a> (also in Downloads as capstone-rubric.md).</p>'
                     '<p class="status">No instructor reviews this. Tick only when your rubric score meets the pass mark with no critical failure.</p>'
                     '<label><input type="checkbox" id="capdone"> I scored my capstone against the rubric, met the pass mark, and had no critical failure.</label></div>')
         secs.append(f'<section class="lesson" id="{mid}"><h2>{html.escape(m["title"])}</h2>{video}{body}{quiz}</section><hr style="border-color:rgba(255,255,255,.08);margin:56px 0">')
@@ -600,7 +633,7 @@ def release_reader(c, mods, style, lock, footer, prefix):
 {nav(lock, [(f"/{c['slug']}.html", "Course page"), ("#downloads", "Downloads"), ("#cert", "Certificate"), ("#lock", "Lock")]).replace('href="#lock"', 'href="#lock" id="lockbtn"')}
 <main class="reader">
   <nav class="toc" aria-label="Modules">{''.join(toc)}<a href="#downloads">Downloads</a><a href="#cert">Certificate</a></nav>
-  <div><p class="status">Your progress is saved in this browser.</p><div id="content"></div></div>
+  <div>{badge(c)}<p class="status">Your progress is saved in this browser.</p><div id="content"></div></div>
 </main>
 {footer}
 </div>
@@ -712,6 +745,7 @@ def build():
         (ROOT / c["slug"] / "quiz.json").write_text(json.dumps(quiz, indent=1, ensure_ascii=False) + "\n")
         (OUT / f"{c['slug']}.html").write_text(landing(c, mods, style, lock, footer))
         (OUT / f"{c['slug']}-course.html").write_text(reader(c, mods, style, lock, footer))
+        (OUT / f"{c['slug']}-rubric.html").write_text(rubric_page(c, style, lock, footer))
         shutil.copytree(ROOT / c["slug"] / "resources", OUT / c["slug"] / "resources")
     (OUT / "catalog-cards.html").write_text(catalog(style, lock, footer))
     for f in ["modern.css"]:
@@ -727,6 +761,7 @@ if __name__ == "__main__":
         style, lock, footer = template_parts()
         outdir.mkdir(parents=True, exist_ok=True)
         (outdir / f"{slug}-course.html").write_text(release_reader(c, load(c), style, lock, footer, prefix))
+        (outdir / f"{slug}-rubric.html").write_text(rubric_page(c, style, lock, footer))
         print("Built", outdir / f"{slug}-course.html")
         if c.get("buy"):  # the sales page, with the real Stripe link and no draft markings
             page = landing(c, load(c), style, lock, footer)
