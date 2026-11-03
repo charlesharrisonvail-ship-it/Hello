@@ -391,22 +391,26 @@ def badge(c):
             '<span class="rb1">RUBRIC-BASED ASSESSMENT</span><span class="rb2">Clear criteria &middot; Transparent scoring</span></a>')
 
 
+DEFAULT_ASSESS = """<p>You get the full rubric before you start the Capstone, not after. Two things decide your certificate:</p>
+  <ol><li><b>Seven module checks.</b> Seven questions each; pass with 5 of 7. Wrong answers show why, and you can retry.</li>
+      <li><b>The Capstone,</b> scored by you against the rubric below. No instructor grades it.</li></ol>"""
+
+
 def rubric_page(c, style, lock, footer):
     """Public page with the course's capstone rubric and how the module checks are scored."""
-    body = md((ROOT / c["slug"] / "resources" / "capstone-rubric.md").read_text().split("\n", 1)[1])
+    src = c.get("rubric_src", ROOT / c["slug"] / "resources" / "capstone-rubric.md")
+    body = md(Path(src).read_text().split("\n", 1)[1])
     top = head(c["title"] + " — Scoring rubric", style).replace(" · Draft · ", " · ").replace('<meta name="robots" content="noindex,nofollow">\n', "")
     top = re.sub(r'<div class="draftbar">.*?</div>\n', "", top).replace(".nav{top:37px}", ".nav{top:0}")
-    return top + nav(lock, [(f"/{c['slug']}.html", "Course page")]) + f"""
+    return top + nav(lock, [(c.get("page", f"/{c['slug']}.html"), "Course page")]) + f"""
 <main class="reader" style="grid-template-columns:1fr;max-width:900px">
 <div class="lesson">
   <p class="kick">{html.escape(c['title'])} &middot; How you're assessed</p>
   <h2>The scoring rubric</h2>
-  <p>You get the full rubric before you start the Capstone, not after. Two things decide your certificate:</p>
-  <ol><li><b>Seven module checks.</b> Seven questions each; pass with 5 of 7. Wrong answers show why, and you can retry.</li>
-      <li><b>The Capstone,</b> scored by you against the rubric below. No instructor grades it.</li></ol>
+  {c.get("assess_intro", DEFAULT_ASSESS)}
   <p class="status">A course feature, not an accreditation: the certificate is a private certificate of completion, not a license, CE credit or association designation.</p>
   {body}
-  <p><a class="btn pri" href="/{c['slug']}.html">Back to the course</a></p>
+  <p><a class="btn pri" href="{c.get('page', '/' + c['slug'] + '.html')}">Back to the course</a></p>
 </div></main>
 """ + footer + "\n</body>\n</html>\n"
 
@@ -730,6 +734,18 @@ def release_reader(c, mods, style, lock, footer, prefix):
 </html>
 """
     return page
+
+
+ORIGINAL_RUBRICS = [
+    {"slug": "listing-media", "title": "Listing Media Without the Invoice", "page": "/#course",
+     "rubric_src": ROOT / "listing-media" / "resources" / "capstone-rubric.md",
+     "assess_intro": "<p>You get the full rubric before you start the Capstone, not after. You score the Capstone yourself against the rubric below; no instructor grades it. How you earn the certificate is unchanged.</p>"},
+    {"slug": "lead-to-keys", "title": "Lead to Keys", "page": "/lead-to-keys.html",
+     "rubric_src": ROOT / "lead-to-keys" / "resources" / "capstone-rubric.md",
+     "assess_intro": """<p>You get the full rubric before you start the Final Project, not after. Two parts:</p>
+  <ol><li><b>Seven module checks</b> decide your certificate. Seven questions each; five right signs a module off.</li>
+      <li><b>The Final Project,</b> scored by you against the rubric below. No instructor grades it.</li></ol>"""},
+]
 
 
 def build():
