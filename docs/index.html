@@ -156,13 +156,16 @@
     font-size:clamp(2.35rem,6.4vw,4.9rem);line-height:.93;color:#fff;margin:0 0 22px;
     text-wrap:balance}
   h1 em{font-style:normal;color:var(--sig);display:inline-block}
-  .hsub{color:rgba(219,226,236,.86);font-size:clamp(1rem,1.85vw,1.14rem);max-width:47ch;margin:0 0 30px}
+  .hsub{color:rgba(219,226,236,.86);font-size:clamp(1rem,1.85vw,1.14rem);max-width:47ch;margin:0 0 20px}
   .hsub b{color:#fff;font-weight:600}
   .hcta{display:flex;flex-wrap:wrap;gap:12px}
   :root{--rasp:#d63a73;--rasp-hi:#f07aa3}
   .pick{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:900px;margin-top:0}
   .pc{background:rgba(8,14,24,.82);border:1px solid var(--edge2);border-top:3px solid var(--sig);padding:15px 18px 16px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
   .pc.two{border-top-color:var(--rasp)}
+  .pc.three{border-top-color:#fbbf24}.pc.three .pt{color:#fcd34d}.pc.three .btn.pri{background:#fbbf24;border-color:#fbbf24;color:#04070d}
+  .pc.four{border-top-color:#a78bfa}.pc.four .pt{color:#c4b5fd}.pc.four .btn.pri{background:#a78bfa;border-color:#a78bfa;color:#04070d}
+  .pc .new{display:inline-block;margin-left:8px;padding:1px 7px;border-radius:999px;background:rgba(251,191,36,.16);color:#fcd34d;font-size:.6rem;letter-spacing:.14em}
   .pc .pt{display:block;font-family:var(--mn);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sig);margin-bottom:8px}
   .pc.two .pt{color:var(--rasp-hi)}
   .pc b{display:block;font-family:var(--wm);font-weight:800;letter-spacing:-.02em;color:var(--head);font-size:1.22rem;line-height:1.15;margin-bottom:6px}
@@ -184,7 +187,7 @@
   .pc{display:flex;flex-direction:column}.pc .pr{margin-top:auto}
   @media (min-width:761px){
     .hero{padding-top:calc(var(--nav) + clamp(20px,3.5vh,60px))}
-    .hero h1{font-size:min(clamp(2.35rem,6.4vw,4.9rem),9vh)}
+    .hero h1{font-size:min(clamp(2.2rem,5vw,3.9rem),7.5vh)}
     .hero .hsub{margin-bottom:22px}
     .hero .htxt{max-width:min(900px,100%)} .hero h1{max-width:680px} .hero .htag{white-space:nowrap}
   }
@@ -613,6 +616,7 @@
     <span class="lock"><span class="a">A</span><span class="dl i">&#305;<svg width="0.44em" height="0.44em" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="34" fill="none" stroke="#38bdf8" stroke-width="17" stroke-linecap="round" stroke-dasharray="160 54" transform="rotate(-38 50 50)"/><circle cx="50" cy="50" r="15" fill="#38bdf8"/></svg></span><span class="re">RE</span><span class="est">Estate Academy</span></span>
   </a>
   <div class="navlinks">
+    <a href="#courses">Courses</a>
     <a href="#math">The Math</a>
     <a href="#demo">See It</a>
     <a href="#course">The Course</a>
@@ -633,9 +637,9 @@
 
   <div class="inner">
     <div class="htxt">
-      <p class="htag">Real estate courses built in Claude Code</p>
-      <h1>Run your <em class="cc re">Real&nbsp;Estate</em> business on <em class="cc">Claude&nbsp;Code</em>.</h1>
-      <p class="hsub"><b>Step by step, in plain English.</b> <span class="c1">Part One</span> makes every listing look premium, with the kind of listing video the big platforms bundle into packages of up to $950 (their site placement and 3D tours are different products). <span class="c2">Part Two</span> runs the rest of the desk, from the first lead to the keys.</p>
+      <p class="htag">Four real estate courses, built with AI</p>
+      <h1>Run your <em class="cc re">Real&nbsp;Estate</em> business with <em class="cc">AI</em>.</h1>
+      <p class="hsub"><b>Four courses, each sold on its own.</b> Step by step, in plain English. Pick the one you need.</p>
       <div class="pick" id="courses">
         <div class="pc one">
           <span class="pt">Part One &middot; 7 modules + Capstone</span>
@@ -654,6 +658,22 @@
             <a class="btn pri" data-buy="l2k" href="lead-to-keys.html">Buy <span class="ar">&rarr;</span></a>
             <a class="lk" href="lead-to-keys.html">Details</a></div>
         </div>
+        <div class="pc three">
+          <span class="pt">New &middot; 7 modules + Capstone</span>
+          <b>Build Your AI Assistant</b>
+          <p>Teach AI your voice and one real job: a tested weekly seller-update assistant. It drafts; it never sends.</p>
+          <div class="pr"><span class="amt">$97</span>
+            <a class="btn pri" data-buy="bya" href="build-your-ai-assistant.html">Buy <span class="ar">&rarr;</span></a>
+            <a class="lk" href="build-your-ai-assistant.html">Details</a></div>
+        </div>
+        <div class="pc four">
+          <span class="pt">New &middot; 7 modules + Capstone</span>
+          <b>Your AI Video Spokesperson</b>
+          <p>A consistent AI spokesperson and three short, captioned videos in your brand. Presented by Eva Vail, our AI presenter.</p>
+          <div class="pr"><span class="amt">$97</span>
+            <a class="btn pri" data-buy="eva" href="your-ai-video-spokesperson.html">Buy <span class="ar">&rarr;</span></a>
+            <a class="lk" href="your-ai-video-spokesperson.html">Details</a></div>
+        </div>
       </div>
       <div class="peek" id="peek">
         <figure>
@@ -665,7 +685,7 @@
           <figcaption><span class="t">What you&rsquo;ll make</span><b>One photo in, one flight out</b><small>AI-generated from one photograph. <a href="#demo">See the photo, the flight path and the prompt &rarr;</a></small></figcaption>
         </figure>
       </div>
-      <p class="need"><b>You&rsquo;ll need Claude Code.</b> Part One is built in it, and Lead to Keys uses it in Modules Three and Four. It is <b>not included</b> in the course price: you&rsquo;ll need your own Claude Pro subscription ($20 a month), which you buy directly from Anthropic, the company that makes Claude. <a href="https://higgsfield.ai/?fpr=charles-825a9d" rel="sponsored noopener" target="_blank">Higgsfield</a> (affiliate link) and ChatGPT come in along the way. We teach you to use Claude Code for real estate; we don&rsquo;t teach or support Claude Code itself. <a href="install-claude-code.html" style="color:var(--sig);font-weight:600">Free lesson: install Claude Code in about 20 minutes &rarr;</a></p>
+      <p class="need"><b>Software is separate.</b> Part One is built in Claude Code, Lead to Keys uses it in Modules Three and Four, and Build Your AI Assistant works in a Claude Project (free accounts) or Claude Code. Your AI Video Spokesperson uses HeyGen, not Claude Code. Software is <b>not included</b> in any course price: Claude Code needs your own Claude Pro subscription ($20 a month), bought directly from Anthropic, the company that makes Claude, and HeyGen has its own plans. <a href="https://higgsfield.ai/?fpr=charles-825a9d" rel="sponsored noopener" target="_blank">Higgsfield</a> (affiliate link) and ChatGPT come in along the way. We teach you to use Claude Code for real estate; we don&rsquo;t teach or support Claude Code itself. <a href="install-claude-code.html" style="color:var(--sig);font-weight:600">Free lesson: install Claude Code in about 20 minutes &rarr;</a></p>
       <a class="hbuilt" href="#consulting">Rather have it built for you? &rarr;</a>
     </div>
   </div>
@@ -838,30 +858,6 @@
     <div class="finalsale rv">
       <span class="ic">All sales final</span>
       <p><b>Your course link and access code appear on screen when you pay.</b> Access is permanent, with email support to get you started. We cover everything you need before you buy—if anything is still unclear, <a href="ask-aire.html" data-ask-aire>ask AiRE</a> or email <a href="mailto:hello@aireestate.com">hello@aireestate.com</a> first.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ NEW COURSE ============ -->
-<section class="band" id="new-courses">
-  <div class="inner">
-    <p class="kick rv">New courses</p>
-    <h2 class="rv">Two new ways to <em>put AI to work</em></h2>
-    <div class="tiers" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
-      <div class="tier rv">
-        <span class="flag">New</span>
-        <span class="nm">Build Your AI Assistant</span><div class="pr">$97</div>
-        <p class="sub">One payment &middot; Sold on its own &middot; Parts One and Two not required</p>
-        <ul><li>Give AI your voice, your workflow, and one job to do: a weekly seller-update assistant</li><li>Seven video lessons plus a Capstone (37 minutes), with read-along scripts</li><li>Templates, fictional practice data and a ten-case test log</li><li>It drafts. It doesn't send. You review everything.</li></ul>
-        <a class="btn pri" href="/build-your-ai-assistant.html">See the course <span class="ar">&rarr;</span></a>
-      </div>
-      <div class="tier rv">
-        <span class="flag">New</span>
-        <span class="nm">Your AI Video Spokesperson</span><div class="pr">$97</div>
-        <p class="sub">One payment &middot; Sold on its own &middot; Parts One and Two not required</p>
-        <ul><li>A consistent AI spokesperson: your own likeness, or a licensed fictional one</li><li>Three short videos with clear scripts, captions and your brand</li><li>Seven video lessons plus a Capstone (29 minutes), presented by Eva Vail, our AI presenter</li><li>Every video says it's AI. No cloning anyone else.</li></ul>
-        <a class="btn pri" href="/your-ai-video-spokesperson.html">See the course <span class="ar">&rarr;</span></a>
-      </div>
     </div>
   </div>
 </section>
@@ -1356,7 +1352,7 @@
 
 <script>
 /* Stripe payment links. Empty = button scrolls to the contact section. */
-var STORE = { course: "https://buy.stripe.com/cNi14m4SA5kN46PcSo2kw00", l2k: "https://buy.stripe.com/6oU00ifxecNffPxcSo2kw01" };
+var STORE = { course: "https://buy.stripe.com/cNi14m4SA5kN46PcSo2kw00", l2k: "https://buy.stripe.com/6oU00ifxecNffPxcSo2kw01", bya: "https://buy.stripe.com/bJecN470I9B3fPxcSo2kw02", eva: "https://buy.stripe.com/28E4gyetabJb1YH9Gc2kw03" };
 document.querySelectorAll('[data-buy]').forEach(function(a){ var u = STORE[a.getAttribute('data-buy')]; if (u) a.href = u; });
 </script>
 <script src="/aire-chat.js" defer></script>
