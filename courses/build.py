@@ -73,6 +73,14 @@ COURSES = [
         ],
         "deliverables": ["Spokesperson Brief and Rights Checklist", "Visual Style Sheet", "Voice and Pronunciation Sheet",
                          "Approved Script Pack (three scripts)", "Three captioned 9:16 videos", "Reusable production kit and ten-topic calendar"],
+        "sample": (
+            '<span class="sl">Three sample videos, made the way the course teaches</span>'
+            '<div class="vids">'
+            '<figure><video src="/media/eva-sample-1.mp4" poster="/media/eva-sample-1.jpg" controls playsinline preload="none"></video><figcaption>Introduction, with AI disclosure</figcaption></figure>'
+            '<figure><video src="/media/eva-sample-2.mp4" poster="/media/eva-sample-2.jpg" controls playsinline preload="none"></video><figcaption>Educational tip</figcaption></figure>'
+            '<figure><video src="/media/eva-sample-3.mp4" poster="/media/eva-sample-3.jpg" controls playsinline preload="none"></video><figcaption>Listing invitation (practice listing)</figcaption></figure>'
+            '</div><p class="sf">Made with AI. Eva Vail is AiRE Estate Academy&rsquo;s AI presenter, not a real person. Each video is 9:16, 22 to 28 seconds, captioned, '
+            'with one call to action. The listing is fictional practice data from the course.</p>'),
         "software": "HeyGen is a separate service with its own plans, credits and limits. Optional B-roll tools are never required. Course tuition does not include any software, and render costs depend on your plan.",
         "chat_route": "",
         "honest": [
@@ -272,6 +280,9 @@ EXTRA_CSS = """
 .sample ul{margin:0;padding-left:18px;color:#cbd5e1}.sample blockquote{margin:0;color:#e2e8f0}
 .sample .ed{display:inline-block;margin-top:10px;padding:2px 8px;border:1px dashed #f5c518;color:#f5c518;font-family:'IBM Plex Mono',monospace;font-size:.8rem}
 .sample .sf{margin:6px 0 0;font-size:.8rem;color:#8496b2}
+.sample .vids{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.sample figure{margin:0}.sample video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:10px;background:#000;display:block}
+.sample figcaption{margin-top:6px;font-size:.78rem;color:#cbd5e1;line-height:1.35}
 @media (max-width:860px){.sampgrid{grid-template-columns:1fr!important}}
 .certbox{margin-top:40px;padding:28px;border-radius:18px;border:1px dashed rgba(251,191,36,.5)}
 @media (max-width:860px){.reader{grid-template-columns:1fr;padding-top:110px}.reader nav.toc{position:static;flex-direction:row;overflow-x:auto}.reader nav.toc a{white-space:nowrap}}
