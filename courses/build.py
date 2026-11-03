@@ -50,6 +50,7 @@ COURSES = [
     {
         "slug": "your-ai-video-spokesperson",
         "title": "Your AI Video Spokesperson",
+        "buy": "https://buy.stripe.com/28E4gyetabJb1YH9Gc2kw03",
         "ailabel": "Made with AI: Eva Vail is AiRE Estate Academy's AI presenter, not a real person, with an AI voice.",
         "sub": "Build a consistent on-camera presence with AI.",
         "card": "Create a consistent AI spokesperson and produce three short videos with clear scripts, captions, and your brand.",
@@ -729,6 +730,8 @@ if __name__ == "__main__":
         print("Built", outdir / f"{slug}-course.html")
         if c.get("buy"):  # the sales page, with the real Stripe link and no draft markings
             page = landing(c, load(c), style, lock, footer)
+            rt = json.loads((ROOT / slug / "production" / "video" / "runtimes.json").read_text())
+            mins = round(sum(int(v.split(":")[0]) * 60 + int(v.split(":")[1]) for v in rt.values()) / 60)
             for a, b in [(" · Draft · ", " · "), ('<meta name="robots" content="noindex,nofollow">\n', ""),
                          ("New course &middot; Draft", "New course"), ("Support scope (draft):", "Support scope:"),
                          ('<a class="btn pri" aria-disabled="true" href="#pricing">Checkout not yet available</a>',
@@ -738,7 +741,7 @@ if __name__ == "__main__":
                          ('<a class="btn sec" href="#course">See the seven modules</a>',
                           f'<a class="btn pri" href="{c["buy"]}">Buy the course &middot; $97</a><a class="btn sec" href="#course">See the seven modules</a>'),
                          ("Seven modules and a Capstone, with read-along lesson text",
-                          "Seven video lessons and a Capstone (37 minutes), with read-along lesson text")]:
+                          f"Seven video lessons and a Capstone ({mins} minutes), with read-along lesson text")]:
                 assert a in page, a
                 page = page.replace(a, b)
             page = re.sub(r'<div class="draftbar">.*?</div>\n', "", page)
