@@ -59,3 +59,8 @@ self-serve since 2026-05-05): $25/day minimum per campaign, CPM about $25-60, CP
 bids $3-5 (secondary sources). Recommended instead: free organic posting plus the
 free ChatGPT-citation route (llms.txt, FAQ schema, guides). Offered a capped 3-day
 $75 ChatGPT test only if Charles wants paid.
+Non-Meta options checked 2026-11-04 (secondary sources): Reddit $5/day min, CPC about
+$0.50-2.50, can target r/realtors (recommended: 7-day $35 test with the approved
+video); YouTube Shorts via Google Ads, no min; Microsoft Ads $1/day; Quora $5/day;
+LinkedIn $10/day (skip: pricey, and AiRE can't front his name); TikTok ~$50/day
+(skip). Awaiting his pick.
