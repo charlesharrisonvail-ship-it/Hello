@@ -45,3 +45,28 @@ Mid-November re-export reminder is scheduled for 2026-11-16.
 
 **Merging:** Charles's browser is often not signed in to GitHub, so he sees no
 merge button. When he says "merge it", merge the PR for him.
+
+**Paid ads (2026-11-01):** Charles says the site advertises the week of 2026-11-02.
+The open items are in `marketing/ads/ad-launch-list.md`; read it before asking him
+anything about reels or ads.
+
+**No Meta ads, ever** (Charles, 2026-11-04: "I am NOT using META....way to expensive").
+No Facebook/Instagram paid ads or boosts for AiRE. The approved ad video
+(`AireVsBootcampsAd`) still stands; ask where it runs.
+Checked 2026-11-04: **Zeely** = Meta ads underneath ($29.95-79.95/mo plan + ad
+spend + up to 12% fee), so it is ruled out with Meta. **ChatGPT ads** (ads.openai.com,
+self-serve since 2026-05-05): $25/day minimum per campaign, CPM about $25-60, CPC
+bids $3-5 (secondary sources). Recommended instead: free organic posting plus the
+free ChatGPT-citation route (llms.txt, FAQ schema, guides). Offered a capped 3-day
+$75 ChatGPT test only if Charles wants paid.
+Non-Meta options checked 2026-11-04 (secondary sources): Reddit $5/day min, CPC about
+$0.50-2.50, can target r/realtors (recommended: 7-day $35 test with the approved
+video); YouTube Shorts via Google Ads, no min; Microsoft Ads $1/day; Quora $5/day;
+LinkedIn $10/day (skip: pricey, and AiRE can't front his name); TikTok ~$50/day
+(skip). Awaiting his pick.
+
+**Reddit (2026-11-04):** Charles made the community **r/AiREEstate** ("AiRE Estate"),
+moderated from his Reddit account (display name "AiRE Estate Academy", auto username
+u/WhileNo5269; he was told it can be changed once within 30 days, before posting).
+The site lists it next to Facebook on the home and Lead to Keys pages, in the
+Organization `sameAs` and in `llms.txt`.
