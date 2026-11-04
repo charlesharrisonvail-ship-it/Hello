@@ -77,3 +77,6 @@ environment, oauth.reddit.com returns 403, and OpusClip has no Reddit support.
 OpusClip's connected accounts include an **AiRE Estate LinkedIn company page**
 (urn:li:organization:143976723) and the AIRE Estate Facebook page; the YouTube,
 TikTok and Instagram accounts there are EpiVail's, never AiRE's.
+**RSS feed** (2026-11-04): `docs/feed.xml` lists every guide, for Reddit Pro's "Add your RSS
+Feed". After adding a guide, run `python3 marketing/social/build_feed.py` and give the new
+page the feed `<link rel="alternate">` tag.
