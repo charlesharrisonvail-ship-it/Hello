@@ -72,3 +72,8 @@ The site lists it next to Facebook on the home and Lead to Keys pages, in the
 Organization `sameAs` and in `llms.txt`.
 First five r/AiREEstate posts drafted 2026-11-04 in `marketing/social/reddit/first-five-posts.md`
 (one a day from Nov 5, pin post 1). Charles posts them by hand; Claude has no Reddit access.
+**Claude cannot post to Reddit** (checked 2026-11-04): no Reddit credential in the
+environment, oauth.reddit.com returns 403, and OpusClip has no Reddit support.
+OpusClip's connected accounts include an **AiRE Estate LinkedIn company page**
+(urn:li:organization:143976723) and the AIRE Estate Facebook page; the YouTube,
+TikTok and Instagram accounts there are EpiVail's, never AiRE's.
