@@ -14,10 +14,9 @@ The two new courses in that checklist are separate and still unreleased.
       not committed (`out/` is ignored); re-render with
       `npx remotion render src/index.ts AireVsBootcampsAd out/aire-ad-vertical.mp4`.
 - [x] **C**: watched and approved (2026-11-04).
-- [x] **C**: approved the boost in `2026-10-ai-programs-boost.md` (2026-11-04).
-- [ ] **C**: set it up in Ads Manager on the AiRE ad account: $7/day, Mon 2026-11-09
-      to Sun 2026-11-15. Claude cannot place it (see below).
-- [ ] **Claude**: read day-one results from Charles's screenshot; keep, adjust or stop.
+- [x] ~~Meta boost~~ **Cancelled 2026-11-04: Charles will not pay for Meta ads ("way too
+      expensive"). Never propose Meta ads or boosts again.** The video itself is approved.
+- [ ] **C**: say where the approved video runs instead.
 - [ ] **C**: build-reveal reel. On the laptop, make the two images and the Wan2GP
       clip (`marketing/build-reveal/README.md` on branch `ccr-38b48463-0kjql6`), send
       them in; **Claude** composes it with `compose.py` and checks every frame. Free.

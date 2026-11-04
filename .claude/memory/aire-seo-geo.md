@@ -49,3 +49,7 @@ merge button. When he says "merge it", merge the PR for him.
 **Paid ads (2026-11-01):** Charles says the site advertises the week of 2026-11-02.
 The open items are in `marketing/ads/ad-launch-list.md`; read it before asking him
 anything about reels or ads.
+
+**No Meta ads, ever** (Charles, 2026-11-04: "I am NOT using META....way to expensive").
+No Facebook/Instagram paid ads or boosts for AiRE. The approved ad video
+(`AireVsBootcampsAd`) still stands; ask where it runs.
