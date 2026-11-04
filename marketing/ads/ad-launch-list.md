@@ -16,7 +16,9 @@ The two new courses in that checklist are separate and still unreleased.
 - [x] **C**: watched and approved (2026-11-04).
 - [x] ~~Meta boost~~ **Cancelled 2026-11-04: Charles will not pay for Meta ads ("way too
       expensive"). Never propose Meta ads or boosts again.** The video itself is approved.
-- [ ] **C**: say where the approved video runs instead.
+- [x] **C**: chose Reddit (2026-11-04). Setup in `2026-11-reddit-test.md`: r/realtors,
+      $5/day, Nov 9-15, $35 cap. Claude rendered the 4:5 version Reddit needs.
+- [ ] **C**: set it up at ads.reddit.com; send a results screenshot after day one.
 - [ ] **C**: build-reveal reel. On the laptop, make the two images and the Wan2GP
       clip (`marketing/build-reveal/README.md` on branch `ccr-38b48463-0kjql6`), send
       them in; **Claude** composes it with `compose.py` and checks every frame. Free.
