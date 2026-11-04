@@ -7,6 +7,14 @@ not 9:16). "Made with AI" is on every frame.
 
 Re-render: `npx remotion render src/index.ts AireVsBootcampsAdReddit out/aire-ad-reddit-4x5.mp4`
 
+**Upload the trimmed v2, not the raw render.** The composition opens on a blank fade-in,
+and Reddit used that empty first frame as the thumbnail (Charles caught it 2026-11-04).
+v2 drops the first second so frame one is the headline:
+`ffmpeg -ss 1.0 -i out/aire-ad-reddit-4x5.mp4 -c:v libx264 -crf 18 -pix_fmt yuv420p -movflags +faststart aire-ad-reddit-4x5-v2.mp4` (37 s).
+Custom thumbnail, if Reddit offers the box: frame 470 (the $9,500 vs. $67 card),
+`npx remotion still src/index.ts AireVsBootcampsAdReddit aire-reddit-thumbnail.jpg --frame=470 --image-format=jpeg`.
+**Rule for every ad video: the first frame must carry the message, never a fade from black.**
+
 ## Budget
 
 $5 a day (Reddit's minimum), Mon 2026-11-09 to Sun 2026-11-15: **$35 total, capped.**
@@ -22,7 +30,7 @@ $5 a day (Reddit's minimum), Mon 2026-11-09 to Sun 2026-11-15: **$35 total, capp
    - Leave any audience expansion **off**
    - Daily budget **$5**; schedule **Mon Nov 9 - Sun Nov 15**; bidding automatic
 4. **Ad**
-   - Format: **Video**. Upload `aire-ad-reddit-4x5.mp4`.
+   - Format: **Video**. Upload `aire-ad-reddit-4x5-v2.mp4`.
    - Headlines (Reddit asks for at least three and rotates them; all approved-safe):
      1. `Real estate agents: an hour of AI lessons for $67. Claude plan not included.`
      2. `One listing photo in, a drone-style video out. An AI course for agents, $67.`
