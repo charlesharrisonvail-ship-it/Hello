@@ -23,8 +23,12 @@ $5 a day (Reddit's minimum), Mon 2026-11-09 to Sun 2026-11-15: **$35 total, capp
    - Daily budget **$5**; schedule **Mon Nov 9 - Sun Nov 15**; bidding automatic
 4. **Ad**
    - Format: **Video**. Upload `aire-ad-reddit-4x5.mp4`.
-   - Headline (paste):
-     `Real estate agents: an hour of AI lessons for $67. Claude plan not included.`
+   - Headlines (Reddit asks for at least three and rotates them; all approved-safe):
+     1. `Real estate agents: an hour of AI lessons for $67. Claude plan not included.`
+     2. `One listing photo in, a drone-style video out. An AI course for agents, $67.`
+     3. `Not a 17-week bootcamp: about an hour of AI lessons built for agents.`
+   - Media: the 4:5 video only, no images. Click "Remove all" on Reddit's pre-filled
+     audience, headlines and media first.
    - Destination URL: `https://learn.aireestate.com`
    - Call to action: **Learn More**
    - Allow comments: **off**, if offered (nobody has to moderate)
