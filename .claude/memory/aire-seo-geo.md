@@ -64,3 +64,9 @@ $0.50-2.50, can target r/realtors (recommended: 7-day $35 test with the approved
 video); YouTube Shorts via Google Ads, no min; Microsoft Ads $1/day; Quora $5/day;
 LinkedIn $10/day (skip: pricey, and AiRE can't front his name); TikTok ~$50/day
 (skip). Awaiting his pick.
+
+**Reddit (2026-11-04):** Charles made the community **r/AiREEstate** ("AiRE Estate"),
+moderated from his Reddit account (display name "AiRE Estate Academy", auto username
+u/WhileNo5269; he was told it can be changed once within 30 days, before posting).
+The site lists it next to Facebook on the home and Lead to Keys pages, in the
+Organization `sameAs` and in `llms.txt`.
