@@ -53,3 +53,9 @@ anything about reels or ads.
 **No Meta ads, ever** (Charles, 2026-11-04: "I am NOT using META....way to expensive").
 No Facebook/Instagram paid ads or boosts for AiRE. The approved ad video
 (`AireVsBootcampsAd`) still stands; ask where it runs.
+Checked 2026-11-04: **Zeely** = Meta ads underneath ($29.95-79.95/mo plan + ad
+spend + up to 12% fee), so it is ruled out with Meta. **ChatGPT ads** (ads.openai.com,
+self-serve since 2026-05-05): $25/day minimum per campaign, CPM about $25-60, CPC
+bids $3-5 (secondary sources). Recommended instead: free organic posting plus the
+free ChatGPT-citation route (llms.txt, FAQ schema, guides). Offered a capped 3-day
+$75 ChatGPT test only if Charles wants paid.
