@@ -13,9 +13,11 @@ The two new courses in that checklist are separate and still unreleased.
       no school names or scores, $67 / $97, ends on learn.aireestate.com. The MP4 is
       not committed (`out/` is ignored); re-render with
       `npx remotion render src/index.ts AireVsBootcampsAd out/aire-ad-vertical.mp4`.
-- [ ] **C**: watch it; "approved" or changes.
-- [ ] **C**: approve the boost in `2026-10-ai-programs-boost.md` ($5-10/day for 7 days,
-      $35-70 total, Traffic goal, no pixel).
+- [x] **C**: watched and approved (2026-11-04).
+- [x] **C**: approved the boost in `2026-10-ai-programs-boost.md` (2026-11-04).
+- [ ] **C**: set it up in Ads Manager on the AiRE ad account: $7/day, Mon 2026-11-09
+      to Sun 2026-11-15. Claude cannot place it (see below).
+- [ ] **Claude**: read day-one results from Charles's screenshot; keep, adjust or stop.
 - [ ] **C**: build-reveal reel. On the laptop, make the two images and the Wan2GP
       clip (`marketing/build-reveal/README.md` on branch `ccr-38b48463-0kjql6`), send
       them in; **Claude** composes it with `compose.py` and checks every frame. Free.
@@ -44,3 +46,11 @@ The two new courses in that checklist are separate and still unreleased.
 - Not a housing ad: it sells a course to agents.
 - No Meta pixel: the privacy page promises no advertising trackers. Judge by link
   clicks, cost per click and Stripe sales.
+
+## Why Claude cannot place AiRE ads (checked 2026-11-04)
+
+The environment's graph.facebook.com credential signs in as **"NBMH Posting"**
+(NBMH's business, never to be used for AiRE) and holds only Page posting
+permissions, no `ads_management`. Windsor.ai's Facebook ad account is EpiVail's
+("EpiVail Collective - Agent Attraction"). So Charles runs AiRE ads himself in Ads
+Manager, on an AiRE Estate ad account.
