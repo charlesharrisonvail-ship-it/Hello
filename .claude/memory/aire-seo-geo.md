@@ -70,3 +70,5 @@ moderated from his Reddit account (display name "AiRE Estate Academy", auto user
 u/WhileNo5269; he was told it can be changed once within 30 days, before posting).
 The site lists it next to Facebook on the home and Lead to Keys pages, in the
 Organization `sameAs` and in `llms.txt`.
+First five r/AiREEstate posts drafted 2026-11-04 in `marketing/social/reddit/first-five-posts.md`
+(one a day from Nov 5, pin post 1). Charles posts them by hand; Claude has no Reddit access.
