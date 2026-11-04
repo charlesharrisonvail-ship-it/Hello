@@ -38,6 +38,47 @@ Every post targets ONE of these audiences. Never both in the same post.
 - Byline is always exactly: **Charles Harrison, Epique Area/Growth Leader**
   — never append a regional descriptor.
 
+## Right-people reach (do this before every draft)
+
+Source: LinkedIn Guide to Creating, "Get Your Content in Front of the Right
+People" (Create Possibilities newsletter, 2026-11-03). Its thesis: ten
+thousand views is worth less than fifty views from people who could hire you —
+or, for Charles, join him. Reach only counts when it brings the right people.
+
+1. **Name the reader.** Write one line before the draft: who exactly this is
+   for (e.g., "a 3–8-year producing agent in a ski town, capped out at a
+   traditional split"; "a Vail second-home owner weighing a mixed-use buy").
+   If you can't name them, don't write the post yet.
+2. **Find what they're stuck on.** Mine their comments, questions, and the
+   posts they argue with — and Charles's Lofty notes and DM replies — for the
+   problem they'd pay (or switch brokerages) to solve.
+3. **Write about that problem and give away the answer.** The topics the
+   audience searches for are the ones that find them. Help more often than
+   you promote — aim for roughly four helpful posts to every one that pitches
+   Epique.
+4. **Say the thing only Charles would say.** Broad topics bring new people
+   in; his specific take — mountain-market numbers, what he does differently
+   from most leaders — is what makes them follow. Every post needs one line
+   no other broker could have written.
+
+The fifth and sixth moves — commenting where the audience already reads, and
+watching who responds — are in "Comment plan" below and in the
+`linkedin-optimizer` skill.
+
+## Comment plan (the fastest reach on the platform)
+
+The guide calls commenting on posts your target audience already reads "the
+fastest reach on the platform" — about two minutes each. With every post or
+calendar, deliver a short comment plan:
+
+- **5–10 target accounts or post types** where the named reader already
+  hangs out (for agents: brokerage-model debates, coaching voices, ski-town
+  agent posts; for Luxury Resimercial™: Vail Valley business, resort,
+  and investment voices).
+- **2–3 draft comments** that add a real insight or number — never "Great
+  post!" and never a pitch or a link. Comments are Charles's to post;
+  draft only.
+
 ## Craft rules
 
 - **Hook first**: line 1 must earn the "see more" click — a specific
@@ -68,6 +109,7 @@ Every post targets ONE of these audiences. Never both in the same post.
 ## Output format
 
 Deliver the post ready to paste into LinkedIn. For each piece include a
-one-line note: target audience + what the post is engineered to do
-(followers, DMs, profile views, or authority). If Charles asks for ideas,
+one-line note: the named reader (step 1 above) + the problem it solves +
+what the post is engineered to do (followers, DMs, profile views, or
+authority) — then the comment plan. If Charles asks for ideas,
 give 5-10 hooks with audience labels, not full drafts.

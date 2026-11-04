@@ -16,7 +16,10 @@ description: >
 
 A 9-step, repeatable loop: export analytics → analyze in Claude → act on the
 findings → re-measure. Adapted from the "How to Optimize Your LinkedIn with
-Claude" workflow and tailored to Charles's brand and audience.
+Claude" workflow and tailored to Charles's brand and audience. The reach
+method (name the reader, solve their problem, comment where they read, watch
+who responds) is from LinkedIn's "Get Your Content in Front of the Right
+People" (2026-11-03); the creation half lives in the `linkedin-content` agent.
 
 ## Audience & Goal Context (always apply)
 
@@ -53,9 +56,20 @@ generate the strongest follower growth, and format performance (text, carousel,
 video/Reel crosspost). Segment agent-attraction posts vs. property/market posts
 — they have different audiences and should be scored separately.
 
+**Score reach by who, not how many.** Per LinkedIn's own creator guide ("Get
+Your Content in Front of the Right People," 2026-11-03), fifty views from
+people who could hire you beat ten thousand from people who can't. So for
+each top post, also check *who* engaged: open the commenters and reactors
+(and the post's viewer demographics — job title, industry, location — where
+LinkedIn shows them) and tally how many are the named audience (producing
+agents; Vail-corridor buyers/investors). A post with fewer impressions but
+more right-audience engagers wins. Where Charles's LinkedIn Dashboard is
+available, use it for analytics, scheduling, and drafts in one place.
+
 ### Step 6 — Visualize Insights
 Present findings as a compact table or chart (use chart tools when available):
-Top Day, Avg Engagement Rate, Top Topic, Best Format — plus a 4-6 week trend
+Top Day, Avg Engagement Rate, Top Topic, Best Format, Right-Audience Share
+(engagers who match the named audience) — plus a 4-6 week trend
 line when the data supports it.
 
 ### Step 7 — Optimize Strategy
@@ -82,6 +96,12 @@ Maintain and reuse these prompts (adapt to current data):
    calendar targeting agent attraction first, luxury market second."
 5. **Repurpose winners** — "Take my top 3 posts and adapt them into TikTok
    (@epivail) scripts and Facebook (@CharlesHarrisonVail) versions."
+6. **Right-people check** — "Here are the commenters on my last 10 posts.
+   How many are producing agents or Vail-corridor buyers/investors? Which
+   topics pulled the right people, and which pulled the wrong ones?"
+7. **Comment targets** — "Who does my target agent already read on LinkedIn?
+   List 10 accounts or post types to comment on this week and draft 3
+   comments that add a real insight, no pitch."
 
 ## Integration Notes
 
