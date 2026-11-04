@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>AiRE Estate Academy Guides</title>
+  <link>https://learn.aireestate.com/guides/</link>
+  <atom:link href="https://learn.aireestate.com/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>Plain-English guides for real estate agents using AI.</description>
+  <language>en-us</language>
+  <lastBuildDate>Tue, 03 Nov 2026 12:00:00 +0000</lastBuildDate>
+  <item>
+    <title>What Does It Actually Cost to Make an AI Listing Video?</title>
+    <link>https://learn.aireestate.com/guides/what-does-an-ai-listing-video-cost.html</link>
+    <guid isPermaLink="true">https://learn.aireestate.com/guides/what-does-an-ai-listing-video-cost.html</guid>
+    <pubDate>Tue, 03 Nov 2026 12:00:00 +0000</pubDate>
+    <description>Tuition, subscriptions and usage credits, separated: what an AI listing video really costs per clip, per showcase and per month, with sourced prices.</description>
+  </item>
+  <item>
+    <title>AI Courses for Real Estate Agents Compared: Cost, Time, Credit and What You&#x27;ll Make</title>
+    <link>https://learn.aireestate.com/guides/ai-courses-for-real-estate-agents-compared.html</link>
+    <guid isPermaLink="true">https://learn.aireestate.com/guides/ai-courses-for-real-estate-agents-compared.html</guid>
+    <pubDate>Tue, 03 Nov 2026 12:00:00 +0000</pubDate>
+    <description>Five paid AI courses for real estate agents side by side: price, hours, CE or designation credit, instructor access, what you make, and enrollment status. Sourced and dated.</description>
+  </item>
+  <item>
+    <title>Using AI to Write Listing Descriptions: The Fair Housing Rules Still Apply</title>
+    <link>https://learn.aireestate.com/guides/ai-listing-descriptions-and-fair-housing.html</link>
+    <guid isPermaLink="true">https://learn.aireestate.com/guides/ai-listing-descriptions-and-fair-housing.html</guid>
+    <pubDate>Wed, 28 Oct 2026 12:00:00 +0000</pubDate>
+    <description>AI can draft a listing description in seconds. The Fair Housing Act applies to every word you publish, whoever wrote it. Here is what to check before it goes live.</description>
+  </item>
+  <item>
+    <title>Texting Real Estate Leads: The Consent Rules in Plain English</title>
+    <link>https://learn.aireestate.com/guides/texting-real-estate-leads-consent-rules.html</link>
+    <guid isPermaLink="true">https://learn.aireestate.com/guides/texting-real-estate-leads-consent-rules.html</guid>
+    <pubDate>Wed, 28 Oct 2026 12:00:00 +0000</pubDate>
+    <description>What the TCPA requires before you text a lead, what changed in 2025, the hours you can text, and why STOP has to mean stop.</description>
+  </item>
+  <item>
+    <title>AI Virtual Staging: Do You Have to Disclose It?</title>
+    <link>https://learn.aireestate.com/guides/ai-virtual-staging-disclosure.html</link>
+    <guid isPermaLink="true">https://learn.aireestate.com/guides/ai-virtual-staging-disclosure.html</guid>
+    <pubDate>Wed, 28 Oct 2026 12:00:00 +0000</pubDate>
+    <description>Virtual staging and AI photo edits: what the NAR Code of Ethics, MLS rules and California&#x27;s 2026 law require, and the edits that are never safe.</description>
+  </item>
+  <item>
+    <title>Premium Listing Packages: What You Pay For, and What You Can Make Yourself</title>
+    <link>https://learn.aireestate.com/guides/premium-listing-packages-what-you-can-make-yourself.html</link>
+    <guid isPermaLink="true">https://learn.aireestate.com/guides/premium-listing-packages-what-you-can-make-yourself.html</guid>
+    <pubDate>Fri, 09 Oct 2026 12:00:00 +0000</pubDate>
+    <description>What premium listing packages on the big platforms include, which parts an agent can now make with AI, and which parts still need a professional.</description>
+  </item>
+  <item>
+    <title>How to Make a Listing Video Without Hiring a Drone</title>
+    <link>https://learn.aireestate.com/guides/how-to-make-a-listing-video-without-a-drone.html</link>
+    <guid isPermaLink="true">https://learn.aireestate.com/guides/how-to-make-a-listing-video-without-a-drone.html</guid>
+    <pubDate>Fri, 09 Oct 2026 12:00:00 +0000</pubDate>
+    <description>Three ways to get an aerial-style listing video, what each one costs, and where AI-generated video stops being safe to use in a property ad.</description>
+  </item>
+  <item>
+    <title>ChatGPT, Claude or Claude Code: Which Does a Real Estate Agent Need?</title>
+    <link>https://learn.aireestate.com/guides/chatgpt-claude-or-claude-code-for-real-estate-agents.html</link>
+    <guid isPermaLink="true">https://learn.aireestate.com/guides/chatgpt-claude-or-claude-code-for-real-estate-agents.html</guid>
+    <pubDate>Fri, 09 Oct 2026 12:00:00 +0000</pubDate>
+    <description>A plain-English guide to the difference between AI chat apps and Claude Code, what each one costs, and which real estate jobs each one is for.</description>
+  </item>
+</channel>
+</rss>
