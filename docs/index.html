@@ -643,6 +643,15 @@
   .rubric-badge .rb1{font:700 .74rem 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.18em}
   .rubric-badge .rb2{font:600 .9rem Manrope,system-ui,sans-serif;color:#e2e8f0}
   .rubric-badge .rb2:after{content:" →";color:#fcd34d}
+  .freeles{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:4px 0 26px;padding:16px 18px;border:1px solid rgba(52,211,153,.5);border-left:4px solid var(--ok);border-radius:14px;background:rgba(52,211,153,.07);text-decoration:none;color:var(--text)}
+  .freeles:hover{background:rgba(52,211,153,.13)}
+  .freeles .fl1{font:600 .68rem var(--mn);letter-spacing:.2em;text-transform:uppercase;color:var(--ok);display:block;margin-bottom:4px}
+  .freeles .fl2{font:800 1.15rem var(--wm);color:var(--head);display:block}
+  .freeles .fl3{font:400 .9rem var(--bd);color:var(--slate);display:block;margin-top:2px}
+  .freeles .fltx{flex:1 1 260px}
+  .freeles .flgo{display:inline-flex;align-items:center;gap:10px;flex:none;padding:12px 18px;border-radius:999px;background:#34d399;color:#04070d;font:700 .82rem var(--mn);letter-spacing:.04em;box-shadow:0 10px 26px -10px rgba(52,211,153,.7);transition:transform .2s}
+  .freeles:hover .flgo{transform:translateY(-2px)}
+  .freeles{border-color:rgba(52,211,153,.75)!important;background:rgba(8,40,30,.72)!important}
 </style>
 <link rel="stylesheet" href="/modern.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where are the lessons, and how do I get back to them?","acceptedAnswer":{"@type":"Answer","text":"The lessons are on this website, on your course page. Nothing is loaded into Claude or into a Claude Project: you read each module on the page and do the steps in Claude. After you pay, the confirmation page shows your course link and access code. Save both. Once you unlock, that browser remembers you. If you lose the code, email hello@aireestate.com from the address you bought with."}},{"@type":"Question","name":"Do I need to be technical?","acceptedAnswer":{"@type":"Answer","text":"No. The free install lesson and Module Two cover the ground floor: your accounts, the terminal, and getting Claude Code running. Then Module Three walks the setup slowly, with every command written out so you can copy it."}},{"@type":"Question","name":"Will this still work in six months?","acceptedAnswer":{"@type":"Answer","text":"The tools change constantly. That's why updates are included — when something shifts, I re-record the module and you get it."}},{"@type":"Question","name":"Can I use this on any listing?","acceptedAnswer":{"@type":"Answer","text":"Use it on your own listings, where you control the photos or hired the photographer. Listing photos belong to somebody — usually the photographer or the listing brokerage. The course covers this properly."}},{"@type":"Question","name":"What's your refund policy?","acceptedAnswer":{"@type":"Answer","text":"Access is delivered immediately on purchase and covers your account for life. If you're unsure whether it fits your business, ask AiRE or email hello@aireestate.com first. You'll get a straight answer before you buy."}}]}</script>
@@ -657,6 +666,7 @@
     <span class="lock"><span class="a">A</span><span class="dl i">&#305;<svg width="0.44em" height="0.44em" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="34" fill="none" stroke="#38bdf8" stroke-width="17" stroke-linecap="round" stroke-dasharray="160 54" transform="rotate(-38 50 50)"/><circle cx="50" cy="50" r="15" fill="#38bdf8"/></svg></span><span class="re">RE</span><span class="est">Estate Academy</span></span>
   </a>
   <div class="navlinks">
+    <a href="install-claude-code.html">Free Lesson</a>
     <a href="#courses">Courses</a>
     <a href="#math">The Math</a>
     <a href="#demo">See It</a>
@@ -682,6 +692,12 @@
       <p class="htag">Geared for the independent agent</p>
       <h1>Not for <em class="cc re">every</em> agent. Built for the ones who <em class="cc">learn</em>.</h1>
       <p class="hsub"><b>If you&rsquo;re happy paying the platforms, the vendors and the add-ons forever, these courses aren&rsquo;t for you.</b> They&rsquo;re for independent agents ready to break free of the industry&rsquo;s chains, learn AI, and do the work themselves. Four courses, each sold on its own.</p>
+      <a class="freeles" href="install-claude-code.html">
+        <span class="fltx"><span class="fl1">Free first lesson &middot; about 20 minutes</span>
+        <span class="fl2">Never opened a terminal? Start here.</span>
+        <span class="fl3">Install Claude Code on Mac or Windows, step by step. No sign-up. Claude Code needs a Claude Pro plan ($20 a month) from Anthropic.</span></span>
+        <span class="flgo">Start the free lesson &rarr;</span>
+      </a>
       <div class="pick" id="courses">
         <div class="pc one">
           <span class="pt">Part One &middot; 7 modules + Capstone</span>
