@@ -26,3 +26,5 @@ description: The weekday 4:40 AM scheduled task that drafts recruit follow-ups w
   Bingel bought from Charles and is a good past client - keep him warm, but his
   March mortgage-calculator tasks are stale. Jan Vessa - Charles doesn't know
   who Jan is (cold Realty.com lead, unsubscribed) - leave alone.
+- **Stopped 2026-11-05 at Charles's request** (task disabled, not deleted; seven
+  empty runs because no recruits are tagged). Re-enable only if he asks.
