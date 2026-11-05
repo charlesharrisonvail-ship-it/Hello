@@ -71,6 +71,26 @@ kbd{font:500 .85em var(--mn);border:1px solid var(--edge2);border-bottom-width:2
 @media (max-width:620px){.cards{grid-template-columns:1fr}}
 footer{border-top:1px solid var(--edge);color:var(--slate2);font-size:.82rem;padding:24px 16px 40px;text-align:center}
 footer a{color:var(--slate)}
+.step ol{list-style:upper-alpha}
+.step ol li::marker{font-weight:700;color:var(--sig)}
+.tabs::before{content:"Your computer:";font:600 .72rem var(--mn);letter-spacing:.12em;text-transform:uppercase;color:var(--slate);align-self:center;margin-right:4px}
+.tabs.big::before{display:none}
+.tabs.big button{font-size:.85rem;padding:14px 18px;letter-spacing:.06em}
+.pick-os{margin-top:16px;color:#fff}
+.phone-hint{display:none;font-size:.88rem;color:var(--slate);margin:8px 0 0}
+@media (max-width:700px),(pointer:coarse){.phone-hint{display:block}}
+.term{margin:16px 0 4px;border-radius:10px;overflow:hidden;border:1px solid var(--edge2);font:500 .9rem var(--mn);max-width:520px}
+.term .bar{display:flex;align-items:center;gap:7px;padding:8px 12px;font-size:.72rem;color:#9aa6b8}
+.term .bar span{margin:0 auto;padding-right:40px}
+.term.mac .bar{background:#2b2f36}.term.mac .bar i{width:11px;height:11px;border-radius:50%;background:#ff5f57}.term.mac .bar i+i{background:#febc2e}.term.mac .bar i+i+i{background:#28c840}
+.term.win .bar{background:#1f2937;justify-content:space-between}.term.win .bar span{margin:0;padding:0}.term.win .bar em{font-style:normal;letter-spacing:.4em}
+.term .scr{padding:14px 14px 18px;min-height:86px;line-height:1.7;color:#e5e7eb;background:#111}
+.term.win .scr{background:#012456}
+.term .dim{color:#7c8799}
+.term .cur{display:inline-block;width:.6em;height:1.05em;background:#e5e7eb;vertical-align:-.15em;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.term .cur{animation:none}}
+.term figcaption{font:500 .78rem var(--bd);color:var(--slate);padding:8px 12px;background:var(--panel2)}
 </style></head><body>
 
 <header class="top"><div class="in">
@@ -110,26 +130,41 @@ footer a{color:var(--slate)}
   </section>
 
   <section class="step" id="step-3" data-step="3">
-    <div class="sh"><span class="num">3</span><h2>Open the terminal</h2></div>
-    <p>The terminal is a plain text window where you type instructions to your computer. It looks technical, but you&rsquo;ll only be pasting.</p>
-    <div class="tabs" role="tablist">
-      <button role="tab" aria-selected="true" data-os="mac">Mac</button>
-      <button role="tab" aria-selected="false" data-os="win">Windows</button>
+    <div class="sh"><span class="num">3</span><h2>Open the terminal: your typing window</h2></div>
+    <p><b>What it is:</b> every Mac and Windows computer already has a plain window called the <b>terminal</b>. Instead of clicking buttons, you paste one line of text and press <kbd>Enter</kbd>, and the computer does it. Claude Code is installed from this window and lives in it.</p>
+    <p><b>In this step you only open it.</b> You won&rsquo;t type anything yet. Step 4 gives you the line to paste.</p>
+    <p class="pick-os">Which computer will you install on? <b>Tap yours and follow only that one.</b> The other set of steps disappears.</p>
+    <div class="tabs big" role="tablist">
+      <button role="tab" aria-selected="true" data-os="mac">I&rsquo;m on a Mac</button>
+      <button role="tab" aria-selected="false" data-os="win">I&rsquo;m on Windows</button>
     </div>
+    <p class="phone-hint">Reading this on your phone? Pick the computer you&rsquo;ll use, and do these steps on that computer.</p>
     <div class="pane on" data-os="mac">
       <ol>
-        <li>Press <kbd>&#8984; Command</kbd> + <kbd>Space</kbd> to open Spotlight search.</li>
+        <li>Hold <kbd>&#8984; Command</kbd> and tap <kbd>Space</kbd>. A search bar appears in the middle of the screen.</li>
         <li>Type <b>Terminal</b> and press <kbd>Enter</kbd>.</li>
-        <li>A window opens with a blinking cursor. That&rsquo;s it.</li>
+        <li>A small window opens. It looks like the example below: your name, a <b>%</b> sign and a blinking cursor.</li>
       </ol>
+      <figure class="term mac" aria-label="Example of a Mac Terminal window">
+        <div class="bar"><i></i><i></i><i></i><span>Terminal</span></div>
+        <div class="scr"><span class="dim">Last login: Thu Nov 5 on ttys000</span><br>yourname@MacBook ~ % <b class="cur"></b></div>
+        <figcaption>Example. Yours shows your own name.</figcaption>
+      </figure>
     </div>
     <div class="pane" data-os="win">
       <ol>
-        <li>Click the <b>Start</b> button (or press the <kbd>&#8862; Windows</kbd> key).</li>
-        <li>Type <b>PowerShell</b> and click <b>Windows PowerShell</b>. You don&rsquo;t need &ldquo;Run as administrator.&rdquo;</li>
-        <li>A window opens showing <code>PS C:\Users\YourName&gt;</code>. The <b>PS</b> means you&rsquo;re in the right place.</li>
+        <li>Click the <b>Start</b> button at the bottom of the screen (or press the <kbd>&#8862; Windows</kbd> key).</li>
+        <li>Type <b>PowerShell</b>, then click <b>Windows PowerShell</b> in the results. You don&rsquo;t need &ldquo;Run as administrator.&rdquo; On Windows 11 you may see <b>Terminal</b> instead; that works too.</li>
+        <li>A window opens. It looks like the example below: a line starting with <b>PS</b> and a blinking cursor. <b>PS</b> means you&rsquo;re in the right place.</li>
       </ol>
+      <figure class="term win" aria-label="Example of a Windows PowerShell window">
+        <div class="bar"><span>Windows PowerShell</span><em>&#8212; &#9744; &#10005;</em></div>
+        <div class="scr"><span class="dim">Windows PowerShell</span><br>PS C:\Users\YourName&gt; <b class="cur"></b></div>
+        <figcaption>Example. Yours shows your own name.</figcaption>
+      </figure>
+      <div class="note warn"><b>Opened &ldquo;Command Prompt&rdquo; by mistake?</b> Its line starts with <code>C:\</code> and no <b>PS</b>. Close it and search for <b>PowerShell</b> instead.</div>
     </div>
+    <div class="note"><b>Leave this window open.</b> Step 4 pastes into it.</div>
     <button class="mark" type="button">&#10003; My terminal is open</button>
   </section>
 
