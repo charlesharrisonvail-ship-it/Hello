@@ -12,10 +12,12 @@ Upstream: github.com/ArkodaAI/continuity (MIT), installed standalone because
     python3 .claude/continuity/identity.py --check           # ROLE.md budget
     python3 .claude/continuity/recall.py <terms> [--deep]    # search this dir
 
-Two hook entries, two separate ~9,000 budgets: `identity.py` loads `ROLE.md`
-first, `session_start.py` loads PROJECT + DECISIONS + STATE. The limit is per
-hook ENTRY, not per session - if a document outgrows its door, add another hook
-entry rather than cutting content.
+Three hook entries, three separate ~9,000 budgets: `identity.py` loads
+`ROLE.md` first, `session_start.py --docs PROJECT.md,DECISIONS.md` loads those
+two, and `session_start.py --docs STATE.md` loads STATE (split 2026-11-06, when
+the shared payload hit its limit). The limit is per hook ENTRY, not per session -
+if a document outgrows its door, add another hook entry with `--docs` rather
+than cutting content. `--check` reports every entry; `verify.py` runs each.
 
 **`.claude/settings.json` is a union**: Superpowers keys AND the continuity
 hooks. Merge into it; rewriting it wholesale silently disables one half.

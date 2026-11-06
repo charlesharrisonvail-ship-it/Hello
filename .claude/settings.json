@@ -40,7 +40,16 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 .claude/continuity/session_start.py || python .claude/continuity/session_start.py"
+            "command": "python3 .claude/continuity/session_start.py --docs PROJECT.md,DECISIONS.md || python .claude/continuity/session_start.py --docs PROJECT.md,DECISIONS.md"
+          }
+        ]
+      },
+      {
+        "matcher": "startup|compact|clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .claude/continuity/session_start.py --docs STATE.md || python .claude/continuity/session_start.py --docs STATE.md"
           }
         ]
       },

@@ -30,9 +30,9 @@ not rule on it, so ask rather than pick.
 
 ## Next
 
-1. Watch orientation size - roughly 7,300 of the 9,000-character budget. When
-   `DECISIONS.md` outgrows its share, add a fourth hook entry rather than cutting
-   a rule; the limit is per hook entry, not per session
+1. Orientation is split (2026-11-06): PROJECT+DECISIONS in one hook entry,
+   STATE in another, each with its own 9,000 budget. `session_start.py --check`
+   shows both. When one fills, add another `--docs` entry rather than cut a rule
 2. When a rule changes in `CLAUDE.md`, change it in `DECISIONS.md` and the memory
    index too, or a future session acts on the old one with full confidence
 3. Charles installed Open Generative AI v2.0.0 on Windows (hash verified,
