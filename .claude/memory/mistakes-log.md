@@ -26,3 +26,5 @@ queued renders in one sequential command (`for n in 5 6 7 8; do render; done`) i
   closing tag, which pushed the ticker over the course cards. Caught in the browser check
   before publishing. Fix: cut by the block's own closing tag, assert the neighbours
   (`.need`, `.hbuilt`) still exist, and measure layout before pushing.
+
+- 2026-11-06 — Facebook reels went out with no cover, so Facebook used the dark fade-in first frame and the Reels grid looked unprofessional. Fix: every video post in `marketing/social/queue.json` carries a `"cover"` (1080×1920, in `marketing/social/covers/`), and `post.py` uploads it after posting; `post.py --cover N` fixes one already published. Never post a video without a designed cover.

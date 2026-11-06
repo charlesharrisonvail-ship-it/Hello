@@ -4,6 +4,7 @@
     post.py --check     show access and what is due, change nothing
     post.py             publish every post that is due and not yet posted
     post.py --only 4    publish post 4 now, whatever its date
+    post.py --cover 4   upload post 4's designed cover to its already-published video
 
 Posts live in queue.json; what has gone out is recorded in posted.json.
 
@@ -69,6 +70,19 @@ def page_token(q):
     raise RuntimeError(f"this access cannot post to the {q['page_name']} page (pages it can reach: {names})")
 
 
+def set_cover(vid, cover, ptok):
+    """Upload a designed cover so the reel does not show its dark first frame."""
+    if not vid or not cover.exists():
+        print(f"  cover not set ({cover.name} missing or no video id)")
+        return
+    body, h = multipart({"is_preferred": "true", "access_token": ptok}, cover)
+    try:
+        call(f"{GRAPH}/{vid}/thumbnails", body, h)
+        print(f"  cover set: {cover.name}")
+    except RuntimeError as e:
+        print(f"  cover not set: {e}")
+
+
 def publish(post, pid, ptok):
     cap, media = post["caption"], post.get("media")
     if not media:
@@ -79,6 +93,8 @@ def publish(post, pid, ptok):
     if path.suffix.lower() in (".mp4", ".mov"):
         body, h = multipart({"description": cap, "title": post["title"]}, path)
         r = call(f"https://graph-video.facebook.com/v21.0/{pid}/videos", body, h, ptok)
+        if post.get("cover"):
+            set_cover(r.get("id"), HERE / "covers" / post["cover"], ptok)
     else:
         # The proxy replaces the Authorization header on graph.facebook.com with the
         # user-level credential, so the Page token must travel in the form body.
@@ -91,6 +107,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true")
     ap.add_argument("--only", type=int)
+    ap.add_argument("--cover", type=int)
     a = ap.parse_args()
     q = json.loads((HERE / "queue.json").read_text())
     done = json.loads((HERE / "posted.json").read_text())
@@ -106,6 +123,14 @@ def main():
         print(f"ACCESS FAILED: {e}")
         return 2
     if a.check:
+        return 0
+    if a.cover:
+        hit = [d for d in done if d["n"] == a.cover]
+        p = by[a.cover]
+        if not hit or not p.get("cover"):
+            print(f"post {a.cover} has no published video or no cover set")
+            return 1
+        set_cover(hit[-1]["id"].split("_")[-1], HERE / "covers" / p["cover"], ptok)
         return 0
     rc = 0
     for p in due:
