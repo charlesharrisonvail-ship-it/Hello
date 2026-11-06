@@ -20,6 +20,7 @@ BREAKS the install, confirms the breakage is reported, and repairs it.
 """
 import json
 import os
+import shlex
 import subprocess
 import sys
 
@@ -31,6 +32,7 @@ STATE = os.path.join(CLAUDE, "STATE.md")
 PROJECT = os.path.join(CLAUDE, "PROJECT.md")
 
 DOOR = 10000        # Claude Code's per-hook-entry character limit
+DOCS = ("PROJECT.md", "DECISIONS.md", "STATE.md")
 
 fails = []
 
@@ -47,6 +49,36 @@ def run(script, *args):
     p = subprocess.run([sys.executable, os.path.join(HERE, script)] + list(args),
                        capture_output=True, text=True, encoding="utf-8")
     return p.returncode, (p.stdout or "")
+
+
+def orientation_entries(ss):
+    """-> list of argument lists, one per SessionStart entry that runs
+    session_start.py, read from the first `||` branch of its command. The
+    hook budget is per ENTRY, so every entry is run and measured on its own."""
+    out = []
+    for group in ss:
+        for h in group.get("hooks", []):
+            branch = (h.get("command") or "").split("||")[0]
+            try:
+                words = shlex.split(branch)
+            except ValueError:
+                continue
+            for i, w in enumerate(words):
+                if w.endswith("session_start.py"):
+                    out.append(words[i + 1:])
+                    break
+    return out
+
+
+def docs_of(args):
+    """-> the documents an entry prints, from its --docs argument."""
+    for i, a in enumerate(args):
+        if a == "--docs" and i + 1 < len(args):
+            return [n.strip() for n in args[i + 1].split(",") if n.strip()]
+        if a.startswith("--docs="):
+            return [n.strip() for n in a.split("=", 1)[1].split(",")
+                    if n.strip()]
+    return list(DOCS)
 
 
 def main():
@@ -108,17 +140,35 @@ def main():
             % (" or ".join(repr(i) for i in interps),
                found[0] if found else "NONE FOUND"))
 
-    # 3/4 -- the hook actually runs, and fits through the door
-    rc, out = run("session_start.py")
-    chk(rc == 0, "session_start.py exits 0 (a non-zero hook can block a session)")
-    chk(len(out.strip()) > 0, "orientation payload is non-empty")
-    chk(len(out) < DOOR,
-        "payload is %d chars, under the %d-char door" % (len(out), DOOR))
+    # 3/4 -- EVERY orientation entry actually runs, and fits through ITS door.
+    # The limit is per hook entry, so each entry is measured on its own.
+    entries = orientation_entries(ss)
+    chk(bool(entries), "session_start.py is registered as a SessionStart entry")
+    outs = {}
+    for args in entries:
+        label = ",".join(docs_of(args))
+        rc, out = run("session_start.py", *args)
+        outs[label] = out
+        chk(rc == 0, "[%s] session_start.py exits 0 (a non-zero hook can "
+            "block a session)" % label)
+        chk(len(out.strip()) > 0, "[%s] orientation payload is non-empty"
+            % label)
+        chk(len(out) < DOOR, "[%s] payload is %d chars, under the %d-char "
+            "door" % (label, len(out), DOOR))
+        chk("[TRUNCATED:" not in out, "[%s] nothing in the payload is "
+            "TRUNCATED" % label)
 
-    # 5 -- CONTENT arrives, not merely files existing
-    for name, probe in (("PROJECT.md", "PROJECT"),
-                        ("DECISIONS.md", "DECISION"),
-                        ("STATE.md", "STATE")):
+    # Each document is printed by exactly one entry: none dropped by the
+    # split, none printed twice (which would spend budget for nothing).
+    covered = [n for args in entries for n in docs_of(args)]
+    for name in DOCS:
+        chk(covered.count(name) == 1, "%s is printed by exactly one entry "
+            "(found %d)" % (name, covered.count(name)))
+
+    # 5 -- CONTENT arrives, not merely files existing. Checked against the
+    # output of the entry that prints the document.
+    for name in DOCS:
+        out = "".join(o for lbl, o in outs.items() if name in lbl.split(","))
         path = os.path.join(CLAUDE, name)
         got = False
         if os.path.exists(path):
@@ -134,8 +184,9 @@ def main():
     if os.path.exists(PROJECT):
         tmp = PROJECT + ".verify-bak"
         os.replace(PROJECT, tmp)
+        args = next((a for a in entries if "PROJECT.md" in docs_of(a)), [])
         try:
-            _, broken = run("session_start.py")
+            _, broken = run("session_start.py", *args)
             chk("MISSING" in broken,
                 "NEGATIVE CONTROL: a missing document is reported as MISSING, "
                 "not silently dropped")
@@ -161,6 +212,9 @@ def main():
         rc2, out2 = run("session_start.py", "--check")
         chk(rc2 == 0 and "budget" in out2,
             "budget check still reports after banking")
+        chk(out2.count("within budget") == max(len(entries), 1)
+            and "OVER BUDGET" not in out2,
+            "every entry is still within budget after banking")
     finally:
         # Put STATE.md back so the probes never land in a commit.
         if before:

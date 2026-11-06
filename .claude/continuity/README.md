@@ -9,7 +9,7 @@ From [ArkodaAI/continuity](https://github.com/ArkodaAI/continuity) (MIT, see
 | File | What it does |
 | --- | --- |
 | `identity.py` | SessionStart hook. Prints `.claude/ROLE.md` - who the agent is here. Its own hook entry, its own ~9,000 char/byte budget. Loads first, so identity frames everything after it. |
-| `session_start.py` | SessionStart hook. Prints `PROJECT.md`, `DECISIONS.md`, `STATE.md` under a shared 9,000 budget. `--check` prints the budget breakdown instead. |
+| `session_start.py` | SessionStart hook. Prints `PROJECT.md`, `DECISIONS.md`, `STATE.md` under a 9,000 budget per hook entry. `--docs A,B` prints only those documents, so they can be split across entries; this install runs `--docs PROJECT.md,DECISIONS.md` and `--docs STATE.md` as two entries. With no argument it prints all three. `--check` prints each registered entry's budget breakdown instead. |
 | `pre_compact.py` | PreCompact hook. Banks the live working thread into `STATE.md` before compaction summarises it away. Keeps the most recent 3 blocks only. |
 | `recall.py` | On-demand memory search over `.claude/memory/`. `recall.py <terms>`, `--deep` to search bodies too. |
 | `verify.py` | Acceptance test. Executes the real hooks and inspects the real output, including a negative control that removes `PROJECT.md` and confirms the payload says MISSING rather than dropping the section silently. |
