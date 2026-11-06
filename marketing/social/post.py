@@ -90,6 +90,19 @@ def live_snippets(pid, ptok):
     return seen
 
 
+def set_cover(vid, cover, ptok):
+    """Upload a designed cover so the reel does not show its dark first frame."""
+    if not vid or not cover.exists():
+        print(f"  cover not set ({cover.name} missing or no video id)")
+        return
+    body, h = multipart({"is_preferred": "true", "access_token": ptok}, cover)
+    try:
+        call(f"{GRAPH}/{vid}/thumbnails", body, h)
+        print(f"  cover set: {cover.name}")
+    except RuntimeError as e:
+        print(f"  cover not set: {e}")
+
+
 def publish(post, pid, ptok):
     cap, media = post["caption"], post.get("media")
     if not media:
@@ -100,6 +113,8 @@ def publish(post, pid, ptok):
     if path.suffix.lower() in (".mp4", ".mov"):
         body, h = multipart({"description": cap, "title": post["title"]}, path)
         r = call(f"https://graph-video.facebook.com/v21.0/{pid}/videos", body, h, ptok)
+        if post.get("cover"):
+            set_cover(r.get("id"), HERE / "covers" / post["cover"], ptok)
     else:
         # The proxy replaces the Authorization header on graph.facebook.com with the
         # user-level credential, so the Page token must travel in the form body.
