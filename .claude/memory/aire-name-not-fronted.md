@@ -27,3 +27,8 @@ the social posts with him on camera. Course videos fine. Buyer quotes stay.
 **Phone removed 2026-10-19 (Charles):** no phone number anywhere on the public site; questions go to the AiRE bot first, then hello@aireestate.com. "Ask AiRE" links use data-ask-aire (opens the chat; falls back to ask-aire.html). Team & Brokerage is "Email to arrange". Support is described as email support. Eva's video still says the number (left alone by his choice).
 
 **Phone fully removed 2026-10-19:** Charles wants his phone number off everything AiRE: never add it to pages, bot answers, emails, scripts or posts. Contact is the AiRE bot, then hello@aireestate.com.
+
+**Exception (Charles, 2026-11-05):** he chose to share AiRE videos on his EpiVail TikTok,
+EpiVail Collective Facebook and EpiVail YouTube, knowing those accounts carry his name.
+That is the only place AiRE and his name meet; AiRE's own site, posts and ads still never
+front him.

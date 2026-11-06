@@ -11,6 +11,9 @@ his course business, published from `docs/` at `learn.aireestate.com`.
 Every rule in the EpiVail section below - naming, signature, voice, positioning, the
 banned phrase - applies to EpiVail work only. AiRE Estate's rules are in `ROLE.md`.
 Stated by Charles 2026-10-02, after the two had been conflated. (2026-10-02)
+**Exception, set by Charles 2026-11-05:** AiRE Estate videos may also be shared on the
+EpiVail TikTok, EpiVail Collective Facebook and EpiVail YouTube, as AiRE content (AiRE
+link, AI label). The AiRE site and AiRE accounts still never mention EpiVail or Epique.
 
 ## EpiVail: brand, voice and sending
 
