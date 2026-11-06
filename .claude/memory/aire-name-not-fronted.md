@@ -1,6 +1,6 @@
 ---
 name: aire-name-not-fronted
-description: AiRE Estate never puts Charles's name out front - not on the website, ads, social posts, post images, or Stripe checkout pictures; inside the course videos it is fine
+description: AiRE Estate never puts Charles's name out front - not on the website, ads, social posts, post images, or Stripe checkout pictures; inside the course videos it is fine. Exception (2026-11-05) - AiRE videos may be shared on the EpiVail TikTok, EpiVail Collective Facebook and EpiVail YouTube
 ---
 
 **Charles's name stays off everything public-facing for AiRE Estate** (Charles,
