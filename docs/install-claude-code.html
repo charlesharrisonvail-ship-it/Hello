@@ -71,6 +71,36 @@ kbd{font:500 .85em var(--mn);border:1px solid var(--edge2);border-bottom-width:2
 @media (max-width:620px){.cards{grid-template-columns:1fr}}
 footer{border-top:1px solid var(--edge);color:var(--slate2);font-size:.82rem;padding:24px 16px 40px;text-align:center}
 footer a{color:var(--slate)}
+.step ol{list-style:upper-alpha}
+.step ol li::marker{font-weight:700;color:var(--sig)}
+.tabs::before{content:"Your computer:";font:600 .72rem var(--mn);letter-spacing:.12em;text-transform:uppercase;color:var(--slate);align-self:center;margin-right:4px}
+.tabs.big::before{display:none}
+.tabs.big button{font-size:.85rem;padding:14px 18px;letter-spacing:.06em}
+.pick-os{margin-top:16px;color:#fff}
+.phone-hint{display:none;font-size:.88rem;color:var(--slate);margin:8px 0 0}
+@media (max-width:700px),(pointer:coarse){.phone-hint{display:block}}
+.term{margin:16px 0 4px;border-radius:10px;overflow:hidden;border:1px solid var(--edge2);font:500 .9rem var(--mn);max-width:520px}
+.term .bar{display:flex;align-items:center;gap:7px;padding:8px 12px;font-size:.72rem;color:#9aa6b8}
+.term .bar span{margin:0 auto;padding-right:40px}
+.term.mac .bar{background:#2b2f36}.term.mac .bar i{width:11px;height:11px;border-radius:50%;background:#ff5f57}.term.mac .bar i+i{background:#febc2e}.term.mac .bar i+i+i{background:#28c840}
+.term.win .bar{background:#1f2937;justify-content:space-between}.term.win .bar span{margin:0;padding:0}.term.win .bar em{font-style:normal;letter-spacing:.4em}
+.term .scr{padding:14px 14px 18px;min-height:86px;line-height:1.7;color:#e5e7eb;background:#111}
+.term.win .scr{background:#012456}
+.term .dim{color:#7c8799}
+.term .cur{display:inline-block;width:.6em;height:1.05em;background:#e5e7eb;vertical-align:-.15em;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.term .cur{animation:none}}
+.term figcaption{font:500 .78rem var(--bd);color:var(--slate);padding:8px 12px;background:var(--panel2)}
+.idea{margin:14px 0 6px}.idea svg{width:100%;height:auto;max-width:640px;font-family:Manrope,system-ui,sans-serif}
+.pics{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0 6px}
+@media (max-width:760px){.pics{grid-template-columns:1fr;gap:16px}}
+.pic{position:relative;margin:0;background:var(--panel2);border:1px solid var(--edge2);border-radius:16px;padding:10px 10px 12px}
+.pic svg{display:block;width:100%;height:auto;border-radius:12px;font-family:Manrope,system-ui,sans-serif}
+.pic .pl{position:absolute;top:-10px;left:-10px;width:34px;height:34px;border-radius:50%;background:var(--sig);color:#04070d;font:800 1rem var(--wm);display:grid;place-items:center;box-shadow:0 0 0 4px var(--ink)}
+.pic figcaption{margin-top:10px;text-align:center;font:500 1.02rem var(--bd);color:var(--text)}
+.pic figcaption b{color:#fff}
+.pic .blink{animation:blink 1.1s steps(1) infinite}
+@media (prefers-reduced-motion:reduce){.pic .blink{animation:none}}
 </style></head><body>
 
 <header class="top"><div class="in">
@@ -110,26 +140,24 @@ footer a{color:var(--slate)}
   </section>
 
   <section class="step" id="step-3" data-step="3">
-    <div class="sh"><span class="num">3</span><h2>Open the terminal</h2></div>
-    <p>The terminal is a plain text window where you type instructions to your computer. It looks technical, but you&rsquo;ll only be pasting.</p>
-    <div class="tabs" role="tablist">
-      <button role="tab" aria-selected="true" data-os="mac">Mac</button>
-      <button role="tab" aria-selected="false" data-os="win">Windows</button>
+    <div class="sh"><span class="num">3</span><h2>Open the terminal: your typing window</h2></div>
+    <p>Every computer already has a plain typing window called the <b>terminal</b>. Here&rsquo;s all it does:</p>
+    <figure class="idea"><svg viewBox="0 0 640 150" role="img" aria-label="Paste one line, press Enter, the computer does it"><rect x="6" y="18" width="180" height="104" rx="12" fill="#111" stroke="#3b475d"/><rect x="6" y="18" width="180" height="22" rx="12" fill="#2b2f36"/><rect x="6" y="30" width="180" height="10" fill="#2b2f36"/><circle cx="20" cy="29" r="4" fill="#ff5f57"/><circle cx="33" cy="29" r="4" fill="#febc2e"/><circle cx="46" cy="29" r="4" fill="#28c840"/><rect x="20" y="62" width="120" height="10" rx="5" fill="#38bdf8"/><rect x="20" y="84" width="80" height="10" rx="5" fill="#3b475d"/><text x="96" y="142" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">1. Paste a line</text><path d="M200 70h40" stroke="#5a6a85" stroke-width="3" stroke-linecap="round"/><path d="M234 62l10 8-10 8" fill="none" stroke="#5a6a85" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><rect x="262" y="34" width="116" height="72" rx="12" fill="#38bdf8" stroke="#7dd3fc" stroke-width="2"/><text x="320" y="78" text-anchor="middle" font-size="20" font-weight="800" fill="#04070d">enter ↵</text><text x="320" y="142" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">2. Press Enter</text><path d="M394 70h40" stroke="#5a6a85" stroke-width="3" stroke-linecap="round"/><path d="M428 62l10 8-10 8" fill="none" stroke="#5a6a85" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="530" cy="70" r="44" fill="#34d399"/><path d="M510 70l14 14 26-28" fill="none" stroke="#04070d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><text x="530" y="142" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">3. Your computer does it</text></svg></figure>
+    <p>Right now you only <b>open</b> it. Nothing to type yet.</p>
+    <p class="pick-os"><b>Tap your computer:</b></p>
+    <div class="tabs big" role="tablist">
+      <button role="tab" aria-selected="true" data-os="mac">I&rsquo;m on a Mac</button>
+      <button role="tab" aria-selected="false" data-os="win">I&rsquo;m on Windows</button>
     </div>
+    <p class="phone-hint">On your phone? Pick the computer you&rsquo;ll use.</p>
     <div class="pane on" data-os="mac">
-      <ol>
-        <li>Press <kbd>&#8984; Command</kbd> + <kbd>Space</kbd> to open Spotlight search.</li>
-        <li>Type <b>Terminal</b> and press <kbd>Enter</kbd>.</li>
-        <li>A window opens with a blinking cursor. That&rsquo;s it.</li>
-      </ol>
+      <div class="pics"><figure class="pic"><span class="pl">A</span><svg viewBox="0 0 320 200" role="img" aria-label="Hold the Command key and tap the Space bar"><rect width="320" height="200" rx="14" fill="#141c2a"/><rect x="14" y="96" width="52" height="58" rx="9" fill="#2a3446" stroke="#3b475d" stroke-width="2"/><text x="40.0" y="132" text-anchor="middle" font-size="13" font-weight="700" fill="#c7d0de">control</text><rect x="72" y="96" width="52" height="58" rx="9" fill="#2a3446" stroke="#3b475d" stroke-width="2"/><text x="98.0" y="132" text-anchor="middle" font-size="13" font-weight="700" fill="#c7d0de">option</text><rect x="128" y="96" width="76" height="58" rx="9" fill="#38bdf8" stroke="#7dd3fc" stroke-width="2"/><text x="166" y="122" text-anchor="middle" font-size="20" font-weight="800" fill="#04070d">⌘</text><text x="166" y="143" text-anchor="middle" font-size="12" font-weight="700" fill="#04070d">command</text><rect x="208" y="96" width="98" height="58" rx="9" fill="#38bdf8" stroke="#7dd3fc" stroke-width="2"/><text x="257.0" y="132" text-anchor="middle" font-size="15" font-weight="700" fill="#04070d">space</text><rect x="134" y="40" width="64" height="30" rx="15" fill="#04070d" stroke="#38bdf8" stroke-width="2"/><text x="166" y="60" text-anchor="middle" font-size="13" font-weight="800" fill="#7dd3fc">HOLD</text><rect x="225" y="40" width="64" height="30" rx="15" fill="#04070d" stroke="#38bdf8" stroke-width="2"/><text x="257" y="60" text-anchor="middle" font-size="13" font-weight="800" fill="#7dd3fc">TAP</text><text x="160" y="182" text-anchor="middle" font-size="12" fill="#8496b2">bottom row of your keyboard</text></svg><figcaption>Hold <b>⌘ Command</b>, tap <b>Space</b></figcaption></figure><figure class="pic"><span class="pl">B</span><svg viewBox="0 0 320 200" role="img" aria-label="Type Terminal in the search bar and press Enter"><rect width="320" height="200" rx="14" fill="#9fb7d8"/><rect width="320" height="200" rx="14" fill="url(#mg)"/><defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7aa6d8"/><stop offset="1" stop-color="#c9a7d8"/></linearGradient></defs><rect x="22" y="36" width="276" height="122" rx="14" fill="#f2f2f5" stroke="#d4d4dc"/><circle cx="46" cy="62" r="8" fill="none" stroke="#6b7280" stroke-width="2.5"/><line x1="52" y1="68" x2="58" y2="74" stroke="#6b7280" stroke-width="2.5" stroke-linecap="round"/><text x="68" y="69" font-size="20" font-weight="600" fill="#111">Terminal</text><rect x="158" y="52" width="2.5" height="22" fill="#2f6fe0"/><line x1="22" y1="88" x2="298" y2="88" stroke="#d4d4dc"/><rect x="30" y="98" width="260" height="48" rx="9" fill="#2f6fe0"/><rect x="40" y="106" width="32" height="32" rx="7" fill="#111" stroke="#555"/><text x="46" y="128" font-size="13" font-weight="700" fill="#fff" font-family="IBM Plex Mono,monospace">&gt;_</text><text x="84" y="128" font-size="17" font-weight="700" fill="#fff">Terminal</text><rect x="226" y="109" width="54" height="26" rx="6" fill="#fff" fill-opacity=".22"/><text x="253" y="127" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">enter ↵</text></svg><figcaption>Type <b>Terminal</b>, press <b>Enter</b></figcaption></figure><figure class="pic"><span class="pl">C</span><svg viewBox="0 0 320 200" role="img" aria-label="The Terminal window is open"><rect width="320" height="200" rx="14" fill="#141c2a"/><rect x="20" y="22" width="280" height="156" rx="10" fill="#111" stroke="#3b475d"/><rect x="20" y="22" width="280" height="28" rx="10" fill="#2b2f36"/><rect x="20" y="40" width="280" height="10" fill="#2b2f36"/><circle cx="38" cy="36" r="5.5" fill="#ff5f57"/><circle cx="56" cy="36" r="5.5" fill="#febc2e"/><circle cx="74" cy="36" r="5.5" fill="#28c840"/><text x="160" y="41" text-anchor="middle" font-size="12" fill="#9aa6b8">Terminal</text><text x="34" y="80" font-size="13" fill="#e5e7eb" font-family="IBM Plex Mono,monospace">yourname@Mac ~ %</text><rect x="164" y="68" width="9" height="16" fill="#e5e7eb" class="blink"/><circle cx="262" cy="146" r="22" fill="#34d399"/><path d="M251 146l8 8 15-16" fill="none" stroke="#04070d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg><figcaption>This window opens. Done!</figcaption></figure></div>
     </div>
     <div class="pane" data-os="win">
-      <ol>
-        <li>Click the <b>Start</b> button (or press the <kbd>&#8862; Windows</kbd> key).</li>
-        <li>Type <b>PowerShell</b> and click <b>Windows PowerShell</b>. You don&rsquo;t need &ldquo;Run as administrator.&rdquo;</li>
-        <li>A window opens showing <code>PS C:\Users\YourName&gt;</code>. The <b>PS</b> means you&rsquo;re in the right place.</li>
-      </ol>
+      <div class="pics"><figure class="pic"><span class="pl">A</span><svg viewBox="0 0 320 200" role="img" aria-label="Click the Start button on the taskbar"><defs><linearGradient id="wg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f86d9"/><stop offset="1" stop-color="#8ec5f0"/></linearGradient></defs><rect width="320" height="200" rx="14" fill="url(#wg)"/><path d="M0 150h320v36a14 14 0 0 1-14 14H14A14 14 0 0 1 0 186z" fill="#eef1f6"/><circle cx="104" cy="175" r="21" fill="none" stroke="#f59e0b" stroke-width="3"/><rect x="94" y="165" width="9" height="9" fill="#1d6fd8"/><rect x="105" y="165" width="9" height="9" fill="#1d6fd8"/><rect x="94" y="176" width="9" height="9" fill="#1d6fd8"/><rect x="105" y="176" width="9" height="9" fill="#1d6fd8"/><rect x="138" y="165" width="20" height="20" rx="4" fill="#c5ccd8"/><rect x="168" y="165" width="20" height="20" rx="4" fill="#c5ccd8"/><rect x="198" y="165" width="20" height="20" rx="4" fill="#c5ccd8"/><path d="M112 150l0 26 7-6 5 11 5-2-5-11 9-1z" fill="#fff" stroke="#111" stroke-width="1.6" stroke-linejoin="round" transform="translate(2,28)"/><rect x="64" y="108" width="80" height="30" rx="15" fill="#04070d"/><path d="M98 138l6 7 6-7z" fill="#04070d"/><text x="104" y="128" text-anchor="middle" font-size="13" font-weight="800" fill="#fcd34d">START</text></svg><figcaption>Click <b>Start</b></figcaption></figure><figure class="pic"><span class="pl">B</span><svg viewBox="0 0 320 200" role="img" aria-label="Type PowerShell and click Windows PowerShell"><rect width="320" height="200" rx="14" fill="#4f86d9"/><rect x="22" y="14" width="276" height="172" rx="12" fill="#f3f3f3"/><rect x="36" y="28" width="248" height="34" rx="17" fill="#fff" stroke="#1d6fd8" stroke-width="2"/><circle cx="56" cy="44" r="6" fill="none" stroke="#555" stroke-width="2"/><line x1="60" y1="48" x2="65" y2="53" stroke="#555" stroke-width="2" stroke-linecap="round"/><text x="74" y="50" font-size="15" font-weight="600" fill="#111">PowerShell</text><rect x="158" y="35" width="2" height="20" fill="#1d6fd8"/><text x="38" y="84" font-size="11" font-weight="700" fill="#555">Best match</text><rect x="34" y="92" width="252" height="56" rx="8" fill="#dbe8fb" stroke="#1d6fd8" stroke-width="2"/><rect x="46" y="102" width="36" height="36" rx="7" fill="#012456"/><text x="52" y="126" font-size="13" font-weight="700" fill="#fff" font-family="IBM Plex Mono,monospace">&gt;_</text><text x="92" y="118" font-size="15" font-weight="700" fill="#111">Windows PowerShell</text><text x="92" y="135" font-size="11" fill="#555">App</text><path d="M240 118l0 26 7-6 5 11 5-2-5-11 9-1z" fill="#fff" stroke="#111" stroke-width="1.6" stroke-linejoin="round"/><text x="160" y="172" text-anchor="middle" font-size="11" fill="#555">Windows 11 may show "Terminal". That works too.</text></svg><figcaption>Type <b>PowerShell</b>, click it</figcaption></figure><figure class="pic"><span class="pl">C</span><svg viewBox="0 0 320 200" role="img" aria-label="The blue PowerShell window is open"><rect width="320" height="200" rx="14" fill="#141c2a"/><rect x="20" y="22" width="280" height="156" rx="8" fill="#012456" stroke="#3b475d"/><rect x="20" y="22" width="280" height="28" rx="8" fill="#1f2937"/><rect x="20" y="40" width="280" height="10" fill="#1f2937"/><text x="32" y="41" font-size="11" fill="#cbd5e1">Windows PowerShell</text><text x="286" y="41" text-anchor="end" font-size="12" fill="#cbd5e1">—  ☐  ✕</text><text x="34" y="80" font-size="13" fill="#fff" font-family="IBM Plex Mono,monospace"><tspan font-weight="800" fill="#fcd34d">PS</tspan> C:\Users\You&gt;</text><rect x="164" y="68" width="9" height="16" fill="#fff" class="blink"/><circle cx="262" cy="146" r="22" fill="#34d399"/><path d="M251 146l8 8 15-16" fill="none" stroke="#04070d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg><figcaption>A blue window with <b>PS</b>. Done!</figcaption></figure></div>
+      <div class="note warn"><b>Black window with no PS?</b> That&rsquo;s Command Prompt. Close it and search <b>PowerShell</b> again.</div>
     </div>
+    <div class="note"><b>Leave this window open.</b> Step 4 pastes into it.</div>
     <button class="mark" type="button">&#10003; My terminal is open</button>
   </section>
 
