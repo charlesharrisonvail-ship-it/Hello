@@ -30,6 +30,7 @@ and the site is plain HTML.
 - `tools/open-generative-ai/` — free Windows setup notes for Open Generative AI (Anil Matcha's AI image/video studio with Cinema Studio); local models only, no paid MuAPI key; source is not vendored
 - `tools/harvey/` — free Windows setup notes and a leads-only config for Harvey (ethanplusai/harvey, MIT; AI lead-finding agent that runs on the Claude plan); finds agents and brokerages in 23 Colorado ski towns via Serper's free tier, email and LinkedIn off; source is not vendored
 - `tools/null-motion/` — free Windows setup notes for Null Motion (blixvip/NullMotion, MIT; finished motion-graphics ad over its HyperFrames drafts, MP4 export); local, zero dependencies, needs Node 22+; source is not vendored
+- `tools/freefield/` — Windows setup notes for Freefield (neuregex/freefield, MIT; open-source Higgsfield on ComfyUI, 120 apps incl. Cinema Studio); runs on your own NVIDIA GPU (free) or on Modal (paid); source is not vendored
 - `is-this-for-you-script.md` — script for the Lead to Keys screening video
 
 ## Conventions
