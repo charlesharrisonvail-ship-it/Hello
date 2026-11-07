@@ -12,16 +12,27 @@ fix them with whatever you hit.
 
 ## Read this first: what is free and what is not
 
-**Charles does not pay for AI tools.** Freefield itself is free and has no
-account, key or credits. The cost is *where the GPU lives*:
+**Charles does not pay for AI tools, and always uses free models.** Freefield
+itself is free and has no account, key or credits, and every model it uses is
+an open-weights file you download. The cost is *where the GPU lives*:
 
-| Route | Cost | What it needs |
+| Route | Cost | Status |
 |---|---|---|
-| **A. Your own GPU** (`tools/local_backend.py`) | Free | An NVIDIA card with enough VRAM. Most apps want **24 GB**; a few are small (see the table below). A ThinkPad without a separate NVIDIA card will not run the video apps. |
-| **B. Modal** (cloud GPU) | **Paid, per second of GPU time** | A Modal account and a card. Upstream's own estimate is about $0.007 for a Soul ID run on an L40S, but several video apps need an H100 or 48 GB card. Check Modal's current pricing and any free credit yourself before signing up. |
+| **A. Your own GPU** (`tools/local_backend.py`) | Free | **The only route for Charles.** His laptop is an **AMD Ryzen AI Pro 7** with its own graphics. |
+| **B. Modal** (cloud GPU) | Paid, per second of GPU time | **Not used.** Do not sign up. |
 
-If the laptop has no suitable NVIDIA GPU, Route A is not available and Route B
-costs money. Say so rather than signing up. The free fallback is
+**AMD caveat (not verified).** Upstream's README tells you to install "the
+PyTorch build for your GPU", and every lab run it reports was on NVIDIA cards
+(L40S, H100) on Modal. It does not say that an AMD card has been tested.
+PyTorch has AMD builds (ROCm), but whether this laptop's graphics are supported
+on Windows, and whether Freefield's pinned ComfyUI nodes run on them, is
+unknown until someone tries. Start with the model-free `smoke` app, then one
+small image app, and report what happens. A Ryzen AI laptop's graphics usually
+share system memory rather than having their own VRAM, so the *VRAM* numbers
+below are really "memory the model needs"; check what the laptop has in
+Settings → System → Display → Advanced display, or Task Manager → Performance → GPU.
+
+If Freefield will not run on the laptop, the free fallback is
 [Open Generative AI](../open-generative-ai/README.md)'s local Image Studio.
 
 ## What fits on a card
@@ -39,10 +50,11 @@ From upstream's app table ("On a 24 GB card"). Largest phase of each app:
 | `video`, `speak`, `talking` | 21.5 GB, tight on 24 GB |
 | `cinema-video`, `h3-video`, `dub`, `reshoot` | Needs Modal-class memory (27 to 44 GB) |
 
-So an NVIDIA card with 12 to 16 GB runs the image apps; the video apps want
-24 GB or more.
+So the image apps need roughly 12 to 18 GB of graphics memory; the video apps
+want 24 GB or more, and four of them need more than a 24 GB card has. Start
+with the small apps (`remove-bg`, `upscale`, `cinema-studio`).
 
-## Install (Windows, Route A — your own NVIDIA GPU)
+## Install (Windows, Route A — your own GPU)
 
 Needs Node 22.6+, Python 3.10+ and Git.
 
@@ -55,8 +67,10 @@ Needs Node 22.6+, Python 3.10+ and Git.
 
    The repo is about 211 MB (example images and videos live in `docs/media`).
 2. Make a Python virtualenv and install the **PyTorch build for your GPU**
-   from [pytorch.org](https://pytorch.org) first — upstream requires this
-   before the next step.
+   first — upstream requires this before the next step. For this AMD laptop
+   that means an AMD (ROCm) build; check pytorch.org and AMD's own ROCm-on-
+   Windows page for what is currently offered for Ryzen AI graphics. This is
+   the step most likely to fail (see the AMD caveat above).
 3. Check what is missing: `python tools/doctor.py`. It reports Node, Modal
    login, Hugging Face licence access per model, and `.env`.
 4. Set up ComfyUI and its pinned custom nodes (once):
