@@ -26,6 +26,7 @@ and the site is plain HTML.
 - `.claude/continuity/` — the Continuity kit that loads `ROLE.md`, `PROJECT.md`, `DECISIONS.md`, and `STATE.md` at every session start
 - `.claude/memory/` — one fact per file, searched with `python3 .claude/continuity/recall.py <terms>`
 - `docs/` — the AiRE Estate site (public; carries pricing, refund terms, privacy, and terms of service)
+- `harrison-development/` — Harrison Development (HD), a third brand: development marketing and licensed sales, static preview site (not deployed). Its own rules are in `.claude/memory/harrison-development.md`; the EpiVail rules do not apply to it
 - `tools/jarvis/` — Windows setup script and notes for installing Jarvis (third-party local voice assistant); source is not vendored
 - `tools/open-generative-ai/` — free Windows setup notes for Open Generative AI (Anil Matcha's AI image/video studio with Cinema Studio); local models only, no paid MuAPI key; source is not vendored
 - `tools/harvey/` — free Windows setup notes and a leads-only config for Harvey (ethanplusai/harvey, MIT; AI lead-finding agent that runs on the Claude plan); finds agents and brokerages in 23 Colorado ski towns via Serper's free tier, email and LinkedIn off; source is not vendored

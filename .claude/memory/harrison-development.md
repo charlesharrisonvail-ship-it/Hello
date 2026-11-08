@@ -1,0 +1,13 @@
+---
+name: harrison-development
+description: Harrison Development, Charles's third brand (development marketing and sales); where it lives and the rules decided 2026-11-08
+---
+
+**Harrison Development (HD)** is a third brand, separate from EpiVail and AiRE Estate.
+Built 2026-11-08 in `harrison-development/` (static preview, not deployed).
+
+- Offer: development marketing + licensed sales for developers, builders, landowners in the Vail Valley. Not construction, fundraising or ownership.
+- Charles approved using his signature phone and email (user-provided, pending broker review) and showing "AiRE Instructor" discreetly, plain text in About only.
+- Earlier project presentations (Dowd Junction, Red Mountain Ranch, Apogean) name other developers' projects, so they stay **private pitches**, never public on the HD site.
+- Unverified until checked: license, credentials, name/trademark, broker-approved attribution. See `harrison-development/docs/VERIFICATION.md`.
+- Does not use the EpiVail signature. Never publish, buy a domain or send outreach without Charles's say.
