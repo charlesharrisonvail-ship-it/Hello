@@ -9,7 +9,7 @@
 window.HD_CONFIG = {
   brandName: "Harrison Development",
   descriptor: "Development Marketing & Sales",
-  tagline: "Local expertise. Intelligent marketing. Strategic sales.",
+  tagline: "Mountain-market expertise. Intelligent marketing. Strategic sales.",
 
   // Proposed attribution. Pending managing-broker review (see LAUNCH-CHECKLIST.md).
   attribution: "Led by Charles Harrison. Real estate brokerage services provided through Epique Realty.",
@@ -28,7 +28,7 @@ window.HD_CONFIG = {
   // Existing professional page (user-provided).
   professionalSite: "https://charlesharrison.epiquerealty.com/",
 
-  serviceArea: "Vail Valley, Colorado (Vail through Gypsum)",
+  serviceArea: "Colorado and the Rocky Mountain region",
 
   // Business and website operator details for the privacy page. UNKNOWN until Charles confirms.
   // Do not claim LLC status, and do not invent a street address.

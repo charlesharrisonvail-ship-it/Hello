@@ -4,7 +4,7 @@ Draft only. Prices and contract terms are left for negotiation and professional 
 
 ## Short pitch
 
-> Your project needs a clear story, a defined buyer, and someone who can carry the conversation through to a sale. Harrison Development connects local market knowledge, AI-enhanced marketing, and licensed real estate representation. Let's discuss your project and where marketing and sales support could make a difference.
+> Your project needs a clear story, a defined buyer, and someone who can carry the conversation through to a sale. Harrison Development connects mountain-market knowledge, AI-enhanced marketing, and licensed real estate representation. Let's discuss your project and where marketing and sales support could make a difference.
 
 Sign-off for Harrison Development messages: *Charles Harrison, Harrison Development.* Keep this separate from the EpiVail signature in `CLAUDE.md`. Add the broker-approved attribution line once it exists.
 
