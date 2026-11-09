@@ -194,17 +194,6 @@ h3{font-size:1.3rem;line-height:1.25}
 /* ===== v2: new sections ===== */
 /* Concept studies */
 .disclaimer{border-left:4px solid var(--ink);background:var(--tint);padding:14px 18px;margin:28px 0 0;max-width:80ch;font-size:15px;color:var(--ink);line-height:1.55}
-.tabs{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px}
-.tabs [role="tab"]{font:600 16px/1.2 var(--sans);padding:14px 20px;min-height:52px;border:2px solid var(--ink);background:transparent;color:var(--ink);border-radius:4px;cursor:pointer;text-align:left}
-.tabs [role="tab"][aria-selected="true"]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
-.tabs [role="tab"]:not([aria-selected="true"]):hover{border-color:var(--accent);color:var(--accent)}
-.panel{display:grid;gap:28px;margin-top:28px;padding-top:28px;border-top:2px solid var(--ink)}
-@media(min-width:900px){.panel{grid-template-columns:1fr 1.05fr;gap:56px;align-items:start}}
-.study-art{width:100%;height:auto;display:block;border-radius:6px;border:1px solid var(--line-dark)}
-.study-art .draw{fill:none;stroke:#DFFF1A;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
-.study-art .river{stroke:#A9B1B7}
-.study-art .blocks rect{fill:#D5DBDF;opacity:.92}
-.study-art .ground{stroke:#D5DBDF;stroke-width:2}
 .kicker{font-size:14px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--ink-soft);margin:0 0 8px}
 .study-copy h3{font-size:clamp(1.6rem,3.4vw,2.2rem);margin-bottom:16px}
 .study-copy h4{font:700 14px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;margin:26px 0 10px;color:var(--ink)}
@@ -275,6 +264,25 @@ h3{font-size:1.3rem;line-height:1.25}
 .film-btn:hover{background:var(--accent);color:var(--on-accent)}
 .film figcaption{padding:10px var(--gutter);font-size:14px;color:var(--paper-soft);background:var(--charcoal)}
 
+/* Concept studies: real work shown inline, no tabs */
+.study{display:grid;gap:30px;margin-top:56px;padding-top:40px;border-top:2px solid var(--ink)}
+@media(min-width:960px){.study{grid-template-columns:1.1fr .9fr;gap:64px;align-items:start}.study-flip{grid-template-columns:.9fr 1.1fr}.study-flip .study-media{order:2}.study-flip .study-copy{order:1}}
+.study-media{min-width:0}
+.browser{background:#0E1114;border:1px solid var(--line-light);border-radius:10px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.45)}
+.browser-bar{display:flex;align-items:center;gap:7px;padding:11px 14px;background:#1A2026;border-bottom:1px solid var(--line-light)}
+.browser-bar span{width:10px;height:10px;border-radius:50%;background:#667078}
+.browser-bar em{margin-left:10px;font:500 13px/1 var(--sans);font-style:normal;color:var(--paper-soft)}
+.scroll-box{overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#667078 #14181C}
+.browser-scroll{height:clamp(360px,52vw,560px)}
+.scroll-box img{display:block;width:100%;height:auto}
+.scroll-box:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.phones{display:flex;gap:22px;justify-content:center;align-items:flex-start;flex-wrap:wrap}
+.phone{margin:0;width:min(250px,44vw);min-width:200px}
+.phone-screen{position:relative;aspect-ratio:9/16;background:#0E1114;border:7px solid #2C353D;border-radius:30px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.45)}
+.phone-screen video{display:block;width:100%;height:100%;object-fit:cover;background:#0E1114}
+.phone figcaption{margin-top:12px;text-align:center;font-size:14px;color:var(--paper-soft)}
+.media-note{margin:14px 0 0;font-size:14px;color:var(--paper-soft);text-align:center}
+
 /* Portrait */
 .portrait{position:relative;margin:34px 0 0;max-width:340px}
 .portrait .frame{position:relative}
@@ -328,22 +336,10 @@ h3{font-size:1.3rem;line-height:1.25}
   @keyframes cue{0%{translate:0 0;opacity:1}70%{translate:0 16px;opacity:0}100%{translate:0 0;opacity:0}}
   .scroll-cue span{animation:cue 2s ease-in-out infinite}
 
-  /* panels and drawings */
-  @keyframes panel-in{from{opacity:0;translate:0 16px}}
-  .panel:not([hidden]){animation:panel-in .55s cubic-bezier(.2,.7,.2,1) both}
-  @keyframes draw{from{stroke-dashoffset:1}}
-  .study-art .draw{stroke-dasharray:1}
-  .panel:not([hidden]) .study-art .draw{animation:draw 1.8s ease-out both}
-  .study-art .d2{animation-delay:.25s!important}.study-art .d3{animation-delay:.5s!important}.study-art .d4{animation-delay:.7s!important}
-  @keyframes rise{from{opacity:0;translate:0 10px}}
-  .panel:not([hidden]) .study-art .blocks rect{animation:rise .6s ease-out both}
-  .study-art .blocks rect:nth-child(2){animation-delay:.12s!important}.study-art .blocks rect:nth-child(3){animation-delay:.24s!important}
-  .study-art .blocks rect:nth-child(4){animation-delay:.36s!important}.study-art .blocks rect:nth-child(5){animation-delay:.48s!important}
-  .study-art .blocks rect:nth-child(6){animation-delay:.6s!important}.study-art .blocks rect:nth-child(7){animation-delay:.72s!important}.study-art .blocks rect:nth-child(8){animation-delay:.84s!important}
+  /* map ping */
   @keyframes ping{from{scale:1;opacity:.9}to{scale:3.2;opacity:0}}
   .map .town.active .ring,.map .town.hover .ring{animation:ping 1.7s ease-out infinite}
-  .tabs [role="tab"]{transition:background .2s,color .2s}
-
+  
   /* fallback reveal for browsers without scroll-driven animations (JS adds .rv-js) */
   .rv-js{opacity:0;translate:0 26px;transition:opacity .7s ease,translate .7s cubic-bezier(.2,.7,.2,1)}
   .rv-js.in{opacity:1;translate:0 0}
@@ -382,8 +378,7 @@ h3{font-size:1.3rem;line-height:1.25}
 /* Reduced motion: keep everything static and readable */
 @media (prefers-reduced-motion: reduce) {
   html{scroll-behavior:auto}
-  .btn,.nav-cta,.download,.tabs [role="tab"]{transition:none}
-  .progress{display:none}
+  .btn,.nav-cta,.download,  .progress{display:none}
   .map .ring{opacity:0}
   .map .town.active .ring,.map .town.hover .ring{opacity:1}
 }

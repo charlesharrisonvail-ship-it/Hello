@@ -171,28 +171,6 @@
     label();
   }
 
-  /* ---------- Concept study tabs ---------- */
-  var tabs = Array.prototype.slice.call(doc.querySelectorAll('.tabs [role="tab"]'));
-  function selectTab(tab, focus) {
-    tabs.forEach(function (t) {
-      var on = t === tab;
-      t.setAttribute("aria-selected", String(on)); t.tabIndex = on ? 0 : -1;
-      var p = $(t.getAttribute("aria-controls")); if (p) p.hidden = !on;
-    });
-    if (focus) tab.focus();
-  }
-  tabs.forEach(function (t, i) {
-    t.addEventListener("click", function () { selectTab(t, false); });
-    t.addEventListener("keydown", function (e) {
-      var n = null;
-      if (e.key === "ArrowRight") n = tabs[(i + 1) % tabs.length];
-      else if (e.key === "ArrowLeft") n = tabs[(i - 1 + tabs.length) % tabs.length];
-      else if (e.key === "Home") n = tabs[0];
-      else if (e.key === "End") n = tabs[tabs.length - 1];
-      if (n) { e.preventDefault(); selectTab(n, true); }
-    });
-  });
-
   /* ---------- Markets: region buttons mark the map ---------- */
   var towns = doc.querySelectorAll(".map .town"), rbtns = doc.querySelectorAll(".region-btn");
   function townFor(r) { return doc.querySelector('.map .town[data-region="' + r + '"]'); }
