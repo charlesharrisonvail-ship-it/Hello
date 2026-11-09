@@ -267,7 +267,7 @@ const EndCard: React.FC = () => {
       </div>
       <Rise delay={18}>
         <div style={{ fontFamily: "Manrope", fontWeight: 500, color: C.slate, fontSize: 34, marginTop: 56 }}>
-          Taught by a licensed, practicing agent.
+          Made for agents, by agents.
         </div>
       </Rise>
       <Rise delay={22}>
