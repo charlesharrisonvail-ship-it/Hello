@@ -25,9 +25,6 @@ window.HD_CONFIG = {
     email: "charlesharrison@epique.me"
   },
 
-  // Existing professional page (user-provided).
-  professionalSite: "https://charlesharrison.epiquerealty.com/",
-
   // Charles is licensed across the entire state of Colorado (user-provided 2026-11-09;
   // confirm on the Division of Real Estate record). Brokerage services are described as Colorado only.
   // Portrait for the About section. Put a real photo of Charles at assets/brand/charles-portrait.jpg
@@ -62,9 +59,9 @@ window.HD_CONFIG = {
   // Online scheduling. Paste the public link to a booking page (for example a Google Calendar
   // appointment schedule or a Calendly page). Empty = the site says scheduling is not set up
   // yet and asks visitors to request a time through the form. Never invent a link.
-  // TEMPORARY (Charles, 2026-11-09): this is his Epique booking page, titled "Schedule a 20 minute
-  // Epique breakdown". Replace it with a Harrison Development appointment schedule when he makes one.
-  bookingUrl: "https://calendar.app.google/zejpSpwL6aDy3VAaA",
+  // Must be a Harrison Development schedule. Never an Epique or EpiVail page (Charles, 2026-11-09):
+  // nothing on this site may link to Epique or EpiVail.
+  bookingUrl: "",
 
   // Concept studies (Dowd Junction, Red Mountain Ranch). They are independent, unsolicited
   // studies built on public information. Set to false to hide the whole section, for example

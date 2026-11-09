@@ -109,8 +109,7 @@ for (const w of [360, 390, 768, 1440]) {
   log(await page.locator('#faq details').first().evaluate(e => e.open), 'FAQ item opens');
   await page.locator('#faq').scrollIntoViewIfNeeded(); await page.screenshot({ path: SHOTS + 'faq-1440.png' });
   // booking: default honest state
-  const bk = page.locator('#bookBtn');
-  log(await bk.isVisible() && /^https:\/\/calendar\.app\.google\//.test(await bk.getAttribute('href')) && await bk.getAttribute('rel') === 'noopener' && await bk.getAttribute('target') === '_blank', 'booking button opens the configured scheduling link in a new tab');
+  log(/not set up yet/i.test(await page.locator('#bookingText').innerText()) && await page.locator('#bookBtn').isHidden(), 'no Epique booking link: booking says scheduling is not set up and shows no button');
   const r = await page.request.get(BASE + '/assets/downloads/launch-readiness-checklist.pdf');
   log(r.status() === 200 && /pdf/.test(r.headers()['content-type'] || ''), 'checklist PDF downloads', r.headers()['content-type']);
   await ctx.close(); }
@@ -187,6 +186,19 @@ for (const w of [360, 390, 768, 1440]) {
   const rm = await p2.evaluate(() => ({ vids: [...document.querySelectorAll('video[data-bg]')].every(v => v.paused), tick: getComputedStyle(document.querySelector('.ticker-track')).animationName, toggle: document.getElementById('motionToggle').hidden }));
   log(rm.vids && rm.tick === 'none' && rm.toggle, 'reduced motion: no footage plays and the ticker stands still', JSON.stringify(rm));
   await c2.close(); }
+
+// Nothing on the site may send visitors to Epique or EpiVail (Charles, 2026-11-09)
+{ const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const page = await ctx.newPage();
+  for (const pg of ['/index.html', '/privacy.html']) {
+    await page.goto(BASE + pg); await page.waitForTimeout(400);
+    const bad = await page.evaluate(() => {
+      const urls = [...document.querySelectorAll('[href],[src],[data-src],[action],[poster]')].flatMap(e => ['href','src','data-src','action','poster'].map(a => e.getAttribute(a)).filter(Boolean));
+      const cfg = window.HD_CONFIG ? JSON.stringify(Object.fromEntries(Object.entries(window.HD_CONFIG).filter(([k]) => k !== 'contact'))) : '';
+      return urls.filter(u => !/^mailto:/i.test(u) && /epique|epivail/i.test(u)).concat(/https?:\/\/[^"]*(epique|epivail)/i.test(cfg) ? ['config: ' + cfg.match(/https?:\/\/[^"]*(epique|epivail)[^"]*/i)[0]] : []);
+    });
+    log(bad.length === 0, `${pg}: no link or setting points to an Epique or EpiVail website`, bad.join(' '));
+  }
+  await ctx.close(); }
 
 // Form behaviour
 async function formPage(viewport, cfgPatch) {
