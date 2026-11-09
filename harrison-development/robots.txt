@@ -1,0 +1,3 @@
+# STAGING / PREVIEW: do not index. Remove this Disallow only during an authorized production launch.
+User-agent: *
+Disallow: /
