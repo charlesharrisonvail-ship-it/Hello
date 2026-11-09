@@ -119,6 +119,7 @@ h3{font-size:1.3rem;line-height:1.25}
   .services li{grid-template-columns:90px 340px 1fr;gap:32px;align-items:baseline;padding:36px 0}
 }
 
+.trio{padding-bottom:0}
 .who{margin:44px 0 0;display:grid;gap:0}
 .who div{padding:24px 0;border-top:1px solid var(--line-light)}
 .who dt{font-family:var(--serif);font-weight:600;font-size:1.5rem;margin-bottom:6px}
