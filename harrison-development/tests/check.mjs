@@ -101,7 +101,8 @@ for (const w of [360, 390, 768, 1440]) {
   log(await page.locator('#faq details').first().evaluate(e => e.open), 'FAQ item opens');
   await page.locator('#faq').scrollIntoViewIfNeeded(); await page.screenshot({ path: SHOTS + 'faq-1440.png' });
   // booking: default honest state
-  log(/not set up yet/i.test(await page.locator('#bookingText').innerText()) && await page.locator('#bookBtn').isHidden(), 'booking says scheduling is not set up (no invented link)');
+  const bk = page.locator('#bookBtn');
+  log(await bk.isVisible() && /^https:\/\/calendar\.app\.google\//.test(await bk.getAttribute('href')) && await bk.getAttribute('rel') === 'noopener' && await bk.getAttribute('target') === '_blank', 'booking button opens the configured scheduling link in a new tab');
   const r = await page.request.get(BASE + '/assets/downloads/launch-readiness-checklist.pdf');
   log(r.status() === 200 && /pdf/.test(r.headers()['content-type'] || ''), 'checklist PDF downloads', r.headers()['content-type']);
   await ctx.close(); }
@@ -119,6 +120,12 @@ for (const w of [360, 390, 768, 1440]) {
   log(await p2.locator('#portrait').isVisible() && ok && await p2.locator('#portraitImg').getAttribute('alt') === 'Portrait of Charles Harrison', 'configured portrait loads and has alt text');
   
   await c2.close(); }
+{ // with no booking URL, the site says so honestly and shows no button
+  const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const page = await ctx.newPage();
+  await page.addInitScript(() => { let c; Object.defineProperty(window, 'HD_CONFIG', { configurable: true, set(v) { c = Object.assign(v, { bookingUrl: '' }); }, get() { return c; } }); });
+  await page.goto(BASE + '/index.html');
+  log(/not set up yet/i.test(await page.locator('#bookingText').innerText()) && await page.locator('#bookBtn').isHidden(), 'no booking URL: site says scheduling is not set up and shows no button (no invented link)');
+  await ctx.close(); }
 { // configured booking URL and hidden concepts are honored
   const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const page = await ctx.newPage();
   await page.addInitScript(() => { let c; Object.defineProperty(window, 'HD_CONFIG', { configurable: true, set(v) { c = Object.assign(v, { bookingUrl: 'https://booking.example.test/hd', showConcepts: false }); }, get() { return c; } }); });

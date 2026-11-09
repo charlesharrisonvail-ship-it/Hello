@@ -24,3 +24,4 @@ Built 2026-11-08 in `harrison-development/` (static preview, not deployed).
 - He prefers free generation routes ("freehiggsfield"): the Higgsfield video cost 12 credits (balance was 200.8); ask before any spend. Brand film is built but awaiting his approval.
 - Portrait (2026-11-09): Charles supplied and chose an image of himself in a cream blazer in front of a modern house; it is cropped and live in About. It may be AI-generated: open question whether to label it. Do not swap it for any other headshot.
 - Decisions (2026-11-09): keep the brand film; the portrait stays unlabeled. Charles said labeling the portrait is "none of your business"; do not raise it again.
+- Booking (2026-11-09): `bookingUrl` is temporarily his Epique schedule ("Schedule a 20 minute Epique breakdown"), at his direction. His Epique page's two links and the one he sent are all the same schedule. Swap for a Harrison Development appointment schedule when he makes one.

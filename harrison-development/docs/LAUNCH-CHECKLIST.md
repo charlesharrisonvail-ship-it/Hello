@@ -26,7 +26,7 @@ Technical readiness is separate from factual, brokerage and publication readines
 
 ## 2. Decisions and integrations
 
-- [ ] **Booking link.** Create a public scheduling page (for example a Google Calendar appointment schedule) and paste it into `bookingUrl` in `js/config.js`.
+- [ ] **Booking link.** Currently a temporary link to the Epique schedule ("Schedule a 20 minute Epique breakdown"), by Charles's choice. Replace it with a Harrison Development appointment schedule (Google Calendar: Create, Appointment schedule, then Share) and update `bookingUrl` in `js/config.js`.
 - [ ] Confirm each market region listed is one Charles wants to advertise.
 - [ ] Review the FAQ answers and the checklist PDF (`assets/downloads/`); regenerate the PDF with `node tests/build-pdf.mjs` after any change.
 

@@ -62,7 +62,9 @@ window.HD_CONFIG = {
   // Online scheduling. Paste the public link to a booking page (for example a Google Calendar
   // appointment schedule or a Calendly page). Empty = the site says scheduling is not set up
   // yet and asks visitors to request a time through the form. Never invent a link.
-  bookingUrl: "",
+  // TEMPORARY (Charles, 2026-11-09): this is his Epique booking page, titled "Schedule a 20 minute
+  // Epique breakdown". Replace it with a Harrison Development appointment schedule when he makes one.
+  bookingUrl: "https://calendar.app.google/zejpSpwL6aDy3VAaA",
 
   // Concept studies (Dowd Junction, Red Mountain Ranch). They are independent, unsolicited
   // studies built on public information. Set to false to hide the whole section, for example
