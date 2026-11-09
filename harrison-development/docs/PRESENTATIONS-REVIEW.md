@@ -19,3 +19,6 @@ The brief says conceptual project examples are **private pitches** unless the ow
 1. **Private sample (recommended):** use the Dowd Junction redesign as the "one excellent private sample" from the first-month plan. Share it by link or PDF with a named prospect only. Check the images' rights first (they are the developer's).
 2. **Public "Sample work" later:** make a clearly labeled **fictional** project (no real name, no real site), or get written owner permission for a real one. Label AI-generated imagery as AI-generated.
 3. Keep the AiRE Estate intro video (`AiRE-Estate-Intro.mp4`) off this site. It belongs to a separate business.
+
+## Update 2026-11-09
+Charles asked for his example projects to appear on the site. They were added as two clearly labeled **concept studies** (Dowd Junction and Red Mountain Ranch) in their own section, with a not-client-work disclaimer, original line art instead of any third-party imagery, and no developer, architect or agency names. The section can be hidden with `showConcepts: false`. Open risks and the timing question are in `LAUNCH-CHECKLIST.md`, section 1b.

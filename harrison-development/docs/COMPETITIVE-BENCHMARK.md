@@ -33,3 +33,8 @@ Date: 2026-11-09. Method: public homepages read through Firecrawl (about 38 cred
 ## Cautions
 - Do not copy "only agency" style claims; they are exposure, not proof.
 - Do not borrow competitors' numbers, project names or quotes.
+
+## Status after the 2026-11-09 build
+- Done: named Colorado markets with an interactive map (statewide license); booking section (needs a real scheduling link); downloadable launch-readiness checklist; FAQ; concept studies; full motion and UI polish.
+- Needs Charles: proof of track record (verified production, testimonials), a real portrait and bio, a founder video, market reports, third-party reviews.
+- Held until launch: structured data, sitemap, canonical URLs, Google Business Profile.

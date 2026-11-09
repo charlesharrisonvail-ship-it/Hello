@@ -3,23 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Harrison Development | Development Marketing &amp; Sales, Colorado and the Rocky Mountain Region</title>
-  <meta name="description" content="Development marketing and licensed real estate sales for developers, builders and landowners in Colorado and the Rocky Mountain region. Mountain-market expertise. Intelligent marketing. Strategic sales.">
+  <title>Harrison Development | Development Marketing &amp; Sales, Colorado</title>
+  <meta name="description" content="Development marketing and licensed real estate sales for developers, builders and landowners across Colorado, with a focus on the mountain markets. Mountain-market expertise. Intelligent marketing. Strategic sales.">
   <!-- STAGING: remove this tag only during an authorized production launch. -->
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#14181C">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Harrison Development | Development Marketing & Sales">
-  <meta property="og:description" content="Mountain-market expertise. Intelligent marketing. Strategic sales. Serving developers, builders and landowners in Colorado and the Rocky Mountain region.">
+  <meta property="og:description" content="Mountain-market expertise. Intelligent marketing. Strategic sales. Serving developers, builders and landowners across Colorado.">
   <meta property="og:image" content="assets/brand/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <!-- Canonical URL and sitemap are added only once the final domain is known. -->
+  <!-- Canonical URL, sitemap and structured data are added only once the final domain and facts are confirmed. -->
   <link rel="icon" href="assets/brand/hd-favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <a class="skip" href="#main">Skip to main content</a>
+  <div class="progress" aria-hidden="true"></div>
   <div class="preview-banner" id="previewBanner" hidden>
     Preview build, not published. Brand, brokerage attribution and contact details are pending review.
   </div>
@@ -40,7 +41,9 @@
       <nav class="site-nav" id="siteNav" aria-label="Main">
         <ul>
           <li><a href="#services">Services</a></li>
+          <li data-concepts-nav><a href="#concepts">Concepts</a></li>
           <li><a href="#approach">Approach</a></li>
+          <li><a href="#markets">Markets</a></li>
           <li><a href="#about">About</a></li>
           <li><a class="nav-cta" href="#contact">Discuss Your Project</a></li>
         </ul>
@@ -49,22 +52,24 @@
   </header>
 
   <main id="main">
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="hero-glow" aria-hidden="true"></div>
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Development Marketing &amp; Sales</p>
+          <p class="eyebrow hero-in" style="--d:0">Development Marketing &amp; Sales</p>
           <h1 id="hero-title">Your next development deserves a sales strategy from day one.</h1>
-          <p class="lede">From the first concept to the final closing, Harrison Development combines mountain-market real estate expertise, advanced AI marketing, and personal sales representation to bring your project to market.</p>
-          <div class="cta-row">
-            <a class="btn btn-light" href="#contact">Discuss Your Project</a>
+          <p class="lede hero-in" style="--d:6">From the first concept to the final closing, Harrison Development combines mountain-market real estate expertise, advanced AI marketing, and personal sales representation to bring your project to market.</p>
+          <div class="cta-row hero-in" style="--d:7">
+            <a class="btn btn-light magnetic" href="#contact">Discuss Your Project</a>
             <a class="btn btn-ghost" href="#services">Explore Our Services</a>
           </div>
-          <p class="support">Serving developers, builders, and landowners across Colorado and the Rocky Mountain region.</p>
+          <p class="support hero-in" style="--d:8">Serving developers, builders, and landowners across Colorado, with a focus on the mountain markets.</p>
         </div>
-        <figure class="hero-art">
-          <img src="assets/brand/hd-logo-light-transparent.png" width="1000" height="652" alt="Harrison Development logo: an HD monogram over a mountain range, with the words Harrison Development, Development Marketing and Sales.">
+        <figure class="hero-art hero-in" style="--d:3">
+          <img class="hero-logo" src="assets/brand/hd-logo-light-transparent.png" width="1000" height="652" alt="Harrison Development logo: an HD monogram over a mountain range, with the words Harrison Development, Development Marketing and Sales.">
         </figure>
       </div>
+      <a class="scroll-cue" href="#value-title" aria-label="Scroll to the next section"><span aria-hidden="true"></span></a>
     </section>
 
     <section class="attribution-band" aria-label="Brokerage attribution">
@@ -75,8 +80,8 @@
 
     <section class="section value" aria-labelledby="value-title">
       <div class="wrap split">
-        <h2 id="value-title">A connected approach to marketing and sales.</h2>
-        <div>
+        <h2 id="value-title" class="rv">A connected approach to marketing and sales.</h2>
+        <div class="rv">
           <p class="lede-dark">Strong marketing starts with understanding what buyers need. We connect market research, project presentation, inquiry follow-up, and licensed sales representation so your project has a clear path from initial interest to a closing conversation.</p>
         </div>
       </div>
@@ -84,42 +89,42 @@
 
     <section class="section trio" aria-labelledby="trio-title">
       <div class="wrap">
-        <p class="eyebrow eyebrow-dark">Why Harrison Development</p>
-        <h2 id="trio-title">Three disciplines, one point of contact.</h2>
+        <p class="eyebrow eyebrow-dark rv">Why Harrison Development</p>
+        <h2 id="trio-title" class="rv">Three disciplines, one point of contact.</h2>
         <dl class="who">
-          <div><dt>Mountain-market knowledge</dt><dd>Colorado mountain-market knowledge that informs positioning, pricing and launch planning.</dd></div>
-          <div><dt>AI instruction</dt><dd>Teaches AI to real estate professionals, so it is used with judgment and every output is reviewed.</dd></div>
-          <div><dt>Licensed sales</dt><dd>Showings, negotiation, contracts and closing coordination through Epique Realty.</dd></div>
+          <div class="rv"><dt>Mountain-market knowledge</dt><dd>Colorado mountain-market knowledge that informs positioning, pricing and launch planning.</dd></div>
+          <div class="rv"><dt>AI instruction</dt><dd>Teaches AI to real estate professionals, so it is used with judgment and every output is reviewed.</dd></div>
+          <div class="rv"><dt>Licensed sales</dt><dd>Showings, negotiation, contracts and closing coordination through Epique Realty.</dd></div>
         </dl>
       </div>
     </section>
 
     <section class="section section-tint" id="services" aria-labelledby="services-title">
       <div class="wrap">
-        <p class="eyebrow eyebrow-dark">Services</p>
-        <h2 id="services-title">Five services, one path from concept to closing.</h2>
+        <p class="eyebrow eyebrow-dark rv">Services</p>
+        <h2 id="services-title" class="rv">Five services, one path from concept to closing.</h2>
         <ol class="services">
-          <li>
+          <li class="rv">
             <span class="num" aria-hidden="true">01</span>
             <h3>Market Positioning</h3>
             <p>Comparable sales, competitive research, buyer profiles, and pricing recommendations to inform your project&rsquo;s market strategy. This is marketing research, not an appraisal, engineering or entitlement service.</p>
           </li>
-          <li>
+          <li class="rv">
             <span class="num" aria-hidden="true">02</span>
             <h3>Project Branding &amp; Launch</h3>
             <p>A cohesive project identity, website, presentation materials, and launch plan built around the property and its intended buyers.</p>
           </li>
-          <li>
+          <li class="rv">
             <span class="num" aria-hidden="true">03</span>
             <h3>AI-Enhanced Marketing</h3>
             <p>Reviewed visual concepts, video, and campaign content that help communicate the project. Conceptual or AI-generated imagery is always labeled, and never implies unapproved features are actual or approved.</p>
           </li>
-          <li>
+          <li class="rv">
             <span class="num" aria-hidden="true">04</span>
             <h3>Buyer Inquiry &amp; Follow-Up</h3>
             <p>Inquiry capture, organized follow-up, qualification, appointments, and useful feedback to the development team.</p>
           </li>
-          <li class="featured">
+          <li class="rv featured">
             <span class="num" aria-hidden="true">05</span>
             <h3>Licensed Sales Representation</h3>
             <p>Showings, negotiations, contracts, and closing coordination through the brokerage arrangement described above. The sales side is what turns the marketing into closings.</p>
@@ -130,40 +135,174 @@
 
     <section class="section" aria-labelledby="who-title">
       <div class="wrap">
-        <p class="eyebrow eyebrow-dark">Who we help</p>
-        <h2 id="who-title">Built for the people who bring projects to the valley.</h2>
+        <p class="eyebrow eyebrow-dark rv">Who we help</p>
+        <h2 id="who-title" class="rv">Built for the people who bring projects to market.</h2>
         <dl class="who">
-          <div><dt>Developers</dt><dd>A dedicated partner for positioning, launch marketing, and sales.</dd></div>
-          <div><dt>Builders</dt><dd>A coordinated marketing and sales plan for your next project.</dd></div>
-          <div><dt>Landowners</dt><dd>An initial conversation about property goals, market context, and possible next steps.</dd></div>
+          <div class="rv"><dt>Developers</dt><dd>A dedicated partner for positioning, launch marketing, and sales.</dd></div>
+          <div class="rv"><dt>Builders</dt><dd>A coordinated marketing and sales plan for your next project.</dd></div>
+          <div class="rv"><dt>Landowners</dt><dd>An initial conversation about property goals, market context, and possible next steps.</dd></div>
         </dl>
       </div>
     </section>
 
     <section class="section section-dark" id="approach" aria-labelledby="approach-title">
       <div class="wrap">
-        <p class="eyebrow">Approach</p>
-        <h2 id="approach-title">How a project moves from first call to closing.</h2>
+        <p class="eyebrow rv">Approach</p>
+        <h2 id="approach-title" class="rv">How a project moves from first call to closing.</h2>
         <ol class="steps">
-          <li><span class="num" aria-hidden="true">1</span><h3>Understand the project</h3><p>Goals, site, status, timeline, and existing team.</p></li>
-          <li><span class="num" aria-hidden="true">2</span><h3>Shape the strategy</h3><p>Research, buyer needs, positioning, and sales approach.</p></li>
-          <li><span class="num" aria-hidden="true">3</span><h3>Launch and follow through</h3><p>Approved marketing, inquiry handling, showings, and brokerage services.</p></li>
-          <li><span class="num" aria-hidden="true">4</span><h3>Review and refine</h3><p>Use qualified inquiry and buyer feedback to improve the approach.</p></li>
+          <li class="rv"><span class="num" aria-hidden="true">1</span><h3>Understand the project</h3><p>Goals, site, status, timeline, and existing team.</p></li>
+          <li class="rv"><span class="num" aria-hidden="true">2</span><h3>Shape the strategy</h3><p>Research, buyer needs, positioning, and sales approach.</p></li>
+          <li class="rv"><span class="num" aria-hidden="true">3</span><h3>Launch and follow through</h3><p>Approved marketing, inquiry handling, showings, and brokerage services.</p></li>
+          <li class="rv"><span class="num" aria-hidden="true">4</span><h3>Review and refine</h3><p>Use qualified inquiry and buyer feedback to improve the approach.</p></li>
         </ol>
-        <p class="note-light">Marketing and sales inform each other: buyer questions, showing feedback, and inquiry patterns guide positioning and campaign revisions. AI assists with production and analysis. Charles, a licensed agent, reviews every output and manages client relationships and sales work personally.</p>
+        <p class="note-light rv">Marketing and sales inform each other: buyer questions, showing feedback, and inquiry patterns guide positioning and campaign revisions. AI assists with production and analysis. Charles, a licensed agent, reviews every output and manages client relationships and sales work personally.</p>
+      </div>
+    </section>
+
+    <section class="section" id="concepts" aria-labelledby="concepts-title" data-concepts>
+      <div class="wrap">
+        <p class="eyebrow eyebrow-dark rv">Concept studies</p>
+        <h2 id="concepts-title" class="rv">How we would launch a project.</h2>
+        <p class="lede-dark rv">Two independent studies, built from public information, to show how we think about a launch.</p>
+        <p class="disclaimer rv"><strong>Not client work.</strong> These are independent concept studies prepared on public information. Harrison Development is not engaged by, affiliated with, or endorsed by the Town of Avon, the Town of Eagle, or any owner, developer, architect or agency, and does not represent these projects. No homes are offered for sale or rent here.</p>
+
+        <div class="tabs rv" role="tablist" aria-label="Concept studies">
+          <button type="button" role="tab" id="tab-dowd" aria-selected="true" aria-controls="panel-dowd">Dowd Junction &middot; Avon</button>
+          <button type="button" role="tab" id="tab-red" aria-selected="false" aria-controls="panel-red" tabindex="-1">Red Mountain Ranch &middot; Eagle</button>
+        </div>
+
+        <div class="panel" id="panel-dowd" role="tabpanel" aria-labelledby="tab-dowd" tabindex="0">
+          <svg class="study-art" viewBox="0 0 420 300" role="img" aria-label="Abstract line illustration of a river bending below a mountain ridge. Concept art, not a rendering of any project.">
+            <rect width="420" height="300" fill="#14181C"/>
+            <path class="draw" pathLength="1" d="M0 130 L60 90 L110 118 L170 55 L230 112 L290 70 L350 105 L420 82" />
+            <path class="draw d2" pathLength="1" d="M0 160 L70 128 L130 150 L200 102 L260 146 L330 118 L420 140" />
+            <path class="draw d3 river" pathLength="1" d="M-10 280 C70 250 120 270 170 235 C230 195 300 230 430 175" />
+            <path class="draw d4 river" pathLength="1" d="M-10 296 C80 266 130 286 180 252 C240 212 310 246 430 192" />
+            <g class="blocks"><rect x="236" y="186" width="34" height="22"/><rect x="274" y="178" width="34" height="22"/><rect x="312" y="170" width="34" height="22"/></g>
+          </svg>
+          <div class="study-copy">
+            <p class="kicker">Planned community housing on the Eagle River near Avon</p>
+            <h3>Dowd Junction</h3>
+            <p class="record"><strong>The public record.</strong> Planning documents reviewed in October 2026 describe roughly 100 community homes in a first phase. Whether they will be rentals or for sale, and who will develop them, was not final in the public record.</p>
+            <h4>The concept</h4>
+            <ol class="concept-list">
+              <li>Plain-language eligibility guides and one clear interest list, so the people the homes are meant for can find them.</li>
+              <li>A fair-housing-minded outreach plan in English and Spanish that reaches local employers and the wider eligible community.</li>
+              <li>Application, lottery and move-in support designed to work for either rentals or sales.</li>
+            </ol>
+            <p class="study-cta"><a href="#contact">Ask for the full study</a> <span>Shared privately, on request.</span></p>
+          </div>
+        </div>
+
+        <div class="panel" id="panel-red" role="tabpanel" aria-labelledby="tab-red" tabindex="0" hidden>
+          <svg class="study-art" viewBox="0 0 420 300" role="img" aria-label="Abstract line illustration of a riverside neighborhood of small buildings under a ridgeline. Concept art, not a rendering of any project.">
+            <rect width="420" height="300" fill="#14181C"/>
+            <path class="draw" pathLength="1" d="M0 110 L80 70 L140 100 L220 40 L300 98 L360 64 L420 96" />
+            <path class="draw d2 river" pathLength="1" d="M-10 262 C90 236 160 252 230 226 C300 200 360 214 430 196" />
+            <g class="blocks">
+              <rect x="70" y="170" width="26" height="30"/><rect x="102" y="164" width="26" height="36"/><rect x="134" y="172" width="26" height="28"/>
+              <rect x="176" y="166" width="26" height="34"/><rect x="208" y="170" width="26" height="30"/><rect x="240" y="162" width="26" height="38"/>
+              <rect x="282" y="170" width="26" height="30"/><rect x="314" y="166" width="26" height="34"/>
+            </g>
+            <line class="ground" x1="40" y1="200" x2="380" y2="200"/>
+          </svg>
+          <div class="study-copy">
+            <p class="kicker">A planned riverfront neighborhood in Eagle</p>
+            <h3>Red Mountain Ranch</h3>
+            <p class="record"><strong>The public record.</strong> Town filings reviewed in November 2026 describe about 66 homes on the Eagle River. Sale or rental terms have not been published, so this study assumes neither.</p>
+            <h4>The concept</h4>
+            <ol class="concept-list">
+              <li>A story and brand direction drawn from the river, the site and the people likely to live there.</li>
+              <li>Positioning and an interest list that stay accurate whatever the final terms turn out to be.</li>
+              <li>A launch timeline with inquiry follow-up, plus a 30-second concept reel in which any AI-made visuals are labeled as concept art.</li>
+            </ol>
+            <p class="study-cta"><a href="#contact">Ask for the full study</a> <span>Shared privately, on request.</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="markets" aria-labelledby="markets-title">
+      <div class="wrap markets-grid">
+        <div>
+          <p class="eyebrow rv">Markets</p>
+          <h2 id="markets-title" class="rv">Licensed across Colorado. Rooted in the mountains.</h2>
+          <p class="lede rv">Charles is licensed to represent clients throughout the state of Colorado. The focus is the mountain communities and the places that connect to them.</p>
+          <ul class="regions" id="regions">
+            <li class="rv"><button type="button" class="region-btn" data-region="vail" aria-pressed="false">Vail Valley &amp; Eagle County</button><p>Vail, Beaver Creek, Avon, Edwards, Eagle, Gypsum, Minturn</p></li>
+            <li class="rv"><button type="button" class="region-btn" data-region="summit" aria-pressed="false">Summit County</button><p>Breckenridge, Frisco, Keystone, Dillon, Silverthorne</p></li>
+            <li class="rv"><button type="button" class="region-btn" data-region="fork" aria-pressed="false">Roaring Fork Valley</button><p>Aspen, Snowmass, Basalt, Carbondale, Glenwood Springs</p></li>
+            <li class="rv"><button type="button" class="region-btn" data-region="north" aria-pressed="false">Steamboat &amp; the northern mountains</button><p>Steamboat Springs, Winter Park, Granby, Fraser</p></li>
+            <li class="rv"><button type="button" class="region-btn" data-region="west" aria-pressed="false">Gunnison &amp; the San Juans</button><p>Crested Butte, Gunnison, Telluride, Ouray, Durango</p></li>
+            <li class="rv"><button type="button" class="region-btn" data-region="front" aria-pressed="false">Front Range &amp; Denver metro</button><p>Denver, Boulder, Fort Collins, Colorado Springs</p></li>
+          </ul>
+        </div>
+        <figure class="map rv">
+          <svg viewBox="0 0 680 500" role="img" aria-label="Illustrative outline map of Colorado with six marked regions: Vail Valley, Summit County, Roaring Fork Valley, the northern mountains, Gunnison and the San Juans, and the Front Range.">
+            <rect class="state" x="40" y="40" width="600" height="420" rx="4" pathLength="1"/>
+            <path class="divide" d="M96 40 C150 120 170 180 214 236 C250 290 200 360 170 460"/>
+            <g class="grid"><path d="M40 180H640M40 320H640M240 40V460M440 40V460"/></g>
+            <g class="town" data-region="north"><circle class="ring" cx="226" cy="95" r="8"/><circle class="dot main" cx="226" cy="95" r="6"/><circle class="dot" cx="296" cy="146" r="3"/><text class="lbl" x="240" y="101" text-anchor="start">Steamboat</text></g>
+            <g class="town" data-region="vail"><circle class="ring" cx="265" cy="183" r="8"/><circle class="dot main" cx="265" cy="183" r="6"/><circle class="dot" cx="280" cy="186" r="3"/><text class="lbl" x="250" y="178" text-anchor="end">Vail</text></g>
+            <g class="town" data-region="summit"><circle class="ring" cx="294" cy="200" r="8"/><circle class="dot main" cx="294" cy="200" r="6"/><circle class="dot" cx="308" cy="196" r="3"/><text class="lbl" x="306" y="218" text-anchor="start">Summit</text></g>
+            <g class="town" data-region="fork"><circle class="ring" cx="227" cy="230" r="8"/><circle class="dot main" cx="227" cy="230" r="6"/><circle class="dot" cx="246" cy="214" r="3"/><text class="lbl" x="211" y="237" text-anchor="end">Aspen</text></g>
+            <g class="town" data-region="west"><circle class="ring" cx="212" cy="264" r="8"/><circle class="dot main" cx="212" cy="264" r="6"/><circle class="dot" cx="142" cy="361" r="3"/><circle class="dot" cx="136" cy="432" r="3"/><text class="lbl" x="197" y="271" text-anchor="end">Gunnison</text></g>
+            <g class="town" data-region="front"><circle class="ring" cx="384" cy="172" r="8"/><circle class="dot main" cx="384" cy="172" r="6"/><circle class="dot" cx="360" cy="144" r="3"/><circle class="dot" cx="376" cy="83" r="3"/><circle class="dot" cx="398" cy="268" r="3"/><text class="lbl" x="398" y="168" text-anchor="start">Denver</text></g>
+          </svg>
+          <figcaption>Illustrative map, not to scale. Choose a region to see it marked.</figcaption>
+        </figure>
       </div>
     </section>
 
     <section class="section" id="about" aria-labelledby="about-title">
       <div class="wrap split">
         <div>
-          <p class="eyebrow eyebrow-dark">About</p>
-          <h2 id="about-title">Knows the market. Teaches the AI. Carries the sale.</h2>
+          <p class="eyebrow eyebrow-dark rv">About</p>
+          <h2 id="about-title" class="rv">Knows the market. Teaches the AI. Carries the sale.</h2>
         </div>
-        <div>
-          <p class="lede-dark">Charles Harrison, Owner, CEO, is an AI real estate industry leader who teaches AI to real estate professionals. A licensed agent with a landscape architecture background, he brings Colorado mountain-market knowledge and AI-assisted marketing to a project, and stays with it through negotiation and closing. Harrison Development puts that combination to work for developers and builders across Colorado and the Rocky Mountain region.</p>
+        <div class="rv">
+          <p class="lede-dark">Charles Harrison, Owner, CEO, is an AI real estate industry leader who teaches AI to real estate professionals. A licensed agent with a landscape architecture background, he brings Colorado mountain-market knowledge and AI-assisted marketing to a project, and stays with it through negotiation and closing. Harrison Development puts that combination to work for developers and builders across Colorado.</p>
           <p class="creds" id="credentials"></p>
           <p class="small">Credentials are provided by Charles Harrison. Real estate brokerage services provided through Epique Realty.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint" id="faq" aria-labelledby="faq-title">
+      <div class="wrap faq-grid">
+        <div>
+          <p class="eyebrow eyebrow-dark rv">Questions</p>
+          <h2 id="faq-title" class="rv">What developers and landowners ask first.</h2>
+        </div>
+        <div class="faq rv">
+          <details>
+            <summary>What does Harrison Development do?</summary>
+            <p>We help developers, builders and landowners position and launch projects, then carry the sales through to closing. That means market research, project branding and launch materials, AI-assisted marketing content, inquiry follow-up, and licensed real estate sales representation.</p>
+          </details>
+          <details>
+            <summary>Are marketing and brokerage services separate?</summary>
+            <p>Yes. The marketing scope is documented separately from brokerage services. Brokerage services and any compensation are covered only by a brokerage agreement through the brokerage. Terms are discussed in a consultation.</p>
+          </details>
+          <details>
+            <summary>Where do you work?</summary>
+            <p>Charles is licensed across the state of Colorado, with a focus on the mountain communities. See the markets above.</p>
+          </details>
+          <details>
+            <summary>How is AI used, and who checks it?</summary>
+            <p>AI helps with production and analysis, such as visual concepts, copy drafts and inquiry patterns. Charles reviews every output. Conceptual or AI-generated imagery is labeled, and never implies that unapproved features are real or approved.</p>
+          </details>
+          <details>
+            <summary>Do you guarantee buyer demand or sales results?</summary>
+            <p>No. We do not promise sales pace, pricing or returns. We aim to give your project a clear story, a defined buyer and consistent follow-up.</p>
+          </details>
+          <details>
+            <summary>I own land but have not decided what to do. Can we talk?</summary>
+            <p>Yes. An initial conversation about your goals, the market context and possible next steps carries no obligation.</p>
+          </details>
+          <details>
+            <summary>What should I send before we talk?</summary>
+            <p>A short description of the project is plenty. Please do not send confidential financial information or sensitive documents. We will tell you what we need once we have spoken.</p>
+          </details>
         </div>
       </div>
     </section>
@@ -171,13 +310,25 @@
     <section class="section section-dark final" id="contact" aria-labelledby="contact-title">
       <div class="wrap contact-grid">
         <div>
-          <p class="eyebrow">Discuss Your Project</p>
-          <h2 id="contact-title">Have land, a project in planning, or new construction to sell?</h2>
-          <p class="lede">Let&rsquo;s discuss your project, your market, and the marketing and sales support you need.</p>
+          <p class="eyebrow rv">Discuss Your Project</p>
+          <h2 id="contact-title" class="rv">Have land, a project in planning, or new construction to sell?</h2>
+          <p class="lede rv">Let&rsquo;s discuss your project, your market, and the marketing and sales support you need.</p>
+
+          <div class="booking rv" id="booking">
+            <h3>Book a consultation</h3>
+            <p id="bookingText">Online scheduling is not set up yet. Send a request with the form and we will confirm a time with you.</p>
+            <a class="btn btn-light" id="bookBtn" href="#f-name" hidden>Choose a time</a>
+          </div>
+
           <ul class="contact-list" id="contactList"></ul>
+
+          <a class="download rv" href="assets/downloads/launch-readiness-checklist.pdf" download>
+            <span class="dl-icon" aria-hidden="true"></span>
+            <span><strong>Free download: Development launch-readiness checklist</strong><br><span class="dl-meta">PDF, one page. No sign-up needed.</span></span>
+          </a>
         </div>
 
-        <form class="form" id="contactForm" novalidate aria-labelledby="form-title">
+        <form class="form rv" id="contactForm" novalidate aria-labelledby="form-title">
           <h3 id="form-title">Start a Project Conversation</h3>
           <p class="form-state" id="formState" role="note"></p>
           <div class="error-summary" id="errorSummary" tabindex="-1" role="alert" hidden></div>
@@ -232,6 +383,20 @@
             <p class="hint" id="d-desc">Up to 800 characters.</p>
             <p class="err" id="e-desc" hidden></p>
           </div>
+          <div class="field">
+            <label for="f-connect">How would you like to connect? <span class="opt">(optional)</span></label>
+            <select id="f-connect" name="connect">
+              <option value="">No preference</option>
+              <option>Phone call</option>
+              <option>Video call</option>
+              <option>Email</option>
+              <option>In person</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-times">Best days or times <span class="opt">(optional)</span></label>
+            <input id="f-times" name="times" type="text" maxlength="120">
+          </div>
           <div class="hp" aria-hidden="true">
             <label>Leave this field empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
           </div>
@@ -252,7 +417,7 @@
       </div>
       <div>
         <p class="foot-h">Service area</p>
-        <p id="serviceArea">Colorado and the Rocky Mountain region</p>
+        <p id="serviceArea">Colorado statewide, with a focus on the mountain markets</p>
         <p class="foot-h">Contact</p>
         <p id="footContact"></p>
       </div>
@@ -263,7 +428,7 @@
       </div>
     </div>
     <div class="wrap legal">
-      <p>Harrison Development is a proposed brand name; the logo shown is the owner-approved design, pending brand clearance. Marketing language describes services, not outcomes. No guarantee of buyer demand, sales pace or price is made or implied. Marketing support may extend across the region; real estate brokerage services are offered only where the licensee is licensed.</p>
+      <p>Harrison Development is a proposed brand name; the logo shown is the owner-approved design, pending brand clearance. Marketing language describes services, not outcomes. No guarantee of buyer demand, sales pace or price is made or implied. Real estate brokerage services are provided in Colorado.</p>
     </div>
   </footer>
 

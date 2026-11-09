@@ -14,7 +14,18 @@ Technical readiness is separate from factual, brokerage and publication readines
 - [ ] **Logo files:** the approved logo is a raster image (PNG). For print, signage and sharp favicons, have it redrawn as a vector (SVG/PDF) by a designer, or ask ChatGPT for a higher-resolution version. The browser-tab icon is still the simple SVG HD, because the approved logo's thin lines are unreadable at 16 to 32 px. Decide whether to keep it or make a favicon from the monogram.
 - [ ] Optional: licensed portrait or local photography with recorded rights. Otherwise keep the original illustration.
 
+## 1b. Concept studies: decide before publishing
+
+- [ ] **Timing.** The Red Mountain Ranch pitch was emailed on 2026-11-01 and is awaiting a reply; the repo note says not to follow up unless invited. The Dowd Junction plan says to show the concept in person, not cold. A public page could be seen by the Town, developers or the press before those conversations. Either wait, or set `showConcepts: false` in `js/config.js` to hide the section.
+- [ ] Broker review of the studies and disclaimer. Colorado rules on advertising property you do not list apply; a disclaimer may not be enough.
+- [ ] Re-verify the public facts (home counts, tenure, who the developer is) against current town documents, and update the "reviewed" dates.
+- [ ] Never add the developer's or architect's name, logo or renderings (one rendering is marked all rights reserved) without written permission.
+
 ## 2. Decisions and integrations
+
+- [ ] **Booking link.** Create a public scheduling page (for example a Google Calendar appointment schedule) and paste it into `bookingUrl` in `js/config.js`.
+- [ ] Confirm each market region listed is one Charles wants to advertise.
+- [ ] Review the FAQ answers and the checklist PDF (`assets/downloads/`); regenerate the PDF with `node tests/build-pdf.mjs` after any change.
 
 - [ ] Hosting target chosen (none selected; do not assume the AiRE branch). The site is static; any static host works.
 - [ ] Domain chosen and purchased by Charles. Then add canonical URLs, sitemap.xml, absolute `og:image` URL.
@@ -33,7 +44,7 @@ Technical readiness is separate from factual, brokerage and publication readines
 
 ## 4. Not tested yet
 
-- Screen readers (VoiceOver, NVDA); real phones and Safari/Firefox (only Chromium was used).
+- Screen readers (VoiceOver, NVDA); real phones and Safari/Firefox (only Chromium was used). Firefox runs the script fallback for scroll animations, which has not been tried in a real browser.
 - Lighthouse / Core Web Vitals on a real host.
 - The live form (no endpoint exists).
 - Print styles.

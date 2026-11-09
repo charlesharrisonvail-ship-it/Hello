@@ -2,11 +2,18 @@
   "use strict";
   var cfg = window.HD_CONFIG || {};
   var doc = document;
-  doc.documentElement.classList.add("js");
-  if (cfg.accent === "pink") doc.documentElement.setAttribute("data-accent", "pink");
+  var root = doc.documentElement;
+  root.classList.add("js");
+  if (cfg.accent === "pink") root.setAttribute("data-accent", "pink");
 
   function $(id) { return doc.getElementById(id); }
   function text(el, v) { if (el && v) el.textContent = v; }
+  function esc(s) { var d = doc.createElement("div"); d.textContent = s; return d.innerHTML; }
+
+  var reduce = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  var supportsView = !!(window.CSS && CSS.supports && CSS.supports("(animation-timeline: view()) and (animation-range: entry)"));
+  var supportsScroll = !!(window.CSS && CSS.supports && CSS.supports("(animation-timeline: scroll()) and (animation-range: 0% 100%)"));
+  var finePointer = !!(window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches);
 
   /* ---------- Config-driven content ---------- */
   if (cfg.previewBanner) { var pb = $("previewBanner"); if (pb) pb.hidden = false; }
@@ -18,7 +25,6 @@
   var c = cfg.contact || {};
   var list = $("contactList");
   var foot = $("footContact");
-  function esc(s) { var d = doc.createElement("div"); d.textContent = s; return d.innerHTML; }
   if (list) {
     var items = [];
     if (c.phone) items.push('<li><span class="k">Phone</span><a href="tel:' + esc(c.phone.replace(/[^\d+]/g, "")) + '">' + esc(c.phone) + "</a></li>");
@@ -33,13 +39,24 @@
     foot.innerHTML = parts.length ? parts.join("<br>") : "Contact details will appear here once confirmed.";
   }
 
+  // Concept studies can be switched off in config.
+  if (cfg.showConcepts === false) {
+    doc.querySelectorAll("[data-concepts], [data-concepts-nav]").forEach(function (el) { el.hidden = true; });
+  }
+
+  // Booking link: only ever the configured URL. Never invented.
+  var bookBtn = $("bookBtn"), bookText = $("bookingText");
+  if (cfg.bookingUrl && bookBtn) {
+    bookBtn.href = cfg.bookingUrl; bookBtn.target = "_blank"; bookBtn.rel = "noopener";
+    bookBtn.hidden = false;
+    bookBtn.textContent = "Choose a time";
+    if (bookText) bookText.textContent = "Pick a time that suits you. The scheduling page opens in a new tab.";
+  }
+
   /* ---------- Mobile navigation ---------- */
   var toggle = $("navToggle"), nav = $("siteNav");
   if (toggle && nav) {
-    function setOpen(open) {
-      nav.classList.toggle("open", open);
-      toggle.setAttribute("aria-expanded", String(open));
-    }
+    var setOpen = function (open) { nav.classList.toggle("open", open); toggle.setAttribute("aria-expanded", String(open)); };
     toggle.addEventListener("click", function () { setOpen(toggle.getAttribute("aria-expanded") !== "true"); });
     nav.addEventListener("click", function (e) { if (e.target.closest("a")) setOpen(false); });
     doc.addEventListener("keydown", function (e) {
@@ -47,15 +64,115 @@
     });
   }
 
-  /* ---------- Gentle reveal (skipped for reduced motion) ---------- */
-  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (!reduce && "IntersectionObserver" in window) {
-    var targets = doc.querySelectorAll(".services li, .who > div, .steps li, .value .split > *");
+  /* ---------- Hero headline: word-by-word entrance (CSS only animates when motion is allowed) ---------- */
+  var h1 = $("hero-title");
+  if (h1 && !h1.querySelector(".w")) {
+    var words = h1.textContent.trim().split(/\s+/);
+    h1.textContent = "";
+    words.forEach(function (w, i) {
+      var outer = doc.createElement("span"); outer.className = "w";
+      var inner = doc.createElement("span"); inner.className = "wi"; inner.style.setProperty("--i", i); inner.textContent = w;
+      outer.appendChild(inner); h1.appendChild(outer);
+      if (i < words.length - 1) h1.appendChild(doc.createTextNode(" "));
+    });
+  }
+
+  /* ---------- Reveal fallback (only where native scroll-driven animations are missing) ---------- */
+  if (!reduce && !supportsView && "IntersectionObserver" in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
     }, { threshold: 0.12 });
-    targets.forEach(function (t) { t.classList.add("reveal"); io.observe(t); });
+    doc.querySelectorAll(".rv").forEach(function (el) { el.classList.add("rv-js"); io.observe(el); });
   }
+
+  /* ---------- Header + progress fallback (only where native scroll timelines are missing) ---------- */
+  var header = doc.querySelector(".site-header"), bar = doc.querySelector(".progress");
+  if (!supportsScroll) {
+    var ticking = false;
+    var update = function () {
+      ticking = false;
+      var y = window.scrollY || 0;
+      if (header) header.classList.toggle("scrolled", y > 24);
+      if (bar && !reduce) {
+        var max = Math.max(1, doc.documentElement.scrollHeight - window.innerHeight);
+        bar.style.transform = "scaleX(" + Math.min(1, y / max) + ")";
+      }
+    };
+    window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    update();
+  }
+
+  /* ---------- Hero spotlight and magnetic buttons (fine pointers, motion allowed) ---------- */
+  var hero = $("hero");
+  if (hero && finePointer && !reduce) {
+    var raf = 0, mx = 0, my = 0;
+    hero.addEventListener("pointermove", function (e) {
+      var r = hero.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top;
+      if (!raf) raf = requestAnimationFrame(function () { raf = 0; hero.style.setProperty("--mx", mx + "px"); hero.style.setProperty("--my", my + "px"); });
+    }, { passive: true });
+    doc.querySelectorAll(".magnetic").forEach(function (b) {
+      b.addEventListener("pointermove", function (e) {
+        var r = b.getBoundingClientRect();
+        var dx = (e.clientX - (r.left + r.width / 2)) / r.width, dy = (e.clientY - (r.top + r.height / 2)) / r.height;
+        b.style.setProperty("--tx", (dx * 10).toFixed(1) + "px"); b.style.setProperty("--ty", (dy * 8).toFixed(1) + "px");
+      });
+      b.addEventListener("pointerleave", function () { b.style.removeProperty("--tx"); b.style.removeProperty("--ty"); });
+    });
+  }
+
+  /* ---------- Scrollspy: mark the nav link for the section in view ---------- */
+  if ("IntersectionObserver" in window && nav) {
+    var links = {};
+    nav.querySelectorAll('a[href^="#"]:not(.nav-cta)').forEach(function (a) { links[a.getAttribute("href").slice(1)] = a; });
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        Object.keys(links).forEach(function (k) { links[k].removeAttribute("aria-current"); });
+        var a = links[en.target.id]; if (a) a.setAttribute("aria-current", "true"); // sections without a nav link simply clear it
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    doc.querySelectorAll("main section[id], main .hero").forEach(function (sec) { spy.observe(sec); });
+  }
+
+  /* ---------- Concept study tabs ---------- */
+  var tabs = Array.prototype.slice.call(doc.querySelectorAll('.tabs [role="tab"]'));
+  function selectTab(tab, focus) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute("aria-selected", String(on)); t.tabIndex = on ? 0 : -1;
+      var p = $(t.getAttribute("aria-controls")); if (p) p.hidden = !on;
+    });
+    if (focus) tab.focus();
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener("click", function () { selectTab(t, false); });
+    t.addEventListener("keydown", function (e) {
+      var n = null;
+      if (e.key === "ArrowRight") n = tabs[(i + 1) % tabs.length];
+      else if (e.key === "ArrowLeft") n = tabs[(i - 1 + tabs.length) % tabs.length];
+      else if (e.key === "Home") n = tabs[0];
+      else if (e.key === "End") n = tabs[tabs.length - 1];
+      if (n) { e.preventDefault(); selectTab(n, true); }
+    });
+  });
+
+  /* ---------- Markets: region buttons mark the map ---------- */
+  var towns = doc.querySelectorAll(".map .town"), rbtns = doc.querySelectorAll(".region-btn");
+  function townFor(r) { return doc.querySelector('.map .town[data-region="' + r + '"]'); }
+  rbtns.forEach(function (b) {
+    var r = b.getAttribute("data-region");
+    function hov(on) { var t = townFor(r); if (t) t.classList.toggle("hover", on); }
+    b.addEventListener("mouseenter", function () { hov(true); });
+    b.addEventListener("mouseleave", function () { hov(false); });
+    b.addEventListener("focus", function () { hov(true); });
+    b.addEventListener("blur", function () { hov(false); });
+    b.addEventListener("click", function () {
+      var was = b.getAttribute("aria-pressed") === "true";
+      rbtns.forEach(function (o) { o.setAttribute("aria-pressed", "false"); });
+      towns.forEach(function (t) { t.classList.remove("active"); });
+      if (!was) { b.setAttribute("aria-pressed", "true"); var t = townFor(r); if (t) t.classList.add("active"); }
+    });
+  });
 
   /* ---------- Contact form ---------- */
   var form = $("contactForm");
@@ -85,10 +202,8 @@
     var errors = [];
     Object.keys(rules).forEach(function (k) {
       var el = $(ids[k]), er = $(errIds[k]), msg = rules[k](el.value);
-      if (msg) {
-        el.setAttribute("aria-invalid", "true"); er.textContent = msg; er.hidden = false;
-        errors.push({ k: k, msg: msg });
-      } else { el.removeAttribute("aria-invalid"); er.hidden = true; er.textContent = ""; }
+      if (msg) { el.setAttribute("aria-invalid", "true"); er.textContent = msg; er.hidden = false; errors.push({ k: k, msg: msg }); }
+      else { el.removeAttribute("aria-invalid"); er.hidden = true; er.textContent = ""; }
     });
     return errors;
   }
@@ -114,9 +229,10 @@
 
   function box(msg, fail) { result.innerHTML = '<div class="box' + (fail ? " fail" : "") + '">' + msg + "</div>"; }
 
-  function mailtoLink(data) {
-    var body = ["Name: " + data.name, "Email: " + data.email, "Phone: " + (data.phone || "(not provided)"), "Role: " + data.role,
-      "Project location: " + data.location, "Project stage: " + data.stage, "", data.description].join("\n");
+  function mailtoLink(d) {
+    var body = ["Name: " + d.name, "Email: " + d.email, "Phone: " + (d.phone || "(not provided)"), "Role: " + d.role,
+      "Project location: " + d.location, "Project stage: " + d.stage,
+      "Preferred way to connect: " + (d.connect || "(no preference)"), "Best days or times: " + (d.times || "(not provided)"), "", d.description].join("\n");
     return "mailto:" + encodeURIComponent(c.email) + "?subject=" + encodeURIComponent("Project conversation") + "&body=" + encodeURIComponent(body);
   }
 
@@ -131,7 +247,8 @@
     var data = {
       name: form.elements.name.value.trim(), email: form.elements.email.value.trim(), phone: form.elements.phone.value.trim(),
       role: form.elements.role.value, location: form.elements.location.value.trim(), stage: form.elements.stage.value,
-      description: form.elements.description.value.trim()
+      description: form.elements.description.value.trim(),
+      connect: form.elements.connect.value, times: form.elements.times.value.trim()
     };
 
     if (!live) {

@@ -16,7 +16,7 @@ Nothing below is "verified" merely because it appeared in the build brief. As of
 | "AI real estate industry leader" | user-provided | Charles, 2026-11-09 | 2026-11-09 | Superlative-style claim that a competitor or the broker could challenge | Kept beside the factual claim that he teaches AI to real estate professionals. Back it with evidence (courses taught, students, speaking, press) or soften to "AI real estate educator" if the broker asks. |
 | Teaches AI to real estate professionals | user-provided | Charles, 2026-11-09; the AiRE Instructor credential | 2026-11-09 | Positioning pillar | Described as instruction only; AiRE is not named or linked on the HD site. |
 | Phone 970-904-0600 and email charlesharrison@epique.me | user-provided | Charles's own email signature (Oct 23 sent message); use approved by Charles 2026-11-08 | 2026-11-08 | Public contact details | Broker to confirm an Epique address and phone may appear on a separately branded site. |
-| Service area: Colorado and the Rocky Mountain region (widened by Charles 2026-11-09; first brief said Vail Valley) | user-provided | Charles, 2026-11-09 | 2026-11-09 | Marketing may be regional, but brokerage representation is lawful only where he is licensed | Confirm which states he holds licenses in. If Colorado only, keep brokerage language Colorado-only and have the broker confirm referral or co-brokerage handling for other states. The site says brokerage is offered only where licensed. |
+| Licensed across the entire state of Colorado; service area shown as "Colorado statewide, with a focus on the mountain markets" | user-provided | Charles, 2026-11-09 (earlier drafts said Vail Valley, then "Rocky Mountain region") | 2026-11-09 | A Colorado license is statewide, but the claim must match his record | Confirm on the Division of Real Estate license record. The site makes no claim about other states and says brokerage services are provided in Colorado. |
 | Harrison Development is not an LLC / not registered | unresolved | None | 2026-11-08 | Must not claim entity status | No entity language on the site. Check the Colorado SOS business search before and after any registration. |
 
 ## B. Name, brand and legal
@@ -33,6 +33,16 @@ Nothing below is "verified" merely because it appeared in the build brief. As of
 | Equal Housing / fair-housing disclosures and logo | unresolved | Broker guidance | not run | Housing advertising | Add whichever form the broker requires. None is shown yet. |
 | Fees vs. brokerage compensation separation | unresolved | None | not run | Disclosure and compensation rules | No prices, rates or terms on the site. Document the marketing scope separately from the brokerage listing agreement. |
 
+## C0. Added 2026-11-09
+
+| Item | Status | Evidence | Impact | Action |
+|---|---|---|---|---|
+| Market regions and towns listed (Vail Valley, Summit, Roaring Fork, northern mountains, Gunnison and San Juans, Front Range) | proposed | Charles said he is licensed statewide; the town lists are ours | Implies service in those places | Charles to confirm each region is one he wants to advertise. Remove any he does not. |
+| Concept studies: "Dowd Junction, Avon" and "Red Mountain Ranch, Eagle" | user-provided (Charles asked for his example projects to appear); facts from public records | Dowd: Town of Avon planning documents reviewed 2026-10-29 (about 100 first-phase homes; tenure and developer not final in that record). Red Mountain Ranch: town filings (about 66 homes; terms unpublished), per the project note in the repo. Neither was re-verified today | Names real, active projects; Red Mountain Ranch pitch was emailed 2026-11-01 and awaits a reply; Dowd pursuit plan says to show it in person, not cold | Built with a prominent not-client-work disclaimer; no developer, architect or agency names; no third-party photos or renderings (original line art only); no sale or rental offer. `showConcepts` in `config.js` hides the whole section. Broker to review, since Colorado advertising rules cover advertising property you do not list. Re-verify the public facts before launch. |
+| "Launch-readiness checklist" PDF | proposed | `assets/downloads/launch-readiness-checklist.html`, rendered by `tests/build-pdf.mjs` | General guidance carries a disclaimer; includes his phone and email | Attorney or broker skim. Regenerate the PDF if contact details change. |
+| FAQ answers | proposed | `index.html` | States how marketing and brokerage are separated, the AI review claim, and no guarantees | Charles confirms each answer is how he will operate; broker reviews the brokerage-separation answer. |
+| Booking | unresolved | No booking page exists | Site says scheduling is not set up and asks for a form request | Create a Google Calendar appointment schedule (or similar) and set `bookingUrl`. |
+
 ## C. Content claims (what the site says)
 
 | Claim | Status | Evidence | Impact | Action |
@@ -48,7 +58,9 @@ Nothing below is "verified" merely because it appeared in the build brief. As of
 
 | Item | Status | Evidence |
 |---|---|---|
-| Layout at 360, 390, 768, 1440 px: no overflow, no clipped elements, one H1, text >= 14px | verified | `tests/check.mjs`, 2026-11-08 |
+| Layout at 360, 390, 768, 1440 px: no overflow, no clipped elements, one H1, text >= 14px | verified | `tests/check.mjs` (54 checks pass), 2026-11-09 |
+| Motion: scroll-driven reveals, progress bar, header shrink, hero parallax and entrance, word-by-word headline, magnetic buttons, map and drawing animations; all behind prefers-reduced-motion; native scroll-driven animations with a script fallback for browsers without them | verified in Chromium only | `tests/check.mjs`; built to the modern-web-guidance motion guides | Firefox and Safari, where the fallback path runs, were not tested in a real browser |
+| Concept tabs, region map, FAQ, booking states, downloadable PDF behave as designed | verified | `tests/check.mjs` | |
 | Keyboard: skip link first, visible focus on 12 consecutive stops, mobile nav opens and closes with keyboard and Escape | verified | same |
 | Form: labels, inline errors, error summary with focus, honeypot, no fake success, mailto fallback labeled, 500 shows failure, success only on 200 | verified | same (endpoint mocked) |
 | Reduced motion disables reveal animation and smooth scroll | verified | same |

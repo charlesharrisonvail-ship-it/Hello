@@ -14,3 +14,6 @@ Built 2026-11-08 in `harrison-development/` (static preview, not deployed).
 - Does not use the EpiVail signature. Never publish, buy a domain or send outreach without Charles's say.
 - Logo: Charles approved a ChatGPT-made HD monogram over mountains (2026-11-09), saved in `harrison-development/assets/brand/`. Use it as the HD identity; do not redraw or replace it. Still needs trademark clearance and a vector version.
 - Color: Charles hates the brown/copper. Accent is neon yellow #DFFF1A: full strength on dark surfaces, 50% opacity on light/cream ones (his choice, 2026-11-09); neon pink is one setting away (`accent` in `harrison-development/js/config.js`). Never use the neon as text on light backgrounds.
+- Licensed statewide in Colorado (his word, 2026-11-09): site says "Colorado statewide, with a focus on the mountain markets"; no other-state claims.
+- Concept studies (Dowd Junction, Red Mountain Ranch) are on the HD site at his request, as labeled independent studies: no developer/architect names or third-party images; `showConcepts` toggle in config. Red Mountain pitch was sent 2026-11-01, so timing of going public is his call.
+- Booking needs a real link in `bookingUrl` (none exists yet). Site has full motion built to prefers-reduced-motion; tests are in `harrison-development/tests/`.

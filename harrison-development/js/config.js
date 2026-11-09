@@ -28,7 +28,9 @@ window.HD_CONFIG = {
   // Existing professional page (user-provided).
   professionalSite: "https://charlesharrison.epiquerealty.com/",
 
-  serviceArea: "Colorado and the Rocky Mountain region",
+  // Charles is licensed across the entire state of Colorado (user-provided 2026-11-09;
+  // confirm on the Division of Real Estate record). Brokerage services are described as Colorado only.
+  serviceArea: "Colorado statewide, with a focus on the mountain markets",
 
   // Business and website operator details for the privacy page. UNKNOWN until Charles confirms.
   // Do not claim LLC status, and do not invent a street address.
@@ -46,6 +48,16 @@ window.HD_CONFIG = {
 
   // Accent color: "yellow" (neon yellow, default) or "pink" (neon pink).
   accent: "yellow",
+
+  // Online scheduling. Paste the public link to a booking page (for example a Google Calendar
+  // appointment schedule or a Calendly page). Empty = the site says scheduling is not set up
+  // yet and asks visitors to request a time through the form. Never invent a link.
+  bookingUrl: "",
+
+  // Concept studies (Dowd Junction, Red Mountain Ranch). They are independent, unsolicited
+  // studies built on public information. Set to false to hide the whole section, for example
+  // while a pitch is still awaiting a reply. See docs/LAUNCH-CHECKLIST.md before publishing.
+  showConcepts: true,
 
   // Staging safety: the preview ribbon is shown until set to false at an authorized launch.
   // Also remove the robots noindex meta tag and robots.txt Disallow at launch.

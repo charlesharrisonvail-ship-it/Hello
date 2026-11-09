@@ -16,7 +16,8 @@ python3 -m http.server 8765 --directory harrison-development
 Needs Playwright (preinstalled in the Claude Code cloud environment).
 
 ```bash
-node harrison-development/tests/check.mjs     # 37 checks; also regenerates screenshots and og-image.png
+node harrison-development/tests/check.mjs     # 54 checks; also regenerates screenshots and og-image.png
+node harrison-development/tests/build-pdf.mjs # re-renders the downloadable checklist PDF
 ```
 
 ## Where things are
@@ -31,6 +32,8 @@ node harrison-development/tests/check.mjs     # 37 checks; also regenerates scre
 | `docs/VERIFICATION.md`, `docs/LAUNCH-CHECKLIST.md` | What is and isn't verified, and what must happen before launch |
 | `docs/PITCH-AND-PROPOSAL-TEMPLATE.md` | Editable pitch and proposal outline |
 | `docs/PRESENTATIONS-REVIEW.md` | Why earlier project presentations are not on the public site |
+| `assets/downloads/` | Launch-readiness checklist (HTML source and PDF) |
+| `docs/COMPETITIVE-BENCHMARK.md` | What competitors do and what this site was missing |
 | `screenshots/` | Desktop and mobile previews |
 
 ## Contact form
