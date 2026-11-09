@@ -199,7 +199,15 @@ async function fillValid(page) {
   await page.selectOption('#f-role', 'Developer'); await page.fill('#f-location', 'Gypsum, CO');
   await page.selectOption('#f-stage', 'Planning or entitlement'); await page.fill('#f-desc', 'Test description of a small project.');
 }
-{ const { ctx, page } = await formPage({ width: 390, height: 900 });
+{ // live site with no form service: the form opens the visitor's own email app, and says so
+  const { ctx, page } = await formPage({ width: 390, height: 900 });
+  const st = await page.locator('#formState').textContent();
+  log(/your own email app opens/i.test(st) && !/PREVIEW/.test(st), 'live form says plainly that it opens your email app', st);
+  await fillValid(page); await page.click('#submitBtn'); await page.waitForTimeout(300);
+  const r = await page.locator('#formResult').innerText();
+  log(/email app should open/i.test(r) && !/thank you|received|was sent/i.test(r), 'live submit hands off to email and never claims delivery');
+  await ctx.close(); }
+{ const { ctx, page } = await formPage({ width: 390, height: 900 }, { previewBanner: true });
   const state = await page.locator('#formState').textContent();
   log(/PREVIEW ONLY/.test(state), 'form labelled preview-only when no endpoint');
   await page.click('#submitBtn');
