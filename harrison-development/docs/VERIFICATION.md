@@ -43,6 +43,16 @@ Nothing below is "verified" merely because it appeared in the build brief. As of
 | FAQ answers | proposed | `index.html` | States how marketing and brokerage are separated, the AI review claim, and no guarantees | Charles confirms each answer is how he will operate; broker reviews the brokerage-separation answer. |
 | Booking | unresolved | No booking page exists | Site says scheduling is not set up and asks for a form request | Create a Google Calendar appointment schedule (or similar) and set `bookingUrl`. |
 
+## C1. Added 2026-11-09 (production, portrait, bio)
+
+| Item | Status | Evidence | Impact | Action |
+|---|---|---|---|---|
+| Production numbers | **not used on the site** | FlexMLS "my listings" (listing side, this MLS membership): 3 listings in total, 1 closed ($719,000, Edwards, closed 2026-04-14), 1 active ($1.59M commercial, Gypsum), 1 expired ($3.2M, Vail). Lofty: 1 transaction, pre-listing, $0. Buyer-side closings, earlier years, other MLSs and the brokerage's own records are not in either system | These figures would weaken, not support, the pitch, and are incomplete | Do not publish. Pull a full production report from the brokerage (including buyer-side and prior years) if real numbers exist, and have the broker approve the wording. |
+| Portrait | unresolved | His Epique About page labels an image "Charles Harrison, Area Leader," but its host returns 403 to outside downloads | None shown yet; the site omits the portrait until a real photo is configured | Charles sends a real photo; set `portrait.src` in `js/config.js`. Never a generated likeness. |
+| Bio ("Based in the Vail Valley") | user-provided | His Epique page names Vail Valley, Vail, Edwards, Minturn | Location claim | Confirm. Full copy in `BIO.md`. |
+| Colorado license number FA100066670 | user-provided (printed on his Epique homepage) | https://charlesharrison.epiquerealty.com/ | Not shown on the HD site | Verify on the Division of Real Estate license lookup; ask the broker whether the number must appear on HD materials. |
+| Google Calendar booking links on his Epique page (two) | unresolved | `calendar.app.google/VWkZBHiYyLYbnJwS9` and `calendar.app.google/oYhEKKCmVCLZYYuN9` | Could serve as `bookingUrl` | Not used. Confirm which one, if either, is meant for development clients rather than agent recruiting. |
+
 ## C. Content claims (what the site says)
 
 | Claim | Status | Evidence | Impact | Action |

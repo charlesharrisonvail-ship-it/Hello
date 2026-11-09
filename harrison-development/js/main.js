@@ -39,6 +39,10 @@
     foot.innerHTML = parts.length ? parts.join("<br>") : "Contact details will appear here once confirmed.";
   }
 
+  // Portrait: shown only when a real photo is configured.
+  var pf = $("portrait"), pimg = $("portraitImg"), pc = cfg.portrait || {};
+  if (pf && pimg && pc.src) { pimg.src = pc.src; pimg.alt = pc.alt || "Portrait of Charles Harrison"; pf.hidden = false; }
+
   // Concept studies can be switched off in config.
   if (cfg.showConcepts === false) {
     doc.querySelectorAll("[data-concepts], [data-concepts-nav]").forEach(function (el) { el.hidden = true; });

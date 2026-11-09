@@ -30,6 +30,14 @@ window.HD_CONFIG = {
 
   // Charles is licensed across the entire state of Colorado (user-provided 2026-11-09;
   // confirm on the Division of Real Estate record). Brokerage services are described as Colorado only.
+  // Portrait for the About section. Put a real photo of Charles at assets/brand/charles-portrait.jpg
+  // (or .webp) and set src to that path. Empty = the About section simply shows no portrait.
+  // Never use a generated likeness of Charles.
+  portrait: {
+    src: "",
+    alt: "Portrait of Charles Harrison"
+  },
+
   serviceArea: "Colorado statewide, with a focus on the mountain markets",
 
   // Business and website operator details for the privacy page. UNKNOWN until Charles confirms.

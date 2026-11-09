@@ -105,6 +105,16 @@ for (const w of [360, 390, 768, 1440]) {
   const r = await page.request.get(BASE + '/assets/downloads/launch-readiness-checklist.pdf');
   log(r.status() === 200 && /pdf/.test(r.headers()['content-type'] || ''), 'checklist PDF downloads', r.headers()['content-type']);
   await ctx.close(); }
+{ // portrait appears only when a real photo is configured
+  const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const page = await ctx.newPage();
+  await page.goto(BASE + '/index.html');
+  log(await page.locator('#portrait').isHidden(), 'no portrait shown until a real photo is configured (no placeholder)');
+  await ctx.close();
+  const c2 = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const p2 = await c2.newPage();
+  await p2.addInitScript(() => { let c; Object.defineProperty(window, 'HD_CONFIG', { configurable: true, set(v) { c = Object.assign(v, { portrait: { src: 'assets/brand/og-image.png', alt: 'Portrait of Charles Harrison' } }); }, get() { return c; } }); });
+  await p2.goto(BASE + '/index.html'); await p2.addStyleTag({ content: NOANIM });
+  log(await p2.locator('#portrait').isVisible() && await p2.locator('#portraitImg').getAttribute('alt') === 'Portrait of Charles Harrison', 'configured portrait appears with alt text');
+  await c2.close(); }
 { // configured booking URL and hidden concepts are honored
   const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const page = await ctx.newPage();
   await page.addInitScript(() => { let c; Object.defineProperty(window, 'HD_CONFIG', { configurable: true, set(v) { c = Object.assign(v, { bookingUrl: 'https://booking.example.test/hd', showConcepts: false }); }, get() { return c; } }); });

@@ -12,7 +12,10 @@ Technical readiness is separate from factual, brokerage and publication readines
 - [ ] Marketing scope and fees documented separately from the brokerage listing agreement. No rates are on the site.
 - [ ] Operator legal name and mailing address for the privacy notice (`operator` in `js/config.js`). Privacy notice reviewed.
 - [ ] **Logo files:** the approved logo is a raster image (PNG). For print, signage and sharp favicons, have it redrawn as a vector (SVG/PDF) by a designer, or ask ChatGPT for a higher-resolution version. The browser-tab icon is still the simple SVG HD, because the approved logo's thin lines are unreadable at 16 to 32 px. Decide whether to keep it or make a favicon from the monogram.
-- [ ] Optional: licensed portrait or local photography with recorded rights. Otherwise keep the original illustration.
+- [ ] **Portrait:** send a real photo (4:5, head and shoulders, 800 px or wider), save as `assets/brand/charles-portrait.jpg`, set `portrait.src` in `js/config.js`. See `docs/BIO.md`.
+- [ ] **Bio:** add years in real estate, why he started Harrison Development, and any evidence behind "industry leader" (see `docs/BIO.md`).
+- [ ] **Production proof:** the MLS and Lofty show too little to publish. Get a full production report from the brokerage if real numbers exist.
+- [ ] Optional: licensed local photography with recorded rights.
 
 ## 1b. Concept studies: decide before publishing
 

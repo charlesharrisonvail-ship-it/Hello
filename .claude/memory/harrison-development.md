@@ -17,3 +17,6 @@ Built 2026-11-08 in `harrison-development/` (static preview, not deployed).
 - Licensed statewide in Colorado (his word, 2026-11-09): site says "Colorado statewide, with a focus on the mountain markets"; no other-state claims.
 - Concept studies (Dowd Junction, Red Mountain Ranch) are on the HD site at his request, as labeled independent studies: no developer/architect names or third-party images; `showConcepts` toggle in config. Red Mountain pitch was sent 2026-11-01, so timing of going public is his call.
 - Booking needs a real link in `bookingUrl` (none exists yet). Site has full motion built to prefers-reduced-motion; tests are in `harrison-development/tests/`.
+- Production check (2026-11-09): FlexMLS "my listings" shows 3 listings (1 closed $719K) and Lofty 1 pre-listing transaction; too thin to publish and buyer-side is missing. Do not put production numbers on the HD site without a full brokerage report.
+- Portrait: no photo yet; his Epique image host blocks downloads. Site has a portrait slot (`portrait.src` in config). Never generate his likeness. Bio copy is in `harrison-development/docs/BIO.md`.
+- Higgsfield: balance was 200.8 credits on 2026-11-09; an 8-second 16:9 abstract clip (seedance_2_5) quotes 56 credits. Never spend without his "go" (see `no-paid-ai-tools`).
