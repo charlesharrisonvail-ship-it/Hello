@@ -26,7 +26,7 @@ node harrison-development/tests/check.mjs     # 37 checks; also regenerates scre
 | `index.html`, `privacy.html` | The pages |
 | `js/config.js` | **All** brand, contact and form settings. Unknown values stay empty. |
 | `css/styles.css` | Styles and color tokens (contrast notes inline) |
-| `assets/brand/` | Original SVG HD mark: color, mono dark, mono light, horizontal, stacked, favicon; `og-source.html` makes `og-image.png` |
+| `assets/brand/` | **Approved logo** (`hd-logo-approved-original.png`) plus transparent light versions used on the site; `alt-svg/` holds the earlier editable SVG marks; `og-source.html` makes `og-image.png` |
 | `assets/fonts/` | Inter and Fraunces, SIL OFL, self-hosted |
 | `docs/VERIFICATION.md`, `docs/LAUNCH-CHECKLIST.md` | What is and isn't verified, and what must happen before launch |
 | `docs/PITCH-AND-PROPOSAL-TEMPLATE.md` | Editable pitch and proposal outline |

@@ -12,3 +12,4 @@ Built 2026-11-08 in `harrison-development/` (static preview, not deployed).
 - Earlier project presentations (Dowd Junction, Red Mountain Ranch, Apogean) name other developers' projects, so they stay **private pitches**, never public on the HD site.
 - Unverified until checked: license, credentials, name/trademark, broker-approved attribution. See `harrison-development/docs/VERIFICATION.md`.
 - Does not use the EpiVail signature. Never publish, buy a domain or send outreach without Charles's say.
+- Logo: Charles approved a ChatGPT-made HD monogram over mountains (2026-11-09), saved in `harrison-development/assets/brand/`. Use it as the HD identity; do not redraw or replace it. Still needs trademark clearance and a vector version.
