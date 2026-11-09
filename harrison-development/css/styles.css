@@ -1,22 +1,22 @@
-/* Harrison Development. Proposed palette; every text pair below was contrast-checked (see docs/VERIFICATION.md).
-   Copper #A96843 is decorative only (3.96:1 on warm white). Text uses the darker/lighter copper tokens. */
+/* Harrison Development. Neon accent on charcoal. Accent is never used as text on light backgrounds (1.02:1 for yellow); on light it is a highlight block with dark text on top.
+   Yellow #DFFF1A: 15.7:1 on charcoal. Pink #FF2D95: 5.2:1 on charcoal and dark text on pink 5.2:1. Switch with accent in js/config.js. */
 @font-face{font-family:"Inter";src:url("../assets/fonts/inter-latin-wght-normal.woff2") format("woff2");font-weight:100 900;font-display:swap}
 @font-face{font-family:"Fraunces";src:url("../assets/fonts/fraunces-latin-500-normal.woff2") format("woff2");font-weight:500;font-display:swap}
 @font-face{font-family:"Fraunces";src:url("../assets/fonts/fraunces-latin-600-normal.woff2") format("woff2");font-weight:600;font-display:swap}
 
 :root{
-  --charcoal:#14181C; --warm:#F5F2EC; --copper:#A96843; --gray:#667078;
+  --charcoal:#14181C; --warm:#F5F2EC; --gray:#667078;
+  --accent:#DFFF1A; --accent-hover:#F0FF6B; --on-accent:#14181C;
   --ink:#14181C;            /* text on light: 15.97:1 */
   --ink-soft:#4F5961;       /* secondary text on light: 6.41:1 */
-  --copper-on-light:#8A4F2D;/* 5.81:1 on warm white */
   --paper:#F5F2EC;          /* text on dark: 15.97:1 */
   --paper-soft:#A9B1B7;     /* secondary text on dark: 8.21:1 */
-  --copper-on-dark:#D9936A; /* 7.08:1 on charcoal */
   --tint:#EAE5DB; --line-light:#D5CFC3; --line-dark:#2C353D;
   --serif:"Fraunces",Georgia,"Times New Roman",serif;
   --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
   --gutter:20px;
 }
+html[data-accent="pink"]{--accent:#FF2D95;--accent-hover:#FF5CAD}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:88px;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--warm);color:var(--ink);font:400 16px/1.65 var(--sans);overflow-wrap:break-word}
@@ -28,10 +28,10 @@ a{color:inherit}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:absolute;left:-999px;top:8px;background:var(--paper);color:var(--ink);padding:12px 16px;z-index:100;border-radius:4px}
 .skip:focus{left:8px}
-:focus-visible{outline:3px solid var(--copper-on-dark);outline-offset:3px}
-.section:not(.section-dark) :focus-visible,.attribution-band :focus-visible{outline-color:var(--copper-on-light)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.section:not(.section-dark) :focus-visible,.attribution-band :focus-visible{outline-color:var(--ink)}
 
-.preview-banner{background:var(--copper-on-light);color:var(--paper);font-size:14px;line-height:1.4;text-align:center;padding:8px var(--gutter)}
+.preview-banner{background:var(--accent);color:var(--on-accent);font-weight:600;font-size:14px;line-height:1.4;text-align:center;padding:8px var(--gutter)}
 
 /* Header */
 .site-header{background:var(--charcoal);color:var(--paper);position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line-dark)}
@@ -51,9 +51,9 @@ a{color:inherit}
 .nav-toggle .bars::after{position:absolute;top:7px;left:0}
 .site-nav ul{list-style:none;display:flex;align-items:center;gap:28px;margin:0;padding:0}
 .site-nav a{text-decoration:none;font-size:16px;padding:10px 2px;display:inline-block}
-.site-nav a:not(.nav-cta):hover{text-decoration:underline;text-underline-offset:6px;text-decoration-color:var(--copper-on-dark)}
-.nav-cta{background:var(--paper);color:var(--ink);padding:12px 20px!important;border-radius:4px;font-weight:600}
-.nav-cta:hover{background:#fff}
+.site-nav a:not(.nav-cta):hover{text-decoration:underline;text-underline-offset:6px;text-decoration-color:var(--accent)}
+.nav-cta{background:var(--accent);color:var(--on-accent);padding:12px 20px!important;border-radius:4px;font-weight:600}
+.nav-cta:hover{background:var(--accent-hover)}
 @media(max-width:899px){
   .js .nav-toggle{display:block}
   .js .site-nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--charcoal);border-bottom:1px solid var(--line-dark);padding:8px var(--gutter) 20px}
@@ -70,15 +70,15 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.12;margin:0;lett
 h1{font-size:clamp(2.1rem,7.4vw,4.1rem)}
 h2{font-size:clamp(1.75rem,5vw,2.9rem);max-width:20ch}
 h3{font-size:1.3rem;line-height:1.25}
-.eyebrow{font-size:14px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--copper-on-dark);margin:0 0 18px}
-.eyebrow-dark{color:var(--copper-on-light)}
+.eyebrow{font-size:14px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 18px}
+.eyebrow-dark{color:var(--on-accent);background:var(--accent);display:inline-block;padding:5px 12px;border-radius:2px}
 .lede{font-size:clamp(1.05rem,2.3vw,1.3rem);color:var(--paper-soft);max-width:56ch;margin:24px 0 0}
 .lede-dark{font-size:clamp(1.05rem,2.3vw,1.3rem);color:var(--ink-soft);max-width:60ch;margin:0}
 
 /* Buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:14px 28px;border-radius:4px;font:600 17px/1.2 var(--sans);text-decoration:none;cursor:pointer;border:2px solid transparent;transition:transform .15s,background .15s}
-.btn-light{background:var(--paper);color:var(--ink)}
-.btn-light:hover{background:#fff;transform:translateY(-1px)}
+.btn-light{background:var(--accent);color:var(--on-accent)}
+.btn-light:hover{background:var(--accent-hover);transform:translateY(-1px)}
 .btn-ghost{border-color:var(--paper-soft);color:var(--paper)}
 .btn-ghost:hover{border-color:var(--paper);background:rgba(245,242,236,.08)}
 .btn[disabled]{opacity:.6;cursor:wait}
@@ -111,9 +111,9 @@ h3{font-size:1.3rem;line-height:1.25}
 /* Services: editorial list, not cards */
 .services{list-style:none;margin:48px 0 0;padding:0;border-top:2px solid var(--ink)}
 .services li{display:grid;gap:8px;padding:28px 0;border-bottom:1px solid var(--line-light)}
-.services .num{font-family:var(--serif);color:var(--copper-on-light);font-size:1.1rem;font-weight:600}
+.services .num{font-family:var(--serif);color:var(--on-accent);background:var(--accent);font-size:1rem;font-weight:600;width:2.4em;height:2.4em;border-radius:50%;display:grid;place-items:center;justify-self:start}
 .services p{margin:0;color:var(--ink-soft);max-width:62ch}
-.services .featured h3::after{content:"Core";margin-left:12px;font:700 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--paper);background:var(--copper-on-light);padding:5px 8px;border-radius:3px;vertical-align:middle}
+.services .featured h3::after{content:"Core";margin-left:12px;font:700 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--on-accent);background:var(--accent);padding:5px 8px;border-radius:3px;vertical-align:middle}
 @media(min-width:900px){
   .services li{grid-template-columns:90px 340px 1fr;gap:32px;align-items:baseline;padding:36px 0}
 }
@@ -127,9 +127,9 @@ h3{font-size:1.3rem;line-height:1.25}
 
 .steps{list-style:none;margin:48px 0 0;padding:0;display:grid;gap:0;counter-reset:s}
 .steps li{padding:24px 0;border-top:1px solid var(--line-dark)}
-.steps .num{display:block;font-family:var(--serif);font-size:2.4rem;color:var(--copper-on-dark);line-height:1;margin-bottom:12px}
+.steps .num{display:block;font-family:var(--serif);font-size:2.4rem;color:var(--accent);line-height:1;margin-bottom:12px}
 .steps p{margin:8px 0 0;color:var(--paper-soft)}
-@media(min-width:900px){.steps{grid-template-columns:repeat(4,1fr);gap:36px}.steps li{border-top:2px solid var(--copper)}}
+@media(min-width:900px){.steps{grid-template-columns:repeat(4,1fr);gap:36px}.steps li{border-top:2px solid var(--accent)}}
 .note-light{max-width:70ch;margin:44px 0 0;color:var(--paper-soft)}
 
 .creds{font-weight:600;letter-spacing:.04em;margin:28px 0 8px;color:var(--ink)}
@@ -147,13 +147,13 @@ h3{font-size:1.3rem;line-height:1.25}
 .form{background:var(--paper);color:var(--ink);padding:28px 22px;border-radius:6px}
 @media(min-width:600px){.form{padding:40px}}
 .form h3{margin-bottom:14px}
-.form-state{margin:0 0 20px;padding:12px 14px;border-left:4px solid var(--copper-on-light);background:var(--tint);font-size:15px;line-height:1.5}
+.form-state{margin:0 0 20px;padding:12px 14px;border-left:4px solid var(--ink);background:var(--tint);font-size:15px;line-height:1.5}
 .field{margin-bottom:20px}
 .field label{display:block;font-weight:600;font-size:16px;margin-bottom:6px}
 .opt{font-weight:400;color:var(--ink-soft)}
 .field input,.field select,.field textarea{width:100%;font:400 17px/1.4 var(--sans);color:var(--ink);background:#fff;border:2px solid #8A9299;border-radius:4px;padding:13px 14px;min-height:52px}
 .field textarea{min-height:130px;resize:vertical}
-.field input:focus-visible,.field select:focus-visible,.field textarea:focus-visible{outline:3px solid var(--copper-on-light);outline-offset:1px;border-color:var(--ink)}
+.field input:focus-visible,.field select:focus-visible,.field textarea:focus-visible{outline:3px solid var(--ink);outline-offset:1px;border-color:var(--ink)}
 .field [aria-invalid="true"]{border-color:#A3261B;background:#FFF7F6}
 .hint{font-size:14px;color:var(--ink-soft);margin:6px 0 0}
 .err{color:#A3261B;font-size:15px;font-weight:600;margin:6px 0 0}
@@ -164,7 +164,8 @@ h3{font-size:1.3rem;line-height:1.25}
 .privacy-note{font-size:14px;color:var(--ink-soft);margin:0 0 20px}
 .form .btn-light{background:var(--charcoal);color:var(--paper);width:100%}
 .form .btn-light:hover{background:#000}
-.form .btn-light:focus-visible{outline-color:var(--copper-on-light)}
+.form .btn-light:focus-visible{outline-color:var(--ink)}
+.form .btn-light:hover{background:var(--accent);color:var(--on-accent)}
 .result{margin-top:18px;font-size:16px}
 .result:empty{display:none}
 .result .box{padding:14px 16px;border-radius:4px;border:2px solid var(--ink);background:var(--tint)}
@@ -187,7 +188,7 @@ h3{font-size:1.3rem;line-height:1.25}
 .page h1{font-size:clamp(2rem,6vw,3rem);margin-bottom:24px}
 .page h2{font-size:1.5rem;margin:40px 0 10px;max-width:none}
 .page p,.page li{max-width:70ch;color:var(--ink-soft)}
-.pending{background:var(--tint);border-left:4px solid var(--copper-on-light);padding:10px 14px;color:var(--ink)}
+.pending{background:var(--tint);border-left:4px solid var(--ink);padding:10px 14px;color:var(--ink)}
 
 /* Restrained motion */
 @media (prefers-reduced-motion:no-preference){

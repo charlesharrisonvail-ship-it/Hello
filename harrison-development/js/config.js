@@ -44,6 +44,9 @@ window.HD_CONFIG = {
   formEndpoint: "",
   mailtoFallback: true,
 
+  // Accent color: "yellow" (neon yellow, default) or "pink" (neon pink).
+  accent: "yellow",
+
   // Staging safety: the preview ribbon is shown until set to false at an authorized launch.
   // Also remove the robots noindex meta tag and robots.txt Disallow at launch.
   previewBanner: true

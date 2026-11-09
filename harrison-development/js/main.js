@@ -3,6 +3,7 @@
   var cfg = window.HD_CONFIG || {};
   var doc = document;
   doc.documentElement.classList.add("js");
+  if (cfg.accent === "pink") doc.documentElement.setAttribute("data-accent", "pink");
 
   function $(id) { return doc.getElementById(id); }
   function text(el, v) { if (el && v) el.textContent = v; }
