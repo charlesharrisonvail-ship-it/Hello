@@ -53,6 +53,10 @@
 
   <main id="main">
     <section class="hero" id="hero" aria-labelledby="hero-title">
+      <video class="hero-bg" data-bg muted loop playsinline preload="metadata" poster="assets/media/hero-loop-poster.jpg" aria-hidden="true" tabindex="-1">
+        <source data-src="assets/media/hero-loop.mp4" type="video/mp4">
+      </video>
+      <div class="hero-scrim" aria-hidden="true"></div>
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="wrap hero-grid">
         <div class="hero-copy">
@@ -88,6 +92,10 @@
         <figcaption>AI-generated concept film. Abstract art, not a project, plan or rendering.</figcaption>
       </figure>
     </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track"><span class="t">Development marketing</span><span class="sep">&#10022;</span><span class="t o">Licensed sales</span><span class="sep">&#10022;</span><span class="t">AI-powered launches</span><span class="sep">&#10022;</span><span class="t o">Colorado statewide</span><span class="sep">&#10022;</span><span class="t">Concept to closing</span><span class="sep">&#10022;</span><span class="t o">Mountain markets</span><span class="sep">&#10022;</span><span class="t">Development marketing</span><span class="sep">&#10022;</span><span class="t o">Licensed sales</span><span class="sep">&#10022;</span><span class="t">AI-powered launches</span><span class="sep">&#10022;</span><span class="t o">Colorado statewide</span><span class="sep">&#10022;</span><span class="t">Concept to closing</span><span class="sep">&#10022;</span><span class="t o">Mountain markets</span><span class="sep">&#10022;</span></div>
+    </div>
 
     <section class="section value" aria-labelledby="value-title">
       <div class="wrap split">
@@ -156,7 +164,8 @@
       </div>
     </section>
 
-    <section class="section section-dark" id="approach" aria-labelledby="approach-title">
+    <section class="section section-dark has-backdrop" id="approach" aria-labelledby="approach-title">
+      <div class="backdrop" aria-hidden="true"><img src="assets/media/minturn-cliffs.webp" alt="" width="1200" height="780" loading="lazy"></div>
       <div class="wrap">
         <p class="eyebrow rv">Approach</p>
         <h2 id="approach-title" class="rv">How a project moves from first call to closing.</h2>
@@ -166,6 +175,7 @@
           <li class="rv"><span class="num" aria-hidden="true">3</span><h3>Launch and follow through</h3><p>Approved marketing, inquiry handling, showings, and brokerage services.</p></li>
           <li class="rv"><span class="num" aria-hidden="true">4</span><h3>Review and refine</h3><p>Use qualified inquiry and buyer feedback to improve the approach.</p></li>
         </ol>
+        <p class="backdrop-credit">Cliffs above Minturn. Photo: Jeffrey Beall, CC BY 4.0.</p>
         <p class="note-light rv">Marketing and sales inform each other: buyer questions, showing feedback, and inquiry patterns guide positioning and campaign revisions. AI assists with production and analysis. Charles, a licensed agent, reviews every output and manages client relationships and sales work personally.</p>
       </div>
     </section>
@@ -234,6 +244,21 @@
             <p class="study-cta"><a href="#contact">Ask about this study</a></p>
           </div>
         </article>
+      </div>
+    </section>
+
+    <section class="section places" id="places" aria-labelledby="places-title">
+      <div class="wrap">
+        <p class="eyebrow eyebrow-dark rv">The ground we know</p>
+        <h2 id="places-title" class="rv">Rivers, ridgelines and the towns between them.</h2>
+        <div class="bento">
+          <figure class="tile t-river rv"><video class="media" data-bg muted loop playsinline preload="none" poster="assets/media/river-motion-poster.jpg" aria-label="Moving footage of the Eagle River in Eagle, under a steel railroad bridge."><source data-src="assets/media/river-motion.mp4" type="video/mp4"></video><figcaption><span class="tile-title">Eagle River, Eagle</span><span class="tile-credit">Animated from a photo by Jeffrey Beall, CC BY 4.0</span></figcaption></figure>
+          <figure class="tile t-wide rv"><img class="media" src="assets/media/eagle-river-minturn.webp" width="1600" height="1130" loading="lazy" alt="The Eagle River running through evergreens near Minturn."><figcaption><span class="tile-title">Eagle River, Minturn</span><span class="tile-credit">Photo: Jeffrey Beall, CC BY 4.0</span></figcaption></figure>
+          <figure class="tile t-cliffs rv"><img class="media" src="assets/media/minturn-cliffs.webp" width="1200" height="780" loading="lazy" alt="Pale cliffs and pines above Minturn."><figcaption><span class="tile-title">Cliffs above Minturn</span><span class="tile-credit">Photo: Jeffrey Beall, CC BY 4.0</span></figcaption></figure>
+          <figure class="tile t-water rv"><video class="media" data-bg muted loop playsinline preload="none" poster="assets/media/water-motion-poster.jpg" aria-label="Moving footage of rapids and geese on the Eagle River in Eagle."><source data-src="assets/media/water-motion.mp4" type="video/mp4"></video><figcaption><span class="tile-title">Eagle River, Eagle</span><span class="tile-credit">Animated from a photo by Jeffrey Beall, CC BY 4.0</span></figcaption></figure>
+          <figure class="tile t-lake rv"><img class="media" src="assets/media/nottingham-lake-avon.webp" width="1200" height="909" loading="lazy" alt="Nottingham Lake in Avon, with a bench and mountains behind."><figcaption><span class="tile-title">Nottingham Lake, Avon</span><span class="tile-credit">Photo: Jeffrey Beall, CC BY 4.0</span></figcaption></figure>
+          <figure class="tile t-aerial rv"><img class="media" src="assets/media/dowd-junction-aerial.webp" width="1600" height="1000" loading="lazy" alt="Aerial view of the Eagle River corridor near Dowd Junction."><figcaption><span class="tile-title">Dowd Junction corridor, from above</span><span class="tile-credit">USGS aerial, public domain</span></figcaption></figure>
+        </div>
       </div>
     </section>
 
@@ -327,7 +352,8 @@
       </div>
     </section>
 
-    <section class="section section-dark final" id="contact" aria-labelledby="contact-title">
+    <section class="section section-dark final has-backdrop" id="contact" aria-labelledby="contact-title">
+      <div class="backdrop" aria-hidden="true"><img src="assets/media/eagle-river-minturn-close.webp" alt="" width="1400" height="933" loading="lazy"></div>
       <div class="wrap contact-grid">
         <div>
           <p class="eyebrow rv">Discuss Your Project</p>
@@ -449,8 +475,11 @@
     </div>
     <div class="wrap legal">
       <p>Harrison Development is a proposed brand name; the logo shown is the owner-approved design, pending brand clearance. Marketing language describes services, not outcomes. No guarantee of buyer demand, sales pace or price is made or implied. Real estate brokerage services are provided in Colorado.</p>
+      <p>Photographs by Jeffrey Beall, CC BY 4.0, via Wikimedia Commons (resized, cropped, and in two clips animated). Aerial imagery: USGS, public domain.</p>
     </div>
   </footer>
+
+  <button type="button" class="motion-toggle" id="motionToggle" aria-pressed="false" hidden>Pause motion</button>
 
   <script src="js/config.js"></script>
   <script src="js/main.js"></script>

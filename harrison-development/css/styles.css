@@ -283,6 +283,48 @@ h3{font-size:1.3rem;line-height:1.25}
 .phone figcaption{margin-top:12px;text-align:center;font-size:14px;color:var(--paper-soft)}
 .media-note{margin:14px 0 0;font-size:14px;color:var(--paper-soft);text-align:center}
 
+/* ===== Cinematic layer: hero film, ticker, places gallery, photo backdrops ===== */
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;z-index:0;pointer-events:none}
+.hero-scrim{position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(90deg,rgba(20,24,28,.95) 0%,rgba(20,24,28,.78) 42%,rgba(20,24,28,.38) 100%),linear-gradient(0deg,#14181C 0%,rgba(20,24,28,0) 32%)}
+.hero .hero-glow{z-index:0}
+
+.ticker{overflow:hidden;background:#0E1114;border-block:1px solid var(--line-dark);padding:clamp(16px,2.4vw,28px) 0;user-select:none}
+.ticker-track{display:flex;align-items:center;gap:clamp(22px,3vw,44px);width:max-content}
+.ticker .t{font:600 clamp(2rem,6.2vw,4.8rem)/1 var(--serif);letter-spacing:-.01em;white-space:nowrap;color:var(--paper)}
+.ticker .o{color:transparent;-webkit-text-stroke:1.5px var(--accent)}
+.ticker .sep{color:var(--accent);font-size:clamp(1.1rem,2.4vw,1.8rem)}
+
+.places{background:#0A0C0E}
+.bento{display:grid;gap:12px;margin-top:40px;grid-template-columns:repeat(2,1fr);grid-auto-rows:clamp(150px,38vw,220px);grid-auto-flow:dense}
+.bento .t-river,.bento .t-water,.bento .t-aerial{grid-row:span 2}
+.bento .t-wide{grid-column:span 2}
+@media(min-width:900px){
+  .bento{grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(2,280px);grid-auto-rows:auto}
+  .bento .t-river{grid-column:1;grid-row:1 / 3}
+  .bento .t-wide{grid-column:2 / 4;grid-row:1}
+  .bento .t-cliffs{grid-column:4;grid-row:1}
+  .bento .t-water{grid-column:5;grid-row:1 / 3}
+  .bento .t-lake{grid-column:2;grid-row:2}
+  .bento .t-aerial{grid-column:3 / 5;grid-row:2}
+}
+.tile{position:relative;margin:0;overflow:hidden;border-radius:12px;background:#14181C;isolation:isolate}
+.tile .media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.tile figcaption{position:absolute;inset:auto 0 0 0;z-index:1;display:flex;flex-direction:column;gap:2px;padding:44px 16px 14px;background:linear-gradient(0deg,rgba(10,12,14,.92) 0%,rgba(10,12,14,0) 100%)}
+.tile-title{font:600 1.05rem/1.2 var(--serif);color:var(--paper)}
+.tile-credit{font-size:14px;color:var(--paper-soft)}
+.tile::after{content:"";position:absolute;inset:0;z-index:2;border:1px solid rgba(238,241,243,.08);border-radius:12px;pointer-events:none}
+
+.has-backdrop{position:relative;overflow:clip;isolation:isolate}
+.has-backdrop > .wrap{position:relative;z-index:1}
+.backdrop{position:absolute;inset:-12% 0;z-index:0;pointer-events:none}
+.backdrop img{width:100%;height:100%;object-fit:cover;opacity:.2;filter:grayscale(.35) contrast(1.05)}
+.backdrop::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0E1114 0%,rgba(14,17,20,.55) 30%,rgba(14,17,20,.55) 70%,#0E1114 100%)}
+.backdrop-credit{position:absolute;right:var(--gutter);bottom:-56px;margin:0;font-size:14px;color:var(--paper-soft)}
+#approach .wrap{position:relative}
+
+.motion-toggle{position:fixed;left:16px;bottom:16px;z-index:70;min-height:44px;padding:10px 16px;border-radius:999px;border:1px solid var(--line-light);background:rgba(14,17,20,.86);color:var(--paper);font:600 14px/1 var(--sans);cursor:pointer;backdrop-filter:blur(6px)}
+.motion-toggle:hover{border-color:var(--accent);color:var(--accent)}
+
 /* Portrait */
 .portrait{position:relative;margin:34px 0 0;max-width:340px}
 .portrait .frame{position:relative}
@@ -336,6 +378,15 @@ h3{font-size:1.3rem;line-height:1.25}
   @keyframes cue{0%{translate:0 0;opacity:1}70%{translate:0 16px;opacity:0}100%{translate:0 0;opacity:0}}
   .scroll-cue span{animation:cue 2s ease-in-out infinite}
 
+  /* cinematic motion */
+  @keyframes tick{to{transform:translateX(-50%)}}
+  .ticker-track{animation:tick 38s linear infinite}
+  .ticker:hover .ticker-track{animation-play-state:paused}
+  .tile .media{transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+  .tile:hover .media{transform:scale(1.07)}
+  .tile figcaption{transition:translate .5s cubic-bezier(.2,.7,.2,1)}
+  .tile:hover figcaption{translate:0 -4px}
+
   /* map ping */
   @keyframes ping{from{scale:1;opacity:.9}to{scale:3.2;opacity:0}}
   .map .town.active .ring,.map .town.hover .ring{animation:ping 1.7s ease-out infinite}
@@ -358,6 +409,13 @@ h3{font-size:1.3rem;line-height:1.25}
     .steps li{view-timeline:--step block}
     .steps li.rv{animation:rv-in linear both;animation-timeline:--step;animation-range:entry 0% entry 38%}
     .steps li::before{animation:line-fill linear both;animation-timeline:--step;animation-range:entry 10% entry 80%}
+    @keyframes zoom-settle{from{scale:1.28}}
+    .tile .media{animation:zoom-settle linear both;animation-timeline:view();animation-range:entry 0% cover 55%}
+    @keyframes drift{from{translate:0 -7%}to{translate:0 7%}}
+    .backdrop img{animation:drift linear both;animation-timeline:view();animation-range:cover}
+    @keyframes ticker-skew{from{translate:6% 0}to{translate:-6% 0}}
+    .ticker{view-timeline:--tk block}
+    .ticker-track{animation:tick 38s linear infinite,ticker-skew linear both;animation-timeline:auto,--tk;animation-range:normal,cover}
     @keyframes map-draw{from{stroke-dasharray:1;stroke-dashoffset:1}to{stroke-dasharray:1;stroke-dashoffset:0}}
     .map .state{animation:map-draw linear both;animation-timeline:view();animation-range:entry 5% cover 35%}
     @keyframes dot-in{from{opacity:0;scale:.2}}
@@ -390,4 +448,12 @@ h3{font-size:1.3rem;line-height:1.25}
     .faq details::details-content{block-size:0;overflow:clip;transition:block-size .35s ease,content-visibility .35s allow-discrete}
     .faq details[open]::details-content{block-size:auto}
   }
+}
+
+/* Viewer pressed "Pause motion" */
+.motion-paused *,.motion-paused *::before,.motion-paused *::after{animation-play-state:paused!important}
+@media (prefers-reduced-motion: reduce){
+  .ticker-track{animation:none}
+  .tile .media{animation:none}
+  .backdrop img{animation:none}
 }

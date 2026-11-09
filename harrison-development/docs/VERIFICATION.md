@@ -59,6 +59,16 @@ Nothing below is "verified" merely because it appeared in the build brief. As of
 |---|---|---|---|---|
 | Abstract brand film | proposed; **Charles decided to keep it (2026-11-09)** | Generated with Higgsfield (cinematic_studio_video_v2, 8 s, silent, 12 credits; the 56-credit seedance model needs a Plus plan). Files in `assets/video/` | Visual only, no people. Labeled "AI-generated concept film. Not a project, plan or rendering." Plays once when seen, with a pause button; no autoplay under reduced motion | Kept. To remove later, delete the `<section class="film">` block in `index.html`. Higgsfield terms for commercial use should be checked before launch. |
 
+## C3. Cinematic media (2026-11-09)
+
+| Item | Status | Source and rights | Where | Action |
+|---|---|---|---|---|
+| Eagle River (Minturn, Eagle), Minturn cliffs, Nottingham Lake photos | verified license | Jeffrey Beall, CC BY 4.0, Wikimedia Commons (resized and cropped). Credited on each gallery tile, under the Approach backdrop, and in the footer | Places gallery, Approach and Contact backdrops | Keep the credits whenever these images are used. |
+| Two river motion clips | user-owned | Made 2026-11-01 with Higgsfield from crops of the Beall Eagle River photo (15 credits, approved by Charles then); credited "Animated from a photo by Jeffrey Beall, CC BY 4.0" | Places gallery | Re-encoded as seamless 4-second loops. |
+| Hero background loop | user-owned | The Higgsfield brand film (12 credits), re-cut as a seamless loop | Hero | Muted, decorative, hidden from screen readers. |
+| Dowd Junction corridor aerial | verified license | USGS The National Map, public domain | Places gallery | None. |
+| Motion behaviour | verified | `tests/check.mjs` | Whole page | Footage loads only when scrolled into view; a "Pause motion" button stops all motion; reduced-motion users get still images. |
+
 ## C. Content claims (what the site says)
 
 | Claim | Status | Evidence | Impact | Action |

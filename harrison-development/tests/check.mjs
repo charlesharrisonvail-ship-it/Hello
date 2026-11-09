@@ -6,7 +6,7 @@ const { chromium } = require('playwright');
 const BASE = process.env.BASE || 'http://localhost:8765';
 const SHOTS = new URL('../screenshots/', import.meta.url).pathname;
 const results = []; const log = (ok, name, extra = '') => { results.push(ok); console.log((ok ? 'PASS ' : 'FAIL ') + name + (extra ? '  ' + extra : '')); };
-const NOANIM = '.rv,.hero-in,.wi,.hero-logo,.hero-glow,.map .state,.map .town,.progress,.study-art .draw,.study-art .blocks rect,.panel{animation:none!important}.rv-js{opacity:1!important;translate:none!important}.study-art .draw{stroke-dashoffset:0!important}';
+const NOANIM = '.rv,.hero-in,.wi,.hero-logo,.hero-glow,.map .state,.map .town,.progress,.study-art .draw,.study-art .blocks rect,.ticker-track,.ticker,.tile .media,.backdrop img{animation:none!important}.rv-js{opacity:1!important;translate:none!important}.study-art .draw{stroke-dashoffset:0!important}';
 
 const browser = await chromium.launch();
 const external = new Set();
@@ -161,6 +161,31 @@ for (const w of [360, 390, 768, 1440]) {
   const c2 = await browser.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' }); const p2 = await c2.newPage();
   await p2.goto(BASE + '/index.html'); await p2.locator('#brandFilm').scrollIntoViewIfNeeded(); await p2.waitForTimeout(1200);
   log(await p2.evaluate(() => document.getElementById('brandFilm').paused), 'reduced motion: film does not autoplay (poster shows; Play button available)');
+  await c2.close(); }
+
+// Cinematic layer: hero film, ticker, gallery, backdrops, pause control
+{ const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const page = await ctx.newPage();
+  await page.goto(BASE + '/index.html'); await page.waitForTimeout(1200);
+  const hv = await page.evaluate(() => { const v = document.querySelector('.hero-bg'); return { muted: v.muted, loop: v.loop, hidden: v.getAttribute('aria-hidden') }; });
+  log(hv.muted && hv.loop && hv.hidden === 'true', 'hero background film is muted, looping and hidden from screen readers', JSON.stringify(hv));
+  log(await page.locator('.ticker').getAttribute('aria-hidden') === 'true' && (await page.evaluate(() => getComputedStyle(document.querySelector('.ticker-track')).animationName)).split(',')[0].trim() === 'tick', 'word ticker is animated and decorative');
+  const tiles = await page.evaluate(() => [...document.querySelectorAll('.bento .tile')].map(t => ({ credit: !!t.querySelector('.tile-credit') && t.querySelector('.tile-credit').textContent.length > 5, alt: t.querySelector('img') ? !!t.querySelector('img').alt : !!t.querySelector('video').getAttribute('aria-label') })));
+  log(tiles.length === 6 && tiles.every(x => x.credit && x.alt), 'places gallery has 6 tiles, each credited and described', JSON.stringify(tiles.length));
+  const offscreen = await page.evaluate(() => [...document.querySelectorAll('.bento video source')].every(s => !s.getAttribute('src')));
+  log(offscreen, 'gallery footage does not download until scrolled into view');
+  const btn = page.locator('#motionToggle');
+  log(await btn.isVisible() && await btn.getAttribute('aria-pressed') === 'false', 'a visible Pause motion control is offered');
+  await btn.click(); await page.waitForTimeout(200);
+  const pausedState = await page.evaluate(() => ({ cls: document.documentElement.classList.contains('motion-paused'), ps: getComputedStyle(document.querySelector('.ticker-track')).animationPlayState, vids: [...document.querySelectorAll('video[data-bg]')].every(v => v.paused) }));
+  log(pausedState.cls && pausedState.ps.split(',').every(x => x.trim() === 'paused') && pausedState.vids && await btn.getAttribute('aria-pressed') === 'true', 'Pause motion stops the ticker and every background video', JSON.stringify(pausedState));
+  await btn.click();
+  log(/Jeffrey Beall, CC BY 4\.0/.test(await page.locator('.site-footer').innerText()) && /USGS, public domain/.test(await page.locator('.site-footer').innerText()), 'footer credits the photographer and USGS');
+  await ctx.close();
+  const c2 = await browser.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' }); const p2 = await c2.newPage();
+  await p2.goto(BASE + '/index.html'); await p2.waitForTimeout(800);
+  await p2.locator('#places').scrollIntoViewIfNeeded(); await p2.waitForTimeout(800);
+  const rm = await p2.evaluate(() => ({ vids: [...document.querySelectorAll('video[data-bg]')].every(v => v.paused), tick: getComputedStyle(document.querySelector('.ticker-track')).animationName, toggle: document.getElementById('motionToggle').hidden }));
+  log(rm.vids && rm.tick === 'none' && rm.toggle, 'reduced motion: no footage plays and the ticker stands still', JSON.stringify(rm));
   await c2.close(); }
 
 // Form behaviour

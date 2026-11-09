@@ -163,13 +163,56 @@
       var seen = false;
       new IntersectionObserver(function (entries) {
         entries.forEach(function (en) {
-          if (en.isIntersecting && !seen && !userPaused) { seen = true; start(); }
+          if (en.isIntersecting && !seen && !userPaused && !root.classList.contains("motion-paused")) { seen = true; start(); }
           else if (!en.isIntersecting && !film.paused) { film.pause(); }
         });
       }, { threshold: 0.5 }).observe(film);
     }
     label();
   }
+
+  /* ---------- Background footage: lazy, muted, plays only in view; one switch pauses all motion ---------- */
+  var bgVideos = Array.prototype.slice.call(doc.querySelectorAll("video[data-bg]"));
+  var motionToggle = $("motionToggle");
+  var motionPaused = false;
+  try { motionPaused = localStorage.getItem("hdMotion") === "paused"; } catch (e) {}
+  var inView = [];
+  var loadVid = function (v) {
+    if (v.getAttribute("data-loaded")) return;
+    v.setAttribute("data-loaded", "1");
+    v.querySelectorAll("source[data-src]").forEach(function (src) { src.src = src.getAttribute("data-src"); });
+    v.load();
+  };
+  var syncVideos = function () {
+    bgVideos.forEach(function (v) {
+      var on = !reduce && !motionPaused && inView.indexOf(v) !== -1;
+      if (on) { loadVid(v); var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
+      else if (!v.paused) { v.pause(); }
+    });
+  };
+  var applyMotion = function (p, save) {
+    motionPaused = p;
+    root.classList.toggle("motion-paused", p);
+    if (motionToggle) { motionToggle.setAttribute("aria-pressed", String(p)); motionToggle.textContent = p ? "Play motion" : "Pause motion"; }
+    if (save) { try { localStorage.setItem("hdMotion", p ? "paused" : "on"); } catch (e) {} }
+    syncVideos();
+  };
+  if ("IntersectionObserver" in window) {
+    var vio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var i = inView.indexOf(en.target);
+        if (en.isIntersecting && i === -1) inView.push(en.target);
+        if (!en.isIntersecting && i !== -1) inView.splice(i, 1);
+      });
+      syncVideos();
+    }, { threshold: 0.2 });
+    bgVideos.forEach(function (v) { vio.observe(v); });
+  }
+  if (motionToggle && !reduce) {
+    motionToggle.hidden = false;
+    motionToggle.addEventListener("click", function () { applyMotion(!motionPaused, true); });
+  }
+  applyMotion(motionPaused, false);
 
   /* ---------- Markets: region buttons mark the map ---------- */
   var towns = doc.querySelectorAll(".map .town"), rbtns = doc.querySelectorAll(".region-btn");
