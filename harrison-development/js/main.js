@@ -239,9 +239,12 @@
   var live = !!cfg.formEndpoint;
   var submitting = false, lastSent = "";
 
+  var emailMode = !live && !cfg.previewBanner && cfg.mailtoFallback && c.email;
   state.textContent = live
     ? "Tell us about your project and we will follow up personally."
-    : "PREVIEW ONLY: this form does not send anything yet. Nothing you type is transmitted or saved.";
+    : emailMode
+      ? "When you press the button, your own email app opens with your details addressed to Charles. Press send there. Nothing is stored on this site."
+      : "PREVIEW ONLY: this form does not send anything yet. Nothing you type is transmitted or saved.";
 
   var rules = {
     name:        function (v) { return v.trim() ? "" : "Please enter your name."; },
@@ -308,6 +311,14 @@
       description: form.elements.description.value.trim(),
       connect: form.elements.connect.value, times: form.elements.times.value.trim()
     };
+
+    if (emailMode) {
+      // Live site without a form service: hand off to the visitor's email app. Never claim it was sent.
+      box("<strong>Your email app should open now</strong> with your details addressed to Charles. Press send there to reach him." +
+          '<a class="btn" href="' + mailtoLink(data) + '">Open my email app again</a>', false);
+      window.location.href = mailtoLink(data);
+      return;
+    }
 
     if (!live) {
       // No approved endpoint: never simulate delivery.

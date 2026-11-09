@@ -1,5 +1,7 @@
 # LAUNCH-CHECKLIST.md: Harrison Development
 
+**Status 2026-11-09: LIVE at https://harrison-development.charlesharrisonvail.workers.dev**, launched at Charles's direction. The preview banner is off; the contact form opens the visitor's own email app; search indexing stays off until a custom domain is connected. Redeploy with `bash harrison-development/deploy/deploy.sh`.
+
 Technical readiness is separate from factual, brokerage and publication readiness. **Technical readiness: the local preview is built and tested. Publication readiness: not ready.** Nothing has been deployed, registered, purchased, sent or approved.
 
 ## 1. Facts and approvals still needed (blockers)

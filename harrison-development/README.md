@@ -40,6 +40,18 @@ node harrison-development/tests/build-pdf.mjs # re-renders the downloadable chec
 
 With no `formEndpoint`, the form is visibly **preview only**: it validates, sends nothing, and never shows a success message. It offers an "Open in my email app" button that creates a draft in the visitor's own mail app. When an approved endpoint is set, success shows only after the server returns OK.
 
-## Deploy (later, with authorization)
+## Live site
+
+**https://harrison-development.charlesharrisonvail.workers.dev** (launched 2026-11-09 at Charles's direction).
+
+Hosted free on Cloudflare Workers, with the files in Workers KV. To redeploy after any change, run this from the repo root in a Claude Code cloud session (the Cloudflare credential comes from the session; none is stored in the repo):
+
+```bash
+bash harrison-development/deploy/deploy.sh
+```
+
+Only the public files are uploaded: never `docs/`, `tests/`, `screenshots/` or `deploy/`, and internal comments are stripped from `js/config.js`. Search engines are still asked not to index the site (`noindex` and `robots.txt`) until Charles's own domain is connected; remove both then.
+
+## Deploy notes (earlier plan)
 
 Any static host works (Netlify, Vercel, Cloudflare Pages, GitHub Pages from its own repo or branch). Publish the `harrison-development/` folder as the site root, after completing `docs/LAUNCH-CHECKLIST.md`. Do not publish from the branch that serves `learn.aireestate.com`.

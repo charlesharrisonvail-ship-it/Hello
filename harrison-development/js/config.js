@@ -45,7 +45,7 @@ window.HD_CONFIG = {
   // Business and website operator details for the privacy page. UNKNOWN until Charles confirms.
   // Do not claim LLC status, and do not invent a street address.
   operator: {
-    legalName: "",
+    legalName: "Charles Harrison, doing business as Harrison Development",
     mailingAddress: ""
   },
 
@@ -73,5 +73,5 @@ window.HD_CONFIG = {
 
   // Staging safety: the preview ribbon is shown until set to false at an authorized launch.
   // Also remove the robots noindex meta tag and robots.txt Disallow at launch.
-  previewBanner: true
+  previewBanner: false
 };
