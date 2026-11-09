@@ -42,15 +42,11 @@ With no `formEndpoint`, the form is visibly **preview only**: it validates, send
 
 ## Live site
 
-**https://harrison-development.charlesharrisonvail.workers.dev** (launched 2026-11-09 at Charles's direction).
+**https://learn.aireestate.com/development/** (Charles's choice, 2026-11-09): its own page on the AiRE domain, with **no tab or link from any AiRE page**, `noindex`, and **no links out to Epique or EpiVail** (a test enforces this).
 
-Hosted free on Cloudflare Workers, with the files in Workers KV. To redeploy after any change, run this from the repo root in a Claude Code cloud session (the Cloudflare credential comes from the session; none is stored in the repo):
+To republish after a change: check out the live AiRE branch `claude/stan-store-access-k4hjdu`, run `bash harrison-development/deploy/publish-to-aire.sh <that checkout>`, then commit and push it. Only public files are copied, and internal comments are stripped from `js/config.js`.
 
-```bash
-bash harrison-development/deploy/deploy.sh
-```
-
-Only the public files are uploaded: never `docs/`, `tests/`, `screenshots/` or `deploy/`, and internal comments are stripped from `js/config.js`. Search engines are still asked not to index the site (`noindex` and `robots.txt`) until Charles's own domain is connected; remove both then.
+The earlier Cloudflare Workers copy (`deploy/deploy.sh`) is switched off; its workers.dev route is disabled.
 
 ## Deploy notes (earlier plan)
 

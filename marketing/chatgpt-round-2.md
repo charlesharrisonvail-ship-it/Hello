@@ -6,7 +6,7 @@ If you start a new chat, paste `chatgpt-brief.md` first, then this.
 ---
 
 Great work on round one. Here's round two. Every rule from the first brief still applies, especially:
-- **No person's name, face or signature.** Credit, if any, is "Taught by a licensed, practicing agent".
+- **No person's name, face or signature.** Credit, if any, is "Made for agents, by agents." (never singular).
 - **Claude Code is never ours.** Wherever it or its $20/month appears, it says **(not included)**.
 - Prices exactly **$67** (Part One) and **$97** (Lead to Keys).
 - **"Made with AI"** on anything with AI-made imagery.

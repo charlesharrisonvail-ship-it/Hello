@@ -28,8 +28,8 @@ Privacy and terms are dated September 25, 2026.
 
 - Name is "AiRE Estate". "AiRE" alone is the AI instructor who narrates lessons and
   "tells you plainly that it's AI". Never "Aire" or "AIRE".
-- The instructor is "a licensed, practicing agent", credentials "RSPS · MRP ·
-  AI PRO", "25 years selling real estate in Colorado's Vail Valley". **Charles's
+- Who is behind it: "Made for agents, by agents." Never singular (Charles,
+  2026-11-09); the old "a licensed, practicing agent" line is retired. **Charles's
   name is never fronted** on the site, ads, posts or images (see
   `aire-name-not-fronted`); it may appear inside course videos. No Epique, no EpiVail.
 - Voice: plain, numbers first, anti-hype. Sections like "The arithmetic" and

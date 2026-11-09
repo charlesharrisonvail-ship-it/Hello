@@ -1,6 +1,6 @@
 # LAUNCH-CHECKLIST.md: Harrison Development
 
-**Status 2026-11-09: LIVE at https://harrison-development.charlesharrisonvail.workers.dev**, launched at Charles's direction. The preview banner is off; the contact form opens the visitor's own email app; search indexing stays off until a custom domain is connected. Redeploy with `bash harrison-development/deploy/deploy.sh`.
+**Status 2026-11-09: LIVE at https://learn.aireestate.com/development/** (unlinked from AiRE, noindex, no links to Epique or EpiVail). The preview banner is off; the contact form opens the visitor's own email app; there is no booking button until a Harrison Development schedule exists. Republish with `harrison-development/deploy/publish-to-aire.sh`.
 
 Technical readiness is separate from factual, brokerage and publication readiness. **Technical readiness: the local preview is built and tested. Publication readiness: not ready.** Nothing has been deployed, registered, purchased, sent or approved.
 
