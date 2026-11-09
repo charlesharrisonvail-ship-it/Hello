@@ -13,4 +13,4 @@ Built 2026-11-08 in `harrison-development/` (static preview, not deployed).
 - Unverified until checked: license, credentials, name/trademark, broker-approved attribution. See `harrison-development/docs/VERIFICATION.md`.
 - Does not use the EpiVail signature. Never publish, buy a domain or send outreach without Charles's say.
 - Logo: Charles approved a ChatGPT-made HD monogram over mountains (2026-11-09), saved in `harrison-development/assets/brand/`. Use it as the HD identity; do not redraw or replace it. Still needs trademark clearance and a vector version.
-- Color: Charles hates the brown/copper. Accent is neon yellow (#DFFF1A) on charcoal; neon pink is one setting away (`accent` in `harrison-development/js/config.js`). Never use the neon as text on light backgrounds.
+- Color: Charles hates the brown/copper. Accent is soft neon yellow #EFFF8C (neon #DFFF1A faded 50% toward white, his request) on charcoal; neon pink is one setting away (`accent` in `harrison-development/js/config.js`). Never use the neon as text on light backgrounds.

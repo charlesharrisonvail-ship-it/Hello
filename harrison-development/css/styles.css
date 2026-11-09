@@ -1,12 +1,12 @@
-/* Harrison Development. Neon accent on charcoal. Accent is never used as text on light backgrounds (1.02:1 for yellow); on light it is a highlight block with dark text on top.
-   Yellow #DFFF1A: 15.7:1 on charcoal. Pink #FF2D95: 5.2:1 on charcoal and dark text on pink 5.2:1. Switch with accent in js/config.js. */
+/* Harrison Development. Neon accent on charcoal. Accent is never used as text on light backgrounds (about 1.1:1 for yellow); on light it is a highlight block with dark text on top.
+   Soft neon yellow #EFFF8C (the neon #DFFF1A faded 50% toward white): 17.1:1 on charcoal. Pink #FF2D95: 5.2:1 on charcoal and dark text on pink 5.2:1. Switch with accent in js/config.js. */
 @font-face{font-family:"Inter";src:url("../assets/fonts/inter-latin-wght-normal.woff2") format("woff2");font-weight:100 900;font-display:swap}
 @font-face{font-family:"Fraunces";src:url("../assets/fonts/fraunces-latin-500-normal.woff2") format("woff2");font-weight:500;font-display:swap}
 @font-face{font-family:"Fraunces";src:url("../assets/fonts/fraunces-latin-600-normal.woff2") format("woff2");font-weight:600;font-display:swap}
 
 :root{
   --charcoal:#14181C; --warm:#F5F2EC; --gray:#667078;
-  --accent:#DFFF1A; --accent-hover:#F0FF6B; --on-accent:#14181C;
+  --accent:#EFFF8C; --accent-hover:#F8FFC4; --on-accent:#14181C;
   --ink:#14181C;            /* text on light: 15.97:1 */
   --ink-soft:#4F5961;       /* secondary text on light: 6.41:1 */
   --paper:#F5F2EC;          /* text on dark: 15.97:1 */
