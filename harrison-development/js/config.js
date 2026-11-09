@@ -33,9 +33,10 @@ window.HD_CONFIG = {
   // Portrait for the About section. Put a real photo of Charles at assets/brand/charles-portrait.jpg
   // (or .webp) and set src to that path. Empty = the About section simply shows no portrait.
   // Never use a generated likeness of Charles.
-  // Removed at Charles's request (the HeyGen frame was rejected). Waits for a photo he sends.
+  // Portrait chosen and supplied by Charles on 2026-11-09 (cropped 4:5 from his image). The earlier
+  // HeyGen-frame headshot was rejected.
   portrait: {
-    src: "",
+    src: "assets/brand/charles-portrait.jpg",
     alt: "Portrait of Charles Harrison"
   },
 

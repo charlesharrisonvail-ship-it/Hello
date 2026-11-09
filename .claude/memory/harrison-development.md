@@ -22,3 +22,4 @@ Built 2026-11-08 in `harrison-development/` (static preview, not deployed).
 - Higgsfield: balance was 200.8 credits on 2026-11-09; an 8-second 16:9 abstract clip (seedance_2_5) quotes 56 credits. Never spend without his "go" (see `no-paid-ai-tools`).
 - Charles REJECTED the HeyGen-frame headshot (2026-11-09): never put a headshot on the site unless he picks or sends the photo. Portrait slot stays empty. His HeyGen groups: "Charles2" (digital twin look eac477f9... is real footage; the other looks are AI-staged scenes) and "CHAiRLES".
 - He prefers free generation routes ("freehiggsfield"): the Higgsfield video cost 12 credits (balance was 200.8); ask before any spend. Brand film is built but awaiting his approval.
+- Portrait (2026-11-09): Charles supplied and chose an image of himself in a cream blazer in front of a modern house; it is cropped and live in About. It may be AI-generated: open question whether to label it. Do not swap it for any other headshot.

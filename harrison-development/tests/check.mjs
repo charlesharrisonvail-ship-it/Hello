@@ -117,7 +117,7 @@ for (const w of [360, 390, 768, 1440]) {
   await p2.waitForTimeout(500);
   const ok = await p2.evaluate(() => { const i = document.getElementById('portraitImg'); return i && i.complete && i.naturalWidth > 600; });
   log(await p2.locator('#portrait').isVisible() && ok && await p2.locator('#portraitImg').getAttribute('alt') === 'Portrait of Charles Harrison', 'configured portrait loads and has alt text');
-  await p2.locator('#about').scrollIntoViewIfNeeded(); await p2.screenshot({ path: SHOTS + 'about-1440.png' });
+  
   await c2.close(); }
 { // configured booking URL and hidden concepts are honored
   const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const page = await ctx.newPage();
