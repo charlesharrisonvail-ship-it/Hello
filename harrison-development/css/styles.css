@@ -1,12 +1,13 @@
 /* Harrison Development. Neon accent on charcoal. Accent is never used as text on light backgrounds (about 1.1:1 for yellow); on light it is a highlight block with dark text on top.
-   Neon yellow #DFFF1A at 50% opacity (Charles, 2026-11-09). Blended it reads #7A8C1B over charcoal and #EAF883 over cream; dark text on it is 4.75:1 (charcoal) and 15.5:1 (cream), and it as text on charcoal is 4.75:1. Pink stays solid because 50% would fail contrast. Switch with accent in js/config.js. */
+   Neon yellow #DFFF1A. On dark surfaces it is full strength (15.7:1 on charcoal, dark text on it 15.7:1). On light surfaces it is 50% opacity (Charles, 2026-11-09), blending to #EAF883 on cream, where dark text on it is 15.5:1. It is never text on light. Pink stays solid in both. Switch with accent in js/config.js. */
 @font-face{font-family:"Inter";src:url("../assets/fonts/inter-latin-wght-normal.woff2") format("woff2");font-weight:100 900;font-display:swap}
 @font-face{font-family:"Fraunces";src:url("../assets/fonts/fraunces-latin-500-normal.woff2") format("woff2");font-weight:500;font-display:swap}
 @font-face{font-family:"Fraunces";src:url("../assets/fonts/fraunces-latin-600-normal.woff2") format("woff2");font-weight:600;font-display:swap}
 
 :root{
   --charcoal:#14181C; --warm:#F5F2EC; --gray:#667078;
-  --accent:rgba(223,255,26,.5); --accent-hover:rgba(223,255,26,.72); --on-accent:#14181C;
+  --accent:rgba(223,255,26,.5); --accent-hover:rgba(223,255,26,.72); /* light surfaces: 50% yellow */
+  --accent-strong:#DFFF1A; --accent-strong-hover:#F0FF6B;    /* dark surfaces: full yellow */ --on-accent:#14181C;
   --ink:#14181C;            /* text on light: 15.97:1 */
   --ink-soft:#4F5961;       /* secondary text on light: 6.41:1 */
   --paper:#F5F2EC;          /* text on dark: 15.97:1 */
@@ -16,7 +17,9 @@
   --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
   --gutter:20px;
 }
-html[data-accent="pink"]{--accent:#FF2D95;--accent-hover:#FF5CAD} /* pink stays solid: 50% would drop contrast below AA */
+html[data-accent="pink"]{--accent:#FF2D95;--accent-hover:#FF5CAD;--accent-strong:#FF2D95;--accent-strong-hover:#FF5CAD}
+/* Dark surfaces get the full-strength accent */
+.site-header,.hero,.section-dark,.site-footer{--accent:var(--accent-strong);--accent-hover:var(--accent-strong-hover)} /* pink stays solid: 50% would drop contrast below AA */
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:88px;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--warm);color:var(--ink);font:400 16px/1.65 var(--sans);overflow-wrap:break-word}

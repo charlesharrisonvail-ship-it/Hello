@@ -2,6 +2,6 @@
   <rect width="64" height="64" rx="10" fill="#14181C"/>
   <g transform="translate(6.5 11) scale(0.43)"><rect x="10" y="10" width="10" height="80" fill="#F5F2EC"/>
   <rect x="45" y="10" width="10" height="80" fill="#F5F2EC"/>
-  <rect x="20" y="45" width="25" height="10" fill="#DFFF1A" fill-opacity=".5"/>
+  <rect x="20" y="45" width="25" height="10" fill="#DFFF1A"/>
   <path d="M50 10H65A40 40 0 0 1 65 90H50V80H65A30 30 0 0 0 65 20H50Z" fill="#F5F2EC"/></g>
 </svg>
