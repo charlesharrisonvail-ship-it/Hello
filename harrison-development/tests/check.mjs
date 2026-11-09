@@ -6,7 +6,7 @@ const { chromium } = require('playwright');
 const BASE = process.env.BASE || 'http://localhost:8765';
 const SHOTS = new URL('../screenshots/', import.meta.url).pathname;
 const results = []; const log = (ok, name, extra = '') => { results.push(ok); console.log((ok ? 'PASS ' : 'FAIL ') + name + (extra ? '  ' + extra : '')); };
-const NOANIM = '.rv,.hero-in,.wi,.hero-logo,.hero-glow,.map .state,.map .town,.progress,.study-art .draw,.study-art .blocks rect,.panel{animation:none!important}.rv-js{opacity:1!important;translate:none!important}.study-art .draw{stroke-dashoffset:0!important}';
+const NOANIM = '.rv,.hero-in,.wi,.hero-logo,.hero-glow,.map .state,.map .town,.progress,.study-art .draw,.study-art .blocks rect,.ticker-track,.ticker,.tile .media,.backdrop img{animation:none!important}.rv-js{opacity:1!important;translate:none!important}.study-art .draw{stroke-dashoffset:0!important}';
 
 const browser = await chromium.launch();
 const external = new Set();
@@ -83,14 +83,22 @@ for (const w of [360, 390, 768, 1440]) {
 { const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const page = await ctx.newPage();
   await page.goto(BASE + '/index.html'); await page.addStyleTag({ content: NOANIM });
   const txt = await page.locator('body').innerText();
-  log(/Not client work/.test(txt) && /not engaged by, affiliated with, or endorsed by/i.test(txt), 'concept studies carry a prominent not-client-work disclaimer');
+  log(/Not client work/.test(txt) && /not engaged by, affiliated with, or endorsed by/i.test(txt) && /EpiVail/.test(txt), 'concept studies carry a prominent not-client-work disclaimer and name EpiVail');
   log(!/Griffin|Tres Birds|Corum|Beaver Capital/i.test(txt), 'no third-party developer or architect names on the page');
   log(!/Rocky Mountain region/.test(txt) && /Colorado statewide/.test(txt), 'service area is Colorado statewide (no other-state claim)');
   await page.locator('#concepts').scrollIntoViewIfNeeded();
-  log(await page.locator('#panel-red').isHidden() && await page.locator('#panel-dowd').isVisible(), 'first concept study shown, second hidden');
-  await page.locator('#tab-dowd').focus(); await page.keyboard.press('ArrowRight');
-  log(await page.locator('#tab-red').getAttribute('aria-selected') === 'true' && await page.locator('#panel-red').isVisible() && await page.locator('#panel-dowd').isHidden(), 'arrow key switches concept study tabs');
+  log(await page.locator('[role=tab]').count() === 0 && await page.locator('#study-dowd').isVisible() && await page.locator('#study-rmr').isVisible(), 'both concept studies are on the homepage together, with no tabs');
+  const sb = await page.evaluate(() => [...document.querySelectorAll('.scroll-box')].map(e => ({ tab: e.tabIndex, role: e.getAttribute('role'), label: !!e.getAttribute('aria-label'), scrolls: e.scrollHeight > e.clientHeight + 100 })));
+  log(sb.length === 2 && sb.every(x => x.tab === 0 && x.role === 'region' && x.label), 'previews are keyboard-focusable regions with labels', JSON.stringify(sb));
+  await page.locator('.browser-scroll img').scrollIntoViewIfNeeded(); await page.waitForTimeout(800);
+  log((await page.evaluate(() => [...document.querySelectorAll('.scroll-box')].every(e => e.scrollHeight > e.clientHeight + 100))), 'the Dowd page and Red Mountain mobile previews scroll inside their frames');
+  const reel = await page.evaluate(() => { const v = document.getElementById('rmrReel'); return { controls: v.controls, preload: v.preload, poster: !!v.poster, auto: v.autoplay }; });
+  log(reel.controls && reel.preload === 'none' && reel.poster && !reel.auto, 'reel has controls and a poster, is lazy and does not autoplay', JSON.stringify(reel));
+  log(/Jeffrey Beall, CC BY 4\.0/.test(await page.locator('#concepts').innerText()), 'photo credit (CC BY 4.0) is shown beside the studies');
+  await page.locator('#concepts').scrollIntoViewIfNeeded(); await page.waitForTimeout(500);
   await page.screenshot({ path: SHOTS + 'concepts-1440.png' });
+  await page.locator('#study-rmr').scrollIntoViewIfNeeded(); await page.waitForTimeout(500);
+  await page.screenshot({ path: SHOTS + 'concepts-rmr-1440.png' });
   await page.locator('#markets').scrollIntoViewIfNeeded();
   const b = page.locator('.region-btn[data-region="vail"]'); await b.click();
   log(await b.getAttribute('aria-pressed') === 'true' && await page.locator('.map .town[data-region="vail"].active').count() === 1, 'region button marks that region on the map');
@@ -153,6 +161,31 @@ for (const w of [360, 390, 768, 1440]) {
   const c2 = await browser.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' }); const p2 = await c2.newPage();
   await p2.goto(BASE + '/index.html'); await p2.locator('#brandFilm').scrollIntoViewIfNeeded(); await p2.waitForTimeout(1200);
   log(await p2.evaluate(() => document.getElementById('brandFilm').paused), 'reduced motion: film does not autoplay (poster shows; Play button available)');
+  await c2.close(); }
+
+// Cinematic layer: hero film, ticker, gallery, backdrops, pause control
+{ const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const page = await ctx.newPage();
+  await page.goto(BASE + '/index.html'); await page.waitForTimeout(1200);
+  const hv = await page.evaluate(() => { const v = document.querySelector('.hero-bg'); return { muted: v.muted, loop: v.loop, hidden: v.getAttribute('aria-hidden') }; });
+  log(hv.muted && hv.loop && hv.hidden === 'true', 'hero background film is muted, looping and hidden from screen readers', JSON.stringify(hv));
+  log(await page.locator('.ticker').getAttribute('aria-hidden') === 'true' && (await page.evaluate(() => getComputedStyle(document.querySelector('.ticker-track')).animationName)).split(',')[0].trim() === 'tick', 'word ticker is animated and decorative');
+  const tiles = await page.evaluate(() => [...document.querySelectorAll('.bento .tile')].map(t => ({ credit: !!t.querySelector('.tile-credit') && t.querySelector('.tile-credit').textContent.length > 5, alt: t.querySelector('img') ? !!t.querySelector('img').alt : !!t.querySelector('video').getAttribute('aria-label') })));
+  log(tiles.length === 6 && tiles.every(x => x.credit && x.alt), 'places gallery has 6 tiles, each credited and described', JSON.stringify(tiles.length));
+  const offscreen = await page.evaluate(() => [...document.querySelectorAll('.bento video source')].every(s => !s.getAttribute('src')));
+  log(offscreen, 'gallery footage does not download until scrolled into view');
+  const btn = page.locator('#motionToggle');
+  log(await btn.isVisible() && await btn.getAttribute('aria-pressed') === 'false', 'a visible Pause motion control is offered');
+  await btn.click(); await page.waitForTimeout(200);
+  const pausedState = await page.evaluate(() => ({ cls: document.documentElement.classList.contains('motion-paused'), ps: getComputedStyle(document.querySelector('.ticker-track')).animationPlayState, vids: [...document.querySelectorAll('video[data-bg]')].every(v => v.paused) }));
+  log(pausedState.cls && pausedState.ps.split(',').every(x => x.trim() === 'paused') && pausedState.vids && await btn.getAttribute('aria-pressed') === 'true', 'Pause motion stops the ticker and every background video', JSON.stringify(pausedState));
+  await btn.click();
+  log(/Jeffrey Beall, CC BY 4\.0/.test(await page.locator('.site-footer').innerText()) && /USGS, public domain/.test(await page.locator('.site-footer').innerText()), 'footer credits the photographer and USGS');
+  await ctx.close();
+  const c2 = await browser.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' }); const p2 = await c2.newPage();
+  await p2.goto(BASE + '/index.html'); await p2.waitForTimeout(800);
+  await p2.locator('#places').scrollIntoViewIfNeeded(); await p2.waitForTimeout(800);
+  const rm = await p2.evaluate(() => ({ vids: [...document.querySelectorAll('video[data-bg]')].every(v => v.paused), tick: getComputedStyle(document.querySelector('.ticker-track')).animationName, toggle: document.getElementById('motionToggle').hidden }));
+  log(rm.vids && rm.tick === 'none' && rm.toggle, 'reduced motion: no footage plays and the ticker stands still', JSON.stringify(rm));
   await c2.close(); }
 
 // Form behaviour
