@@ -256,13 +256,6 @@ h3{font-size:1.3rem;line-height:1.25}
 .dl-icon::before{content:"";position:absolute;left:50%;top:11px;width:2px;height:16px;background:var(--on-accent);translate:-50% 0}
 .dl-icon::after{content:"";position:absolute;left:50%;top:17px;width:9px;height:9px;border:solid var(--on-accent);border-width:0 2px 2px 0;rotate:45deg;translate:-50% 0}
 
-/* Brand film */
-.film{background:var(--charcoal);padding:0 0 0}
-.film-fig{position:relative;margin:0;max-width:1440px;margin-inline:auto}
-.film video{display:block;width:100%;height:auto;max-height:78vh;object-fit:cover;background:#14181C}
-.film-btn{position:absolute;left:var(--gutter);bottom:54px;min-height:44px;padding:10px 20px;border:2px solid var(--accent);border-radius:4px;background:rgba(20,24,28,.72);color:var(--paper);font:600 15px/1 var(--sans);cursor:pointer;backdrop-filter:blur(6px)}
-.film-btn:hover{background:var(--accent);color:var(--on-accent)}
-.film figcaption{padding:10px var(--gutter);font-size:14px;color:var(--paper-soft);background:var(--charcoal)}
 
 /* Concept studies: real work shown inline, no tabs */
 .study{display:grid;gap:30px;margin-top:56px;padding-top:40px;border-top:2px solid var(--ink)}
@@ -284,7 +277,9 @@ h3{font-size:1.3rem;line-height:1.25}
 .media-note{margin:14px 0 0;font-size:14px;color:var(--paper-soft);text-align:center}
 
 /* ===== Cinematic layer: hero film, ticker, places gallery, photo backdrops ===== */
-.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;z-index:0;pointer-events:none}
+.hero-photo{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.hero-photo img{width:100%;height:100%;object-fit:cover;opacity:.6;transform-origin:60% 40%}
+.hero-credit{position:absolute;right:var(--gutter);bottom:14px;z-index:1;margin:0;font-size:14px;color:var(--paper-soft)}
 .hero-scrim{position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(90deg,rgba(20,24,28,.95) 0%,rgba(20,24,28,.78) 42%,rgba(20,24,28,.38) 100%),linear-gradient(0deg,#14181C 0%,rgba(20,24,28,0) 32%)}
 .hero .hero-glow{z-index:0}
 
@@ -375,6 +370,8 @@ h3{font-size:1.3rem;line-height:1.25}
   @keyframes glow{from{opacity:.55;scale:.94}to{opacity:1;scale:1.06}}
   .hero-glow{animation:glow 7s ease-in-out infinite alternate}
   .hero-logo{animation:float 9s ease-in-out infinite alternate}
+  @keyframes kenburns{from{transform:scale(1.04) translate(0,0)}to{transform:scale(1.18) translate(-2.5%,-2%)}}
+  .hero-photo img{animation:kenburns 28s ease-in-out infinite alternate}
   @keyframes cue{0%{translate:0 0;opacity:1}70%{translate:0 16px;opacity:0}100%{translate:0 0;opacity:0}}
   .scroll-cue span{animation:cue 2s ease-in-out infinite}
 
@@ -429,6 +426,8 @@ h3{font-size:1.3rem;line-height:1.25}
     @keyframes brand-shrink{to{scale:.88}}
     .brand{transform-origin:left center;animation:brand-shrink linear both;animation-timeline:scroll(root);animation-range:0 160px;transition:none}
     @keyframes hero-parallax{to{transform:translateY(70px)}}
+    @keyframes photo-parallax{to{translate:0 110px}}
+    .hero-photo{animation:photo-parallax linear both;animation-timeline:scroll(root);animation-range:0 800px}
     .hero-logo{animation:float 9s ease-in-out infinite alternate,hero-parallax linear both;animation-timeline:auto,scroll(root);animation-range:normal,0 700px}
   }
 }
@@ -457,3 +456,4 @@ h3{font-size:1.3rem;line-height:1.25}
   .tile .media{animation:none}
   .backdrop img{animation:none}
 }
+@media (prefers-reduced-motion: reduce){.hero-photo img{animation:none}.hero-photo{animation:none}}
