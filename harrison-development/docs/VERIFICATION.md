@@ -48,16 +48,14 @@ Nothing below is "verified" merely because it appeared in the build brief. As of
 | Item | Status | Evidence | Impact | Action |
 |---|---|---|---|---|
 | Production numbers | **not used on the site** | FlexMLS "my listings" (listing side, this MLS membership): 3 listings in total, 1 closed ($719,000, Edwards, closed 2026-04-14), 1 active ($1.59M commercial, Gypsum), 1 expired ($3.2M, Vail). Lofty: 1 transaction, pre-listing, $0. Buyer-side closings, earlier years, other MLSs and the brokerage's own records are not in either system | These figures would weaken, not support, the pitch, and are incomplete | Do not publish. Pull a full production report from the brokerage (including buyer-side and prior years) if real numbers exist, and have the broker approve the wording. |
-| Portrait | **supplied and chosen by Charles 2026-11-09** (cropped 4:5 from his image at `assets/brand/charles-portrait.jpg`). An earlier HeyGen-frame headshot was rejected. **Decision (Charles, 2026-11-09): the portrait stays as is, with no label.** | His Epique About page labels an image "Charles Harrison, Area Leader," but its host returns 403 to outside downloads | None shown yet; the site omits the portrait until a real photo is configured | None needed. To swap the photo later, save a new file and keep `portrait.src` in `js/config.js`. |
+| Portrait | **supplied and chosen by Charles 2026-11-09**: cropped 4:5 from a frame he sent (black jacket, white shirt, grey backdrop) at `assets/brand/charles-portrait.jpg`. It replaced the cream-blazer image, which he later called bad; an earlier HeyGen-frame headshot was also rejected. **Decision (Charles, 2026-11-09): the portrait stays as is, with no label.** | His Epique About page labels an image "Charles Harrison, Area Leader," but its host returns 403 to outside downloads | None shown yet; the site omits the portrait until a real photo is configured | None needed. To swap the photo later, save a new file and keep `portrait.src` in `js/config.js`. |
 | Bio ("Based in the Vail Valley") | user-provided | His Epique page names Vail Valley, Vail, Edwards, Minturn | Location claim | Confirm. Full copy in `BIO.md`. |
 | Colorado license number FA100066670 | user-provided (printed on his Epique homepage) | https://charlesharrison.epiquerealty.com/ | Not shown on the HD site | Verify on the Division of Real Estate license lookup; ask the broker whether the number must appear on HD materials. |
 | Google Calendar booking links on his Epique page (two) | unresolved | `calendar.app.google/VWkZBHiYyLYbnJwS9` and `calendar.app.google/oYhEKKCmVCLZYYuN9` | Could serve as `bookingUrl` | Not used. Confirm which one, if either, is meant for development clients rather than agent recruiting. |
 
-## C2. Brand film (2026-11-09)
+## C2. Brand film (removed 2026-11-09)
 
-| Item | Status | Evidence | Impact | Action |
-|---|---|---|---|---|
-| Abstract brand film | proposed; **Charles decided to keep it (2026-11-09)** | Generated with Higgsfield (cinematic_studio_video_v2, 8 s, silent, 12 credits; the 56-credit seedance model needs a Plus plan). Files in `assets/video/` | Visual only, no people. Labeled "AI-generated concept film. Not a project, plan or rendering." Plays once when seen, with a pause button; no autoplay under reduced motion | Kept. To remove later, delete the `<section class="film">` block in `index.html`. Higgsfield terms for commercial use should be checked before launch. |
+Charles did not like the AI mountain film. It and its video files were removed from the site; the hero now uses a real, credited Eagle River photo.
 
 ## C3. Cinematic media (2026-11-09)
 
@@ -65,7 +63,7 @@ Nothing below is "verified" merely because it appeared in the build brief. As of
 |---|---|---|---|---|
 | Eagle River (Minturn, Eagle), Minturn cliffs, Nottingham Lake photos | verified license | Jeffrey Beall, CC BY 4.0, Wikimedia Commons (resized and cropped). Credited on each gallery tile, under the Approach backdrop, and in the footer | Places gallery, Approach and Contact backdrops | Keep the credits whenever these images are used. |
 | Two river motion clips | user-owned | Made 2026-11-01 with Higgsfield from crops of the Beall Eagle River photo (15 credits, approved by Charles then); credited "Animated from a photo by Jeffrey Beall, CC BY 4.0" | Places gallery | Re-encoded as seamless 4-second loops. |
-| Hero background loop | user-owned | The Higgsfield brand film (12 credits), re-cut as a seamless loop | Hero | Muted, decorative, hidden from screen readers. |
+| Hero background | verified license | Real photo: Eagle River near Minturn, Jeffrey Beall, CC BY 4.0, credited in the hero and footer. Slow Ken Burns drift plus scroll parallax. Replaced the AI mountain film on 2026-11-09 (Charles did not like it) | Hero | None. |
 | Dowd Junction corridor aerial | verified license | USGS The National Map, public domain | Places gallery | None. |
 | Motion behaviour | verified | `tests/check.mjs` | Whole page | Footage loads only when scrolled into view; a "Pause motion" button stops all motion; reduced-motion users get still images. |
 

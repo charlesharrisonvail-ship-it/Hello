@@ -138,39 +138,6 @@
     doc.querySelectorAll("main section[id], main .hero").forEach(function (sec) { spy.observe(sec); });
   }
 
-  /* ---------- Brand film: lazy, muted, plays once when in view, always pausable ---------- */
-  var film = $("brandFilm"), fbtn = $("filmBtn");
-  if (film && fbtn) {
-    var loaded = false, userPaused = false;
-    var load = function () {
-      if (loaded) return; loaded = true;
-      film.querySelectorAll("source[data-src]").forEach(function (s) { s.src = s.getAttribute("data-src"); });
-      film.load();
-    };
-    var label = function () {
-      var ended = film.ended, playing = !film.paused && !ended;
-      fbtn.textContent = playing ? "Pause" : (ended ? "Replay" : "Play");
-      fbtn.setAttribute("aria-label", playing ? "Pause the brand film" : (ended ? "Replay the brand film" : "Play the brand film"));
-    };
-    var start = function () { load(); var p = film.play(); if (p && p.catch) p.catch(function () {}); };
-    film.addEventListener("play", label); film.addEventListener("pause", label); film.addEventListener("ended", label);
-    fbtn.addEventListener("click", function () {
-      if (!film.paused && !film.ended) { userPaused = true; film.pause(); }
-      else { userPaused = false; if (film.ended) film.currentTime = 0; start(); }
-    });
-    // Autoplay only when motion is allowed; otherwise the poster shows and the button plays on request.
-    if (!reduce && "IntersectionObserver" in window) {
-      var seen = false;
-      new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) {
-          if (en.isIntersecting && !seen && !userPaused && !root.classList.contains("motion-paused")) { seen = true; start(); }
-          else if (!en.isIntersecting && !film.paused) { film.pause(); }
-        });
-      }, { threshold: 0.5 }).observe(film);
-    }
-    label();
-  }
-
   /* ---------- Background footage: lazy, muted, plays only in view; one switch pauses all motion ---------- */
   var bgVideos = Array.prototype.slice.call(doc.querySelectorAll("video[data-bg]"));
   var motionToggle = $("motionToggle");

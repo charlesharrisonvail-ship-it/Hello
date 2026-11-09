@@ -142,31 +142,11 @@ for (const w of [360, 390, 768, 1440]) {
   log(await page.locator('#concepts').isHidden() && await page.locator('[data-concepts-nav]').isHidden(), 'showConcepts:false hides the section and its nav link');
   await ctx.close(); }
 
-// Brand film: lazy, muted, labeled, pausable; no autoplay under reduced motion
-{ const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const page = await ctx.newPage();
-  await page.goto(BASE + '/index.html');
-  const pre = await page.evaluate(() => { const v = document.getElementById('brandFilm'); return { muted: v.muted, preload: v.preload, srcs: [...v.querySelectorAll('source')].map(s => s.getAttribute('src')), paused: v.paused }; });
-  log(pre.muted && pre.preload === 'none' && pre.srcs.every(s => !s) && pre.paused, 'film is muted, lazy (nothing downloads before it is seen) and not playing at load', JSON.stringify(pre));
-  log(/AI-generated concept film/.test(await page.locator('.film figcaption').innerText()), 'film is labeled as AI-generated, not a project');
-  const can = await page.evaluate(() => { const v = document.createElement('video'); return !!(v.canPlayType('video/webm; codecs="vp9"') || v.canPlayType('video/mp4; codecs="avc1.42E01E"')); });
-  if (can) {
-    await page.locator('#brandFilm').scrollIntoViewIfNeeded(); await page.waitForTimeout(1800);
-    const pl = await page.evaluate(() => { const v = document.getElementById('brandFilm'); return { playing: !v.paused, t: v.currentTime }; });
-    log(pl.playing && pl.t > 0, 'film plays once scrolled into view', JSON.stringify(pl));
-    await page.click('#filmBtn'); await page.waitForTimeout(200);
-    log(await page.evaluate(() => document.getElementById('brandFilm').paused) && /Play/.test(await page.locator('#filmBtn').innerText()), 'viewer can pause the film');
-  } else { log(true, 'film playback skipped: this browser build has no VP9 or H.264 (not a site fault)'); }
-  await ctx.close();
-  const c2 = await browser.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' }); const p2 = await c2.newPage();
-  await p2.goto(BASE + '/index.html'); await p2.locator('#brandFilm').scrollIntoViewIfNeeded(); await p2.waitForTimeout(1200);
-  log(await p2.evaluate(() => document.getElementById('brandFilm').paused), 'reduced motion: film does not autoplay (poster shows; Play button available)');
-  await c2.close(); }
-
 // Cinematic layer: hero film, ticker, gallery, backdrops, pause control
 { const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const page = await ctx.newPage();
   await page.goto(BASE + '/index.html'); await page.waitForTimeout(1200);
-  const hv = await page.evaluate(() => { const v = document.querySelector('.hero-bg'); return { muted: v.muted, loop: v.loop, hidden: v.getAttribute('aria-hidden') }; });
-  log(hv.muted && hv.loop && hv.hidden === 'true', 'hero background film is muted, looping and hidden from screen readers', JSON.stringify(hv));
+  const hp = await page.evaluate(() => { const i = document.querySelector('.hero-photo img'); return { loaded: i.complete && i.naturalWidth > 1000, anim: getComputedStyle(i).animationName, hidden: document.querySelector('.hero-photo').getAttribute('aria-hidden'), credit: /Jeffrey Beall, CC BY 4\.0/.test(document.querySelector('.hero-credit').textContent), noFilm: !document.querySelector('.film, video.hero-bg') }; });
+  log(hp.loaded && hp.anim === 'kenburns' && hp.hidden === 'true' && hp.credit && hp.noFilm, 'hero is a real, credited river photo with a slow Ken Burns drift; the AI mountain film is gone', JSON.stringify(hp));
   log(await page.locator('.ticker').getAttribute('aria-hidden') === 'true' && (await page.evaluate(() => getComputedStyle(document.querySelector('.ticker-track')).animationName)).split(',')[0].trim() === 'tick', 'word ticker is animated and decorative');
   const tiles = await page.evaluate(() => [...document.querySelectorAll('.bento .tile')].map(t => ({ credit: !!t.querySelector('.tile-credit') && t.querySelector('.tile-credit').textContent.length > 5, alt: t.querySelector('img') ? !!t.querySelector('img').alt : !!t.querySelector('video').getAttribute('aria-label') })));
   log(tiles.length === 6 && tiles.every(x => x.credit && x.alt), 'places gallery has 6 tiles, each credited and described', JSON.stringify(tiles.length));
@@ -253,9 +233,9 @@ async function fillValid(page) {
   const info = await page.evaluate(() => ({
     rvjs: document.querySelectorAll('.rv-js').length, sb: getComputedStyle(document.documentElement).scrollBehavior,
     heroAnim: getComputedStyle(document.querySelector('.hero-in')).animationName, wordAnim: getComputedStyle(document.querySelector('#hero-title .wi')).animationName,
-    rvAnim: getComputedStyle(document.querySelector('.rv')).animationName, logoAnim: getComputedStyle(document.querySelector('.hero-logo')).animationName,
+    rvAnim: getComputedStyle(document.querySelector('.rv')).animationName, logoAnim: getComputedStyle(document.querySelector('.hero-logo')).animationName, photoAnim: getComputedStyle(document.querySelector('.hero-photo img')).animationName,
     progress: getComputedStyle(document.querySelector('.progress')).display, op: getComputedStyle(document.querySelector('.services li')).opacity }));
-  log(info.rvjs === 0 && info.sb === 'auto' && info.heroAnim === 'none' && info.wordAnim === 'none' && info.rvAnim === 'none' && info.logoAnim === 'none' && info.progress === 'none' && info.op === '1', 'reduced motion: every animation off, content fully visible', JSON.stringify(info));
+  log(info.rvjs === 0 && info.sb === 'auto' && info.heroAnim === 'none' && info.wordAnim === 'none' && info.rvAnim === 'none' && info.logoAnim === 'none' && info.photoAnim === 'none' && info.progress === 'none' && info.op === '1', 'reduced motion: every animation off, content fully visible', JSON.stringify(info));
   await ctx.close(); }
 
 // Staging safety + disclosure
