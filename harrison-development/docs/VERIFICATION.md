@@ -48,10 +48,16 @@ Nothing below is "verified" merely because it appeared in the build brief. As of
 | Item | Status | Evidence | Impact | Action |
 |---|---|---|---|---|
 | Production numbers | **not used on the site** | FlexMLS "my listings" (listing side, this MLS membership): 3 listings in total, 1 closed ($719,000, Edwards, closed 2026-04-14), 1 active ($1.59M commercial, Gypsum), 1 expired ($3.2M, Vail). Lofty: 1 transaction, pre-listing, $0. Buyer-side closings, earlier years, other MLSs and the brokerage's own records are not in either system | These figures would weaken, not support, the pitch, and are incomplete | Do not publish. Pull a full production report from the brokerage (including buyer-side and prior years) if real numbers exist, and have the broker approve the wording. |
-| Portrait | unresolved | His Epique About page labels an image "Charles Harrison, Area Leader," but its host returns 403 to outside downloads | None shown yet; the site omits the portrait until a real photo is configured | Charles sends a real photo; set `portrait.src` in `js/config.js`. Never a generated likeness. |
+| Portrait | unresolved. A cropped frame from his HeyGen digital twin was tried on 2026-11-09 and **rejected by Charles**; it was removed | His Epique About page labels an image "Charles Harrison, Area Leader," but its host returns 403 to outside downloads | None shown yet; the site omits the portrait until a real photo is configured | Charles sends a real photo; set `portrait.src` in `js/config.js`. Never a generated likeness. |
 | Bio ("Based in the Vail Valley") | user-provided | His Epique page names Vail Valley, Vail, Edwards, Minturn | Location claim | Confirm. Full copy in `BIO.md`. |
 | Colorado license number FA100066670 | user-provided (printed on his Epique homepage) | https://charlesharrison.epiquerealty.com/ | Not shown on the HD site | Verify on the Division of Real Estate license lookup; ask the broker whether the number must appear on HD materials. |
 | Google Calendar booking links on his Epique page (two) | unresolved | `calendar.app.google/VWkZBHiYyLYbnJwS9` and `calendar.app.google/oYhEKKCmVCLZYYuN9` | Could serve as `bookingUrl` | Not used. Confirm which one, if either, is meant for development clients rather than agent recruiting. |
+
+## C2. Brand film (2026-11-09)
+
+| Item | Status | Evidence | Impact | Action |
+|---|---|---|---|---|
+| Abstract brand film | proposed, **awaiting Charles's decision** | Generated with Higgsfield (cinematic_studio_video_v2, 8 s, silent, 12 credits; the 56-credit seedance model needs a Plus plan). Files in `assets/video/` | Visual only, no people. Labeled "AI-generated concept film. Not a project, plan or rendering." Plays once when seen, with a pause button; no autoplay under reduced motion | Charles to approve or discard. To remove, delete the `<section class="film">` block in `index.html`. Higgsfield terms for commercial use should be checked before launch. |
 
 ## C. Content claims (what the site says)
 

@@ -78,6 +78,17 @@
       </div>
     </section>
 
+    <section class="film" aria-label="Brand film">
+      <figure class="film-fig">
+        <video id="brandFilm" muted playsinline preload="none" poster="assets/video/hd-brand-film-poster.jpg" aria-label="Abstract film: silver mountain ridgelines at blue hour with glowing contour lines, and a minimalist frame assembling." width="1280" height="720">
+          <source data-src="assets/video/hd-brand-film.webm" type="video/webm">
+          <source data-src="assets/video/hd-brand-film.mp4" type="video/mp4">
+        </video>
+        <button type="button" class="film-btn" id="filmBtn" aria-label="Play the brand film">Play</button>
+        <figcaption>AI-generated concept film. Abstract art, not a project, plan or rendering.</figcaption>
+      </figure>
+    </section>
+
     <section class="section value" aria-labelledby="value-title">
       <div class="wrap split">
         <h2 id="value-title" class="rv">A connected approach to marketing and sales.</h2>
@@ -260,7 +271,7 @@
           <p class="eyebrow eyebrow-dark rv">About</p>
           <h2 id="about-title" class="rv">Knows the market. Teaches the AI. Carries the sale.</h2>
           <figure class="portrait rv" id="portrait" hidden>
-            <img id="portraitImg" alt="" width="640" height="800">
+            <div class="frame"><img id="portraitImg" alt="" width="640" height="800"></div>
             <figcaption><strong>Charles Harrison</strong><span>Owner, CEO</span></figcaption>
           </figure>
         </div>

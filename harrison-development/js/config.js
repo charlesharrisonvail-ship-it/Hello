@@ -33,6 +33,7 @@ window.HD_CONFIG = {
   // Portrait for the About section. Put a real photo of Charles at assets/brand/charles-portrait.jpg
   // (or .webp) and set src to that path. Empty = the About section simply shows no portrait.
   // Never use a generated likeness of Charles.
+  // Removed at Charles's request (the HeyGen frame was rejected). Waits for a photo he sends.
   portrait: {
     src: "",
     alt: "Portrait of Charles Harrison"

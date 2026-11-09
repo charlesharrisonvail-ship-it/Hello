@@ -105,15 +105,19 @@ for (const w of [360, 390, 768, 1440]) {
   const r = await page.request.get(BASE + '/assets/downloads/launch-readiness-checklist.pdf');
   log(r.status() === 200 && /pdf/.test(r.headers()['content-type'] || ''), 'checklist PDF downloads', r.headers()['content-type']);
   await ctx.close(); }
-{ // portrait appears only when a real photo is configured
+{ // portrait: shown when configured, hidden (no placeholder) when not
   const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const page = await ctx.newPage();
+  await page.addInitScript(() => { let c; Object.defineProperty(window, 'HD_CONFIG', { configurable: true, set(v) { c = Object.assign(v, { portrait: { src: '', alt: '' } }); }, get() { return c; } }); });
   await page.goto(BASE + '/index.html');
-  log(await page.locator('#portrait').isHidden(), 'no portrait shown until a real photo is configured (no placeholder)');
+  log(await page.locator('#portrait').isHidden(), 'no portrait shown when no photo is configured (no placeholder)');
   await ctx.close();
   const c2 = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const p2 = await c2.newPage();
   await p2.addInitScript(() => { let c; Object.defineProperty(window, 'HD_CONFIG', { configurable: true, set(v) { c = Object.assign(v, { portrait: { src: 'assets/brand/og-image.png', alt: 'Portrait of Charles Harrison' } }); }, get() { return c; } }); });
   await p2.goto(BASE + '/index.html'); await p2.addStyleTag({ content: NOANIM });
-  log(await p2.locator('#portrait').isVisible() && await p2.locator('#portraitImg').getAttribute('alt') === 'Portrait of Charles Harrison', 'configured portrait appears with alt text');
+  await p2.waitForTimeout(500);
+  const ok = await p2.evaluate(() => { const i = document.getElementById('portraitImg'); return i && i.complete && i.naturalWidth > 600; });
+  log(await p2.locator('#portrait').isVisible() && ok && await p2.locator('#portraitImg').getAttribute('alt') === 'Portrait of Charles Harrison', 'configured portrait loads and has alt text');
+  await p2.locator('#about').scrollIntoViewIfNeeded(); await p2.screenshot({ path: SHOTS + 'about-1440.png' });
   await c2.close(); }
 { // configured booking URL and hidden concepts are honored
   const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const page = await ctx.newPage();
@@ -123,6 +127,26 @@ for (const w of [360, 390, 768, 1440]) {
   log(await a.isVisible() && await a.getAttribute('href') === 'https://booking.example.test/hd' && await a.getAttribute('rel') === 'noopener' && await a.getAttribute('target') === '_blank', 'booking button appears only when bookingUrl is configured');
   log(await page.locator('#concepts').isHidden() && await page.locator('[data-concepts-nav]').isHidden(), 'showConcepts:false hides the section and its nav link');
   await ctx.close(); }
+
+// Brand film: lazy, muted, labeled, pausable; no autoplay under reduced motion
+{ const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const page = await ctx.newPage();
+  await page.goto(BASE + '/index.html');
+  const pre = await page.evaluate(() => { const v = document.getElementById('brandFilm'); return { muted: v.muted, preload: v.preload, srcs: [...v.querySelectorAll('source')].map(s => s.getAttribute('src')), paused: v.paused }; });
+  log(pre.muted && pre.preload === 'none' && pre.srcs.every(s => !s) && pre.paused, 'film is muted, lazy (nothing downloads before it is seen) and not playing at load', JSON.stringify(pre));
+  log(/AI-generated concept film/.test(await page.locator('.film figcaption').innerText()), 'film is labeled as AI-generated, not a project');
+  const can = await page.evaluate(() => { const v = document.createElement('video'); return !!(v.canPlayType('video/webm; codecs="vp9"') || v.canPlayType('video/mp4; codecs="avc1.42E01E"')); });
+  if (can) {
+    await page.locator('#brandFilm').scrollIntoViewIfNeeded(); await page.waitForTimeout(1800);
+    const pl = await page.evaluate(() => { const v = document.getElementById('brandFilm'); return { playing: !v.paused, t: v.currentTime }; });
+    log(pl.playing && pl.t > 0, 'film plays once scrolled into view', JSON.stringify(pl));
+    await page.click('#filmBtn'); await page.waitForTimeout(200);
+    log(await page.evaluate(() => document.getElementById('brandFilm').paused) && /Play/.test(await page.locator('#filmBtn').innerText()), 'viewer can pause the film');
+  } else { log(true, 'film playback skipped: this browser build has no VP9 or H.264 (not a site fault)'); }
+  await ctx.close();
+  const c2 = await browser.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' }); const p2 = await c2.newPage();
+  await p2.goto(BASE + '/index.html'); await p2.locator('#brandFilm').scrollIntoViewIfNeeded(); await p2.waitForTimeout(1200);
+  log(await p2.evaluate(() => document.getElementById('brandFilm').paused), 'reduced motion: film does not autoplay (poster shows; Play button available)');
+  await c2.close(); }
 
 // Form behaviour
 async function formPage(viewport, cfgPatch) {

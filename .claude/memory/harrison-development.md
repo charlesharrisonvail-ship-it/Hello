@@ -20,3 +20,5 @@ Built 2026-11-08 in `harrison-development/` (static preview, not deployed).
 - Production check (2026-11-09): FlexMLS "my listings" shows 3 listings (1 closed $719K) and Lofty 1 pre-listing transaction; too thin to publish and buyer-side is missing. Do not put production numbers on the HD site without a full brokerage report.
 - Portrait: no photo yet; his Epique image host blocks downloads. Site has a portrait slot (`portrait.src` in config). Never generate his likeness. Bio copy is in `harrison-development/docs/BIO.md`.
 - Higgsfield: balance was 200.8 credits on 2026-11-09; an 8-second 16:9 abstract clip (seedance_2_5) quotes 56 credits. Never spend without his "go" (see `no-paid-ai-tools`).
+- Charles REJECTED the HeyGen-frame headshot (2026-11-09): never put a headshot on the site unless he picks or sends the photo. Portrait slot stays empty. His HeyGen groups: "Charles2" (digital twin look eac477f9... is real footage; the other looks are AI-staged scenes) and "CHAiRLES".
+- He prefers free generation routes ("freehiggsfield"): the Higgsfield video cost 12 credits (balance was 200.8); ask before any spend. Brand film is built but awaiting his approval.
