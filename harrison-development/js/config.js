@@ -65,7 +65,7 @@ window.HD_CONFIG = {
   // googleMapsKey: a Google Maps JavaScript API key (browser key, restricted in Google Cloud to
   // learn.aireestate.com/* and to the Maps JavaScript API). Set = Google's photorealistic 3D map in
   // Markets. Empty = the self-hosted 3D terrain map. Add Google Maps to privacy.html when set.
-  googleMapsKey: "",
+  googleMapsKey: "AIzaSyA7080BCXzy8cunjPKCIHkewO0N3i18xVI",
 
   // Concept studies (Dowd Junction, Red Mountain Ranch). They are independent, unsolicited
   // studies built on public information. Set to false to hide the whole section, for example

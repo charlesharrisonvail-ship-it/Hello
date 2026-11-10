@@ -104,4 +104,4 @@ Presentations made for other developers' projects are **not** shown on this site
 | Satellite imagery | public domain | USGS National Map, USGSImageryOnly |
 | Elevation | attribution given in caption | AWS Terrain Tiles (Mapzen; USGS 3DEP, SRTM) |
 | three.js renderer, self-hosted | MIT, license in `js/vendor/` | three@0.170.0 |
-| Google 3D map | off until Charles supplies a browser key; then add Google Maps to the privacy notice | Maps JavaScript API, maps3d |
+| Google 3D map | ON (2026-11-10): browser key restricted to learn.aireestate.com/*; Google Maps named in privacy notice; falls back to the self-hosted map on any failure | Maps JavaScript API, maps3d |

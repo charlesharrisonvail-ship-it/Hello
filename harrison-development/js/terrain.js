@@ -215,21 +215,25 @@
     function fail() { if (done) return; done = true; stage.classList.remove("google"); var g = stage.querySelector("gmp-map-3d"); if (g) g.remove(); start(); }
     window.gm_authFailure = fail;
     window.__hdGmaps = function () {
-      google.maps.importLibrary("maps3d").then(function (lib) {
+      Promise.all([google.maps.importLibrary("maps3d"), google.maps.importLibrary("marker")]).then(function (libs) {
+        var lib = libs[0], mk = libs[1];
         var towns = [].slice.call(stage.querySelectorAll(".town"));
         var overview = { center: { lat: 39.05, lng: -106.0, altitude: 0 }, range: 560000, tilt: 52, heading: 0 };
-        var map = new lib.Map3DElement(Object.assign({ mode: "HYBRID" }, overview));
+        var map = new lib.Map3DElement(Object.assign({ mode: "SATELLITE" }, overview));
         map.className = "map-google";
         stage.insertBefore(map, stage.querySelector(".map-labels"));
         stage.classList.add("google", "live");
         // A bad or unauthorised key never reaches a steady view: fall back after 15 s.
         var ok = false, guard = setTimeout(function () { if (!ok) { done = false; fail(); } }, 15000);
         map.addEventListener("gmp-steadychange", function () { ok = true; clearTimeout(guard); });
+        var accent = getComputedStyle(html).getPropertyValue("--accent").trim() || "#DFFF1A";
         towns.forEach(function (el) {
-          map.append(new lib.Marker3DElement({
-            position: { lat: +el.dataset.lat, lng: +el.dataset.lon, altitude: 2500 },
+          var m = new lib.Marker3DElement({
+            position: { lat: +el.dataset.lat, lng: +el.dataset.lon, altitude: 3000 },
             altitudeMode: "RELATIVE_TO_GROUND", extruded: true, label: el.textContent.trim()
-          }));
+          });
+          try { m.append(new mk.PinElement({ background: accent, borderColor: "#0E1114", glyphColor: "#0E1114", scale: 1.15 })); } catch (e) {}
+          map.append(m);
         });
         var cap = stage.parentNode.querySelector("figcaption");
         if (cap) cap.textContent = "Colorado in 3D, Google Maps. Choose a region to fly to it; drag to look around.";
