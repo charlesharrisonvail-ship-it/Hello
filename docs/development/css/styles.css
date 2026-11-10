@@ -215,18 +215,20 @@ h3{font-size:1.3rem;line-height:1.25}
 .region-btn[aria-pressed="true"]::before{content:"";display:inline-block;width:10px;height:10px;margin-right:12px;border-radius:50%;background:var(--accent)}
 .regions p{margin:2px 0 0;color:var(--paper-soft);font-size:15px}
 .map{margin:0}
-.map svg{width:100%;height:auto;display:block}
-.map figcaption{font-size:14px;color:var(--paper-soft);margin-top:10px}
-.map .state{fill:rgba(238,241,243,.025);stroke:var(--paper-soft);stroke-width:1.5}
-.map .divide{fill:none;stroke:#667078;stroke-width:1.5;stroke-dasharray:6 7}
-.map .grid path{stroke:#2C353D;stroke-width:1;fill:none}
-.map .dot{fill:var(--paper-soft)}
-.map .main{fill:var(--paper)}
-.map .lbl{fill:var(--paper-soft);font:600 17px/1 Inter,system-ui,sans-serif;letter-spacing:.02em}
-.map .town.active .lbl,.map .town.hover .lbl{fill:var(--accent)}
-.map .ring{fill:none;stroke:var(--accent);stroke-width:2;opacity:0;transform-box:fill-box;transform-origin:center}
-.map .town.active .main,.map .town.hover .main,.map .town.active .dot,.map .town.hover .dot{fill:var(--accent)}
-.map .town.active .ring,.map .town.hover .ring{opacity:1}
+.map figcaption{font-size:14px;color:var(--paper-soft);margin-top:12px}
+.map-stage{position:relative;aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:radial-gradient(120% 90% at 50% 20%,#1d252c 0%,#0e1114 70%);box-shadow:0 30px 80px -30px rgba(0,0,0,.8),inset 0 0 0 1px rgba(238,241,243,.08);touch-action:pan-y;user-select:none}
+.map-still,.map-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.map-still{object-fit:cover;transition:opacity .6s}
+.map-stage.live .map-still{opacity:0}
+.map-canvas{cursor:grab}.map-stage.dragging .map-canvas{cursor:grabbing}
+.map-labels{position:absolute;inset:0;pointer-events:none}
+.map-google{position:absolute;inset:0;width:100%;height:100%;display:block}.map-stage.google{touch-action:auto}.map-stage.google .map-labels{display:none}
+.map-labels>span{position:absolute;transform:translate(-50%,-100%)}
+.map .town.l{transform:translate(-100%,-50%)}.map .town.r{transform:translate(0,-50%)}
+.map .town.b{transform:translate(-50%,0)}.map .town.b .lbl{margin:12px 0 0}
+.map .town.l .lbl{margin:0 12px 0 0}.map .town.r .lbl{margin:0 0 0 12px}
+.map .town .lbl{display:block;margin-bottom:12px;padding:5px 10px;border-radius:999px;background:rgba(14,17,20,.78);border:1px solid rgba(238,241,243,.18);color:var(--paper);font:500 13px/1 var(--sans);letter-spacing:.04em;white-space:nowrap;backdrop-filter:blur(6px);transition:background .25s,color .25s,border-color .25s}
+.map .town.active .lbl,.map .town.hover .lbl{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
 
 /* FAQ */
 .faq-grid{display:grid;gap:36px}
@@ -383,9 +385,6 @@ h3{font-size:1.3rem;line-height:1.25}
   .tile figcaption{transition:translate .5s cubic-bezier(.2,.7,.2,1)}
   .tile:hover figcaption{translate:0 -4px}
 
-  /* map ping */
-  @keyframes ping{from{scale:1;opacity:.9}to{scale:3.2;opacity:0}}
-  .map .town.active .ring,.map .town.hover .ring{animation:ping 1.7s ease-out infinite}
   
   /* fallback reveal for browsers without scroll-driven animations (JS adds .rv-js) */
   .rv-js{opacity:0;translate:0 26px;transition:opacity .7s ease,translate .7s cubic-bezier(.2,.7,.2,1)}
@@ -412,10 +411,6 @@ h3{font-size:1.3rem;line-height:1.25}
     @keyframes ticker-skew{from{translate:6% 0}to{translate:-6% 0}}
     .ticker{view-timeline:--tk block}
     .ticker-track{animation:tick 38s linear infinite,ticker-skew linear both;animation-timeline:auto,--tk;animation-range:normal,cover}
-    @keyframes map-draw{from{stroke-dasharray:1;stroke-dashoffset:1}to{stroke-dasharray:1;stroke-dashoffset:0}}
-    .map .state{animation:map-draw linear both;animation-timeline:view();animation-range:entry 5% cover 35%}
-    @keyframes dot-in{from{opacity:0;scale:.2}}
-    .map .town{transform-box:fill-box;transform-origin:center;animation:dot-in linear both;animation-timeline:view();animation-range:entry 20% cover 45%}
   }
   @supports ((animation-timeline: scroll()) and (animation-range: 0% 100%)) {
     @keyframes grow-progress{to{transform:scaleX(1)}}
@@ -435,8 +430,6 @@ h3{font-size:1.3rem;line-height:1.25}
 @media (prefers-reduced-motion: reduce) {
   html{scroll-behavior:auto}
   .btn,.nav-cta,.download,  .progress{display:none}
-  .map .ring{opacity:0}
-  .map .town.active .ring,.map .town.hover .ring{opacity:1}
 }
 
 /* Progressive enhancement: smooth FAQ open and close */

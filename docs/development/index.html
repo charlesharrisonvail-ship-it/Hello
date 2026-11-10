@@ -268,18 +268,28 @@
           </ul>
         </div>
         <figure class="map rv">
-          <svg viewBox="0 0 680 500" role="img" aria-label="Illustrative outline map of Colorado with six marked regions: Vail Valley, Summit County, Roaring Fork Valley, the northern mountains, Gunnison and the San Juans, and the Front Range.">
-            <rect class="state" x="40" y="40" width="600" height="420" rx="4" pathLength="1"/>
-            <path class="divide" d="M96 40 C150 120 170 180 214 236 C250 290 200 360 170 460"/>
-            <g class="grid"><path d="M40 180H640M40 320H640M240 40V460M440 40V460"/></g>
-            <g class="town" data-region="north"><circle class="ring" cx="226" cy="95" r="8"/><circle class="dot main" cx="226" cy="95" r="6"/><circle class="dot" cx="296" cy="146" r="3"/><text class="lbl" x="240" y="101" text-anchor="start">Steamboat</text></g>
-            <g class="town" data-region="vail"><circle class="ring" cx="265" cy="183" r="8"/><circle class="dot main" cx="265" cy="183" r="6"/><circle class="dot" cx="280" cy="186" r="3"/><text class="lbl" x="250" y="178" text-anchor="end">Vail</text></g>
-            <g class="town" data-region="summit"><circle class="ring" cx="294" cy="200" r="8"/><circle class="dot main" cx="294" cy="200" r="6"/><circle class="dot" cx="308" cy="196" r="3"/><text class="lbl" x="306" y="218" text-anchor="start">Summit</text></g>
-            <g class="town" data-region="fork"><circle class="ring" cx="227" cy="230" r="8"/><circle class="dot main" cx="227" cy="230" r="6"/><circle class="dot" cx="246" cy="214" r="3"/><text class="lbl" x="211" y="237" text-anchor="end">Aspen</text></g>
-            <g class="town" data-region="west"><circle class="ring" cx="212" cy="264" r="8"/><circle class="dot main" cx="212" cy="264" r="6"/><circle class="dot" cx="142" cy="361" r="3"/><circle class="dot" cx="136" cy="432" r="3"/><text class="lbl" x="197" y="271" text-anchor="end">Gunnison</text></g>
-            <g class="town" data-region="front"><circle class="ring" cx="384" cy="172" r="8"/><circle class="dot main" cx="384" cy="172" r="6"/><circle class="dot" cx="360" cy="144" r="3"/><circle class="dot" cx="376" cy="83" r="3"/><circle class="dot" cx="398" cy="268" r="3"/><text class="lbl" x="398" y="168" text-anchor="start">Denver</text></g>
-          </svg>
-          <figcaption>Illustrative map, not to scale. Choose a region to see it marked.</figcaption>
+          <div class="map-stage" id="mapStage" role="img" aria-label="3D satellite terrain map of Colorado with six marked regions: Steamboat and the northern mountains, Vail Valley, Summit County, the Roaring Fork Valley around Aspen, Gunnison and the San Juans, and Denver and the Front Range.">
+            <img class="map-still" src="assets/map/colorado-3d.webp" alt="" width="1040" height="780" loading="lazy" decoding="async">
+            <div class="map-labels" aria-hidden="true">
+              <span class="town t" data-region="north" data-lat="40.485" data-lon="-106.832" data-x="35.5" data-y="27.9"><span class="lbl">Steamboat</span></span>
+              <span class="minor" data-region="north" data-lat="39.892" data-lon="-105.763" data-x="46.4" data-y="35.6" title="Winter Park"></span>
+              <span class="town l" data-region="vail" data-lat="39.64" data-lon="-106.374" data-x="40.4" data-y="36.4"><span class="lbl">Vail</span></span>
+              <span class="minor" data-region="vail" data-lat="39.645" data-lon="-106.594" data-x="38.4" data-y="39.6" title="Edwards"></span>
+              <span class="town b" data-region="summit" data-lat="39.481" data-lon="-106.038" data-x="44.0" data-y="37.5"><span class="lbl">Summit</span></span>
+              <span class="minor" data-region="summit" data-lat="39.574" data-lon="-106.097" data-x="43.4" data-y="39.5" title="Frisco"></span>
+              <span class="town l" data-region="fork" data-lat="39.191" data-lon="-106.817" data-x="36.1" data-y="42.2"><span class="lbl">Aspen</span></span>
+              <span class="minor" data-region="fork" data-lat="39.55" data-lon="-107.325" data-x="31.0" data-y="41.7" title="Glenwood Springs"></span>
+              <span class="town l" data-region="west" data-lat="38.545" data-lon="-106.925" data-x="35.1" data-y="50.7"><span class="lbl">Gunnison</span></span>
+              <span class="minor" data-region="west" data-lat="38.87" data-lon="-106.988" data-x="34.5" data-y="49.0" title="Crested Butte"></span>
+              <span class="minor" data-region="west" data-lat="37.937" data-lon="-107.812" data-x="25.2" data-y="62.7" title="Telluride"></span>
+              <span class="minor" data-region="west" data-lat="37.275" data-lon="-107.88" data-x="24.2" data-y="73.7" title="Durango"></span>
+              <span class="town r" data-region="front" data-lat="39.739" data-lon="-104.99" data-x="54.3" data-y="34.9"><span class="lbl">Denver</span></span>
+              <span class="minor" data-region="front" data-lat="40.015" data-lon="-105.271" data-x="51.1" data-y="34.8" title="Boulder"></span>
+              <span class="minor" data-region="front" data-lat="40.585" data-lon="-105.084" data-x="52.1" data-y="28.7" title="Fort Collins"></span>
+              <span class="minor" data-region="front" data-lat="38.834" data-lon="-104.821" data-x="57.5" data-y="48.1" title="Colorado Springs"></span>
+            </div>
+          </div>
+          <figcaption>Colorado in 3D: real terrain, height exaggerated. Choose a region to fly to it; drag to turn. Imagery: USGS (public domain). Elevation: Terrain Tiles by Mapzen (USGS 3DEP, SRTM).</figcaption>
         </figure>
       </div>
     </section>
@@ -472,5 +482,6 @@
 
   <script src="js/config.js"></script>
   <script src="js/main.js"></script>
+  <script type="module" src="js/terrain.js"></script>
 </body>
 </html>
