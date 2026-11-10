@@ -104,6 +104,9 @@ for (const w of [360, 390, 768, 1440]) {
   await page.locator('#study-rmr').scrollIntoViewIfNeeded(); await page.waitForTimeout(500);
   await page.screenshot({ path: SHOTS + 'concepts-rmr-1440.png' });
   await page.locator('#markets').scrollIntoViewIfNeeded();
+  await page.waitForFunction(() => document.getElementById('mapStage').classList.contains('live'), null, { timeout: 30000 }).catch(() => {});
+  log(await page.evaluate(() => { const c = document.querySelector('.map-canvas'); return !!c && c.width > 0 && document.getElementById('mapStage').classList.contains('live'); }), '3D terrain map renders (self-hosted, no key)');
+  log(await page.evaluate(() => [...document.querySelectorAll('.map .town')].every(t => t.style.left && t.style.visibility !== 'hidden')), 'all six region labels are placed on the 3D map');
   const b = page.locator('.region-btn[data-region="vail"]'); await b.click();
   log(await b.getAttribute('aria-pressed') === 'true' && await page.locator('.map .town[data-region="vail"].active').count() === 1, 'region button marks that region on the map');
   await page.screenshot({ path: SHOTS + 'markets-1440.png' });

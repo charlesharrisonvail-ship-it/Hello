@@ -62,6 +62,10 @@ window.HD_CONFIG = {
   // Must be a Harrison Development schedule. Never an Epique or EpiVail page (Charles, 2026-11-09):
   // nothing on this site may link to Epique or EpiVail.
   bookingUrl: "",
+  // googleMapsKey: a Google Maps JavaScript API key (browser key, restricted in Google Cloud to
+  // learn.aireestate.com/* and to the Maps JavaScript API). Set = Google's photorealistic 3D map in
+  // Markets. Empty = the self-hosted 3D terrain map. Add Google Maps to privacy.html when set.
+  googleMapsKey: "",
 
   // Concept studies (Dowd Junction, Red Mountain Ranch). They are independent, unsolicited
   // studies built on public information. Set to false to hide the whole section, for example

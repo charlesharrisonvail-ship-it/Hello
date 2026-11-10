@@ -96,3 +96,12 @@ Charles did not like the AI mountain film. It and its video files were removed f
 ## E. Earlier presentations (see PRESENTATIONS-REVIEW.md)
 
 Presentations made for other developers' projects are **not** shown on this site. They name projects Harrison Development does not represent.
+
+## 3D Markets map (2026-11-10)
+
+| Item | Status | Source |
+|---|---|---|
+| Satellite imagery | public domain | USGS National Map, USGSImageryOnly |
+| Elevation | attribution given in caption | AWS Terrain Tiles (Mapzen; USGS 3DEP, SRTM) |
+| three.js renderer, self-hosted | MIT, license in `js/vendor/` | three@0.170.0 |
+| Google 3D map | off until Charles supplies a browser key; then add Google Maps to the privacy notice | Maps JavaScript API, maps3d |
