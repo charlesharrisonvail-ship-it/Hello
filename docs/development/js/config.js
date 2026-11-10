@@ -30,7 +30,7 @@ window.HD_CONFIG = {
   accent: "yellow",
 
   bookingUrl: "",
-  googleMapsKey: "",
+  googleMapsKey: "AIzaSyA7080BCXzy8cunjPKCIHkewO0N3i18xVI",
 
   showConcepts: true,
 
