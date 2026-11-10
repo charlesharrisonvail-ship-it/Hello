@@ -1,7 +1,6 @@
 /* Harrison Development. All-dark theme to match the silver-on-black logo: charcoal #14181C, raised #1A2026, deep #0E1114, text #EEF1F3 (cool white), secondary #A9B1B7, accent neon yellow #DFFF1A at full strength. Switch to pink with accent in js/config.js. */
 @font-face{font-family:"Inter";src:url("../assets/fonts/inter-latin-wght-normal.woff2") format("woff2");font-weight:100 900;font-display:swap}
-@font-face{font-family:"Fraunces";src:url("../assets/fonts/fraunces-latin-500-normal.woff2") format("woff2");font-weight:500;font-display:swap}
-@font-face{font-family:"Fraunces";src:url("../assets/fonts/fraunces-latin-600-normal.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Space Grotesk";src:url("../assets/fonts/space-grotesk-latin-wght-normal.woff2") format("woff2");font-weight:300 700;font-display:swap}
 
 :root{
   --charcoal:#14181C; --warm:#14181C; --gray:#667078;
@@ -12,7 +11,7 @@
   --paper:#EEF1F3;          /* text on dark: 15.97:1 */
   --paper-soft:#A9B1B7;     /* secondary text on dark: 8.21:1 */
   --tint:#1A2026; --line-light:#2C353D; --line-dark:#2C353D;
-  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --serif:"Space Grotesk","Inter",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
   --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
   --gutter:20px;
 }
@@ -67,7 +66,7 @@ a{color:inherit}
 }
 
 /* Typography */
-h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.12;margin:0;letter-spacing:-.01em}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.05;margin:0;letter-spacing:-.035em}
 h1{font-size:clamp(2.1rem,7.4vw,4.1rem)}
 h2{font-size:clamp(1.75rem,5vw,2.9rem);max-width:20ch}
 h3{font-size:1.3rem;line-height:1.25}
@@ -285,7 +284,7 @@ h3{font-size:1.3rem;line-height:1.25}
 
 .ticker{overflow:hidden;background:#0E1114;border-block:1px solid var(--line-dark);padding:clamp(16px,2.4vw,28px) 0;user-select:none}
 .ticker-track{display:flex;align-items:center;gap:clamp(22px,3vw,44px);width:max-content}
-.ticker .t{font:600 clamp(2rem,6.2vw,4.8rem)/1 var(--serif);letter-spacing:-.01em;white-space:nowrap;color:var(--paper)}
+.ticker .t{font:700 clamp(2rem,6.2vw,4.8rem)/1 var(--serif);letter-spacing:-.04em;text-transform:uppercase;white-space:nowrap;color:var(--paper)}
 .ticker .o{color:transparent;-webkit-text-stroke:1.5px var(--accent)}
 .ticker .sep{color:var(--accent);font-size:clamp(1.1rem,2.4vw,1.8rem)}
 
