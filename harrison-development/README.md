@@ -28,7 +28,7 @@ node harrison-development/tests/build-pdf.mjs # re-renders the downloadable chec
 | `js/config.js` | **All** brand, contact and form settings. Unknown values stay empty. |
 | `css/styles.css` | Styles and color tokens (contrast notes inline) |
 | `assets/brand/` | **Approved logo** (`hd-logo-approved-original.png`) plus transparent light versions used on the site; `alt-svg/` holds the earlier editable SVG marks; `og-source.html` makes `og-image.png` |
-| `assets/fonts/` | Inter and Fraunces, SIL OFL, self-hosted |
+| `assets/fonts/` | Inter and Space Grotesk, SIL OFL, self-hosted |
 | `docs/VERIFICATION.md`, `docs/LAUNCH-CHECKLIST.md` | What is and isn't verified, and what must happen before launch |
 | `docs/PITCH-AND-PROPOSAL-TEMPLATE.md` | Editable pitch and proposal outline |
 | `docs/PRESENTATIONS-REVIEW.md` | Why earlier project presentations are not on the public site |

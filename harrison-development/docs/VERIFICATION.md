@@ -90,7 +90,7 @@ Charles did not like the AI mountain film. It and its video files were removed f
 | Reduced motion disables reveal animation and smooth scroll | verified | same |
 | No third-party requests (no trackers, CDN or web fonts) | verified | same |
 | Contrast (computed WCAG ratios, 2026-11-09, all-dark theme): text #EEF1F3 on charcoal 15.73, on raised #1A2026 14.48; secondary text #A9B1B7 on charcoal 8.21, raised 7.56, deep #0E1114 8.71; neon yellow #DFFF1A on charcoal 15.68 and dark text on yellow 15.68; form error text 8.05 on the card, 11.99 inside the error box; input borders 3.25 against the card | verified | Computation 2026-11-09. Charles asked for the cream background to go because it clashed with the logo; the whole site is now dark. Replaces the earlier cream-and-50%-yellow split. |
-| Fonts: Inter and Fraunces, self-hosted | verified (SIL OFL 1.1, license files included in `assets/fonts/`) | `@fontsource` packages |
+| Fonts: Inter and Space Grotesk, self-hosted | verified (SIL OFL 1.1, license files included in `assets/fonts/`) | `@fontsource` packages |
 | Screen-reader testing, real-device testing, Lighthouse | **not done** | Listed in LAUNCH-CHECKLIST.md |
 
 ## E. Earlier presentations (see PRESENTATIONS-REVIEW.md)
