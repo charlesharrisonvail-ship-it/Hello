@@ -17,6 +17,7 @@ export default {
       return new Response("Method not allowed", { status: 405, headers: { Allow: "GET, HEAD" } });
     }
     const url = new URL(request.url);
+    if (url.hostname.startsWith("www.")) { url.hostname = url.hostname.slice(4); return Response.redirect(url.toString(), 301); }
     let key = decodeURIComponent(url.pathname.replace(/^\/+/, ""));
     if (key === "" || key.endsWith("/")) key += "index.html";
     if (key.includes("..")) return new Response("Not found", { status: 404 });

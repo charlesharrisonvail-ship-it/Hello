@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Deploys harrison-development/ to Cloudflare Workers + KV at
-# https://harrison-development.charlesharrisonvail.workers.dev
+# Deploys harrison-development/ to Cloudflare Workers + KV, served at
+# https://harrisondevolpment.com and www (Charles's domain, bought at Cloudflare 2026-11-10).
 # Run from the repo root in a Claude Code cloud session (the Cloudflare credential is
 # injected by the session proxy; no API key is stored here). Usage: bash harrison-development/deploy/deploy.sh
 set -euo pipefail
@@ -41,5 +41,11 @@ curl -sS -X PUT "$API/storage/kv/namespaces/$NS/bulk" -H 'Content-Type: applicat
 # 5. Worker script with the KV binding, then the workers.dev route
 META="{\"main_module\":\"worker.js\",\"compatibility_date\":\"2025-01-01\",\"bindings\":[{\"type\":\"kv_namespace\",\"name\":\"SITE\",\"namespace_id\":\"$NS\"}]}"
 curl -sS -X PUT "$API/workers/scripts/$NAME" -F "metadata=$META;type=application/json" -F "worker.js=@deploy/worker.js;type=application/javascript+module" | python3 -I -c "import sys,json; d=json.load(sys.stdin); assert d['success'], d; print('worker deployed')"
-curl -sS -X POST "$API/workers/scripts/$NAME/subdomain" -H 'Content-Type: application/json' --data '{"enabled":true,"previews_enabled":false}' | python3 -I -c "import sys,json; d=json.load(sys.stdin); assert d['success'], d; print('live at https://$NAME.charlesharrisonvail.workers.dev')"
+# 6. Custom domain only; the workers.dev address stays off
+curl -sS -X POST "$API/workers/scripts/$NAME/subdomain" -H 'Content-Type: application/json' --data '{"enabled":false,"previews_enabled":false}' >/dev/null
+DOMAIN=harrisondevolpment.com
+ZONE=$(curl -sS "$API_ROOT/zones?name=$DOMAIN" | python3 -I -c "import sys,json; print(json.load(sys.stdin)['result'][0]['id'])")
+for H in $DOMAIN www.$DOMAIN; do
+  curl -sS -X PUT "$API/workers/domains" -H 'Content-Type: application/json' --data "{\"hostname\":\"$H\",\"service\":\"$NAME\",\"environment\":\"production\",\"zone_id\":\"$ZONE\"}" | python3 -I -c "import sys,json; d=json.load(sys.stdin); assert d['success'], d; print('live at https://$H')"
+done
 rm -rf "$DIST" "$DIST.bulk.json"
