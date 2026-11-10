@@ -10,7 +10,7 @@ Open `aire-bot.html` to review the responsive interface. The three sample button
 - AI classifies a question into an approved answer ID. Only the exact answer in `answers.mjs` is returned. Raw model text never reaches visitors. Classification can still select an imperfect answer; the source link lets visitors check it.
 - No API key is needed: the Worker uses Cloudflare’s server-side AI binding. Deployment credentials stay with Wrangler/Cloudflare, never in HTML or Git.
 - Only public, manually curated sales information is used. There is no crawler, course-content ingestion, browser-storage reading, purchase-code lookup, or tool execution.
-- Part One is $67 and Lead to Keys is $97. No discounts or outcome promises. Instructor identity is limited to “a licensed, practicing agent.”
+- Part One is $67 and Lead to Keys is $97. No discounts or outcome promises. Never describe the instructor as one person; the only line about who is behind AiRE is “Made for agents, by agents.”
 - Access-code questions receive purchase-confirmation guidance, including the Stripe Link distinction. Actual codes and hints are absent from every file and the model context.
 - Methods and prompts are not in the answer catalog. Even an instruction attack can only select one of the approved answers.
 - Global caps: at most 100 valid chat requests and 25 valid lead submissions per UTC day. Conditional SQLite upserts reserve a slot atomically before processing; failures consume their slot. Raising the env value cannot exceed these ceilings without editing code. Both caps redirect to hello@aireestate.com. Provider/database outages fail closed with the same contact fallback.
