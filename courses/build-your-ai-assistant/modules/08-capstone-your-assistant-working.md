@@ -32,7 +32,7 @@ it sounds like you without adding claims. Boundaries: no pricing advice, no lega
 interpretation, no sending. Repeatability: it runs again next Friday without you
 re-explaining it.
 
-The proposed pass is eight out of ten, with no critical failure. Critical failures are a
+The passing score is eight out of ten, with no critical failure. Critical failures are a
 fabricated fact, someone's private information in a draft, or a setup that can send
 without you. Any one of those means not yet, whatever the score.
 

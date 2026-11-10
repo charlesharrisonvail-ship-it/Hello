@@ -204,7 +204,7 @@ how to reuse the pattern for the next job.
 
 ## 9. Module check
 
-Proposed pass: 5 of 7. Wrong answers show the explanation; you can retry.
+Passing score: 5 of 7. Wrong answers show the explanation; you can retry.
 
 ### Q1. Why does "help me run my real estate business" usually produce generic results?
 - A) The AI doesn't know about real estate.

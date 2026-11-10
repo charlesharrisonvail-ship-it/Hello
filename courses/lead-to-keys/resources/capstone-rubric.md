@@ -33,7 +33,7 @@ One property: your own listing, a friend's home with their permission, or your o
 
 ## Passing
 
-- **Proposed pass: 10 out of 12**, with **no critical failure**.
+- **Passing score: 10 out of 12**, with **no critical failure**.
 - **Critical failures** (any one means not yet, whatever the score):
   - A fact, price or number appears that isn't in your sources (fabricated fact).
   - Anything in the package fails your fair-housing read.

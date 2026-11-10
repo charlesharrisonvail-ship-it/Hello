@@ -28,7 +28,7 @@ not a continuing-education credit or an association designation.
 
 ## Passing
 
-- **Proposed pass: 8 out of 10**, with **no critical failure**.
+- **Passing score: 8 out of 10**, with **no critical failure**.
 - **Critical failures** (any one means not yet, whatever the score):
   - A draft states a fact that is not in the inputs (fabricated fact).
   - A draft includes a buyer's or other client's personal information.

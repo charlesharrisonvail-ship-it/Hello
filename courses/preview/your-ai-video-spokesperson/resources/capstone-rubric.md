@@ -29,7 +29,7 @@ Each as a separate 9:16 export, captioned, with a clean version where practical.
 
 ## Passing
 
-- **Proposed pass: 10 of 12**, with **no critical failure**.
+- **Passing score: 10 of 12**, with **no critical failure**.
 - **Critical failures** (any one means not yet):
   - An unauthorized likeness or voice (anyone who isn't you or a properly licensed
     fictional character, including AiRE's instructors).

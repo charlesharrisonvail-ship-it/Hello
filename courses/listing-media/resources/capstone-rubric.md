@@ -30,7 +30,7 @@ a friend's home with their permission, or your own house.
 
 ## Passing
 
-- **Proposed pass: 8 out of 10**, with **no critical failure**.
+- **Passing score: 8 out of 10**, with **no critical failure**.
 - **Critical failures** (any one means not yet, whatever the score):
   - An AI visual misrepresents the home's condition, size or features.
   - Photos or a property used without the owner's or seller's permission.

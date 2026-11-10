@@ -115,6 +115,19 @@ footer a{color:var(--slate)}
   <div class="note warn" style="margin:0 0 20px"><b>Please note:</b> AiRE Estate Academy teaches real estate, not software. We don&rsquo;t teach Claude Code itself or provide technical support for it; our courses show you how to use it better in your real estate business. For help with Claude Code installation, accounts, billing or errors, use Anthropic&rsquo;s own <a href="https://support.claude.com" style="color:inherit">help center</a> and <a href="https://code.claude.com/docs" style="color:inherit">documentation</a>. This free guide is a courtesy walkthrough of Anthropic&rsquo;s published install steps.</div>
   <div class="meta"><span>~20 minutes</span><span>Mac or Windows</span><span>7 steps</span><span>Free</span></div>
 
+  <section class="step" id="desktop">
+    <div class="sh"><span class="num">&#9733;</span><h2>Not a computer person? Skip the terminal.</h2></div>
+    <p>Anthropic&rsquo;s free <b>Claude desktop app</b> has Claude Code built in, on a tab called <b>Code</b>. No terminal and no separate install for Claude Code itself. Anthropic&rsquo;s <a href="https://code.claude.com/docs/en/desktop-quickstart" target="_blank" rel="noopener">desktop guide</a> walks through it. If typing commands makes you nervous, start here:</p>
+    <ol>
+      <li>Do <b>step 1</b> below (a Claude Pro plan), then download the app from <a href="https://claude.com/download" target="_blank" rel="noopener">claude.com/download</a> and sign in with that same account.</li>
+      <li>Make a folder called <b>AiRE</b> in your home folder (Mac: in Finder press <kbd>&#8984;</kbd> + <kbd>Shift</kbd> + <kbd>H</kbd>; Windows: <b>C:\Users\<i>YourName</i></b>). That&rsquo;s where your photos and everything Claude makes will live.</li>
+      <li>In the app, click the <b>Code</b> tab. Under the message box, choose <b>Local</b>, then click the folder button and pick <b>Open folder&hellip;</b> &rarr; your <b>AiRE</b> folder.</li>
+      <li>Type in plain English, like texting. Try step 6&rsquo;s hello message below.</li>
+    </ol>
+    <div class="note"><b>When a lesson gives you a terminal line,</b> you don&rsquo;t have to switch windows. Paste it into the Code tab like this: <b>&ldquo;Run this for me and tell me how it went: </b><i>(the line)</i><b>&rdquo;</b>. The course tools need Node.js, Git and Python (step 7). Ask the Code tab: <b>&ldquo;Install Node.js LTS, Git and Python 3 on this computer and check that they work.&rdquo;</b></div>
+    <div class="note">Comfortable with a terminal, or want the full walkthrough? Follow steps 1 to 7 below. Both paths end in the same place.</div>
+  </section>
+
   <section class="step" id="step-1" data-step="1">
     <div class="sh"><span class="num">1</span><h2>Get a Claude plan that includes Claude Code</h2></div>
     <p>Claude Code is made by <b>Anthropic</b>, the company behind the Claude chat app. It needs a paid Claude plan. The free Claude plan does <b>not</b> include Claude Code.</p>
@@ -207,7 +220,7 @@ footer a{color:var(--slate)}
     <div class="sh"><span class="num">6</span><h2>Say hello</h2></div>
     <p>You&rsquo;ll see a box where you can type. Type in plain English, just like texting, and press <kbd>Enter</kbd>. Try:</p>
     <div class="cmd"><span>I'm a real estate agent. In plain English, what are five things you can do for my business?</span><button type="button">Copy</button></div>
-    <p>To leave Claude Code, type <b>/exit</b> or press <kbd>Ctrl</kbd> + <kbd>C</kbd> twice. To come back any time, open the terminal and type <b>claude</b>.</p>
+    <p>To leave Claude Code, type <b>/exit</b> or press <kbd>Ctrl</kbd> + <kbd>C</kbd> twice. To come back any time, see <a href="#session">Starting a work session</a> below: go into your AiRE folder first, then type <b>claude</b>.</p>
     <button class="mark" type="button">&#10003; Claude Code answered me</button>
   </section>
 
@@ -243,6 +256,29 @@ footer a{color:var(--slate)}
     <button class="mark" type="button">&#10003; Node, Git and Python are installed</button>
   </section>
 
+  <section class="step" id="session">
+    <div class="sh"><span class="num">&#8635;</span><h2>Starting a work session</h2></div>
+    <p>Every time you sit down to work, do these in order. Your photos and everything Claude makes live in one place: your <b>AiRE</b> folder.</p>
+    <div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-os="mac">Mac</button><button role="tab" aria-selected="false" data-os="win">Windows</button></div>
+    <div class="pane on" data-os="mac">
+      <ol>
+        <li><b>Find the folder:</b> open Finder, press <kbd>&#8984; Command</kbd> + <kbd>Shift</kbd> + <kbd>H</kbd> (your home folder), and open <b>AiRE</b>.</li>
+        <li><b>Add your photos:</b> drag them into AiRE. Give each a short, plain name with no spaces, like <b>house.jpg</b> or <b>kitchen.jpg</b>. The lessons use those names.</li>
+        <li><b>Open the terminal, go into the folder, start Claude:</b>
+          <div class="cmd"><span>cd ~/AiRE && claude</span><button type="button">Copy</button></div></li>
+      </ol>
+    </div>
+    <div class="pane" data-os="win">
+      <ol>
+        <li><b>Find the folder:</b> open File Explorer, click the address bar, type <b>%USERPROFILE%\AiRE</b> and press <kbd>Enter</kbd>.</li>
+        <li><b>Add your photos:</b> drag them into AiRE. Give each a short, plain name with no spaces, like <b>house.jpg</b> or <b>kitchen.jpg</b>. The lessons use those names.</li>
+        <li><b>Open PowerShell, go into the folder, start Claude:</b>
+          <div class="cmd"><span>cd $HOME\AiRE; claude</span><button type="button">Copy</button></div></li>
+      </ol>
+    </div>
+    <div class="note"><b>Using the desktop app?</b> Open it, click <b>Code</b>, and pick your <b>AiRE</b> folder. Same folder, no terminal.</div>
+  </section>
+
   <section class="step" id="installs">
     <div class="sh"><span class="num">&#9776;</span><h2>Everything that gets installed</h2></div>
     <p>So nothing surprises you later, here is every program the two courses use, what it does, and where it comes in. All are free except your Claude plan and Higgsfield credits.</p>
@@ -261,7 +297,10 @@ footer a{color:var(--slate)}
 
   <section class="step" id="help">
     <div class="sh"><span class="num">?</span><h2>If something goes wrong</h2></div>
+    <div class="note"><b>The one habit that fixes almost everything:</b> copy the whole error message, paste it into Claude, and ask <b>&ldquo;What does this mean, and what do I do next? Explain it in plain English.&rdquo;</b> Once Claude Code is running, it is your best help desk.</div>
     <ul>
+      <li><b>Windows says &ldquo;running scripts is disabled on this system&rdquo;</b> (often on an <b>npx</b> line): paste this into PowerShell, press <kbd>Enter</kbd>, and type <b>Y</b> if it asks. It lets programs you install run, for your account only:
+        <div class="cmd"><span>Set-ExecutionPolicy -Scope CurrentUser RemoteSigned</span><button type="button">Copy</button></div></li>
       <li><b>&ldquo;command not found&rdquo; or &ldquo;not recognized&rdquo;</b> after installing: close <i>every</i> terminal window, open a new one, and try again. Still stuck? Restart the computer.</li>
       <li><b>Windows says &ldquo;&apos;irm&apos; is not recognized&rdquo;:</b> you opened Command Prompt instead of PowerShell. Go back to step 3 and open <b>PowerShell</b>.</li>
       <li><b>Signed in with the wrong account?</b> Inside Claude Code, type <b>/login</b> to switch.</li>
@@ -270,14 +309,14 @@ footer a{color:var(--slate)}
         <div class="cmd"><span>claude doctor</span><button type="button">Copy</button></div></li>
       <li>Anthropic&rsquo;s <a href="https://code.claude.com/docs/en/troubleshoot-install" target="_blank" rel="noopener">troubleshooting guide</a> covers every error message.</li>
     </ul>
-    <div class="note"><b>Prefer to skip the terminal?</b> Anthropic also makes a <a href="https://claude.com/download" target="_blank" rel="noopener">Claude desktop app</a> that includes Claude Code. Our courses teach the terminal because it&rsquo;s where the most powerful tools run.</div>
+    <div class="note"><b>Prefer to skip the terminal?</b> See <a href="#desktop">the desktop app path</a> at the top of this page.</div>
   </section>
 
   <section class="next">
     <h2>You&rsquo;re set up. Now put it to work.</h2>
     <p style="margin:0;color:var(--slate)">Two courses, both built in Claude Code.</p>
     <div class="cards">
-      <div class="card"><b>Listing Media Without the Invoice</b><p>Part One &middot; $67. Drone shots from one photo, a listing showcase, and social media that runs itself.</p><a class="btn" href="index.html#courses">See Part One &rarr;</a></div>
+      <div class="card"><b>Listing Media Without the Invoice</b><p>Part One &middot; $67. Drone shots from one photo, a listing showcase, and a month of social posts in one sitting.</p><a class="btn" href="index.html#courses">See Part One &rarr;</a></div>
       <div class="card two"><b>Lead to Keys</b><p>Part Two &middot; $97. Listings, clients, comps, follow-up and contracts: the rest of the desk.</p><a class="btn r" href="lead-to-keys.html">See Lead to Keys &rarr;</a></div>
     </div>
   </section>

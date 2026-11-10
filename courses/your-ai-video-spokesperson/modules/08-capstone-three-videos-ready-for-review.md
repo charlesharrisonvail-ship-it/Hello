@@ -31,7 +31,7 @@ in about three seconds, fifteen to thirty seconds long, one point? Captions and 
 captions match speech, and speech is clear on a phone speaker? CTA and disclosure: one
 clear call to action and clear AI identification in every video?
 
-The proposed pass is ten out of twelve, with no critical failure. Two things are
+The passing score is ten out of twelve, with no critical failure. Two things are
 critical: an unauthorized likeness or voice, and a material factual error. Either one
 means not yet, whatever the score.
 
