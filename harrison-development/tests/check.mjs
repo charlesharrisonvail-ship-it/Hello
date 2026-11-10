@@ -92,8 +92,12 @@ for (const w of [360, 390, 768, 1440]) {
   log(sb.length === 2 && sb.every(x => x.tab === 0 && x.role === 'region' && x.label), 'previews are keyboard-focusable regions with labels', JSON.stringify(sb));
   await page.locator('.browser-scroll img').scrollIntoViewIfNeeded(); await page.waitForTimeout(800);
   log((await page.evaluate(() => [...document.querySelectorAll('.scroll-box')].every(e => e.scrollHeight > e.clientHeight + 100))), 'the Dowd page and Red Mountain mobile previews scroll inside their frames');
-  const reel = await page.evaluate(() => { const v = document.getElementById('rmrReel'); return { controls: v.controls, preload: v.preload, poster: !!v.poster, auto: v.autoplay }; });
-  log(reel.controls && reel.preload === 'none' && reel.poster && !reel.auto, 'reel has controls and a poster, is lazy and does not autoplay', JSON.stringify(reel));
+  const reel0 = await page.evaluate(() => { const v = document.getElementById('rmrReel'); return { controls: v.controls, muted: v.muted, loop: v.loop, poster: !!v.poster, lazy: !v.querySelector('source').getAttribute('src') || v.querySelector('source').getAttribute('src') === null }; });
+  await page.locator('#rmrReel').scrollIntoViewIfNeeded(); await page.waitForTimeout(2500);
+  const reel = await page.evaluate(() => { const v = document.getElementById('rmrReel'); return { playing: !v.paused, t: v.currentTime }; });
+  log(reel0.controls && reel0.muted && reel0.loop && reel0.poster && reel.playing && reel.t > 0, 'reel plays on its own (muted, looping) once scrolled into view, and keeps its controls', JSON.stringify({ ...reel0, ...reel }));
+  await page.locator('#markets').scrollIntoViewIfNeeded(); await page.waitForTimeout(800);
+  log(await page.evaluate(() => document.getElementById('rmrReel').paused), 'reel pauses when scrolled out of view');
   log(/Jeffrey Beall, CC BY 4\.0/.test(await page.locator('#concepts').innerText()), 'photo credit (CC BY 4.0) is shown beside the studies');
   await page.locator('#concepts').scrollIntoViewIfNeeded(); await page.waitForTimeout(500);
   await page.screenshot({ path: SHOTS + 'concepts-1440.png' });
