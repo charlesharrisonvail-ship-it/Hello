@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 190" width="320" height="190" role="img" aria-labelledby="t"><title id="t">Harrison Development, stacked logo (proposed)</title>
-  <g transform="translate(102.5 0) scale(1)"><rect x="10" y="10" width="10" height="80" fill="#14181C"/>
-  <rect x="45" y="10" width="10" height="80" fill="#14181C"/>
-  <rect x="20" y="45" width="25" height="10" fill="#A96843"/>
-  <path d="M50 10H65A40 40 0 0 1 65 90H50V80H65A30 30 0 0 0 65 20H50Z" fill="#14181C"/></g>
-  <text x="160" y="140" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="4" fill="#14181C">HARRISON</text>
-  <text x="160" y="172" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="4" fill="#14181C">DEVELOPMENT</text>
-</svg>
