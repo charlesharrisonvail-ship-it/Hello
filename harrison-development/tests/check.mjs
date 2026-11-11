@@ -80,7 +80,7 @@ for (const w of [360, 390, 768, 1440]) {
   await ctx.close(); }
 
 // Concept studies, markets, FAQ, booking, download
-{ const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const page = await ctx.newPage();
+{ const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const page = await ctx.newPage(); await ctx.route(/maps\.googleapis\.com/, r => r.abort());
   await page.goto(BASE + '/index.html'); await page.addStyleTag({ content: NOANIM });
   const txt = await page.locator('body').innerText();
   log(/Not client work/.test(txt) && /not engaged by, affiliated with, or endorsed by/i.test(txt) && /EpiVail/.test(txt), 'concept studies carry a prominent not-client-work disclaimer and name EpiVail');
@@ -104,6 +104,9 @@ for (const w of [360, 390, 768, 1440]) {
   await page.locator('#study-rmr').scrollIntoViewIfNeeded(); await page.waitForTimeout(500);
   await page.screenshot({ path: SHOTS + 'concepts-rmr-1440.png' });
   await page.locator('#markets').scrollIntoViewIfNeeded();
+  await page.waitForFunction(() => document.getElementById('mapStage').classList.contains('live'), null, { timeout: 30000 }).catch(() => {});
+  log(await page.evaluate(() => { const c = document.querySelector('.map-canvas'); return !!c && c.width > 0 && document.getElementById('mapStage').classList.contains('live'); }), '3D map falls back to the self-hosted terrain when Google Maps is unavailable');
+  log(await page.evaluate(() => [...document.querySelectorAll('.map .town')].every(t => t.style.left && t.style.visibility !== 'hidden')), 'all six region labels are placed on the 3D map');
   const b = page.locator('.region-btn[data-region="vail"]'); await b.click();
   log(await b.getAttribute('aria-pressed') === 'true' && await page.locator('.map .town[data-region="vail"].active').count() === 1, 'region button marks that region on the map');
   await page.screenshot({ path: SHOTS + 'markets-1440.png' });

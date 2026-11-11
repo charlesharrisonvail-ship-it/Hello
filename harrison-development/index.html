@@ -11,12 +11,13 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Harrison Development | Development Marketing & Sales">
   <meta property="og:description" content="Mountain-market expertise. Intelligent marketing. Strategic sales. Serving developers, builders and landowners across Colorado.">
-  <meta property="og:image" content="https://learn.aireestate.com/development/assets/brand/og-image.png">
-  <meta property="og:url" content="https://learn.aireestate.com/development/">
+  <meta property="og:image" content="https://harrisondev.org/assets/brand/og-image.png">
+  <meta property="og:url" content="https://harrisondev.org/">
   <meta name="twitter:card" content="summary_large_image">
   <!-- Canonical URL, sitemap and structured data are added only once the final domain and facts are confirmed. -->
   <link rel="icon" href="assets/brand/hd-favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/space-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -54,7 +55,7 @@
 
   <main id="main">
     <section class="hero" id="hero" aria-labelledby="hero-title">
-      <div class="hero-photo" aria-hidden="true"><img src="assets/media/eagle-river-minturn.webp" alt="" width="1600" height="1130" fetchpriority="high"></div>
+      <div class="hero-photo" aria-hidden="true"><img src="assets/media/eagle-river-minturn.webp" alt="" width="1600" height="1130" fetchpriority="high"><video class="hero-video" data-bg muted loop playsinline preload="none"><source data-src="assets/media/hero-main.mp4" type="video/mp4"></video></div>
       <div class="hero-scrim" aria-hidden="true"></div>
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="wrap hero-grid">
@@ -86,11 +87,12 @@
       <div class="ticker-track"><span class="t">Development marketing</span><span class="sep">&#10022;</span><span class="t o">Licensed sales</span><span class="sep">&#10022;</span><span class="t">AI-powered launches</span><span class="sep">&#10022;</span><span class="t o">Colorado statewide</span><span class="sep">&#10022;</span><span class="t">Concept to closing</span><span class="sep">&#10022;</span><span class="t o">Mountain markets</span><span class="sep">&#10022;</span><span class="t">Development marketing</span><span class="sep">&#10022;</span><span class="t o">Licensed sales</span><span class="sep">&#10022;</span><span class="t">AI-powered launches</span><span class="sep">&#10022;</span><span class="t o">Colorado statewide</span><span class="sep">&#10022;</span><span class="t">Concept to closing</span><span class="sep">&#10022;</span><span class="t o">Mountain markets</span><span class="sep">&#10022;</span></div>
     </div>
 
-    <section class="section value" aria-labelledby="value-title">
+    <section class="section value vband" aria-labelledby="value-title">
+      <video class="vband-bg" data-bg muted loop playsinline preload="none" poster="assets/media/homes-reel-poster.jpg" aria-hidden="true"><source data-src="assets/media/homes-reel.mp4" type="video/mp4"></video>
       <div class="wrap split">
         <h2 id="value-title" class="rv">A connected approach to marketing and sales.</h2>
         <div class="rv">
-          <p class="lede-dark">Strong marketing starts with understanding what buyers need. We connect market research, project presentation, inquiry follow-up, and licensed sales representation so your project has a clear path from initial interest to a closing conversation.</p>
+          <p class="lede-dark scrub">Strong marketing starts with understanding what buyers need. We connect market research, project presentation, inquiry follow-up, and licensed sales representation so your project has a clear path from initial interest to a closing conversation.</p>
         </div>
       </div>
     </section>
@@ -99,12 +101,22 @@
       <div class="wrap">
         <p class="eyebrow eyebrow-dark rv">Why Harrison Development</p>
         <h2 id="trio-title" class="rv">Three disciplines, one point of contact.</h2>
-        <dl class="who">
-          <div class="rv"><dt>Mountain-market knowledge</dt><dd>Colorado mountain-market knowledge that informs positioning, pricing and launch planning.</dd></div>
-          <div class="rv"><dt>AI instruction</dt><dd>Teaches AI to real estate professionals, so it is used with judgment and every output is reviewed.</dd></div>
-          <div class="rv"><dt>Licensed sales</dt><dd>Showings, negotiation, contracts and closing coordination through Epique Realty.</dd></div>
+        <dl class="who cards">
+          <div class="rv card"><span class="card-n" aria-hidden="true">01</span><dt>Mountain-market knowledge</dt><dd>Colorado mountain-market knowledge that informs positioning, pricing and launch planning.</dd></div>
+          <div class="rv card"><span class="card-n" aria-hidden="true">02</span><dt>AI instruction</dt><dd>Teaches AI to real estate professionals, so it is used with judgment and every output is reviewed.</dd></div>
+          <div class="rv card"><span class="card-n" aria-hidden="true">03</span><dt>Licensed sales</dt><dd>Showings, negotiation, contracts and closing coordination through Epique Realty.</dd></div>
         </dl>
       </div>
+    </section>
+
+    <section class="shero" aria-label="Film: home tour, first residence">
+      <video class="shero-bg" data-bg muted loop playsinline preload="none" poster="assets/media/hero-house1-poster.jpg" aria-hidden="true"><source data-src="assets/media/hero-house1.mp4" type="video/mp4"></video>
+      <div class="wrap shero-copy">
+        <p class="eyebrow rv">What we do</p>
+        <p class="shero-title rv">Every detail, presented.</p>
+        <p class="shero-sub rv">Marketing that shows a project the way a buyer will walk it.</p>
+      </div>
+      <p class="shero-credit">Footage from a luxury home tour.</p>
     </section>
 
     <section class="section section-tint" id="services" aria-labelledby="services-title">
@@ -112,45 +124,67 @@
         <p class="eyebrow eyebrow-dark rv">Services</p>
         <h2 id="services-title" class="rv">Five services, one path from concept to closing.</h2>
         <ol class="services">
-          <li class="rv">
+          <li data-media="assets/media/nottingham-lake-avon.webp" class="rv">
             <span class="num" aria-hidden="true">01</span>
             <h3>Market Positioning</h3>
             <p>Comparable sales, competitive research, buyer profiles, and pricing recommendations to inform your project&rsquo;s market strategy. This is marketing research, not an appraisal, engineering or entitlement service.</p>
           </li>
-          <li class="rv">
+          <li data-media="assets/media/dowd-junction-aerial.webp" class="rv">
             <span class="num" aria-hidden="true">02</span>
             <h3>Project Branding &amp; Launch</h3>
             <p>A cohesive project identity, website, presentation materials, and launch plan built around the property and its intended buyers.</p>
           </li>
-          <li class="rv">
+          <li data-media="assets/media/water-motion.mp4" class="rv">
             <span class="num" aria-hidden="true">03</span>
             <h3>AI-Enhanced Marketing</h3>
             <p>Reviewed visual concepts, video, and campaign content that help communicate the project. Conceptual or AI-generated imagery is always labeled, and never implies unapproved features are actual or approved.</p>
           </li>
-          <li class="rv">
+          <li data-media="assets/media/eagle-river-cottonwoods.webp" class="rv">
             <span class="num" aria-hidden="true">04</span>
             <h3>Buyer Inquiry &amp; Follow-Up</h3>
             <p>Inquiry capture, organized follow-up, qualification, appointments, and useful feedback to the development team.</p>
           </li>
-          <li class="rv featured">
+          <li data-media="assets/media/vail-home.webp" class="rv featured">
             <span class="num" aria-hidden="true">05</span>
             <h3>Licensed Sales Representation</h3>
             <p>Showings, negotiations, contracts, and closing coordination through the brokerage arrangement described above. The sales side is what turns the marketing into closings.</p>
           </li>
         </ol>
+        <div class="hover-media" aria-hidden="true"></div>
       </div>
+    </section>
+
+    <section class="shero" aria-label="Film: home tour, second residence">
+      <video class="shero-bg" data-bg muted loop playsinline preload="none" poster="assets/media/hero-house2-poster.jpg" aria-hidden="true"><source data-src="assets/media/hero-house2.mp4" type="video/mp4"></video>
+      <div class="wrap shero-copy">
+        <p class="eyebrow rv">Who it is for</p>
+        <p class="shero-title rv">Built to be lived in. Marketed to be found.</p>
+        <p class="shero-sub rv">For the developers, builders and landowners behind the next address.</p>
+      </div>
+      <p class="shero-credit">Footage from a luxury home tour.</p>
     </section>
 
     <section class="section" aria-labelledby="who-title">
       <div class="wrap">
         <p class="eyebrow eyebrow-dark rv">Who we help</p>
         <h2 id="who-title" class="rv">Built for the people who bring projects to market.</h2>
-        <dl class="who">
-          <div class="rv"><dt>Developers</dt><dd>A dedicated partner for positioning, launch marketing, and sales.</dd></div>
-          <div class="rv"><dt>Builders</dt><dd>A coordinated marketing and sales plan for your next project.</dd></div>
-          <div class="rv"><dt>Landowners</dt><dd>An initial conversation about property goals, market context, and possible next steps.</dd></div>
+        <dl class="who cards">
+          <div class="rv card reveal" style="--img:url(../assets/media/minturn-cliffs.webp)"><dt>Developers</dt><dd>A dedicated partner for positioning, launch marketing, and sales.</dd></div>
+          <div class="rv card reveal" style="--img:url(../assets/media/vail-home.webp)"><dt>Builders</dt><dd>A coordinated marketing and sales plan for your next project.</dd></div>
+          <div class="rv card reveal" style="--img:url(../assets/media/eagle-river-cottonwoods.webp)"><dt>Landowners</dt><dd>An initial conversation about property goals, market context, and possible next steps.</dd></div>
         </dl>
+        <p class="media-note who-credit">Developers and Landowners photographs: Jeffrey Beall, CC BY 4.0, via Wikimedia Commons.</p>
       </div>
+    </section>
+
+    <section class="shero" aria-label="Film: home tour, third residence">
+      <video class="shero-bg" data-bg muted loop playsinline preload="none" poster="assets/media/hero-house3-poster.jpg" aria-hidden="true"><source data-src="assets/media/hero-house3.mp4" type="video/mp4"></video>
+      <div class="wrap shero-copy">
+        <p class="eyebrow rv">How it works</p>
+        <p class="shero-title rv">From first look to closing day.</p>
+        <p class="shero-sub rv">One point of contact, from the first conversation to the last signature.</p>
+      </div>
+      <p class="shero-credit">Footage from a luxury home tour.</p>
     </section>
 
     <section class="section section-dark has-backdrop" id="approach" aria-labelledby="approach-title">
@@ -267,18 +301,28 @@
           </ul>
         </div>
         <figure class="map rv">
-          <svg viewBox="0 0 680 500" role="img" aria-label="Illustrative outline map of Colorado with six marked regions: Vail Valley, Summit County, Roaring Fork Valley, the northern mountains, Gunnison and the San Juans, and the Front Range.">
-            <rect class="state" x="40" y="40" width="600" height="420" rx="4" pathLength="1"/>
-            <path class="divide" d="M96 40 C150 120 170 180 214 236 C250 290 200 360 170 460"/>
-            <g class="grid"><path d="M40 180H640M40 320H640M240 40V460M440 40V460"/></g>
-            <g class="town" data-region="north"><circle class="ring" cx="226" cy="95" r="8"/><circle class="dot main" cx="226" cy="95" r="6"/><circle class="dot" cx="296" cy="146" r="3"/><text class="lbl" x="240" y="101" text-anchor="start">Steamboat</text></g>
-            <g class="town" data-region="vail"><circle class="ring" cx="265" cy="183" r="8"/><circle class="dot main" cx="265" cy="183" r="6"/><circle class="dot" cx="280" cy="186" r="3"/><text class="lbl" x="250" y="178" text-anchor="end">Vail</text></g>
-            <g class="town" data-region="summit"><circle class="ring" cx="294" cy="200" r="8"/><circle class="dot main" cx="294" cy="200" r="6"/><circle class="dot" cx="308" cy="196" r="3"/><text class="lbl" x="306" y="218" text-anchor="start">Summit</text></g>
-            <g class="town" data-region="fork"><circle class="ring" cx="227" cy="230" r="8"/><circle class="dot main" cx="227" cy="230" r="6"/><circle class="dot" cx="246" cy="214" r="3"/><text class="lbl" x="211" y="237" text-anchor="end">Aspen</text></g>
-            <g class="town" data-region="west"><circle class="ring" cx="212" cy="264" r="8"/><circle class="dot main" cx="212" cy="264" r="6"/><circle class="dot" cx="142" cy="361" r="3"/><circle class="dot" cx="136" cy="432" r="3"/><text class="lbl" x="197" y="271" text-anchor="end">Gunnison</text></g>
-            <g class="town" data-region="front"><circle class="ring" cx="384" cy="172" r="8"/><circle class="dot main" cx="384" cy="172" r="6"/><circle class="dot" cx="360" cy="144" r="3"/><circle class="dot" cx="376" cy="83" r="3"/><circle class="dot" cx="398" cy="268" r="3"/><text class="lbl" x="398" y="168" text-anchor="start">Denver</text></g>
-          </svg>
-          <figcaption>Illustrative map, not to scale. Choose a region to see it marked.</figcaption>
+          <div class="map-stage" id="mapStage" role="img" aria-label="3D satellite terrain map of Colorado with six marked regions: Steamboat and the northern mountains, Vail Valley, Summit County, the Roaring Fork Valley around Aspen, Gunnison and the San Juans, and Denver and the Front Range.">
+            <img class="map-still" src="assets/map/colorado-3d.webp" alt="" width="1040" height="780" loading="lazy" decoding="async">
+            <div class="map-labels" aria-hidden="true">
+              <span class="town t" data-region="north" data-lat="40.485" data-lon="-106.832" data-x="35.5" data-y="27.9"><span class="lbl">Steamboat</span></span>
+              <span class="minor" data-region="north" data-lat="39.892" data-lon="-105.763" data-x="46.4" data-y="35.6" title="Winter Park"></span>
+              <span class="town l" data-region="vail" data-lat="39.64" data-lon="-106.374" data-x="40.4" data-y="36.4"><span class="lbl">Vail</span></span>
+              <span class="minor" data-region="vail" data-lat="39.645" data-lon="-106.594" data-x="38.4" data-y="39.6" title="Edwards"></span>
+              <span class="town b" data-region="summit" data-lat="39.481" data-lon="-106.038" data-x="44.0" data-y="37.5"><span class="lbl">Summit</span></span>
+              <span class="minor" data-region="summit" data-lat="39.574" data-lon="-106.097" data-x="43.4" data-y="39.5" title="Frisco"></span>
+              <span class="town l" data-region="fork" data-lat="39.191" data-lon="-106.817" data-x="36.1" data-y="42.2"><span class="lbl">Aspen</span></span>
+              <span class="minor" data-region="fork" data-lat="39.55" data-lon="-107.325" data-x="31.0" data-y="41.7" title="Glenwood Springs"></span>
+              <span class="town l" data-region="west" data-lat="38.545" data-lon="-106.925" data-x="35.1" data-y="50.7"><span class="lbl">Gunnison</span></span>
+              <span class="minor" data-region="west" data-lat="38.87" data-lon="-106.988" data-x="34.5" data-y="49.0" title="Crested Butte"></span>
+              <span class="minor" data-region="west" data-lat="37.937" data-lon="-107.812" data-x="25.2" data-y="62.7" title="Telluride"></span>
+              <span class="minor" data-region="west" data-lat="37.275" data-lon="-107.88" data-x="24.2" data-y="73.7" title="Durango"></span>
+              <span class="town r" data-region="front" data-lat="39.739" data-lon="-104.99" data-x="54.3" data-y="34.9"><span class="lbl">Denver</span></span>
+              <span class="minor" data-region="front" data-lat="40.015" data-lon="-105.271" data-x="51.1" data-y="34.8" title="Boulder"></span>
+              <span class="minor" data-region="front" data-lat="40.585" data-lon="-105.084" data-x="52.1" data-y="28.7" title="Fort Collins"></span>
+              <span class="minor" data-region="front" data-lat="38.834" data-lon="-104.821" data-x="57.5" data-y="48.1" title="Colorado Springs"></span>
+            </div>
+          </div>
+          <figcaption>Colorado in 3D: real terrain, height exaggerated. Choose a region to fly to it; drag to turn. Imagery: USGS (public domain). Elevation: Terrain Tiles by Mapzen (USGS 3DEP, SRTM).</figcaption>
         </figure>
       </div>
     </section>
@@ -296,9 +340,23 @@
         <div class="rv">
           <p class="lede-dark">Charles Harrison, Owner, CEO, is an AI real estate industry leader who teaches AI to real estate professionals. A licensed agent with a landscape architecture background, he brings Colorado mountain-market knowledge and AI-assisted marketing to a project, and stays with it through negotiation and closing. Harrison Development puts that combination to work for developers and builders across Colorado.</p>
           <p class="lede-dark about-more">Based in the Vail Valley, Charles works with developers, builders and landowners throughout the state, and handles the relationship and the sales work himself.</p>
+          <figure class="about-reel rv">
+            <video data-bg muted loop playsinline preload="none" poster="assets/media/charles-reel-poster.jpg" aria-label="Short clips of Charles Harrison touring new homes with guests."><source data-src="assets/media/charles-reel.mp4" type="video/mp4"></video>
+            <figcaption>Charles on a luxury home tour.</figcaption>
+          </figure>
           <p class="creds" id="credentials"></p>
         </div>
       </div>
+    </section>
+
+    <section class="shero" aria-label="Film: design showroom">
+      <video class="shero-bg" data-bg muted loop playsinline preload="none" poster="assets/media/hero-joybird-poster.jpg" aria-hidden="true"><source data-src="assets/media/hero-joybird.mp4" type="video/mp4"></video>
+      <div class="wrap shero-copy">
+        <p class="eyebrow rv">Presentation</p>
+        <p class="shero-title rv">Rooms that tell the story.</p>
+        <p class="shero-sub rv">Buyers decide with their eyes first. We plan for that.</p>
+      </div>
+      <p class="shero-credit">Footage from a luxury home tour.</p>
     </section>
 
     <section class="section section-tint" id="faq" aria-labelledby="faq-title">
@@ -471,5 +529,6 @@
 
   <script src="js/config.js"></script>
   <script src="js/main.js"></script>
+  <script type="module" src="js/terrain.js"></script>
 </body>
 </html>

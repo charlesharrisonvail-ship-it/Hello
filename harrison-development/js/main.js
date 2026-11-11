@@ -140,6 +140,7 @@
 
   /* ---------- Background footage: lazy, muted, plays only in view; one switch pauses all motion ---------- */
   var bgVideos = Array.prototype.slice.call(doc.querySelectorAll("video[data-bg]"));
+  bgVideos.forEach(function (v) { v.addEventListener("playing", function () { v.classList.add("is-playing"); }); v.addEventListener("pause", function () { if (v.classList.contains("hero-video")) v.classList.remove("is-playing"); }); });
   var motionToggle = $("motionToggle");
   var motionPaused = false;
   try { motionPaused = localStorage.getItem("hdMotion") === "paused"; } catch (e) {}
@@ -198,6 +199,74 @@
       if (!was) { b.setAttribute("aria-pressed", "true"); var t = townFor(r); if (t) t.classList.add("active"); }
     });
   });
+
+  /* ---------- Motion pack 2: scroll-lit statement, headline reveals, spotlight cards, hover media ---------- */
+  var paused = function () { return root.classList.contains("motion-paused"); };
+  // Statement lights up word by word as it scrolls through the screen
+  doc.querySelectorAll(".scrub").forEach(function (p) {
+    var hot = /^(research|presentation|follow-up|licensed|sales|closing)/i;
+    p.innerHTML = p.textContent.trim().split(/\s+/).map(function (w) {
+      return '<span class="sw' + (hot.test(w) ? " hot-w" : "") + '">' + w + "</span>";
+    }).join(" ");
+    var ws = p.querySelectorAll(".sw");
+    var lit = function () {
+      var r = p.getBoundingClientRect(), vh = window.innerHeight;
+      var t = reduce ? 1 : Math.min(Math.max((vh * 0.85 - r.top) / (r.height + vh * 0.35), 0), 1);
+      var n = Math.round(t * ws.length);
+      ws.forEach(function (w, i) { w.classList.toggle("on", i < n); w.classList.toggle("hot", i < n && w.classList.contains("hot-w")); });
+    };
+    var tk = false;
+    window.addEventListener("scroll", function () { if (!tk) { tk = true; requestAnimationFrame(function () { tk = false; lit(); }); } }, { passive: true });
+    lit();
+  });
+  // Section headlines rise word by word out of a mask
+  if (!reduce && "IntersectionObserver" in window) {
+    var hio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); hio.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -12% 0px" });
+    doc.querySelectorAll("main h2").forEach(function (h) {
+      if (h.children.length) return;
+      var words = h.textContent.trim().split(/\s+/);
+      h.setAttribute("aria-label", h.textContent.trim());
+      h.innerHTML = words.map(function (w, i) {
+        return '<span class="w" aria-hidden="true"><span style="transition-delay:' + (i * 45) + 'ms">' + w + "</span></span>";
+      }).join(" ");
+      h.classList.add("wr", "wr-js"); hio.observe(h);
+    });
+  }
+  // Cursor spotlight on cards
+  if (finePointer) {
+    doc.querySelectorAll(".who.cards .card").forEach(function (c) {
+      c.addEventListener("pointermove", function (e) {
+        var r = c.getBoundingClientRect();
+        c.style.setProperty("--cx", (e.clientX - r.left) + "px"); c.style.setProperty("--cy", (e.clientY - r.top) + "px");
+      }, { passive: true });
+    });
+  }
+  // Services: a photo or clip follows the cursor over each row
+  var hm = doc.querySelector(".hover-media");
+  if (hm && finePointer && !reduce) {
+    var hx = 0, hy = 0, tx = 0, ty = 0, hraf = 0, cur = "";
+    var follow = function () {
+      hx += (tx - hx) * 0.16; hy += (ty - hy) * 0.16;
+      hm.style.transform = "translate(" + (hx + 28) + "px," + (hy - 105) + "px)";
+      hraf = Math.abs(tx - hx) + Math.abs(ty - hy) > 0.5 ? requestAnimationFrame(follow) : 0;
+    };
+    doc.querySelectorAll(".services li[data-media]").forEach(function (li) {
+      li.addEventListener("pointerenter", function (e) {
+        if (paused()) return;
+        var src = li.getAttribute("data-media");
+        if (src !== cur) {
+          cur = src;
+          hm.innerHTML = /\.mp4$/.test(src) ? '<video src="' + src + '" muted loop playsinline autoplay></video>' : '<img src="' + src + '" alt="">';
+        }
+        if (!hm.classList.contains("on")) { hx = tx = e.clientX; hy = ty = e.clientY; }
+        hm.classList.add("on");
+      });
+      li.addEventListener("pointermove", function (e) { tx = e.clientX; ty = e.clientY; if (!hraf) hraf = requestAnimationFrame(follow); }, { passive: true });
+      li.addEventListener("pointerleave", function () { hm.classList.remove("on"); });
+    });
+  }
 
   /* ---------- Contact form ---------- */
   var form = $("contactForm");

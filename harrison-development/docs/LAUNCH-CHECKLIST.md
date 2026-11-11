@@ -1,6 +1,6 @@
 # LAUNCH-CHECKLIST.md: Harrison Development
 
-**Status 2026-11-09: LIVE at https://learn.aireestate.com/development/** (unlinked from AiRE, noindex, no links to Epique or EpiVail). The preview banner is off; the contact form opens the visitor's own email app; there is no booking button until a Harrison Development schedule exists. Republish with `harrison-development/deploy/publish-to-aire.sh`.
+**Status 2026-11-10: LIVE at https://harrisondev.org** (own domain on Cloudflare; the AiRE address only redirects). Earlier: live at learn.aireestate.com/development/ (unlinked from AiRE, noindex, no links to Epique or EpiVail). The preview banner is off; the contact form opens the visitor's own email app; there is no booking button until a Harrison Development schedule exists. Republish with `harrison-development/deploy/publish-to-aire.sh`.
 
 Technical readiness is separate from factual, brokerage and publication readiness. **Technical readiness: the local preview is built and tested. Publication readiness: not ready.** Nothing has been deployed, registered, purchased, sent or approved.
 
