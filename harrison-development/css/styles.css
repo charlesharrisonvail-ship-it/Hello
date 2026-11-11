@@ -509,3 +509,8 @@ body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opa
   body::after{inset:-10%;animation:grain .9s steps(4) infinite}
 }
 @media (prefers-reduced-motion: reduce){.hover-media{display:none}}
+/* About: reel of Charles */
+.about-reel{margin:34px 0 0;position:relative}
+.about-reel video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;background:#0E1114;box-shadow:0 30px 70px -30px #000,0 0 0 1px rgba(223,255,26,.35)}
+.about-reel figcaption{margin-top:12px;font-size:14px;color:var(--ink-soft)}
+.vband-bg{opacity:.5}
