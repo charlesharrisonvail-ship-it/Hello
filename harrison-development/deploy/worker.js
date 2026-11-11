@@ -17,7 +17,8 @@ export default {
       return new Response("Method not allowed", { status: 405, headers: { Allow: "GET, HEAD" } });
     }
     const url = new URL(request.url);
-    if (url.hostname.startsWith("www.")) { url.hostname = url.hostname.slice(4); return Response.redirect(url.toString(), 301); }
+    // One home: www and the misspelled harrisondevolpment.com both send visitors to harrisondev.org
+    if (/(^www\.|harrisondevolpment\.com$)/.test(url.hostname)) { url.hostname = "harrisondev.org"; return Response.redirect(url.toString(), 301); }
     let key = decodeURIComponent(url.pathname.replace(/^\/+/, ""));
     if (key === "" || key.endsWith("/")) key += "index.html";
     if (key.includes("..")) return new Response("Not found", { status: 404 });
