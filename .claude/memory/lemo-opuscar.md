@@ -10,8 +10,8 @@ video model, so it costs nothing and fits `no-paid-ai-tools`.
 
 Charles installed it on Windows on 2026-11-11 with
 `claude plugin marketplace add lemomo-ai/lemo-opuscar` and
-`claude plugin install lemo-opuscar@lemolab` (user scope), and his first film is
-in progress. It needs Node 20+, ffmpeg 7+ and Python 3.11+. Run `claude` in a
+`claude plugin install lemo-opuscar@lemolab` (user scope); his first film rendered
+successfully the same day. It needs Node 20+, ffmpeg 7+ and Python 3.11+. Run `claude` in a
 films folder (e.g. `$HOME\Films`), not `C:\Windows\system32`, and ask for the
 film at Claude's prompt, not at the PowerShell prompt. The style library lives
 in `~/lemo-opuscar`.
