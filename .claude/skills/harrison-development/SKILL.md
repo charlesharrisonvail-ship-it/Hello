@@ -51,15 +51,17 @@ Files live in `harrison-development/assets/brand/official/`:
 | `hd-logo-horizontal.png` (1200 x 400) | Monogram left, name right | Site footer, document headers, wide placements |
 | `hd-logo-horizontal-small.png` (600 x 200) | Same, small | Email signatures, small web uses |
 | `hd-social-card.png` (1640 x 856) | Horizontal with harrisondev.org | Link previews and social share images |
-| `hd-banner.png` (1512 x 256) | Wide strip with harrisondev.org | Page and profile banners |
-
-Charles has also shown more official layouts that are **not saved in the
-repository yet** (they arrived as chat images only): a 1584 x 396 profile banner,
-a tall poster with the web address, a 1080 x 1350 post frame with the logo on top
-and the descriptor at the bottom, a 1080 x 1080 square with the web address, a
-monogram-only mark, a 1200 x 630 share card, a 1080 x 1920 story layout, a
-1500 x 500 banner, and 16:9 title cards. Ask him for the files (Google Drive
-works) before a job needs one.
+| `hd-banner.png` (1512 x 256) | Wide strip with harrisondev.org | Page banners |
+| `hd-logo-stacked.png` (1254 x 1254) | Same as the stacked logo, PNG | Where WebP is not accepted |
+| `hd-share-card-1200x630.png` | Horizontal with harrisondev.org | The site's link-preview image (`assets/brand/og-image.png` is a copy) |
+| `hd-banner-1584x396.png` | Wide banner with harrisondev.org | LinkedIn profile banner |
+| `hd-banner-1500x500.png` | Wide banner with harrisondev.org | X and other 3:1 headers |
+| `hd-square-1080.png` | Stacked logo with harrisondev.org | Square social posts |
+| `hd-post-frame-1080x1350.png` | Logo on top, descriptor and web address at the bottom, empty middle | Portrait post frame: place the photo or message in the middle |
+| `hd-poster-1000x1500.png` | Tall stacked logo with harrisondev.org | Posters, Pinterest-size pins |
+| `hd-story-1080x1920.png` | Tall stacked logo with harrisondev.org | Stories and reel end cards |
+| `hd-title-card-2560x1440.png`, `hd-title-card-1280x720.png` | Horizontal logo centered, 16:9 | Video title and end cards, YouTube banner, slides |
+| `hd-monogram-800.png`, `hd-monogram-400.png` | HD monogram alone | Profile pictures, avatars, small marks |
 
 Older working files in `harrison-development/assets/brand/` (transparent logo and
 mark, favicon) are derived from the same approved logo and stay in use on the
