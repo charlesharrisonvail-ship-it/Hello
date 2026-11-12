@@ -13,7 +13,7 @@ API=$API_ROOT/accounts/$ACC
 DIST=$(mktemp -d)
 # 1. Public files only: never docs/, tests/, screenshots/ or deploy/
 cp index.html privacy.html robots.txt sitemap.xml "$DIST"/
-cp -r css js assets concepts "$DIST"/
+cp -r css js assets "$DIST"/
 rm -f "$DIST/assets/brand/og-source.html"
 # 2. Strip internal comments from the public config
 python3 -I - "$DIST/js/config.js" <<'PY'
