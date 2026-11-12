@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 100" width="470" height="100" role="img" aria-labelledby="t"><title id="t">Harrison Development, horizontal logo (proposed)</title>
-  <rect x="10" y="10" width="10" height="80" fill="#14181C"/>
-  <rect x="45" y="10" width="10" height="80" fill="#14181C"/>
-  <rect x="20" y="45" width="25" height="10" fill="#A96843"/>
-  <path d="M50 10H65A40 40 0 0 1 65 90H50V80H65A30 30 0 0 0 65 20H50Z" fill="#14181C"/>
-  <text x="138" y="50" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="3.5" fill="#14181C">HARRISON</text>
-  <text x="138" y="82" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="3.5" fill="#14181C">DEVELOPMENT</text>
-  
-</svg>
