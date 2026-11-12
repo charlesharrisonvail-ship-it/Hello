@@ -20,6 +20,7 @@ and the site is plain HTML.
   - `recruitment-outreach.md` — agent recruitment emails, DMs, SMS, call scripts, and sequences
   - `linkedin-content.md` — LinkedIn posts, content calendars, and carousel/Reel concepts
   - `lofty-crm.md` — Lofty contacts, tiers, tags, recruit pipeline stages, and follow-up tasks
+  - `seller-lead-desk.md` — seller call list from MLS expired, cancelled and withdrawn listings, owners matched in Lofty; `/leads` runs it
 - `.claude/skills/linkedin-optimizer/` — LinkedIn analytics and profile optimization
 - `.claude/skills/` also holds five general skills from ComposioHQ/awesome-claude-skills (commit `be2a406`, Apache-2.0): `lead-research-assistant`, `content-research-writer`, `competitive-ads-extractor`, `meeting-insights-analyzer`, `domain-name-brainstormer`. They are third-party and brand-neutral; EpiVail and AiRE Estate rules in this file still govern anything they produce.
 - `.claude/chief-of-staff/` and `.claude/commands/` — Chief of Staff (mimurchison/claude-chief-of-staff, MIT): `/gm` morning briefing, `/triage` inbox, `/my-tasks`, `/enrich`; its `operating-system.md` gives way to this file on brand, signatures and Do not contact
