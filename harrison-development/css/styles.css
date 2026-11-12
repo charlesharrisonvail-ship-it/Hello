@@ -509,25 +509,4 @@ body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opa
   body::after{inset:-10%;animation:grain .9s steps(4) infinite}
 }
 @media (prefers-reduced-motion: reduce){.hover-media{display:none}}
-/* About: reel of Charles */
-.about-reel{margin:34px 0 0;position:relative}
-.about-reel video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;background:#0E1114;box-shadow:0 30px 70px -30px #000,0 0 0 1px rgba(223,255,26,.35)}
-.about-reel figcaption{margin-top:12px;font-size:14px;color:var(--ink-soft)}
-.vband-bg{opacity:.5}
-/* ===== Hero films (2026-11-11): Charles's event footage, one per section ===== */
-.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s}
-.hero-video{filter:brightness(.5) saturate(.9)}.hero-video.is-playing{opacity:1}
-.shero{position:relative;isolation:isolate;overflow:hidden;min-height:min(86vh,820px);display:flex;align-items:flex-end;background:#0E1114;color:var(--paper)}
-.shero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
-.shero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(14,17,20,.55) 0%,rgba(14,17,20,.05) 30%,rgba(14,17,20,.2) 55%,rgba(14,17,20,.92) 100%)}
-.shero-copy{width:100%;padding-top:120px;padding-bottom:clamp(48px,7vw,92px)}
-.shero-title{font:300 clamp(2.4rem,7vw,5.4rem)/1.02 var(--serif);letter-spacing:-.035em;margin:0;max-width:16ch;text-wrap:balance}
-.shero-sub{font-size:clamp(1.05rem,2vw,1.3rem);color:#D5DADE;max-width:44ch;margin:20px 0 0}
-.shero-credit{position:absolute;right:var(--gutter);bottom:14px;margin:0;font-size:14px;color:var(--paper-soft)}
-@media (prefers-reduced-motion: no-preference){
-  @supports ((animation-timeline: view()) and (animation-range: entry)) {
-    @keyframes shero-zoom{from{scale:1.14}to{scale:1}}
-    .shero-bg{animation:shero-zoom linear both;animation-timeline:view();animation-range:entry 0% cover 60%}
-  }
-}
 .foot-logo{display:block;width:min(100%,340px);height:auto;margin:0 0 18px -18px;mix-blend-mode:screen}

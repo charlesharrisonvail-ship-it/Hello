@@ -106,6 +106,7 @@ results, clients, testimonials or production numbers.
 - **Photos and video of Charles:** use only what he supplies or picks. Never
   generate his likeness. In his event footage he is the man in the navy blazer,
   white shirt and sunglasses on his head; his wife is usually beside him.
+- **Event footage is off the site.** He had the luxury-tour videos removed on 2026-11-12; do not add them back unless he asks.
 - **In footage,** leave out close-ups of other guests, store signs, the Epique
   Estates sign and house numbers.
 - **Do not raise** broker review or anyone "above" him. He is the only boss.

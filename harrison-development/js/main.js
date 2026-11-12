@@ -140,7 +140,6 @@
 
   /* ---------- Background footage: lazy, muted, plays only in view; one switch pauses all motion ---------- */
   var bgVideos = Array.prototype.slice.call(doc.querySelectorAll("video[data-bg]"));
-  bgVideos.forEach(function (v) { v.addEventListener("playing", function () { v.classList.add("is-playing"); }); v.addEventListener("pause", function () { if (v.classList.contains("hero-video")) v.classList.remove("is-playing"); }); });
   var motionToggle = $("motionToggle");
   var motionPaused = false;
   try { motionPaused = localStorage.getItem("hdMotion") === "paused"; } catch (e) {}
