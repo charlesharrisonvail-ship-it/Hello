@@ -11,10 +11,8 @@ const NOANIM = '.rv,.hero-in,.wi,.hero-logo,.hero-glow,.map .state,.map .town,.p
 const browser = await chromium.launch();
 const external = new Set();
 
-// social preview image from the editable source
-{ const p = await browser.newPage({ viewport: { width: 1200, height: 630 } });
-  await p.goto(BASE + '/assets/brand/og-source.html'); await p.waitForTimeout(400);
-  await p.screenshot({ path: new URL('../assets/brand/og-image.png', import.meta.url).pathname }); await p.close(); }
+// The social preview image is Charles's official share card (assets/brand/official/hd-share-card-1200x630.png),
+// copied to assets/brand/og-image.png. It is not generated here.
 
 for (const w of [360, 390, 768, 1440]) {
   const ctx = await browser.newContext({ viewport: { width: w, height: 900 }, deviceScaleFactor: w < 800 ? 2 : 1 });
