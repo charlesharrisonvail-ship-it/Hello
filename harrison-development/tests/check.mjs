@@ -114,7 +114,7 @@ for (const w of [360, 390, 768, 1440]) {
   log(await page.locator('#faq details').first().evaluate(e => e.open), 'FAQ item opens');
   await page.locator('#faq').scrollIntoViewIfNeeded(); await page.screenshot({ path: SHOTS + 'faq-1440.png' });
   // booking: default honest state
-  log(/not set up yet/i.test(await page.locator('#bookingText').innerText()) && await page.locator('#bookBtn').isHidden(), 'no Epique booking link: booking says scheduling is not set up and shows no button');
+  log(/confirm a time/i.test(await page.locator("#bookingText").innerText()) && await page.locator('#bookBtn').isHidden(), 'no Epique booking link: booking asks for a consultation request (Charles confirms a time) and shows no button');
   const r = await page.request.get(BASE + '/assets/downloads/launch-readiness-checklist.pdf');
   log(r.status() === 200 && /pdf/.test(r.headers()['content-type'] || ''), 'checklist PDF downloads', r.headers()['content-type']);
   await ctx.close(); }
@@ -136,7 +136,7 @@ for (const w of [360, 390, 768, 1440]) {
   const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const page = await ctx.newPage();
   await page.addInitScript(() => { let c; Object.defineProperty(window, 'HD_CONFIG', { configurable: true, set(v) { c = Object.assign(v, { bookingUrl: '' }); }, get() { return c; } }); });
   await page.goto(BASE + '/index.html');
-  log(/not set up yet/i.test(await page.locator('#bookingText').innerText()) && await page.locator('#bookBtn').isHidden(), 'no booking URL: site says scheduling is not set up and shows no button (no invented link)');
+  log(/confirm a time/i.test(await page.locator("#bookingText").innerText()) && await page.locator('#bookBtn').isHidden(), 'no booking URL: site offers a consultation request and shows no booking button (no invented link)');
   await ctx.close(); }
 { // configured booking URL and hidden concepts are honored
   const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const page = await ctx.newPage();
@@ -196,15 +196,15 @@ async function fillValid(page) {
   await page.selectOption('#f-role', 'Developer'); await page.fill('#f-location', 'Gypsum, CO');
   await page.selectOption('#f-stage', 'Planning or entitlement'); await page.fill('#f-desc', 'Test description of a small project.');
 }
-{ // live site with no form service: the form opens the visitor's own email app, and says so
-  const { ctx, page } = await formPage({ width: 390, height: 900 });
+{ // no form service configured: the form opens the visitor's own email app, and says so
+  const { ctx, page } = await formPage({ width: 390, height: 900 }, { formEndpoint: '' });
   const st = await page.locator('#formState').textContent();
   log(/your own email app opens/i.test(st) && !/PREVIEW/.test(st), 'live form says plainly that it opens your email app', st);
   await fillValid(page); await page.click('#submitBtn'); await page.waitForTimeout(300);
   const r = await page.locator('#formResult').innerText();
   log(/email app should open/i.test(r) && !/thank you|received|was sent/i.test(r), 'live submit hands off to email and never claims delivery');
   await ctx.close(); }
-{ const { ctx, page } = await formPage({ width: 390, height: 900 }, { previewBanner: true });
+{ const { ctx, page } = await formPage({ width: 390, height: 900 }, { previewBanner: true, formEndpoint: '' });
   const state = await page.locator('#formState').textContent();
   log(/PREVIEW ONLY/.test(state), 'form labelled preview-only when no endpoint');
   await page.click('#submitBtn');
@@ -232,13 +232,35 @@ async function fillValid(page) {
   log(true, 'success shown only after endpoint accepted (200)');
   await ctx.close(); }
 
+// Live form (default config): posts to the site's own /api/inquiry
+{ const { ctx, page } = await formPage({ width: 390, height: 900 });
+  log(/reads every request/i.test(await page.locator('#formState').textContent()), 'live form says Charles reads every request');
+  let posted = null;
+  await page.route('**/api/inquiry', r => { posted = JSON.parse(r.request().postData() || '{}'); r.fulfill({ status: 429, contentType: 'application/json', body: '{"ok":false}' }); });
+  await fillValid(page); await page.click('#submitBtn'); await page.waitForSelector('#formResult .box');
+  const t429 = await page.locator('#formResult').innerText();
+  log(/could not send/i.test(t429) && /too many/i.test(t429) && !/thank you/i.test(t429) && await page.inputValue('#f-name') !== '', 'rate-limited submit shows a clear failure and keeps what was typed');
+  log(posted && posted.location === 'Gypsum, CO' && !('website' in posted), 'form posts the project details to /api/inquiry');
+  await page.unroute('**/api/inquiry');
+  await page.route('**/api/inquiry', r => r.fulfill({ status: 200, contentType: 'application/json', body: '{"ok":true}' }));
+  await page.click('#submitBtn'); await page.waitForFunction(() => /Thank you/.test(document.getElementById('formResult').innerText));
+  log(await page.inputValue('#f-name') === '', 'success shown and form cleared only after /api/inquiry accepted it');
+  await ctx.close(); }
+{ const { ctx, page } = await formPage({ width: 390, height: 900 });
+  await page.fill('#f-name', 'Test'); await page.fill('#f-email', 'test@example.com'); await page.fill('#f-location', 'Eagle, CO');
+  await page.selectOption('#f-stage', 'Not sure'); await page.fill('#f-desc', 'Role left blank on purpose.');
+  let hit = false; await page.route('**/api/inquiry', r => { hit = true; r.fulfill({ status: 200, contentType: 'application/json', body: '{"ok":true}' }); });
+  await page.click('#submitBtn'); await page.waitForTimeout(400);
+  log(hit, 'role is optional: the form submits without it');
+  await ctx.close(); }
+
 // Reduced motion
 { const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' }); const page = await ctx.newPage();
   await page.goto(BASE + '/index.html'); await page.waitForTimeout(300);
   const info = await page.evaluate(() => ({
     rvjs: document.querySelectorAll('.rv-js').length, sb: getComputedStyle(document.documentElement).scrollBehavior,
     heroAnim: getComputedStyle(document.querySelector('.hero-in')).animationName, wordAnim: getComputedStyle(document.querySelector('#hero-title .wi')).animationName,
-    rvAnim: getComputedStyle(document.querySelector('.rv')).animationName, logoAnim: getComputedStyle(document.querySelector('.hero-logo')).animationName, photoAnim: getComputedStyle(document.querySelector('.hero-photo img')).animationName,
+    rvAnim: getComputedStyle(document.querySelector('.rv')).animationName, logoAnim: document.querySelector('.hero-logo') ? getComputedStyle(document.querySelector('.hero-logo')).animationName : 'none', photoAnim: getComputedStyle(document.querySelector('.hero-photo img')).animationName,
     progress: getComputedStyle(document.querySelector('.progress')).display, op: getComputedStyle(document.querySelector('.services li')).opacity }));
   log(info.rvjs === 0 && info.sb === 'auto' && info.heroAnim === 'none' && info.wordAnim === 'none' && info.rvAnim === 'none' && info.logoAnim === 'none' && info.photoAnim === 'none' && info.progress === 'none' && info.op === '1', 'reduced motion: every animation off, content fully visible', JSON.stringify(info));
   await ctx.close(); }

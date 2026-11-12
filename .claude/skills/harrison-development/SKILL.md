@@ -25,7 +25,7 @@ disagree, the newer dated line in the memory file wins.
 ## Identity
 
 - **Name:** Harrison Development. Monogram: HD.
-- **Descriptor:** Development Marketing & Sales.
+- **Descriptor:** Development Advisory & Project Sales (Charles's wording, 2026-11-12). The official logo files still read "Development Marketing & Sales"; do not alter them.
 - **Site:** https://harrisondev.org (the only address to print or link).
 - **Charles's title:** exactly `Owner, CEO`. Nothing appended. No LLC claim.
 - **Positioning line:** Knows the market. Teaches the AI. Carries the sale.

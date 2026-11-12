@@ -8,7 +8,7 @@
  */
 window.HD_CONFIG = {
   brandName: "Harrison Development",
-  descriptor: "Development Marketing & Sales",
+  descriptor: "Development Advisory & Project Sales",
   tagline: "Mountain-market expertise. Intelligent marketing. Strategic sales.",
 
   // Proposed attribution. Pending managing-broker review (see LAUNCH-CHECKLIST.md).
@@ -50,7 +50,8 @@ window.HD_CONFIG = {
   //  - formEndpoint: URL of an approved endpoint (HTTPS). Empty = the form stays in preview-only mode.
   //  - mailtoFallback: when true, a valid form offers a clearly labelled button that opens the
   //    visitor's own email app. It does not send anything by itself.
-  formEndpoint: "",
+  // Live 2026-11-12: the site's own Worker stores inquiries (deploy/worker.js, KV "harrison-development-inquiries").
+  formEndpoint: "/api/inquiry",
   mailtoFallback: true,
 
   // Accent color: "yellow" (neon yellow, default) or "pink" (neon pink).
