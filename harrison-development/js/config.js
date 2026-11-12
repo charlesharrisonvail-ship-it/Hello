@@ -8,7 +8,7 @@
  */
 window.HD_CONFIG = {
   brandName: "Harrison Development",
-  descriptor: "Development Marketing & Sales",
+  descriptor: "Development Advisory & Project Sales",
   tagline: "Mountain-market expertise. Intelligent marketing. Strategic sales.",
 
   // Proposed attribution. Pending managing-broker review (see LAUNCH-CHECKLIST.md).
