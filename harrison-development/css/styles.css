@@ -530,3 +530,4 @@ body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opa
     .shero-bg{animation:shero-zoom linear both;animation-timeline:view();animation-range:entry 0% cover 60%}
   }
 }
+.foot-logo{display:block;width:min(100%,340px);height:auto;margin:0 0 18px -18px;mix-blend-mode:screen}
