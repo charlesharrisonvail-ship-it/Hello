@@ -23,6 +23,7 @@ and the site is plain HTML.
 - `.claude/skills/linkedin-optimizer/` — LinkedIn analytics and profile optimization
 - `.claude/skills/harrison-development/` — brand card for Harrison Development: official logos, colors, type, voice, site and publishing steps, and Charles's standing rules
 - `.claude/skills/` also holds five general skills from ComposioHQ/awesome-claude-skills (commit `be2a406`, Apache-2.0): `lead-research-assistant`, `content-research-writer`, `competitive-ads-extractor`, `meeting-insights-analyzer`, `domain-name-brainstormer`. They are third-party and brand-neutral; EpiVail and AiRE Estate rules in this file still govern anything they produce.
+- `.claude/chief-of-staff/` and `.claude/commands/` — Chief of Staff (mimurchison/claude-chief-of-staff, MIT): `/gm` morning briefing, `/triage` inbox, `/my-tasks`, `/enrich`; its `operating-system.md` gives way to this file on brand, signatures and Do not contact
 - `.claude/settings.json` — project settings; enables the Superpowers, Ponytail (DietrichGebert/ponytail, MIT; "lazy senior dev" minimal-code mode, needs `node`), and ECC (affaan-m/ECC v2.2.3, MIT; `ecc@ecc` — 71 agents, 311 skills, and its own lifecycle hooks) plugins and registers the Continuity session-orientation hooks
 - `.claude/continuity/` — the Continuity kit that loads `ROLE.md`, `PROJECT.md`, `DECISIONS.md`, and `STATE.md` at every session start
 - `.claude/memory/` — one fact per file, searched with `python3 .claude/continuity/recall.py <terms>`
@@ -32,6 +33,7 @@ and the site is plain HTML.
 - `tools/open-generative-ai/` — free Windows setup notes for Open Generative AI (Anil Matcha's AI image/video studio with Cinema Studio); local models only, no paid MuAPI key; source is not vendored
 - `tools/harvey/` — free Windows setup notes and a leads-only config for Harvey (ethanplusai/harvey, MIT; AI lead-finding agent that runs on the Claude plan); finds agents and brokerages in 23 Colorado ski towns via Serper's free tier, email and LinkedIn off; source is not vendored
 - `tools/null-motion/` — free Windows setup notes for Null Motion (blixvip/NullMotion, MIT; finished motion-graphics ad over its HyperFrames drafts, MP4 export); local, zero dependencies, needs Node 22+; source is not vendored
+- `tools/freefield/` — Windows setup notes for Freefield (neuregex/freefield, MIT; open-source Higgsfield on ComfyUI, 120 apps incl. Cinema Studio); free models only, run on Charles's own AMD Ryzen AI laptop (AMD support untested; Modal is paid and not used); source is not vendored
 - `is-this-for-you-script.md` — script for the Lead to Keys screening video
 
 ## Conventions
