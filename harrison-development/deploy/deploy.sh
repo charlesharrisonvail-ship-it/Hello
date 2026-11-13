@@ -12,7 +12,7 @@ ACC=$(curl -sS "$API_ROOT/accounts" | python3 -I -c "import sys,json; print(json
 API=$API_ROOT/accounts/$ACC
 DIST=$(mktemp -d)
 # 1. Public files only: never docs/, tests/, screenshots/ or deploy/
-cp index.html privacy.html robots.txt "$DIST"/
+cp index.html privacy.html robots.txt sitemap.xml "$DIST"/
 cp -r css js assets "$DIST"/
 rm -f "$DIST/assets/brand/og-source.html"
 # 2. Strip internal comments from the public config
@@ -28,6 +28,11 @@ NS=$(curl -sS "$API/storage/kv/namespaces?per_page=100" | python3 -I -c "import 
 if [ -z "$NS" ]; then
   NS=$(curl -sS -X POST "$API/storage/kv/namespaces" -H 'Content-Type: application/json' --data "{\"title\":\"$NAME-site\"}" | python3 -I -c "import sys,json; print(json.load(sys.stdin)['result']['id'])")
 fi
+# 3b. Separate KV namespace for project inquiries (a deploy never overwrites it)
+INQ=$(curl -sS "$API/storage/kv/namespaces?per_page=100" | python3 -I -c "import sys,json; r=[n['id'] for n in json.load(sys.stdin)['result'] if n['title']=='$NAME-inquiries']; print(r[0] if r else '')")
+if [ -z "$INQ" ]; then
+  INQ=$(curl -sS -X POST "$API/storage/kv/namespaces" -H 'Content-Type: application/json' --data "{\"title\":\"$NAME-inquiries\"}" | python3 -I -c "import sys,json; print(json.load(sys.stdin)['result']['id'])")
+fi
 # 4. Upload every file in one bulk request (base64)
 python3 -I - "$DIST" > "$DIST.bulk.json" <<'PY'
 import sys,os,json,base64
@@ -40,7 +45,7 @@ json.dump(out,sys.stdout)
 PY
 curl -sS -X PUT "$API/storage/kv/namespaces/$NS/bulk" -H 'Content-Type: application/json' --data-binary @"$DIST.bulk.json" | python3 -I -c "import sys,json; d=json.load(sys.stdin); assert d['success'], d; print('files uploaded')"
 # 5. Worker script with the KV binding, then the workers.dev route
-META="{\"main_module\":\"worker.js\",\"compatibility_date\":\"2025-01-01\",\"bindings\":[{\"type\":\"kv_namespace\",\"name\":\"SITE\",\"namespace_id\":\"$NS\"}]}"
+META="{\"main_module\":\"worker.js\",\"compatibility_date\":\"2025-01-01\",\"bindings\":[{\"type\":\"kv_namespace\",\"name\":\"SITE\",\"namespace_id\":\"$NS\"},{\"type\":\"kv_namespace\",\"name\":\"INQ\",\"namespace_id\":\"$INQ\"}],\"keep_bindings\":[\"secret_text\"]}"
 curl -sS -X PUT "$API/workers/scripts/$NAME" -F "metadata=$META;type=application/json" -F "worker.js=@deploy/worker.js;type=application/javascript+module" | python3 -I -c "import sys,json; d=json.load(sys.stdin); assert d['success'], d; print('worker deployed')"
 # 6. Custom domain only; the workers.dev address stays off
 curl -sS -X POST "$API/workers/scripts/$NAME/subdomain" -H 'Content-Type: application/json' --data '{"enabled":false,"previews_enabled":false}' >/dev/null

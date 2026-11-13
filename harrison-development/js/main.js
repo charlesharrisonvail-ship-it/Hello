@@ -45,7 +45,7 @@
 
   // Concept studies can be switched off in config.
   if (cfg.showConcepts === false) {
-    doc.querySelectorAll("[data-concepts], [data-concepts-nav]").forEach(function (el) { el.hidden = true; });
+    doc.querySelectorAll("[data-concepts], [data-concepts-nav], [data-concepts-link]").forEach(function (el) { el.hidden = true; });
   }
 
   // Booking link: only ever the configured URL. Never invented.
@@ -140,7 +140,6 @@
 
   /* ---------- Background footage: lazy, muted, plays only in view; one switch pauses all motion ---------- */
   var bgVideos = Array.prototype.slice.call(doc.querySelectorAll("video[data-bg]"));
-  bgVideos.forEach(function (v) { v.addEventListener("playing", function () { v.classList.add("is-playing"); }); v.addEventListener("pause", function () { if (v.classList.contains("hero-video")) v.classList.remove("is-playing"); }); });
   var motionToggle = $("motionToggle");
   var motionPaused = false;
   try { motionPaused = localStorage.getItem("hdMotion") === "paused"; } catch (e) {}
@@ -277,7 +276,7 @@
 
   var emailMode = !live && !cfg.previewBanner && cfg.mailtoFallback && c.email;
   state.textContent = live
-    ? "Tell us about your project and we will follow up personally."
+    ? "Tell us about your project. Charles reads every request and follows up personally."
     : emailMode
       ? "When you press the button, your own email app opens with your details addressed to Charles. Press send there. Nothing is stored on this site."
       : "PREVIEW ONLY: this form does not send anything yet. Nothing you type is transmitted or saved.";
@@ -286,13 +285,12 @@
     name:        function (v) { return v.trim() ? "" : "Please enter your name."; },
     email:       function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) ? "" : "Please enter a valid email address, like name@example.com."; },
     phone:       function (v) { return !v.trim() || v.replace(/\D/g, "").length >= 7 ? "" : "Please enter a phone number with at least 7 digits, or leave it blank."; },
-    role:        function (v) { return v ? "" : "Please choose the role that fits you best."; },
     location:    function (v) { return v.trim() ? "" : "Please tell us where the project is."; },
     stage:       function (v) { return v ? "" : "Please choose the project stage."; },
     description: function (v) { return v.trim().length >= 10 ? "" : "Please add a short description (at least 10 characters)."; }
   };
-  var ids = { name: "f-name", email: "f-email", phone: "f-phone", role: "f-role", location: "f-location", stage: "f-stage", description: "f-desc" };
-  var errIds = { name: "e-name", email: "e-email", phone: "e-phone", role: "e-role", location: "e-location", stage: "e-stage", description: "e-desc" };
+  var ids = { name: "f-name", email: "f-email", phone: "f-phone", location: "f-location", stage: "f-stage", description: "f-desc" };
+  var errIds = { name: "e-name", email: "e-email", phone: "e-phone", location: "e-location", stage: "e-stage", description: "e-desc" };
   var labels = { name: "Name", email: "Email", phone: "Phone", role: "I am a", location: "Project location", stage: "Project stage", description: "Short project description" };
 
   function validate() {
@@ -327,7 +325,7 @@
   function box(msg, fail) { result.innerHTML = '<div class="box' + (fail ? " fail" : "") + '">' + msg + "</div>"; }
 
   function mailtoLink(d) {
-    var body = ["Name: " + d.name, "Email: " + d.email, "Phone: " + (d.phone || "(not provided)"), "Role: " + d.role,
+    var body = ["Name: " + d.name, "Email: " + d.email, "Phone: " + (d.phone || "(not provided)"), "Role: " + (d.role || "(not provided)"),
       "Project location: " + d.location, "Project stage: " + d.stage,
       "Preferred way to connect: " + (d.connect || "(no preference)"), "Best days or times: " + (d.times || "(not provided)"), "", d.description].join("\n");
     return "mailto:" + encodeURIComponent(c.email) + "?subject=" + encodeURIComponent("Project conversation") + "&body=" + encodeURIComponent(body);
@@ -372,12 +370,15 @@
     var ctl = new AbortController(), timer = setTimeout(function () { ctl.abort(); }, 15000);
     fetch(cfg.formEndpoint, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: payload, signal: ctl.signal })
       .then(function (r) {
-        if (!r.ok) throw new Error("status " + r.status);
+        if (!r.ok) { var er = new Error("status " + r.status); er.status = r.status; throw er; }
         lastSent = payload; form.reset(); // success is shown only after the server accepted it
         box("<strong>Thank you.</strong> Your request was received. We will follow up personally.", false);
       })
-      .catch(function () {
-        box("<strong>We could not send your request.</strong> Nothing was received. Please try again" + (c.email ? ", or email " + esc(c.email) : "") + ".", true);
+      .catch(function (err) {
+        var why = err && err.status === 429 ? "Too many requests in a short time. Please wait a little and try again" : "Nothing was received. Your details are still in the form, so please try again";
+        box("<strong>We could not send your request.</strong> " + why + "." +
+          (c.email ? '<a class="btn" href="' + mailtoLink(data) + '">Email it instead</a>' : "") +
+          (c.phone ? '<br><span class="hint">Or call ' + esc(c.phone) + ".</span>" : ""), true);
       })
       .then(function () { clearTimeout(timer); submitting = false; btn.disabled = false; btn.textContent = "Start a Project Conversation"; });
   });

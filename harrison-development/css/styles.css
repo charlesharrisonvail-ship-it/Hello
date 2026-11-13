@@ -7,9 +7,9 @@
   --accent:#DFFF1A; --accent-hover:#F0FF6B; /* light surfaces: 50% yellow */
   --accent-strong:#DFFF1A; --accent-strong-hover:#F0FF6B;    /* dark surfaces: full yellow */ --on-accent:#14181C;
   --ink:#EEF1F3;            /* text on light: 15.97:1 */
-  --ink-soft:#A9B1B7;       /* secondary text on light: 6.41:1 */
+  --ink-soft:#C3CAD0;       /* secondary text, brightened 2026-11-12 */
   --paper:#EEF1F3;          /* text on dark: 15.97:1 */
-  --paper-soft:#A9B1B7;     /* secondary text on dark: 8.21:1 */
+  --paper-soft:#C3CAD0;     /* secondary text on dark, brightened 2026-11-12 */
   --tint:#1A2026; --line-light:#2C353D; --line-dark:#2C353D;
   --serif:"Space Grotesk","Inter",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
   --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
@@ -284,11 +284,11 @@ h3{font-size:1.3rem;line-height:1.25}
 .hero-scrim{position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(90deg,rgba(20,24,28,.95) 0%,rgba(20,24,28,.78) 42%,rgba(20,24,28,.38) 100%),linear-gradient(0deg,#14181C 0%,rgba(20,24,28,0) 32%)}
 .hero .hero-glow{z-index:0}
 
-.ticker{overflow:hidden;background:#0E1114;border-block:1px solid var(--line-dark);padding:clamp(16px,2.4vw,28px) 0;user-select:none}
+.ticker{overflow:hidden;background:#0E1114;border-block:1px solid var(--line-dark);padding:clamp(12px,1.4vw,18px) 0;user-select:none}
 .ticker-track{display:flex;align-items:center;gap:clamp(22px,3vw,44px);width:max-content}
-.ticker .t{font:300 clamp(2rem,6.2vw,4.8rem)/1 var(--serif);letter-spacing:-.04em;text-transform:uppercase;white-space:nowrap;color:var(--paper)}
+.ticker .t{font:300 clamp(1.1rem,2.4vw,1.9rem)/1 var(--serif);letter-spacing:.02em;text-transform:uppercase;white-space:nowrap;color:var(--paper)}
 .ticker .o{color:transparent;-webkit-text-stroke:1.5px var(--accent)}
-.ticker .sep{color:var(--accent);font-size:clamp(1.1rem,2.4vw,1.8rem)}
+.ticker .sep{color:var(--accent);font-size:clamp(.8rem,1.2vw,1.1rem)}
 
 .places{background:#0A0C0E}
 .bento{display:grid;gap:12px;margin-top:40px;grid-template-columns:repeat(2,1fr);grid-auto-rows:clamp(150px,38vw,220px);grid-auto-flow:dense}
@@ -509,24 +509,50 @@ body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opa
   body::after{inset:-10%;animation:grain .9s steps(4) infinite}
 }
 @media (prefers-reduced-motion: reduce){.hover-media{display:none}}
-/* About: reel of Charles */
-.about-reel{margin:34px 0 0;position:relative}
-.about-reel video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;background:#0E1114;box-shadow:0 30px 70px -30px #000,0 0 0 1px rgba(223,255,26,.35)}
-.about-reel figcaption{margin-top:12px;font-size:14px;color:var(--ink-soft)}
-.vband-bg{opacity:.5}
-/* ===== Hero films (2026-11-11): Charles's event footage, one per section ===== */
-.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s}
-.hero-video{filter:brightness(.5) saturate(.9)}.hero-video.is-playing{opacity:1}
-.shero{position:relative;isolation:isolate;overflow:hidden;min-height:min(86vh,820px);display:flex;align-items:flex-end;background:#0E1114;color:var(--paper)}
-.shero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
-.shero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(14,17,20,.55) 0%,rgba(14,17,20,.05) 30%,rgba(14,17,20,.2) 55%,rgba(14,17,20,.92) 100%)}
-.shero-copy{width:100%;padding-top:120px;padding-bottom:clamp(48px,7vw,92px)}
-.shero-title{font:300 clamp(2.4rem,7vw,5.4rem)/1.02 var(--serif);letter-spacing:-.035em;margin:0;max-width:16ch;text-wrap:balance}
-.shero-sub{font-size:clamp(1.05rem,2vw,1.3rem);color:#D5DADE;max-width:44ch;margin:20px 0 0}
-.shero-credit{position:absolute;right:var(--gutter);bottom:14px;margin:0;font-size:14px;color:var(--paper-soft)}
-@media (prefers-reduced-motion: no-preference){
-  @supports ((animation-timeline: view()) and (animation-range: entry)) {
-    @keyframes shero-zoom{from{scale:1.14}to{scale:1}}
-    .shero-bg{animation:shero-zoom linear both;animation-timeline:view();animation-range:entry 0% cover 60%}
-  }
-}
+.foot-logo{display:block;width:min(100%,340px);height:auto;margin:0 0 18px -18px;mix-blend-mode:screen}
+
+/* ===== 2026-11-12 brief: work-first hero, deliverables, sample report, concept pages ===== */
+.hero-work{position:relative;max-width:560px;margin-inline:auto;width:100%}
+.hero-work a{display:block;text-decoration:none;color:var(--paper)}
+.work-shot{position:relative;border:1px solid var(--line-dark);border-radius:12px;overflow:hidden;background:#0E1114;box-shadow:0 30px 70px rgba(0,0,0,.55)}
+.work-shot img{display:block;width:100%;height:auto}
+.work-tag{position:absolute;top:12px;left:12px;background:var(--accent);color:var(--on-accent);font:700 14px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;padding:7px 9px;border-radius:4px}
+.work-cap{display:block;padding:12px 14px;font-size:15px;color:var(--paper-soft);border-top:1px solid var(--line-dark)}
+.work-cap b{color:var(--paper);margin-right:8px}
+.work-phone{position:absolute;right:-14px;bottom:-34px;width:26%;border:6px solid #0E1114;border-radius:18px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.6)}
+.work-phone img,.work-phone video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover}
+@media(max-width:899px){.work-phone{right:8px;bottom:-26px;width:24%}}
+.hero-work a:focus-visible{outline-offset:4px}
+.deliv{margin:10px 0 0;font-size:15px;color:var(--ink-soft)}
+.deliv span{display:inline-block;font:700 14px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-right:6px}
+.report{margin:0;background:#EEF1F3;color:#14181C;border-radius:12px;padding:22px;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.report-flag{margin:0 0 14px;font:700 14px/1.4 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:#14181C;background:#DFFF1A;display:inline-block;padding:6px 8px;border-radius:4px}
+.report-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:2px solid #14181C;padding-bottom:10px}
+.report-head b{font:600 20px/1.2 var(--serif)}.report-head span{color:#4A545C;font-size:15px}
+.report-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}
+.report-kpis div{background:#fff;border:1px solid #D5DADE;border-radius:8px;padding:10px}
+.report-kpis dt{font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:#4A545C}
+.report-kpis dd{margin:4px 0 0;font:500 28px/1 var(--serif);color:#14181C}
+@media(max-width:560px){.report-kpis{grid-template-columns:repeat(2,1fr)}}
+.report-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:560px){.report-cols{grid-template-columns:1fr}}
+.report h4{margin:0 0 6px;font:700 14px/1.2 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:#14181C}
+.report ul{margin:0;padding-left:18px;font-size:15px;color:#2A3238}
+.report figcaption{margin-top:14px;font-size:14px;color:#4A545C}
+/* Concept detail pages */
+.cpage-hero{padding:56px 0 24px}
+.cpage-hero h1{font:300 clamp(2.2rem,5vw,3.6rem)/1.08 var(--serif);margin:10px 0 14px}
+.cpage .badge{display:inline-block;background:var(--accent);color:var(--on-accent);font:700 14px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;padding:7px 9px;border-radius:4px}
+.cpage .shot{margin:26px 0;border:1px solid var(--line-dark);border-radius:12px;overflow:hidden;background:#0E1114}
+.cpage .shot img,.cpage .shot video{display:block;width:100%;height:auto}
+.cpage .grid2{display:grid;gap:28px}
+@media(min-width:900px){.cpage .grid2{grid-template-columns:1.1fr .9fr;align-items:start}}
+.cpage h2{font:400 clamp(1.5rem,3vw,2rem)/1.2 var(--serif);margin:36px 0 12px}
+.cpage p,.cpage li{color:var(--ink-soft);max-width:68ch}
+.cpage li{margin:6px 0}
+.cpage .back{display:inline-block;margin:24px 0 0;font-weight:700}
+.cpage .open{font-weight:700;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:4px;text-underline-offset:4px}
+.hero h1{font-size:clamp(2.2rem,3.7vw,3.4rem)}
+.work-cap{padding-right:30%}
+@media(max-width:899px){.work-cap{padding-right:28%}}
+@media(min-width:900px){.services li .deliv{grid-column:3;margin-top:-20px}}
