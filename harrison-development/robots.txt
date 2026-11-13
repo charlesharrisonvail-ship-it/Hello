@@ -1,3 +1,6 @@
-# STAGING / PREVIEW: do not index. Remove this Disallow only during an authorized production launch.
 User-agent: *
-Disallow: /
+Allow: /
+Disallow: /inbox
+Disallow: /api/
+
+Sitemap: https://harrisondev.org/sitemap.xml

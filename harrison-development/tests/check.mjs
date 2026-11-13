@@ -267,7 +267,7 @@ async function fillValid(page) {
 
 // Staging safety + disclosure
 { const ctx = await browser.newContext(); const page = await ctx.newPage(); await page.goto(BASE + '/index.html');
-  log(await page.locator('meta[name=robots]').getAttribute('content') === 'noindex, nofollow', 'staging noindex meta present');
+  log(await page.locator('meta[name=robots]').count() === 0, 'page is open to search engines (Charles approved listing 2026-11-12)');
   const txt = await page.locator('body').innerText();
   log(/Real estate brokerage services provided through Epique Realty/.test(txt), 'brokerage attribution visible in body copy');
   log(!/LLC|guarantee(d)? (approval|sales)/i.test(txt.replace(/No guarantee of buyer demand[^.]*\./, '')), 'no LLC claim / no guarantee claims');
