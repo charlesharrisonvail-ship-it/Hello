@@ -102,7 +102,7 @@ export default {
     const ext = key.split(".").pop().toLowerCase();
     const headers = new Headers({
       "Content-Type": TYPES[ext] || "application/octet-stream",
-      "Cache-Control": ext === "html" ? "public, max-age=300" : "public, max-age=604800",
+      "Cache-Control": ext === "html" ? "public, max-age=300" : (ext === "css" || ext === "js") ? "public, max-age=600" : "public, max-age=604800",
       "Accept-Ranges": "bytes",
       ...SECURITY
     });
