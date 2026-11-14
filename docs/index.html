@@ -660,6 +660,12 @@
   .tqc figcaption{margin-top:18px;padding-top:14px;border-top:1px solid var(--edge);font-size:.88rem;color:var(--slate);display:flex;flex-direction:column;gap:3px}
   .tqc figcaption b{color:var(--head);font-weight:600;font-size:1rem}
   @media (max-width:760px){.tq{grid-template-columns:1fr}}
+  .wk{list-style:none;margin:0;padding:0;border:1px solid var(--edge);border-radius:16px;background:var(--panel2);overflow:hidden}
+  .wk li{display:flex;gap:18px;align-items:flex-start;padding:18px 22px;border-bottom:1px solid var(--edge)}
+  .wk li:last-child{border-bottom:0}
+  .wkn{flex:none;font-family:var(--mn);font-size:.8rem;letter-spacing:.1em;color:var(--sig);padding-top:4px}
+  .wk b{display:block;color:var(--head);font-weight:600;font-size:1.05rem}
+  .wk li div span{display:block;color:var(--slate);font-size:.93rem;margin-top:3px;line-height:1.5}
 </style>
 <link rel="stylesheet" href="/modern.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where are the lessons, and how do I get back to them?","acceptedAnswer":{"@type":"Answer","text":"The lessons are on this website, on your course page. Nothing is loaded into Claude or into a Claude Project: you read each module on the page and do the steps in Claude. After you pay, the confirmation page shows your course link and access code. Save both. Once you unlock, that browser remembers you. If you lose the code, email hello@aireestate.com from the address you bought with."}},{"@type":"Question","name":"Do I need to be technical?","acceptedAnswer":{"@type":"Answer","text":"No. The free install lesson and Module Two cover the ground floor: your accounts, the terminal, and getting Claude Code running. Then Module Three walks the setup slowly, with every command written out so you can copy it."}},{"@type":"Question","name":"Will this still work in six months?","acceptedAnswer":{"@type":"Answer","text":"The tools change constantly. That's why updates are included — when something shifts, I re-record the module and you get it."}},{"@type":"Question","name":"Can I use this on any listing?","acceptedAnswer":{"@type":"Answer","text":"Use it on your own listings, where you control the photos or hired the photographer. Listing photos belong to somebody — usually the photographer or the listing brokerage. The course covers this properly."}},{"@type":"Question","name":"What's your refund policy?","acceptedAnswer":{"@type":"Answer","text":"Access is delivered immediately on purchase and covers your account for life. If you're unsure whether it fits your business, ask AiRE or email hello@aireestate.com first. You'll get a straight answer before you buy."}}]}</script>
@@ -1022,32 +1028,23 @@
   </div>
 </section>
 
-<!-- ============ CREDENTIAL ============ -->
+<!-- ============ WHAT YOU KEEP ============ -->
 <section class="band">
   <div class="inner">
     <div class="credgrid">
       <div>
         <p class="kick rv">What you walk away with</p>
-        <h2 class="rv">The <em>AiRE Agent</em> Certificate of Completion</h2>
-        <p class="lede rv">Finish the course and pass the checks, and you earn the AiRE Agent Certificate of Completion.</p>
-        <p class="rv" style="color:var(--slate)">It shows you completed a private AiRE Estate Academy course. It is not a license, a state-approved continuing-education credit, or a designation recognized by any real estate commission or association. Check your brokerage&rsquo;s and your state&rsquo;s advertising rules before you use it in marketing.</p>
+        <h2 class="rv">Tools you keep <em>using every week</em></h2>
+        <p class="lede rv">Not just videos you watch once. You leave with a method and files you put to work on your next listing, and a certificate when you finish.</p>
+        <p class="rv" style="color:var(--slate);font-size:.92rem">About the certificate: it shows you completed a private AiRE Estate Academy course. It is not a license, a state-approved continuing-education credit, or a designation recognized by any real estate commission or association. Check your brokerage&rsquo;s and your state&rsquo;s advertising rules before you use it in marketing.</p>
       </div>
-      <div class="card rv" role="img" aria-label="AiRE Agent Certificate of Completion">
-        <div class="cardtop">
-          <span class="ct1">Certificate of<br>Completion</span>
-          <span class="seal"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="34" fill="none" stroke="#38bdf8" stroke-width="9" stroke-linecap="round" stroke-dasharray="160 54" transform="rotate(-38 50 50)"/><circle cx="50" cy="50" r="11" fill="#ffffff"/></svg></span>
-        </div>
-        <div>
-          <p class="holder">Issued to</p>
-          <p class="cname">Your Name Here</p>
-          <p class="holder" style="margin:0">Your Market</p>
-          <span class="cmark">A<span class="bdl">&#305;<svg width="0.44em" height="0.44em" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="34" fill="none" stroke="#38bdf8" stroke-width="17" stroke-linecap="round" stroke-dasharray="160 54" transform="rotate(-38 50 50)"/><circle cx="50" cy="50" r="15" fill="#38bdf8"/></svg></span><span class="re">RE</span>&nbsp;Agent</span>
-        </div>
-        <div class="cardfoot">
-          <span>Seven modules <b>complete</b></span>
-          <span>Certificate No. <b>AiRE-0001</b></span>
-        </div>
-      </div>
+      <ol class="wk rv">
+        <li><span class="wkn">01</span><div><b>The Prompt Playbook</b><span>Goal, Facts, Rules, Shape: how to get AI to write your prompts for you.</span></div></li>
+        <li><span class="wkn">02</span><div><b>The Agent Brand File template</b><span>So every post, caption and description sounds like you, not everybody.</span></div></li>
+        <li><span class="wkn">03</span><div><b>A Claude Code toolkit</b><span>Bonus everyday skills, with copy-ready install lines.</span></div></li>
+        <li><span class="wkn">04</span><div><b>Updates included</b><span>The lessons change as the tools change, at no extra cost.</span></div></li>
+        <li><span class="wkn">05</span><div><b>The AiRE Agent Certificate of Completion</b><span>Finish the course and pass the checks, and it&rsquo;s yours.</span></div></li>
+      </ol>
     </div>
   </div>
 </section>
