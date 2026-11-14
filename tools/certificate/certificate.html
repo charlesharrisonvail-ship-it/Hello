@@ -1,0 +1,71 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:C;font-weight:600;src:url(fonts/cormorant-garamond-latin-600-normal.woff2)}
+@font-face{font-family:C;font-weight:600;font-style:italic;src:url(fonts/cormorant-garamond-latin-600-italic.woff2)}
+@font-face{font-family:C;font-weight:500;font-style:italic;src:url(fonts/cormorant-garamond-latin-500-italic.woff2)}
+@font-face{font-family:P;src:url(fonts/pinyon-script-latin-400-normal.woff2)}
+@font-face{font-family:A;src:url(fonts/Archivo_wght_900.ttf)}@font-face{font-family:M;font-weight:600;src:url(fonts/Manrope_wght_600.ttf)}@font-face{font-family:M;font-weight:800;src:url(fonts/Manrope_wght_800.ttf)}
+@page{size:11in 8.5in;margin:0}
+*{box-sizing:border-box;margin:0}
+html,body{width:1056px;height:816px}
+body{background:#fbf8f1;color:#0b1a2e;position:relative;overflow:hidden;font-family:M}
+.paper{position:absolute;inset:0;background:radial-gradient(800px 500px at 50% 45%,#fffdf8,#f6f0e2 80%)}
+svg.bg{position:absolute;inset:0}
+.frame{position:absolute;inset:26px;border:2px solid #0b1a2e}
+.frame2{position:absolute;inset:34px;border:1px solid #b08d3c}
+.frame3{position:absolute;inset:40px;border:1px solid #0b1a2e33}
+.c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:78px}
+.brand{display:flex;align-items:center;gap:10px;font:800 13px M;letter-spacing:.34em;text-transform:uppercase;color:#0b1a2e}
+.brand svg{width:26px;height:26px}
+.t1{font:600 64px/1 C;letter-spacing:.04em;margin-top:26px;color:#0b1a2e}
+.t2{font:800 13px M;letter-spacing:.5em;text-transform:uppercase;color:#b08d3c;margin-top:12px}
+.rule{display:flex;align-items:center;gap:12px;margin:22px 0 8px;color:#b08d3c}.rule i{display:block;width:120px;height:1px;background:linear-gradient(90deg,transparent,#b08d3c)}.rule i:last-child{transform:scaleX(-1)}
+.pres{font:500 italic 22px C;color:#3c4a5e}
+.name{font:400 76px/1.1 P;color:#0b1a2e;margin-top:6px;padding:0 40px 6px;border-bottom:1px solid #0b1a2e55;min-width:560px}
+.body{font:500 italic 21px/1.45 C;color:#2c3a4e;max-width:640px;margin-top:18px}
+.body b{font-style:normal;font-weight:600;color:#0b1a2e}
+.foot{position:absolute;left:110px;right:110px;bottom:100px;display:grid;grid-template-columns:1fr 200px 1fr;align-items:end}
+.sig{text-align:center}.sig .v{font:600 22px C;color:#0b1a2e;padding-bottom:6px;border-bottom:1px solid #0b1a2e}.sig .v.s{font:400 34px P;line-height:1}
+.sig .k{font:800 10px M;letter-spacing:.22em;text-transform:uppercase;color:#5b6b80;margin-top:8px}
+.seal{justify-self:center;width:172px;height:172px;margin-bottom:-26px}
+.fine{position:absolute;left:0;right:0;bottom:56px;text-align:center;font:600 9.5px M;letter-spacing:.06em;color:#7a8698}
+.no{position:absolute;left:0;right:0;text-align:center;top:490px;font:800 10px M;letter-spacing:.2em;color:#5b6b80}
+</style></head><body><div class="paper"></div>
+<svg class="bg" viewBox="0 0 1056 816" id="bg"></svg>
+<div class="frame"></div><div class="frame2"></div><div class="frame3"></div>
+<div class="no">NO. AIRE-LM-0001</div>
+<div class="c">
+ <div class="brand"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="34" fill="none" stroke="#38bdf8" stroke-width="12" stroke-linecap="round" stroke-dasharray="160 54" transform="rotate(-38 50 50)"/><circle cx="50" cy="50" r="12" fill="#0b1a2e"/></svg>AiRE Estate Academy</div>
+ <div class="t1">Certificate of Completion</div>
+ <div class="t2">AiRE Agent</div>
+ <div class="rule"><i></i>◆<i></i></div>
+ <div class="pres">This certifies that</div>
+ <div class="name">Jordan Avery Ellis</div>
+ <div class="body">has completed <b>Listing Media Without the Invoice</b>, all seven modules and the Capstone, and passed every course check.</div>
+</div>
+<div class="foot">
+ <div class="sig"><div class="v">November 14, 2026</div><div class="k">Date of completion</div></div>
+ <svg class="seal" viewBox="0 0 200 200" id="seal"></svg>
+ <div class="sig"><div class="v s">AiRE Estate Academy</div><div class="k">AiRE Estate, LLC</div></div>
+</div>
+<div class="fine">A private course certificate. Not a license, continuing-education credit, or a designation recognized by any commission or association.</div>
+<script>
+const NS='http://www.w3.org/2000/svg';
+function P(svg,d,st,w,op){const p=document.createElementNS(NS,'path');p.setAttribute('d',d);p.setAttribute('fill','none');p.setAttribute('stroke',st);p.setAttribute('stroke-width',w);p.setAttribute('opacity',op);svg.appendChild(p);}
+function rose(cx,cy,R,r,k,n,ph){let d='';for(let i=0;i<=1440;i++){const t=i/1440*Math.PI*2;const rr=R+r*Math.sin(k*t+ph);const x=cx+rr*Math.cos(t),y=cy+rr*Math.sin(t);d+=(i?'L':'M')+x.toFixed(2)+' '+y.toFixed(2);}return d;}
+const bg=document.getElementById('bg');
+// big faint watermark rosette
+for(let j=0;j<14;j++)P(bg,rose(528,400,170+j*7,22,18,0,j*.45),'#0b1a2e',.5,.05);
+// corner guilloche bands
+[[96,96],[960,96],[96,720],[960,720]].forEach(([x,y])=>{for(let j=0;j<8;j++)P(bg,rose(x,y,22+j*2.2,5,10,0,j*.6),'#b08d3c',.6,.45);});
+// wave border band top/bottom
+for(let j=0;j<5;j++){let d1='',d2='';for(let x=60;x<=996;x+=2){const y=Math.sin(x/14+j)*4;d1+=(x>60?'L':'M')+x+' '+(48+y+j*.8);d2+=(x>60?'L':'M')+x+' '+(768+y-j*.8);}P(bg,d1,'#b08d3c',.5,.3);P(bg,d2,'#b08d3c',.5,.3);}
+// seal
+const s=document.getElementById('seal');
+const defs=document.createElementNS(NS,'defs');defs.innerHTML='<radialGradient id="g" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#f3dfa2"/><stop offset=".55" stop-color="#c9a24d"/><stop offset="1" stop-color="#8a6a26"/></radialGradient><path id="cp" d="M100,100 m-70,0 a70,70 0 1,1 140,0 a70,70 0 1,1 -140,0"/>';s.appendChild(defs);
+let d='';for(let i=0;i<=72;i++){const a=i/72*Math.PI*2;const r=i%2?88:96;d+=(i?'L':'M')+(100+r*Math.cos(a)).toFixed(2)+' '+(100+r*Math.sin(a)).toFixed(2);}
+const st=document.createElementNS(NS,'path');st.setAttribute('d',d+'Z');st.setAttribute('fill','url(#g)');s.appendChild(st);
+const c1=document.createElementNS(NS,'circle');c1.setAttribute('cx',100);c1.setAttribute('cy',100);c1.setAttribute('r',82);c1.setAttribute('fill','#0b1a2e');s.appendChild(c1);
+for(let j=0;j<6;j++)P(s,rose(100,100,52+j*2.2,5,16,0,j*.7),'#c9a24d',.6,.55);
+const tx=document.createElementNS(NS,'text');tx.setAttribute('font-family','M');tx.setAttribute('font-weight','800');tx.setAttribute('font-size','10.5');tx.setAttribute('letter-spacing','2.35');tx.setAttribute('fill','#e9d08f');tx.innerHTML='<textPath href="#cp" startOffset="0">AiRE ESTATE ACADEMY ★ CERTIFIED COMPLETION ★ </textPath>';s.appendChild(tx);
+const g=document.createElementNS(NS,'g');g.innerHTML='<circle cx="100" cy="100" r="30" fill="none" stroke="#38bdf8" stroke-width="9" stroke-linecap="round" stroke-dasharray="141 48" transform="rotate(-38 100 100)"/><circle cx="100" cy="100" r="10" fill="#fff"/>';s.appendChild(g);
+</script></body></html>
