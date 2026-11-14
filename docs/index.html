@@ -652,6 +652,14 @@
   .freeles .flgo{display:inline-flex;align-items:center;gap:10px;flex:none;padding:12px 18px;border-radius:999px;background:#34d399;color:#04070d;font:700 .82rem var(--mn);letter-spacing:.04em;box-shadow:0 10px 26px -10px rgba(52,211,153,.7);transition:transform .2s}
   .freeles:hover .flgo{transform:translateY(-2px)}
   .freeles{border-color:rgba(52,211,153,.75)!important;background:rgba(8,40,30,.72)!important}
+  .tq{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:8px}
+  .tqc{position:relative;margin:0;padding:30px 28px 24px;border:1px solid var(--edge);border-top:3px solid var(--sig);border-radius:14px;background:var(--panel2);display:flex;flex-direction:column}
+  .tqc.alt{border-top-color:var(--rasp)}
+  .tqm{position:absolute;top:-6px;right:20px;font-size:5.5rem;line-height:1;color:var(--sig);opacity:.25;font-family:Georgia,serif}
+  .tqc blockquote{margin:0;color:var(--text);font-size:1.08rem;line-height:1.65;flex:1}
+  .tqc figcaption{margin-top:18px;padding-top:14px;border-top:1px solid var(--edge);font-size:.88rem;color:var(--slate);display:flex;flex-direction:column;gap:3px}
+  .tqc figcaption b{color:var(--head);font-weight:600;font-size:1rem}
+  @media (max-width:760px){.tq{grid-template-columns:1fr}}
 </style>
 <link rel="stylesheet" href="/modern.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where are the lessons, and how do I get back to them?","acceptedAnswer":{"@type":"Answer","text":"The lessons are on this website, on your course page. Nothing is loaded into Claude or into a Claude Project: you read each module on the page and do the steps in Claude. After you pay, the confirmation page shows your course link and access code. Save both. Once you unlock, that browser remembers you. If you lose the code, email hello@aireestate.com from the address you bought with."}},{"@type":"Question","name":"Do I need to be technical?","acceptedAnswer":{"@type":"Answer","text":"No. The free install lesson and Module Two cover the ground floor: your accounts, the terminal, and getting Claude Code running. Then Module Three walks the setup slowly, with every command written out so you can copy it."}},{"@type":"Question","name":"Will this still work in six months?","acceptedAnswer":{"@type":"Answer","text":"The tools change constantly. That's why updates are included — when something shifts, I re-record the module and you get it."}},{"@type":"Question","name":"Can I use this on any listing?","acceptedAnswer":{"@type":"Answer","text":"Use it on your own listings, where you control the photos or hired the photographer. Listing photos belong to somebody — usually the photographer or the listing brokerage. The course covers this properly."}},{"@type":"Question","name":"What's your refund policy?","acceptedAnswer":{"@type":"Answer","text":"Access is delivered immediately on purchase and covers your account for life. If you're unsure whether it fits your business, ask AiRE or email hello@aireestate.com first. You'll get a straight answer before you buy."}}]}</script>
@@ -668,6 +676,7 @@
   <div class="navlinks">
     <a href="install-claude-code.html">Free Lesson</a>
     <a href="#courses">Courses</a>
+    <a href="#reviews">Reviews</a>
     <a href="#math">The Math</a>
     <a href="#demo">See It</a>
     <a href="#course">The Course</a>
@@ -759,6 +768,26 @@
     </div>
   </div>
 </header>
+
+<!-- ============ WHAT AGENTS SAY ============ -->
+<section class="band" id="reviews">
+  <div class="inner">
+    <p class="kick rv">From agents who've taken it</p>
+    <h2 class="rv">What agents <em>are saying</em></h2>
+    <div class="tq">
+      <figure class="tqc rv">
+        <span class="tqm" aria-hidden="true">&ldquo;</span>
+        <blockquote>The course is straightforward and provides the ability to save each module as a PDF file for future reference. The text within the modules also conveniently shares relevant links, prompts, and code. This structure makes it much easier to visualize walkthroughs and neighborhood previews.</blockquote>
+        <figcaption><b>Darrell Chavez</b><span>Real Estate Advisor, Vail Valley to Grand Junction &middot; Verified buyer</span></figcaption>
+      </figure>
+      <figure class="tqc rv alt">
+        <span class="tqm" aria-hidden="true">&ldquo;</span>
+        <blockquote>I really like what you&rsquo;re doing with this course. The big idea is solid. &hellip; Goal, Facts, Rules, Shape. Easy to remember, and it actually works on real stuff.</blockquote>
+        <figcaption><b>Steve B.</b><span>Licensed real estate agent, California &middot; Reviewed the course</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
 
 <!-- ============ THE MATH ============ -->
 <section class="band gap" id="math">
@@ -951,16 +980,6 @@
   <div class="inner">
     <p class="kick rv">Pricing</p>
     <h2 class="rv">Two <em>ways in</em></h2>
-    <figure class="rv" style="margin:0 0 28px;padding:20px 22px;max-width:74ch;border:1px solid var(--edge);border-left:3px solid var(--sig);border-radius:12px;background:var(--panel2)">
-      <p style="margin:0 0 10px;font-family:var(--mn);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--sig-hi)">What a buyer said</p>
-      <blockquote style="margin:0;color:var(--text);font-size:1rem;line-height:1.6">&ldquo;The course is straightforward and provides the ability to save each module as a PDF file for future reference. The text within the modules also conveniently shares relevant links, prompts, and code. This structure makes it much easier to visualize walkthroughs and neighborhood previews.&rdquo;</blockquote>
-      <figcaption style="margin-top:12px;font-size:.88rem;color:var(--slate)"><b style="color:var(--head);font-weight:600">Darrell Chavez</b>, Real Estate Advisor, Vail Valley to Grand Junction &middot; Verified buyer</figcaption>
-    </figure>
-    <figure class="rv" style="margin:0 0 28px;padding:20px 22px;max-width:74ch;border:1px solid var(--edge);border-left:3px solid var(--rasp);border-radius:12px;background:var(--panel2)">
-      <p style="margin:0 0 10px;font-family:var(--mn);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--sig-hi)">What an agent reviewer said</p>
-      <blockquote style="margin:0;color:var(--text);font-size:1rem;line-height:1.6">&ldquo;I really like what you&rsquo;re doing with this course. The big idea is solid. &hellip; Goal, Facts, Rules, Shape. Easy to remember, and it actually works on real stuff.&rdquo;</blockquote>
-      <figcaption style="margin-top:12px;font-size:.88rem;color:var(--slate)"><b style="color:var(--head);font-weight:600">Steve B.</b>, licensed real estate agent, California &middot; Reviewed the course</figcaption>
-    </figure>
     <div class="tiers two" id="tiers">
       <div class="tier feat rv">
         <span class="flag">Start here</span>

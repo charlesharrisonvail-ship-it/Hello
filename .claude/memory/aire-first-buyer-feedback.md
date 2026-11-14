@@ -25,7 +25,7 @@ review to put on the website"; Darrell replied (Gmail, Oct 13) with: "The course
 is straightforward and provides the ability to save each module as a PDF file for
 future reference. The text within the modules also conveniently shares relevant
 links, prompts, and code. This structure makes it much easier to visualize
-walkthroughs and neighborhood previews." It is on the home page above pricing,
+walkthroughs and neighborhood previews." It is on the home page in its own "What agents are saying" section (#reviews, right after the hero; moved there 2026-11-14 from above pricing, where Charles never noticed it),
 verbatim, credited "Darrell Chavez, Real Estate Advisor, Vail Valley to Grand
 Junction · Verified buyer" (no Epique). Charles chose no colleague note. Usable
 for social post #11 too.
