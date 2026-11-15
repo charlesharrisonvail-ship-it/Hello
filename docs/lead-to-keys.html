@@ -507,6 +507,12 @@
   .rubric-badge .rb1{font:700 .74rem 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.18em}
   .rubric-badge .rb2{font:600 .9rem Manrope,system-ui,sans-serif;color:#e2e8f0}
   .rubric-badge .rb2:after{content:" →";color:#fcd34d}
+  .wk{list-style:none;margin:0;padding:0;border:1px solid var(--edge);border-radius:16px;background:var(--panel2);overflow:hidden}
+  .wk li{display:flex;gap:18px;align-items:flex-start;padding:18px 22px;border-bottom:1px solid var(--edge)}
+  .wk li:last-child{border-bottom:0}
+  .wkn{flex:none;font-family:var(--mn);font-size:.8rem;letter-spacing:.1em;color:var(--sig);padding-top:4px}
+  .wk b{display:block;color:var(--head);font-weight:600;font-size:1.05rem}
+  .wk li div span{display:block;color:var(--slate);font-size:.93rem;margin-top:3px;line-height:1.5}
 </style>
 <link rel="stylesheet" href="/modern.css">
 
@@ -681,26 +687,17 @@
     <div class="credgrid">
       <div>
         <p class="kick rv">What you walk away with</p>
-        <h2 class="rv">The <em>Lead to Keys</em> Certificate of Completion</h2>
+        <h2 class="rv">Checks that teach, <em>tools you keep</em></h2>
         <p class="lede rv">Seven checks of seven questions each. Get five of seven right and a module is signed off. Wrong answers show you why, so a miss still teaches.</p>
         <p class="rv" style="color:var(--slate)">Every question is something that costs an agent money, a listing or a license when they get it wrong in the field. The whole point is that you won't.</p>
       </div>
-      <div class="card rv" role="img" aria-label="Lead to Keys certificate">
-        <div class="cardtop">
-          <span class="ct1">Certificate of<br>Completion</span>
-          <span class="seal"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="34" fill="none" stroke="#38bdf8" stroke-width="9" stroke-linecap="round" stroke-dasharray="160 54" transform="rotate(-38 50 50)"/><circle cx="50" cy="50" r="11" fill="#ffffff"/></svg></span>
-        </div>
-        <div>
-          <p class="holder">Issued to</p>
-          <p class="cname">Your Name Here</p>
-          <p class="holder" style="margin:0">Your Market</p>
-          <span class="cmark">A<span class="bdl">&#305;<svg width="0.44em" height="0.44em" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="34" fill="none" stroke="#38bdf8" stroke-width="17" stroke-linecap="round" stroke-dasharray="160 54" transform="rotate(-38 50 50)"/><circle cx="50" cy="50" r="15" fill="#38bdf8"/></svg></span><span class="re">RE</span>&nbsp;Agent</span>
-        </div>
-        <div class="cardfoot">
-          <span>Part Two &middot; <b>Lead to Keys</b></span>
-          <span>Certificate No. <b>AiRE-TD-0001</b></span>
-        </div>
-      </div>
+      <ol class="wk rv">
+        <li><span class="wkn">01</span><div><b>The Prompt Playbook</b><span>Tested prompts you can adapt to your market and your listings.</span></div></li>
+        <li><span class="wkn">02</span><div><b>49 certificate questions</b><span>Each one a mistake that costs agents money. Wrong answers show you why.</span></div></li>
+        <li><span class="wkn">03</span><div><b>A Claude Code toolkit</b><span>Bonus everyday skills, with copy-ready install lines.</span></div></li>
+        <li><span class="wkn">04</span><div><b>Updates included</b><span>The lessons change as the tools and the rules change.</span></div></li>
+        <li><span class="wkn">05</span><div><b>Its own Certificate of Completion</b><span>Pass all seven checks and print it.</span></div></li>
+      </ol>
     </div>
   </div>
 </section>
