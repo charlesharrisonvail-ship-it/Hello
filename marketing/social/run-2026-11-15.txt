@@ -1,0 +1,22 @@
+AiRE Estate post 26 run - 2026-11-15 (page 1345476315318631 only)
+
+== Step 1: post.py --check ==
+Today 2026-11-14. Due, in order: 11, 12, 25.
+ACCESS OK: can post to AiRE Estate (1345476315318631).
+
+== Step 2: 8 most recent published posts (id, created_time, permalink, first 70 chars) ==
+1345476315318631_122114871513512660 2026-11-15T01:21:48+0000 https://www.facebook.com/reel/1838897890895043/ | A licensed drone operator runs about $250 to $550 a shoot, weather per
+1345476315318631_122114444205512660 2026-11-13T16:06:09+0000 https://www.facebook.com/reel/4751632088402386/ | A licensed drone operator runs about $250 to $550 a shoot, weather per
+1345476315318631_122113180731512660 2026-11-09T15:54:06+0000 https://www.facebook.com/reel/2417410625456237/ | A licensed drone operator runs about $250 to $550 a shoot, weather per
+1345476315318631_122112134403512660 2026-11-06T15:54:28+0000 https://www.facebook.com/reel/1669302688256199/ | A licensed drone operator runs about $250 to $550 a shoot, weather per
+1345476315318631_122111863407512660 2026-11-05T18:55:54+0000 https://www.facebook.com/reel/1429870519318157/ | Your last listing video cost $250 to $550. This one cost a few dollars
+1345476315318631_122111863107512660 2026-11-05T18:55:07+0000 https://www.facebook.com/122104226919512660/posts/122111863107512660 | Never opened a terminal? You don't need to have.  The free first lesso
+1345476315318631_122111413101512660 2026-11-04T15:53:57+0000 https://www.facebook.com/122104226919512660/posts/122111413101512660 | One photo in. A drone-style flight out.  A demonstration, made with AI
+1345476315318631_122111090217512660 2026-11-03T17:28:37+0000 https://www.facebook.com/reel/1493168515966066/ | learn.aireestate.com
+
+Result: no post starts with "Most courses are videos you watch once" -> post 26 not yet live.
+
+== Step 3: post.py --only 26 ==
+Today 2026-11-14. Due, in order: 26.
+ACCESS OK: can post to AiRE Estate (1345476315318631).
+PUBLISHED post 26 (Tools you keep using every week (ad)): https://www.facebook.com/1345476315318631_122114872347512660
