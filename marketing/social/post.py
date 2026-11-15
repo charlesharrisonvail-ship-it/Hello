@@ -90,6 +90,20 @@ def live_snippets(pid, ptok):
     return seen
 
 
+def on_page(pid, ptok):
+    """Captions already on the page, so a run whose record push failed never posts twice."""
+    url = f"{GRAPH}/{pid}/published_posts?fields=message&limit=100&access_token={urllib.parse.quote(ptok)}"
+    try:
+        return [norm(x.get("message", "")) for x in call(url).get("data", [])]
+    except RuntimeError as e:
+        print(f"  could not read the page's posts ({e}); relying on posted.json only")
+        return []
+
+
+def norm(t):
+    return " ".join((t or "").split())[:80].lower()
+
+
 def set_cover(vid, cover, ptok):
     """Upload a designed cover so the reel does not show its dark first frame."""
     if not vid or not cover.exists():
@@ -149,6 +163,7 @@ def main():
         return 0
     live = set() if a.only else live_snippets(pid, ptok)
     rc = 0
+    seen = on_page(pid, ptok)
     for p in due:
         src = p
         if not p.get("media") and p.get("fallback"):
@@ -163,6 +178,12 @@ def main():
             done.append({"n": p["n"], "date": today, "id": "already-live", "title": src["title"]})
             (HERE / "posted.json").write_text(json.dumps(done, indent=1))
             print(f"ALREADY LIVE post {p['n']} ({src['title']}): recorded, not reposted")
+            continue
+        if norm(src["caption"]) in seen:
+            done.append({"n": p["n"], "date": today, "id": "already-on-page", "title": src["title"],
+                         "note": "caption already on the page; skipped to avoid a duplicate"})
+            (HERE / "posted.json").write_text(json.dumps(done, indent=1))
+            print(f"ALREADY ON PAGE post {p['n']} ({src['title']}): not posted again; recorded")
             continue
         try:
             fid = publish(src, pid, ptok)
