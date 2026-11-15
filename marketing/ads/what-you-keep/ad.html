@@ -1,0 +1,36 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:A;src:url(Archivo_wght_900.ttf)}@font-face{font-family:M;font-weight:600;src:url(Manrope_wght_600.ttf)}@font-face{font-family:M;font-weight:800;src:url(Manrope_wght_800.ttf)}
+*{box-sizing:border-box;margin:0}
+body{width:var(--w);height:var(--h);background:#05070d;color:#EEF1F3;font-family:M;font-weight:600;position:relative;overflow:hidden}
+.bg{position:absolute;inset:0;background:radial-gradient(700px 520px at 85% 8%,#0d3a5c 0%,transparent 70%),radial-gradient(700px 600px at 0% 100%,#3a1030 0%,transparent 70%),#05070d}
+.grid{position:absolute;inset:0;background-image:linear-gradient(#ffffff07 1px,transparent 1px),linear-gradient(90deg,#ffffff07 1px,transparent 1px);background-size:60px 60px}
+.in{position:absolute;inset:var(--pad)}
+.brand{display:flex;align-items:center;gap:12px;font:800 22px M;letter-spacing:.02em}.brand svg{width:30px;height:30px}.brand b{color:#38bdf8}
+.kick{font:800 19px M;letter-spacing:.18em;text-transform:uppercase;color:#38bdf8;margin-top:var(--g1)}
+h1{font:900 var(--hs)/1.0 A;letter-spacing:-2px;margin-top:14px}h1 em{font-style:normal;color:#38bdf8}
+.list{margin-top:var(--g2);border:1px solid #23324a;border-radius:20px;background:#0e1726d9;overflow:hidden}
+.it{display:flex;gap:22px;align-items:flex-start;padding:var(--ip) 28px;border-bottom:1px solid #1d2a40}.it:last-child{border:0}
+.n{flex:none;font:800 18px M;color:#38bdf8;letter-spacing:.08em;padding-top:5px}
+.it b{display:block;font:800 var(--ts) M;color:#fff}.it span{display:block;font-size:var(--ds);color:#9fb0c6;margin-top:4px;line-height:1.35}
+.it b .tag{display:inline-block;margin-top:0;font:800 13px M;letter-spacing:.1em;text-transform:uppercase;color:#05070d;background:#fbbf24;border-radius:6px;padding:3px 8px;margin-left:8px;vertical-align:4px}
+.bot{position:absolute;left:var(--pad);right:var(--pad);bottom:var(--pad);display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
+.price{font:900 var(--ps)/1 A;letter-spacing:-1px}.price small{display:block;font:600 21px M;color:#c7d2e0;letter-spacing:0;margin-top:8px}
+.cta{font:800 24px M;background:#38bdf8;color:#05070d;border-radius:999px;padding:18px 30px;white-space:nowrap;box-shadow:0 10px 40px #38bdf855}
+.url{font:800 18px M;color:#9fb0c6;margin-top:10px;text-align:right}
+.fine{position:absolute;left:var(--pad);right:var(--pad);bottom:calc(var(--pad) - 44px);font:600 14px M;color:#6b7c95}
+</style></head><body><div class="bg"></div><div class="grid"></div>
+<div class="in">
+ <div class="brand"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="34" fill="none" stroke="#38bdf8" stroke-width="12" stroke-linecap="round" stroke-dasharray="160 54" transform="rotate(-38 50 50)"/><circle cx="50" cy="50" r="12" fill="#fff"/></svg><span>Ai<b>RE</b> Estate Academy</span></div>
+ <p class="kick">Buy one course. Keep all of this.</p>
+ <h1>Tools you keep<br><em>using every week</em></h1>
+ <div class="list">
+  <div class="it"><span class="n">01</span><div><b>The Prompt Playbook</b><span>Goal, Facts, Rules, Shape: get AI to write your prompts for you.</span></div></div>
+  <div class="it"><span class="n">02</span><div><b>The Agent Brand File template<span class="tag">Part One</span></b><span>Every post and description sounds like you, not everybody.</span></div></div>
+  <div class="it"><span class="n">03</span><div><b>A Claude Code toolkit</b><span>Bonus everyday skills, with copy-ready install lines.</span></div></div>
+  <div class="it"><span class="n">04</span><div><b>Updates included</b><span>The lessons change as the tools change. No extra cost.</span></div></div>
+  <div class="it"><span class="n">05</span><div><b>A Certificate of Completion</b><span>Finish the course, pass the checks, print it.</span></div></div>
+ </div>
+</div>
+<div class="bot"><div class="price">From $67<small>One payment. Yours to keep.</small></div><div><div class="cta">See the courses →</div><div class="url">learn.aireestate.com</div></div></div>
+<div class="fine">Claude Code (not included) runs on a Claude Pro plan from Anthropic, $20/month · claude.com/pricing</div>
+</body></html>
