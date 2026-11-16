@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>EpiVail 8,150 FT graphics</title>
+<style>
+  @font-face { font-family: Anton; src: url(fonts/Anton-Regular.ttf); }
+  @font-face { font-family: Yellowtail; src: url(fonts/Yellowtail-Regular.ttf); }
+  html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: transparent; }
+  #stage { position: absolute; inset: 0; overflow: hidden; }
+  .bg { position: absolute; inset: 0; display: none;
+        background: linear-gradient(180deg, #1b0b3a 0%, #6b1d6e 38%, #e2456f 62%, #ff9a3c 82%, #ffd27a 100%); }
+  body.preview .bg { display: block; }
+  .bg svg { position: absolute; bottom: 0; left: 0; width: 100%; }
+  .layer { position: absolute; inset: 0; display: none; }
+  .show { display: block; }
+
+  /* name cards */
+  .slab { position: absolute; left: -10%; top: 600px; height: 230px; width: 120%;
+          transform-origin: left center; }
+  .name { position: absolute; left: 140px; top: 520px; font: 260px/1 Anton, sans-serif;
+          color: #fff; letter-spacing: 6px; text-transform: uppercase;
+          text-shadow: 10px 10px 0 rgba(0,0,0,.55); white-space: nowrap; }
+  .role { position: absolute; left: 170px; top: 820px; font: 110px/1 Yellowtail, cursive;
+          color: #fff; white-space: nowrap; text-shadow: 4px 4px 0 rgba(0,0,0,.6); }
+
+  /* title */
+  .title { position: absolute; left: 0; right: 0; top: 270px; text-align: center;
+           font: 330px/1 Anton, sans-serif; letter-spacing: 18px;
+           background: linear-gradient(180deg, #ffe08a 0%, #ff8f4a 45%, #ff3d7f 100%);
+           -webkit-background-clip: text; background-clip: text; color: transparent;
+           filter: drop-shadow(0 12px 0 rgba(20,0,40,.75)); }
+  .alt { position: absolute; left: 0; right: 0; top: 650px; text-align: center;
+         font: 150px/1 Yellowtail, cursive; color: #fff;
+         text-shadow: 0 0 30px rgba(255,90,140,.9), 5px 5px 0 rgba(0,0,0,.6); }
+  .rule { position: absolute; top: 625px; height: 6px; left: 50%; background: #fff; }
+  .flash { position: absolute; inset: 0; background: #fff; }
+
+  /* end card */
+  .end { position: absolute; inset: 0; background: #000; }
+  .end div { position: absolute; left: 0; right: 0; text-align: center; color: #fff; }
+  .e1 { top: 330px; font: 64px/1 Anton, sans-serif; letter-spacing: 8px; text-transform: uppercase; }
+  .e2 { top: 470px; font: 76px/1.1 Georgia, serif; }
+  .e3 { top: 680px; font: 92px/1 Yellowtail, cursive; color: #ff9a6a !important; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="bg">
+    <svg viewBox="0 0 1920 520" preserveAspectRatio="none" height="520">
+      <path d="M0 520 L0 330 L180 200 L300 280 L470 90 L620 250 L760 170 L930 300 L1080 120 L1240 260 L1400 150 L1560 290 L1720 190 L1920 300 L1920 520 Z" fill="#170a2c"/>
+      <path d="M0 520 L0 420 L240 330 L420 400 L640 300 L860 410 L1100 320 L1340 420 L1560 340 L1760 410 L1920 360 L1920 520 Z" fill="#0b0518"/>
+    </svg>
+  </div>
+
+  <div class="layer" id="card">
+    <div class="slab" id="slab"></div>
+    <div class="name" id="name"></div>
+    <div class="role" id="role"></div>
+  </div>
+
+  <div class="layer" id="titleL">
+    <div class="title" id="title">EPIVAIL</div>
+    <div class="rule" id="rule"></div>
+    <div class="alt" id="alt">8,150 ft</div>
+    <div class="flash" id="flash"></div>
+  </div>
+
+  <div class="layer" id="endL">
+    <div class="end" id="endbg">
+      <div class="e1" id="e1">Epique Realty Colorado Mountain Region</div>
+      <div class="e2" id="e2">Charles Harrison, Epique Area/Growth Leader</div>
+      <div class="e3" id="e3">Agents: the crew's hiring.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Every frame is a pure function of (scene, t) so a headless browser can step it.
+const CARDS = {
+  charles: { name: 'Charles', role: 'The Closer',        color: '#e2456f' },
+  olaf:    { name: 'Olaf',    role: 'The Numbers Man',   color: '#2bb3c0' },
+  darrell: { name: 'Darrell', role: 'The Wheelman',      color: '#ff8f2a' },
+  eva:     { name: 'Eva',     role: 'The Inside Woman',  color: '#b04ad8' },
+};
+const DUR = { card: 3.5, title: 5, end: 6 };
+
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const ease = x => 1 - Math.pow(1 - clamp(x), 3);           // ease-out cubic
+const easeIn = x => Math.pow(clamp(x), 3);
+const seg = (t, a, b) => clamp((t - a) / (b - a));
+
+const $ = id => document.getElementById(id);
+function only(id) {
+  for (const l of document.querySelectorAll('.layer')) l.classList.toggle('show', l.id === id);
+}
+
+function renderCard(key, t) {
+  only('card');
+  const c = CARDS[key], d = DUR.card;
+  const out = easeIn(seg(t, d - 0.35, d));                   // exit
+  const inSlab = ease(seg(t, 0, 0.3));
+  const inName = ease(seg(t, 0.12, 0.38));
+  const inRole = ease(seg(t, 0.35, 0.65));
+  const drift = t * 12;                                      // slow push
+
+  const slab = $('slab');
+  slab.style.background = c.color;
+  slab.style.transform = `skewY(-4deg) scaleX(${inSlab})`;
+  slab.style.opacity = 0.92 * (1 - out);
+
+  const name = $('name');
+  name.textContent = c.name;
+  const s = 1.35 - 0.35 * inName;
+  name.style.transform = `translateX(${drift - out * 2200}px) scale(${s})`;
+  name.style.transformOrigin = 'left bottom';
+  name.style.opacity = inName;
+
+  const role = $('role');
+  role.textContent = c.role;
+  role.style.transform = `translateX(${drift * 1.6 - (1 - inRole) * 80 - out * 2200}px)`;
+  role.style.opacity = inRole;
+}
+
+function renderTitle(t) {
+  only('titleL');
+  const slam = ease(seg(t, 0, 0.25));
+  const zoom = 1 + 0.04 * (t / DUR.title);
+  const title = $('title');
+  title.style.transform = `scale(${(1.6 - 0.6 * slam) * zoom})`;
+  title.style.opacity = slam;
+  $('flash').style.opacity = t < 0.25 ? 0 : 0.85 * (1 - seg(t, 0.25, 0.7));
+  const r = ease(seg(t, 0.6, 1.1));
+  $('rule').style.width = `${900 * r}px`;
+  $('rule').style.marginLeft = `${-450 * r}px`;
+  const a = ease(seg(t, 0.9, 1.5));
+  $('alt').style.opacity = a;
+  $('alt').style.transform = `translateY(${(1 - a) * 30}px) scale(${zoom})`;
+  const fade = 1 - seg(t, DUR.title - 0.5, DUR.title);
+  $('titleL').style.opacity = fade;
+}
+
+function renderEnd(t) {
+  only('endL');
+  $('e1').style.opacity = ease(seg(t, 0.3, 1.1));
+  $('e2').style.opacity = ease(seg(t, 1.2, 2.0));
+  $('e3').style.opacity = ease(seg(t, 2.4, 3.2));
+  $('endbg').style.opacity = 1 - seg(t, DUR.end - 0.6, DUR.end);
+}
+
+window.render = (scene, t) => {
+  if (scene === 'title') renderTitle(t);
+  else if (scene === 'end') renderEnd(t);
+  else renderCard(scene, t);
+};
+window.DUR = DUR;
+window.SCENES = [...Object.keys(CARDS), 'title', 'end'];
+
+// Open in a browser with ?preview to watch the whole reel loop.
+if (location.search.includes('preview')) {
+  document.body.classList.add('preview');
+  const order = window.SCENES.map(s => [s, s === 'title' ? DUR.title : s === 'end' ? DUR.end : DUR.card]);
+  const total = order.reduce((a, [, d]) => a + d, 0);
+  const t0 = performance.now();
+  (function tick() {
+    let t = ((performance.now() - t0) / 1000) % total;
+    for (const [s, d] of order) { if (t < d) { window.render(s, t); break; } t -= d; }
+    requestAnimationFrame(tick);
+  })();
+}
+</script>
+</body>
+</html>

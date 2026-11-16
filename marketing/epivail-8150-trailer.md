@@ -133,3 +133,43 @@ Charles pays for no AI tools, so every step below is free or local:
 - **Ask Olaf, Eva, and Darrell** if they're happy with their parts, especially Eva.
   The crush is a gag, but it's her name on LinkedIn too, so get her yes first.
 - Nothing posts until Charles approves the final cut.
+
+---
+
+## Shoot-day shot list
+
+Shoot everything **horizontal (16:9), 4K if the phone allows, 30 fps**. Golden hour is
+roughly the last 90 minutes before sunset, so plan the outdoor shots for then. A slow-mo
+setting (120 fps) is worth using wherever it says *slow-mo*.
+
+Graphics go on top in the edit; the files are in `marketing/trailer/out/`.
+
+| # | Time | Shot | Who | Where | How | Graphic on top |
+|---|------|------|-----|-------|-----|----------------|
+| 1 | 0:00 | Ski lift creaking, empty chair passing | — | Any lift | Close-up, record 10 s of audio too | — |
+| 2 | 0:03 | Rooftops at golden hour, slow push | — | Vail Village from above / parking-deck top | Walk forward slowly, phone at chest height | — |
+| 3 | 0:10 | Steps out of black SUV, adjusts sunglasses, nods to a passing couple | Charles | Covered Bridge | Low angle from the curb; *slow-mo* on the step | `charles-alpha.webm` |
+| 4 | 0:16 | Taps one listing on a whiteboard of comps and red string | Olaf | Office | Over-the-shoulder, then push on his finger | `olaf-alpha.webm` |
+| 5 | 0:22 | Grinning behind the wheel, gondola overhead | Darrell | Parked by Gondola One | Through the passenger window. **Car parked** | `darrell-alpha.webm` |
+| 6 | 0:28 | Slow turn on balcony, looks at Charles, sighs | Eva (Charles in the background, not noticing) | Any balcony with a mountain view | *Slow-mo*; a fan or a breezy day helps | `eva-alpha.webm` |
+| 7 | 0:35 | Lockbox clicking open | hands | Any listing | Macro, *slow-mo* | — |
+| 8 | 0:38 | Slaps a stack of offers on a table: "Four over asking." | Olaf | Conference table | Low angle from the tabletop | — |
+| 9 | 0:41 | Car pulls into a snowy driveway | Darrell | Any listing | Wide from the porch. **Normal parking speed — we'll fake the drama in the edit** | — |
+| 10 | 0:44 | Hands the buyer the keys | Charles + a friend as buyer | Front door | Tight on the keys, then the smile | — |
+| 11 | 0:48 | Hands touch over the pen. "Thank you kindly, ma'am." Eva looks to camera | Charles, Eva | Closing table | Two angles: tight on hands, then Eva's face | — |
+| 12 | 0:55 | Snow falling, silence | — | Outdoors at night under a streetlight | Static, 10 s | — |
+| 13 | 0:58 | "Appraisal came in low." | Olaf | Office, lit by his phone only | Close-up | — |
+| 14 | 1:01 | Stuck behind a snowplow: "Eleven minutes is gonna be forty." | Darrell | Parked roadside (shoot through the windshield; add a plow later or wait for one) | Dash angle | — |
+| 15 | 1:04 | Smug rival lifts a coffee cup | a friend | Café window across the street | Long lens / zoom from far off | — |
+| 16 | 1:06 | Alone at the table, empty chair, clock ticking | Charles | Closing table | Wide, then tight on a wall clock | — |
+| 17 | 1:09 | Walks in through the snow, sets down the counteroffer, then the lines | Eva, Charles | Office door → table | Follow her from behind, then reverse on Charles **looking up** | — |
+| 18 | 1:13 | Darrell in with the buyer, snow on shoulders; Olaf runs in: "Appraisal's revised!"; pen hits paper | all four | Office | One wide take, then a pen close-up | — |
+| 19 | 1:15 | — | — | — | — | `title.mp4` (full screen) |
+| 20 | 1:20 | Dusk balcony: "So after this one… dinner?" / "Darlin', after this one there's another one." | Eva, Charles | Balcony | Two-shot from behind them, mountains beyond | — |
+| 21 | 1:27 | Darrell honks from below; Olaf leans out the window: "We've got a showing!" | Darrell, Olaf | Street below the balcony | Looking down from the balcony | — |
+| 22 | 1:30 | — | — | — | — | `end.mp4` (full screen) |
+
+**Safety and permissions:** every driving shot is parked or at normal speed. Ask the
+owner before filming at a listing, and avoid showing house numbers or anything that
+identifies a client's home. Anyone who appears on camera (the "buyer," the "rival")
+should be a friend who has said yes.
