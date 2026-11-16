@@ -96,8 +96,7 @@ results, clients, testimonials or production numbers.
 
 ## Charles's standing rules
 
-- **No links to Epique or EpiVail websites** from anything HD. A site test
-  enforces it. His epique.me email as plain text is fine.
+- **Outbound links:** on 2026-11-16 Charles lifted the no-Epique-links rule for three footer links he wants as backlinks: his Epique Realty site (National), its agent-attraction page (International) and AiRE Estate. Keep those three, as normal followed links. Do not add other Epique or EpiVail links without his say; a site test allows only these.
 - **Never say he is "the only one"** who does this.
 - **Landscape architecture background** appears in About only. Never "architect",
   and no school, degree or year.
