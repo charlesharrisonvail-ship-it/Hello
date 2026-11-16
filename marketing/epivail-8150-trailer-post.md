@@ -14,7 +14,7 @@ EPIVAIL: 8,150 FT. Same mountain town, same crew:
 🚙 Darrell, The Wheelman
 💼 Eva, our AI spokeswoman, who has a soft spot for the boss
 
-I made the whole thing with AI in an afternoon. That's the point I want agents to
+We made the whole thing with AI in an afternoon. That's the point I want agents to
 hear: the tools are here, they're cheap, and the folks using them are having a lot
 more fun marketing than the folks who aren't.
 
