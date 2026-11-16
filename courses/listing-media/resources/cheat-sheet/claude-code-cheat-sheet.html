@@ -1,0 +1,42 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Claude Code Cheat Sheet · AiRE Estate Academy</title><style>
+@font-face{font-family:A;src:url(Archivo_wght_900.ttf)}@font-face{font-family:M;font-weight:600;src:url(Manrope_wght_600.ttf)}@font-face{font-family:M;font-weight:800;src:url(Manrope_wght_800.ttf)}
+@page{size:8.5in 11in;margin:0}
+*{box-sizing:border-box;margin:0}
+body{width:816px;height:1056px;background:#04070d;color:#dbe2ec;font-family:M;font-weight:600;position:relative;overflow:hidden;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.bg{position:absolute;inset:0;background:radial-gradient(520px 380px at 92% 2%,#0d3a5c,transparent 70%),radial-gradient(520px 420px at 0% 100%,#3a1030,transparent 70%)}
+.grid{position:absolute;inset:0;background-image:linear-gradient(#ffffff06 1px,transparent 1px),linear-gradient(90deg,#ffffff06 1px,transparent 1px);background-size:48px 48px}
+.in{position:absolute;inset:40px 42px}
+.top{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:center;gap:9px;font:800 14px M;color:#fff}.brand svg{width:22px;height:22px}.brand b{color:#38bdf8}
+.free{font:800 10.5px M;letter-spacing:.16em;text-transform:uppercase;color:#05070d;background:#38bdf8;border-radius:999px;padding:6px 12px}
+h1{font:900 54px/1 A;letter-spacing:-1.5px;color:#fff;margin-top:22px}h1 em{font-style:normal;color:#38bdf8}
+.sub{font-size:15px;color:#8496b2;margin-top:8px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.c{background:#0d1524e6;border:1px solid #1d2a40;border-radius:14px;padding:16px 18px 15px;display:flex;flex-direction:column}
+.h{display:flex;align-items:center;gap:10px}
+.k{font:800 13px ui-monospace,Menlo,monospace;color:#05070d;background:#38bdf8;border-radius:7px;padding:4px 9px;white-space:nowrap}
+.k.r{background:#d63a73;color:#fff}
+.t{font:800 16.5px M;color:#fff}
+.w{font-size:13.2px;line-height:1.45;color:#c3d0e2;margin-top:9px}
+.tip{margin-top:10px;padding-top:9px;border-top:1px dashed #263652;font-size:12.6px;line-height:1.45;color:#9fb0c6}
+.cm{font-family:ui-monospace,Menlo,monospace;color:#fff}
+.tip b{color:#fbbf24;font-weight:800;letter-spacing:.06em;font-size:10.5px;text-transform:uppercase;margin-right:6px}
+.foot{position:absolute;left:42px;right:42px;bottom:26px;display:flex;justify-content:space-between;align-items:flex-end;font-size:10.5px;color:#5a6a85;gap:20px}
+.foot .u{font:800 13px M;color:#38bdf8}
+</style></head><body><div class="bg"></div><div class="grid"></div>
+<div class="in">
+<div class="top"><div class="brand"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="34" fill="none" stroke="#38bdf8" stroke-width="12" stroke-linecap="round" stroke-dasharray="160 54" transform="rotate(-38 50 50)"/><circle cx="50" cy="50" r="12" fill="#fff"/></svg><span>Ai<b>RE</b> Estate Academy</span></div><span class="free">Free cheat sheet</span></div>
+<h1>Claude Code<br><em>Cheat Sheet</em></h1>
+<p class="sub">The eight things that make it work like a teammate, with the tip most people miss.</p>
+<div class="cards">
+ <div class="c"><div class="h"><span class="k">CLAUDE.md</span><span class="t">Your rulebook</span></div><p class="w">A file Claude reads at the start of every session: your brand, your market, your MLS and disclosure rules. Type <b>/init</b> to start one.</p><p class="tip"><b>Tip</b>Keep it short and specific. A long, vague rule file gets skimmed.</p></div>
+ <div class="c"><div class="h"><span class="k">Skills</span><span class="t">Jobs you repeat</span></div><p class="w">Saved instructions for work you do every week, like a listing description or a seller update. Type <b>/</b> to see yours.</p><p class="tip"><b>Tip</b>Turn any checklist you repeat into a skill, and the result comes out the same every time.</p></div>
+ <div class="c"><div class="h"><span class="k">/mcp</span><span class="t">Connect your tools</span></div><p class="w">Connectors let Claude reach your email, calendar, CRM or documents directly.</p><p class="tip"><b>Tip</b>Stop copy-pasting. Connect the tool once and let Claude read what it needs.</p></div>
+ <div class="c"><div class="h"><span class="k">/agents</span><span class="t">Helpers on the side</span></div><p class="w">Subagents take a side job, like research or a second draft, in their own space, so your main chat stays clean.</p><p class="tip"><b>Tip</b>Hand off the research and keep working on the main job.</p></div>
+ <div class="c"><div class="h"><span class="k r">Shift + Tab</span><span class="t">Plan mode</span></div><p class="w">Claude lays out the plan first and changes nothing until you say so.</p><p class="tip"><b>Tip</b>Read the plan, fix what's wrong, then say "go ahead."</p></div>
+ <div class="c"><div class="h"><span class="k">/compact</span><span class="t">Free up room</span></div><p class="w">Summarizes a long conversation so Claude has space to keep working.</p><p class="tip"><b>Tip</b>Starting a different job? Use <span class="cm">/clear</span> for a fresh start. Long, mixed sessions are where mistakes creep in.</p></div>
+ <div class="c"><div class="h"><span class="k r">Esc</span><span class="t">Stop and back up</span></div><p class="w">Press <b>Esc</b> to stop Claude mid-step. Press it twice to go back to an earlier message and try again.</p><p class="tip"><b>Tip</b>Heading the wrong way? Stop early. It's cheaper than undoing later.</p></div>
+ <div class="c"><div class="h"><span class="k">/resume</span><span class="t">Pick up where you left off</span></div><p class="w">Reopens an earlier session, history and all.</p><p class="tip"><b>Tip</b>One session per job (one listing, one client) keeps each one focused.</p></div>
+</div></div>
+<div class="foot"><div>Claude Code is Anthropic&rsquo;s tool, sold separately (not included). AiRE Estate is not affiliated with Anthropic.<br>Commands as of November 2026; type <b>/help</b> for the current list.</div><div class="u">learn.aireestate.com</div></div>
+</body></html>
