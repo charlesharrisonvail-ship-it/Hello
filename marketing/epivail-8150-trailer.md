@@ -1,6 +1,6 @@
 # EPIVAIL: 8,150 FT — Trailer Script
 
-A 75-second crime-game-*style* trailer for EpiVail: neon-sunset grading, slow-motion
+A 95-second crime-game-*style* trailer for EpiVail: neon-sunset grading, slow-motion
 hero shots, character name cards, a big title slam. The "crimes" are all real estate:
 the score is a listing, the getaway car is a closing, the vault is the escrow office.
 
@@ -9,7 +9,8 @@ lookalike art — those are another company's property and would get the video p
 We borrow the *genre* (sunset noir, swagger, cards), not the game.
 
 **Cast:** Charles · Olaf · Eva · Darrell
-**Length:** ~75 sec, 16:9 for YouTube/LinkedIn, plus a 9:16 cut for Reels
+**Length:** ~95 sec, the same length as the GTA VI launch trailer
+(youtu.be/BSIytHG3-Xo), which we use for pacing only, 16:9 for YouTube/LinkedIn, plus a 9:16 cut for Reels
 **Music:** a slow, swaggering cover-style track that drops at 0:45 — royalty-free only
 (YouTube Audio Library or Pixabay Music, both free)
 
@@ -66,7 +67,29 @@ Music drops. Fast cuts:
 > **CHARLES (V.O.):** "In these mountains you don't take what you want. You earn it.
 > Politely."
 
-## Title slam (0:55–1:05)
+## The easy score goes wrong (0:55–1:15)
+
+*(Paced to the launch trailer Charles sent, which runs 1:35: a pair against long odds, an
+"easy" job that goes sideways, and the two of them finding they can count on each other.
+We follow that shape with our own story, lines, and music.)*
+
+Music cuts out. Silence, then snow falling.
+
+- Olaf, staring at his phone: **"Appraisal came in low."**
+- Darrell's car, stuck behind a snowplow on Vail Pass. **"Eleven minutes is gonna be
+  forty."**
+- A rival agent across the street lifts a coffee cup, smug.
+- Charles, alone at the closing table, the buyer's chair empty. Clock ticking.
+
+Eva walks in through the snow carrying the signed counteroffer. She sets it down.
+
+> **EVA:** "You keep saying it's every agent for themselves."
+> **CHARLES (looking up at her for the first time):** "Reckon I was wrong."
+
+The music comes back in bigger than before. Darrell shows up with the buyer, dusted in snow.
+Olaf runs in: **"Appraisal's revised!"** The pen hits the paper.
+
+## Title slam (1:15–1:25)
 
 Hard cut to black. Then:
 
@@ -75,7 +98,7 @@ Hard cut to black. Then:
 
 (Vail's elevation — the whole joke is that we're operating higher than everybody.)
 
-## Tag (1:05–1:15)
+## Tag (1:25–1:35)
 
 Eva and Charles on the balcony at dusk.
 
