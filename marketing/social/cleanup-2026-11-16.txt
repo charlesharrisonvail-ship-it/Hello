@@ -1,0 +1,16 @@
+AiRE Estate Facebook page (1345476315318631): duplicate drone reel cleanup, 2026-11-16
+Approved by Charles in chat, 2026-11-16.
+
+Each post was checked before deletion: caption starts "A licensed drone operator runs about $250 to $550"
+and the created date matched.
+
+DELETED (post DELETE returned success:true; video-id fallback not needed)
+- 1345476315318631_122113180731512660  2026-11-09  video 2417410625456237
+- 1345476315318631_122114444205512660  2026-11-13  video 4751632088402386
+- 1345476315318631_122114871513512660  2026-11-15  video 1838897890895043
+
+KEPT
+- 1345476315318631_122112134403512660  2026-11-06  (still listed in published_posts)
+
+Verified afterward: published_posts (latest 10) no longer lists the three deleted ids.
+Nothing else was changed or posted.
