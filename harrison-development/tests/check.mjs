@@ -163,7 +163,7 @@ for (const w of [360, 390, 768, 1440]) {
   const pausedState = await page.evaluate(() => ({ cls: document.documentElement.classList.contains('motion-paused'), ps: getComputedStyle(document.querySelector('.ticker-track')).animationPlayState, vids: [...document.querySelectorAll('video[data-bg]')].every(v => v.paused) }));
   log(pausedState.cls && pausedState.ps.split(',').every(x => x.trim() === 'paused') && pausedState.vids && await btn.getAttribute('aria-pressed') === 'true', 'Pause motion stops the ticker and every background video', JSON.stringify(pausedState));
   await btn.click();
-  log(/Jeffrey Beall, CC BY 4\.0/.test(await page.locator('.site-footer').innerText()) && /USGS, public domain/.test(await page.locator('.site-footer').innerText()), 'footer credits the photographer and USGS');
+  log(/Jeffrey Beall, CC BY 4\.0/.test(await page.locator('#services').innerText()), 'service photos are credited beside them (footer credits removed at Charles\'s request)');
   await ctx.close();
   const c2 = await browser.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' }); const p2 = await c2.newPage();
   await p2.goto(BASE + '/index.html'); await p2.waitForTimeout(800);
