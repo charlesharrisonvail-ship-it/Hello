@@ -18,3 +18,10 @@ Cast and their Higgsfield elements (use `<<<id>>>` in prompts):
 Cost (basic plan, 2026-11-16): Cinema Studio Video 2 is 7.5 credits per 5 s
 clip; Cinema Studio 3.0 is 25 per 5 s; Seedance 2.0 needs Plus. Get his "go"
 before spending (see no-paid-ai-tools).
+
+**Lesson (2026-11-16):** the first cut (8 Cinema Studio shots, polished real-estate
+ad look, 60 credits) missed. Charles wanted it to *feel like GTA*: a video-game
+look, crime-caper action, attitude, loading-screen-art style. I played it too
+safe. Next time, lean all the way into the game feel and ask what "GTA" means
+to him before spending. The only things to leave out are Rockstar's own logo,
+name and music.
