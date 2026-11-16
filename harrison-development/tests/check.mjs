@@ -172,16 +172,18 @@ for (const w of [360, 390, 768, 1440]) {
   log(rm.vids && rm.tick === 'none' && rm.toggle, 'reduced motion: no footage plays and the ticker stands still', JSON.stringify(rm));
   await c2.close(); }
 
-// Nothing on the site may send visitors to Epique or EpiVail (Charles, 2026-11-09)
+// Charles lifted the no-Epique-links rule for three footer links on 2026-11-16 (he wants the backlinks).
+// Any other Epique or EpiVail link is still a mistake.
+const OK_LINKS = ['https://charlesharrison.epiquerealty.com/', 'https://charlesharrison.epiquerealty.com/agent-attraction'];
 { const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const page = await ctx.newPage();
   for (const pg of ['/index.html', '/privacy.html']) {
     await page.goto(BASE + pg); await page.waitForTimeout(400);
-    const bad = await page.evaluate(() => {
+    const bad = await page.evaluate((ok) => {
       const urls = [...document.querySelectorAll('[href],[src],[data-src],[action],[poster]')].flatMap(e => ['href','src','data-src','action','poster'].map(a => e.getAttribute(a)).filter(Boolean));
       const cfg = window.HD_CONFIG ? JSON.stringify(Object.fromEntries(Object.entries(window.HD_CONFIG).filter(([k]) => k !== 'contact'))) : '';
-      return urls.filter(u => !/^mailto:/i.test(u) && /epique|epivail/i.test(u)).concat(/https?:\/\/[^"]*(epique|epivail)/i.test(cfg) ? ['config: ' + cfg.match(/https?:\/\/[^"]*(epique|epivail)[^"]*/i)[0]] : []);
-    });
-    log(bad.length === 0, `${pg}: no link or setting points to an Epique or EpiVail website`, bad.join(' '));
+      return urls.filter(u => !/^mailto:/i.test(u) && /epique|epivail/i.test(u) && !ok.includes(u)).concat(/https?:\/\/[^"]*(epique|epivail)/i.test(cfg) ? ['config: ' + cfg.match(/https?:\/\/[^"]*(epique|epivail)[^"]*/i)[0]] : []);
+    }, OK_LINKS);
+    log(bad.length === 0, `${pg}: no Epique or EpiVail link beyond the three footer links Charles approved`, bad.join(' '));
   }
   await ctx.close(); }
 
