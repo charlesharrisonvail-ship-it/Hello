@@ -34,6 +34,7 @@ and the site is plain HTML.
 - `tools/harvey/` — free Windows setup notes and a leads-only config for Harvey (ethanplusai/harvey, MIT; AI lead-finding agent that runs on the Claude plan); finds agents and brokerages in 23 Colorado ski towns via Serper's free tier, email and LinkedIn off; source is not vendored
 - `tools/null-motion/` — free Windows setup notes for Null Motion (blixvip/NullMotion, MIT; finished motion-graphics ad over its HyperFrames drafts, MP4 export); local, zero dependencies, needs Node 22+; source is not vendored
 - `tools/freefield/` — Windows setup notes for Freefield (neuregex/freefield, MIT; open-source Higgsfield on ComfyUI, 120 apps incl. Cinema Studio); free models only, run on Charles's own AMD Ryzen AI laptop (AMD support untested; Modal is paid and not used); source is not vendored
+- `newsletters/` — EpiVail "Updates" newsletter drafts (client/sphere market updates; numbers from Flexmls)
 - `is-this-for-you-script.md` — script for the Lead to Keys screening video
 
 ## Conventions
