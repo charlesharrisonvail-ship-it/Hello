@@ -220,3 +220,6 @@ summary:active{opacity:.75}
 @media (max-width:860px) and (prefers-contrast:more){
   .mx-menu{background:#04070d;border-color:rgba(255,255,255,.6)}
 }
+
+/* While the phone menu is open, the AiRE chat button steps aside. */
+html.mx-menu-open #aire-chat-btn,html.mx-menu-open #aire-chat-tip{opacity:0!important;transform:scale(.9)!important;pointer-events:none!important}

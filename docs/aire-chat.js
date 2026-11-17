@@ -35,6 +35,9 @@
     '#aire-chat .note{margin:0;padding:4px 14px 12px;font-size:11px;color:#5a6a85}' +
     '#aire-chat .note a{color:#8496b2}' +
     '@media (max-width:480px){#aire-chat{right:8px;left:8px;width:auto;bottom:84px;height:calc(100vh - 110px)}#aire-chat-tip{right:84px;max-width:170px}}' +
+    '#aire-chat-spacer{display:none}' +
+    /* Phones: a little smaller, clear of the home bar, and room at the end of the page so the last line can scroll out from under it. */
+    '@media (max-width:760px){#aire-chat-btn{width:52px;height:52px;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px))}#aire-chat-btn svg{width:30px;height:30px}#aire-chat-tip{right:76px;bottom:calc(22px + env(safe-area-inset-bottom,0px))}#aire-chat-spacer{display:block;height:84px}}' +
     '@media (prefers-reduced-motion:reduce){#aire-chat-btn,#aire-chat-tip{transition:none}}';
 
   var mark = '<svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true">' +
@@ -99,6 +102,7 @@
       panel.classList.remove('open');
       btn.setAttribute('aria-expanded', 'false');
       btn.focus();
+      if (typeof place === 'function') place();
     }
     function hideTip(forGood) {
       tip.classList.remove('in');
@@ -143,8 +147,22 @@
       open();
     });
 
-    // The button eases in shortly after the page opens.
-    setTimeout(function () { btn.classList.add('in'); }, 900);
+    document.body.appendChild(el('div', { id: 'aire-chat-spacer', 'aria-hidden': 'true' }));
+
+    // The button eases in shortly after the page opens. On phones it waits until
+    // the reader is past the opening screen, so it never sits on the headline,
+    // and steps aside again near the top. It stays while the assistant is open.
+    var phone = window.matchMedia ? window.matchMedia('(max-width: 760px)') : { matches: false };
+    var ready = false;
+    function place() {
+      if (!ready) return;
+      var show = !phone.matches || window.scrollY > window.innerHeight * 0.5 || panel.classList.contains('open');
+      btn.classList.toggle('in', show);
+      if (!show) hideTip(false);
+    }
+    setTimeout(function () { ready = true; place(); }, 900);
+    window.addEventListener('scroll', place, { passive: true });
+    if (phone.addEventListener) phone.addEventListener('change', place);
 
     // Once per visit, a small greeting appears after the reader scrolls a bit.
     function onScroll() {
