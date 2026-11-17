@@ -10,6 +10,9 @@
   var css = '' +
     '#aire-chat-btn{position:fixed;right:18px;bottom:18px;z-index:90;width:60px;height:60px;border-radius:50%;border:1px solid rgba(56,189,248,.45);background:#080e18;box-shadow:0 10px 30px rgba(0,0,0,.45),0 0 0 4px rgba(56,189,248,.12);cursor:pointer;display:grid;place-items:center;padding:0;opacity:0;transform:translateY(12px) scale(.9);transition:opacity .5s,transform .5s}' +
     '#aire-chat-btn.in{opacity:1;transform:none}' +
+    /* Eva's headshot fills the button; a small tag says she is AI. */
+    '#aire-chat-btn img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover}' +
+    '#aire-chat-btn .ai{position:absolute;right:-3px;bottom:-3px;padding:2px 5px;border-radius:999px;background:#38bdf8;color:#04070d;border:2px solid #04070d;font:800 10px/1 Manrope,system-ui,sans-serif;letter-spacing:.04em}' +
     '#aire-chat-btn:hover{box-shadow:0 10px 30px rgba(0,0,0,.45),0 0 0 6px rgba(56,189,248,.22)}' +
     '#aire-chat-btn:focus-visible,#aire-chat button:focus-visible,#aire-chat input:focus-visible{outline:3px solid #7dd3fc;outline-offset:3px}' +
     '#aire-chat-tip{position:fixed;right:88px;bottom:28px;z-index:90;max-width:230px;background:#0d1524;color:#dbe2ec;border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:10px 32px 10px 14px;font:500 14px/1.4 Manrope,system-ui,sans-serif;box-shadow:0 10px 30px rgba(0,0,0,.4);opacity:0;transform:translateX(8px);transition:opacity .4s,transform .4s;pointer-events:none}' +
@@ -40,6 +43,7 @@
     '@media (max-width:760px){#aire-chat-btn{width:52px;height:52px;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px))}#aire-chat-btn svg{width:30px;height:30px}#aire-chat-tip{right:76px;bottom:calc(22px + env(safe-area-inset-bottom,0px))}#aire-chat-spacer{display:block;height:84px}}' +
     '@media (prefers-reduced-motion:reduce){#aire-chat-btn,#aire-chat-tip{transition:none}}';
 
+  var face = '<img src="/media/eva-avatar.jpg" alt="" width="60" height="60" decoding="async"><span class="ai" aria-hidden="true">AI</span>';
   var mark = '<svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true">' +
     '<path d="M13 9.5A13 13 0 1 0 27 9.5" fill="none" stroke="#38bdf8" stroke-width="4" stroke-linecap="round"/>' +
     '<circle cx="20" cy="22" r="5" fill="#38bdf8"/></svg>';
@@ -58,7 +62,10 @@
     var style = el('style', {}, css);
     document.head.appendChild(style);
 
-    var btn = el('button', { id: 'aire-chat-btn', type: 'button', 'aria-label': 'Ask AiRE, our AI assistant', 'aria-expanded': 'false', 'aria-controls': 'aire-chat' }, mark);
+    var btn = el('button', { id: 'aire-chat-btn', type: 'button', 'aria-label': 'Ask AiRE, our AI assistant', 'aria-expanded': 'false', 'aria-controls': 'aire-chat' }, face);
+    // If the photo can't load, fall back to the AiRE mark.
+    var faceImg = btn.querySelector('img');
+    if (faceImg) faceImg.addEventListener('error', function () { btn.innerHTML = mark; });
     var tip = el('div', { id: 'aire-chat-tip', role: 'status' }, 'Questions about the courses? <b>Ask AiRE.</b><button type="button" aria-label="Dismiss">&times;</button>');
     var panel = el('section', { id: 'aire-chat', role: 'dialog', 'aria-label': 'AiRE course assistant' },
       '<div class="hd">' + mark + '<div><strong>AiRE</strong><small>AI assistant &middot; course questions</small></div><button class="x" type="button" aria-label="Close">&times;</button></div>' +
