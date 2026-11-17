@@ -223,3 +223,15 @@ summary:active{opacity:.75}
 
 /* While the phone menu is open, the AiRE chat button steps aside. */
 html.mx-menu-open #aire-chat-btn,html.mx-menu-open #aire-chat-tip{opacity:0!important;transform:scale(.9)!important;pointer-events:none!important}
+
+/* ---------- Calm pass: motion that plays, then rests ---------- */
+/* Apple's rule: motion earns its place. Effects that looped forever now play a
+   few times when the page opens and then settle, so the page goes still while
+   people read. Content strips (ticker, video strip) and the diagram drawings
+   still move; they carry information. */
+.btn.pri,.apply{animation-iteration-count:2}          /* glow breathes twice */
+h1 em.cc{animation-iteration-count:1}                 /* one shimmer sweep */
+.dotpulse{animation-iteration-count:3}                /* three pulses by the logo */
+.hscan{animation-iteration-count:2;animation-fill-mode:forwards} /* two sweeps, then out of view */
+.scrollmark::after{animation-iteration-count:3}       /* scroll cue nudges three times */
+.tex::after{animation:none}                           /* film grain stays as a still texture */
