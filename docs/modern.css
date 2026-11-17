@@ -147,3 +147,76 @@ summary:active{opacity:.75}
 @media (prefers-contrast:more){
   .nav,.nav.stuck{background:#04070d!important;border-bottom-color:rgba(255,255,255,.5)!important}
 }
+
+/* ---------- Phone menu (phone-menu.js) ---------- */
+/* Hidden on wide screens, where the bar already shows every link. */
+.mx-menubtn,.mx-scrim,.mx-menu{display:none}
+@media (max-width:860px){
+  /* A page with one link keeps it in the bar. */
+  .navlinks a.mx-solo{display:inline!important}
+
+  .mx-menubtn{display:inline-flex;align-items:center;gap:9px;font:600 .9rem/1 var(--mn,Manrope),system-ui,sans-serif;
+    color:#fff;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:999px;
+    padding:9px 14px;min-height:40px;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+  .mx-menubtn:active{transform:scale(.97);transition:transform 100ms ease-out}
+  .mx-menubtn:focus-visible{outline:2px solid var(--sig,#38bdf8);outline-offset:3px}
+  .mx-burger{position:relative;width:14px;height:10px}
+  .mx-burger i{position:absolute;left:0;right:0;height:2px;border-radius:2px;background:currentColor;
+    transition:transform .24s cubic-bezier(.23,1,.32,1),top .24s cubic-bezier(.23,1,.32,1)}
+  .mx-burger i:first-child{top:1px} .mx-burger i:last-child{top:7px}
+  .mx-menu-open .mx-burger i:first-child{top:4px;transform:rotate(45deg)}
+  .mx-menu-open .mx-burger i:last-child{top:4px;transform:rotate(-45deg)}
+
+  /* Dim the page behind, so the menu is the one thing in focus. */
+  .mx-scrim{display:block;position:fixed;inset:0;z-index:68;background:rgba(2,4,8,.5);
+    opacity:0;pointer-events:none;transition:opacity .22s ease}
+  .mx-menu-open .mx-scrim{opacity:1;pointer-events:auto}
+
+  /* The panel drops from the top bar, under the Menu button, and goes back the same way. */
+  .mx-menu{display:block;position:fixed;z-index:69;right:12px;left:12px;
+    top:calc(env(safe-area-inset-top,0px) + var(--nav,60px) + 8px);
+    max-height:calc(100dvh - var(--nav,60px) - 32px);overflow:auto;overscroll-behavior:contain;
+    padding:8px;border-radius:18px;background:rgba(8,12,22,.84);
+    backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);
+    border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 60px -20px rgba(0,0,0,.8),0 0 0 1px rgba(56,189,248,.08);
+    transform-origin:top right;opacity:0;transform:translateY(-8px) scale(.97);visibility:hidden;
+    transition:opacity .18s ease,transform .18s cubic-bezier(.23,1,.32,1),visibility 0s linear .18s}
+  .mx-menu-open .mx-menu{opacity:1;transform:none;visibility:visible;
+    transition:opacity .24s ease,transform .32s cubic-bezier(.23,1,.32,1),visibility 0s}
+  .mx-menu nav{display:flex;flex-direction:column}
+  .mx-menu a,.mx-menumotion{display:flex;align-items:center;min-height:48px;padding:0 14px;border-radius:12px;
+    font:600 1.05rem/1.2 var(--mn,Manrope),system-ui,sans-serif;letter-spacing:0;color:#f1f5f9;text-decoration:none;
+    -webkit-tap-highlight-color:transparent;touch-action:manipulation}
+  .mx-menu a:active,.mx-menumotion:active{background:rgba(56,189,248,.14)}
+  .mx-menu a:focus-visible,.mx-menumotion:focus-visible{outline:2px solid var(--sig,#38bdf8);outline-offset:-2px}
+  .mx-menu a+a{border-top:1px solid rgba(255,255,255,.06)}
+  .mx-menumotion{width:100%;gap:10px;margin-top:6px;border:0;border-top:1px solid rgba(255,255,255,.1);border-radius:0 0 12px 12px;
+    background:none;font-size:.9rem;color:#94a3b8;cursor:pointer}
+  .mx-menumotion i{width:7px;height:7px;border-radius:50%;background:var(--sig,#38bdf8)}
+  .mx-menumotion[aria-pressed="false"] i{background:#475569}
+  html.mx-menu-open,html.mx-menu-open body{overflow:hidden}
+}
+/* Narrow phones: the bar is full, so the button keeps only its icon (screen readers still hear "Menu"). */
+@media (max-width:520px){
+  .mx-menubtn{width:42px;height:42px;padding:0;justify-content:center}
+  .mx-menulabel{display:none}
+  .navlinks{gap:10px}
+}
+/* Smallest phones (iPhone SE, small Androids): win back room so Enroll stays on screen. */
+@media (max-width:380px){
+  .nav{gap:10px}
+  .nav .dotpulse{display:none}
+  .navlinks{gap:6px}
+  .mx-menubtn{width:38px;height:38px;min-height:38px}
+  .navlinks .apply{padding-inline:12px}
+}
+@media (max-width:860px) and (prefers-reduced-motion:reduce){
+  .mx-menu,.mx-menu-open .mx-menu{transform:none}
+  .mx-burger i{transition:none}
+}
+@media (max-width:860px) and (prefers-reduced-transparency:reduce){
+  .mx-menu{background:#0b111c;backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+@media (max-width:860px) and (prefers-contrast:more){
+  .mx-menu{background:#04070d;border-color:rgba(255,255,255,.6)}
+}
