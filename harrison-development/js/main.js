@@ -60,9 +60,16 @@
   /* ---------- Mobile navigation ---------- */
   var toggle = $("navToggle"), nav = $("siteNav");
   if (toggle && nav) {
-    var setOpen = function (open) { nav.classList.toggle("open", open); toggle.setAttribute("aria-expanded", String(open)); };
+    var setOpen = function (open) {
+      nav.classList.toggle("open", open); toggle.setAttribute("aria-expanded", String(open));
+      if (open) { var first = nav.querySelector("a"); if (first) first.focus({ preventScroll: true }); }
+    };
     toggle.addEventListener("click", function () { setOpen(toggle.getAttribute("aria-expanded") !== "true"); });
     nav.addEventListener("click", function (e) { if (e.target.closest("a")) setOpen(false); });
+    // A tap anywhere outside the open menu closes it.
+    doc.addEventListener("click", function (e) {
+      if (toggle.getAttribute("aria-expanded") === "true" && !nav.contains(e.target) && !toggle.contains(e.target)) setOpen(false);
+    });
     doc.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") { setOpen(false); toggle.focus(); }
     });
