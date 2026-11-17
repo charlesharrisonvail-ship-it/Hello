@@ -148,6 +148,7 @@
   /* ---------- Background footage: lazy, muted, plays only in view; one switch pauses all motion ---------- */
   var bgVideos = Array.prototype.slice.call(doc.querySelectorAll("video[data-bg]"));
   var motionToggle = $("motionToggle");
+  var navMotion = null;
   var motionPaused = false;
   try { motionPaused = localStorage.getItem("hdMotion") === "paused"; } catch (e) {}
   var inView = [];
@@ -168,6 +169,7 @@
     motionPaused = p;
     root.classList.toggle("motion-paused", p);
     if (motionToggle) { motionToggle.setAttribute("aria-pressed", String(p)); motionToggle.textContent = p ? "Play motion" : "Pause motion"; }
+    if (navMotion) { navMotion.setAttribute("aria-pressed", String(p)); navMotion.textContent = p ? "Play motion" : "Pause motion"; }
     if (save) { try { localStorage.setItem("hdMotion", p ? "paused" : "on"); } catch (e) {} }
     syncVideos();
   };
@@ -185,6 +187,24 @@
   if (motionToggle && !reduce) {
     motionToggle.hidden = false;
     motionToggle.addEventListener("click", function () { applyMotion(!motionPaused, true); });
+    // Phones: the same switch also lives in the menu, so it is reachable from the top of the page.
+    var navList = nav ? nav.querySelector("ul") : null, ctaLi = navList ? navList.querySelector(".nav-cta") : null;
+    if (navList) {
+      var li = doc.createElement("li"); li.className = "nav-motion-item";
+      navMotion = doc.createElement("button"); navMotion.type = "button"; navMotion.className = "nav-motion";
+      navMotion.addEventListener("click", function () { applyMotion(!motionPaused, true); });
+      li.appendChild(navMotion);
+      navList.insertBefore(li, ctaLi ? ctaLi.parentNode : null);
+    }
+    // Phones: the floating button steps aside while the opening screen (and its buttons) is in view.
+    var heroEl = $("hero"), phoneMq = window.matchMedia ? window.matchMedia("(max-width: 899px)") : { matches: false };
+    var placeMotion = function () {
+      var away = phoneMq.matches && heroEl && window.scrollY < heroEl.offsetHeight * 0.6;
+      motionToggle.classList.toggle("mt-away", !!away);
+    };
+    window.addEventListener("scroll", placeMotion, { passive: true });
+    if (phoneMq.addEventListener) phoneMq.addEventListener("change", placeMotion);
+    placeMotion();
   }
   applyMotion(motionPaused, false);
 
