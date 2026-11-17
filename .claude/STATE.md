@@ -41,14 +41,14 @@ not rule on it, so ask rather than pick.
 
 ## Working thread (auto-banked)
 
-### banked 2026-10-10 18:54
-(compaction point -- the thread above this line was summarised; anything not written down here is gone)
-
-
 ### banked 2026-10-10 19:18
 (compaction point -- the thread above this line was summarised; anything not written down here is gone)
 
 
 ### banked 2026-11-10 02:34
+(compaction point -- the thread above this line was summarised; anything not written down here is gone)
+
+
+### banked 2026-11-17 17:21
 (compaction point -- the thread above this line was summarised; anything not written down here is gone)
 
