@@ -15,24 +15,32 @@
     aurora.className = 'mx-aurora';
     aurora.innerHTML = '<i></i><i></i><i></i>';
     document.body.appendChild(aurora);
-    var bar = document.createElement('div');
-    bar.className = 'mx-progress';
-    document.body.appendChild(bar);
+    var bar = null;
+    if (!document.getElementById('prog')) {
+      bar = document.createElement('div');
+      bar.className = 'mx-progress';
+      document.body.appendChild(bar);
+    }
 
-    // Particle canvas for bursts.
-    var cv = document.createElement('canvas');
-    cv.className = 'mx-burst';
-    cv.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(cv);
-    var ctx = cv.getContext('2d');
+    // Particle canvas for bursts: built the first time a burst is asked for, not on every page load.
+    var cv = null, ctx = null;
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
     function size() { cv.width = innerWidth * dpr; cv.height = innerHeight * dpr; }
-    size();
-    window.addEventListener('resize', size);
+    function ensureCanvas() {
+      if (cv) return;
+      cv = document.createElement('canvas');
+      cv.className = 'mx-burst';
+      cv.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(cv);
+      ctx = cv.getContext('2d');
+      size();
+      window.addEventListener('resize', size);
+    }
 
     var parts = [], rings = [], running = false;
     function burst(x, y, opts) {
       if (motionOff()) return;
+      ensureCanvas();
       opts = opts || {};
       var n = opts.count || 70, power = opts.power || 7;
       var palette = opts.colors || COLORS;
@@ -77,6 +85,7 @@
 
     // Scroll progress.
     function onScroll() {
+      if (!bar) return;
       var max = root.scrollHeight - innerHeight;
       bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, scrollY / max) : 0) + ')';
     }
@@ -87,6 +96,7 @@
     if (window.matchMedia && window.matchMedia('(hover: hover)').matches) {
       document.querySelectorAll('.card,.tier,.mod,.pc,.quote,.truth,.svc>div,.grid>div').forEach(function (el) {
         el.classList.add('mx-lit');
+        el.addEventListener('pointerenter', function () { el.classList.add('mx-track'); });
         el.addEventListener('pointermove', function (e) {
           var r = el.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
           el.style.setProperty('--mx', x + 'px');
@@ -95,7 +105,7 @@
           var rx = ((y / r.height) - 0.5) * -5, ry = ((x / r.width) - 0.5) * 5;
           el.style.transform = 'perspective(900px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateY(-3px)';
         });
-        el.addEventListener('pointerleave', function () { el.style.transform = ''; });
+        el.addEventListener('pointerleave', function () { el.classList.remove('mx-track'); el.style.transform = ''; });
       });
     }
   }

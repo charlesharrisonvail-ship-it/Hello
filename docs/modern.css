@@ -63,14 +63,15 @@ h1 em.cc{background-image:linear-gradient(90deg,#38bdf8,#a78bfa,#f472b6,#a78bfa,
 @keyframes mx-shimmer{to{background-position:200% center}}
 
 /* Cards: a spotlight follows the cursor, and they tilt gently. */
-.mx-lit{transition:transform .25s ease, box-shadow .25s ease;will-change:transform}
+.mx-lit{transition:transform .45s cubic-bezier(.23,1,.32,1), box-shadow .25s ease}
+.mx-lit.mx-track{transition:transform 80ms linear, box-shadow .25s ease}
 .mx-lit:hover{box-shadow:0 30px 60px -28px rgba(56,189,248,.45), 0 0 0 1px rgba(56,189,248,.25)}
 .mx-lit{background-image:radial-gradient(420px circle at var(--mx,-999px) var(--my,-999px),rgba(56,189,248,.16),transparent 45%),
   linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,0))!important}
 
 /* Prices pop when they arrive; buttons breathe. */
-.mx-pop{animation:mx-pop .7s cubic-bezier(.2,1.6,.4,1)}
-@keyframes mx-pop{0%{transform:scale(.6)}60%{transform:scale(1.12)}100%{transform:scale(1)}}
+.mx-pop{animation:mx-pop .5s cubic-bezier(.23,1,.32,1)}
+@keyframes mx-pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
 .btn.pri,.apply{animation:mx-breathe 3.2s ease-in-out infinite}
 @keyframes mx-breathe{0%,100%{box-shadow:0 8px 24px -10px rgba(56,189,248,.55)}50%{box-shadow:0 10px 34px -6px rgba(56,189,248,.9)}}
 
@@ -121,3 +122,28 @@ footer>.inner>.legal:nth-of-type(1){margin-top:10px!important}
 footer .legal{max-width:none!important;line-height:1.5!important;margin:0 0 10px!important;break-inside:avoid}
 @media (max-width:1100px){footer>.inner{column-count:2}}
 @media (max-width:640px){footer>.inner{column-count:1}}
+
+/* ---------- Feel pass (Apple's fluid-interface rules, Nov 2026) ---------- */
+/* Feedback on the press, not the release: anything tappable sinks slightly the
+   instant it is pressed. No grey flash or 300ms wait on phones. */
+.btn,.apply,.mtoggle,summary,.navlinks a,.mchip{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.btn:active,.apply:active,.mtoggle:active{transform:scale(.97)!important;transition:transform 100ms ease-out!important}
+summary:active{opacity:.75}
+
+/* Hover lifts only where there is a real pointer; on phones they stuck after a tap. */
+@media (hover:none){
+  .btn.pri:hover,.btn.sec:hover{transform:none}
+  .mx-lit:hover{box-shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 20px 40px -24px rgba(0,0,0,.6)}
+}
+
+/* The top bar is a material: a little more blur and colour, content scrolls under it. */
+.nav{backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%)}
+
+/* Visitors who ask for less transparency or more contrast get a solid bar. */
+@media (prefers-reduced-transparency:reduce){
+  .nav,.nav.stuck{background:#04070d!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+  .mx-aurora{display:none}
+}
+@media (prefers-contrast:more){
+  .nav,.nav.stuck{background:#04070d!important;border-bottom-color:rgba(255,255,255,.5)!important}
+}
