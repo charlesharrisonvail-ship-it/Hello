@@ -33,11 +33,18 @@ caches it in `~/.cache/motion-prompt`, and runs a tiny local server on
 
 You need **Node.js 22+** (<https://nodejs.org>) and **Git**.
 
-**Option A — as a Claude Code skill (recommended).** In PowerShell:
+**Option A — as a Claude Code skill (recommended).** In a **regular**
+PowerShell (not "Run as administrator"):
 
 ```powershell
-npx skills add showheyohtaki/motion-prompt
+cd $env:USERPROFILE
+npx skills add showheyohtaki/motion-prompt -g -a claude-code -y
 ```
+
+`-g` installs it once for every project; `-a claude-code` skips the other
+agents. Run from `C:\Windows\System32` (where an admin PowerShell opens) it
+fails with `EPERM: operation not permitted, mkdir 'C:\Windows\System32\.agents'`
+— that is the folder, not the skill. Seen 2026-11-18.
 
 Then ask Claude Code: *"open the motion-prompt library"*. The gallery opens in
 your browser; tick what you like, press **Send to AI**, and tell Claude what to
