@@ -17,12 +17,19 @@
         "source": "github",
         "repo": "affaan-m/ECC"
       }
+    },
+    "lemolab": {
+      "source": {
+        "source": "github",
+        "repo": "lemomo-ai/lemo-opuscar"
+      }
     }
   },
   "enabledPlugins": {
     "superpowers@superpowers-marketplace": true,
     "ponytail@ponytail": true,
-    "ecc@ecc": true
+    "ecc@ecc": true,
+    "lemo-opuscar@lemolab": true
   },
   "hooks": {
     "SessionStart": [
