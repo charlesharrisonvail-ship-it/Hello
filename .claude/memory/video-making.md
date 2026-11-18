@@ -13,5 +13,9 @@ door for any video request; it routes to the right tool, including his own
   (plugin `lemo-opuscar@lemolab`), Claude Animation Base (`tools/claude-animation-base/`).
 - Collage B-Roll was installed, then removed the same day: Charles doesn't need
   it. Don't reinstall it. For a collage look use HyperFrames `style-sampling`.
+- 2026-11-18, at his word: the skill also routes to everything else he has for
+  video - Remotion plugin, video-shotcraft, slack-gif-creator, Figma motion,
+  epique-billboard-reveal, Null Motion / Freefield / Open Generative AI (laptop),
+  and Higgsfield, HeyGen, HyperFrames-hosted and OpusClip (credits: quote first).
 - Clawd, the character in Claude Animation Base, is Anthropic's - keep it out of
   his brand videos.
