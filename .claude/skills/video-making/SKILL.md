@@ -1,6 +1,6 @@
 ---
 name: video-making
-description: Charles Harrison's normal video making skill - the front door for any video, reel, short, film, explainer, promo, B-roll, animation or music video for EpiVail, AiRE Estate or Harrison Development. Use it whenever Charles asks to make, cut, animate or render a video and has not named one tool. It picks the right installed tool (Collage B-Roll, HyperFrames, Take One, Claude Animation Base, Lemo-Opuscar, it-reelsmaker, remotion-epivail-video), keeps the free route first, and keeps each brand's rules apart.
+description: Charles Harrison's normal video making skill - the front door for any video, reel, short, film, explainer, promo, B-roll, animation or music video for EpiVail, AiRE Estate or Harrison Development. Use it whenever Charles asks to make, cut, animate or render a video and has not named one tool. It picks the right installed tool (HyperFrames, Take One, Claude Animation Base, Lemo-Opuscar, it-reelsmaker, remotion-epivail-video), keeps the free route first, and keeps each brand's rules apart.
 ---
 
 # Video making
@@ -30,10 +30,9 @@ tool's own skill and follow it. Everything here is installed in this repo
 | HTML/GSAP motion graphics, kinetic type, captions, charts, title cards; or rebuilding a video he likes | **HyperFrames**: `hyperframes` first, then `hyperframes-cli`, `hyperframes-registry`, `media-use`, `reverse-any-video`, `style-sampling`, `remotion-to-hyperframes`, `slideshow`, `hyperframes-figma` | Free, local (`npx hyperframes`) |
 | A film in a named look (oil paint, watercolor, ukiyo-e, satellite briefing, product teardown - 99 styles) | **Lemo-Opuscar**: `/lemo-opuscar:lemo-opuscar` plugin | Free; styles marked ✦ need an image generator |
 | A hand-painted cartoon character acting out a moment | **Claude Animation Base**: `tools/claude-animation-base/` - read its `ANIMATION_GUIDE.md` first | Free |
-| A ~5 s halftone paper-collage B-roll insert for one voiceover line | **Collage B-Roll**: `collage-broll` skill | **Paid** - see below |
 
 Two tools that fit together: cut the reel in `it-reelsmaker`, make the inserts in
-HyperFrames, Take One or Collage B-Roll, and drop them in as B-roll.
+HyperFrames or Take One, and drop them in as B-roll.
 
 ## Money - read before any generation
 
@@ -41,10 +40,8 @@ Charles does not pay for AI generation services (`recall.py paid`). So:
 
 - Default to the free, code-rendered route. Take One, HyperFrames, Lemo-Opuscar
   and Claude Animation Base all make finished films with no paid service.
-- **Collage B-Roll** makes its stills and video through MaxFusion (Gemini Omni
-  Flash), which is paid. Its Gate 1 - proposing the visual metaphors - is free;
-  stop there and say so. For a free collage look, use HyperFrames
-  `style-sampling` (Collage Explainer) instead.
+- For a paper-collage look, use HyperFrames `style-sampling` (Collage
+  Explainer). Collage B-Roll was removed at Charles's word (2026-11-18).
 - Take One and `media-use` offer paid extras (Higgsfield, Seedance, Kling, Suno,
   ElevenLabs, HeyGen). Anything generated from a cloud session spends his
   credits: say the price first and never spend without his "go".
@@ -69,8 +66,6 @@ Claude Code; use the local skills, which write HTML he can edit and commit.
 
 ## Sources (third-party, licenses kept in each folder)
 
-- Collage B-Roll: MegaTroll222/VOX-COLLAGE-BROLL `2e9b8a9`, MIT - English version
-  of pyang5166/gbro-collage-broll -> `.claude/skills/collage-broll/` (examples not copied)
 - HyperFrames: heygen-com/hyperframes `ebddc42`, Apache-2.0 - its nine skills ->
   `.claude/skills/hyperframes*`, `media-use`, `remotion-to-hyperframes`,
   `reverse-any-video`, `slideshow`, `style-sampling` (its `figma` skill renamed
