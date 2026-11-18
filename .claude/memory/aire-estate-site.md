@@ -64,3 +64,10 @@ Privacy and terms are dated September 25, 2026.
   sign-off. It is not the EpiVail signature.
 - "Academy" appears nowhere on the site, which says "AiRE Estate". The sign-off is
   for emails only; do not rename anything on the site to match.
+
+## Chat button (2026-11-17, Charles)
+
+The AiRE chat button shows **Eva Vail's headshot** (`docs/media/eva-avatar.jpg`, cropped from
+`eva-sample-2.mp4` at 5.5s) instead of the AiRE mark, "in hopes more people click her". The bot
+keeps the AiRE name; Charles said the mismatch is fine. A small "AI" tag stays on the photo
+(label AI as AI). Do not swap in a different face without his say.

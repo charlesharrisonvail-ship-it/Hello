@@ -572,3 +572,81 @@ body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opa
 .more-go{margin-top:8px;font-weight:600;font-size:15px}
 .more-card:hover .more-go{color:var(--accent)}
 .more-note{margin:14px 0 0;font-size:14px;color:var(--paper-soft)}
+
+/* ===== Feel pass (Apple fluid-interface rules, 2026-11-17) =====
+   Adds feel, takes no motion away: Charles wants full motion here. */
+
+/* Press feedback: anything tappable gives on the press, not the release;
+   no grey tap flash or tap delay on phones. */
+.btn,.nav-cta,.nav-toggle,.motion-toggle,.faq summary,.site-nav a,.download{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+@media (prefers-reduced-motion: no-preference){
+  .btn:active,.nav-cta:active,.nav-toggle:active,.motion-toggle:active{transform:scale(.97);transition:transform 100ms ease-out}
+}
+
+/* Hover effects only where there is a real pointer; on phones they stuck after a tap. */
+@media (hover:none){
+  .btn-light:hover{transform:none}
+  .tile:hover .media{transform:none}
+  .tile:hover figcaption{translate:none}
+  .services li:hover .num{scale:none}
+}
+
+/* The header is a dark glass: content scrolls under it. Solid where the
+   browser can't blur, or the visitor asks for less transparency or more contrast. */
+.site-header{background:rgba(20,24,28,.8);-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.site-header{background:var(--charcoal)}}
+@media (prefers-reduced-transparency:reduce){.site-header{background:var(--charcoal);-webkit-backdrop-filter:none;backdrop-filter:none}}
+@media (prefers-contrast:more){.site-header{background:var(--charcoal);border-bottom-color:var(--paper-soft)}}
+
+/* Phone menu: drops from the header and goes back the same way; the icon turns into a close mark. */
+@media(max-width:899px){
+  .js .site-nav{display:block;visibility:hidden;opacity:0;transform:translateY(-8px);pointer-events:none;
+    max-height:calc(100dvh - 72px);overflow:auto;overscroll-behavior:contain;box-shadow:0 30px 60px -20px rgba(0,0,0,.7)}
+  .js .site-nav.open{visibility:visible;opacity:1;transform:none;pointer-events:auto}
+  .nav-toggle[aria-expanded="true"] .bars{background:transparent}
+  .nav-toggle[aria-expanded="true"] .bars::before{top:0;rotate:45deg}
+  .nav-toggle[aria-expanded="true"] .bars::after{top:0;rotate:-45deg}
+}
+@media (max-width:899px) and (prefers-reduced-motion: no-preference){
+  .js .site-nav{transition:opacity .18s ease,transform .18s cubic-bezier(.23,1,.32,1),visibility 0s linear .18s}
+  .js .site-nav.open{transition:opacity .24s ease,transform .32s cubic-bezier(.23,1,.32,1),visibility 0s}
+  .nav-toggle .bars,.nav-toggle .bars::before,.nav-toggle .bars::after{transition:background .2s,top .24s cubic-bezier(.23,1,.32,1),rotate .24s cubic-bezier(.23,1,.32,1)}
+}
+/* Pause motion: the menu still opens, with a plain fade and no slide. */
+html.motion-paused .site-nav{transform:none!important}
+
+/* Tracking follows size: big display type stays tight, small headings ease off a little. */
+h3{letter-spacing:-.015em}
+
+/* Narrow phones: the descriptor wraps to a second line instead of running
+   under the menu button (it overlapped on phones 390px wide and narrower). */
+@media(max-width:899px){
+  .brand{min-width:0;flex:1 1 auto}
+  .brand-text{min-width:0}
+  .brand-desc{white-space:normal!important;text-wrap:balance}
+  .nav-toggle{flex:none}
+}
+/* The phone sizes above (line 42) were overridden by the general .brand-name /
+   .brand-desc rules that follow them; restate them here so they apply. */
+@media(max-width:419px){.brand-name{font-size:10.5px;letter-spacing:.05em}.brand-desc{font-size:11.5px}}
+
+/* Pause motion on phones: a small glass circle with a symbol (screen readers still
+   hear "Pause motion"), out of the way while the opening screen is in view, and
+   also offered in the menu. Desktop keeps the labeled pill. */
+.nav-motion-item{display:none}
+@media(max-width:899px){
+  .motion-toggle{width:44px;height:44px;min-height:44px;padding:0;font-size:0;display:grid;place-items:center;
+    left:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));background:rgba(14,17,20,.72);
+    -webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);
+    transition:opacity .25s ease,translate .25s cubic-bezier(.23,1,.32,1)}
+  .motion-toggle[hidden]{display:none}
+  .motion-toggle::before{content:"";width:12px;height:14px;border-left:4px solid currentColor;border-right:4px solid currentColor;box-sizing:border-box}
+  .motion-toggle[aria-pressed="true"]::before{width:0;height:0;border:0;border-left:13px solid currentColor;border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:4px}
+  .motion-toggle.mt-away{opacity:0;translate:0 8px;pointer-events:none}
+  .js .nav-motion-item{display:block}
+  .nav-motion{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line-dark);
+    padding:16px 4px;font:400 18px/1.2 var(--sans);color:var(--paper-soft);cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+  .site-footer{padding-bottom:88px}
+}
+@media (max-width:899px) and (prefers-reduced-transparency:reduce){.motion-toggle{background:#0E1114;-webkit-backdrop-filter:none;backdrop-filter:none}}
+@media (hover:none){.motion-toggle:hover{border-color:var(--line-light);color:var(--paper)}}
