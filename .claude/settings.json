@@ -17,12 +17,19 @@
         "source": "github",
         "repo": "affaan-m/ECC"
       }
+    },
+    "cli-anything": {
+      "source": {
+        "source": "github",
+        "repo": "HKUDS/CLI-Anything"
+      }
     }
   },
   "enabledPlugins": {
     "superpowers@superpowers-marketplace": true,
     "ponytail@ponytail": true,
-    "ecc@ecc": true
+    "ecc@ecc": true,
+    "cli-anything@cli-anything": true
   },
   "hooks": {
     "SessionStart": [
