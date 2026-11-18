@@ -1,6 +1,6 @@
 ---
 name: video-making
-description: Charles's normal video making skill (video-making) and the five video tools installed 2026-11-18 - HyperFrames, One take, Claude Animation Base, Lemo-Opuscar - all free; Collage B-Roll removed
+description: Charles's normal video making skill (video-making) and the four video tools installed 2026-11-18 - HyperFrames, One take, Claude Animation Base, Lemo-Opuscar - all free; Collage B-Roll removed
 ---
 
 On 2026-11-18 Charles asked to install HyperFrames, One take,
