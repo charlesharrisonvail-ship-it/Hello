@@ -27,7 +27,7 @@ disagree, the newer dated line in the memory file wins.
 - **Name:** Harrison Development. Monogram: HD.
 - **Descriptor:** Development Advisory & Project Sales (Charles's wording, 2026-11-12). At his request the descriptor line on every logo file was re-lettered to match (`harrison-development/tools/relabel-logos.py`, Montserrat); the monogram, mountains, name and web address are his originals, untouched.
 - **Site:** https://harrisondev.org (the only address to print or link).
-- **Charles's title:** exactly `Owner, CEO`. Nothing appended. No LLC claim.
+- **Charles's title:** `Owner, Harrison Development` and `Area Leader, Epique Realty Colorado` (Charles, 2026-11-18; replaces "Owner, CEO"). He is the broker: never "licensed agent", never "brokerage services provided through Epique Realty". No LLC claim.
 - **Positioning line:** Knows the market. Teaches the AI. Carries the sale.
 - **Service area:** Colorado statewide, with a focus on the mountain markets.
 - **Attribution:** Led by Charles Harrison. Real estate brokerage services
