@@ -25,3 +25,12 @@ Earth Studio shows the imagery Google has, which is mostly summer; it cannot mak
 winter.
 
 `make_esp.py` regenerates the project file (`python3 make_esp.py`, needs `pyproj`).
+
+## Finished (2026-11-19)
+
+Charles rendered the project in Earth Studio and put the MP4 in Google Drive.
+Claude added the pin, titles and closing card with `titles.js` (Playwright, transparent
+PNGs) and ffmpeg overlays timed to the shots: `../output/vail-valley-google-earth.mp4`.
+Google's own "Google Earth" logo and imagery credits stay on every frame.
+The Drive copy was set to "anyone with the link can view" so it could be downloaded;
+Charles can set it back to private in Drive.
