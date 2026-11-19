@@ -1,0 +1,127 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#9cc3e6;font-family:Inter,sans-serif}
+  canvas{display:block}
+  .pin{position:absolute;top:150px;width:100%;text-align:center;color:#fff;font:600 40px Inter;text-shadow:0 2px 8px rgba(0,0,0,.7);letter-spacing:.5px}
+  .title{position:absolute;left:0;right:0;top:1080px;text-align:center;color:#fff;opacity:0;padding:0 60px}
+  .big{font:800 96px 'Inter Display',Inter;line-height:1.05;text-shadow:0 4px 18px rgba(0,0,0,.75),0 0 3px rgba(0,0,0,.6)}
+  .small{font:italic 600 52px Inter;margin-top:18px;text-shadow:0 3px 12px rgba(0,0,0,.8)}
+  .credit{position:absolute;left:36px;bottom:300px;color:rgba(255,255,255,.85);font:500 24px Inter;text-shadow:0 1px 4px rgba(0,0,0,.8)}
+  .sig{font:700 40px Inter;white-space:nowrap;margin-top:34px;text-shadow:0 3px 12px rgba(0,0,0,.85)}
+  #shade{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0) 45%,rgba(0,0,0,.45) 100%);opacity:0}
+</style></head>
+<body>
+<div id="shade"></div>
+<div class="pin">📍 Vail Valley, Colorado</div>
+<div class="credit">Terrain: USGS 3DEP · Imagery: USDA NAIP</div>
+<div id="titles"></div>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js"}}</script>
+<script type="module">
+import * as THREE from 'three';
+const W=29120, H=13764, NX=1456, NY=688;   // metres, DEM cells (UTM 13N)
+const FPS=30, TOTAL=1260;
+
+// ---------- terrain ----------
+const dem = new Float32Array(await (await fetch('data/dem.f32')).arrayBuffer());
+const step=2, gx=Math.floor((NX-1)/step), gy=Math.floor((NY-1)/step);
+const geo=new THREE.PlaneGeometry(W,H,gx,gy); geo.rotateX(-Math.PI/2);
+const pos=geo.attributes.position;
+for(let j=0;j<=gy;j++)for(let i=0;i<=gx;i++){
+  const k=j*(gx+1)+i; pos.setY(k, dem[(j*step)*NX + i*step]);
+}
+geo.translate(W/2,0,-H/2); geo.computeVertexNormals();   // x=east 0..W, z=-north
+function elev(e,n){ const i=Math.min(NX-1,Math.max(0,Math.round(e/W*(NX-1)))), j=Math.min(NY-1,Math.max(0,Math.round((H-n)/H*(NY-1)))); return dem[j*NX+i]; }
+
+const tex=await new THREE.TextureLoader().loadAsync('data/photo.jpg');
+tex.colorSpace=THREE.SRGBColorSpace; tex.anisotropy=8;
+const mat=new THREE.MeshLambertMaterial({map:tex});
+const scene=new THREE.Scene();
+scene.add(new THREE.Mesh(geo,mat));
+// wide, low-res backdrop so the map never ends on screen
+{
+  const WW=69125, WH=53764, MX=1152, MY=896;
+  const dw=new Float32Array(await (await fetch('data/demw.f32')).arrayBuffer());
+  const g2=new THREE.PlaneGeometry(WW,WH,MX-1,MY-1); g2.rotateX(-Math.PI/2);
+  const p2=g2.attributes.position;
+  for(let j=0;j<MY;j++)for(let i=0;i<MX;i++){const k=j*MX+i; const e=-20000+i/(MX-1)*WW, n=-20000+WH-j/(MY-1)*WH;
+    const inside=e>200&&e<W-200&&n>200&&n<H-200; p2.setY(k, dw[k]-(inside?60:4));}
+  g2.translate(-20000+WW/2,0,20000-WH/2); g2.computeVertexNormals();
+  const t2=await new THREE.TextureLoader().loadAsync('data/photow.jpg'); t2.colorSpace=THREE.SRGBColorSpace;
+  scene.add(new THREE.Mesh(g2,new THREE.MeshLambertMaterial({map:t2})));
+}
+scene.add(new THREE.HemisphereLight(0xdfeaff,0x6b5a40,1.9));
+const sun=new THREE.DirectionalLight(0xfff2dc,1.6); sun.position.set(-1,0.9,0.6); scene.add(sun);
+scene.background=new THREE.Color(0xa9cbe8);
+scene.fog=new THREE.Fog(0xb9d3ea,14000,52000);
+
+const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});
+renderer.setSize(1080,1920); document.body.prepend(renderer.domElement);
+const cam=new THREE.PerspectiveCamera(50,1080/1920,20,120000);
+
+// ---------- camera path (east, north, height-above-sea) ----------
+const L={vail:[21960,8453],bowls:[23541,3955],bc:[9682,4642],arrow:[5900,7400]};
+const v3=(e,n,h)=>new THREE.Vector3(e,h,-n);
+const KP=[], KT=[], KF=[];
+function key(f,p,t){KF.push(f);KP.push(v3(...p));KT.push(v3(...t));}
+function orbit(f0,f1,c,r,h,a0,a1,th,n=5){ for(let s=0;s<n;s++){const u=s/(n-1),a=(a0+(a1-a0)*u)*Math.PI/180;
+  key(f0+(f1-f0)*u,[c[0]+r*Math.sin(a),c[1]+r*Math.cos(a),h],[c[0],c[1],th]);}}
+// 1 opener: high over west valley, looking east toward Vail, descending
+key(0,   [2000,15500,7600],[17000,6500,2600]);
+key(150, [9000,13500,5400],[21000,6500,2600]);
+// 2 orbit Vail Village from the north (mountain behind the village)
+orbit(190,360,L.vail,4200,3900,-30,35,2700);
+// 3 glide south over the Back Bowls
+key(400, [25500,6500,4300],[23500,2500,3000]);
+key(500, [26000,2500,4400],[21500,1200,3000]);
+// 4 swing west down the valley toward Avon
+key(560, [22000,9500,4700],[12000,5500,2600]);
+key(640, [15500,9500,4300],[9682,4642,2700]);
+// 5 orbit Beaver Creek Village
+orbit(690,840,L.bc,3800,3700,15,-40,2600);
+// 6 glide across to Arrowhead
+key(890, [8500,11800,3800],[6800,6300,2800]);
+key(980, [4800,11600,3700],[6800,6000,2900]);
+// 7 pull back high to show all three
+key(1080,[2000,13800,6200],[13000,5500,2800]);
+key(1260,[-3000,17000,10500],[14500,5800,2800]);
+
+function smooth(t){return t*t*(3-2*t);}
+function sample(arr,f){
+  let i=0; while(i<KF.length-2 && f>KF[i+1]) i++;
+  const f0=KF[i], f1=KF[i+1]; const u=smooth(Math.min(1,Math.max(0,(f-f0)/(f1-f0))));
+  const p0=arr[Math.max(0,i-1)], p1=arr[i], p2=arr[i+1], p3=arr[Math.min(arr.length-1,i+2)];
+  const c=new THREE.Vector3(); // centripetal-ish catmull-rom
+  const t=u, t2=t*t, t3=t2*t;
+  for(const ax of ['x','y','z']) c[ax]=0.5*((2*p1[ax])+(-p0[ax]+p2[ax])*t+(2*p0[ax]-5*p1[ax]+4*p2[ax]-p3[ax])*t2+(-p0[ax]+3*p1[ax]-3*p2[ax]+p3[ax])*t3);
+  return c;
+}
+
+// ---------- titles ----------
+const T=[
+  [10,140,'The Vail Valley','Colorado'],
+  [195,355,'Vail Mountain','Vail Village &amp; the Front Side'],
+  [405,520,'The Back Bowls','Where the powder days go'],
+  [560,660,'','Heading west down the valley…'],
+  [695,860,'Beaver Creek','Not exactly roughing it'],
+  [880,1010,'Arrowhead','The quiet side of Beaver Creek'],
+  [1070,1260,'Three mountains.<br>One valley.','',true],
+];
+const box=document.getElementById('titles');
+const els=T.map(([a,b,big,small,sig])=>{const d=document.createElement('div');d.className='title';
+  d.innerHTML=(big?`<div class="big">${big}</div>`:'')+(small?`<div class="small">${small}</div>`:'')+(sig?`<div class="sig">Charles Harrison, Epique Area/Growth Leader</div>`:'');
+  box.appendChild(d);return d;});
+const shade=document.getElementById('shade');
+
+window.renderFrame=(f)=>{
+  const p=sample(KP,f), t=sample(KT,f);
+  const g=elev(p.x,-p.z)+250; if(p.y<g) p.y=g;   // never dip under the ground
+  cam.position.copy(p); cam.lookAt(t); renderer.render(scene,cam);
+  let any=0;
+  T.forEach(([a,b],i)=>{const fade=14; let o=0;
+    if(f>=a&&f<=b) o=Math.min(1,(f-a)/fade, b>=TOTAL-1?1:(b-f)/fade);
+    els[i].style.opacity=o; els[i].style.transform=`translateY(${(1-o)*24}px)`; any=Math.max(any,o);});
+  shade.style.opacity=any;
+};
+window.TOTAL=TOTAL; window.ready=true;
+</script></body></html>

@@ -173,3 +173,13 @@ Rough timing for a 40-second reel (1,200 frames), to match `reel-copy.md`:
 Posting is Charles's call. Check the closing card signature reads exactly
 **Charles Harrison, Epique Area/Growth Leader**, and nothing says "Epique
 Mountain Collective".
+
+## The finished reel (already made)
+
+`output/vail-valley-flyover.mp4` is the finished reel: 42 seconds, 1080 × 1920,
+30 fps, no music. Claude rendered it on 2026-11-19 using the code in `render/`
+(Three.js in headless Chromium, `node render.js 0 1260 1 frames`, then ffmpeg).
+The map data it reads is not committed; it came from the USGS 3DEP elevation
+and USGS NAIP imagery ImageServers (`exportImage`, UTM 13N, EPSG:26913) and goes
+in `render/data/` to re-render. The Blender steps above are only needed if
+Charles wants to make a different one himself.
