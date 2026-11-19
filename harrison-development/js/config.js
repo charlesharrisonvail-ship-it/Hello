@@ -73,6 +73,13 @@ window.HD_CONFIG = {
   // while a pitch is still awaiting a reply. See docs/LAUNCH-CHECKLIST.md before publishing.
   showConcepts: true,
 
+  // AI-Assisted Creative showcase (before/after sliders inside Services). Empty = the block stays hidden.
+  // Each entry: before (source photo path), after (AI concept made from it, e.g. in ComfyUI on Charles's
+  // laptop), title, credit (source photo credit; CC BY needs it plus "adapted"). Only images Charles approved.
+  // Example: { before: "assets/media/eagle-river-minturn.webp", after: "assets/media/creative/minturn-dusk.webp",
+  //            title: "Same view, winter dusk", credit: "Source photo: Jeffrey Beall, CC BY 4.0, adapted with AI." }
+  creative: [],
+
   // Staging safety: the preview ribbon is shown until set to false at an authorized launch.
   // Also remove the robots noindex meta tag and robots.txt Disallow at launch.
   previewBanner: false

@@ -48,6 +48,27 @@
     doc.querySelectorAll("[data-concepts], [data-concepts-nav], [data-concepts-link]").forEach(function (el) { el.hidden = true; });
   }
 
+  // AI-Assisted Creative showcase: before/after sliders, only for configured, approved images.
+  var cw = doc.querySelector("[data-creative]"), cg = doc.querySelector("[data-creative-grid]");
+  var items = (cfg.creative || []).filter(function (c) { return c && c.before && c.after; });
+  if (cw && cg && items.length) {
+    items.forEach(function (c, i) {
+      var t = c.title || "Concept " + (i + 1);
+      var f = doc.createElement("figure"); f.className = "compare rv";
+      f.innerHTML = '<div class="compare-box" style="--pos:50%">' +
+        '<img src="' + esc(c.before) + '" alt="Source photograph: ' + esc(t) + '" loading="lazy">' +
+        '<img class="compare-after" src="' + esc(c.after) + '" alt="AI-generated concept: ' + esc(t) + '" loading="lazy">' +
+        '<span class="compare-tag compare-tag-l" aria-hidden="true">Photo</span><span class="compare-tag compare-tag-r" aria-hidden="true">AI concept</span>' +
+        '<span class="compare-line" aria-hidden="true"></span>' +
+        '<input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Compare photo and AI concept: ' + esc(t) + '">' +
+        '</div><figcaption><strong>' + esc(t) + '</strong>' + (c.credit ? ' <span>' + esc(c.credit) + '</span>' : '') + '</figcaption>';
+      var box = f.querySelector(".compare-box"), r = f.querySelector(".compare-range");
+      r.addEventListener("input", function () { box.style.setProperty("--pos", r.value + "%"); });
+      cg.appendChild(f);
+    });
+    cw.hidden = false;
+  }
+
   // Booking link: only ever the configured URL. Never invented.
   var bookBtn = $("bookBtn"), bookText = $("bookingText");
   if (cfg.bookingUrl && bookBtn) {
