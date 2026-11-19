@@ -183,3 +183,20 @@ The map data it reads is not committed; it came from the USGS 3DEP elevation
 and USGS NAIP imagery ImageServers (`exportImage`, UTM 13N, EPSG:26913) and goes
 in `render/data/` to re-render. The Blender steps above are only needed if
 Charles wants to make a different one himself.
+
+### Winter version (use this one)
+
+`output/vail-valley-flyover-winter.mp4` is the winter cut Charles asked for:
+snow-covered mountains so the ski runs show, and about 6,000 buildings in 3D at
+Vail Village, Lionshead, Beaver Creek, Bachelor Gulch and Arrowhead, with low
+orbits around the villages. Same length and format as above.
+
+- The snow is a winter look painted over the summer NAIP photos by
+  `render/prep_winter.py` (forest stays dark, open slopes and runs go white,
+  more snow higher up). No public-domain winter aerial photo covers the valley.
+- Building footprints come from Overture Maps (release 2026-11-18.0), which
+  carries OpenStreetMap data under the ODbL; the credit on screen reads
+  `Buildings: © OpenStreetMap contributors, Overture Maps`. Buildings are
+  flat-roofed blocks with snow on top, height from the map tags where given.
+- To re-render: run `prep_winter.py` on the downloaded data in `render/data/`,
+  then `node render.js 0 1260 1 frames` and ffmpeg (CRF 23 keeps it under 50 MB).

@@ -9,14 +9,14 @@ recruiting post.
 | Shot | Big title | Small line under it |
 |---|---|---|
 | 1 Valley opener | **The Vail Valley** | Colorado |
-| 2 Vail Mountain | **Vail Mountain** | Vail Village & the Front Side |
+| 2 Vail Village | **Vail Village** | & Lionshead |
 | 3 Back Bowls | **The Back Bowls** | Where the powder days go |
 | 4 West to Avon | *Heading west down the valley…* | — |
 | 5 Beaver Creek | **Beaver Creek** | Not exactly roughing it |
 | 6 Arrowhead | **Arrowhead** | The quiet side of Beaver Creek |
 | 7 Closing card | **Three mountains. One valley.** | Charles Harrison, Epique Area/Growth Leader |
 
-Corner credit, on screen the whole time: `Terrain: USGS 3DEP · Imagery: USDA NAIP`
+Corner credit, on screen the whole time: `Terrain: USGS 3DEP · Imagery: USDA NAIP, winter look added` / `Buildings: © OpenStreetMap contributors, Overture Maps`
 
 ## Caption
 
