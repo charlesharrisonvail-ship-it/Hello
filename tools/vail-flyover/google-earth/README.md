@@ -9,10 +9,12 @@ Earth Studio footage from promotional films and name "a real estate company show
 where their properties are located in a company video" as not allowed. Keep the
 "Google Earth" credit that Earth Studio puts on the frames.
 
+**v2 (2026-11-19):** the first path flew into ridges and circled the villages too tight. Use `vail-valley-flyover-v2.esp`; `check_path.py` checks clearance against USGS terrain.
+
 ## Steps for Charles (about 10 minutes plus render time)
 
 1. Open **earth.google.com/studio** in Chrome and sign in.
-2. **New Project → Import** (Earth Studio Project) and pick `vail-valley-flyover.esp`.
+2. **New Project → Import** (Earth Studio Project) and pick `vail-valley-flyover-v2.esp`.
 3. Press play to preview. It is 1080 × 1920, 30 fps, 42 seconds, with the same flight
    as before: Lionshead, a circle of Vail Village, the Back Bowls, west down the valley,
    a circle of Beaver Creek, Bachelor Gulch, Arrowhead, then a climb out.

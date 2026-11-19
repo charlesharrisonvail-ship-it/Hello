@@ -14,26 +14,26 @@ to_ll = Transformer.from_crs(26913, 4326, always_xy=True)
 
 KEYS = []                                      # (frame, cam(e,n,alt), target(e,n,alt))
 def key(f, p, t): KEYS.append((f, p, t))
-def orbit(f0, f1, c, r, h, a0, a1, th, n=10):
+def orbit(f0, f1, c, r, h, a0, a1, th, n=8):
     for s in range(n):
         u = s / (n - 1); a = math.radians(a0 + (a1 - a0) * u)
         key(f0 + (f1 - f0) * u, (c[0] + r * math.sin(a), c[1] + r * math.cos(a), h), (c[0], c[1], th))
 
-VV, BC = (21960, 8453), (9682, 4642)
-key(0,    (3000, 15500, 7200), (20000, 7000, 2600))   # opener, high in the west
-key(130,  (14000, 12000, 4400), (20695, 8400, 2500))
-key(200,  (18600, 10300, 3000), (20695, 8772, 2480))  # Lionshead
-orbit(250, 430, VV, 1150, 2790, -55, 45, 2510)        # circle Vail Village
-key(480,  (23200, 7000, 3500), (22600, 4300, 3300))   # up the Front Side
-key(550,  (24200, 4900, 4050), (23500, 1800, 3100))   # Back Bowls
-key(610,  (19500, 9200, 4400), (11500, 6000, 2600))   # west down the valley
-key(670,  (13200, 8700, 3500), (9682, 4642, 2600))
-orbit(715, 865, BC, 1100, 2780, 25, -60, 2480)        # circle Beaver Creek
-key(915,  (8700, 7000, 3050), (7809, 5596, 2700))     # Bachelor Gulch
-key(975,  (7000, 9300, 2800), (5748, 8074, 2280))     # Arrowhead
-key(1040, (4600, 9600, 2700), (6000, 7400, 2420))
-key(1120, (2500, 13500, 5600), (13000, 6000, 2700))   # climb out
-key(1260, (-2500, 17800, 10000), (14500, 6000, 2700))
+VV, BC, AH, BB = (21960, 8453), (9682, 4642), (5748, 8074), (23500, 3200)
+# v2 (2026-11-19): higher, wider, slower. Checked against USGS terrain: the camera
+# stays at least ~620 m above the ground along the whole spline.
+key(0,    (9000, 17000, 6200), (21500, 6500, 3000))   # opener, high in the north-west
+key(120,  (15500, 14200, 5200), (21000, 7000, 2900))
+orbit(220, 420, VV, 2800, 3800, -50, 60, 2490, 8)     # wide arc around Vail Village
+key(470,  (25600, 9600, 4500), (BB[0], BB[1], 3300))  # over the ridge to the Back Bowls
+key(545,  (26800, 6900, 4700), (23000, 2600, 3200))
+key(615,  (22000, 10600, 5000), (12000, 5500, 2700))  # west down the valley, high
+key(685,  (14500, 10300, 4300), (BC[0], BC[1], 2470))
+orbit(720, 890, BC, 2700, 3800, 25, -45, 2470, 8)     # wide arc around Beaver Creek
+key(950,  (6500, 10600, 3600), (AH[0], AH[1], 2250))  # Arrowhead
+key(1020, (3600, 10900, 3500), (6000, 7500, 2300))
+key(1110, (2000, 14500, 5500), (14000, 6000, 2800))   # climb out
+key(1260, (-1500, 18500, 8000), (15000, 6000, 2800))
 
 def ll(e, n):
     lon, lat = to_ll.transform(OX + e, OY + n); return lon, lat
