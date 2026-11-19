@@ -78,3 +78,5 @@ script read (it fetches only `raw.githubusercontent.com`, writes only its cache,
 opens your browser for `pick`); `info`, `list`, `search`, `prompt` all ran and
 loaded 240 elements across 10 packs. Not tested: `pick` in a real browser, or
 Windows itself.
+
+Installed on Charles's Windows laptop 2026-11-18 with Option A (to `~\.claude\skills\motion-prompt`). The installer's scan: Gen Safe, Socket 0 alerts, Snyk Med Risk (likely the network fetch and browser launch, both expected).
