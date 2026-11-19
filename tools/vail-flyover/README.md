@@ -200,3 +200,10 @@ orbits around the villages. Same length and format as above.
   flat-roofed blocks with snow on top, height from the map tags where given.
 - To re-render: run `prep_winter.py` on the downloaded data in `render/data/`,
   then `node render.js 0 1260 1 frames` and ffmpeg (CRF 23 keeps it under 50 MB).
+
+## Real-footage reel (current)
+
+Charles judged both 3D-map versions not realistic enough. The current reel is
+`output/vail-drone-reel.mp4`, cut from real winter drone footage of Vail; see
+[`drone-reel/README.md`](drone-reel/README.md). It covers Vail only, since no free
+Beaver Creek or Arrowhead footage was found.
