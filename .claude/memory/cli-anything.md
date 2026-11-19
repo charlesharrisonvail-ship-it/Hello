@@ -9,3 +9,4 @@ CLI-Anything (HKUDS/CLI-Anything, Apache-2.0) was added 2026-11-18 at Charles's 
 - Notes: `tools/cli-anything/README.md`. Source not vendored.
 - Charles installed CLI-Hub 0.4.1 on his Windows PC on 2026-11-19 (PowerShell, Python 3.14, pip 26.2.1). Clean install, no errors.
 - 2026-11-19: Charles ran `cli-hub list` (103 CLIs) and installed the `comfyui` CLI (`cli-anything-comfyui` 1.0.0). It needs ComfyUI running at http://localhost:8188; not yet confirmed that ComfyUI itself is running on his laptop.
+- 2026-11-19: `system info` failed (ComfyUI not running). Pointed him to ComfyUI Desktop (comfy.org/download), free, which ships AMD ROCm 7.1.1 support for Windows and Ryzen AI since v0.7.0 (Comfy blog and AMD blog, 2026-01-05). Not yet confirmed working on his Ryzen AI Pro 7.
