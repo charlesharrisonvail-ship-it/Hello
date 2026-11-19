@@ -36,3 +36,12 @@ PNGs) and ffmpeg overlays timed to the shots: `../output/vail-valley-google-eart
 Google's own "Google Earth" logo and imagery credits stay on every frame.
 The Drive copy was set to "anyone with the link can view" so it could be downloaded;
 Charles can set it back to private in Drive.
+
+## v2 finish (2026-11-19)
+
+Rendered from `vail-valley-flyover-v2.esp`. Finishing: scaled 122% and cropped so
+Earth Studio's large centered logo falls below the frame, then re-credited small in
+the lower-left corner (`credit.js`: "Google Earth" + the imagery providers), a light
+contrast/saturation lift, and the same titles (`titles.js`). Google's attribution stays
+on screen; it is moved, not removed. Drive copy "vail-valley-flyover-v2 (1).mp4" was
+link-shared for download with Charles's OK.
