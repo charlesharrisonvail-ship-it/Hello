@@ -8,3 +8,4 @@ CLI-Anything (HKUDS/CLI-Anything, Apache-2.0) was added 2026-11-18 at Charles's 
 - Skip hub CLIs that wrap paid services; Charles pays for no AI tools.
 - Notes: `tools/cli-anything/README.md`. Source not vendored.
 - Charles installed CLI-Hub 0.4.1 on his Windows PC on 2026-11-19 (PowerShell, Python 3.14, pip 26.2.1). Clean install, no errors.
+- 2026-11-19: Charles ran `cli-hub list` (103 CLIs) and installed the `comfyui` CLI (`cli-anything-comfyui` 1.0.0). It needs ComfyUI running at http://localhost:8188; not yet confirmed that ComfyUI itself is running on his laptop.
