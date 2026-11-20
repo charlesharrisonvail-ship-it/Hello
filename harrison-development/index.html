@@ -19,6 +19,7 @@
   <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/space-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/styles.css?v=20261117b">
+  <link rel="stylesheet" href="css/motion3.css?v=20261118">
 </head>
 <body>
   <a class="skip" href="#main">Skip to main content</a>
@@ -153,6 +154,18 @@
           <p class="deliv"><span>You get</span> Showings, negotiations, contracts and closing coordination, through Epique Realty.</p>
           </li>
         </ol>
+        <!-- Motion Prompt #087 Before/after slider -->
+        <figure class="ba rv" aria-labelledby="ba-cap">
+          <div class="ba-frame" style="--pos:50%">
+            <img class="ba-img ba-after" src="assets/media/eagle-river-minturn.webp" width="1600" height="1000" loading="lazy" alt="">
+            <p class="ba-title" aria-hidden="true"><span>A launch, styled</span>On the Eagle River.</p>
+            <div class="ba-before" aria-hidden="true"><img class="ba-img" src="assets/media/eagle-river-minturn.webp" width="1600" height="1000" loading="lazy" alt=""></div>
+            <span class="ba-label ba-l" aria-hidden="true">Before</span><span class="ba-label ba-r" aria-hidden="true">After</span>
+            <span class="ba-line" aria-hidden="true"><span class="ba-knob"></span></span>
+            <input class="ba-range" type="range" min="0" max="100" value="50" step="1" aria-label="Compare the plain site photo with the launch-styled version">
+          </div>
+          <figcaption id="ba-cap"><strong>Drag to compare.</strong> The same site photograph, plain on the left and styled for a launch on the right. Illustration only, no AI imagery. Photo: Jeffrey Beall, CC BY 4.0.</figcaption>
+        </figure>
         <div class="hover-media" aria-hidden="true"></div>
         <p class="media-note">Service photographs: Jeffrey Beall, CC BY 4.0, via Wikimedia Commons; aerial: USGS, public domain.</p>
       </div>
@@ -194,6 +207,18 @@
         <p class="lede-dark rv">Two real concept studies, built by Charles Harrison under the EpiVail name from public information, to show how we think about a launch. Scroll inside each preview, or press play.</p>
         <p class="disclaimer rv"><strong>Not client work.</strong> These are independent concept studies prepared on public information. Harrison Development and EpiVail are not engaged by, affiliated with, or endorsed by the Town of Avon, the Town of Eagle, or any owner, developer, architect or agency, and do not represent these projects. No homes are offered for sale or rent here.</p>
 
+        <!-- Motion Prompt #152 Zoom on scroll: the concept page grows to fill the window -->
+        <div class="zstage" data-zoom>
+          <div class="zstage-pin">
+            <p class="zstage-kicker">Concept study 01 &middot; Eagle, Colorado</p>
+            <figure class="zstage-frame">
+              <img src="assets/concepts/red-mountain-ranch-hero.webp" width="1440" height="900" loading="lazy" alt="The Red Mountain Ranch concept page: Home, on the Eagle River, over a photograph of the river and a steel bridge.">
+              <p class="zstage-head" aria-hidden="true">Red Mountain Ranch</p>
+            </figure>
+            <p class="zstage-cap">From the public record to a launch plan. Keep scrolling.</p>
+          </div>
+        </div>
+
         <article class="study study-flip" aria-labelledby="study-rmr">
           <div class="study-media rv">
             <div class="phones">
@@ -213,6 +238,7 @@
               </figure>
             </div>
             <p class="media-note">Photographs: Jeffrey Beall, CC BY 4.0, via Wikimedia Commons.</p>
+            <button type="button" class="cv-open" data-cv="rmr" hidden>Open this concept <span aria-hidden="true">&#8599;</span></button>
           </div>
           <div class="study-copy rv">
             <p class="kicker">A planned riverfront neighborhood in Eagle</p>
@@ -237,6 +263,7 @@
               </div>
             </div>
             <p class="media-note">Scroll the preview. Photographs: Jeffrey Beall, CC BY 4.0, via Wikimedia Commons.</p>
+            <button type="button" class="cv-open" data-cv="dowd" hidden>Open this concept <span aria-hidden="true">&#8599;</span></button>
           </div>
           <div class="study-copy rv">
             <p class="kicker">Planned community housing on the Eagle River near Avon</p>
@@ -322,10 +349,10 @@
           <p class="report-flag">Sample report &middot; demonstration data, not a real project or real results</p>
           <div class="report-head"><b>Weekly sales report</b><span>Example Ridge Townhomes &middot; Week 6</span></div>
           <dl class="report-kpis">
-            <div><dt>New inquiries</dt><dd>14</dd></div>
-            <div><dt>Qualified</dt><dd>6</dd></div>
-            <div><dt>Showings</dt><dd>4</dd></div>
-            <div><dt>Interest list</dt><dd>38</dd></div>
+            <div><dt>New inquiries</dt><dd data-count="14">14</dd></div>
+            <div><dt>Qualified</dt><dd data-count="6">6</dd></div>
+            <div><dt>Showings</dt><dd data-count="4">4</dd></div>
+            <div><dt>Interest list</dt><dd data-count="38">38</dd></div>
           </dl>
           <div class="report-cols">
             <div><h4>What buyers asked</h4><ul><li>HOA dues and what they cover</li><li>Garage and storage sizes</li><li>Bus route to the ski area</li></ul></div>
@@ -496,6 +523,15 @@
     </section>
   </main>
 
+  <!-- Motion Prompt #161 View transition: a concept preview grows into this detail view -->
+  <div class="cv" id="conceptView" role="dialog" aria-modal="true" aria-labelledby="cv-title" hidden>
+    <div class="wrap cv-inner">
+      <button type="button" class="cv-back"><span aria-hidden="true">&larr;</span> Back to concepts</button>
+      <div class="cv-hero"><img alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></div>
+      <div class="cv-body"></div>
+    </div>
+  </div>
+
   <footer class="site-footer">
     <div class="wrap footer-grid">
       <div>
@@ -538,7 +574,8 @@
   <button type="button" class="motion-toggle" id="motionToggle" aria-pressed="false" hidden>Pause motion</button>
 
   <script src="js/config.js?v=20261117b"></script>
-  <script src="js/main.js?v=20261117b"></script>
+  <script src="js/main.js?v=20261118"></script>
+  <script src="js/motion3.js?v=20261118"></script>
   <script type="module" src="js/terrain.js?v=20261117b"></script>
 </body>
 </html>
