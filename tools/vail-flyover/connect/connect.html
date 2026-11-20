@@ -81,9 +81,67 @@ function tube(pts,lift,r,color,opacity){
 }
 const v3=(e,n,h)=>new THREE.Vector3(e,h,-n);
 ROUTE.forEach((sg,i)=>{const c=sg.kind==='proposed'?0xffb21a:0xe8352b;
-  tubes.push({core:tube(sg.pts,24,9,c,1),glow:tube(sg.pts,24,22,0xffffff,0.3),w:REVEAL[i]});});
+  if(sg.name==='Gondola')return;tubes.push({core:tube(sg.pts,24,9,c,1),glow:tube(sg.pts,24,22,0xffffff,0.3),w:REVEAL[i]});});
 function reveal(f){tubes.forEach(({core,glow,w:[a,b]})=>{let u=Math.min(1,Math.max(0,(f-a)/(b-a)));u=u*u*(3-2*u);
   for(const t of [core,glow]){t.m.visible=u>0;t.m.geometry.setDrawRange(0,Math.floor(u*t.segs)*10*6);}});}
+// a real gondola on the concept leg: stations, towers set to the terrain, two sagging cables, moving cabins
+const GON=(()=>{
+  const sg=ROUTE.find(s=>s.name==='Gondola'),A=sg.pts[0],B=sg.pts[sg.pts.length-1];
+  const dx=B[0]-A[0],dy=B[1]-A[1],LEN=Math.hypot(dx,dy),ux=dx/LEN,uy=dy/LEN,px=-uy,py=ux;
+  const at=s=>[A[0]+ux*s,A[1]+uy*s];
+  const steel=new THREE.MeshLambertMaterial({color:0x4d5562}),cabMat=new THREE.MeshLambertMaterial({color:0xffb21a}),
+        glass=new THREE.MeshLambertMaterial({color:0x223348}),roof=new THREE.MeshLambertMaterial({color:0xf4f7fb}),
+        wall=new THREE.MeshLambertMaterial({color:0x7a5a3e}),cableM=new THREE.MeshBasicMaterial({color:0x222831});
+  const grp=new THREE.Group(); scene.add(grp);
+  // towers: walk up the line, keep each span short enough that the cable clears the ground by 15 m
+  const T=[{s:0,top:elev(...at(0))+22}];
+  let s=0;
+  while(s<LEN-1){
+    let span=Math.min(340,LEN-s),ok=false,hgt=42;
+    while(!ok){
+      const s2=s+span,last=s2>=LEN-1,top2=elev(...at(s2))+(last?22:hgt),top1=T[T.length-1].top;ok=true;
+      for(let k=1;k<20;k++){const q=k/20,ss=s+span*q,sag=span*0.025*4*q*(1-q),z=top1+(top2-top1)*q-sag;
+        if(z<elev(...at(ss))+15){ok=false;break;}}
+      if(ok){T.push({s:s2,top:top2});s=s2;}
+      else if(span>140) span*=0.8; else hgt+=6;
+    }
+  }
+  const W=7; // cable half-gauge
+  T.forEach((t,i)=>{
+    const [e,n]=at(t.s),z0=elev(e,n),ang=Math.atan2(uy,ux);
+    if(i===0||i===T.length-1){ // station
+      const b=new THREE.Mesh(new THREE.BoxGeometry(48,16,30),wall);b.position.copy(v3(e,n,z0+8));b.rotation.y=ang;grp.add(b);
+      const r=new THREE.Mesh(new THREE.BoxGeometry(56,4,38),roof);r.position.copy(v3(e,n,z0+18));r.rotation.y=ang;grp.add(r);
+      t.top=z0+22;
+    } else {
+      const m=new THREE.Mesh(new THREE.BoxGeometry(6,t.top-z0,6),steel);m.position.copy(v3(e,n,(z0+t.top)/2));grp.add(m);
+      const x=new THREE.Mesh(new THREE.BoxGeometry(4,3.5,2*W+10),steel);x.position.copy(v3(e,n,t.top));x.rotation.y=ang;grp.add(x);
+    }
+    t.obj=grp.children.slice(-2);
+  });
+  // cables (two sides) with sag between towers
+  const cablePt=(side,s)=>{let i=0;while(i<T.length-2&&s>T[i+1].s)i++;const a=T[i],b=T[i+1],q=Math.min(1,Math.max(0,(s-a.s)/(b.s-a.s)));
+    const z=a.top+(b.top-a.top)*q-(b.s-a.s)*0.025*4*q*(1-q)-1.5,[e,n]=at(s);return v3(e+px*W*side,n+py*W*side,z);};
+  const cables=[-1,1].map(side=>{const pts=[];for(let k=0;k<=400;k++)pts.push(cablePt(side,LEN*k/400));
+    const tg=new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts),400,2,5,false),m=new THREE.Mesh(tg,cableM);grp.add(m);return m;});
+  // cabins every 110 m on each side, up one side and down the other
+  const cabins=[];
+  for(const side of [-1,1]) for(let s0=0;s0<LEN;s0+=110){
+    const c=new THREE.Group();
+    const body=new THREE.Mesh(new THREE.BoxGeometry(11,9,9),cabMat);body.position.y=-12;c.add(body);
+    const win=new THREE.Mesh(new THREE.BoxGeometry(11.4,3.2,9.4),glass);win.position.y=-10;c.add(win);
+    const hang=new THREE.Mesh(new THREE.BoxGeometry(1,8,1),steel);hang.position.y=-4;c.add(hang);
+    c.rotation.y=Math.atan2(uy,ux);grp.add(c);cabins.push({c,side,s0});
+  }
+  return {LEN,T,cables,cabins,cablePt};
+})();
+function gondola(f){
+  const [a,b]=REVEAL[1];let u=Math.min(1,Math.max(0,(f-a)/(b-a)));u=u*u*(3-2*u);const reach=u*GON.LEN;
+  GON.T.forEach(t=>t.obj.forEach(o=>o.visible=t.s<=reach+1));
+  GON.cables.forEach(m=>{m.visible=u>0;m.geometry.setDrawRange(0,Math.floor(u*400)*5*6);});
+  GON.cabins.forEach(k=>{let s=((k.side>0?k.s0+f*1.6:k.s0-f*1.6)%GON.LEN+GON.LEN)%GON.LEN;
+    k.c.visible=u>0&&s<=reach;if(k.c.visible)k.c.position.copy(GON.cablePt(k.side,s));});
+}
 {const RIV=await (await fetch('river.json')).json();
  RIV.forEach(p=>{if(p.length>1) tube(p,8,7,0x3d8bff,1);});}
 scene.add(new THREE.HemisphereLight(0xeef4ff,0x8088a0,2.0));
@@ -116,7 +174,7 @@ const els=T.map(([a,b,big,small,sig])=>{const d=document.createElement('div');d.
 const shade=document.getElementById('shade');
 window.renderFrame=f=>{
   const p=cr(KP,f),t=cr(KT,f); const g=elev(p.x,-p.z)+150; if(p.y<g)p.y=g;
-  reveal(f); cam.position.copy(p); cam.lookAt(t); cam.updateMatrixWorld(); renderer.render(scene,cam);
+  reveal(f); gondola(f); cam.position.copy(p); cam.lookAt(t); cam.updateMatrixWorld(); renderer.render(scene,cam);
   let any=0;
   T.forEach(([a,b],i)=>{let o=0;if(f>=a&&f<=b)o=Math.min(1,(f-a)/14,b>=TOTAL-1?1:(b-f)/14);
     els[i].style.opacity=o;els[i].style.transform=`translateY(${(1-o)*24}px)`;any=Math.max(any,o);});
