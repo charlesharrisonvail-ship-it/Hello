@@ -45,3 +45,9 @@ the lower-left corner (`credit.js`: "Google Earth" + the imagery providers), a l
 contrast/saturation lift, and the same titles (`titles.js`). Google's attribution stays
 on screen; it is moved, not removed. Drive copy "vail-valley-flyover-v2 (1).mp4" was
 link-shared for download with Charles's OK.
+
+## Music (2026-11-20)
+
+"Reunited" by Kevin MacLeod (incompetech.com), CC BY 4.0, starts with the video; its
+swell at 36 s meets the closing card at 37 s. Faded out over the last 2.7 s and
+loudness-normalised to -15 LUFS. Credit line is in `caption.md`.
