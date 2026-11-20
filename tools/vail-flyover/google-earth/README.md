@@ -51,3 +51,13 @@ link-shared for download with Charles's OK.
 "Reunited" by Kevin MacLeod (incompetech.com), CC BY 4.0, starts with the video; its
 swell at 36 s meets the closing card at 37 s. Faded out over the last 2.7 s and
 loudness-normalised to -15 LUFS. Credit line is in `caption.md`.
+
+## Vail Mountain only (2026-11-20)
+
+`vail-mountain-flyover.esp` (40 s, from `make_esp_mountain.py` + `path_mountain.json`):
+high opener from the north, wide arc over Vail Village and Golden Peak, up the Golden
+Peak side, a long slow pass across the Back Bowls (about 9 of 40 seconds), back over
+the top looking down to the village with the Gore Range behind, rise for the closing
+card. Clearance checked: at least ~580 m above the terrain throughout.
+Planned titles: Vail Mountain / Vail Village & Golden Peak / Golden Peak / The Back
+Bowls / back to the village / closing card with signature.
