@@ -2,11 +2,18 @@
 
 Draft for Charles to approve before posting.
 
-> Y'all asked, so here it is: what if Vail and Beaver Creek were connected? ❄️🚡
+> Y'all asked for it, so I built it. 🚡❄️
 >
-> Here's one way it could work. Ski the Minturn Mile down Game Creek into Minturn. Then a gondola across the Eagle River and up Meadow Mountain, and ski over into Beaver Creek. That's about 9.4 miles, village to village.
+> What if you could ski from Vail to Beaver Creek without ever getting in a car?
 >
-> It's a concept, not an official plan, but the terrain sure makes you wonder. Would you ride it? Tell me in the comments.
+> Here's one way it could work:
+> 1️⃣ Ski the Minturn Mile down Game Creek into Minturn
+> 2️⃣ Hop a gondola across the Eagle River and up Meadow Mountain
+> 3️⃣ Ski over the top and right into Beaver Creek
+>
+> That's about 9.4 miles, village to village, and lunch in Minturn on the way. 😉
+>
+> This is just a concept, not an official plan, but the terrain sure lines up. Would you ride it? Tell me in the comments 👇
 >
 > Charles Harrison, Epique Area/Growth Leader
 >
