@@ -1,0 +1,101 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden;font-family:Inter,sans-serif;
+    background:linear-gradient(to bottom,#1f5fae 0%,#4f8fd0 30%,#a9cdee 55%,#e6f0f9 72%)}
+  canvas{display:block}
+  .pin{position:absolute;top:150px;width:100%;text-align:center;color:#fff;font:600 40px Inter;text-shadow:0 2px 8px rgba(0,0,0,.7)}
+  .title{position:absolute;left:0;right:0;top:1030px;text-align:center;color:#fff;opacity:0;padding:0 60px}
+  .big{font:800 96px Inter;line-height:1.05;text-shadow:0 4px 18px rgba(0,0,0,.8),0 0 3px rgba(0,0,0,.7)}
+  .small{font:italic 600 52px Inter;margin-top:18px;text-shadow:0 3px 12px rgba(0,0,0,.85)}
+  .sig{font:700 40px Inter;white-space:nowrap;margin-top:34px;text-shadow:0 3px 12px rgba(0,0,0,.9)}
+  .credit{position:absolute;left:36px;bottom:300px;color:rgba(255,255,255,.92);font:500 21px/1.35 Inter;text-shadow:0 1px 4px rgba(0,0,0,.9)}
+  .lbl{position:absolute;transform:translate(-50%,-100%);color:#fff;font:700 38px Inter;text-shadow:0 2px 10px rgba(0,0,0,.85);white-space:nowrap;opacity:0;text-align:center}
+  .lbl:after{content:'';display:block;margin:6px auto 0;width:4px;height:70px;background:linear-gradient(#fff,rgba(255,255,255,0))}
+  #shade{position:absolute;left:0;right:0;top:820px;height:700px;background:radial-gradient(ellipse at center,rgba(0,0,0,.36) 0%,rgba(0,0,0,0) 65%);opacity:0}
+</style></head>
+<body>
+<div id="shade"></div>
+<div class="pin">📍 Vail, Colorado</div>
+<div class="credit">Terrain: USGS 3DEP · Runs &amp; lifts: © OpenStreetMap contributors (OpenSkiMap)<br>Buildings: © OpenStreetMap contributors, Overture Maps · Trail-map winter rendering</div>
+<div id="labels"></div><div id="titles"></div>
+<script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
+const TOTAL=2700;
+const f32=async f=>new Float32Array(await (await fetch(f)).arrayBuffer());
+const tex=async f=>{const t=await new THREE.TextureLoader().loadAsync(f);t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=8;return t;};
+const scene=new THREE.Scene();
+const D=[16000,-4800,29120,12000], MAIN=[0,0,29120,13764];
+const inBox=(e,n,b,m=0)=>e>b[0]+m&&e<b[2]-m&&n>b[1]+m&&n<b[3]-m;
+function dropD(e,n){const m=Math.min(e-D[0],D[2]-e,n-D[1],D[3]-n); return m>0?Math.min(1,m/300)*20:0;}
+const L=[];
+async function layer(dem,NX,NY,ext,tx,step,sink){
+  const [x0,y0,x1,y1]=ext,W=x1-x0,H=y1-y0,gx=Math.floor((NX-1)/step),gy=Math.floor((NY-1)/step);
+  const geo=new THREE.PlaneGeometry(W,H,gx,gy); geo.rotateX(-Math.PI/2); const pos=geo.attributes.position;
+  for(let j=0;j<=gy;j++)for(let i=0;i<=gx;i++){const k=j*(gx+1)+i,e=x0+i*step/(NX-1)*W,n=y1-j*step/(NY-1)*H;
+    pos.setY(k,dem[(j*step)*NX+i*step]-sink(e,n));}
+  geo.translate(x0+W/2,0,-(y0+H/2));
+  scene.add(new THREE.Mesh(geo,new THREE.MeshBasicMaterial({map:await tex(tx)})));
+  L.unshift({dem,NX,NY,ext});
+}
+await layer(await f32('/data/demw.f32'),1152,896,[-20000,-20000,49125,33764],'w_tex.jpg',1,(e,n)=>inBox(e,n,MAIN,200)?70:4);
+await layer(await f32('/data/dem.f32'),1456,688,MAIN,'m_tex.jpg',2,(e,n)=>dropD(e,n));
+await layer(await f32('ddem.f32'),1312,1680,D,'d_tex.jpg',1,()=>0);
+function elev(e,n){for(const l of L){const [x0,y0,x1,y1]=l.ext;if(e>x0&&e<x1&&n>y0&&n<y1){
+  const i=Math.round((e-x0)/(x1-x0)*(l.NX-1)),j=Math.round((y1-n)/(y1-y0)*(l.NY-1));return l.dem[j*l.NX+i];}}return 2500;}
+// buildings, snow on the roofs
+{
+  const B=await (await fetch('/data/buildings.json')).json();
+  const WALLS=[[0.80,0.66,0.50],[0.62,0.46,0.32],[0.86,0.78,0.64],[0.52,0.38,0.27],[0.72,0.58,0.44]].map(c=>new THREE.Color(...c));
+  const ROOF=new THREE.Color(0.97,0.98,1.0); const geos=[];
+  B.forEach((b,idx)=>{const toV=r=>r.map(p=>new THREE.Vector2(p[0],p[1]));
+    const shape=new THREE.Shape(toV(b.r[0])); for(let h=1;h<b.r.length;h++) shape.holes.push(new THREE.Path(toV(b.r[h])));
+    let g; try{g=new THREE.ExtrudeGeometry(shape,{depth:b.h+4,bevelEnabled:false});}catch(e){return;}
+    const c=b.r[0][0]; const z=Math.min(b.z,elev(c[0],c[1]));
+    g.rotateX(-Math.PI/2); g.translate(0,z-4,0); g=g.toNonIndexed(); g.computeVertexNormals();
+    const nn=g.attributes.normal,col=new Float32Array(nn.count*3),wall=WALLS[(idx*7+Math.floor(b.h))%WALLS.length];
+    for(let i=0;i<nn.count;i++){const cc=nn.getY(i)>0.5?ROOF:wall;col[i*3]=cc.r;col[i*3+1]=cc.g;col[i*3+2]=cc.b;}
+    g.setAttribute('color',new THREE.BufferAttribute(col,3));
+    for(const k of Object.keys(g.attributes)) if(!['position','normal','color'].includes(k)) g.deleteAttribute(k);
+    geos.push(g);});
+  scene.add(new THREE.Mesh(mergeGeometries(geos,false),new THREE.MeshLambertMaterial({vertexColors:true})));
+}
+scene.add(new THREE.HemisphereLight(0xeef4ff,0x8088a0,2.0));
+const sun=new THREE.DirectionalLight(0xfff2e0,1.6); sun.position.set(-0.7,0.8,0.6); scene.add(sun);
+scene.fog=new THREE.Fog(0xdde9f5,18000,70000);
+const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true,alpha:true});
+renderer.setClearColor(0,0); renderer.setSize(1080,1920); document.body.prepend(renderer.domElement);
+const cam=new THREE.PerspectiveCamera(50,1080/1920,10,150000);
+const v3=(e,n,h)=>new THREE.Vector3(e,h,-n);
+const K=await (await fetch('path_tour.json')).json();
+const KF=K.map(k=>k[0]),KP=K.map(k=>v3(...k[1])),KT=K.map(k=>v3(...k[2]));
+function cr(arr,f){let i=0;while(i<KF.length-2&&f>KF[i+1])i++;
+  let u=Math.min(1,Math.max(0,(f-KF[i])/(KF[i+1]-KF[i]))); if(i===0||i===KF.length-2) u=u*u*(3-2*u)*0.5+u*0.5;
+  const p0=arr[Math.max(0,i-1)],p1=arr[i],p2=arr[i+1],p3=arr[Math.min(arr.length-1,i+2)],c=new THREE.Vector3(),t=u,t2=t*t,t3=t2*t;
+  for(const a of ['x','y','z']) c[a]=0.5*((2*p1[a])+(-p0[a]+p2[a])*t+(2*p0[a]-5*p1[a]+4*p2[a]-p3[a])*t2+(-p0[a]+3*p1[a]-3*p2[a]+p3[a])*t3);return c;}
+// labels for the three mountains in the opener
+const LB=[['Arrowhead',[5748,8074],[15,215]],['Beaver Creek',[9682,4642],[35,215]],['Vail',[21960,8453],[55,215]]];
+const lbox=document.getElementById('labels');
+const lels=LB.map(([t])=>{const d=document.createElement('div');d.className='lbl';d.textContent=t;lbox.appendChild(d);return d;});
+const T=[[205,340,'The Vail Valley','Three mountains. One valley.'],[470,760,'Golden Peak','Up the Riva Bahn'],[1090,1330,'Vail Village',''],
+ [1500,1740,'Lionshead',''],[1960,2260,'The Back Bowls','Where the powder days go'],[2340,2560,'Blue Sky Basin',''],
+ [2590,2700,'Vail, Colorado.','Ski it. Live it.',true]];
+const box=document.getElementById('titles');
+const els=T.map(([a,b,big,small,sig])=>{const d=document.createElement('div');d.className='title';
+  d.innerHTML=(big?`<div class="big">${big}</div>`:'')+(small?`<div class="small">${small}</div>`:'')+(sig?`<div class="sig">Charles Harrison, Epique Area/Growth Leader</div>`:'');box.appendChild(d);return d;});
+const shade=document.getElementById('shade');
+window.renderFrame=f=>{
+  const p=cr(KP,f),t=cr(KT,f); const g=elev(p.x,-p.z)+150; if(p.y<g)p.y=g;
+  cam.position.copy(p); cam.lookAt(t); cam.updateMatrixWorld(); renderer.render(scene,cam);
+  let any=0;
+  T.forEach(([a,b],i)=>{let o=0;if(f>=a&&f<=b)o=Math.min(1,(f-a)/14,b>=TOTAL-1?1:(b-f)/14);
+    els[i].style.opacity=o;els[i].style.transform=`translateY(${(1-o)*24}px)`;any=Math.max(any,o);});
+  shade.style.opacity=any;
+  LB.forEach(([t,c,[a,b]],i)=>{let o=0;if(f>=a&&f<=b)o=Math.min(1,(f-a)/12,(b-f)/12);
+    const v=v3(c[0],c[1],elev(c[0],c[1])+250).project(cam);
+    lels[i].style.left=((v.x+1)/2*1080)+'px'; lels[i].style.top=((1-v.y)/2*1920)+'px'; lels[i].style.opacity=v.z<1?o:0;});
+};
+window.ready=true;
+</script></body></html>
