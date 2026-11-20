@@ -1,6 +1,6 @@
 # The Cost of Waiting — Vail Valley rent edition (EpiVail reel)
 
-Vertical 1080×1920, 47 s. Eva Vail voiceover (Higgsfield `seed_audio`, cloned
+Vertical 1080×1920, 26.7 s (v2 — v1 was a 47 s slide reel Charles found boring; replaced).
 from her reference), ElevenLabs music bed, Charles's 7-second Olaf clip at the
 hook and the payoff. Built in Remotion (`Reel.tsx`), mastered near -14 LUFS.
 Made 2026-11-19, after a friend's "cost of waiting" post about Wellington, FL.
@@ -36,3 +36,15 @@ monthly payment. Re-check the rate and rent before reposting later.
 ## Credits spent
 
 Higgsfield: 4.6 (voice) + 6.11 (music) = 10.71 credits; balance before was 104.87.
+
+## v2 (2026-11-20) — what changed
+
+Charles called v1 boring, so v2 was rebuilt with the viral-hooks, video-shotcraft and
+choreograph skills: a 26.7 s cut, $43,200 rolls and slams in the first second, twelve
+month tiles deal in faster and faster then scatter on "Poof", "GONE." slams, the house
+line-draws, an equity bar fills to $6,419, an honest bar chart with a "YEP." stamp, then a
+whip to Olaf with a punch-in on "just ask Olaf". Sound effects on every event, upbeat
+music ("Cat Walk" by Arulo, Mixkit Stock Music Free License, assets.mixkit.co/music/371),
+SFX from Mixkit via video-shotcraft. New Eva read (seed_audio, about 3 credits), sped up 1.1×.
+Master: -14.1 LUFS, -1.1 dBFS peak. Eva says "forty-three thousand" (rounded); the
+screen shows $43,200.
