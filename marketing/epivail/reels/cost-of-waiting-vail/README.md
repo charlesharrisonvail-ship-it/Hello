@@ -1,11 +1,12 @@
 # The Cost of Waiting — Vail Valley rent edition (EpiVail reel)
 
-Vertical 1080×1920, 26.7 s (v2 — v1 was a 47 s slide reel Charles found boring; replaced).
-from her reference), ElevenLabs music bed, Charles's 7-second Olaf clip at the
-hook and the payoff. Built in Remotion (`Reel.tsx`), mastered near -14 LUFS.
+Vertical 1080×1920, 26.7 s. Current file is v2 (see the end of this file); v1 was a
+47 s slide reel Charles found boring and was replaced. Eva Vail voiceover
+(Higgsfield `seed_audio`, cloned from her reference), Charles's 7-second Olaf clip
+at the hook and the payoff. Built in Remotion (`Reel.tsx`), mastered to -14 LUFS.
 Made 2026-11-19, after a friend's "cost of waiting" post about Wellington, FL.
 
-## Script (Eva)
+## v1 script (Eva) — kept for the record; v2's script is in `words2.json`
 
 > Rent in the Vail Valley? Well, bless its heart. A three-bedroom in Eagle
 > averages thirty-six hundred dollars a month. That's forty-three thousand, two
