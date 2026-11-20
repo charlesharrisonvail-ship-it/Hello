@@ -14,3 +14,8 @@ Checked 2026-11-02:
   `eva-vail` element (426cbaed-...). gpt_image_2 flagged the first try (body wording) - keep it plain.
 - HeyGen lip-sync of his avatar measured ~19 credits per minute; HeyGen had 454 left after
   Build Your AI Assistant (reset Dec 1).
+
+2026-11-20: Free lesson intro (docs/install-claude-code.html, top) is Eva's voice over an animated
+walkthrough: seed_audio with her current voice ref ba8e3c5a-131f-4831-8bda-4fc6a113441c, 3.1 credits
+for 34 s. Higgsfield balance before: 45.83 (Basic). A lip-synced Eva is possible later with wan2_7
+(~7.5 credits per 5 s, per the eva-vail skill) - cheaper than Intone.
