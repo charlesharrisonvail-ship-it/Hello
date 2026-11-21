@@ -1,0 +1,161 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden;font-family:Inter,sans-serif;
+    background:linear-gradient(to bottom,#2f6db5 0%,#5f9bd6 30%,#b9d6ef 55%,#e4eef7 70%)}
+  canvas{display:block}
+  .pin{position:absolute;top:150px;width:100%;text-align:center;color:#fff;font:600 40px Inter;text-shadow:0 2px 8px rgba(0,0,0,.7);letter-spacing:.5px}
+  .title{position:absolute;left:0;right:0;top:1080px;text-align:center;color:#fff;opacity:0;padding:0 60px}
+  .big{font:800 96px 'Inter Display',Inter;line-height:1.05;text-shadow:0 4px 18px rgba(0,0,0,.8),0 0 3px rgba(0,0,0,.7)}
+  .small{font:italic 600 52px Inter;margin-top:18px;text-shadow:0 3px 12px rgba(0,0,0,.85)}
+  .sig{font:700 40px Inter;white-space:nowrap;margin-top:34px;text-shadow:0 3px 12px rgba(0,0,0,.9)}
+  .credit{position:absolute;left:36px;bottom:290px;color:rgba(255,255,255,.9);font:500 22px/1.35 Inter;text-shadow:0 1px 4px rgba(0,0,0,.9)}
+  #shade{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0) 45%,rgba(0,0,0,.45) 100%);opacity:0}
+</style></head>
+<body>
+<div id="shade"></div>
+<div class="pin">📍 Vail Valley, Colorado</div>
+<div class="credit">Terrain: USGS 3DEP · Imagery: USDA NAIP, winter look added<br>Buildings: © OpenStreetMap contributors, Overture Maps</div>
+<div id="titles"></div>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
+const TOTAL=1260;
+const loadF32=async f=>new Float32Array(await (await fetch('data/'+f)).arrayBuffer());
+const loadTex=async f=>{const t=await new THREE.TextureLoader().loadAsync('data/'+f);t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=8;return t;};
+const scene=new THREE.Scene();
+
+// patches with sharper photos and terrain at the bases: [x0,y0,x1,y1]
+const PATCHES=[[18000,6600,24600,10200],[4200,3600,11400,9600]];
+function dropFor(e,n,skipPatch){ // sink lower layers under the patches so the patch shows
+  let d=0;
+  PATCHES.forEach((p,i)=>{ if(i===skipPatch) return;
+    const m=Math.min(e-p[0],p[2]-e,n-p[1],p[3]-n); if(m>0) d=Math.max(d,Math.min(1,m/250)*18); });
+  return d;
+}
+// terrain layer from a DEM grid covering [x0,y0,x1,y1]
+async function layer(demFile,NX,NY,ext,texFile,step,sink,patchIndex){
+  const dem=await loadF32(demFile);
+  const [x0,y0,x1,y1]=ext, W=x1-x0, H=y1-y0;
+  const gx=Math.floor((NX-1)/step), gy=Math.floor((NY-1)/step);
+  const geo=new THREE.PlaneGeometry(W,H,gx,gy); geo.rotateX(-Math.PI/2);
+  const pos=geo.attributes.position;
+  for(let j=0;j<=gy;j++)for(let i=0;i<=gx;i++){
+    const k=j*(gx+1)+i, e=x0+i*step/(NX-1)*W, n=y1-j*step/(NY-1)*H;
+    pos.setY(k, dem[(j*step)*NX+i*step]-sink(e,n)-dropFor(e,n,patchIndex));
+  }
+  geo.translate(x0+W/2,0,-(y0+H/2)); geo.computeVertexNormals();
+  const mat=new THREE.MeshLambertMaterial({map:await loadTex(texFile)});
+  scene.add(new THREE.Mesh(geo,mat));
+  return {dem,NX,NY,ext};
+}
+const MAIN=[0,0,29120,13764];
+const inMain=(e,n)=>e>200&&e<29120-200&&n>200&&n<13764-200;
+await layer('demw.f32',1152,896,[-20000,-20000,49125,33764],'photow_w.jpg',1,(e,n)=>inMain(e,n)?60:4,-1);
+const main=await layer('dem.f32',1456,688,MAIN,'photo_w.jpg',2,()=>0,-1);
+const va=await layer('va_dem.f32',1100,600,PATCHES[0],'va_w.jpg',1,()=>0,0);
+const we=await layer('we_dem.f32',1200,1000,PATCHES[1],'we_w.jpg',1,()=>0,1);
+function elev(e,n){
+  for(const L of [va,we,main]){const [x0,y0,x1,y1]=L.ext; if(e>x0&&e<x1&&n>y0&&n<y1){
+    const i=Math.round((e-x0)/(x1-x0)*(L.NX-1)), j=Math.round((y1-n)/(y1-y0)*(L.NY-1)); return L.dem[j*L.NX+i];}}
+  return 2500;
+}
+
+// ---------- 3D buildings, snow on the roofs ----------
+{
+  const B=await (await fetch('data/buildings.json')).json();
+  const WALLS=[[0.82,0.68,0.50],[0.62,0.45,0.30],[0.88,0.80,0.66],[0.50,0.36,0.25],[0.74,0.60,0.46],[0.70,0.56,0.40]].map(c=>new THREE.Color(...c));
+  const ROOF=new THREE.Color(0.95,0.97,1.0);
+  const geos=[];
+  B.forEach((b,idx)=>{
+    const toV=r=>r.map(p=>new THREE.Vector2(p[0],p[1]));
+    const shape=new THREE.Shape(toV(b.r[0]));
+    for(let h=1;h<b.r.length;h++) shape.holes.push(new THREE.Path(toV(b.r[h])));
+    let g; try{ g=new THREE.ExtrudeGeometry(shape,{depth:b.h+3,bevelEnabled:false}); }catch(e){return;}
+    g.rotateX(-Math.PI/2); g.translate(0,b.z-3,0);
+    g=g.toNonIndexed(); g.computeVertexNormals();
+    const n=g.attributes.normal, cnt=n.count, col=new Float32Array(cnt*3);
+    const wall=WALLS[(idx*7+Math.floor(b.h))%WALLS.length];
+    for(let i=0;i<cnt;i++){ const c=n.getY(i)>0.5?ROOF:wall; col[i*3]=c.r;col[i*3+1]=c.g;col[i*3+2]=c.b; }
+    g.setAttribute('color',new THREE.BufferAttribute(col,3));
+    for(const k of Object.keys(g.attributes)) if(!['position','normal','color'].includes(k)) g.deleteAttribute(k);
+    geos.push(g);
+  });
+  const merged=mergeGeometries(geos,false);
+  scene.add(new THREE.Mesh(merged,new THREE.MeshLambertMaterial({vertexColors:true})));
+}
+
+scene.add(new THREE.HemisphereLight(0xe8f0ff,0x7a8090,1.9));
+const sun=new THREE.DirectionalLight(0xfff0dd,1.7); sun.position.set(-0.8,0.75,0.9); scene.add(sun);
+scene.fog=new THREE.Fog(0xdbe8f4,15000,60000);
+const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true,alpha:true});
+renderer.setClearColor(0x000000,0); renderer.setSize(1080,1920); document.body.prepend(renderer.domElement);
+const cam=new THREE.PerspectiveCamera(50,1080/1920,10,130000);
+
+// ---------- camera path (east, north, height above sea) ----------
+const v3=(e,n,h)=>new THREE.Vector3(e,h,-n);
+const KF=[],KP=[],KT=[];
+const key=(f,p,t)=>{KF.push(f);KP.push(v3(...p));KT.push(v3(...t));};
+function orbit(f0,f1,c,r,h,a0,a1,th,n=5){for(let s=0;s<n;s++){const u=s/(n-1),a=(a0+(a1-a0)*u)*Math.PI/180;
+  key(f0+(f1-f0)*u,[c[0]+r*Math.sin(a),c[1]+r*Math.cos(a),h],[c[0],c[1],th]);}}
+const LH=[20695,8772], VV=[21960,8453], BC=[9682,4642], BG=[7809,5596], AH=[5748,8074];
+// 1 opener, high in the west, dropping toward Vail
+key(0,  [3000,15500,7200],[20000,7000,2600]);
+key(130,[14000,12000,4400],[20695,8400,2500]);
+// 2 low over Lionshead, then circle Vail Village
+key(200,[18600,10300,3000],[20695,8772,2480]);
+orbit(250,430,VV,1150,2790,-55,45,2510,6);
+// 3 up the Front Side to the Back Bowls
+key(480,[23200,7000,3500],[22600,4300,3300]);
+key(550,[24200,4900,4050],[23500,1800,3100]);
+// 4 west down the valley
+key(610,[19500,9200,4400],[11500,6000,2600]);
+key(670,[13200,8700,3500],[9682,4642,2600]);
+// 5 circle Beaver Creek Village, low
+orbit(715,865,BC,1100,2780,25,-60,2480,6);
+// 6 over Bachelor Gulch to Arrowhead
+key(915,[8700,7000,3050],[7809,5596,2700]);
+key(975,[7000,9300,2800],[5748,8074,2280]);
+key(1040,[4600,9600,2700],[6000,7400,2420]);
+// 7 climb out to show all three
+key(1120,[2500,13500,5600],[13000,6000,2700]);
+key(1260,[-2500,17800,10000],[14500,6000,2700]);
+
+function cr(arr,f){
+  let i=0; while(i<KF.length-2 && f>KF[i+1]) i++;
+  let u=Math.min(1,Math.max(0,(f-KF[i])/(KF[i+1]-KF[i])));
+  if(i===0||i===KF.length-2) u=u*u*(3-2*u)*0.5+u*0.5;   // ease only at the very start and end
+  const p0=arr[Math.max(0,i-1)],p1=arr[i],p2=arr[i+1],p3=arr[Math.min(arr.length-1,i+2)];
+  const t=u,t2=t*t,t3=t2*t,c=new THREE.Vector3();
+  for(const a of ['x','y','z']) c[a]=0.5*((2*p1[a])+(-p0[a]+p2[a])*t+(2*p0[a]-5*p1[a]+4*p2[a]-p3[a])*t2+(-p0[a]+3*p1[a]-3*p2[a]+p3[a])*t3);
+  return c;
+}
+
+// ---------- titles ----------
+const T=[
+  [10,125,'The Vail Valley','Colorado'],
+  [215,425,'Vail Village','&amp; Lionshead'],
+  [470,580,'The Back Bowls','Where the powder days go'],
+  [610,690,'','Heading west down the valley…'],
+  [720,880,'Beaver Creek','Not exactly roughing it'],
+  [935,1060,'Arrowhead','The quiet side of Beaver Creek'],
+  [1110,1260,'Three mountains.<br>One valley.','',true],
+];
+const box=document.getElementById('titles');
+const els=T.map(([a,b,big,small,sig])=>{const d=document.createElement('div');d.className='title';
+  d.innerHTML=(big?`<div class="big">${big}</div>`:'')+(small?`<div class="small">${small}</div>`:'')+(sig?`<div class="sig">Charles Harrison, Epique Area/Growth Leader</div>`:'');
+  box.appendChild(d);return d;});
+const shade=document.getElementById('shade');
+
+window.renderFrame=f=>{
+  const p=cr(KP,f), t=cr(KT,f);
+  const g=elev(p.x,-p.z)+180; if(p.y<g) p.y=g;
+  cam.position.copy(p); cam.lookAt(t); renderer.render(scene,cam);
+  let any=0;
+  T.forEach(([a,b],i)=>{let o=0; if(f>=a&&f<=b) o=Math.min(1,(f-a)/14,b>=TOTAL-1?1:(b-f)/14);
+    els[i].style.opacity=o; els[i].style.transform=`translateY(${(1-o)*24}px)`; any=Math.max(any,o);});
+  shade.style.opacity=any;
+};
+window.ready=true;
+</script></body></html>
