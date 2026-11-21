@@ -18,8 +18,10 @@ def orbit(f0,f1,c,r,h,a0,a1,th,n):
 CB=(22025,8568)
 key(0,   (22000,15500,5300),(23200,5000,3000))      # all of Vail Mountain from the north
 key(140, (22300,12000,4100),(22100,8600,2600))
-key(250, (22150,9700,3050),(22025,8568,2490))       # drop into the village
-orbit(310,610,CB,650,2850,15,-75,2490,6)            # around the covered bridge and clock tower
+key(250, (22150,9900,3350),(22020,8380,2500))      # come down over the village, still high
+VC=(22020,8380)                                     # heart of the village, just south of the bridge
+orbit(320,600,VC,450,3150,25,-35,2500,7)
+key(660, (22150,8000,3350),(22600,5800,3250))       # rise up the hill out of the village
 key(700, (22500,7600,3500),(22900,5300,3300))       # up the front side
 key(800, (22200,5300,4700),(22300,3000,3100))       # over the top
 key(900, (21000,1800,4450),(21400,4700,3150))       # Game Creek Bowl
