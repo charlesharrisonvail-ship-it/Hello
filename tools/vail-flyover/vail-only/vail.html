@@ -79,12 +79,16 @@ function elev(e,n){for(const l of L){const [x0,y0,x1,y1]=l.ext;if(e>x0&&e<x1&&n>
 {
   const B=await (await fetch('/data/buildings.json')).json();
   const WALLS=[[0.60,0.45,0.31],[0.43,0.30,0.20],[0.74,0.63,0.49],[0.36,0.25,0.17],[0.56,0.43,0.31]].map(c=>new THREE.Color(...c));
-  const ROOF=new THREE.Color(0.90,0.93,0.98); const geos=[];
+  const ROOF=new THREE.Color(0.90,0.93,0.98); const geos=[],TG=[],[VE0,VN0,VE1,VN1]=[20200,7000,23900,10900];
   B.forEach((b,idx)=>{const toV=r=>r.map(p=>new THREE.Vector2(p[0],p[1]));
     const shape=new THREE.Shape(toV(b.r[0])); for(let h=1;h<b.r.length;h++) shape.holes.push(new THREE.Path(toV(b.r[h])));
     let g; try{g=new THREE.ExtrudeGeometry(shape,{depth:b.h+4,bevelEnabled:false});}catch(e){return;}
     const c=b.r[0][0]; const z=Math.min(b.z,elev(c[0],c[1]));
     g.rotateX(-Math.PI/2); g.translate(0,z-4,0); g=g.toNonIndexed(); g.computeVertexNormals();
+    const c0=b.r[0][0],inP=c0[0]>VE0+15&&c0[0]<VE1-15&&c0[1]>VN0+15&&c0[1]<VN1-15;
+    const addUV=q=>{const p=q.attributes.position,uv=new Float32Array(p.count*2);for(let i=0;i<p.count;i++){uv[i*2]=(p.getX(i)-VE0)/(VE1-VE0);uv[i*2+1]=(-p.getZ(i)-VN0)/(VN1-VN0);}
+      q.setAttribute('uv',new THREE.BufferAttribute(uv,2));for(const k of Object.keys(q.attributes)) if(!['position','normal','uv'].includes(k)) q.deleteAttribute(k);TG.push(q);};
+    if(inP){let cap=new THREE.ShapeGeometry(shape);cap.rotateX(-Math.PI/2);cap.translate(0,z-4+b.h+4+0.05,0);cap=cap.toNonIndexed();cap.computeVertexNormals();addUV(cap);}
     const nn=g.attributes.normal,col=new Float32Array(nn.count*3),wall=WALLS[(idx*7+Math.floor(b.h))%WALLS.length];
     for(let i=0;i<nn.count;i++){const cc=nn.getY(i)>0.5?ROOF:wall;col[i*3]=cc.r;col[i*3+1]=cc.g;col[i*3+2]=cc.b;}
     g.setAttribute('color',new THREE.BufferAttribute(col,3));
@@ -101,15 +105,17 @@ function elev(e,n){for(const l of L){const [x0,y0,x1,y1]=l.ext;if(e>x0&&e<x1&&n>
     let rg=new THREE.ExtrudeGeometry(sh,{depth:Lr+2,bevelEnabled:false});rg.translate(0,0,-(Lr+2)/2);
     rg.rotateY(-th+Math.PI/2);rg.translate(cx,top,-cy);rg=rg.toNonIndexed();rg.computeVertexNormals();
     const rc=new Float32Array(rg.attributes.position.count*3);for(let i=0;i<rc.length;i+=3){rc[i]=ROOF.r;rc[i+1]=ROOF.g;rc[i+2]=ROOF.b;}
+    if(inP){addUV(rg);return;}
     rg.setAttribute('color',new THREE.BufferAttribute(rc,3));
     for(const k of Object.keys(rg.attributes)) if(!['position','normal','color'].includes(k)) rg.deleteAttribute(k);
     geos.push(rg);});
   scene.add(new THREE.Mesh(mergeGeometries(geos,false),new THREE.MeshLambertMaterial({vertexColors:true})));
+  const rt=await tex('v_tex.png'); scene.add(new THREE.Mesh(mergeGeometries(TG,false),new THREE.MeshLambertMaterial({map:rt,emissive:0xffffff,emissiveMap:rt,emissiveIntensity:0.12})));
 }
 // Gore Creek through the village
 {const G=await (await fetch('gore.json')).json();
  G.forEach(p=>{if(p.length<2)return;const c=new THREE.CatmullRomCurve3(p.map(([e,n])=>v3(e,n,elev(e,n)+2)));
-   scene.add(new THREE.Mesh(new THREE.TubeGeometry(c,p.length*3,5,8,false),new THREE.MeshLambertMaterial({color:0x5f8fb8})));});}
+   scene.add(new THREE.Mesh(new THREE.TubeGeometry(c,p.length*3,2.6,8,false),new THREE.MeshLambertMaterial({color:0x4d7393})));});}
 // the Covered Bridge (Bridge Street over Gore Creek) and the Clock Tower beside it
 const LM=(()=>{
   const wood=new THREE.MeshLambertMaterial({color:0x7b4f2e}),dark=new THREE.MeshLambertMaterial({color:0x4a2f1c}),

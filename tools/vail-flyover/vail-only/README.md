@@ -8,3 +8,4 @@ The scene `vail.html` and the camera path `path_vail.py` are 3600 frames at 30 f
 - **Run labels:** shown in trail-map style (● green, ■ blue, ◆ black, ◆◆ double black) from OpenSkiMap names. They appear near the camera's aim and hide when a ridge blocks them.
 - **Branding:** "Charles Harrison - Epique Realty Vail" stays on screen and closes the reel. Per Charles, there are no credit lines.
 - **Positions:** checked against Vail's 2026-27 front side, Back Bowls and Blue Sky trail maps.
+- **Village ground:** real USDA NAIP aerial photos (public domain; USGS NAIP ImageServer, about 0.6 m) over the village, given a winter look by `village_photo.py`. The roofs, conifers and plowed streets come from the photo, and the open ground is snowed over. The 3D buildings in the village carry the photo's real roofs. Run it as `python3 village_photo.py <ski dir> naip.jpg`. The older map-drawn version, `village_ground.py`, is kept for reference.
