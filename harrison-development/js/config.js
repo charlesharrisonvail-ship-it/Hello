@@ -11,12 +11,12 @@ window.HD_CONFIG = {
   descriptor: "Development Advisory & Project Sales",
   tagline: "Mountain-market expertise. Intelligent marketing. Strategic sales.",
 
-  // Proposed attribution. Pending managing-broker review (see LAUNCH-CHECKLIST.md).
-  attribution: "Led by Charles Harrison. Real estate brokerage services provided through Epique Realty.",
+  // Charles, 2026-11-21: no "brokerage services provided through Epique Realty" line anywhere. He is the broker.
+  attribution: "",
 
   // Credentials, in the order Charles requested. User-provided; confirm active status,
   // spelling and permission to use before publication.
-  credentials: ["RSPS", "MRP", "REALTOR®", "Ai Pro", "AiRE Instructor"],
+  credentials: [], // shown as static HTML in About (Charles, 2026-11-21)
 
   // Taken from Charles's own email signature; he approved using them (2026-11-08)
   // as user-provided, pending broker review.

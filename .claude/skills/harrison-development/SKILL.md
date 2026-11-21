@@ -27,15 +27,13 @@ disagree, the newer dated line in the memory file wins.
 - **Name:** Harrison Development. Monogram: HD.
 - **Descriptor:** Development Advisory & Project Sales (Charles's wording, 2026-11-12). At his request the descriptor line on every logo file was re-lettered to match (`harrison-development/tools/relabel-logos.py`, Montserrat); the monogram, mountains, name and web address are his originals, untouched.
 - **Site:** https://harrisondev.org (the only address to print or link).
-- **Charles's title:** `Owner, Harrison Development` and `Area Leader, Epique Realty Colorado` (Charles, 2026-11-18; replaces "Owner, CEO"). He is the broker: never "licensed agent", never "brokerage services provided through Epique Realty". No LLC claim.
+- **Charles's credentials (exact, Charles 2026-11-21):** `Charles Harrison, MRP, RSPS` / `Area Leader - Epique Colorado` / `Owner, CEO Harrison Development`. He is the broker: never "licensed agent", and never write "brokerage services provided through Epique Realty" anywhere (site, email, materials). No LLC claim.
 - **Positioning line:** Knows the market. Teaches the AI. Carries the sale.
 - **Service area:** Colorado statewide, with a focus on the mountain markets.
-- **Attribution:** Led by Charles Harrison. Real estate brokerage services
-  provided through Epique Realty.
+- **Attribution:** none. Charles removed the Epique brokerage line on 2026-11-21.
 - **Contact:** 970-904-0600, charlesharrison@epique.me (shown as an address
   only).
-- **Signature for HD email:** Charles Harrison, Harrison Development |
-  Development Marketing & Sales. Never the EpiVail or AiRE Estate signature.
+- **Signature for HD email:** Charles Harrison, MRP, RSPS / Area Leader - Epique Colorado / Owner, CEO Harrison Development / 970-904-0600 | charlesharrison@epique.me / harrisondev.org (plain text, never a redirect link). Never the EpiVail or AiRE Estate signature.
 
 ## Official logos
 
