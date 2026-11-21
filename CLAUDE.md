@@ -39,6 +39,7 @@ and the site is plain HTML.
 - `tools/cli-anything/` — setup notes for CLI-Anything's CLI-Hub (`pip install cli-anything-hub`; ready-made CLIs for GIMP, Blender, ComfyUI, LibreOffice and more) and its Claude Code plugin; skip hub CLIs that wrap paid services; source is not vendored
 - `tools/claude-web-kit/` — free setup notes for anime.js, Bklit UI and Kokonut UI (all MIT; from Ben Kimball's "5 websites for Claude" reel); Manus is paid and closed, so skipped; source is not vendored
 - `tools/browser-harness/` — free Windows setup notes for Browser Harness (browser-use/browser-harness, MIT; lets Claude Code drive Charles's own logged-in Chrome); telemetry and recordings off; paid Browser Use Cloud skipped; source is not vendored
+- `tools/lucide/` — setup notes for Lucide (lucide-icons/lucide, ISC, free; 2,098 line icons for websites — inline SVG for the plain-HTML sites, `lucide-react` for React); no brand logos; its MCP server is waitlist-only; source is not vendored
 - `is-this-for-you-script.md` — script for the Lead to Keys screening video
 
 ## Conventions
