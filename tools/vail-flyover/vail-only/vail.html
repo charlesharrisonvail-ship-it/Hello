@@ -1,0 +1,181 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden;font-family:Inter,sans-serif;
+    background:linear-gradient(to bottom,#1f5fae 0%,#4f8fd0 30%,#a9cdee 55%,#e6f0f9 72%)}
+  canvas{display:block}
+  .pin{position:absolute;top:150px;width:100%;text-align:center;color:#fff;font:600 40px Inter;text-shadow:0 2px 8px rgba(0,0,0,.7)}
+  .title{position:absolute;left:0;right:0;top:1030px;text-align:center;color:#fff;opacity:0;padding:0 60px}
+  .big{font:800 96px Inter;line-height:1.05;text-shadow:0 4px 18px rgba(0,0,0,.8),0 0 3px rgba(0,0,0,.7)}
+  .small{font:italic 600 52px Inter;margin-top:18px;text-shadow:0 3px 12px rgba(0,0,0,.85)}
+  .sig{font:700 40px Inter;white-space:nowrap;margin-top:34px;text-shadow:0 3px 12px rgba(0,0,0,.9)}
+  .credit{position:absolute;left:36px;bottom:300px;color:rgba(255,255,255,.92);font:500 21px/1.35 Inter;text-shadow:0 1px 4px rgba(0,0,0,.9)}
+  .lbl{position:absolute;transform:translate(-50%,-100%);color:#fff;font:700 38px Inter;text-shadow:0 2px 10px rgba(0,0,0,.85);white-space:nowrap;opacity:0;text-align:center}
+  .lbl.big{font:800 54px Inter}
+  .lbl:after{content:'';display:block;margin:6px auto 0;width:4px;height:70px;background:linear-gradient(#fff,rgba(255,255,255,0))}
+  .step{position:absolute;left:80px;right:80px;top:240px;text-align:center;color:#fff;font:700 42px/1.25 Inter;opacity:0;
+    background:rgba(10,30,60,.55);border-radius:28px;padding:20px 28px;text-shadow:0 2px 6px rgba(0,0,0,.6)}
+  .run{position:absolute;transform:translate(-50%,-50%);color:#fff;font:700 32px Inter;white-space:nowrap;opacity:0;
+    text-shadow:0 0 4px rgba(0,0,0,.95),0 2px 8px rgba(0,0,0,.8)}
+  .run span{display:inline-block;margin-right:8px;font-size:26px}
+  .brand{position:absolute;left:0;right:0;bottom:400px;text-align:center}
+  .brand div{display:inline-block;background:rgba(10,30,60,.6);color:#fff;font:700 38px Inter;padding:14px 30px;border-radius:40px;
+    text-shadow:0 2px 6px rgba(0,0,0,.6);border:2px solid rgba(255,255,255,.35)}
+  #shade{position:absolute;left:0;right:0;top:820px;height:700px;background:radial-gradient(ellipse at center,rgba(0,0,0,.36) 0%,rgba(0,0,0,0) 65%);opacity:0}
+</style></head>
+<body>
+<div id="shade"></div>
+<div class="pin">📍 Vail, Colorado</div><div id="steps"></div><div class="brand" id="brand"><div>Charles Harrison - Epique Realty Vail</div></div>
+<div id="runs"></div><div id="labels"></div><div id="titles"></div>
+<script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
+const TOTAL=3600, BASE=2700;
+const f32=async f=>new Float32Array(await (await fetch(f)).arrayBuffer());
+const tex=async f=>{const t=await new THREE.TextureLoader().loadAsync(f);t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=8;return t;};
+const scene=new THREE.Scene();
+const v3=(e,n,h)=>new THREE.Vector3(e,h,-n);
+const D=[16000,-4800,29120,12000], MAIN=[0,0,29120,13764];
+const inBox=(e,n,b,m=0)=>e>b[0]+m&&e<b[2]-m&&n>b[1]+m&&n<b[3]-m;
+function dropD(e,n){const m=Math.min(e-D[0],D[2]-e,n-D[1],D[3]-n); return m>0?Math.min(1,m/300)*20:0;}
+const L=[];
+async function layer(dem,NX,NY,ext,tx,step,sink){
+  const [x0,y0,x1,y1]=ext,W=x1-x0,H=y1-y0,gx=Math.floor((NX-1)/step),gy=Math.floor((NY-1)/step);
+  const geo=new THREE.PlaneGeometry(W,H,gx,gy); geo.rotateX(-Math.PI/2); const pos=geo.attributes.position;
+  for(let j=0;j<=gy;j++)for(let i=0;i<=gx;i++){const k=j*(gx+1)+i,e=x0+i*step/(NX-1)*W,n=y1-j*step/(NY-1)*H;
+    pos.setY(k,dem[(j*step)*NX+i*step]-sink(e,n));}
+  geo.translate(x0+W/2,0,-(y0+H/2));
+  scene.add(new THREE.Mesh(geo,new THREE.MeshBasicMaterial({map:await tex(tx)})));
+  L.unshift({dem,NX,NY,ext});
+}
+await layer(await f32('/data/demw.f32'),1152,896,[-20000,-20000,49125,33764],'w_tex.jpg',1,(e,n)=>inBox(e,n,MAIN,200)?70:4);
+await layer(await f32('/data/dem.f32'),1456,688,MAIN,'m_tex.jpg',2,(e,n)=>dropD(e,n));
+await layer(await f32('ddem.f32'),1312,1680,D,'d_tex.jpg',1,()=>0);
+function elev(e,n){for(const l of L){const [x0,y0,x1,y1]=l.ext;if(e>x0&&e<x1&&n>y0&&n<y1){
+  const i=Math.round((e-x0)/(x1-x0)*(l.NX-1)),j=Math.round((y1-n)/(y1-y0)*(l.NY-1));return l.dem[j*l.NX+i];}}return 2500;}
+// buildings, snow on the roofs
+{
+  const B=await (await fetch('/data/buildings.json')).json();
+  const WALLS=[[0.80,0.66,0.50],[0.62,0.46,0.32],[0.86,0.78,0.64],[0.52,0.38,0.27],[0.72,0.58,0.44]].map(c=>new THREE.Color(...c));
+  const ROOF=new THREE.Color(0.97,0.98,1.0); const geos=[];
+  B.forEach((b,idx)=>{const toV=r=>r.map(p=>new THREE.Vector2(p[0],p[1]));
+    const shape=new THREE.Shape(toV(b.r[0])); for(let h=1;h<b.r.length;h++) shape.holes.push(new THREE.Path(toV(b.r[h])));
+    let g; try{g=new THREE.ExtrudeGeometry(shape,{depth:b.h+4,bevelEnabled:false});}catch(e){return;}
+    const c=b.r[0][0]; const z=Math.min(b.z,elev(c[0],c[1]));
+    g.rotateX(-Math.PI/2); g.translate(0,z-4,0); g=g.toNonIndexed(); g.computeVertexNormals();
+    const nn=g.attributes.normal,col=new Float32Array(nn.count*3),wall=WALLS[(idx*7+Math.floor(b.h))%WALLS.length];
+    for(let i=0;i<nn.count;i++){const cc=nn.getY(i)>0.5?ROOF:wall;col[i*3]=cc.r;col[i*3+1]=cc.g;col[i*3+2]=cc.b;}
+    g.setAttribute('color',new THREE.BufferAttribute(col,3));
+    for(const k of Object.keys(g.attributes)) if(!['position','normal','color'].includes(k)) g.deleteAttribute(k);
+    geos.push(g);
+    // gable roof along the footprint's long axis, snow on top
+    const P=b.r[0];if(P.length<4||b.h<4)return; let mx=0,my=0;P.forEach(p=>{mx+=p[0];my+=p[1];});mx/=P.length;my/=P.length;
+    let sxx=0,syy=0,sxy=0;P.forEach(p=>{const dx=p[0]-mx,dy=p[1]-my;sxx+=dx*dx;syy+=dy*dy;sxy+=dx*dy;});
+    const th=0.5*Math.atan2(2*sxy,sxx-syy),ux=Math.cos(th),uy=Math.sin(th);let a0=1e9,a1=-1e9,b0=1e9,b1=-1e9;
+    P.forEach(p=>{const dx=p[0]-mx,dy=p[1]-my,a=dx*ux+dy*uy,bb=-dx*uy+dy*ux;a0=Math.min(a0,a);a1=Math.max(a1,a);b0=Math.min(b0,bb);b1=Math.max(b1,bb);});
+    const Lr=a1-a0,Wr=b1-b0;if(Wr<4||Lr<4||Wr>60)return;const rh=Math.min(14,Wr*0.42),top=z-4+b.h+4;
+    const cx=mx+ux*(a0+a1)/2-uy*(b0+b1)/2,cy=my+uy*(a0+a1)/2+ux*(b0+b1)/2;
+    const sh=new THREE.Shape([new THREE.Vector2(-Wr/2-1.2,0),new THREE.Vector2(Wr/2+1.2,0),new THREE.Vector2(0,rh)]);
+    let rg=new THREE.ExtrudeGeometry(sh,{depth:Lr+2,bevelEnabled:false});rg.translate(0,0,-(Lr+2)/2);
+    rg.rotateY(-th+Math.PI/2);rg.translate(cx,top,-cy);rg=rg.toNonIndexed();rg.computeVertexNormals();
+    const rc=new Float32Array(rg.attributes.position.count*3);for(let i=0;i<rc.length;i+=3){rc[i]=ROOF.r;rc[i+1]=ROOF.g;rc[i+2]=ROOF.b;}
+    rg.setAttribute('color',new THREE.BufferAttribute(rc,3));
+    for(const k of Object.keys(rg.attributes)) if(!['position','normal','color'].includes(k)) rg.deleteAttribute(k);
+    geos.push(rg);});
+  scene.add(new THREE.Mesh(mergeGeometries(geos,false),new THREE.MeshLambertMaterial({vertexColors:true})));
+}
+// Gore Creek through the village
+{const G=await (await fetch('gore.json')).json();
+ G.forEach(p=>{if(p.length<2)return;const c=new THREE.CatmullRomCurve3(p.map(([e,n])=>v3(e,n,elev(e,n)+2)));
+   scene.add(new THREE.Mesh(new THREE.TubeGeometry(c,p.length*3,5,8,false),new THREE.MeshLambertMaterial({color:0x5f8fb8})));});}
+// the Covered Bridge (Bridge Street over Gore Creek) and the Clock Tower beside it
+const LM=(()=>{
+  const wood=new THREE.MeshLambertMaterial({color:0x7b4f2e}),dark=new THREE.MeshLambertMaterial({color:0x4a2f1c}),
+        snow=new THREE.MeshLambertMaterial({color:0xf6f8fc}),stucco=new THREE.MeshLambertMaterial({color:0xe9dcc4}),
+        face=new THREE.MeshBasicMaterial({color:0xfdfbf3}),hand=new THREE.MeshBasicMaterial({color:0x1d1d1d});
+  const g=new THREE.Group(); scene.add(g);
+  // bridge: crosses the creek running north-south along Bridge Street
+  const B=[22030,8588],bz=elev(...B)+3,ang=0.12;
+  const br=new THREE.Group(); br.position.copy(v3(B[0],B[1],bz)); br.rotation.y=ang; g.add(br);
+  const deck=new THREE.Mesh(new THREE.BoxGeometry(11,1.5,34),dark); br.add(deck);
+  for(const sx of [-1,1]){const w=new THREE.Mesh(new THREE.BoxGeometry(1,5,34),wood);w.position.set(sx*5.2,3,0);br.add(w);
+    const r=new THREE.Mesh(new THREE.BoxGeometry(8.5,0.8,37),snow);r.position.set(sx*3.2,8.6,0);r.rotation.z=-sx*0.62;br.add(r);}
+  // clock tower: stucco shaft, timber belfry, four clock faces, steep snowy roof
+  const C=[22008,8552],cz=elev(...C);
+  const tw=new THREE.Group(); tw.position.copy(v3(C[0],C[1],cz)); g.add(tw);
+  const shaft=new THREE.Mesh(new THREE.BoxGeometry(7,26,7),stucco); shaft.position.y=13; tw.add(shaft);
+  const bel=new THREE.Mesh(new THREE.BoxGeometry(8,6,8),wood); bel.position.y=29; tw.add(bel);
+  const roof=new THREE.Mesh(new THREE.ConeGeometry(7.4,10,4),snow); roof.position.y=37; roof.rotation.y=Math.PI/4; tw.add(roof);
+  for(let k=0;k<4;k++){const a=k*Math.PI/2,s=new THREE.Group();s.rotation.y=a;tw.add(s);
+    const d=new THREE.Mesh(new THREE.CircleGeometry(2.6,24),face);d.position.set(0,22,3.55);s.add(d);
+    const h1=new THREE.Mesh(new THREE.PlaneGeometry(0.4,2.0),hand);h1.position.set(0,22.8,3.6);s.add(h1);
+    const h2=new THREE.Mesh(new THREE.PlaneGeometry(0.4,1.5),hand);h2.position.set(0.6,21.8,3.6);h2.rotation.z=-1.0;s.add(h2);}
+  return g;
+})();
+scene.add(new THREE.HemisphereLight(0xeef4ff,0x8088a0,2.0));
+const sun=new THREE.DirectionalLight(0xfff2e0,1.6); sun.position.set(-0.7,0.8,0.6); scene.add(sun);
+scene.fog=new THREE.Fog(0xdde9f5,18000,70000);
+const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true,alpha:true});
+renderer.setClearColor(0,0); renderer.setSize(1080,1920); document.body.prepend(renderer.domElement);
+const cam=new THREE.PerspectiveCamera(50,1080/1920,10,150000);
+const K=await (await fetch('path_vail.json')).json();
+const KF=K.map(k=>k[0]),KP=K.map(k=>v3(...k[1])),KT=K.map(k=>v3(...k[2]));
+function cr(arr,f){let i=0;while(i<KF.length-2&&f>KF[i+1])i++;
+  let u=Math.min(1,Math.max(0,(f-KF[i])/(KF[i+1]-KF[i]))); if(i===0||i===KF.length-2) u=u*u*(3-2*u)*0.5+u*0.5;
+  const p0=arr[Math.max(0,i-1)],p1=arr[i],p2=arr[i+1],p3=arr[Math.min(arr.length-1,i+2)],c=new THREE.Vector3(),t=u,t2=t*t,t3=t2*t;
+  for(const a of ['x','y','z']) c[a]=0.5*((2*p1[a])+(-p0[a]+p2[a])*t+(2*p0[a]-5*p1[a]+4*p2[a]-p3[a])*t2+(-p0[a]+3*p1[a]-3*p2[a]+p3[a])*t3);return c;}
+// place labels: [name, [e,n], height above ground, windows, big]
+const LB=[['Vail Village',[22000,8470],120,[[160,300]],1],['Covered Bridge',[22030,8588],22,[[330,600]],0],['Clock Tower',[22008,8552],44,[[330,600]],0],
+ ['Gore Creek',[21860,8556],10,[[380,560]],0],
+ ['Game Creek Bowl',[21300,4650],250,[[840,960]],1],['Sun Down Bowl',[22560,3800],250,[[990,1130]],1],['Sun Up Bowl',[23950,3950],250,[[1170,1310]],1],
+ ['Tea Cup Bowl',[24750,3300],250,[[1345,1480]],1],['China Bowl',[25700,3950],250,[[1505,1640]],1],['Siberia Bowl',[26530,3750],250,[[1665,1800]],1],
+ ['Inner Mongolia',[27350,3500],250,[[1815,1950]],1],['Outer Mongolia',[27950,3300],250,[[1955,2080]],1],
+ ["Pete's Bowl",[27150,750],250,[[2180,2310]],1],['Big Rock Park',[26270,1050],200,[[2290,2400]],1],["Lover's Leap",[25867,690],150,[[2300,2400]],0],
+ ["Belle's Camp",[25731,-111],120,[[2400,2510]],1],["Earl's Bowl",[25050,250],250,[[2510,2620]],1]];
+const lbox=document.getElementById('labels');
+const lels=LB.map(([t,,,,big])=>{const d=document.createElement('div');d.className='lbl'+(big?' big':'');d.textContent=t;lbox.appendChild(d);return d;});
+const ST=[[840,2090,'The Back Bowls'],[2130,2640,'Blue Sky Basin']];
+const sbox=document.getElementById('steps');
+const sels=ST.map(([a,b,h])=>{const d=document.createElement('div');d.className='step';d.innerHTML=h;sbox.appendChild(d);return d;});
+const T=[[30,150,'Vail, Colorado','The village, the Back Bowls &amp; Blue Sky'],[640,800,'The Back Bowls','Where the powder days go'],
+ [2090,2210,'Blue Sky Basin',''],[2590,2700,'Vail, Colorado.','Ski it. Live it.',true]];
+const SYM={easy:['●','#3fbf5a'],novice:['●','#3fbf5a'],intermediate:['■','#2f8cff'],advanced:['◆','#111'],expert:['◆◆','#111'],freeride:['◆◆','#111']};
+const RUNS=[];{const seen=new Set();for(const [n,d,e,nn] of await (await fetch('runs_lbl.json')).json()){
+  const nm=n.replace(/ - (Upper|Lower|Middle|East|West)$/,'');if(seen.has(nm))continue;seen.add(nm);
+  const el=document.createElement('div');el.className='run';const [sy,co]=SYM[d]||['',''];
+  el.innerHTML=(sy?`<span style="color:${co};${co==='#111'?'text-shadow:0 0 3px #fff,0 0 6px #fff':''}">${sy}</span>`:'')+nm;
+  document.getElementById('runs').appendChild(el);RUNS.push({el,p:[e,nn],o:0,w:(nm.length*17+50)});}}
+function runLabels(f,tgt){
+  const on=f>650&&f<2600,placed=[];
+  const cand=RUNS.map(r=>{const z=elev(...r.p);const v=v3(r.p[0],r.p[1],z+40).project(cam);
+    const d=Math.hypot(r.p[0]-tgt.x,r.p[1]+tgt.z);
+    let vis=v.z<1&&Math.abs(v.x)<0.85&&v.y>-0.55&&v.y<0.6&&d<1500;
+    if(vis){const a=cam.position,be=r.p[0],bn=r.p[1],bz=z+40;
+      for(let k=1;k<24;k++){const q=k/24,e=a.x+(be-a.x)*q,n=-a.z+(bn+a.z)*q,h=a.y+(bz-a.y)*q;if(elev(e,n)>h+5){vis=false;break;}}}
+    return {r,v,d,vis};})
+    .filter(c=>on&&c.vis).sort((a,b)=>a.d-b.d);
+  const show=new Set();
+  for(const c of cand){if(show.size>=12)break;const x=(c.v.x+1)/2*1080,y=(1-c.v.y)/2*1920;
+    if(placed.some(p=>Math.abs(p.x-x)<(p.w+c.r.w)/2+10&&Math.abs(p.y-y)<46))continue;placed.push({x,y,w:c.r.w});show.add(c.r);c.r.x=x;c.r.y=y;}
+  for(const r of RUNS){const goal=show.has(r)?1:0;r.o+=(goal-r.o)*0.18;if(r.o<0.02&&!goal){r.el.style.opacity=0;continue;}
+    if(show.has(r)){r.el.style.left=r.x+'px';r.el.style.top=r.y+'px';}r.el.style.opacity=r.o.toFixed(2);}
+}
+const box=document.getElementById('titles');
+const els=T.map(([a,b,big,small,sig])=>{const d=document.createElement('div');d.className='title';
+  d.innerHTML=(big?`<div class="big">${big}</div>`:'')+(small?`<div class="small">${small}</div>`:'')+(sig?`<div class="sig">Charles Harrison - Epique Realty Vail</div>`:'');box.appendChild(d);return d;});
+const shade=document.getElementById('shade');
+window.renderFrame=F=>{const f=F*BASE/TOTAL;
+  const p=cr(KP,f),t=cr(KT,f); const g=elev(p.x,-p.z)+(f<650?60:150); if(p.y<g)p.y=g;
+  cam.position.copy(p); cam.lookAt(t); cam.updateMatrixWorld(); renderer.render(scene,cam); runLabels(f,t);
+  let any=0;
+  T.forEach(([a,b],i)=>{let o=0;if(f>=a&&f<=b)o=Math.min(1,(f-a)/14,b>=BASE-1?1:(b-f)/14);
+    els[i].style.opacity=o;els[i].style.transform=`translateY(${(1-o)*24}px)`;any=Math.max(any,o);});
+  shade.style.opacity=any; document.getElementById('brand').style.opacity=f>2575?Math.max(0,1-(f-2575)/14):1;
+  ST.forEach(([a,b],i)=>{let o=0;if(f>=a&&f<=b)o=Math.min(1,(f-a)/14,(b-f)/14);sels[i].style.opacity=o;});
+  LB.forEach(([t,c,hh,W],i)=>{let o=0;for(const [a,b] of W) if(f>=a&&f<=b)o=Math.min(1,(f-a)/12,(b-f)/12);
+    const v=v3(c[0],c[1],elev(c[0],c[1])+hh).project(cam);
+    lels[i].style.left=((v.x+1)/2*1080)+'px'; lels[i].style.top=((1-v.y)/2*1920)+'px'; lels[i].style.opacity=v.z<1?o:0;});
+};
+window.ready=true;
+</script></body></html>
