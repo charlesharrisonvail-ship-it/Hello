@@ -8,10 +8,22 @@ From Ben Kimball's reel "Top 5 Claude Repos for Content Creators" (2026-11-21).
 | 4 | Browser Harness: [browser-use/browser-harness](https://github.com/browser-use/browser-harness) | MIT | **Notes only**: `tools/browser-harness/`. It drives a real Chrome, so it belongs on Charles's laptop |
 | 3 | Remotion Skills: [remotion-dev/skills](https://github.com/remotion-dev/skills) | Remotion licence | **Already had it**: the `remotion` plugin carries the same skills |
 | 2 | Instagram Agent: [Jakeschincariol/instagram-agent-skill](https://github.com/Jakeschincariol/instagram-agent-skill) @ `d03c56b` | MIT | **Yes**: 13 `ig-*` skills in `.claude/skills/` |
-| 1 | Locked ("?????") in the reel | n/a | **No**: name not shown |
+| 1 | Claude Eyes: [moritzkremb/claude-eyes](https://github.com/moritzkremb/claude-eyes) @ `a540961` | MIT | **Yes**: `eyes` skill in `.claude/skills/eyes/` |
 
-The repo matches for #5, #4 and #2 come from the names on screen. The reel shows
-no links.
+The repo matches come from the names on screen (Charles named #1). The reel shows
+no links. Several repos are called "claude-eyes". This one fits a creator list:
+it measures a video's "editing DNA" (cuts, captions, pacing), studies competitors'
+hooks, and finds clips in a long video.
+
+## Claude Eyes
+
+The skill teaches Claude to use the `eyes` CLI. On first use it installs the CLI
+itself (`uv tool install git+https://github.com/moritzkremb/claude-eyes`, then
+`eyes setup --fix` for ffmpeg, whisper.cpp and a speech model). It works on Windows,
+Python 3.10+.
+
+It runs **locally and free**. The one paid option, `--transcriber elevenlabs`,
+uploads audio to ElevenLabs and needs a paid key. Don't use it.
 
 ## The skills
 
