@@ -166,8 +166,9 @@ const End: React.FC = () => {
   const pulse = 1 + Math.sin((frame - F(END_BEAT)) / 5) * 0.025;
   return (
     <AbsoluteFill style={{background: `radial-gradient(100% 70% at 50% 35%, #1d2f52, ${c.navyMid} 50%, ${c.navy})`, justifyContent: 'center', alignItems: 'center', textAlign: 'center', padding: 70}}>
-      <Pop at={END_BEAT}><Kicker size={46}>NEXT STOP?</Kicker></Pop>
-      <Slam at={END_BEAT + 1}><Script size={120}>Where should I go next?</Script></Slam>
+      <Pop at={END_BEAT}><Kicker size={46}>HEIDELBERG · PART ONE</Kicker></Pop>
+      <Slam at={END_BEAT + 1}><Big size={210} color={c.goldBright}>MORE TO COME!</Big></Slam>
+      <Pop at={END_BEAT + 2}><Script size={84}>stay tuned, y'all…</Script></Pop>
       <Pop at={END_BEAT + 3} style={{marginTop: 50}}>
         <div style={{transform: `scale(${pulse})`, background: c.gold, color: c.navy, fontFamily: stamp, fontSize: 54, letterSpacing: '0.12em', padding: '14px 40px', borderRadius: 999}}>
           COMMENT BELOW & FOLLOW FOR MORE

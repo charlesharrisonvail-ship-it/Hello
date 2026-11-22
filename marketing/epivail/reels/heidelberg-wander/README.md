@@ -13,3 +13,4 @@ Heidelberg that day. Lifestyle piece: travel as part of the life, not an EpiVail
 - The bridge-monkey plaque line is a loose translation of "Was thustu mich hie angaffen?"
 - `thumbnail-9x16.jpg` / `thumbnail-square.jpg` for Lofty; `caption.txt` for the post.
 - One Christmas-run beat shows a shop's own sign (Inge-Glas) in its window.
+- End card (2026-11-22 revision): "HEIDELBERG · PART ONE / MORE TO COME! / stay tuned, y'all…" at Charles's request, to leave viewers wanting more; part two to follow.
