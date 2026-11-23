@@ -23,10 +23,7 @@ from `claude/stan-store-access-k4hjdu`, not `main`. ChatGPT makes cards from
 `marketing/chatgpt-brief.md`; check every image (no name, Claude Code "(not
 included)", $67/$97) before queuing.
 
-Super chiefs (2026-11-23): one chief per business (`epivail-chief`, `aire-chief`,
-`hd-chief`) with weekly playbooks in `.claude/teams/`. Plan and 7-day launch in
-`plans/super-chiefs-blueprint.md`. Day 1 waits on Charles naming his recruits for
-the `agent-recruit` tag; Friday review tasks wait for his go.
+Super chiefs (2026-11-23): `epivail-chief`, `aire-chief`, `hd-chief`; see `recall.py chiefs`.
 
 ## Open question for Charles
 
@@ -45,15 +42,3 @@ not rule on it, so ask rather than pick.
    with whatever he hits
 
 ## Working thread (auto-banked)
-
-### banked 2026-10-10 19:18
-(compaction point -- the thread above this line was summarised; anything not written down here is gone)
-
-
-### banked 2026-11-10 02:34
-(compaction point -- the thread above this line was summarised; anything not written down here is gone)
-
-
-### banked 2026-11-17 17:21
-(compaction point -- the thread above this line was summarised; anything not written down here is gone)
-
