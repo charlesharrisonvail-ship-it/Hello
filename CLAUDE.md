@@ -20,7 +20,8 @@ and the site is plain HTML.
   - `recruitment-outreach.md` — agent recruitment emails, DMs, SMS, call scripts, and sequences
   - `linkedin-content.md` — LinkedIn posts, content calendars, and carousel/Reel concepts
   - `lofty-crm.md` — Lofty contacts, tiers, tags, recruit pipeline stages, and follow-up tasks
-  - `epivail-chief.md` — EpiVail chief of staff: runs the four agents above for recruits and LinkedIn traffic, weekly review
+  - `recruit-scout.md` — finds and scores EpiVail agent recruits from free sources (FlexMLS closed sales first); never contacts anyone, never commits names
+  - `epivail-chief.md` — EpiVail chief of staff: runs recruit-scout and the four agents above for recruits and LinkedIn traffic, weekly review
   - `aire-chief.md` and `aire-content.md` — AiRE Estate chief (checker, traffic and sales, weekly review) and its writer; AiRE rules, not EpiVail's
   - `hd-chief.md` and `hd-prospector.md` — Harrison Development chief (developer leads, site traffic, weekly review) and its project prospector; HD rules, not EpiVail's
 - `.claude/teams/` — one playbook per chief (`epivail/`, `aire/`, `hd/`): weekly scoreboard and lessons learned; public, so counts and patterns only

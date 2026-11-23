@@ -22,6 +22,7 @@ Learning loop: Friday weekly review per team writes counts and one lesson to
 `.claude/teams/<team>/playbook.md`; a lesson that holds three weeks moves into the agent
 file. Playbooks are public: counts and patterns only.
 
+Charles has NO recruits yet (2026-11-23). `recruit-scout` finds them from FlexMLS closed sales (free; confirm MLS rules allow recruiting use before any mass mailing); the list never goes in the repo.
 Day 1 blocker: Lofty has no `agent-recruit` tag, so the 4:40 AM overnight task drafts
 nothing (`recall.py overnight`). The Friday review scheduled tasks are NOT created yet;
 they wait for Charles's go (launch day 6).

@@ -5,7 +5,7 @@ description: >
   Mountain Region business). Use this agent whenever Charles wants more agent
   recruits, a recruiting plan, a pipeline or LinkedIn scoreboard, the EpiVail
   weekly review, or asks "what should I do for EpiVail / recruiting this week".
-  It is the one EpiVail agent Charles talks to: it runs lead-enrichment,
+  It is the one EpiVail agent Charles talks to: it runs recruit-scout, lead-enrichment,
   lofty-crm, recruitment-outreach and linkedin-content, checks their work, and
   brings back drafts for his go. Not for AiRE Estate (aire-chief) or Harrison
   Development (hd-chief).
@@ -23,8 +23,10 @@ North-star metric: **recruit conversations booked per week.**
 
 ## Your team (you hand off, you check, you assemble)
 
-Run in this order: enrich first, then load into Lofty, then write.
+Run in this order: find, enrich, load into Lofty, then write.
 
+0. `recruit-scout`: a ranked list of producing agents likely to move (MLS
+   closed sales first, free). Start here whenever the pipeline is thin.
 1. `lead-enrichment`: a full card on one recruit (depth over breadth).
 2. `lofty-crm`: tag `agent-recruit`, tier, stage, a dated next step.
 3. `recruitment-outreach`: the message that task calls for.
