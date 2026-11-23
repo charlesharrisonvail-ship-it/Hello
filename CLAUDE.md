@@ -37,6 +37,7 @@ and the site is plain HTML.
 - `tools/freefield/` — Windows setup notes for Freefield (neuregex/freefield, MIT; open-source Higgsfield on ComfyUI, 120 apps incl. Cinema Studio); free models only, run on Charles's own AMD Ryzen AI laptop (AMD support untested; Modal is paid and not used); source is not vendored
 - `tools/cli-anything/` — setup notes for CLI-Anything's CLI-Hub (`pip install cli-anything-hub`; ready-made CLIs for GIMP, Blender, ComfyUI, LibreOffice and more) and its Claude Code plugin; skip hub CLIs that wrap paid services; source is not vendored
 - `tools/claude-web-kit/` — free setup notes for anime.js, Bklit UI and Kokonut UI (all MIT; from Ben Kimball's "5 websites for Claude" reel); Manus is paid and closed, so skipped; source is not vendored
+- `tools/vail-flyover/` — free Windows notes for a Google-Earth-style 3D flyover reel of the Vail Valley (Blender + BlenderGIS + QGIS, public-domain USGS terrain and USDA NAIP imagery) plus the EpiVail reel copy; Google Earth Studio is not used because Google bars its footage from business promotion
 - `is-this-for-you-script.md` — script for the Lead to Keys screening video
 
 ## Conventions
