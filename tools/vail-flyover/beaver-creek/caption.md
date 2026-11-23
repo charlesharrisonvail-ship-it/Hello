@@ -2,6 +2,13 @@
 
 This is a draft for Charles to approve before posting. The audience is buyers and second-home owners.
 
+## Short version (362 characters)
+
+> Y'all, come take a winter lap around Beaver Creek with me. ❄️ Birds of Prey, Rose Bowl, Grouse, Larkspur, then down to Bachelor Gulch and Arrowhead. It's the mountain that brings folks here, and it holds the value. Dreaming of ski-in, ski-out? I'd be honored to help.
+>
+> Charles Harrison, Epique Area/Growth Leader
+> #BeaverCreek #BachelorGulch #SkiInSkiOut #EpiVail
+
 ## Instagram / Facebook
 
 > Y'all, come take a winter lap around Beaver Creek with me. ❄️
