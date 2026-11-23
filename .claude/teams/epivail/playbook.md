@@ -11,7 +11,7 @@ Recruit conversations booked per week.
 
 | Week ending | Recruits tagged | New this week | Drafts written | Replies | Conversations booked | LinkedIn right-audience engagers | Notes |
 |---|---|---|
-| 2026-11-27 | baseline: not yet measured | Team set up 2026-11-23 |
+| 2026-11-27 | baseline: 0 recruits; scout ranked 383 Eagle County agents from 933 MLS closings (top 40 shortlisted, private) | Team set up 2026-11-23 |
 
 ## What we've learned
 
