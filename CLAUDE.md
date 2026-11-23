@@ -15,11 +15,16 @@ and the site is plain HTML.
 
 ## Layout
 
-- `.claude/agents/` — subagents (EpiVail)
+- `.claude/agents/` — subagents (EpiVail unless named for AiRE Estate or Harrison Development)
   - `lead-enrichment.md` — enrich a name, company, LinkedIn URL, or email into a full contact card
   - `recruitment-outreach.md` — agent recruitment emails, DMs, SMS, call scripts, and sequences
   - `linkedin-content.md` — LinkedIn posts, content calendars, and carousel/Reel concepts
   - `lofty-crm.md` — Lofty contacts, tiers, tags, recruit pipeline stages, and follow-up tasks
+  - `epivail-chief.md` — EpiVail chief of staff: runs the four agents above for recruits and LinkedIn traffic, weekly review
+  - `aire-chief.md` and `aire-content.md` — AiRE Estate chief (checker, traffic and sales, weekly review) and its writer; AiRE rules, not EpiVail's
+  - `hd-chief.md` and `hd-prospector.md` — Harrison Development chief (developer leads, site traffic, weekly review) and its project prospector; HD rules, not EpiVail's
+- `.claude/teams/` — one playbook per chief (`epivail/`, `aire/`, `hd/`): weekly scoreboard and lessons learned; public, so counts and patterns only
+- `plans/super-chiefs-blueprint.md` — the three-team plan, QA and 7-day launch
 - `.claude/skills/linkedin-optimizer/` — LinkedIn analytics and profile optimization
 - `.claude/skills/harrison-development/` — brand card for Harrison Development: official logos, colors, type, voice, site and publishing steps, and Charles's standing rules
 - `.claude/skills/` also holds five general skills from ComposioHQ/awesome-claude-skills (commit `be2a406`, Apache-2.0): `lead-research-assistant`, `content-research-writer`, `competitive-ads-extractor`, `meeting-insights-analyzer`, `domain-name-brainstormer`. They are third-party and brand-neutral; EpiVail and AiRE Estate rules in this file still govern anything they produce.

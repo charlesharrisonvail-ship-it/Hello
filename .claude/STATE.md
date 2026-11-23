@@ -23,6 +23,11 @@ from `claude/stan-store-access-k4hjdu`, not `main`. ChatGPT makes cards from
 `marketing/chatgpt-brief.md`; check every image (no name, Claude Code "(not
 included)", $67/$97) before queuing.
 
+Super chiefs (2026-11-23): one chief per business (`epivail-chief`, `aire-chief`,
+`hd-chief`) with weekly playbooks in `.claude/teams/`. Plan and 7-day launch in
+`plans/super-chiefs-blueprint.md`. Day 1 waits on Charles naming his recruits for
+the `agent-recruit` tag; Friday review tasks wait for his go.
+
 ## Open question for Charles
 
 The agents say "powered by Epique X"; some skills say "EpiqueAI". `CLAUDE.md` does

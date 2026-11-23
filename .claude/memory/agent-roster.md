@@ -1,6 +1,6 @@
 ---
 name: agent-roster
-description: Which subagent to reach for, and the order they chain in
+description: Which subagent to reach for, the order they chain in, and the three business chiefs
 ---
 
 - `lead-enrichment` - a name, company, LinkedIn URL, email, or vague
@@ -18,3 +18,8 @@ backwards - personalization requires knowing something true about the recipient.
 `linkedin-optimizer` (skill) measures; `linkedin-content` (agent) creates.
 Creation follows measurement: if analytics are in the conversation, let the data
 pick topic and format.
+
+**Chiefs (2026-11-23):** each business has one chief Charles talks to, which runs
+the specialists above for its own business only. EpiVail -> `epivail-chief`;
+AiRE Estate -> `aire-chief` (+ `aire-content`); Harrison Development -> `hd-chief`
+(+ `hd-prospector`). See `recall.py chiefs`.
