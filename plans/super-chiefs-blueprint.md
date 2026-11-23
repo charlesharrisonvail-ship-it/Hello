@@ -45,7 +45,7 @@ before writing a word.
 
 ## 2. First job for each (what saves the most this month)
 
-**EpiVail: fill the recruit pipeline from zero.** Charles has no recruits yet (2026-11-23), so `recruit-scout` builds the list from his FlexMLS closed sales (933 residential closings in Eagle County alone in 12 months, every one naming the agents). Then: The 4:40 AM follow-up task already
+**EpiVail: fill the recruit pipeline from zero.** Charles has no recruits yet (2026-11-23), so `recruit-scout` builds the list from his FlexMLS closed sales (Colorado outside the Vail and Eagle valleys) and national sources. Never the Vail Valley or Eagle Valley (Charles, 2026-11-23). Then: The 4:40 AM follow-up task already
 exists but has drafted nothing since October: Lofty has no `agent-recruit` tag,
 so it finds no recruits. One tagging session turns on a machine that is
 already built. LinkedIn content can wait a week; it already has an agent.
@@ -166,7 +166,7 @@ for a password, key or secret. `CLAUDE.md` outranks every agent here.
 
 | Day | Task |
 |---|---|
-| 1 | **EpiVail setup:** `recruit-scout` ranks Eagle County agents from MLS closed sales; Charles picks his top 10; they are enriched and tagged `agent-recruit` in Lofty with his OK. The 4:40 AM task starts drafting the next morning. |
+| 1 | **EpiVail setup:** `recruit-scout` ranks agents from Colorado outside the valley and nationally; Charles picks his top 10; they are enriched and tagged `agent-recruit` in Lofty with his OK. The 4:40 AM task starts drafting the next morning. |
 | 2 | **EpiVail test:** read the first overnight drafts; fix the voice in the playbook. Run manual tests 1-3 on `epivail-chief`. |
 | 3 | **AiRE setup + test:** `aire-chief` pulls the last 30 days of page insights, fills the first scoreboard, and drafts next week's three posts. Run manual tests 1-3. |
 | 4 | **HD setup + test:** `hd-prospector` builds the first list of 5 projects in planning; `hd-chief` drafts the follow-ups now due. Run manual tests 1-3. |
@@ -181,7 +181,7 @@ two days running.
 
 ## START HERE FIRST
 
-**Your first action today, Charles:** read the ranked Eagle County recruit list
+**Your first action today, Charles:** read the ranked recruit list (Colorado outside the valley, plus national)
 `recruit-scout` builds from your MLS, and circle your top 10. Say "enrich and
 tag them", and the chain runs: enrichment, Lofty `agent-recruit` tags (with your
 OK), and the 4:40 AM follow-up drafts start the next morning.

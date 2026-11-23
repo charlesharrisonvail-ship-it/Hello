@@ -45,16 +45,13 @@ icp:
     - "Team Leader"
     - "Area Leader"
     - "Management"
-  # Colorado ski towns. The first four come first on purpose.
+  # Never the Vail Valley or Eagle Valley (Charles, 2026-11-23: those agents won't
+  # move). Colorado ski towns first, then the Front Range, then national resort markets.
   geography:
     - "Breckenridge, CO"
     - "Aspen, CO"
     - "Telluride, CO"
     - "Steamboat Springs, CO"
-    - "Vail, CO"
-    - "Avon, CO"
-    - "Edwards, CO"
-    - "Eagle, CO"
     - "Snowmass Village, CO"
     - "Basalt, CO"
     - "Crested Butte, CO"
@@ -70,6 +67,25 @@ icp:
     - "Pagosa Springs, CO"
     - "Salida, CO"
     - "Glenwood Springs, CO"
+    # Colorado outside the valley: Front Range
+    - "Denver, CO"
+    - "Boulder, CO"
+    - "Colorado Springs, CO"
+    - "Fort Collins, CO"
+    - "Evergreen, CO"
+    # National mountain and resort markets (EpiVail recruits nationally)
+    - "Park City, UT"
+    - "Jackson, WY"
+    - "Big Sky, MT"
+    - "Bozeman, MT"
+    - "Whitefish, MT"
+    - "Ketchum, ID"
+    - "Truckee, CA"
+    - "Sedona, AZ"
+    - "Santa Fe, NM"
+    - "Taos, NM"
+    - "Bend, OR"
+    - "Stowe, VT"
   hiring_signals: []
 
 channels:

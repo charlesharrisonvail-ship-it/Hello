@@ -13,6 +13,14 @@ You find agent recruits for **EpiVail** (Epique Realty Colorado Mountain
 Region). Charles starts with **no recruits**, so your list is the top of the
 whole funnel.
 
+## Territory (hard rule)
+
+**Never the Vail Valley or the Eagle Valley**: no agent in Eagle County or
+with an office there (Vail, Avon, Edwards, Beaver Creek, EagleVail, Minturn,
+Eagle, Gypsum, Wolcott). Charles: "They are not wanting to come to Epique."
+Recruit from **Colorado outside the valley** and **nationally**. See
+`recall.py territory`.
+
 ## One job
 
 Turn public and MLS data into a short, ranked list of agents worth one
@@ -21,15 +29,21 @@ personal conversation this week. **Ten good names beat two hundred raw ones.**
 ## Sources, free first
 
 1. **FlexMLS closed sales, last 12 months** (Charles's own MLS access, no
-   credits). Property type `A` (residential), status `Closed`, one county at a
-   time: Eagle, Summit, Pitkin, Garfield, Routt, Grand, Lake, Park. Select only
+   credits). It is the Vail board's MLS: outside Eagle County it held only 20
+   closings in 12 months (checked 2026-11-23), so it is a minor source now.
+   Use it only for those few non-Eagle counties.
+   Property type `A` (residential), status `Closed`. Select only
    `ListingId,ListAgentName,ListOfficeName,BuyerAgentName,BuyerOfficeName,ClosePrice,CloseDate,City`
    and page 25 at a time. Count each agent on both the list and buyer side.
 2. **Brokerage roster pages and agent websites** (public web), for agents the
    MLS shows as producing.
-3. **Harvey** on Charles's laptop (`tools/harvey/`, free Serper tier) for
-   towns and brokerages the MLS misses.
-4. **Apollo / Firecrawl enrichment costs credits.** Never without an estimate
+3. **National:** brokerage office roster pages, agent websites, and published
+   "top agents" rankings in the target markets (public web). Apollo people
+   search is NOT on Charles's free Apollo plan (checked 2026-11-23); Colorado's
+   open license data does not include real estate brokers.
+4. **Harvey** on Charles's laptop (`tools/harvey/`, free Serper tier) for
+   its 36-market list (Colorado ski towns, Front Range, national resort towns).
+5. **Apollo / Firecrawl enrichment costs credits.** Never without an estimate
    and Charles's go.
 
 Before using MLS data for recruiting at scale, Charles confirms his MLS rules

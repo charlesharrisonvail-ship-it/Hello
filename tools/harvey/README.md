@@ -21,7 +21,7 @@ the config file, so Harvey cannot send.
 |---|---|---|
 | Harvey itself | Yes | MIT licence |
 | Its thinking | Uses your Claude plan | Runs on the Claude Pro or Max plan you already sign in to Claude Code with. No API key, no per-use bill. The config holds it to 50% of your daily plan. |
-| Finding brokerages | Yes, with Serper | **Serper** gives 2,500 free searches with no card. One full run of this config uses about 140 of them. |
+| Finding brokerages | Yes, with Serper | **Serper** gives 2,500 free searches with no card. One full run of this config uses about 220 of them. |
 | Harvey's default free source (OpenStreetMap) | Can't be used | It only knows roofers, plumbers, HVAC, electricians, dentists, lawyers, contractors and landscapers. It has **no real estate category**, so we use Serper instead. |
 | Checking email addresses | Optional, free | A free **Reoon** key gives 600 checks a month. Without it, addresses are marked "guess". |
 | DataForSEO | Skip | It needs a $50 deposit to go live |
@@ -83,9 +83,12 @@ Open **PowerShell** (not as Administrator) and run these one at a time.
    Copy-Item "$env:USERPROFILE\src\Hello\tools\harvey\harvey.local.yaml" .
    ```
 
-   It searches for real estate brokerages and agents in 23 Colorado ski towns,
-   starting with Breckenridge, Aspen, Telluride and Steamboat Springs, then the
-   Vail Valley, Summit County, Crested Butte, Winter Park, Durango and others.
+   It searches for real estate brokerages and agents in 36 markets: 19 Colorado
+   ski towns (Breckenridge, Aspen, Telluride, Steamboat Springs, Summit County,
+   Crested Butte, Winter Park, Durango and others), five Front Range cities, and
+   12 national resort markets (Park City, Jackson, Big Sky, Sun Valley, Tahoe,
+   Sedona, Santa Fe and others). **Never the Vail Valley or Eagle Valley**:
+   Charles says those agents won't move (2026-11-23).
    To add a town, open it in Notepad and add a line under `geography:`, such as
    `- "Leadville, CO"`. Each town adds two searches, about 6 of your free
    Serper searches.
