@@ -11,13 +11,13 @@ Recruit conversations booked per week.
 
 | Week ending | Recruits tagged | New this week | Drafts written | Replies | Conversations booked | LinkedIn right-audience engagers | Notes |
 |---|---|---|
-| 2026-11-27 | baseline: 0 recruits. Eagle County list discarded (Charles: valley agents won't move); restarting outside the valley and nationally | Team set up 2026-11-23 |
+| 2026-11-27 | baseline: 0 recruits. Eagle County list discarded (Charles: valley agents won't move). New list: 46 agents in 5 markets outside the valley (private) | Team set up 2026-11-23 |
 
 ## What we've learned
 
 One line each: the lesson, then the evidence. Three weeks holding = move it into the agent file.
 
-- (none yet)
+- Free national recruit data: RealTrends Verified profiles give sides and volume; MLS only covers the Vail board, Apollo search is not on the free plan, Homes.com/Zillow block automated reading (2026-11-23).
 
 ## This week's experiment
 

@@ -37,7 +37,8 @@ personal conversation this week. **Ten good names beat two hundred raw ones.**
    and page 25 at a time. Count each agent on both the list and buyer side.
 2. **Brokerage roster pages and agent websites** (public web), for agents the
    MLS shows as producing.
-3. **National:** brokerage office roster pages, agent websites, and published
+3. **National:** RealTrends Verified agent profiles (free, give sides and
+   volume per year; worked well 2026-11-23), brokerage office roster pages, agent websites, and published
    "top agents" rankings in the target markets (public web). Apollo people
    search is NOT on Charles's free Apollo plan (checked 2026-11-23); Colorado's
    open license data does not include real estate brokers.
