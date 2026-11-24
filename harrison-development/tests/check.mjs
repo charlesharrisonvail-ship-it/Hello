@@ -274,6 +274,17 @@ async function fillValid(page) {
   log(/Real estate brokerage services provided through Epique Realty/.test(txt), 'brokerage attribution visible in body copy');
   log(!/LLC|guarantee(d)? (approval|sales)/i.test(txt.replace(/No guarantee of buyer demand[^.]*\./, '')), 'no LLC claim / no guarantee claims');
   await ctx.close(); }
+// Eva, the AI assistant (Charles, 2026-11-17): labeled as AI, answers only from the site, sends nothing.
+{ const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const page = await ctx.newPage(); await page.goto(BASE + '/index.html'); await page.waitForTimeout(800);
+  const evaBtn = page.locator('#eva-btn');
+  log(await evaBtn.isVisible() && /AI assistant/.test(await evaBtn.getAttribute('aria-label')) && (await evaBtn.locator('.ai').textContent()) === 'AI', 'Eva button is shown and labeled as an AI assistant');
+  await evaBtn.click(); const sent = []; page.on('request', r => { if (!/\/assets\//.test(r.url())) sent.push(r.url()); });
+  const askEva = async q => { await page.fill('#eva-q', q); await page.press('#eva-q', 'Enter'); await page.waitForTimeout(400); return page.evaluate(() => { const m = document.querySelectorAll('#eva .m:not(.u)'); return m[m.length - 1].textContent; }); };
+  const a1 = await askEva('What does it cost?'), a2 = await askEva('Can you guarantee sales?'), a3 = await askEva('What is the weather?');
+  log(/Terms are discussed in a consultation/.test(a1) && /do not promise sales pace/.test(a2) && /only answer from/.test(a3), 'Eva answers from site wording, never promises results, and admits what she cannot answer');
+  log(sent.length === 0, 'Eva sends nothing over the network when asked a question', sent.join(' '));
+  log(!/\$\s?\d/.test(await page.locator('#eva').innerText()), 'Eva quotes no prices');
+  await ctx.close(); }
 log(external.size === 0, 'no third-party network requests (no trackers, no CDN)', [...external].join(' '));
 
 await browser.close();
