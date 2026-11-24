@@ -1,0 +1,9 @@
+---
+name: cli-anything
+description: CLI-Anything (HKUDS) is enabled as a Claude Code plugin in settings.json and its cli-hub is installed from PyPI; setup notes in tools/cli-anything
+---
+CLI-Anything (HKUDS/CLI-Anything, Apache-2.0) was added 2026-11-18 at Charles's request.
+- Plugin `cli-anything@cli-anything` is merged into `.claude/settings.json` (marketplace `HKUDS/CLI-Anything`); commands `/cli-anything`, `:refine`, `:test`, `:validate`, `:list`.
+- CLI-Hub: `pip install cli-anything-hub` (0.4.1). Installing from a source clone fails on Debian Python; use PyPI.
+- Skip hub CLIs that wrap paid services; Charles pays for no AI tools.
+- Notes: `tools/cli-anything/README.md`. Source not vendored.

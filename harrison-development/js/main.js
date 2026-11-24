@@ -300,6 +300,37 @@
   var state = $("formState"), summary = $("errorSummary"), result = $("formResult"), btn = $("submitBtn");
   var live = !!cfg.formEndpoint;
   var submitting = false, lastSent = "";
+  // Motion Prompt #160 Loading button · MIT License (c) 2026 Shohei Ohtaki · https://showheyohtaki.github.io/motion-prompt/#160
+  // Shrinks to a circle with a spinner while the request is out; turns green with a check only after the server accepted it.
+  var btnLabel = btn.textContent;
+  btn.classList.add("lb");
+  btn.innerHTML = '<span class="lb-label">' + esc(btnLabel) + '</span><span class="lb-spin" aria-hidden="true"></span>' +
+    '<span class="lb-ok" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Sent</span>';
+  var lbMotion = function () { return !reduce && !root.classList.contains("motion-paused"); };
+  var lbWidth = function (px) { btn.style.width = btn.getBoundingClientRect().width + "px"; void btn.offsetWidth; btn.style.width = px + "px"; };
+  var lbTimers = [];
+  var lbStart = function () {
+    lbTimers.forEach(clearTimeout); lbTimers = [];
+    btn.setAttribute("aria-label", "Sending");
+    btn.classList.remove("lb-back", "lb-done");
+    if (lbMotion()) lbWidth(btn.offsetHeight); // 0.3 s shrink to a circle
+    btn.classList.add("lb-busy");
+    return Date.now();
+  };
+  var lbReset = function () {
+    btn.classList.remove("lb-busy", "lb-done"); btn.style.width = ""; btn.removeAttribute("aria-label");
+    if (lbMotion()) { btn.classList.add("lb-back"); }
+  };
+  var lbEnd = function (ok, t0) {
+    // never resolve before the shrink has finished
+    return new Promise(function (res) { setTimeout(res, Math.max(0, 300 - (Date.now() - t0))); }).then(function () {
+      if (!ok) { lbReset(); return; }
+      btn.classList.remove("lb-busy"); btn.classList.add("lb-done"); btn.setAttribute("aria-label", "Sent");
+      if (lbMotion()) lbTimers.push(setTimeout(function () { btn.style.width = "160px"; }, 200)); // widen into "Sent"
+      // hold "Sent" for a moment (the button stays disabled), then bring the original button back
+      return new Promise(function (res) { lbTimers.push(setTimeout(function () { lbReset(); res(); }, 1850)); });
+    });
+  };
 
   var emailMode = !live && !cfg.previewBanner && cfg.mailtoFallback && c.email;
   state.textContent = live
@@ -393,12 +424,12 @@
 
     var payload = JSON.stringify(data);
     if (payload === lastSent) { box("You already sent this request. We have it and will follow up personally.", false); return; }
-    submitting = true; btn.disabled = true; btn.textContent = "Sending…";
+    submitting = true; btn.disabled = true; var lbT0 = lbStart(), lbOk = false;
     var ctl = new AbortController(), timer = setTimeout(function () { ctl.abort(); }, 15000);
     fetch(cfg.formEndpoint, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: payload, signal: ctl.signal })
       .then(function (r) {
         if (!r.ok) { var er = new Error("status " + r.status); er.status = r.status; throw er; }
-        lastSent = payload; form.reset(); // success is shown only after the server accepted it
+        lastSent = payload; form.reset(); lbOk = true; // success is shown only after the server accepted it
         box("<strong>Thank you.</strong> Your request was received. We will follow up personally.", false);
       })
       .catch(function (err) {
@@ -407,6 +438,7 @@
           (c.email ? '<a class="btn" href="' + mailtoLink(data) + '">Email it instead</a>' : "") +
           (c.phone ? '<br><span class="hint">Or call ' + esc(c.phone) + ".</span>" : ""), true);
       })
-      .then(function () { clearTimeout(timer); submitting = false; btn.disabled = false; btn.textContent = "Start a Project Conversation"; });
+      .then(function () { clearTimeout(timer); return lbEnd(lbOk, lbT0); })
+      .then(function () { submitting = false; btn.disabled = false; });
   });
 })();
