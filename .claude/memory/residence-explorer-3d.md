@@ -20,6 +20,17 @@ into cut-outs, because the source trees are millions of triangles. GTAO, bloom a
 SMAA post-processing. Everything is bundled into one self-contained HTML file (about
 17 MB), plus a recorded walk-through MP4 ending on the official HD title card.
 
+His landscape direction (2026-11-24; he has a landscape architecture background): a
+dry-stack Siloam stone retaining wall on one gently curving, flowing line that follows the
+yard's contour; a Siloam flagstone patio; 7" Siloam steppers as stairs leaving the porch
+and going down the hill; the front bed between patio and wall filled with mixed
+perennials, annuals and evergreen shrubs, with piñon pine and globe spruce for depth.
+He found the house had too much glass (walkout front now mostly stone, cable deck
+rails) and the lower floors "flickered like a dancefloor" (ground was level with the
+floor; fixed). A "Grounds" view in the level menu flies to the landscape. He has PRO
+Landscape on his computer; a plan exported from it (DXF/DWG plus plant list) would let
+the model follow his real design.
+
 Built in the session scratchpad, not in this public repo; nothing published. The house,
 rooms and square footage are samples and the page says so. Next step to a 10 is a real
 project's floor plans and photos. Publishing it on harrisondev.org only on his say.
