@@ -1,0 +1,17 @@
+<!doctype html><html><body style="margin:0;background:transparent">
+<script type="importmap">{"imports":{"three":"/build/node_modules/three/build/three.module.js","three/addons/":"/build/node_modules/three/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+const r=new THREE.WebGLRenderer({antialias:true,alpha:true,preserveDrawingBuffer:true});r.setClearColor(0,0);r.outputColorSpace=THREE.SRGBColorSpace;r.toneMapping=THREE.ACESFilmicToneMapping;r.toneMappingExposure=1.0;document.body.appendChild(r.domElement);
+window.renderModel=async(url,W)=>{const g=await new GLTFLoader().loadAsync(url);const out=[];
+ const roots=g.scene.children.slice();
+ for(const node of roots){const sc=new THREE.Scene();sc.add(new THREE.HemisphereLight(0xdfe8ff,0x3a3020,1.6));const d=new THREE.DirectionalLight(0xfff4e0,2.4);d.position.set(-3,6,8);sc.add(d);
+  node.position.set(0,0,0);node.rotation.set(node.rotation.x,0,node.rotation.z);sc.add(node);node.updateMatrixWorld(true);
+  node.traverse(o=>{if(o.material){const ms=Array.isArray(o.material)?o.material:[o.material];ms.forEach(m=>{m.side=THREE.DoubleSide;if(m.transparent||m.alphaTest>0){m.alphaTest=.5;m.transparent=false}})}});
+  const b=new THREE.Box3().setFromObject(node);const sz=b.getSize(new THREE.Vector3()),c=b.getCenter(new THREE.Vector3());
+  const w=Math.max(sz.x,sz.z)*1.04,h=sz.y*1.02;const H=Math.round(W*h/w);r.setSize(W,H,false);
+  const cam=new THREE.OrthographicCamera(-w/2,w/2,h/2,-h/2,.1,1000);cam.position.set(c.x,c.y,c.z+Math.max(sz.x,sz.z)*3+10);cam.lookAt(c);
+  r.render(sc,cam);out.push({url:r.domElement.toDataURL('image/png'),w:+w.toFixed(3),h:+h.toFixed(3),name:node.name});sc.remove(node)}
+ return out};
+window.ready=true;
+</script></body></html>

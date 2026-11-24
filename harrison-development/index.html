@@ -18,8 +18,8 @@
   <link rel="icon" href="assets/brand/hd-favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/space-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=20261124a">
-  <link rel="stylesheet" href="css/motion3.css?v=20261124a">
+  <link rel="stylesheet" href="css/styles.css?v=20261124b">
+  <link rel="stylesheet" href="css/motion3.css?v=20261124b">
 </head>
 <body>
   <a class="skip" href="#main">Skip to main content</a>
@@ -204,7 +204,7 @@
       <div class="wrap">
         <p class="eyebrow eyebrow-dark rv">Concept studies</p>
         <h2 id="concepts-title" class="rv">How we would launch a project.</h2>
-        <p class="lede-dark rv">Two real concept studies, built by Charles Harrison under the EpiVail name from public information, to show how we think about a launch. Scroll inside each preview, or press play.</p>
+        <p class="lede-dark rv">Two real concept studies, built by Charles Harrison under the EpiVail name from public information, to show how we think about a launch. Scroll inside each preview, or press play. Below them is a sales tool for new construction that you can try yourself.</p>
         <p class="disclaimer rv"><strong>Not client work.</strong> These are independent concept studies prepared on public information. Harrison Development and EpiVail are not engaged by, affiliated with, or endorsed by the Town of Avon, the Town of Eagle, or any owner, developer, architect or agency, and do not represent these projects. No homes are offered for sale or rent here.</p>
 
         <!-- Motion Prompt #152 Zoom on scroll: the concept page grows to fill the window -->
@@ -276,6 +276,30 @@
               <li>Application, lottery and move-in support designed to work for either rentals or sales.</li>
             </ol>
             <p class="study-cta"><a href="#contact">Ask about this study</a></p>
+          </div>
+        </article>
+        <article class="study study-flip" id="residence-explorer" aria-labelledby="study-rx">
+          <div class="study-media rv">
+            <div class="browser">
+              <div class="browser-bar" aria-hidden="true"><span></span><span></span><span></span><em>Residence Explorer</em></div>
+              <video class="rx-video" data-bg muted loop playsinline preload="none" poster="assets/explorer/residence-explorer-poster.jpg" width="960" height="540" aria-label="A 40-second walk-through of the Residence Explorer: the roof lifts away, each level opens, rooms show their details, and the camera flies out to the grounds. The home is a sample.">
+                <source data-src="assets/explorer/residence-explorer.mp4" type='video/mp4; codecs="avc1.640028"'><source data-src="assets/explorer/residence-explorer.webm" type="video/webm">
+              </video>
+            </div>
+            <p class="media-note">Sample home and demonstration data. 3D assets: Poly Haven (CC0); velvet sofa by Eric Chadwick / Khronos (CC BY 4.0).</p>
+            <button type="button" class="rx-open" data-rx-open>Explore the residence in 3D <span aria-hidden="true">&#8599;</span></button>
+          </div>
+          <div class="study-copy rv">
+            <p class="kicker">A sales tool for new construction</p>
+            <h3 id="study-rx">Residence Explorer</h3>
+            <p class="record"><strong>What it is.</strong> A 3D model of a home, built from the builder&rsquo;s plans, that buyers can walk before it is framed. The home shown here is a sample; its rooms and square footage are demonstration data.</p>
+            <h4>What a buyer can do</h4>
+            <ol class="concept-list">
+              <li>Pick a level. The roof lifts away and that floor opens, furnished and lit.</li>
+              <li>Tap a room for its size, the way it faces, its features and a view from inside, in square feet or square meters.</li>
+              <li>Fly out to the grounds to see the hardscape and planting, then request a consultation from any room.</li>
+            </ol>
+            <p class="study-cta"><a href="#contact">Ask about an explorer for your project</a></p>
           </div>
         </article>
       </div>
@@ -573,10 +597,15 @@
 
   <button type="button" class="motion-toggle" id="motionToggle" aria-pressed="false" hidden>Pause motion</button>
 
-  <script src="js/config.js?v=20261124a"></script>
-  <script src="js/main.js?v=20261124a"></script>
-  <script src="js/motion3.js?v=20261124a"></script>
-  <script src="js/eva-chat.js?v=20261124a" defer></script>
-  <script type="module" src="js/terrain.js?v=20261124a"></script>
+  <div class="rx" id="rxView" role="dialog" aria-modal="true" aria-label="Residence Explorer, a sample home in 3D" hidden>
+    <button type="button" class="rx-close" id="rxClose">Close the explorer <span aria-hidden="true">&times;</span></button>
+    <iframe id="rxFrame" title="Residence Explorer, a sample home in 3D" allow="fullscreen"></iframe>
+  </div>
+  <script src="js/config.js?v=20261124b"></script>
+  <script src="js/main.js?v=20261124b"></script>
+  <script src="js/motion3.js?v=20261124b"></script>
+  <script src="js/eva-chat.js?v=20261124b" defer></script>
+  <script src="js/explorer.js?v=20261124b" defer></script>
+  <script type="module" src="js/terrain.js?v=20261124b"></script>
 </body>
 </html>

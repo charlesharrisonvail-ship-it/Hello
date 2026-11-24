@@ -31,6 +31,16 @@ floor; fixed). A "Grounds" view in the level menu flies to the landscape. He has
 Landscape on his computer; a plan exported from it (DXF/DWG plus plant list) would let
 the model follow his real design.
 
-Built in the session scratchpad, not in this public repo; nothing published. The house,
+LIVE on harrisondev.org (2026-11-24, Charles: "put on our website"): a third card in
+the Concepts section ("Residence Explorer", id residence-explorer) with a lazy walk-through
+video and an "Explore the residence in 3D" button that opens the live model over the
+homepage (js/explorer.js; no separate page). The model is
+harrison-development/assets/explorer/residence-explorer.html (about 18 MB, loads only on
+request, unloads on close); its Contact and Book a Call buttons close the overlay and go
+to the consultation form. Source to rebuild it: harrison-development/tools/residence-explorer/.
+Eight tests in tests/check.mjs guard it. A social post (4:5 video in the HD post frame,
+LinkedIn and Instagram copy) was drafted and NOT posted.
+
+Earlier versions were built in the session scratchpad; nothing published. The house,
 rooms and square footage are samples and the page says so. Next step to a 10 is a real
 project's floor plans and photos. Publishing it on harrisondev.org only on his say.

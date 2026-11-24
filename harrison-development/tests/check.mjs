@@ -285,6 +285,27 @@ async function fillValid(page) {
   log(sent.length === 0, 'Eva sends nothing over the network when asked a question', sent.join(' '));
   log(!/\$\s?\d/.test(await page.locator('#eva').innerText()), 'Eva quotes no prices');
   await ctx.close(); }
+// Residence Explorer (2026-11-24, Charles: "put on our website"): a card in Concepts, the live
+// 3D sample home opens over the homepage (no separate page), and its contact buttons lead to the form.
+{ const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const page = await ctx.newPage();
+  await page.goto(BASE + '/', { waitUntil: 'domcontentloaded' });
+  const card = page.locator('#residence-explorer');
+  log(await card.count() === 1 && /Residence Explorer/.test(await card.innerText()) && /sample/i.test(await card.innerText()), 'Residence Explorer card is in Concepts and says the home is a sample');
+  log(await page.locator('#residence-explorer video source[src]').count() === 0, 'explorer video waits until it scrolls into view (lazy)');
+  log(/Poly Haven/.test(await card.innerText()) && /Khronos/.test(await card.innerText()), 'explorer credits Poly Haven and the CC BY sofa');
+  log(await page.locator('#rxFrame').getAttribute('src') === null, 'the 3D model does not load until a visitor asks for it');
+  await card.scrollIntoViewIfNeeded(); await page.locator('[data-rx-open]').click();
+  log(await page.locator('#rxView').isVisible() && await page.locator('#rxFrame').getAttribute('src') === 'assets/explorer/residence-explorer.html' && await page.locator('main').evaluate(m => m.inert), 'explore button opens the same-site 3D explorer over the page');
+  await page.locator('#rxClose').click(); await page.waitForTimeout(150);
+  log(await page.locator('#rxView').isHidden() && await page.locator('#rxFrame').getAttribute('src') === null && !(await page.locator('main').evaluate(m => m.inert)), 'Close hides and unloads the explorer and gives the page back');
+  await page.locator('[data-rx-open]').click();
+  await page.evaluate(() => window.dispatchEvent(new MessageEvent('message', { data: { hd: 'contact' }, origin: 'https://evil.example' })));
+  log(await page.locator('#rxView').isVisible(), 'messages from other sites are ignored');
+  await page.evaluate(() => window.dispatchEvent(new MessageEvent('message', { data: { hd: 'contact' }, origin: location.origin, source: document.getElementById('rxFrame').contentWindow })));
+  await page.waitForTimeout(900);
+  log(await page.locator('#rxView').isHidden() && await page.evaluate(() => { const r = document.getElementById('contact').getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0; }), 'Contact or Book a Call inside the explorer closes it and goes to the consultation form');
+  await ctx.close();
+}
 log(external.size === 0, 'no third-party network requests (no trackers, no CDN)', [...external].join(' '));
 
 await browser.close();

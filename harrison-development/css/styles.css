@@ -650,3 +650,14 @@ h3{letter-spacing:-.015em}
 }
 @media (max-width:899px) and (prefers-reduced-transparency:reduce){.motion-toggle{background:#0E1114;-webkit-backdrop-filter:none;backdrop-filter:none}}
 @media (hover:none){.motion-toggle:hover{border-color:var(--line-light);color:var(--paper)}}
+/* Residence Explorer: walk-through video in the concepts section, live 3D model in an in-page overlay */
+.rx-video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#0E1114}
+.rx-open{margin-top:14px;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 20px;border-radius:4px;border:2px solid var(--accent);background:var(--accent);color:#0E1114;font:600 15px/1 var(--sans);cursor:pointer}
+.rx-open:hover{filter:brightness(1.06)}
+.rx-open:focus-visible,.rx-close:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.rx{position:fixed;inset:0;z-index:210;background:#0E1114}
+.rx[hidden]{display:none}
+.rx iframe{display:block;width:100%;height:100%;border:0}
+.rx-close{position:absolute;top:14px;left:50%;transform:translateX(-50%);z-index:2;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:8px 16px;border-radius:999px;border:1px solid rgba(238,241,243,.25);background:rgba(14,17,20,.72);color:#EEF1F3;font:600 14px/1 var(--sans);cursor:pointer;backdrop-filter:blur(8px)}
+.rx-close span{font-size:18px;line-height:1}
+@media(max-width:640px){.rx-close{top:auto;bottom:14px}}

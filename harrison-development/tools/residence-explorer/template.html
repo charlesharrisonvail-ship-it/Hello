@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Residence Explorer 3D</title>
+<style>
+@font-face{font-family:"Space Grotesk";src:url(data:font/woff2;base64,{{SG}}) format("woff2");font-weight:300 700}
+@font-face{font-family:"Inter";src:url(data:font/woff2;base64,{{INTER}}) format("woff2");font-weight:100 900}
+:root{--bg:#14181C;--raised:#1A2026;--deep:#0E1114;--text:#EEF1F3;--soft:#A9B1B7;--neon:#DFFF1A;--line:rgba(238,241,243,.14)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--deep);color:var(--text);font-family:Inter,system-ui,sans-serif;overflow:hidden}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+#c{position:fixed;inset:0;width:100%;height:100%;display:block}
+#loading{position:fixed;inset:0;display:grid;place-items:center;background:var(--deep);color:var(--soft);font:400 13px "Space Grotesk";letter-spacing:.2em;text-transform:uppercase;z-index:50;transition:opacity .5s}
+.vig{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 60% 45%,rgba(0,0,0,0) 55%,rgba(8,10,14,.55) 100%)}
+header{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:22px 28px;z-index:5}
+.brand{font:400 15px "Space Grotesk";letter-spacing:.18em;text-transform:uppercase}
+.brand b{color:var(--neon);font-weight:500}
+.top{display:flex;gap:10px}
+.chip{padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:rgba(14,17,20,.55);backdrop-filter:blur(8px);font:500 11px "Space Grotesk";letter-spacing:.14em;text-transform:uppercase}
+.chip.solid{background:var(--text);color:#0E1114;border-color:var(--text)}
+.chip .u{opacity:.45}.chip .u.on{opacity:1;color:var(--neon)}
+.intro{position:fixed;left:28px;bottom:78px;max-width:460px;z-index:3}
+.intro small{font:500 11px "Space Grotesk";letter-spacing:.2em;text-transform:uppercase;color:var(--neon)}
+.intro h1{font:300 clamp(30px,4vw,54px)/1.02 "Space Grotesk";letter-spacing:-.02em;margin:10px 0 12px}
+.intro p{color:var(--soft);font-size:15px;line-height:1.5}
+body.inlevel .intro h1{font-size:clamp(26px,2.6vw,36px)}body.inlevel .intro{max-width:300px}
+.levels{position:fixed;right:28px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:5;align-items:flex-end}
+.levels button{min-width:46px;height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:rgba(14,17,20,.6);backdrop-filter:blur(8px);font:500 11px "Space Grotesk";letter-spacing:.1em;display:flex;align-items:center;justify-content:center;gap:8px}
+.levels button .nm{max-width:0;overflow:hidden;white-space:nowrap;opacity:0;font-weight:400;letter-spacing:.06em;transition:max-width .4s,opacity .3s}
+.levels button.on{background:var(--text);color:#0E1114;border-color:var(--text)}
+.levels button.on .nm{max-width:120px;opacity:1}
+.levels .ext svg{width:15px;height:15px}
+.pin{position:fixed;left:0;top:0;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:rgba(14,17,20,.8);border:1.5px solid var(--text);font:500 13px "Space Grotesk";display:grid;place-items:center;z-index:4;backdrop-filter:blur(6px);will-change:transform,opacity}
+.pin::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:1px solid var(--neon);animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{0%{opacity:.7;transform:scale(.85)}100%{opacity:0;transform:scale(1.35)}}
+.pin.on{background:var(--neon);color:#0E1114;border-color:var(--neon)}
+.pin.on::after{display:none}
+.card{position:fixed;left:28px;top:84px;bottom:28px;width:min(400px,calc(100vw - 56px));background:var(--raised);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;z-index:6;transform:translateX(-112%);opacity:0;box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.hero{position:relative;flex:1 1 auto;min-height:150px;background:#0E1114 center/cover no-repeat}
+.hero .tag{position:absolute;left:14px;bottom:12px;font:500 9.5px "Space Grotesk";letter-spacing:.18em;text-transform:uppercase;background:rgba(14,17,20,.7);padding:5px 9px;border-radius:999px;color:var(--soft)}
+.close{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;border:1px solid rgba(238,241,243,.6);background:rgba(14,17,20,.45);font-size:18px;line-height:1}
+.body{padding:20px 22px 22px}
+.eyebrow{font:500 10.5px "Space Grotesk";letter-spacing:.2em;text-transform:uppercase;color:var(--soft)}
+.body h2{font:400 24px/1.15 "Space Grotesk";letter-spacing:-.01em;margin:8px 0 16px}
+.specs{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px;margin-bottom:18px}
+.specs dt{font:500 9.5px "Space Grotesk";letter-spacing:.2em;text-transform:uppercase;color:var(--soft)}
+.specs dd{font-size:14px;margin-top:3px}
+.book{width:100%;padding:13px;border-radius:999px;background:var(--neon);color:#0E1114;font:600 12px "Space Grotesk";letter-spacing:.16em;text-transform:uppercase}
+.thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.thumbs button{aspect-ratio:4/3;border-radius:8px;background:center/cover no-repeat;border:1.5px solid transparent}
+.thumbs button.on{border-color:var(--neon)}
+.toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%);background:var(--text);color:#0E1114;padding:12px 20px;border-radius:999px;font:500 13px Inter;opacity:0;z-index:9;pointer-events:none}
+.note{position:fixed;right:28px;bottom:22px;font-size:11px;color:var(--soft);z-index:3;text-align:right}
+.cursor{position:fixed;left:0;top:0;width:22px;height:22px;z-index:99;pointer-events:none;display:none}
+.cursor svg{transition:transform .12s}.cursor.click svg{transform:scale(.8)}
+@media (prefers-reduced-motion:reduce){.pin::after{animation:none;opacity:0}}
+@media (max-width:640px){.levels{right:14px}.intro{left:16px;bottom:60px}.card{left:16px;width:calc(100vw - 32px)}header{padding:16px}.note{display:none}}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="loading">Loading the residence…</div>
+<div class="vig"></div>
+<header>
+  <div class="brand">Harrison <b>Development</b></div>
+  <div class="top">
+    <button class="chip" id="units"><span class="u on" data-u="ft">FT²</span> / <span class="u" data-u="m">M²</span></button>
+    <button class="chip solid" id="contact">Contact</button>
+  </div>
+</header>
+<div class="intro" id="intro"><small id="introK">Residence Explorer · Demo</small><h1 id="introH">Walk the home<br>before you visit.</h1><p id="introP">Pick a level. The roof lifts, the floor opens, every room is a tap away.</p></div>
+<nav class="levels" id="levels" aria-label="Levels">
+  <button class="ext on" data-l="0" aria-label="Whole home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/></svg></button>
+  <button class="ext" data-l="9" aria-label="The grounds"><span class="nm">Grounds</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 6 12h3l-4 6h14l-4-6h3z"/><path d="M12 18v3"/></svg></button>
+  <button data-l="3"><span class="nm">Loft + suite</span>L3</button>
+  <button data-l="2"><span class="nm">Main living</span>L2</button>
+  <button data-l="1"><span class="nm">Walkout</span>L1</button>
+</nav>
+<div id="pins"></div>
+<aside class="card" id="card" aria-live="polite">
+  <div class="hero" id="hero"><span class="tag">3D model view</span><button class="close" id="close" aria-label="Close">×</button></div>
+  <div class="body">
+    <div class="eyebrow" id="eyebrow"></div>
+    <h2 id="title"></h2>
+    <dl class="specs">
+      <div><dt>Size</dt><dd id="size"></dd></div>
+      <div><dt>Faces</dt><dd id="faces"></dd></div>
+      <div><dt>Level</dt><dd id="level"></dd></div>
+      <div><dt>Features</dt><dd id="feat"></dd></div>
+    </dl>
+    <button class="book" id="book">Book a Call</button>
+    <div class="thumbs" id="thumbs"></div>
+  </div>
+</aside>
+<div class="toast" id="toast"></div>
+<div class="note">Demonstration only · sample 3D model, rooms and figures<br>Models &amp; textures: Poly Haven (CC0) · Velvet sofa: Eric Chadwick / Khronos (CC BY 4.0)</div>
+<div class="cursor" id="cursor"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M3 2l7 19 2.6-7.4L20 11z" fill="#EEF1F3" stroke="#0E1114" stroke-width="1.4" stroke-linejoin="round"/></svg></div>
+
+<script>{{BUNDLE}}</script>
+</body>
+</html>
