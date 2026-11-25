@@ -6,7 +6,7 @@
   var doc = document, view = doc.getElementById("rxView"), frame = doc.getElementById("rxFrame"), closeBtn = doc.getElementById("rxClose");
   var openBtn = doc.querySelector("[data-rx-open]");
   if (!view || !frame || !openBtn) return;
-  var SRC = "assets/explorer/residence-explorer.html", opener = null, pushed = false;
+  var SRC = "assets/explorer/residence-explorer.html?v=20261125a", opener = null, pushed = false;
   var outside = function () { return doc.querySelectorAll("body > header, body > main, body > footer, .motion-toggle"); };
   var open = function () {
     if (!view.hidden) return;

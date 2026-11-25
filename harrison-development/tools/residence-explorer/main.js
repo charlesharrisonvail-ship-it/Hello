@@ -108,7 +108,7 @@ function planter(p,L,w,d,h){rbx(p,-w/2,w/2,0,h,-d/2,d/2,L.concrete,.04)}
 
 // ---------- terrain & setting ----------
 function gNat(x,z){const pad=Math.min(1,(Math.max(0,Math.abs(x)-10)+Math.max(0,Math.abs(z)-10))/6);let h=-0.6*Math.max(0,-x-8.6)-0.22*Math.max(0,z-10.5)+0.32*Math.max(0,-z-7)-0.12*Math.max(0,x-12);h+=pad*(1.4*Math.sin(x*.11+z*.07)*Math.cos(z*.09-x*.04)+.5*Math.sin(x*.37+1)*Math.sin(z*.29));if(x<-8.6&&z>-6&&z<7)h=Math.min(h,-0.6*(-x-8.6));return h}
-function gH(x,z){if(x>-7.7&&x<7.7&&z>-5.4&&z<9.1)return -0.45;let h=gNat(x,z);if(x>-16&&x<20&&z>-3&&z<24){const y=yardInfo(x,z);if(y.inside)return 0;h=Math.min(h,0)-1.25*Math.exp(-Math.max(0,y.d-.25)/4.2)}return h}
+function gH(x,z){if(x>-7.7&&x<7.7&&z>-5.4&&z<9.1)return -0.45;let h=gNat(x,z);if(x>-16&&x<20&&z>-3&&z<24){const y=yardInfo(x,z);if(y.inside)return 0;h=Math.min(h,0)-.62*Math.exp(-Math.max(0,y.d-.25)/4.2)}return h}
 const TREES=[];
 function setting(){
   const geo=new THREE.PlaneGeometry(320,320,420,420);geo.rotateX(-Math.PI/2);const pos=geo.attributes.position,uv=geo.attributes.uv;const col=[];const r=rng(2);
@@ -168,22 +168,31 @@ function yard(bol,glow,grassN){
   // stair gap where the wall meets the steppers
   let sGap=0,bd=1e9;for(let s=0;s<YLEN;s+=.05){const p=atS(s);const d=Math.hypot(p.x-4.3,p.z-13.8);if(d<bd){bd=d;sGap=s}}
   // dry-stack Siloam retaining wall: coursed, battered back, capped
-  const st=[];const ch=[];let top=.1;for(let k=0;k<26;k++){const h=.1+r()*.08;ch.push([top-h,top]);top-=h}
-  const baseAt=s=>{const p=atS(s);return Math.min(gH(p.x+p.nx*1.3,p.z+p.nz*1.3),gH(p.x+p.nx*.7,p.z+p.nz*.7))-.55};
+  const st=[];const ch=[];let top=.1;for(let k=0;k<26;k++){const h=.076+r()*.052;ch.push([top-h,top]);top-=h}
+  const baseAt=s=>{const p=atS(s);return Math.min(gH(p.x+p.nx*1.3,p.z+p.nz*1.3),gH(p.x+p.nx*.7,p.z+p.nz*.7))-.28};
   ch.forEach(([y0,y1],k)=>{let s=.2+r()*.3;while(s<YLEN-.2){const L=.32+r()*.42;const sm=s+L/2;if(Math.abs(sm-sGap)>.95&&y1>baseAt(sm)){const p=atS(sm);const bat=(.1-y1)*.05;st.push({x:p.x+p.nx*(.05-bat),z:p.z+p.nz*(.05-bat),y:(y0+y1)/2,ry:-Math.atan2(p.tz,p.tx)+(r()-.5)*.05,sx:L-.025,sy:(y1-y0)-.012,sz:.42+r()*.12,c:SILO[r()*SILO.length|0]})}s+=L}});
   {let s=.1;while(s<YLEN-.1){const L=.7+r()*.45;const sm=s+L/2;if(Math.abs(sm-sGap)>.95){const p=atS(sm);st.push({x:p.x+p.nx*.02,z:p.z+p.nz*.02,y:.16,ry:-Math.atan2(p.tz,p.tx)+(r()-.5)*.06,sx:L-.03,sy:.11,sz:.66,c:0xe6cdaa})}s+=L}}
-  const wg=jitterGeo(new THREE.BoxGeometry(1,1,1,3,2,2),.07);const wim=new THREE.InstancedMesh(wg,silo,st.length);
-  st.forEach((q,i)=>{o.position.set(q.x,q.y,q.z);o.rotation.set((r()-.5)*.03,q.ry,(r()-.5)*.03);o.scale.set(q.sx,q.sy,q.sz);o.updateMatrix();wim.setMatrixAt(i,o.matrix);wim.setColorAt(i,tint(q.c))});wim.castShadow=true;wim.receiveShadow=true;scene.add(wim);
   // 7-inch (0.178 m) Siloam steppers: across the bed at grade, then down through the wall as steps, then on down the hill
   const G=atS(sGap);const path=[];const P0=[4.2,9.45];const nIn=5;
   for(let i=0;i<nIn;i++){const u=(i+.5)/nIn;const x=P0[0]+(G.x-P0[0])*u+Math.sin(u*Math.PI)*.35,z=P0[1]+(G.z-P0[1])*u;path.push({x,z,top:.12,ry:Math.atan2(G.x-P0[0],G.z-P0[1])})}
-  let dir=Math.atan2(G.nx,G.nz),px=G.x,pz=G.z,yTop=.12;for(let i=1;i<30;i++){px+=Math.sin(dir)*.46;pz+=Math.cos(dir)*.46;const gnd=gH(px,pz);if(yTop-.178>gnd+.08){yTop-=.178;path.push({x:px,z:pz,top:yTop,ry:dir,step:1,gnd})}else break}
-  for(let i=0;i<7;i++){dir+=.11;px+=Math.sin(dir)*.95;pz+=Math.cos(dir)*.95;path.push({x:px,z:pz,top:gH(px,pz)+.07,ry:dir})}
-  const blk=new THREE.MeshStandardMaterial({map:TX.patio.diff,normalMap:TX.patio.nor,color:0xb8956f,roughness:1});
-  path.forEach((q,i)=>{const sm=new THREE.Mesh(slabGeo(1.25+r()*.2,q.step?.62:.72,.178,40+i),new THREE.MeshStandardMaterial({map:TX.patio.diff,normalMap:TX.patio.nor,color:tint(SILO[i%SILO.length]),roughness:1}));sm.position.set(q.x,q.top-.178,q.z);sm.rotation.y=q.ry+(r()-.5)*.12;sm.castShadow=true;sm.receiveShadow=true;scene.add(sm);
-    if(q.step&&q.top-.178>q.gnd){const h=q.top-.178-q.gnd+.1;const b=new THREE.Mesh(jitterGeo(new THREE.BoxGeometry(1,1,1,2,2,2),.06),blk);b.position.set(q.x,q.gnd-.1+h/2,q.z);b.rotation.y=q.ry;b.scale.set(1.15,h,.5);b.castShadow=true;b.receiveShadow=true;scene.add(b)}});
-  for(const sgn of[-1,1]){const p=atS(sGap+sgn*1.05);cyl(scene,.06,.5,p.x+p.nx*.55,gH(p.x+p.nx*.55,p.z+p.nz*.55),p.z+p.nz*.55,bol,12);cyl(scene,.065,.06,p.x+p.nx*.55,gH(p.x+p.nx*.55,p.z+p.nz*.55)+.38,p.z+p.nz*.55,glow,12);const sl=new THREE.PointLight(0xffd29a,5,4.5,1.6);sl.position.set(p.x+p.nx*.8,.2,p.z+p.nz*.8);scene.add(sl)}
+  let dir=Math.atan2(G.nx,G.nz),px=G.x,pz=G.z,yTop=.12;for(let i=1;i<6;i++){px+=Math.sin(dir)*.46;pz+=Math.cos(dir)*.46;const gnd=gH(px,pz);if(yTop-.178>gnd+.08&&yTop>-.75){yTop-=.178;path.push({x:px,z:pz,top:yTop,ry:dir,step:1,gnd})}else break}
+  px+=Math.sin(dir)*.35;pz+=Math.cos(dir)*.35;for(let i=0;i<8;i++){dir+=.1;px+=Math.sin(dir)*.9;pz+=Math.cos(dir)*.9;path.push({x:px,z:pz,top:gH(px,pz)+.07,ry:dir})}
+  // the wall turns and steps down beside the treads: stacked Siloam cheek walls, one piece with the wall
+  {const steps=path.filter(q=>q.step);const ry=-Math.atan2(G.nz,G.nx);const run=.46;
+   for(const sgn of[-1,1]){const segs=[{x:G.x,z:G.z,top:.215}].concat(steps.map(q=>({x:q.x,z:q.z,top:q.top+.2})));
+    segs.forEach((q,i)=>{const cx=q.x+G.tx*sgn*.95,cz=q.z+G.tz*sgn*.95;const gnd=gH(cx+G.nx*.2,cz+G.nz*.2)-.22;let y=gnd;const capTop=q.top;
+      while(y<capTop-.13){const h=Math.min(.076+r()*.052,capTop-.11-y);if(h<.03)break;st.push({x:cx+(r()-.5)*.03,z:cz+(r()-.5)*.03,y:y+h/2,ry:ry+(r()-.5)*.05,sx:run+.02,sy:h-.01,sz:.44,c:SILO[r()*SILO.length|0]});y+=h}
+      st.push({x:cx,z:cz,y:capTop-.055,ry:ry+(r()-.5)*.04,sx:run+.1,sy:.11,sz:.6,c:0xe6cdaa})})}}
+  const wg=jitterGeo(new THREE.BoxGeometry(1,1,1,3,2,2),.07);const wim=new THREE.InstancedMesh(wg,silo,st.length);
+  st.forEach((q,i)=>{o.position.set(q.x,q.y,q.z);o.rotation.set((r()-.5)*.03,q.ry,(r()-.5)*.03);o.scale.set(q.sx,q.sy,q.sz);o.updateMatrix();wim.setMatrixAt(i,o.matrix);wim.setColorAt(i,tint(q.c))});wim.castShadow=true;wim.receiveShadow=true;scene.add(wim);
+  const blk=new THREE.MeshStandardMaterial({map:TX.patio.diff,normalMap:TX.patio.nor,color:0xc9a27c,roughness:1});
+  path.forEach((q,i)=>{const sm=new THREE.Mesh(slabGeo(q.step?1.42:1.25+r()*.2,q.step?.62:.72,.178,40+i),new THREE.MeshStandardMaterial({map:TX.patio.diff,normalMap:TX.patio.nor,color:tint(SILO[i%SILO.length]),roughness:1}));sm.position.set(q.x,q.top-.178,q.z);sm.rotation.y=q.ry+(r()-.5)*.12;sm.castShadow=true;sm.receiveShadow=true;scene.add(sm);
+    if(q.step&&q.top-.178>q.gnd){const h=q.top-.178-q.gnd+.1;const b=new THREE.Mesh(jitterGeo(new THREE.BoxGeometry(1,1,1,2,2,2),.06),blk);b.position.set(q.x,q.gnd-.1+h/2,q.z);b.rotation.y=q.ry;b.scale.set(1.4,h,.5);b.castShadow=true;b.receiveShadow=true;scene.add(b)}});
+  for(const sgn of[-1,1]){path.filter(q=>q.step).forEach(q=>{const lx=q.x+G.tx*sgn*.72,lz=q.z+G.tz*sgn*.72;const me=new THREE.Mesh(new THREE.BoxGeometry(.12,.035,.05),glow);me.position.set(lx,q.top+.06,lz);me.rotation.y=-Math.atan2(G.nz,G.nx);scene.add(me)});const p=path.filter(q=>q.step)[1]||G;const sl=new THREE.PointLight(0xffd29a,5,4.5,1.6);sl.position.set(p.x+G.tx*sgn*.6,(p.top||0)+.35,p.z+G.tz*sgn*.6);scene.add(sl)}
   for(let i=nIn+2;i<path.length;i+=3){const q=path[i];cyl(scene,.05,.45,q.x+.8,gH(q.x+.8,q.z),q.z,bol,12);cyl(scene,.055,.05,q.x+.8,gH(q.x+.8,q.z)+.34,q.z,glow,12)}
+  // groundcover around the steppers, kept low and different from the bed perennials
+  const GC=[{f:0x2c3f27,c:[0x9a5aa6,0xb07bc0]},{f:0x34492b,c:[0xc93f86,0xd65a9a]},{f:0x3a4d2c,c:[0xe0b43a,0xd9a42a]},{f:0x3d4a33,c:[0xa995d6,0xbfb0e6]},{f:0x56622e,c:[0xa8bb4c,0x9e4a34]}];
+  const mats=[],dots=[];path.forEach((q,i)=>{const g=GC[(i+(i>>2))%GC.length];for(let k=0;k<(q.step?4:26);k++){const a=r()*6.28,rr=.55+r()*.8;const x=q.x+Math.cos(a)*rr*1.1,z=q.z+Math.sin(a)*rr*.85;const yi=yardInfo(x,z);if(yi.inside&&yi.d<.4)continue;if(!yi.inside&&yi.d<.45)continue;if(path.some(o=>Math.hypot(o.x-x,o.z-z)<.55))continue;const y=gH(x,z);const s=.13+r()*.16;mats.push([x,y,z,s,new THREE.Color(g.f).multiplyScalar(.8+r()*.45).getHex()]);for(let j=0;j<(r()<.75?12:3);j++){const b=r()*6.28,d=Math.sqrt(r())*s*.9;dots.push([x+Math.cos(b)*d,y+.06+r()*.03,z+Math.sin(b)*d,.022,.014,g.c[j%2]])}}});
   // planting: perennial drifts, annual edging, globe blue spruce, grasses
   const onPath=(x,z)=>path.some(q=>Math.hypot(q.x-x,q.z-z)<.85);
   const fol=[],heads=[],spikes=[],globes=[];const FOL=[0x4f6b3e,0x5d7a46,0x6b8a52,0x7d9a8a,0x56733f];
@@ -191,18 +200,20 @@ function yard(bol,glow,grassN){
   const ANN=[0xe9e3e9,0xc94a62,0xd97a52,0xb8479a];
   for(let x=-9.5;x<14.6;x+=.5)for(let z=-1.2;z<14.6;z+=.5){const jx=x+(r()-.5)*.32,jz=z+(r()-.5)*.32;if(jx>-7.85&&jx<7.85&&jz<9.25)continue;const y=yardInfo(jx,jz);if(!y.inside||y.d<.55)continue;if(onPath(jx,jz))continue;
     const edge=(jz<10.0&&jx>-8&&jx<8)||y.d<1.0;
-    if(edge){fol.push([jx,jz,.24,.2,FOL[r()*5|0]]);const c=ANN[Math.floor((jx+20)/2.2)%4];for(let k=0;k<12;k++){const a=r()*6.28,rr=Math.sqrt(r())*.21;heads.push([jx+Math.cos(a)*rr,.17+r()*.06,jz+Math.sin(a)*rr,.034,.03,c])}continue}
+    if(edge){fol.push([jx,jz,.24,.2,FOL[r()*5|0]]);const c=ANN[Math.floor((jx+20)/2.2)%4];for(let k=0;k<9;k++){const a=r()*6.28,rr=Math.sqrt(r())*.21;heads.push([jx+Math.cos(a)*rr,.17+r()*.06,jz+Math.sin(a)*rr,.028,.024,c])}continue}
     const v=Math.sin(jx*.55+1.3)*Math.cos(jz*.62-.4)+.65*Math.sin((jx-jz)*.31);const sp=SP[Math.min(5,Math.max(0,Math.floor((v+1.65)/3.3*6)))];
     if(sp.k==='grass'){if(r()<.55)gl(scene,'grass_medium_01',jx,0,jz,r()*6,2.8+r(),grassN[r()*grassN.length|0]);continue}
     fol.push([jx,jz,sp.r,sp.h*.62,sp.fol]);
     if(sp.k==='s')for(let k=0;k<9;k++){const a=r()*6.28,rr=Math.sqrt(r())*sp.r*.8;spikes.push([jx+Math.cos(a)*rr,sp.h*.55,jz+Math.sin(a)*rr,.03,sp.h*.55,sp.spike])}
-    if(sp.k==='d')for(let k=0;k<11;k++){const a=r()*6.28,rr=Math.sqrt(r())*sp.r*.85;heads.push([jx+Math.cos(a)*rr,sp.h*.62+r()*.12,jz+Math.sin(a)*rr,.05,.022,sp.head])}}
+    if(sp.k==='d')for(let k=0;k<8;k++){const a=r()*6.28,rr=Math.sqrt(r())*sp.r*.85;heads.push([jx+Math.cos(a)*rr,sp.h*.62+r()*.12,jz+Math.sin(a)*rr,.04,.018,sp.head])}}
   for(const[x,z,s]of[[-8.3,6.2,.62],[-8.7,9.4,.7],[-5.6,11.2,.66],[-1.6,12.2,.6],[7.4,12.0,.72],[9.6,10.4,.6],[12.6,7.6,.7],[11.0,1.4,.66],[9.8,-.6,.55],[-8.6,1.8,.6]]){if(!onPath(x,z))globes.push([x,z,s])}
   const inst=(geo,mat,arr,fn)=>{const im=new THREE.InstancedMesh(geo,mat,arr.length);arr.forEach((a,i)=>{fn(a);o.updateMatrix();im.setMatrixAt(i,o.matrix);im.setColorAt(i,new THREE.Color(a[a.length-1]))});im.castShadow=true;im.receiveShadow=true;scene.add(im);return im};
   inst(jitterGeo(new THREE.IcosahedronGeometry(1,2),.22),new THREE.MeshStandardMaterial({roughness:.95}),fol,([x,z,rr,h])=>{o.position.set(x,h*.45,z);o.rotation.set(0,r()*6,0);o.scale.set(rr,h*.62,rr)});
   inst(new THREE.SphereGeometry(1,8,6),new THREE.MeshStandardMaterial({roughness:.75,emissive:0x0d0a08}),heads,([x,y,z,s,t])=>{o.position.set(x,y,z);o.rotation.set((r()-.5)*.5,0,(r()-.5)*.5);o.scale.set(s,t,s)});
   const cg=new THREE.ConeGeometry(1,1,6);cg.translate(0,.5,0);
   inst(cg,new THREE.MeshStandardMaterial({roughness:.8,emissive:0x0a0814}),spikes,([x,y,z,s,h])=>{o.position.set(x,y,z);o.rotation.set((r()-.5)*.35,0,(r()-.5)*.35);o.scale.set(s,h,s)});
+  inst(jitterGeo(new THREE.IcosahedronGeometry(1,3),.5),new THREE.MeshStandardMaterial({roughness:1,normalMap:TX.ground.nor,normalScale:new THREE.Vector2(2.5,2.5)}),mats,([x,y,z,s])=>{o.position.set(x,y+.015,z);o.rotation.set(0,r()*6,0);o.scale.set(s,.06+r()*.04,s*(.7+r()*.4))});
+  inst(new THREE.SphereGeometry(1,6,4),new THREE.MeshStandardMaterial({roughness:.75,emissive:0x140d12}),dots,([x,y,z,s,t])=>{o.position.set(x,y,z);o.rotation.set(0,0,0);o.scale.set(s,t,s)});
   const gg=jitterGeo(new THREE.IcosahedronGeometry(1,5),.28);
   const gim=new THREE.InstancedMesh(gg,new THREE.MeshStandardMaterial({color:0x3f5f63,roughness:1,normalMap:TX.ground.nor,normalScale:new THREE.Vector2(3,3)}),globes.length);
   globes.forEach(([x,z,s],i)=>{o.position.set(x,s*.78,z);o.rotation.set(0,r()*6,0);o.scale.set(s,s*.86,s);o.updateMatrix();gim.setMatrixAt(i,o.matrix)});gim.castShadow=true;gim.receiveShadow=true;scene.add(gim);
@@ -210,13 +221,13 @@ function yard(bol,glow,grassN){
   for(const[x,tx]of[[-3.5,-3.5],[4.5,6]]){const sp=new THREE.SpotLight(0xffe0b4,55,20,.75,.6,1.3);sp.position.set(x,2.85,7.6);sp.target.position.set(tx,0,11.8);scene.add(sp,sp.target)}
 }
 function mountains(){const r=rng(99);const ph=[...Array(8)].map(()=>r()*6.28);const NA=720,NR=48,R0=165,R1=460;const pos=[],col=[],idx=[];
-  const rock=new THREE.Color(0x232c3d),rock2=new THREE.Color(0x313c50),forest=new THREE.Color(0x15231f),snow=new THREE.Color(0xe6edf6);
+  const rock=new THREE.Color(0x17223a),rock2=new THREE.Color(0x1d2a44),forest=new THREE.Color(0x111b2b),snow=new THREE.Color(0x76869f);
   const hAt=(a,rr)=>{let n=0,amp=1,f=3;for(let o=0;o<6;o++){n+=amp*(1-Math.abs(Math.sin(a*f+ph[o]+rr*.004*o)));amp*=.5;f*=2.07}const env=Math.min(1,Math.max(0,(rr-R0)/110));return Math.pow(n/1.9,1.6)*env*(230+90*Math.sin(a*2+ph[7]))};
   for(let j=0;j<=NR;j++)for(let i=0;i<=NA;i++){const a=i/NA*Math.PI*2,rr=R0+(R1-R0)*Math.pow(j/NR,1.3);const h=hAt(a,rr);const x=Math.cos(a)*rr-4,z=Math.sin(a)*rr;pos.push(x,h-14,z);
     const snowLine=110+22*Math.sin(a*7+ph[3])+r()*12;let c=h>snowLine?snow.clone().lerp(rock2,Math.max(0,.35-(h-snowLine)*.02)):(h<55?forest.clone().lerp(rock,h/55):rock.clone().lerp(rock2,r()));col.push(c.r,c.g,c.b)}
   for(let j=0;j<NR;j++)for(let i=0;i<NA;i++){const a=j*(NA+1)+i,b=a+NA+1;idx.push(a,b,a+1,b,b+1,a+1)}
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));g.setAttribute('color',new THREE.Float32BufferAttribute(col,3));g.setIndex(idx);g.computeVertexNormals();
-  const me=new THREE.Mesh(g,new THREE.MeshStandardMaterial({vertexColors:true,roughness:1,envMapIntensity:0,color:0x7d8796}));scene.add(me)}
+  const me=new THREE.Mesh(g,new THREE.MeshBasicMaterial({vertexColors:true,fog:false}));scene.add(me)}
 
 // ---------- the house ----------
 const LV=[];
@@ -347,9 +358,9 @@ function toast(m){$('#toast').textContent=m;lerpTo('toast',ui,{toast:1},.35,eout
 
 let W=0,H=0;const v3=new THREE.Vector3();
 function resize(){W=innerWidth;H=innerHeight;renderer.setSize(W,H,false);camera.aspect=W/H;camera.updateProjectionMatrix();if(composer)composer.setSize(W,H)}
-function render(){const az=cam.az+cam.sway*(REDUCED?0:.22*Math.sin(T*.16));const t=new THREE.Vector3(cam.tx,cam.ty,cam.tz);camera.position.set(t.x+cam.dist*Math.cos(cam.el)*Math.sin(az),t.y+cam.dist*Math.sin(cam.el),t.z+cam.dist*Math.cos(cam.el)*Math.cos(az));camera.lookAt(t);
- const off=W>700?ui.vo*Math.min(220,W*.17)+ui.lvo*(1-ui.vo)*Math.min(140,W*.11):0;if(off>.5)camera.setViewOffset(W,H,-off,0,W,H);else camera.clearViewOffset();draw(camera)}
-function frame(){stepTweens();LV.forEach(o=>applyLift(o,o.lift));render();
+function render(nodraw){const az=cam.az+cam.sway*(REDUCED?0:.22*Math.sin(T*.16));const t=new THREE.Vector3(cam.tx,cam.ty,cam.tz);camera.position.set(t.x+cam.dist*Math.cos(cam.el)*Math.sin(az),t.y+cam.dist*Math.sin(cam.el),t.z+cam.dist*Math.cos(cam.el)*Math.cos(az));camera.lookAt(t);
+ const off=W>700?ui.vo*Math.min(220,W*.17)+ui.lvo*(1-ui.vo)*Math.min(140,W*.11):0;if(off>.5)camera.setViewOffset(W,H,-off,0,W,H);else camera.clearViewOffset();if(nodraw){camera.updateMatrixWorld();return}draw(camera)}
+function frame(nodraw){stepTweens();LV.forEach(o=>applyLift(o,o.lift));render(nodraw);
  $('#card').style.transform=`translateX(${(ui.card-1)*112}%)`;$('#card').style.opacity=ui.card;$('#intro').style.opacity=ui.intro;$('#intro').style.transform=`translateY(${(1-ui.intro)*10}px)`;
  const ts=$('#toast');ts.style.opacity=ui.toast;ts.style.transform=`translate(-50%,${(1-ui.toast)*16}px)`;
  for(const r of ROOMS){const show=r.lv===curLevel?ui.pins:0;if(show<=0.001){r.el.style.opacity=0;continue}v3.copy(r.c).project(camera);const x=(v3.x+1)/2*W,y=(1-v3.y)/2*H;r.el.style.transform=`translate(${x}px,${y}px) scale(${.7+.3*show})`;r.el.style.opacity=show}}
@@ -375,7 +386,7 @@ async function boot(){
  const toForm=()=>{try{window.parent.postMessage({hd:'contact',room:curRoom?curRoom.name:''},location.origin)}catch(e){}};$('#book').onclick=()=>EMBED?toForm():toast('Demo: this button would open your booking calendar.');$('#contact').onclick=()=>EMBED?toForm():toast('Demo: this would open the contact form.');
  addEventListener('keydown',e=>{if(e.key==='Escape'&&curRoom)closeCard()});
  frame();$('#loading').style.opacity=0;setTimeout(()=>$('#loading').remove(),600);
- if(CAPTURE){document.getElementById('cursor').style.display='block';window.__step=dt=>{T+=dt;frame()};window.__cam=cam;window.__ready=true}
+ if(CAPTURE){document.getElementById('cursor').style.display='block';window.__step=dt=>{T+=dt;frame()};window.__skip=dt=>{T+=dt;frame(true)};window.__cam=cam;window.__ready=true}
  else{const t0=performance.now();const loop=()=>{T=(performance.now()-t0)/1000;frame();requestAnimationFrame(loop)};loop()}
 }
 function ctex(){const c=document.createElement('canvas');c.width=4;c.height=512;const g=c.getContext('2d');const gr=g.createLinearGradient(0,0,0,512);gr.addColorStop(0,'#08122a');gr.addColorStop(.45,'#16295a');gr.addColorStop(.72,'#3a5288');gr.addColorStop(.86,'#7b7fa6');gr.addColorStop(1,'#d9a27e');g.fillStyle=gr;g.fillRect(0,0,4,512);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;return t}

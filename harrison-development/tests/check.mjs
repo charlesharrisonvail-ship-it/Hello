@@ -295,7 +295,7 @@ async function fillValid(page) {
   log(/Poly Haven/.test(await card.innerText()) && /Khronos/.test(await card.innerText()), 'explorer credits Poly Haven and the CC BY sofa');
   log(await page.locator('#rxFrame').getAttribute('src') === null, 'the 3D model does not load until a visitor asks for it');
   await card.scrollIntoViewIfNeeded(); await page.locator('[data-rx-open]').click();
-  log(await page.locator('#rxView').isVisible() && await page.locator('#rxFrame').getAttribute('src') === 'assets/explorer/residence-explorer.html' && await page.locator('main').evaluate(m => m.inert), 'explore button opens the same-site 3D explorer over the page');
+  log(await page.locator('#rxView').isVisible() && (await page.locator('#rxFrame').getAttribute('src') || '').startsWith('assets/explorer/residence-explorer.html') && await page.locator('main').evaluate(m => m.inert), 'explore button opens the same-site 3D explorer over the page');
   await page.locator('#rxClose').click(); await page.waitForTimeout(150);
   log(await page.locator('#rxView').isHidden() && await page.locator('#rxFrame').getAttribute('src') === null && !(await page.locator('main').evaluate(m => m.inert)), 'Close hides and unloads the explorer and gives the page back');
   await page.locator('[data-rx-open]').click();
