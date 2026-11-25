@@ -22,84 +22,107 @@ const B = (n: number) => {
 };
 const F = (n: number) => Math.round(B(n) * FPS);
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
-const LINEUP = 49, TOTAL_BEAT = 61;
 
-type Shot = {b: number; e: number; src: string; from?: number; photo?: 'print' | 'printLand' | 'printWide'; push?: 'in' | 'out' | 'punch'};
-const SHOTS: Shot[] = [
-  {b: 0, e: 4, src: 'c1123_192233', from: 1.5, push: 'in'},
-  // ── No. 1 Heidelberg (night)
-  {b: 4, e: 6, src: 'c1123_190912', from: 0.8, push: 'in'},
-  {b: 6, e: 8, src: 'c1123_192002', from: 2.0, push: 'punch'},
-  {b: 8, e: 10, src: 'c1123_192556', from: 0.3, push: 'punch'},
-  {b: 10, e: 12, src: 'c1123_200140', from: 0.4, push: 'in'},
-  {b: 12, e: 14, src: 'c1123_200216', from: 1.5, push: 'punch'},
-  {b: 14, e: 16, src: 'selfie', photo: 'printLand'},
-  {b: 16, e: 18, src: 'mug1', photo: 'print'},
-  // ── No. 2 Mannheim (day)
-  {b: 18, e: 20, src: 'c1124_113917', from: 0.3, push: 'in'},
-  {b: 20, e: 22, src: 'c1124_112708', from: 0.4, push: 'punch'},
-  {b: 22, e: 24, src: 'c1124_112834', from: 4.0, push: 'out'},
-  {b: 24, e: 26, src: 'c1124_112950', from: 0.6, push: 'punch'},
-  {b: 26, e: 28, src: 'c1124_163532', from: 0.6, push: 'out'},
-  // ── No. 3 Rothenburg
-  {b: 28, e: 30, src: 'c1125_161358', from: 1.0, push: 'in'},
-  {b: 30, e: 32, src: 'c1125_152141', from: 3.5, push: 'punch'},
-  // festive run: one beat each
-  {b: 32, e: 33, src: 'c1125_135424', from: 1.5, push: 'punch'},
-  {b: 33, e: 34, src: 'c1125_140511', from: 3.0, push: 'punch'},
-  {b: 34, e: 35, src: 'c1125_140534', from: 0.8, push: 'punch'},
-  {b: 35, e: 36, src: 'c1125_140634', from: 2.0, push: 'punch'},
-  {b: 36, e: 37, src: 'c1125_140654', from: 1.5, push: 'punch'},
-  {b: 37, e: 38, src: 'c1125_141758', from: 1.0, push: 'punch'},
-  {b: 38, e: 39, src: 'c1125_141536', from: 2.0, push: 'punch'},
-  {b: 39, e: 40, src: 'c1125_154418', from: 1.0, push: 'punch'},
-  {b: 40, e: 42, src: 'c1125_151929', from: 2.5, push: 'punch'},
-  {b: 42, e: 44, src: 'nutcracker', photo: 'print'},
-  {b: 44, e: 46, src: 'knight', photo: 'printWide'},
-  {b: 46, e: 49, src: 'c1125_143935', from: 0.6, push: 'in'},
+type Cap =
+  | {k: 'hook'}
+  | {k: 'chapter'; n: number; city: string; sub: string}
+  | {k: 'script'; text: string; pos: 'top' | 'bottom'; kicker?: string}
+  | {k: 'slam'; text: string; sub?: string}
+  | {k: 'mug'; n: number; text?: string};
+type Item = {len: number; src: string; from?: number; photo?: 'print' | 'printLand' | 'printWide'; push?: 'in' | 'out'; cap?: Cap; place: string};
+const H = 'Heidelberg, DE', M = 'Mannheim, DE', R = 'Rothenburg o.d.T., DE';
+const SEQ: Item[] = [
+  {len: 7, src: 'c1123_192233', from: 1.0, push: 'in', cap: {k: 'hook'}, place: ''},
+  {len: 6, src: 'c1123_190912', from: 0.5, push: 'in', cap: {k: 'chapter', n: 1, city: 'HEIDELBERG', sub: 'after dark'}, place: H},
+  {len: 5, src: 'c1123_192556', from: 0.2, push: 'out', cap: {k: 'script', text: 'carousels & lights', pos: 'bottom'}, place: H},
+  {len: 5, src: 'c1123_200140', from: 0.3, push: 'in', cap: {k: 'script', kicker: 'GONDOLA HUTS??', text: 'felt like home.', pos: 'top'}, place: H},
+  {len: 5, src: 'c1123_200216', from: 1.0, push: 'in', cap: {k: 'script', text: "Santa's on the ride.", pos: 'bottom'}, place: H},
+  {len: 6, src: 'selfie', photo: 'printLand', cap: {k: 'script', text: 'Glühwein date night.', pos: 'top'}, place: H},
+  {len: 6, src: 'mug1', photo: 'print', cap: {k: 'mug', n: 1}, place: H},
+  {len: 6, src: 'c1124_113917', from: 0.3, push: 'in', cap: {k: 'chapter', n: 2, city: 'MANNHEIM', sub: 'by the Wasserturm'}, place: M},
+  {len: 5, src: 'c1124_112708', from: 0.3, push: 'in', cap: {k: 'script', text: 'the big pyramid', pos: 'bottom'}, place: M},
+  {len: 5, src: 'c1124_112950', from: 0.4, push: 'in', cap: {k: 'script', text: 'Santa, again.', pos: 'bottom'}, place: M},
+  {len: 6, src: 'c1124_163532', from: 0.6, push: 'out', cap: {k: 'mug', n: 2}, place: M},
+  {len: 6, src: 'c1125_161358', from: 0.8, push: 'in', cap: {k: 'chapter', n: 3, city: 'ROTHENBURG', sub: 'ob der Tauber'}, place: R},
+  {len: 5, src: 'c1125_152141', from: 3.2, push: 'in', cap: {k: 'script', text: 'storybook streets', pos: 'bottom'}, place: R},
+  {len: 5, src: 'c1125_135424', from: 1.0, push: 'in', cap: {k: 'script', kicker: 'CHRISTMAS SHOPS', text: 'all year long', pos: 'top'}, place: R},
+  {len: 5, src: 'c1125_140511', from: 2.5, push: 'in', cap: {k: 'script', text: 'whole Christmas villages', pos: 'bottom'}, place: R},
+  {len: 5, src: 'c1125_140654', from: 1.0, push: 'out', cap: {k: 'script', text: 'and cuckoo clocks, everywhere', pos: 'bottom'}, place: R},
+  {len: 5, src: 'c1125_154418', from: 0.8, push: 'in', place: R},
+  {len: 5, src: 'c1125_151929', from: 2.0, push: 'in', cap: {k: 'slam', text: 'LOCKED UP!', sub: 'behave… or else.'}, place: R},
+  {len: 6, src: 'nutcracker', photo: 'print', cap: {k: 'script', text: 'the nutcracker stood guard.', pos: 'top'}, place: R},
+  {len: 6, src: 'knight', photo: 'printWide', cap: {k: 'script', text: 'a knight crashed our selfie.', pos: 'top'}, place: R},
+  {len: 7, src: 'c1125_143935', from: 0.5, push: 'in', cap: {k: 'mug', n: 3, text: 'whipped cream. obviously.'}, place: R},
 ];
+const STARTS: number[] = [];
+{ let b = 0; for (const it of SEQ) { STARTS.push(b); b += it.len; } }
+const LINEUP = STARTS[STARTS.length - 1] + SEQ[SEQ.length - 1].len;
+const TOTAL_BEAT = LINEUP + 14;
+const XF = 9; // soft crossfade frames between shots
 
-const ShotView: React.FC<{s: Shot; i: number}> = ({s, i}) => {
+const ShotView: React.FC<{it: Item; i: number; len: number}> = ({it, i, len}) => {
   const frame = useCurrentFrame();
-  const len = F(s.e) - F(s.b);
   const t = frame / Math.max(1, len);
-  if (s.photo) {
-    const land = s.photo === 'printLand'; const wide = s.photo === 'printWide';
-    const p = spring({frame, fps: FPS, config: {damping: 16, stiffness: 180}});
-    const rot = interpolate(p, [0, 1], [i % 2 ? 9 : -9, i % 2 ? 2.5 : -2.5]);
-    const sc = interpolate(p, [0, 1], [1.25, 1]) * interpolate(t, [0, 1], [1, 1.05]);
+  const fade = i === 0 ? 1 : interpolate(frame, [0, XF], [0, 1], clamp);
+  if (it.photo) {
+    const land = it.photo === 'printLand', wide = it.photo === 'printWide';
+    const p = spring({frame, fps: FPS, config: {damping: 22, stiffness: 90}});
+    const rot = interpolate(p, [0, 1], [i % 2 ? 6 : -6, i % 2 ? 2.5 : -2.5]);
+    const sc = interpolate(p, [0, 1], [1.12, 1]) * interpolate(t, [0, 1], [1, 1.04]);
     return (
-      <AbsoluteFill style={{background: `radial-gradient(90% 60% at 50% 45%, ${c.navyLight}, ${c.navy})`, justifyContent: 'flex-start', alignItems: 'center', paddingTop: wide ? 800 : land ? 680 : 560}}>
+      <AbsoluteFill style={{opacity: fade, background: `radial-gradient(90% 60% at 50% 45%, ${c.navyLight}, ${c.navy})`, justifyContent: 'flex-start', alignItems: 'center', paddingTop: wide ? 800 : land ? 680 : 560}}>
         <div style={{transform: `rotate(${rot}deg) scale(${sc})`, background: '#fbf8f1', padding: '22px 22px 90px', boxShadow: '0 30px 80px rgba(0,0,0,0.55)'}}>
-          <Img src={staticFile(`${s.src}.jpg`)} style={{width: wide ? 960 : land ? 920 : 720, height: wide ? 444 : land ? 690 : 1000, objectFit: 'cover', display: 'block'}} />
+          <Img src={staticFile(`${it.src}.jpg`)} style={{width: wide ? 960 : land ? 920 : 720, height: wide ? 444 : land ? 690 : 1000, objectFit: 'cover', display: 'block'}} />
         </div>
       </AbsoluteFill>
     );
   }
-  let scale = 1;
-  if (s.push === 'in') scale = interpolate(t, [0, 1], [1.03, 1.14]);
-  if (s.push === 'out') scale = interpolate(t, [0, 1], [1.16, 1.04]);
-  if (s.push === 'punch') scale = interpolate(frame, [0, 6], [1.22, 1.06], {...clamp, easing: Easing.out(Easing.cubic)});
+  const scale = it.push === 'out' ? interpolate(t, [0, 1], [1.1, 1.02]) : interpolate(t, [0, 1], [1.02, 1.09]);
   return (
-    <AbsoluteFill style={{transform: `scale(${scale})`}}>
-      <OffthreadVideo src={staticFile(`${s.src}.mp4`)} startFrom={Math.round((s.from ?? 0) * FPS)} muted />
+    <AbsoluteFill style={{opacity: fade, transform: `scale(${scale})`}}>
+      <OffthreadVideo src={staticFile(`${it.src}.mp4`)} startFrom={Math.round((it.from ?? 0) * FPS)} muted />
     </AbsoluteFill>
   );
 };
 
-const WHIPS = [4, 18, 28, LINEUP];
-const useWhip = () => {
-  const frame = useCurrentFrame();
-  for (const b of WHIPS) {
-    const d = frame - F(b);
-    if (d >= -3 && d < 4) {
-      const k = 1 - Math.abs(d + 0.5) / 4;
-      return {blur: k * 22, x: (d < 0 ? -1 : 1) * k * 90};
-    }
-  }
-  return {blur: 0, x: 0};
+const CapView: React.FC<{cap: Cap; b: number; e: number}> = ({cap, b, e}) => {
+  const a = b + 0.6;
+  if (cap.k === 'hook') return (
+    <During b={b} e={e} style={{alignItems: 'center', paddingTop: 300, textAlign: 'center'}}>
+      <Pop at={b + 0.3}><Kicker>GERMANY · WEIHNACHTSMÄRKTE</Kicker></Pop>
+      <Pop at={b + 1.2}><Big size={170}>3 CHRISTMAS</Big></Pop>
+      <Pop at={b + 1.8}><Big size={170}>MARKETS.</Big></Pop>
+      <Slam at={b + 3}><Big size={210} color={c.goldBright}>3 MUGS.</Big></Slam>
+    </During>
+  );
+  if (cap.k === 'chapter') return (
+    <During b={b} e={e} style={{paddingTop: 300, alignItems: 'center', textAlign: 'center', background: 'linear-gradient(180deg, rgba(10,22,40,0.75) 0%, rgba(10,22,40,0.45) 35%, rgba(10,22,40,0) 55%)'}}>
+      <Pop at={b + 0.3}><Kicker size={56}>{`MARKET No. ${cap.n}`}</Kicker></Pop>
+      <Slam at={b + 0.9}><Big size={180}>{cap.city}</Big></Slam>
+      <Pop at={b + 1.8}><Script size={70}>{cap.sub}</Script></Pop>
+    </During>
+  );
+  if (cap.k === 'script') return (
+    <During b={b} e={e} style={cap.pos === 'top' ? {paddingTop: 300, alignItems: 'center', textAlign: 'center'} : {justifyContent: 'flex-end', paddingBottom: 520, alignItems: 'center', textAlign: 'center'}}>
+      {cap.kicker && <Pop at={a}><Kicker>{cap.kicker}</Kicker></Pop>}
+      <Pop at={a + (cap.kicker ? 0.6 : 0)}><Script size={96}>{cap.text}</Script></Pop>
+    </During>
+  );
+  if (cap.k === 'slam') return (
+    <During b={b} e={e} style={{justifyContent: 'flex-end', paddingBottom: 520, alignItems: 'center', textAlign: 'center'}}>
+      <Slam at={a}><Big size={130} color={c.goldBright}>{cap.text}</Big></Slam>
+      {cap.sub && <Pop at={a + 1}><Script size={74}>{cap.sub}</Script></Pop>}
+    </During>
+  );
+  return (
+    <>
+      {cap.text && <During b={b} e={e} style={{paddingTop: 280, alignItems: 'center'}}><Pop at={a}><Script size={90}>{cap.text}</Script></Pop></During>}
+      <During b={b} e={e} style={{justifyContent: 'flex-end', alignItems: 'flex-end', padding: `0 70px ${SEQ.find((x) => x.cap === cap)?.photo ? 330 : 380}px 0`}}>
+        <MugStamp at={b + 1.5} n={cap.n} />
+      </During>
+    </>
+  );
 };
-
 const Pop: React.FC<{at: number; children: React.ReactNode; style?: React.CSSProperties; dy?: number}> = ({at, children, style, dy = 50}) => {
   const frame = useCurrentFrame();
   const p = spring({frame: frame - F(at), fps: FPS, config: {damping: 200, stiffness: 320}});
@@ -144,74 +167,6 @@ const MugStamp: React.FC<{at: number; n: number}> = ({at, n}) => {
   );
 };
 
-const Chapter: React.FC<{b: number; n: number; city: string; sub: string}> = ({b, n, city, sub}) => (
-  <During b={b} e={b + 2} style={{paddingTop: 300, alignItems: 'center', textAlign: 'center', background: 'linear-gradient(180deg, rgba(10,22,40,0.75) 0%, rgba(10,22,40,0.45) 35%, rgba(10,22,40,0) 55%)'}}>
-    <Pop at={b}><Kicker size={56}>{`MARKET No. ${n}`}</Kicker></Pop>
-    <Slam at={b + 0.4}><Big size={180}>{city}</Big></Slam>
-    <Pop at={b + 1}><Script size={70}>{sub}</Script></Pop>
-  </During>
-);
-
-const Titles: React.FC = () => (
-  <>
-    <During b={0} e={4} style={{alignItems: 'center', paddingTop: 300, textAlign: 'center'}}>
-      <Pop at={0}><Kicker>GERMANY · WEIHNACHTSMÄRKTE</Kicker></Pop>
-      <Slam at={1}><Big size={170}>3 CHRISTMAS</Big></Slam>
-      <Slam at={1.5}><Big size={170}>MARKETS.</Big></Slam>
-      <Slam at={2.5}><Big size={210} color={c.goldBright}>3 MUGS.</Big></Slam>
-    </During>
-    <Chapter b={4} n={1} city="HEIDELBERG" sub="after dark" />
-    <During b={8} e={10} style={{justifyContent: 'flex-end', paddingBottom: 520, alignItems: 'center'}}>
-      <Pop at={8.3}><Script size={100}>carousels & lights</Script></Pop>
-    </During>
-    <During b={10} e={12} style={{paddingTop: 300, alignItems: 'center', textAlign: 'center'}}>
-      <Pop at={10.3}><Kicker>GONDOLA HUTS??</Kicker></Pop>
-      <Pop at={10.8}><Script size={100}>felt like home.</Script></Pop>
-    </During>
-    <During b={12} e={14} style={{justifyContent: 'flex-end', paddingBottom: 520, alignItems: 'center'}}>
-      <Pop at={12.3}><Script size={100}>Santa's on the ride.</Script></Pop>
-    </During>
-    <During b={14} e={16} style={{paddingTop: 300, alignItems: 'center'}}>
-      <Pop at={14.3}><Script size={100}>Glühwein date night.</Script></Pop>
-    </During>
-    <During b={16} e={18} style={{justifyContent: 'flex-end', alignItems: 'flex-end', padding: '0 70px 330px 0'}}>
-      <MugStamp at={16.4} n={1} />
-    </During>
-    <Chapter b={18} n={2} city="MANNHEIM" sub="by the Wasserturm" />
-    <During b={24} e={26} style={{justifyContent: 'flex-end', paddingBottom: 520, alignItems: 'center'}}>
-      <Pop at={24.3}><Script size={100}>Santa, again.</Script></Pop>
-    </During>
-    <During b={26} e={28} style={{justifyContent: 'flex-end', alignItems: 'flex-end', padding: '0 70px 380px 0'}}>
-      <MugStamp at={26.4} n={2} />
-    </During>
-    <Chapter b={28} n={3} city="ROTHENBURG" sub="ob der Tauber" />
-    <During b={30} e={32} style={{justifyContent: 'flex-end', paddingBottom: 520, alignItems: 'center'}}>
-      <Pop at={30.3}><Script size={100}>storybook streets</Script></Pop>
-    </During>
-    <During b={32} e={40} style={{justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
-      <Slam at={32}><Big size={160}>CHRISTMAS</Big></Slam>
-      <Pop at={33.5}><Big size={160} color={c.goldBright}>ALL YEAR</Big></Pop>
-      <Pop at={35}><Big size={160}>LONG</Big></Pop>
-    </During>
-    <During b={40} e={42} style={{justifyContent: 'flex-end', paddingBottom: 520, alignItems: 'center', textAlign: 'center'}}>
-      <Slam at={40.3}><Big size={130} color={c.goldBright}>LOCKED UP!</Big></Slam>
-      <Pop at={40.9}><Script size={74}>behave… or else.</Script></Pop>
-    </During>
-    <During b={42} e={44} style={{paddingTop: 300, alignItems: 'center'}}>
-      <Pop at={42.3}><Script size={96}>the nutcracker stood guard.</Script></Pop>
-    </During>
-    <During b={44} e={46} style={{paddingTop: 300, alignItems: 'center'}}>
-      <Pop at={44.3}><Script size={96}>a knight crashed our selfie.</Script></Pop>
-    </During>
-    <During b={46} e={49} style={{paddingTop: 280, alignItems: 'center'}}>
-      <Pop at={46.3}><Script size={90}>whipped cream. obviously.</Script></Pop>
-    </During>
-    <During b={46.8} e={49} style={{justifyContent: 'flex-end', alignItems: 'flex-end', padding: '0 70px 380px 0'}}>
-      <MugStamp at={47} n={3} />
-    </During>
-  </>
-);
-
 // Finale: the three mugs line up, viewers vote
 const Lineup: React.FC = () => {
   const frame = useCurrentFrame();
@@ -251,13 +206,13 @@ const Lineup: React.FC = () => {
   );
 };
 
-const placeAt = (b: number) => (b >= 4 && b < 18 ? 'Heidelberg, DE' : b >= 18 && b < 28 ? 'Mannheim, DE' : b >= 28 && b < LINEUP ? 'Rothenburg o.d.T., DE' : null);
 const Chrome: React.FC = () => {
   const frame = useCurrentFrame();
   const total = F(TOTAL_BEAT);
   let beat = 0;
   while (beat < TOTAL_BEAT && F(beat + 1) <= frame) beat++;
-  const place = placeAt(beat);
+  const idx = STARTS.findIndex((s, i) => beat >= s && beat < s + SEQ[i].len);
+  const place = idx >= 0 ? SEQ[idx].place : '';
   return (
     <>
       {place && (
@@ -272,43 +227,38 @@ const Chrome: React.FC = () => {
   );
 };
 
+
 const SFX: {b: number; src: string; vol: number}[] = [
-  {b: 1, src: 'bass-hit-short', vol: 0.5},
-  {b: 2.5, src: 'bass-hit-short', vol: 0.55},
-  ...WHIPS.map((b) => ({b: b - 0.25, src: 'swoosh-quick', vol: 0.4})),
-  {b: 14, src: 'camera-shutter-hard', vol: 0.5},
-  {b: 16, src: 'camera-shutter-hard', vol: 0.5},
-  {b: 16.4, src: 'impact-cine-big', vol: 0.3},
-  {b: 26.4, src: 'impact-cine-big', vol: 0.3},
-  {b: 32, src: 'sparkle-touch', vol: 0.45},
-  {b: 40.3, src: 'bass-hit-short', vol: 0.45},
-  {b: 42, src: 'camera-shutter-hard', vol: 0.45},
-  {b: 44, src: 'camera-shutter-hard', vol: 0.45},
-  {b: 47, src: 'impact-cine-big', vol: 0.3},
-  {b: LINEUP + 0.5, src: 'camera-shutter-hard', vol: 0.35},
-  {b: LINEUP + 1.5, src: 'camera-shutter-hard', vol: 0.35},
-  {b: LINEUP + 2.5, src: 'camera-shutter-hard', vol: 0.35},
-  {b: LINEUP + 3.5, src: 'bass-hit-short', vol: 0.5},
-  {b: LINEUP + 5, src: 'sparkle-touch', vol: 0.4},
+  ...SEQ.flatMap((it, i) => {
+    const b = STARTS[i];
+    if (it.cap?.k === 'mug') return [{b: b + 1.5, src: 'impact-cine-big', vol: 0.25}];
+    if (it.photo) return [{b, src: 'camera-shutter-hard', vol: 0.35}];
+    if (it.cap?.k === 'chapter') return [{b: b + 0.9, src: 'bass-hit-short', vol: 0.35}];
+    return [];
+  }),
+  {b: 3, src: 'bass-hit-short', vol: 0.45},
+  {b: LINEUP + 0.5, src: 'camera-shutter-hard', vol: 0.3},
+  {b: LINEUP + 1.5, src: 'camera-shutter-hard', vol: 0.3},
+  {b: LINEUP + 2.5, src: 'camera-shutter-hard', vol: 0.3},
+  {b: LINEUP + 5, src: 'sparkle-touch', vol: 0.35},
 ];
 
 const Reel: React.FC = () => {
-  const w = useWhip();
-  const musicVol = (fr: number) => interpolate(fr, [0, 3, F(TOTAL_BEAT) - 36, F(TOTAL_BEAT)], [0, 1, 1, 0], clamp);
+  const musicVol = (fr: number) => interpolate(fr, [0, 2, F(TOTAL_BEAT) - 45, F(TOTAL_BEAT)], [0, 1, 1, 0], clamp);
   return (
     <AbsoluteFill style={{background: c.navy, overflow: 'hidden'}}>
       <Audio src={staticFile('music.mp3')} volume={musicVol} />
       {SFX.map((s, i) => (
         <Sequence key={i} from={Math.max(0, F(s.b))} durationInFrames={90}><Audio src={staticFile(`sfx/${s.src}.mp3`)} volume={s.vol} /></Sequence>
       ))}
-      <AbsoluteFill style={{transform: `translateX(${w.x}px)`, filter: w.blur > 0.5 ? `blur(${w.blur}px)` : undefined}}>
-        {SHOTS.map((s, i) => (
-          <Sequence key={i} from={F(s.b)} durationInFrames={F(s.e) - F(s.b)}><ShotView s={s} i={i} /></Sequence>
-        ))}
-        <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(10,22,40,0.55) 0%, rgba(10,22,40,0) 22%, rgba(10,22,40,0) 70%, rgba(10,22,40,0.55) 100%)'}} />
-        <Titles />
-        <During b={LINEUP} e={TOTAL_BEAT + 2}><Lineup /></During>
-      </AbsoluteFill>
+      {SEQ.map((it, i) => {
+        const from = Math.max(0, F(STARTS[i]) - (i ? XF : 0));
+        const to = F(STARTS[i] + it.len);
+        return <Sequence key={i} from={from} durationInFrames={to - from}><ShotView it={it} i={i} len={to - from} /></Sequence>;
+      })}
+      <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(10,22,40,0.55) 0%, rgba(10,22,40,0) 22%, rgba(10,22,40,0) 70%, rgba(10,22,40,0.55) 100%)'}} />
+      {SEQ.map((it, i) => it.cap ? <CapView key={i} cap={it.cap} b={STARTS[i]} e={STARTS[i] + it.len} /> : null)}
+      <During b={LINEUP} e={TOTAL_BEAT + 2}><Lineup /></During>
       <Chrome />
     </AbsoluteFill>
   );
