@@ -22,7 +22,7 @@ const B = (n: number) => {
 };
 const F = (n: number) => Math.round(B(n) * FPS);
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
-const LINEUP = 45, TOTAL_BEAT = 57;
+const LINEUP = 49, TOTAL_BEAT = 61;
 
 type Shot = {b: number; e: number; src: string; from?: number; photo?: 'print' | 'printLand' | 'printWide'; push?: 'in' | 'out' | 'punch'};
 const SHOTS: Shot[] = [
@@ -44,12 +44,19 @@ const SHOTS: Shot[] = [
   // ── No. 3 Rothenburg
   {b: 28, e: 30, src: 'c1125_161358', from: 1.0, push: 'in'},
   {b: 30, e: 32, src: 'c1125_152141', from: 3.5, push: 'punch'},
-  {b: 32, e: 34, src: 'c1125_151929', from: 2.5, push: 'punch'},
-  {b: 34, e: 36, src: 'nutcracker', photo: 'print'},
-  {b: 36, e: 38, src: 'c1125_140424', from: 0.5, push: 'in'},
-  {b: 38, e: 40, src: 'knight', photo: 'printWide'},
-  {b: 40, e: 42, src: 'c1125_161559', from: 0.8, push: 'in'},
-  {b: 42, e: 45, src: 'c1125_143935', from: 0.6, push: 'in'},
+  // festive run: one beat each
+  {b: 32, e: 33, src: 'c1125_135424', from: 1.5, push: 'punch'},
+  {b: 33, e: 34, src: 'c1125_140511', from: 3.0, push: 'punch'},
+  {b: 34, e: 35, src: 'c1125_140534', from: 0.8, push: 'punch'},
+  {b: 35, e: 36, src: 'c1125_140634', from: 2.0, push: 'punch'},
+  {b: 36, e: 37, src: 'c1125_140654', from: 1.5, push: 'punch'},
+  {b: 37, e: 38, src: 'c1125_141758', from: 1.0, push: 'punch'},
+  {b: 38, e: 39, src: 'c1125_141536', from: 2.0, push: 'punch'},
+  {b: 39, e: 40, src: 'c1125_154418', from: 1.0, push: 'punch'},
+  {b: 40, e: 42, src: 'c1125_151929', from: 2.5, push: 'punch'},
+  {b: 42, e: 44, src: 'nutcracker', photo: 'print'},
+  {b: 44, e: 46, src: 'knight', photo: 'printWide'},
+  {b: 46, e: 49, src: 'c1125_143935', from: 0.6, push: 'in'},
 ];
 
 const ShotView: React.FC<{s: Shot; i: number}> = ({s, i}) => {
@@ -181,24 +188,26 @@ const Titles: React.FC = () => (
     <During b={30} e={32} style={{justifyContent: 'flex-end', paddingBottom: 520, alignItems: 'center'}}>
       <Pop at={30.3}><Script size={100}>storybook streets</Script></Pop>
     </During>
-    <During b={32} e={34} style={{justifyContent: 'flex-end', paddingBottom: 520, alignItems: 'center', textAlign: 'center'}}>
-      <Slam at={32.3}><Big size={130} color={c.goldBright}>LOCKED UP!</Big></Slam>
-      <Pop at={32.9}><Script size={74}>behave… or else.</Script></Pop>
+    <During b={32} e={40} style={{justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
+      <Slam at={32}><Big size={160}>CHRISTMAS</Big></Slam>
+      <Pop at={33.5}><Big size={160} color={c.goldBright}>ALL YEAR</Big></Pop>
+      <Pop at={35}><Big size={160}>LONG</Big></Pop>
     </During>
-    <During b={34} e={36} style={{paddingTop: 300, alignItems: 'center'}}>
-      <Pop at={34.3}><Script size={96}>the nutcracker stood guard.</Script></Pop>
+    <During b={40} e={42} style={{justifyContent: 'flex-end', paddingBottom: 520, alignItems: 'center', textAlign: 'center'}}>
+      <Slam at={40.3}><Big size={130} color={c.goldBright}>LOCKED UP!</Big></Slam>
+      <Pop at={40.9}><Script size={74}>behave… or else.</Script></Pop>
     </During>
-    <During b={36} e={38} style={{justifyContent: 'flex-end', paddingBottom: 520, alignItems: 'center'}}>
-      <Pop at={36.3}><Script size={100}>Christmas, all year long</Script></Pop>
+    <During b={42} e={44} style={{paddingTop: 300, alignItems: 'center'}}>
+      <Pop at={42.3}><Script size={96}>the nutcracker stood guard.</Script></Pop>
     </During>
-    <During b={38} e={40} style={{paddingTop: 300, alignItems: 'center'}}>
-      <Pop at={38.3}><Script size={96}>a knight crashed our selfie.</Script></Pop>
+    <During b={44} e={46} style={{paddingTop: 300, alignItems: 'center'}}>
+      <Pop at={44.3}><Script size={96}>a knight crashed our selfie.</Script></Pop>
     </During>
-    <During b={42} e={45} style={{paddingTop: 280, alignItems: 'center'}}>
-      <Pop at={42.3}><Script size={90}>whipped cream. obviously.</Script></Pop>
+    <During b={46} e={49} style={{paddingTop: 280, alignItems: 'center'}}>
+      <Pop at={46.3}><Script size={90}>whipped cream. obviously.</Script></Pop>
     </During>
-    <During b={42.8} e={45} style={{justifyContent: 'flex-end', alignItems: 'flex-end', padding: '0 70px 380px 0'}}>
-      <MugStamp at={43} n={3} />
+    <During b={46.8} e={49} style={{justifyContent: 'flex-end', alignItems: 'flex-end', padding: '0 70px 380px 0'}}>
+      <MugStamp at={47} n={3} />
     </During>
   </>
 );
@@ -271,10 +280,11 @@ const SFX: {b: number; src: string; vol: number}[] = [
   {b: 16, src: 'camera-shutter-hard', vol: 0.5},
   {b: 16.4, src: 'impact-cine-big', vol: 0.3},
   {b: 26.4, src: 'impact-cine-big', vol: 0.3},
-  {b: 32.3, src: 'bass-hit-short', vol: 0.45},
-  {b: 34, src: 'camera-shutter-hard', vol: 0.45},
-  {b: 38, src: 'camera-shutter-hard', vol: 0.45},
-  {b: 43, src: 'impact-cine-big', vol: 0.3},
+  {b: 32, src: 'sparkle-touch', vol: 0.45},
+  {b: 40.3, src: 'bass-hit-short', vol: 0.45},
+  {b: 42, src: 'camera-shutter-hard', vol: 0.45},
+  {b: 44, src: 'camera-shutter-hard', vol: 0.45},
+  {b: 47, src: 'impact-cine-big', vol: 0.3},
   {b: LINEUP + 0.5, src: 'camera-shutter-hard', vol: 0.35},
   {b: LINEUP + 1.5, src: 'camera-shutter-hard', vol: 0.35},
   {b: LINEUP + 2.5, src: 'camera-shutter-hard', vol: 0.35},
