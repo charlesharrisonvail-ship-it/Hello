@@ -22,9 +22,9 @@ const B = (n: number) => {
 };
 const F = (n: number) => Math.round(B(n) * FPS);
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
-const LINEUP = 33, TOTAL_BEAT = 45;
+const LINEUP = 45, TOTAL_BEAT = 57;
 
-type Shot = {b: number; e: number; src: string; from?: number; photo?: 'print' | 'printLand'; push?: 'in' | 'out' | 'punch'};
+type Shot = {b: number; e: number; src: string; from?: number; photo?: 'print' | 'printLand' | 'printWide'; push?: 'in' | 'out' | 'punch'};
 const SHOTS: Shot[] = [
   {b: 0, e: 4, src: 'c1123_192233', from: 1.5, push: 'in'},
   // ── No. 1 Heidelberg (night)
@@ -42,8 +42,14 @@ const SHOTS: Shot[] = [
   {b: 24, e: 26, src: 'c1124_112950', from: 0.6, push: 'punch'},
   {b: 26, e: 28, src: 'c1124_163532', from: 0.6, push: 'out'},
   // ── No. 3 Rothenburg
-  {b: 28, e: 30, src: 'c1125_140424', from: 0.5, push: 'in'},
-  {b: 30, e: 33, src: 'c1125_143935', from: 0.6, push: 'in'},
+  {b: 28, e: 30, src: 'c1125_161358', from: 1.0, push: 'in'},
+  {b: 30, e: 32, src: 'c1125_152141', from: 3.5, push: 'punch'},
+  {b: 32, e: 34, src: 'c1125_151929', from: 2.5, push: 'punch'},
+  {b: 34, e: 36, src: 'nutcracker', photo: 'print'},
+  {b: 36, e: 38, src: 'c1125_140424', from: 0.5, push: 'in'},
+  {b: 38, e: 40, src: 'knight', photo: 'printWide'},
+  {b: 40, e: 42, src: 'c1125_161559', from: 0.8, push: 'in'},
+  {b: 42, e: 45, src: 'c1125_143935', from: 0.6, push: 'in'},
 ];
 
 const ShotView: React.FC<{s: Shot; i: number}> = ({s, i}) => {
@@ -51,14 +57,14 @@ const ShotView: React.FC<{s: Shot; i: number}> = ({s, i}) => {
   const len = F(s.e) - F(s.b);
   const t = frame / Math.max(1, len);
   if (s.photo) {
-    const land = s.photo === 'printLand';
+    const land = s.photo === 'printLand'; const wide = s.photo === 'printWide';
     const p = spring({frame, fps: FPS, config: {damping: 16, stiffness: 180}});
     const rot = interpolate(p, [0, 1], [i % 2 ? 9 : -9, i % 2 ? 2.5 : -2.5]);
     const sc = interpolate(p, [0, 1], [1.25, 1]) * interpolate(t, [0, 1], [1, 1.05]);
     return (
-      <AbsoluteFill style={{background: `radial-gradient(90% 60% at 50% 45%, ${c.navyLight}, ${c.navy})`, justifyContent: 'flex-start', alignItems: 'center', paddingTop: land ? 680 : 560}}>
+      <AbsoluteFill style={{background: `radial-gradient(90% 60% at 50% 45%, ${c.navyLight}, ${c.navy})`, justifyContent: 'flex-start', alignItems: 'center', paddingTop: wide ? 800 : land ? 680 : 560}}>
         <div style={{transform: `rotate(${rot}deg) scale(${sc})`, background: '#fbf8f1', padding: '22px 22px 90px', boxShadow: '0 30px 80px rgba(0,0,0,0.55)'}}>
-          <Img src={staticFile(`${s.src}.jpg`)} style={{width: land ? 920 : 720, height: land ? 690 : 1000, objectFit: 'cover', display: 'block'}} />
+          <Img src={staticFile(`${s.src}.jpg`)} style={{width: wide ? 960 : land ? 920 : 720, height: wide ? 444 : land ? 690 : 1000, objectFit: 'cover', display: 'block'}} />
         </div>
       </AbsoluteFill>
     );
@@ -172,11 +178,27 @@ const Titles: React.FC = () => (
       <MugStamp at={26.4} n={2} />
     </During>
     <Chapter b={28} n={3} city="ROTHENBURG" sub="ob der Tauber" />
-    <During b={30} e={33} style={{paddingTop: 280, alignItems: 'center'}}>
-      <Pop at={30.3}><Script size={90}>whipped cream. obviously.</Script></Pop>
+    <During b={30} e={32} style={{justifyContent: 'flex-end', paddingBottom: 520, alignItems: 'center'}}>
+      <Pop at={30.3}><Script size={100}>storybook streets</Script></Pop>
     </During>
-    <During b={30.8} e={33} style={{justifyContent: 'flex-end', alignItems: 'flex-end', padding: '0 70px 380px 0'}}>
-      <MugStamp at={31} n={3} />
+    <During b={32} e={34} style={{justifyContent: 'flex-end', paddingBottom: 520, alignItems: 'center', textAlign: 'center'}}>
+      <Slam at={32.3}><Big size={130} color={c.goldBright}>LOCKED UP!</Big></Slam>
+      <Pop at={32.9}><Script size={74}>behave… or else.</Script></Pop>
+    </During>
+    <During b={34} e={36} style={{paddingTop: 300, alignItems: 'center'}}>
+      <Pop at={34.3}><Script size={96}>the nutcracker stood guard.</Script></Pop>
+    </During>
+    <During b={36} e={38} style={{justifyContent: 'flex-end', paddingBottom: 520, alignItems: 'center'}}>
+      <Pop at={36.3}><Script size={100}>Christmas, all year long</Script></Pop>
+    </During>
+    <During b={38} e={40} style={{paddingTop: 300, alignItems: 'center'}}>
+      <Pop at={38.3}><Script size={96}>a knight crashed our selfie.</Script></Pop>
+    </During>
+    <During b={42} e={45} style={{paddingTop: 280, alignItems: 'center'}}>
+      <Pop at={42.3}><Script size={90}>whipped cream. obviously.</Script></Pop>
+    </During>
+    <During b={42.8} e={45} style={{justifyContent: 'flex-end', alignItems: 'flex-end', padding: '0 70px 380px 0'}}>
+      <MugStamp at={43} n={3} />
     </During>
   </>
 );
@@ -249,7 +271,10 @@ const SFX: {b: number; src: string; vol: number}[] = [
   {b: 16, src: 'camera-shutter-hard', vol: 0.5},
   {b: 16.4, src: 'impact-cine-big', vol: 0.3},
   {b: 26.4, src: 'impact-cine-big', vol: 0.3},
-  {b: 31, src: 'impact-cine-big', vol: 0.3},
+  {b: 32.3, src: 'bass-hit-short', vol: 0.45},
+  {b: 34, src: 'camera-shutter-hard', vol: 0.45},
+  {b: 38, src: 'camera-shutter-hard', vol: 0.45},
+  {b: 43, src: 'impact-cine-big', vol: 0.3},
   {b: LINEUP + 0.5, src: 'camera-shutter-hard', vol: 0.35},
   {b: LINEUP + 1.5, src: 'camera-shutter-hard', vol: 0.35},
   {b: LINEUP + 2.5, src: 'camera-shutter-hard', vol: 0.35},
