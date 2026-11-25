@@ -7,6 +7,7 @@ import {loadFont as loadCormorant} from '@remotion/google-fonts/CormorantGaramon
 import {loadFont as loadDM} from '@remotion/google-fonts/DMSans';
 import {loadFont as loadBebas} from '@remotion/google-fonts/BebasNeue';
 import beats from './beats.json';
+import durs from './durations.json';
 
 const displayI = loadCormorant('italic', {weights: ['700'], subsets: ['latin']}).fontFamily;
 const ui = loadDM('normal', {weights: ['700'], subsets: ['latin']}).fontFamily;
@@ -29,30 +30,59 @@ type Cap =
   | {k: 'script'; text: string; pos: 'top' | 'bottom'; kicker?: string}
   | {k: 'slam'; text: string; sub?: string}
   | {k: 'mug'; n: number; text?: string};
-type Item = {len: number; src: string; from?: number; photo?: 'print' | 'printLand' | 'printWide'; push?: 'in' | 'out'; cap?: Cap; place: string};
+type Item = {len: number; src: string; from?: number; photo?: 'print' | 'printLand' | 'printWide' | 'printTall'; push?: 'in' | 'out'; cap?: Cap; place: string};
 const H = 'Heidelberg, DE', M = 'Mannheim, DE', R = 'Rothenburg o.d.T., DE';
 const SEQ: Item[] = [
   {len: 7, src: 'c1123_192233', from: 1.0, push: 'in', cap: {k: 'hook'}, place: ''},
-  {len: 6, src: 'c1123_190912', from: 0.5, push: 'in', cap: {k: 'chapter', n: 1, city: 'HEIDELBERG', sub: 'after dark'}, place: H},
-  {len: 5, src: 'c1123_192556', from: 0.2, push: 'out', cap: {k: 'script', text: 'carousels & lights', pos: 'bottom'}, place: H},
-  {len: 5, src: 'c1123_200140', from: 0.3, push: 'in', cap: {k: 'script', kicker: 'GONDOLA HUTS??', text: 'felt like home.', pos: 'top'}, place: H},
-  {len: 5, src: 'c1123_200216', from: 1.0, push: 'in', cap: {k: 'script', text: "Santa's on the ride.", pos: 'bottom'}, place: H},
+  // ── Heidelberg, 23 Nov, after dark
+  {len: 6, src: 'c1123_190912', from: 0.3, push: 'in', cap: {k: 'chapter', n: 1, city: 'HEIDELBERG', sub: 'after dark'}, place: H},
+  {len: 5, src: 'c1123_192002', from: 1.5, push: 'in', cap: {k: 'script', text: 'the whole town came out', pos: 'bottom'}, place: H},
+  {len: 5, src: 'c1123_192520', from: 1.0, push: 'out', cap: {k: 'script', text: 'carousels & lights', pos: 'bottom'}, place: H},
+  {len: 5, src: 'c1123_192530', push: 'in', place: H},
+  {len: 5, src: 'c1123_192556', push: 'in', place: H},
   {len: 6, src: 'selfie', photo: 'printLand', cap: {k: 'script', text: 'Glühwein date night.', pos: 'top'}, place: H},
+  {len: 5, src: 'c1123_200140', push: 'in', cap: {k: 'script', kicker: 'GONDOLA HUTS??', text: 'felt like home.', pos: 'top'}, place: H},
+  {len: 5, src: 'c1123_200216', from: 1.0, push: 'in', cap: {k: 'script', text: "Santa's on the ride.", pos: 'bottom'}, place: H},
   {len: 6, src: 'mug1', photo: 'print', cap: {k: 'mug', n: 1}, place: H},
-  {len: 6, src: 'c1124_113917', from: 0.3, push: 'in', cap: {k: 'chapter', n: 2, city: 'MANNHEIM', sub: 'by the Wasserturm'}, place: M},
-  {len: 5, src: 'c1124_112708', from: 0.3, push: 'in', cap: {k: 'script', text: 'the big pyramid', pos: 'bottom'}, place: M},
-  {len: 5, src: 'c1124_112950', from: 0.4, push: 'in', cap: {k: 'script', text: 'Santa, again.', pos: 'bottom'}, place: M},
+  // ── Mannheim, 24 Nov
+  {len: 6, src: 'c1124_113917', from: 0.2, push: 'in', cap: {k: 'chapter', n: 2, city: 'MANNHEIM', sub: 'by the Wasserturm'}, place: M},
+  {len: 5, src: 'c1124_112708', push: 'in', cap: {k: 'script', text: 'the big pyramid', pos: 'bottom'}, place: M},
+  {len: 5, src: 'c1124_112818', from: 0.5, push: 'in', cap: {k: 'script', text: 'a sunny morning stroll', pos: 'bottom'}, place: M},
+  {len: 5, src: 'c1124_112834', from: 3.5, push: 'out', place: M},
+  {len: 5, src: 'c1124_112950', push: 'in', cap: {k: 'script', text: 'Santa, again.', pos: 'bottom'}, place: M},
   {len: 6, src: 'c1124_163532', from: 0.6, push: 'out', cap: {k: 'mug', n: 2}, place: M},
+  // ── Rothenburg, 25 Nov
   {len: 6, src: 'c1125_161358', from: 0.8, push: 'in', cap: {k: 'chapter', n: 3, city: 'ROTHENBURG', sub: 'ob der Tauber'}, place: R},
-  {len: 5, src: 'c1125_152141', from: 3.2, push: 'in', cap: {k: 'script', text: 'storybook streets', pos: 'bottom'}, place: R},
-  {len: 5, src: 'c1125_135424', from: 1.0, push: 'in', cap: {k: 'script', kicker: 'CHRISTMAS SHOPS', text: 'all year long', pos: 'top'}, place: R},
+  {len: 5, src: 'c1125_135424', from: 1.0, push: 'in', cap: {k: 'script', text: 'Santa runs the shop', pos: 'bottom'}, place: R},
+  {len: 5, src: 'c1125_140345', push: 'in', cap: {k: 'script', text: 'holiday windows', pos: 'bottom'}, place: R},
+  {len: 5, src: 'c1125_140424', from: 0.3, push: 'in', cap: {k: 'script', kicker: 'CHRISTMAS SHOPS', text: 'all year long', pos: 'top'}, place: R},
   {len: 5, src: 'c1125_140511', from: 2.5, push: 'in', cap: {k: 'script', text: 'whole Christmas villages', pos: 'bottom'}, place: R},
-  {len: 5, src: 'c1125_140654', from: 1.0, push: 'out', cap: {k: 'script', text: 'and cuckoo clocks, everywhere', pos: 'bottom'}, place: R},
-  {len: 5, src: 'c1125_154418', from: 0.8, push: 'in', place: R},
+  {len: 5, src: 'c1125_140534', push: 'in', cap: {k: 'script', text: 'nutcrackers by the dozen', pos: 'bottom'}, place: R},
+  {len: 5, src: 'c1125_140634', from: 2.0, push: 'in', cap: {k: 'script', text: 'ornaments for days', pos: 'bottom'}, place: R},
+  {len: 6, src: 'santas1', photo: 'printTall', cap: {k: 'script', text: 'a Santa for every style', pos: 'top'}, place: R},
+  {len: 6, src: 'santas2', photo: 'printTall', cap: {k: 'script', text: 'and snow globes everywhere', pos: 'top'}, place: R},
+  {len: 5, src: 'c1125_140654', from: 1.0, push: 'out', cap: {k: 'script', text: 'cuckoo clocks, too', pos: 'bottom'}, place: R},
+  {len: 6, src: 'steins', photo: 'printTall', cap: {k: 'script', text: 'beer steins fit for a king', pos: 'top'}, place: R},
+  {len: 5, src: 'c1125_140818', from: 1.0, push: 'in', place: R},
+  {len: 6, src: 'plates', photo: 'printTall', cap: {k: 'script', text: 'souvenir plates & mugs', pos: 'top'}, place: R},
+  {len: 5, src: 'c1125_141305', push: 'in', cap: {k: 'script', text: 'out in the square', pos: 'bottom'}, place: R},
+  {len: 5, src: 'c1125_141536', from: 0.5, push: 'in', cap: {k: 'script', text: 'wooden stars at the stalls', pos: 'bottom'}, place: R},
+  {len: 5, src: 'c1125_141758', from: 1.0, push: 'in', cap: {k: 'script', text: 'hand-lettered hearts', pos: 'bottom'}, place: R},
+  {len: 5, src: 'c1125_142203', from: 7.0, push: 'in', cap: {k: 'script', text: 'an antique shop full of history', pos: 'bottom'}, place: R},
+  {len: 6, src: 'helmets', photo: 'printTall', cap: {k: 'script', text: 'old helmets & caps', pos: 'top'}, place: R},
+  {len: 5, src: 'c1125_145211', push: 'in', cap: {k: 'script', text: 'a gallery treasure', pos: 'bottom'}, place: R},
+  {len: 6, src: 'bishop', photo: 'printTall', place: R},
+  {len: 5, src: 'c1125_151057', from: 1.0, push: 'in', cap: {k: 'script', text: 'views off the old wall', pos: 'bottom'}, place: R},
+  {len: 5, src: 'c1125_151841', push: 'in', cap: {k: 'script', text: 'history on every column', pos: 'bottom'}, place: R},
   {len: 5, src: 'c1125_151929', from: 2.0, push: 'in', cap: {k: 'slam', text: 'LOCKED UP!', sub: 'behave… or else.'}, place: R},
-  {len: 6, src: 'nutcracker', photo: 'print', cap: {k: 'script', text: 'the nutcracker stood guard.', pos: 'top'}, place: R},
+  {len: 5, src: 'c1125_152141', from: 3.2, push: 'in', cap: {k: 'script', text: 'storybook streets', pos: 'bottom'}, place: R},
   {len: 6, src: 'knight', photo: 'printWide', cap: {k: 'script', text: 'a knight crashed our selfie.', pos: 'top'}, place: R},
-  {len: 7, src: 'c1125_143935', from: 0.5, push: 'in', cap: {k: 'mug', n: 3, text: 'whipped cream. obviously.'}, place: R},
+  {len: 5, src: 'c1125_154418', from: 0.5, push: 'in', cap: {k: 'script', text: 'stained glass', pos: 'bottom'}, place: R},
+  {len: 5, src: 'c1125_154821', push: 'in', cap: {k: 'script', text: 'the whole town on one map', pos: 'bottom'}, place: R},
+  {len: 6, src: 'nutcracker', photo: 'print', cap: {k: 'script', text: 'the nutcracker stood guard.', pos: 'top'}, place: R},
+  {len: 5, src: 'c1125_161559', push: 'in', cap: {k: 'script', text: 'towers at every turn', pos: 'bottom'}, place: R},
+  {len: 6, src: 'c1125_161813', from: 0.5, push: 'in', cap: {k: 'script', text: 'sunset over the rooftops', pos: 'bottom'}, place: R},
+  {len: 7, src: 'c1125_143935', from: 0.3, push: 'in', cap: {k: 'mug', n: 3, text: 'whipped cream. obviously.'}, place: R},
 ];
 const STARTS: number[] = [];
 { let b = 0; for (const it of SEQ) { STARTS.push(b); b += it.len; } }
@@ -65,22 +95,26 @@ const ShotView: React.FC<{it: Item; i: number; len: number}> = ({it, i, len}) =>
   const t = frame / Math.max(1, len);
   const fade = i === 0 ? 1 : interpolate(frame, [0, XF], [0, 1], clamp);
   if (it.photo) {
-    const land = it.photo === 'printLand', wide = it.photo === 'printWide';
+    const land = it.photo === 'printLand', wide = it.photo === 'printWide', tall = it.photo === 'printTall';
     const p = spring({frame, fps: FPS, config: {damping: 22, stiffness: 90}});
     const rot = interpolate(p, [0, 1], [i % 2 ? 6 : -6, i % 2 ? 2.5 : -2.5]);
     const sc = interpolate(p, [0, 1], [1.12, 1]) * interpolate(t, [0, 1], [1, 1.04]);
     return (
-      <AbsoluteFill style={{opacity: fade, background: `radial-gradient(90% 60% at 50% 45%, ${c.navyLight}, ${c.navy})`, justifyContent: 'flex-start', alignItems: 'center', paddingTop: wide ? 800 : land ? 680 : 560}}>
+      <AbsoluteFill style={{opacity: fade, background: `radial-gradient(90% 60% at 50% 45%, ${c.navyLight}, ${c.navy})`, justifyContent: 'flex-start', alignItems: 'center', paddingTop: wide ? 800 : land ? 680 : tall ? 440 : 560}}>
         <div style={{transform: `rotate(${rot}deg) scale(${sc})`, background: '#fbf8f1', padding: '22px 22px 90px', boxShadow: '0 30px 80px rgba(0,0,0,0.55)'}}>
-          <Img src={staticFile(`${it.src}.jpg`)} style={{width: wide ? 960 : land ? 920 : 720, height: wide ? 444 : land ? 690 : 1000, objectFit: 'cover', display: 'block'}} />
+          <Img src={staticFile(`${it.src}.jpg`)} style={{width: wide ? 960 : land ? 920 : tall ? 560 : 720, height: wide ? 444 : land ? 690 : tall ? 1210 : 1000, objectFit: 'cover', display: 'block'}} />
         </div>
       </AbsoluteFill>
     );
   }
+  const dur = (durs as Record<string, number>)[it.src] ?? 99;
+  const need = len / FPS + 0.15;
+  const from = Math.max(0, Math.min(it.from ?? 0, dur - need));
+  const rate = Math.min(1, (dur - from - 0.05) / need);
   const scale = it.push === 'out' ? interpolate(t, [0, 1], [1.1, 1.02]) : interpolate(t, [0, 1], [1.02, 1.09]);
   return (
     <AbsoluteFill style={{opacity: fade, transform: `scale(${scale})`}}>
-      <OffthreadVideo src={staticFile(`${it.src}.mp4`)} startFrom={Math.round((it.from ?? 0) * FPS)} muted />
+      <OffthreadVideo src={staticFile(`${it.src}.mp4`)} startFrom={Math.round(from * FPS)} playbackRate={rate} muted />
     </AbsoluteFill>
   );
 };
