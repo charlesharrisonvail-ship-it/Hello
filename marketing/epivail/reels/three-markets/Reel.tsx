@@ -14,7 +14,7 @@ const stamp = loadBebas('normal', {weights: ['400'], subsets: ['latin']}).fontFa
 const c = {navy: '#0a1628', navyMid: '#0f1f3d', navyLight: '#172847', gold: '#c9a84c', goldBright: '#e8c66a', cream: '#f5f0e8', red: '#b3262e'};
 
 const FPS = 30;
-const BEAT = 0.4985;
+const BEAT = 0.47;
 const B = (n: number) => {
   const i = Math.floor(n);
   const base = (beats as number[])[i] ?? i * BEAT;
@@ -259,7 +259,7 @@ const SFX: {b: number; src: string; vol: number}[] = [
 
 const Reel: React.FC = () => {
   const w = useWhip();
-  const musicVol = (fr: number) => interpolate(fr, [0, 3, F(TOTAL_BEAT) - 24, F(TOTAL_BEAT)], [0, 0.85, 0.85, 0], clamp);
+  const musicVol = (fr: number) => interpolate(fr, [0, 3, F(TOTAL_BEAT) - 36, F(TOTAL_BEAT)], [0, 1, 1, 0], clamp);
   return (
     <AbsoluteFill style={{background: c.navy, overflow: 'hidden'}}>
       <Audio src={staticFile('music.mp3')} volume={musicVol} />
