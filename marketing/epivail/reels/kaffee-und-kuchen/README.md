@@ -1,11 +1,12 @@
-# Kaffee und Kuchen at Schloss Kirchberg an der Jagst (EpiVail lifestyle reel)
+# Kaffee und Kuchen: one slow day in Germany (EpiVail lifestyle reel)
 
-Vertical 1080×1920, 29.1 s, 2026-11-26. Built from the one photo that came through
-(cappuccino and cake at the Kaffeehaus; it arrived twice as the same file). Six slow
-looks around the photo (table, cup, arched room, cake, candle and plant, table) with
-soft crossfades. Tradition line from Charles's screenshot: an afternoon ritual,
-roughly 2 to 5 pm. If more footage from the day arrives, it all goes in.
+Vertical 1080×1920, 69.6 s, 2026-11-26. Charles: "the pics are blurry...use the videos and
+redo." Rebuilt from all 18 clips and 2 photos of the day plus the café photo, in day order:
+Dinkelsbühl (gate, Münster, carved stone, crucifix, nativity poster, gables, wall, tower,
+Hefeweizen lunch, Christmas market, boot-shaped Glühwein mug) -> Kaffee und Kuchen at
+Schloss Kirchberg an der Jagst -> a night Christmas market and the "Weihnachtszauber" mug.
+Night-market location not given, so no pin there.
 
-- Music: gentle café waltz generated on Higgsfield (elevenlabs_music_v2_5, ~4 credits).
-- `caption.txt` (under 400 characters), `thumbnail-9x16.jpg` (title frame).
-- Master -14.0 LUFS, -1.5 dBFS peak.
+- Slow pacing (about 2.7 s per clip, 3.3 s per photo), soft crossfades, gentle pushes.
+- Music: café waltz generated on Higgsfield (~4 credits), looped with crossfades.
+- `caption.txt` (under 400 characters), `thumbnail-9x16.jpg`. Master -14.0 LUFS.

@@ -1,47 +1,80 @@
 import React from 'react';
-import {AbsoluteFill, Audio, Composition, Img, Sequence, interpolate, registerRoot, spring, staticFile, useCurrentFrame} from 'remotion';
+import {AbsoluteFill, Audio, Composition, Img, OffthreadVideo, Sequence, interpolate, registerRoot, spring, staticFile, useCurrentFrame} from 'remotion';
 import {loadFont as loadCormorant} from '@remotion/google-fonts/CormorantGaramond';
 import {loadFont as loadDM} from '@remotion/google-fonts/DMSans';
 import {loadFont as loadBebas} from '@remotion/google-fonts/BebasNeue';
+import durs from './durations.json';
 
 const displayI = loadCormorant('italic', {weights: ['700'], subsets: ['latin']}).fontFamily;
 const display = loadCormorant('normal', {weights: ['700'], subsets: ['latin']}).fontFamily;
 const ui = loadDM('normal', {weights: ['700'], subsets: ['latin']}).fontFamily;
 const stamp = loadBebas('normal', {weights: ['400'], subsets: ['latin']}).fontFamily;
-const c = {navy: '#0a1628', navyMid: '#0f1f3d', gold: '#c9a84c', goldBright: '#e8c66a', cream: '#f5f0e8'};
+const c = {navy: '#0a1628', navyMid: '#0f1f3d', navyLight: '#172847', gold: '#c9a84c', goldBright: '#e8c66a', cream: '#f5f0e8'};
 const FPS = 30;
 const s = (t: number) => Math.round(t * FPS);
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
-const IMG_W = 1080, IMG_H = Math.round(1080 * 4000 / 1848); // cover width
-
-// Shots: a slow look around one photo. cx/cy = point of interest (fractions), z = zoom.
-type Shot = {cx: number; cy: number; z: number; len: number};
-const SHOTS: Shot[] = [
-  {cx: 0.5, cy: 0.46, z: 1.0, len: 4.5},   // whole table
-  {cx: 0.6, cy: 0.5, z: 2.0, len: 4.0},    // the cappuccino
-  {cx: 0.45, cy: 0.2, z: 1.8, len: 4.0},   // the arched café room
-  {cx: 0.24, cy: 0.47, z: 2.2, len: 4.0},  // the cake
-  {cx: 0.4, cy: 0.34, z: 1.9, len: 3.5},   // candle & plant
-  {cx: 0.5, cy: 0.46, z: 1.0, len: 4.5},   // back to the table
-];
-const STARTS: number[] = [];
-{ let t = 0; for (const sh of SHOTS) { STARTS.push(t); t += sh.len; } }
-const END = STARTS[STARTS.length - 1] + SHOTS[SHOTS.length - 1].len;
-const TOTAL = END + 4.5;
 const XF = 12;
 
-const View: React.FC<{sh: Shot; len: number; first: boolean}> = ({sh, len, first}) => {
+type Cap =
+  | {k: 'hook'}
+  | {k: 'chapter'; kicker: string; title: string; sub?: string}
+  | {k: 'line'; text: string; kicker?: string; pos: 'top' | 'bottom'; text2?: string};
+type Item = {len: number; src: string; from?: number; photo?: 'tall' | 'cafe'; cap?: Cap; place: string; push?: 'in' | 'out'};
+const D = 'Dinkelsbühl, DE', K = 'Kirchberg an der Jagst, DE';
+const V = 2.7, P = 3.3, CH = 3.6;
+const SEQ: Item[] = [
+  {len: 4.2, src: 'c124203', from: 0.5, cap: {k: 'hook'}, place: D},
+  {len: CH, src: 'c124441', from: 0.5, cap: {k: 'chapter', kicker: 'FIRST STOP', title: 'DINKELSBÜHL', sub: 'a walled old town'}, place: D},
+  {len: V, src: 'c124612', from: 1.0, cap: {k: 'line', text: 'history carved in stone', pos: 'bottom'}, place: D},
+  {len: V, src: 'c124753', from: 0.5, cap: {k: 'line', text: 'quiet corners', pos: 'bottom'}, place: D},
+  {len: P, src: 'poster', photo: 'tall', cap: {k: 'line', text: 'a hometown nativity in the Münster St. Georg', pos: 'top'}, place: D},
+  {len: V, src: 'c125429', from: 1.5, push: 'out', cap: {k: 'line', text: 'colorful gables everywhere', pos: 'bottom'}, place: D},
+  {len: V, src: 'c130920', from: 1.0, place: D},
+  {len: V, src: 'c131135', from: 1.0, place: D},
+  {len: V, src: 'c131718', from: 1.5, cap: {k: 'line', text: 'storybook squares', pos: 'bottom'}, place: D},
+  {len: V, src: 'c132344', from: 1.0, cap: {k: 'line', text: 'along the old town wall', pos: 'bottom'}, place: D},
+  {len: P, src: 'tower', photo: 'tall', cap: {k: 'line', text: 'the Münster, rising over the street', pos: 'top'}, place: D},
+  {len: V, src: 'c140906', from: 0.5, cap: {k: 'line', kicker: 'LUNCH BREAK', text: 'a cold Hefeweizen', pos: 'top'}, place: D},
+  {len: V, src: 'c142158', from: 0.5, cap: {k: 'line', text: 'and a proper German plate', pos: 'bottom'}, place: D},
+  {len: V, src: 'c150344', from: 1.5, place: D},
+  {len: V, src: 'c151902', from: 1.0, cap: {k: 'line', text: 'the Christmas market', pos: 'bottom'}, place: D},
+  {len: V, src: 'c151801', from: 0.5, cap: {k: 'line', text: 'Glühwein time', pos: 'bottom'}, place: D},
+  {len: V, src: 'c151809', from: 1.0, cap: {k: 'line', text: 'in a mug shaped like a boot!', pos: 'top'}, place: D},
+  {len: 5.5, src: 'cafe', photo: 'cafe', cap: {k: 'chapter', kicker: 'NEXT STOP · SCHLOSS KIRCHBERG', title: 'KAFFEE UND KUCHEN', sub: 'literally "coffee and cake," somewhere between 2 and 5'}, place: K},
+  {len: CH, src: 'c182206', from: 0.5, cap: {k: 'chapter', kicker: 'THEN', title: 'AFTER DARK', sub: 'one more Christmas market'}, place: ''},
+  {len: V, src: 'c182436', from: 0.3, cap: {k: 'line', text: 'lights everywhere', pos: 'bottom'}, place: ''},
+  {len: 3.2, src: 'c183148', from: 0.5, cap: {k: 'line', text: 'and one more mug for the collection.', pos: 'top'}, place: ''},
+];
+const STARTS: number[] = [];
+{ let t = 0; for (const it of SEQ) { STARTS.push(t); t += it.len; } }
+const END = STARTS[STARTS.length - 1] + SEQ[SEQ.length - 1].len;
+const TOTAL = END + 5;
+
+const ShotView: React.FC<{it: Item; i: number; len: number}> = ({it, i, len}) => {
   const frame = useCurrentFrame();
-  const t = frame / len;
-  const z = sh.z * interpolate(t, [0, 1], [1, 1.07]);
-  const w = IMG_W * z, h = IMG_H * z;
-  // place the point of interest at frame centre, clamped so the photo always covers the frame
-  const x = Math.min(0, Math.max(1080 - w, 540 - sh.cx * w));
-  const y = Math.min(0, Math.max(1920 - h, 960 - sh.cy * h));
-  const fade = first ? 1 : interpolate(frame, [0, XF], [0, 1], clamp);
+  const t = frame / Math.max(1, len);
+  const fade = i === 0 ? 1 : interpolate(frame, [0, XF], [0, 1], clamp);
+  if (it.photo) {
+    const p = spring({frame, fps: FPS, config: {damping: 22, stiffness: 90}});
+    const rot = interpolate(p, [0, 1], [i % 2 ? 6 : -6, i % 2 ? 2 : -2]);
+    const sc = interpolate(p, [0, 1], [1.1, 1]) * interpolate(t, [0, 1], [1, 1.04]);
+    const cafe = it.photo === 'cafe';
+    return (
+      <AbsoluteFill style={{opacity: fade, background: `radial-gradient(90% 60% at 50% 45%, ${c.navyLight}, ${c.navy})`, alignItems: 'center', paddingTop: cafe ? 640 : 520}}>
+        <div style={{transform: `rotate(${rot}deg) scale(${sc})`, background: '#fbf8f1', padding: '20px 20px 80px', boxShadow: '0 30px 80px rgba(0,0,0,0.55)'}}>
+          <Img src={staticFile(`${it.src}.jpg`)} style={{width: cafe ? 620 : 620, height: cafe ? 1000 : 1060, objectFit: 'cover', objectPosition: cafe ? '60% 52%' : 'center', display: 'block'}} />
+        </div>
+      </AbsoluteFill>
+    );
+  }
+  const dur = (durs as Record<string, number>)[it.src] ?? 99;
+  const need = len / FPS + 0.15;
+  const from = Math.max(0, Math.min(it.from ?? 0, dur - need));
+  const rate = Math.min(1, (dur - from - 0.05) / need);
+  const scale = it.push === 'out' ? interpolate(t, [0, 1], [1.1, 1.02]) : interpolate(t, [0, 1], [1.02, 1.08]);
   return (
-    <AbsoluteFill style={{opacity: fade, overflow: 'hidden'}}>
-      <Img src={staticFile('kaffee.jpg')} style={{position: 'absolute', left: x, top: y, width: w, height: h}} />
+    <AbsoluteFill style={{opacity: fade, transform: `scale(${scale})`}}>
+      <OffthreadVideo src={staticFile(`${it.src}.mp4`)} startFrom={Math.round(from * FPS)} playbackRate={rate} muted />
     </AbsoluteFill>
   );
 };
@@ -62,52 +95,53 @@ const shadow = '0 4px 26px rgba(0,0,0,0.75), 0 2px 4px rgba(0,0,0,0.5)';
 const Kick: React.FC<{children: React.ReactNode; size?: number}> = ({children, size = 46}) => (
   <div style={{fontFamily: stamp, fontSize: size, letterSpacing: '0.22em', color: c.goldBright, textShadow: shadow}}>{children}</div>
 );
-const Script: React.FC<{children: React.ReactNode; size?: number; color?: string}> = ({children, size = 96, color = c.cream}) => (
+const Script: React.FC<{children: React.ReactNode; size?: number; color?: string}> = ({children, size = 90, color = c.cream}) => (
   <div style={{fontFamily: displayI, fontStyle: 'italic', fontSize: size, lineHeight: 1.05, color, textShadow: shadow}}>{children}</div>
 );
-const top: React.CSSProperties = {alignItems: 'center', paddingTop: 260, textAlign: 'center', padding: '260px 60px 0'};
-const bottom: React.CSSProperties = {alignItems: 'center', justifyContent: 'flex-end', paddingBottom: 480, textAlign: 'center', padding: '0 60px 480px'};
+const topS: React.CSSProperties = {alignItems: 'center', textAlign: 'center', padding: '250px 60px 0'};
+const botS: React.CSSProperties = {alignItems: 'center', justifyContent: 'flex-end', textAlign: 'center', padding: '0 60px 480px'};
+
+const CapView: React.FC<{cap: Cap; a: number; b: number}> = ({cap, a, b}) => {
+  if (cap.k === 'hook') return (
+    <Win a={a} b={b} style={{...topS, background: 'linear-gradient(180deg, rgba(10,22,40,0.7) 0%, rgba(10,22,40,0.3) 40%, rgba(10,22,40,0) 60%)'}}>
+      <Pop at={a + 0.3}><Kick>ONE SLOW DAY IN GERMANY</Kick></Pop>
+      <Pop at={a + 1.0}><div style={{fontFamily: display, fontSize: 140, color: c.cream, lineHeight: 1, textShadow: shadow}}>Kaffee</div></Pop>
+      <Pop at={a + 1.6}><div style={{fontFamily: displayI, fontStyle: 'italic', fontSize: 104, color: c.goldBright, lineHeight: 1, textShadow: shadow}}>und Kuchen</div></Pop>
+      <Pop at={a + 2.4}><Script size={56}>and everything around it</Script></Pop>
+    </Win>
+  );
+  if (cap.k === 'chapter') return (
+    <Win a={a} b={b} style={{...topS, background: 'linear-gradient(180deg, rgba(10,22,40,0.75) 0%, rgba(10,22,40,0.4) 35%, rgba(10,22,40,0) 55%)'}}>
+      <Pop at={a + 0.3}><Kick size={48}>{cap.kicker}</Kick></Pop>
+      <Pop at={a + 0.9}><div style={{fontFamily: stamp, fontSize: cap.title.length > 12 ? 130 : 170, color: c.cream, lineHeight: 0.95, textShadow: shadow}}>{cap.title}</div></Pop>
+      {cap.sub && <Pop at={a + 1.6}><Script size={cap.sub.length > 30 ? 56 : 70}>{cap.sub}</Script></Pop>}
+    </Win>
+  );
+  return (
+    <Win a={a} b={b} style={cap.pos === 'top' ? topS : botS}>
+      {cap.kicker && <Pop at={a + 0.5}><Kick>{cap.kicker}</Kick></Pop>}
+      <Pop at={a + (cap.kicker ? 1.0 : 0.5)}><Script>{cap.text}</Script></Pop>
+    </Win>
+  );
+};
 
 const Reel: React.FC = () => {
   const frame = useCurrentFrame();
   const vol = (f: number) => interpolate(f, [0, 15, s(TOTAL) - 45, s(TOTAL)], [0, 0.9, 0.9, 0], clamp);
-  const [a0, a1, a2, a3, a4, a5] = STARTS;
+  const idx = STARTS.findIndex((st, i) => frame >= s(st) && frame < s(st + SEQ[i].len));
+  const place = idx >= 0 ? SEQ[idx].place : '';
   const pulse = 1 + Math.sin((frame - s(END)) / 6) * 0.02;
   return (
     <AbsoluteFill style={{background: c.navy}}>
       <Audio src={staticFile('music.mp3')} volume={vol} />
-      {SHOTS.map((sh, i) => {
+      {SEQ.map((it, i) => {
         const from = Math.max(0, s(STARTS[i]) - (i ? XF : 0));
-        const to = s(STARTS[i] + sh.len) + (i === SHOTS.length - 1 ? s(1) : 0);
-        return <Sequence key={i} from={from} durationInFrames={to - from}><View sh={sh} len={to - from} first={i === 0} /></Sequence>;
+        const to = s(STARTS[i] + it.len);
+        return <Sequence key={i} from={from} durationInFrames={to - from}><ShotView it={it} i={i} len={to - from} /></Sequence>;
       })}
-      <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(10,22,40,0.6) 0%, rgba(10,22,40,0) 28%, rgba(10,22,40,0) 62%, rgba(10,22,40,0.6) 100%)'}} />
+      <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(10,22,40,0.55) 0%, rgba(10,22,40,0) 22%, rgba(10,22,40,0) 68%, rgba(10,22,40,0.55) 100%)'}} />
+      {SEQ.map((it, i) => it.cap ? <CapView key={i} cap={it.cap} a={STARTS[i]} b={STARTS[i] + it.len} /> : null)}
 
-      <Win a={a0} b={a1} style={top}>
-        <Pop at={a0 + 0.4}><Kick>SCHLOSS KIRCHBERG AN DER JAGST</Kick></Pop>
-        <Pop at={a0 + 1.2}><div style={{fontFamily: display, fontSize: 150, color: c.cream, lineHeight: 1, textShadow: shadow}}>Kaffee</div></Pop>
-        <Pop at={a0 + 1.8}><div style={{fontFamily: displayI, fontStyle: 'italic', fontSize: 110, color: c.goldBright, lineHeight: 1, textShadow: shadow}}>und Kuchen</div></Pop>
-      </Win>
-      <Win a={a1} b={a2} style={bottom}>
-        <Pop at={a1 + 0.6}><Kick>LITERALLY</Kick></Pop>
-        <Pop at={a1 + 1.1}><Script>"coffee and cake"</Script></Pop>
-      </Win>
-      <Win a={a2} b={a3} style={top}>
-        <Pop at={a2 + 0.6}><Script size={88}>a German afternoon ritual,</Script></Pop>
-        <Pop at={a2 + 1.4}><Script size={88} color={c.goldBright}>somewhere between 2 and 5.</Script></Pop>
-      </Win>
-      <Win a={a3} b={a4} style={bottom}>
-        <Pop at={a3 + 0.6}><Script>no rushing.</Script></Pop>
-        <Pop at={a3 + 1.4}><Script color={c.goldBright}>just cake.</Script></Pop>
-      </Win>
-      <Win a={a4} b={a5} style={top}>
-        <Pop at={a4 + 0.6}><Script size={92}>coffee, cake & conversation.</Script></Pop>
-      </Win>
-      <Win a={a5} b={END} style={top}>
-        <Pop at={a5 + 0.6}><Kick size={50}>THAT'S THE LIFESTYLE</Kick></Pop>
-      </Win>
-
-      {/* end card */}
       <Win a={END} b={TOTAL + 1} style={{alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: 70, background: `radial-gradient(100% 70% at 50% 35%, #1d2f52, ${c.navyMid} 50%, ${c.navy})`}}>
         <Pop at={END + 0.2}><Script size={100}>Where's your favorite</Script></Pop>
         <Pop at={END + 0.7}><Script size={100} color={c.goldBright}>coffee & cake spot?</Script></Pop>
@@ -120,10 +154,10 @@ const Reel: React.FC = () => {
         </Pop>
       </Win>
 
-      {frame < s(END) && (
+      {place && (
         <div style={{position: 'absolute', top: 76, left: 60, display: 'flex', alignItems: 'center', gap: 12, fontFamily: ui, fontSize: 30, color: c.cream, textShadow: shadow}}>
           <svg width="26" height="34" viewBox="0 0 24 32"><path d="M12 0C5.4 0 0 5.2 0 11.7 0 20.5 12 32 12 32s12-11.5 12-20.3C24 5.2 18.6 0 12 0zm0 16a4.5 4.5 0 110-9 4.5 4.5 0 010 9z" fill={c.goldBright} /></svg>
-          Kirchberg an der Jagst, DE
+          {place}
         </div>
       )}
       <div style={{position: 'absolute', top: 70, right: 60, fontFamily: stamp, fontSize: 46, letterSpacing: '0.2em', color: c.gold, textShadow: shadow}}>EPIVAIL</div>
@@ -131,4 +165,4 @@ const Reel: React.FC = () => {
   );
 };
 
-registerRoot(() => <Composition id="Kaffee" component={Reel} durationInFrames={s(TOTAL)} fps={FPS} width={1080} height={1920} />);
+registerRoot(() => <Composition id="KaffeeDay" component={Reel} durationInFrames={s(TOTAL)} fps={FPS} width={1080} height={1920} />);
