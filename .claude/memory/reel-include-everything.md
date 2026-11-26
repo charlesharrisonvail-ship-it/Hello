@@ -15,3 +15,8 @@ else's poster as the subject), say so plainly and ask; never quietly leave it ou
 
 Length follows the footage. With the pacing rule in `reel-energy.md` (each shot ~2.3 s,
 photos ~3 s), a full day can run two minutes, which is fine.
+
+Charles, 2026-11-26 (again): "u left out all the good Christmas Market footage." Every clip
+was in, but trimmed to ~2.7 s slices. Including a clip means showing its good part in full:
+highlight footage (markets, lights, people, food, the moment he filmed it for) plays at its
+own length. Only filler/transition clips get the short hold. When unsure, show more.

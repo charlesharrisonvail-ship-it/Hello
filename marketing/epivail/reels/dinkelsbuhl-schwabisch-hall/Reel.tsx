@@ -20,7 +20,7 @@ type Cap =
   | {k: 'chapter'; kicker: string; title: string; sub?: string}
   | {k: 'line'; text: string; kicker?: string; pos: 'top' | 'bottom'; text2?: string};
 type Item = {len: number; src: string; from?: number; photo?: 'tall' | 'cafe'; cap?: Cap; place: string; push?: 'in' | 'out'};
-const D = 'Dinkelsbühl, DE', K = 'Kirchberg an der Jagst, DE';
+const D = 'Dinkelsbühl, DE', K = 'Kirchberg an der Jagst, DE', SH = 'Schwäbisch Hall, DE';
 const V = 2.7, P = 3.3, CH = 3.6;
 const SEQ: Item[] = [
   {len: 4.2, src: 'c124203', from: 0.5, cap: {k: 'hook'}, place: D},
@@ -34,15 +34,15 @@ const SEQ: Item[] = [
   {len: V, src: 'c131718', from: 1.5, cap: {k: 'line', text: 'storybook squares', pos: 'bottom'}, place: D},
   {len: V, src: 'c132344', from: 1.0, cap: {k: 'line', text: 'along the old town wall', pos: 'bottom'}, place: D},
   {len: P, src: 'tower', photo: 'tall', cap: {k: 'line', text: 'the Münster, rising over the street', pos: 'top'}, place: D},
-  {len: V, src: 'c140906', from: 0.5, cap: {k: 'line', kicker: 'LUNCH BREAK', text: 'a cold Hefeweizen', pos: 'top'}, place: D},
+  {len: V, src: 'c140906', from: 0.5, cap: {k: 'line', kicker: 'LUNCH AT GOLDNER HIRSCH', text: 'a cold Hefeweizen', pos: 'top'}, place: D},
   {len: V, src: 'c142158', from: 0.5, cap: {k: 'line', text: 'and a proper German plate', pos: 'bottom'}, place: D},
-  {len: V, src: 'c150344', from: 1.5, place: D},
-  {len: V, src: 'c151902', from: 1.0, cap: {k: 'line', text: 'the Christmas market', pos: 'bottom'}, place: D},
-  {len: V, src: 'c151801', from: 0.5, cap: {k: 'line', text: 'Glühwein time', pos: 'bottom'}, place: D},
-  {len: V, src: 'c151809', from: 1.0, cap: {k: 'line', text: 'in a mug shaped like a boot!', pos: 'top'}, place: D},
-  {len: CH, src: 'c182206', from: 0.5, cap: {k: 'chapter', kicker: 'THEN', title: 'AFTER DARK', sub: 'one more Christmas market'}, place: ''},
-  {len: V, src: 'c182436', from: 0.3, cap: {k: 'line', text: 'lights everywhere', pos: 'bottom'}, place: ''},
-  {len: 3.2, src: 'c183148', from: 0.5, cap: {k: 'line', text: 'and one more mug for the collection.', pos: 'top'}, place: ''},
+  {len: 6.6, src: 'c150344', from: 0.1, cap: {k: 'line', text: 'stars over the old town', pos: 'bottom'}, place: D},
+  {len: 4.8, src: 'c151902', from: 0.1, cap: {k: 'chapter', kicker: 'DINKELSBÜHL', title: 'CHRISTMAS MARKET', sub: 'at the Spitalhof'}, place: D},
+  {len: 3.2, src: 'c151801', from: 0.0, cap: {k: 'line', text: 'Glühwein time', pos: 'bottom'}, place: D},
+  {len: 6.2, src: 'c151809', from: 0.1, cap: {k: 'line', text: 'in a mug shaped like a boot!', pos: 'top'}, place: D},
+  {len: 5.2, src: 'c182206', from: 0.0, cap: {k: 'chapter', kicker: 'THEN · SCHWÄBISCH HALL', title: 'TREE LIGHTING', sub: "on the steps of St. Michael's"}, place: SH},
+  {len: 7.2, src: 'c182436', from: 0.0, cap: {k: 'line', text: 'and the whole square lit up', pos: 'bottom'}, place: SH},
+  {len: 4.5, src: 'c183148', from: 0.0, cap: {k: 'line', text: 'and one more mug for the collection.', pos: 'top'}, place: SH},
 ];
 const STARTS: number[] = [];
 { let t = 0; for (const it of SEQ) { STARTS.push(t); t += it.len; } }
@@ -103,7 +103,7 @@ const botS: React.CSSProperties = {alignItems: 'center', justifyContent: 'flex-e
 const CapView: React.FC<{cap: Cap; a: number; b: number}> = ({cap, a, b}) => {
   if (cap.k === 'hook') return (
     <Win a={a} b={b} style={{...topS, background: 'linear-gradient(180deg, rgba(10,22,40,0.7) 0%, rgba(10,22,40,0.3) 40%, rgba(10,22,40,0) 60%)'}}>
-      <Pop at={a + 0.3}><Kick>ONE SLOW DAY IN GERMANY</Kick></Pop>
+      <Pop at={a + 0.3}><Kick>ONE DAY · TWO CHRISTMAS MARKETS</Kick></Pop>
       <Pop at={a + 1.0}><div style={{fontFamily: stamp, fontSize: 160, color: c.cream, lineHeight: 0.95, textShadow: shadow}}>DINKELSBÜHL</div></Pop>
       <Pop at={a + 1.8}><Script size={66} color={c.goldBright}>a walled old town</Script></Pop>
     </Win>
@@ -141,8 +141,8 @@ const Reel: React.FC = () => {
       {SEQ.map((it, i) => it.cap ? <CapView key={i} cap={it.cap} a={STARTS[i]} b={STARTS[i] + it.len} /> : null)}
 
       <Win a={END} b={TOTAL + 1} style={{alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: 70, background: `radial-gradient(100% 70% at 50% 35%, #1d2f52, ${c.navyMid} 50%, ${c.navy})`}}>
-        <Pop at={END + 0.2}><Script size={100}>Have you been</Script></Pop>
-        <Pop at={END + 0.7}><Script size={100} color={c.goldBright}>to Dinkelsbühl?</Script></Pop>
+        <Pop at={END + 0.2}><Script size={92}>Dinkelsbühl or</Script></Pop>
+        <Pop at={END + 0.7}><Script size={92} color={c.goldBright}>Schwäbisch Hall?</Script><Script size={70}>which would you visit first?</Script></Pop>
         <Pop at={END + 1.4} style={{marginTop: 50}}>
           <div style={{transform: `scale(${pulse})`, background: c.gold, color: c.navy, fontFamily: stamp, fontSize: 54, letterSpacing: '0.12em', padding: '14px 40px', borderRadius: 999}}>COMMENT BELOW & FOLLOW FOR MORE</div>
         </Pop>
