@@ -1,0 +1,128 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Same Mood — Tidepool launch film</title>
+<style>
+@font-face{font-family:Geist;src:url(fonts/Geist-Regular.ttf);font-weight:400}
+@font-face{font-family:Geist;src:url(fonts/Geist-Medium.ttf);font-weight:500}
+@font-face{font-family:Geist;src:url(fonts/Geist-SemiBold.ttf);font-weight:600}
+@font-face{font-family:GMono;src:url(fonts/GeistMono-VariableFont_wght.ttf);font-weight:100 900}
+*{box-sizing:border-box}
+html,body{margin:0;background:#111}
+#stage{position:relative;width:1920px;height:1080px;overflow:hidden;font-family:Geist;color:#121212;
+  background:radial-gradient(90% 80% at 28% 22%,#fdfdfc 0%,#f3f3f1 50%,#e7e7ea 100%)}
+.abs{position:absolute;left:0;top:0}
+.mono{font-family:GMono;text-transform:uppercase}
+#clip{width:1920px;height:1080px}
+#canvas{transform-origin:0 0}
+#paper{left:-14000px;top:-9000px;width:28000px;height:18000px;background:#fff}
+#dots{left:-14000px;top:-9000px;width:28000px;height:18000px;
+  background-image:radial-gradient(circle at 2px 2px,#d2d2d2 1.4px,transparent 1.9px);background-size:28px 28px}
+.drop{position:absolute;left:0;top:0;transform-origin:50% 50%;box-shadow:0 6px 16px rgba(0,0,0,.10),0 1px 3px rgba(0,0,0,.08);background:#eee;object-fit:cover}
+#map .drop{box-shadow:0 2px 6px rgba(0,0,0,.08)}
+#tapToOpen{font-size:11px;letter-spacing:.17em;color:#b4b4b4;white-space:nowrap;transform-origin:50% 0}
+#phone{width:436px;height:938px;transform-origin:50% 50%}
+#phone .body{position:absolute;inset:0;border:12px solid #141416;border-radius:62px;
+  box-shadow:46px 70px 90px rgba(30,30,40,.20),14px 26px 40px rgba(30,30,40,.14),0 0 0 1.5px #2b2b30}
+#phone .body:after{content:"";position:absolute;inset:-12px;border-radius:62px;box-shadow:inset 0 0 0 2px #3a3a40}
+.screen{position:absolute;left:12px;top:12px;width:412px;height:914px;border-radius:50px;overflow:hidden}
+#detail{position:absolute;inset:0;background:#fff}
+.status{position:absolute;left:0;top:0;width:412px;height:40px;font-weight:500;font-size:15px}
+.status .time{position:absolute;left:28px;top:12px}
+.status svg{position:absolute;top:13px}
+.hole{position:absolute;left:196px;top:11px;width:20px;height:20px;border-radius:50%;background:#0b0b0c}
+.homebar{position:absolute;left:146px;bottom:8px;width:120px;height:4px;border-radius:3px;background:#1b1b1b}
+.topbar svg{position:absolute}
+#detailImg{position:absolute;left:50px;width:312px;object-fit:cover}
+.dtitle{position:absolute;left:22px;font-size:16px;color:#9b9b9b}
+.who{position:absolute;left:22px;display:flex;gap:10px;align-items:center}
+.av{width:26px;height:26px;border-radius:50%;background:#efefef;font-size:9px;display:flex;align-items:center;justify-content:center;color:#777;font-family:GMono}
+.you{font-size:12px;font-weight:500}
+.tiny{font-size:8.5px;letter-spacing:.12em;color:#a8a8a8;margin-top:2px}
+.note{position:absolute;left:22px;right:22px;font-size:12.5px;color:#a2a2a2;border-top:1px solid #efefef;padding-top:14px}
+.pill{position:absolute;height:40px;border-radius:20px;background:#f2f2f0;display:flex;align-items:center;justify-content:center;gap:7px;font-size:13px;font-weight:500;color:#2a2a2a}
+.circ{position:absolute;width:40px;height:40px;border-radius:50%;background:#f2f2f0;display:flex;align-items:center;justify-content:center}
+#sv{position:absolute;inset:0}
+.back{position:absolute;left:18px;top:46px;width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid #e4e4e4;display:flex;align-items:center;justify-content:center}
+#svPill{position:absolute;left:50%;top:48px;height:38px;padding:0 20px;border-radius:20px;background:#fff;border:1px solid #e2e2e2;display:flex;align-items:center;gap:10px;font-size:12.5px;letter-spacing:.14em;white-space:nowrap;transform-origin:50% 50%}
+.bdot{width:8px;height:8px;border-radius:50%;background:#1d5cff;display:inline-block}
+#hint{position:absolute;left:50%;top:790px;height:32px;padding:0 16px;border-radius:16px;background:rgba(255,255,255,.92);border:1px solid #e3e3e3;display:flex;align-items:center;font-size:9.5px;letter-spacing:.12em;color:#4a4a4a;white-space:nowrap;transform:translateX(-50%)}
+#svShare{left:246px;top:842px;width:46px;height:46px;background:#fff;border:1px solid #e6e6e6}
+#svSave{left:300px;top:842px;width:96px;height:46px;border-radius:23px;background:#f1f1ef}
+.ck{color:#e5572b;font-weight:600}
+.touch{width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.5);border:2px solid rgba(20,20,30,.22);box-shadow:0 6px 18px rgba(0,0,0,.12);backdrop-filter:blur(6px)}
+.ripple{width:58px;height:58px;border-radius:50%;border:2px solid rgba(29,92,255,.55)}
+.tblock{position:absolute;white-space:nowrap}
+.tblock .line{display:block}
+.w{display:inline-block;margin-right:.24em}
+.acc{color:#1d5cff}
+#label{font-size:24px;letter-spacing:.16em;display:flex;gap:14px;align-items:center}
+#label .bdot{width:14px;height:14px}
+.frost{background:rgba(255,255,255,.62);backdrop-filter:blur(26px) saturate(1.5);border:1px solid rgba(255,255,255,.85);
+  box-shadow:0 30px 70px rgba(20,30,60,.16),0 4px 14px rgba(20,30,60,.08),inset 0 1px 0 rgba(255,255,255,.9)}
+#cap{left:960px;top:540px;padding:34px 60px;border-radius:999px;font-size:60px;font-weight:500;letter-spacing:-.03em;white-space:nowrap}
+#chip{display:flex;align-items:center;gap:22px;padding:16px 34px 16px 16px;border-radius:999px;white-space:nowrap}
+#chip img{width:66px;height:66px;border-radius:50%;object-fit:cover}
+#chip .s1{font-size:15px;letter-spacing:.16em;color:#8a8a8a}
+#chip .s2{font-size:34px;font-weight:500;letter-spacing:-.02em;margin-top:2px}
+#chip .okc{width:46px;height:46px;border-radius:50%;background:#e5572b;display:flex;align-items:center;justify-content:center;margin-left:6px}
+#end{left:960px;top:520px;text-align:center}
+#endT{font-size:168px;font-weight:500;letter-spacing:-.045em;white-space:nowrap;display:flex;align-items:baseline;justify-content:center}
+#endDot{width:34px;height:34px;border-radius:50%;background:#1d5cff;display:inline-block;margin-left:14px}
+#endSub{font-size:26px;letter-spacing:.3em;color:#8d8d8d;margin-top:18px}
+#introCard{transform-origin:0 0;box-shadow:0 40px 80px rgba(20,20,40,.18),0 10px 22px rgba(20,20,40,.10)}
+</style></head>
+<body>
+<div id="stage">
+  <div id="clip" class="abs"><div id="canvas" class="abs">
+    <div id="paper" class="abs"></div><div id="dots" class="abs"></div>
+    <div id="map" class="abs"></div>
+    <div id="rings" class="abs"></div>
+    <div id="tapToOpen" class="abs mono">Tap to open</div>
+  </div></div>
+
+  <div id="phone" class="abs">
+    <div class="body"></div>
+    <div class="screen">
+      <div id="detail">
+        <div class="topbar">
+          <svg style="left:22px;top:54px" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1b1b1b" stroke-width="2"><path d="M20 12H5M11 6l-6 6 6 6"/></svg>
+          <svg style="left:368px;top:54px" width="22" height="22" viewBox="0 0 24 24" fill="#1b1b1b"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>
+        </div>
+        <img id="detailImg" src="drops/clouds.jpg">
+        <div class="dtitle" id="dTitle">Untitled</div>
+        <div class="who" id="dWho"><div class="av">BS</div><div><div class="you">You</div><div class="mono tiny">Dropped 15m ago</div></div></div>
+        <div class="note" id="dNote">&#9998;&nbsp; Add a private note</div>
+        <div class="pill" style="left:18px;top:850px;width:208px"><span class="ck">&#10003;</span> Saved to 1 pool</div>
+        <div class="pill" id="simPill" style="left:234px;top:850px;width:106px"><svg width="15" height="15" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#2a2a2a" stroke-width="1.4"/><circle cx="8" cy="8" r="3" fill="#2a2a2a"/></svg>Related</div>
+        <div class="circ" style="left:350px;top:850px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2a2a2a" stroke-width="2"><path d="M12 15V3M7 8l5-5 5 5M5 13v7h14v-7"/></svg></div>
+      </div>
+      <div id="sv">
+        <div class="back"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1b1b1b" stroke-width="2"><path d="M20 12H5M11 6l-6 6 6 6"/></svg></div>
+        <div id="svPill" class="mono"><span class="bdot"></span>Same mood</div>
+        <div id="hint" class="mono">Drag to explore &nbsp;&middot;&nbsp; Tap an image to follow it</div>
+        <div class="circ" id="svShare"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1b1b1b" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+        <div class="pill" id="svSave"><span id="saveIcon" class="ck">&#10003;</span><span id="saveTxt">Saved</span></div>
+      </div>
+      <div class="status"><span class="time">9:41</span>
+        <svg style="left:330px" width="18" height="14" viewBox="0 0 18 14"><path d="M9 13L1 4a12 12 0 0 1 16 0z" fill="#1b1b1b"/></svg>
+        <svg style="left:352px" width="15" height="14" viewBox="0 0 15 14"><path d="M14 1v12H2z" fill="#1b1b1b"/></svg>
+        <svg style="left:372px" width="10" height="15" viewBox="0 0 10 15"><rect x="1" y="2" width="8" height="12" rx="1.5" fill="#1b1b1b"/><rect x="3.5" y="0" width="3" height="2" fill="#1b1b1b"/></svg>
+      </div>
+      <div class="hole"></div>
+      <div class="homebar"></div>
+    </div>
+  </div>
+
+  <img id="introCard" class="abs drop" src="drops/clouds.jpg">
+
+  <div id="texts" class="abs"></div>
+  <div id="label" class="abs mono"><span class="bdot"></span>Same mood</div>
+  <div id="cap" class="abs frost"></div>
+  <div id="chip" class="abs frost"><img src="drops/clouds.jpg"><div><div class="s1 mono">Saved to</div><div class="s2">blue + green</div></div>
+    <div class="okc"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div></div>
+  <div id="end" class="abs"><div id="endT"></div><div id="endSub" class="mono">Now in Tidepool</div></div>
+
+  <div id="touches" class="abs"></div>
+</div>
+<script src="drops/meta.js"></script>
+<script src="film.js"></script>
+</body></html>
