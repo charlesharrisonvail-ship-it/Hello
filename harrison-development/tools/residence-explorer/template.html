@@ -53,6 +53,7 @@ body.inlevel .intro h1{font-size:clamp(26px,2.6vw,36px)}body.inlevel .intro{max-
 .thumbs button.on{border-color:var(--neon)}
 .toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%);background:var(--text);color:#0E1114;padding:12px 20px;border-radius:999px;font:500 13px Inter;opacity:0;z-index:9;pointer-events:none}
 .note{position:fixed;right:28px;bottom:22px;font-size:11px;color:var(--soft);z-index:3;text-align:right}
+body.clean header,body.clean .intro,body.clean .levels,body.clean .note,body.clean #pins,body.clean .toast{display:none!important}
 .cursor{position:fixed;left:0;top:0;width:22px;height:22px;z-index:99;pointer-events:none;display:none}
 .cursor svg{transition:transform .12s}.cursor.click svg{transform:scale(.8)}
 @media (prefers-reduced-motion:reduce){.pin::after{animation:none;opacity:0}}
