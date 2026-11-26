@@ -1,0 +1,177 @@
+<composition name="Tilt" background="#00000000" duration="@@DURATION@@" position="@@AT@@" size="1600 1600">
+@@TILT_ANIMS@@
+  <graphic name="Phone shadow" position="800 800" size="1200 1560">
+      <input key="screenWidth" type="number" label="Screen width" value="@@SCREEN_W@@" min="200" max="1200" step="1" />
+      <input key="screenHeight" type="number" label="Screen height" value="@@SCREEN_H@@" min="300" max="2000" step="1" />
+      <input key="radius" type="number" label="Screen corner radius" value="@@RADIUS@@" min="0" max="120" step="1" />
+      <input key="bezel" type="number" label="Bezel" value="@@BEZEL@@" min="2" max="40" step="0.5" />
+      <input key="band" type="number" label="Frame band" value="@@BAND@@" min="1" max="20" step="0.5" />
+      <input key="depth" type="number" label="Thickness" value="@@DEPTH@@" min="0" max="120" step="1" />
+      <input key="lay" type="number" label="Laid back (deg)" value="0" min="0" max="75" step="0.1" />
+      <input key="yaw" type="number" label="Turned (deg)" value="0" min="-90" max="90" step="0.1" />
+      <input key="scale" type="number" label="Phone scale" value="@@SCALE@@" min="0.1" max="4" step="0.001" />
+      <input key="lift" type="number" label="Height above the floor" value="70" min="0" max="400" step="1" />
+      <input key="shade" type="color" label="Shadow" value="#1A1D2B" />
+      <input key="strength" type="number" label="Strength" value="@@SHADOW@@" min="0" max="2" step="0.01" />
+@@POSE_ANIMS@@
+    <script><![CDATA[export default defineRenderer((graphic) => {
+  const c = graphic.canvas.getContext("2d");
+  if (c === null) throw new Error("Canvas 2D is unavailable");
+  const FAR = 4000;
+  return {
+    render() {
+      const i = graphic.inputs, { width, height } = graphic.size, pr = graphic.pixelRatio, s = i.scale.value;
+      const hw = i.screenWidth.value / 2 + i.bezel.value + i.band.value, hh = i.screenHeight.value / 2 + i.bezel.value + i.band.value;
+      const R = i.radius.value + i.bezel.value + i.band.value;
+      const lay = i.lay.value * Math.PI / 180, yaw = i.yaw.value * Math.PI / 180, tan = Math.tan(lay);
+      const { r, g, b } = i.shade.value, k = i.strength.value;
+      for (const [reach, drop, blur, alpha] of [[i.depth.value + i.lift.value, 54, 120, 0.2], [i.depth.value * 0.9, 10, 26, 0.3]]) {
+        c.save();
+        c.shadowColor = "rgb(" + r * 255 + " " + g * 255 + " " + b * 255 + " / " + Math.min(1, alpha * k) + ")";
+        c.shadowBlur = blur * s * pr;
+        c.shadowOffsetX = FAR * pr;
+        c.shadowOffsetY = drop * s * pr;
+        c.translate(width / 2 - FAR, height / 2);
+        c.rotate(yaw);
+        c.scale(s, s);
+        const d = reach * tan;
+        c.beginPath();
+        c.roundRect(-hw + d * Math.sin(yaw), -hh + d * Math.cos(yaw), 2 * hw, 2 * hh, R);
+        c.fillStyle = "#000";
+        c.fill();
+        c.restore();
+      }
+    },
+  };
+});]]></script>
+  </graphic>
+  <composition name="Phone" background="#00000000" duration="@@DURATION@@" position="800 800" size="@@PHONE_W@@ @@PHONE_H@@" scale="@@SCALE@@ @@SCALE@@">
+@@PHONE_ANIMS@@
+    <graphic name="Phone body" position="@@PHONE_CX@@ @@PHONE_CY@@" size="@@PHONE_W@@ @@PHONE_H@@">
+      <input key="screenWidth" type="number" label="Screen width" value="@@SCREEN_W@@" min="200" max="1200" step="1" />
+      <input key="screenHeight" type="number" label="Screen height" value="@@SCREEN_H@@" min="300" max="2000" step="1" />
+      <input key="radius" type="number" label="Screen corner radius" value="@@RADIUS@@" min="0" max="120" step="1" />
+      <input key="bezel" type="number" label="Bezel" value="@@BEZEL@@" min="2" max="40" step="0.5" />
+      <input key="band" type="number" label="Frame band" value="@@BAND@@" min="1" max="20" step="0.5" />
+      <input key="depth" type="number" label="Thickness" value="@@DEPTH@@" min="0" max="120" step="1" />
+      <input key="lay" type="number" label="Laid back (deg)" value="0" min="0" max="75" step="0.1" />
+      <input key="yaw" type="number" label="Turned (deg)" value="0" min="-90" max="90" step="0.1" />
+      <input key="frame" type="color" label="Frame" value="@@FRAME@@" />
+      <input key="glass" type="color" label="Glass" value="#060607" />
+@@POSE_ANIMS@@
+      <script><![CDATA[export default defineRenderer((graphic) => {
+  const c = graphic.canvas.getContext("2d");
+  if (c === null) throw new Error("Canvas 2D is unavailable");
+  const css = (k, a) => "rgb(" + k.r * 255 + " " + k.g * 255 + " " + k.b * 255 + " / " + a + ")";
+  const tone = (k, v) => { const t = Math.max(-1, Math.min(1, v)), to = t > 0 ? 1 : 0, m = Math.abs(t); return { r: k.r + (to - k.r) * m, g: k.g + (to - k.g) * m, b: k.b + (to - k.b) * m }; };
+  const EDGE = [[0, -0.25], [0.05, 0.6], [0.14, 0.2], [0.5, 0.02], [0.8, -0.14], [1, -0.5]];
+  const edge = (t) => { for (let n = 1; n < EDGE.length; n++) { const a = EDGE[n - 1], b = EDGE[n]; if (t <= b[0]) return a[1] + (b[1] - a[1]) * (t - a[0]) / (b[0] - a[0]); } return -0.5; };
+  const BUTTONS = [[1, -170, 104], [-1, -236, 44], [-1, -168, 70], [-1, -84, 70]];
+  return {
+    render() {
+      const i = graphic.inputs, { width, height } = graphic.size, cx = width / 2, cy = height / 2;
+      const band = i.band.value, hw = i.screenWidth.value / 2 + i.bezel.value + band, hh = i.screenHeight.value / 2 + i.bezel.value + band;
+      const R = i.radius.value + i.bezel.value + band, frame = i.frame.value, depth = i.depth.value;
+      const lay = i.lay.value * Math.PI / 180, yaw = i.yaw.value * Math.PI / 180;
+      const k = depth * Math.tan(lay), ox = k * Math.sin(yaw), oy = k * Math.cos(yaw);
+      const lit = 0.5 + 0.5 * Math.sin(yaw);
+      const body = (dx, dy, grow) => { c.beginPath(); c.roundRect(cx - hw - grow + dx, cy - hh - grow + dy, 2 * (hw + grow), 2 * (hh + grow), Math.max(0, R + grow)); };
+      const buttons = (dx, dy, v) => {
+        c.fillStyle = css(tone(frame, v), 1);
+        for (const [side, top, length] of BUTTONS) { c.beginPath(); c.roundRect(cx + side * hw - (side > 0 ? 1.6 : 1.4) + dx, cy + top + dy, 3, length, 1.5); c.fill(); }
+      };
+      const steps = Math.min(140, Math.ceil(Math.abs(k) * graphic.pixelRatio));
+      for (let n = steps; n >= 1; n--) {
+        const t = n / steps, dx = ox * t, dy = oy * t, v = edge(t);
+        if (t > 0.3 && t < 0.74) buttons(dx, dy, v + 0.1);
+        const side = c.createLinearGradient(cx - hw + dx, 0, cx + hw + dx, 0);
+        side.addColorStop(0, css(tone(frame, v - 0.16 + 0.34 * (1 - lit)), 1));
+        side.addColorStop(0.5, css(tone(frame, v + 0.05), 1));
+        side.addColorStop(1, css(tone(frame, v - 0.16 + 0.34 * lit), 1));
+        body(dx, dy, 0); c.fillStyle = side; c.fill();
+      }
+      if (steps === 0) buttons(0, 0, -0.1);
+      const squash = Math.tan(lay) * Math.cos(yaw);
+      if (squash > 0.3) {
+        c.fillStyle = css(tone(frame, -0.82), 0.9);
+        const px = cx + ox * 0.5, py = cy + hh + oy * 0.5 - 0.5;
+        for (const x of [-96, -84, -72, -60, -48, 48, 60, 72, 84, 96]) { c.beginPath(); c.ellipse(px + x, py, 2.5, 2.5 * squash, 0, 0, Math.PI * 2); c.fill(); }
+        c.beginPath(); c.roundRect(px - 15, py - 4.4 * squash, 30, 8.8 * squash, 4.4 * squash); c.fill();
+      }
+      body(0, 0, 0); c.fillStyle = css(tone(frame, 0.02), 1); c.fill();
+      body(0, 0, -band); c.fillStyle = css(i.glass.value, 1); c.fill();
+    },
+  };
+});]]></script>
+    </graphic>
+    <!-- SCREENS: one composition per screen, size="@@SCREEN_W@@ @@SCREEN_H@@", position="@@PHONE_CX@@ @@PHONE_CY@@" -->
+    <graphic name="Phone glass" position="@@PHONE_CX@@ @@PHONE_CY@@" size="@@PHONE_W@@ @@PHONE_H@@">
+      <input key="screenWidth" type="number" label="Screen width" value="@@SCREEN_W@@" min="200" max="1200" step="1" />
+      <input key="screenHeight" type="number" label="Screen height" value="@@SCREEN_H@@" min="300" max="2000" step="1" />
+      <input key="radius" type="number" label="Screen corner radius" value="@@RADIUS@@" min="0" max="120" step="1" />
+      <input key="bezel" type="number" label="Bezel" value="@@BEZEL@@" min="2" max="40" step="0.5" />
+      <input key="band" type="number" label="Frame band" value="@@BAND@@" min="1" max="20" step="0.5" />
+      <input key="depth" type="number" label="Thickness" value="@@DEPTH@@" min="0" max="120" step="1" />
+      <input key="lay" type="number" label="Laid back (deg)" value="0" min="0" max="75" step="0.1" />
+      <input key="yaw" type="number" label="Turned (deg)" value="0" min="-90" max="90" step="0.1" />
+      <input key="frame" type="color" label="Frame" value="@@FRAME@@" />
+      <input key="glass" type="color" label="Glass" value="#060607" />
+      <input key="cutout" type="number" label="Cutout (0 none, 1 punch hole, 2 island)" value="@@CUTOUT@@" min="0" max="2" step="1" />
+      <input key="cutoutTop" type="number" label="Cutout centre from the screen's top" value="@@CUTOUT_TOP@@" min="0" max="120" step="0.5" />
+      <input key="sheen" type="number" label="Reflection" value="1" min="0" max="3" step="0.01" />
+@@POSE_ANIMS@@
+      <script><![CDATA[export default defineRenderer((graphic) => {
+  const c = graphic.canvas.getContext("2d");
+  if (c === null) throw new Error("Canvas 2D is unavailable");
+  const css = (k, a) => "rgb(" + k.r * 255 + " " + k.g * 255 + " " + k.b * 255 + " / " + a + ")";
+  const tone = (k, v) => { const to = v > 0 ? 1 : 0, m = Math.abs(v); return { r: k.r + (to - k.r) * m, g: k.g + (to - k.g) * m, b: k.b + (to - k.b) * m }; };
+  return {
+    render() {
+      const i = graphic.inputs, { width, height } = graphic.size, cx = width / 2, cy = height / 2;
+      const sw = i.screenWidth.value, sh = i.screenHeight.value, r = i.radius.value, bz = i.bezel.value;
+      const x0 = cx - sw / 2, y0 = cy - sh / 2, g = i.glass.value, frame = i.frame.value, edge = bz + i.band.value;
+      const lay = i.lay.value * Math.PI / 180, yaw = i.yaw.value * Math.PI / 180, tilt = Math.min(1, i.lay.value / 50), k = i.sheen.value;
+      const lip = c.createLinearGradient(x0 - edge, y0 - edge, x0 + sw + edge, y0 + sh + edge);
+      lip.addColorStop(0, css(tone(frame, 0.4), 1)); lip.addColorStop(0.3, css(tone(frame, 0.02), 1));
+      lip.addColorStop(0.68, css(tone(frame, -0.16), 1)); lip.addColorStop(1, css(tone(frame, 0.24), 1));
+      c.beginPath();
+      c.roundRect(x0 - edge, y0 - edge, sw + 2 * edge, sh + 2 * edge, r + edge);
+      c.roundRect(x0 - bz, y0 - bz, sw + 2 * bz, sh + 2 * bz, r + bz);
+      c.fillStyle = lip; c.fill("evenodd");
+      const rim = c.createLinearGradient(x0 - edge, y0 - edge, x0 + sw + edge, y0 + sh + edge);
+      rim.addColorStop(0, "rgb(255 255 255 / 0.85)"); rim.addColorStop(0.45, "rgb(255 255 255 / 0.12)"); rim.addColorStop(1, "rgb(255 255 255 / 0.5)");
+      c.beginPath(); c.roundRect(x0 - edge + 0.5, y0 - edge + 0.5, sw + 2 * edge - 1, sh + 2 * edge - 1, r + edge - 0.5);
+      c.lineWidth = 1; c.strokeStyle = rim; c.stroke();
+      c.save();
+      c.beginPath(); c.roundRect(x0, y0, sw, sh, r); c.clip();
+      const fx = -Math.sin(yaw), fy = -Math.cos(yaw);
+      const far = c.createLinearGradient(cx + fx * sh / 2, cy + fy * sh / 2, cx - fx * sh * 0.1, cy - fy * sh * 0.1);
+      far.addColorStop(0, "rgb(8 10 20 / " + 0.1 * tilt * k + ")"); far.addColorStop(1, "rgb(8 10 20 / 0)");
+      c.fillStyle = far; c.fillRect(x0, y0, sw, sh);
+      const at = cx + (i.yaw.value / 40) * sw * 0.8 - sw * 0.15, lean = sh * 0.36;
+      const band = c.createLinearGradient(at - sw * 0.34, 0, at + sw * 0.34, 0);
+      band.addColorStop(0, "rgb(255 255 255 / 0)"); band.addColorStop(0.5, "rgb(255 255 255 / " + (0.035 + 0.075 * tilt) * k + ")"); band.addColorStop(1, "rgb(255 255 255 / 0)");
+      c.transform(1, 0, -lean / sh, 1, lean * (cy / sh), 0);
+      c.fillStyle = band; c.fillRect(x0 - sw, y0, sw * 3, sh);
+      c.restore();
+      c.beginPath();
+      c.roundRect(x0 - bz, y0 - bz, sw + 2 * bz, sh + 2 * bz, r + bz);
+      c.roundRect(x0, y0, sw, sh, r);
+      c.fillStyle = "rgb(" + g.r * 255 + " " + g.g * 255 + " " + g.b * 255 + ")"; c.fill("evenodd");
+      c.beginPath(); c.roundRect(x0, y0, sw, sh, r); c.lineWidth = 0.7; c.strokeStyle = "rgb(0 0 0 / 0.4)"; c.stroke();
+      const cut = Math.round(i.cutout.value), top = y0 + i.cutoutTop.value;
+      if (cut === 0) return;
+      c.fillStyle = "#000";
+      c.beginPath();
+      if (cut === 2) c.roundRect(cx - 60, top - 17, 120, 34, 17); else c.arc(cx, top, 11, 0, Math.PI * 2);
+      c.fill();
+      const lx = cut === 2 ? cx + 36 : cx, lens = c.createRadialGradient(lx - 1.5, top - 1.5, 0, lx, top, 6);
+      lens.addColorStop(0, "#2a3350"); lens.addColorStop(0.5, "#0b0d18"); lens.addColorStop(1, "#000");
+      c.fillStyle = lens; c.beginPath(); c.arc(lx, top, 6, 0, Math.PI * 2); c.fill();
+      c.fillStyle = "rgb(255 255 255 / 0.5)"; c.beginPath(); c.arc(lx - 2, top - 2, 0.9, 0, Math.PI * 2); c.fill();
+    },
+  };
+});]]></script>
+    </graphic>
+  </composition>
+</composition>

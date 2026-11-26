@@ -23,13 +23,27 @@
         "source": "github",
         "repo": "HKUDS/CLI-Anything"
       }
+    },
+    "mobbin": {
+      "source": {
+        "source": "github",
+        "repo": "mobbin/skills"
+      }
+    },
+    "stewdio": {
+      "source": {
+        "source": "github",
+        "repo": "StewdioAI/plugin"
+      }
     }
   },
   "enabledPlugins": {
     "superpowers@superpowers-marketplace": true,
     "ponytail@ponytail": true,
     "ecc@ecc": true,
-    "cli-anything@cli-anything": true
+    "cli-anything@cli-anything": true,
+    "mobbin@mobbin": true,
+    "stewdio@stewdio": true
   },
   "hooks": {
     "SessionStart": [
