@@ -40,8 +40,13 @@ const SEQ: Item[] = [
   {len: 4.8, src: 'c151902', from: 0.1, cap: {k: 'chapter', kicker: 'DINKELSBÜHL', title: 'CHRISTMAS MARKET', sub: 'at the Spitalhof'}, place: D},
   {len: 3.2, src: 'c151801', from: 0.0, cap: {k: 'line', text: 'Glühwein time', pos: 'bottom'}, place: D},
   {len: 6.2, src: 'c151809', from: 0.1, cap: {k: 'line', text: 'in a mug shaped like a boot!', pos: 'top'}, place: D},
-  {len: 5.2, src: 'c182206', from: 0.0, cap: {k: 'chapter', kicker: 'THEN · SCHWÄBISCH HALL', title: 'TREE LIGHTING', sub: "on the steps of St. Michael's"}, place: SH},
-  {len: 7.2, src: 'c182436', from: 0.0, cap: {k: 'line', text: 'and the whole square lit up', pos: 'bottom'}, place: SH},
+  {len: 4.3, src: 'c182110', from: 0.0, cap: {k: 'chapter', kicker: 'THEN, AFTER DARK', title: 'SCHWÄBISCH HALL', sub: "the tree lighting at St. Michael's"}, place: SH},
+  {len: 3.6, src: 'pyramid', photo: 'tall', cap: {k: 'line', text: 'a Christmas pyramid, lit for the night', pos: 'top'}, place: SH},
+  {len: 3.6, src: 'c182206', from: 0.0, cap: {k: 'line', kicker: 'TREE LIGHTING', text: "on the steps of St. Michael's", pos: 'top'}, place: SH},
+  {len: 3.6, src: 'shselfie', photo: 'tall', cap: {k: 'line', text: 'we made it for the lighting!', pos: 'top'}, place: SH},
+  {len: 8.1, src: 'c182539', from: 0.0, cap: {k: 'line', text: 'the whole Marktplatz aglow', pos: 'bottom'}, place: SH},
+  {len: 7.2, src: 'c182436', from: 0.0, cap: {k: 'line', text: 'lights everywhere you look', pos: 'bottom'}, place: SH},
+  {len: 7.1, src: 'c183741', from: 0.0, cap: {k: 'line', text: 'one last stroll through the lights', pos: 'bottom'}, place: SH},
   {len: 4.5, src: 'c183148', from: 0.0, cap: {k: 'line', text: 'and one more mug for the collection.', pos: 'top'}, place: SH},
 ];
 const STARTS: number[] = [];
@@ -111,7 +116,7 @@ const CapView: React.FC<{cap: Cap; a: number; b: number}> = ({cap, a, b}) => {
   if (cap.k === 'chapter') return (
     <Win a={a} b={b} style={{...topS, background: 'linear-gradient(180deg, rgba(10,22,40,0.75) 0%, rgba(10,22,40,0.4) 35%, rgba(10,22,40,0) 55%)'}}>
       <Pop at={a + 0.3}><Kick size={48}>{cap.kicker}</Kick></Pop>
-      <Pop at={a + 0.9}><div style={{fontFamily: stamp, fontSize: cap.title.length > 12 ? 130 : 170, color: c.cream, lineHeight: 0.95, textShadow: shadow}}>{cap.title}</div></Pop>
+      <Pop at={a + 0.9}><div style={{fontFamily: stamp, fontSize: cap.title.length > 12 ? 130 : 160, color: c.cream, lineHeight: 0.95, textShadow: shadow}}>{cap.title}</div></Pop>
       {cap.sub && <Pop at={a + 1.6}><Script size={cap.sub.length > 30 ? 56 : 70}>{cap.sub}</Script></Pop>}
     </Win>
   );
