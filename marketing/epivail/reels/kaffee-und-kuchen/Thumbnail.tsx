@@ -11,7 +11,7 @@ const sh = '0 6px 30px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.6)';
 const Pin = () => <svg width="26" height="34" viewBox="0 0 24 32"><path d="M12 0C5.4 0 0 5.2 0 11.7 0 20.5 12 32 12 32s12-11.5 12-20.3C24 5.2 18.6 0 12 0zm0 16a4.5 4.5 0 110-9 4.5 4.5 0 010 9z" fill={c.goldBright} /></svg>;
 const Thumb: React.FC<{square: boolean}> = ({square}) => (
   <AbsoluteFill style={{background: '#0a1628'}}>
-    <Img src={staticFile('kaffee.jpg')} style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: square ? '55% 48%' : '50% 45%'}} />
+    <Img src={staticFile('kthumb.jpg')} style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: square ? '50% 55%' : '50% 50%'}} />
     <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(10,22,40,0.85) 0%, rgba(10,22,40,0.2) 30%, rgba(10,22,40,0) 55%, rgba(10,22,40,0.88) 100%)'}} />
     <div style={{position: 'absolute', top: square ? 40 : 70, right: square ? 44 : 60, fontFamily: stamp, fontSize: 44, letterSpacing: '0.2em', color: c.gold, textShadow: sh}}>EPIVAIL</div>
     <div style={{position: 'absolute', top: square ? 110 : 180, width: '100%', textAlign: 'center'}}>
