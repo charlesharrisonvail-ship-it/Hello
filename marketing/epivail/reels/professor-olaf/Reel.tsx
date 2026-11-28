@@ -12,14 +12,14 @@ const FPS = 30;
 const s = (t: number) => Math.round(t * FPS);
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 const VO_END = 34.7;
-const END = 35.2;
+const END = 34.65;
 const TOTAL = END + 5;
 const shadow = '0 4px 24px rgba(0,0,0,0.75), 0 2px 4px rgba(0,0,0,0.6)';
 
 // ── visuals ──
 type Shot = {a: number; b: number; src: string; kind: 'video' | 'photo' | 'grid'; from?: number; focus?: [number, number]; zoom?: [number, number]};
 const SHOTS: Shot[] = [
-  {a: 0, b: 4.35, src: 'oface', kind: 'video', from: 0},
+  {a: 0, b: 4.35, src: 'talk1', kind: 'video', from: 0},
   {a: 4.35, b: 6.45, src: 'oglasses', kind: 'photo', focus: [0.5, 0.4], zoom: [1.0, 1.08]},
   {a: 6.45, b: 9.95, src: 'gluehwein', kind: 'video', from: 0},
   {a: 9.95, b: 11.75, src: 'bootmug', kind: 'video', from: 1.5},
@@ -29,8 +29,8 @@ const SHOTS: Shot[] = [
   {a: 19.1, b: 22.35, src: 'otug', kind: 'video', from: 1.0},
   {a: 22.35, b: 25.75, src: 'mug_tree', kind: 'video', from: 0},
   {a: 25.75, b: 27.5, src: 'mug_sh', kind: 'video', from: 0.5},
-  {a: 27.5, b: 32.65, src: 'grid', kind: 'grid'},
-  {a: 32.65, b: END, src: 'oface', kind: 'video', from: 3.0},
+  {a: 27.5, b: 29.65, src: 'grid', kind: 'grid'},
+  {a: 29.65, b: END, src: 'talk2', kind: 'video', from: 0},
 ];
 const XF = 8;
 
@@ -86,7 +86,7 @@ const ShotView: React.FC<{sh: Shot; i: number}> = ({sh, i}) => {
   if (sh.kind === 'photo') inner = <PhotoView sh={sh} len={len} />;
   else if (sh.kind === 'grid') inner = <Grid />;
   else {
-    const z = interpolate(frame, [0, len], [1.02, 1.08]);
+    const z = sh.src.startsWith('talk') ? 1 : interpolate(frame, [0, len], [1.02, 1.08]);
     inner = <AbsoluteFill style={{transform: `scale(${z})`}}><OffthreadVideo src={staticFile(`${sh.src}.mp4`)} startFrom={s(sh.from ?? 0)} muted /></AbsoluteFill>;
   }
   return <AbsoluteFill style={{opacity: fade}}>{inner}</AbsoluteFill>;
@@ -125,13 +125,13 @@ const Captions: React.FC = () => {
 };
 
 // ── big lesson titles ──
-const Title: React.FC<{a: number; b: number; kicker: string; title: string; color?: string}> = ({a, b, kicker, title, color = c.goldBright}) => {
+const Title: React.FC<{a: number; b: number; kicker: string; title: string; color?: string; top?: number}> = ({a, b, kicker, title, color = c.goldBright, top = 240}) => {
   const frame = useCurrentFrame();
   if (frame < s(a) || frame >= s(b)) return null;
   const p = spring({frame: frame - s(a), fps: FPS, config: {damping: 12, stiffness: 180, mass: 0.7}});
   const o = interpolate(frame, [s(b) - 8, s(b)], [1, 0], clamp);
   return (
-    <AbsoluteFill style={{alignItems: 'center', paddingTop: 240, textAlign: 'center', opacity: o}}>
+    <AbsoluteFill style={{alignItems: 'center', paddingTop: top, textAlign: 'center', opacity: o}}>
       <div style={{fontFamily: stamp, fontSize: 52, letterSpacing: '0.2em', color: c.cream, textShadow: shadow}}>{kicker}</div>
       <div style={{transform: `scale(${interpolate(p, [0, 1], [1.8, 1])})`, opacity: Math.min(1, p * 3), fontFamily: stamp, fontSize: 150, lineHeight: 0.95, color, textShadow: shadow}}>{title}</div>
     </AbsoluteFill>
@@ -165,14 +165,14 @@ const Reel: React.FC = () => {
       })}
       <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(10,22,40,0.55) 0%, rgba(10,22,40,0) 25%, rgba(10,22,40,0) 62%, rgba(10,22,40,0.55) 100%)', opacity: frame < s(END) ? 1 : 0}} />
 
-      <Title a={0} b={4.35} kicker="WEIHNACHTSMARKT 101" title="PROFESSOR OLAF" />
+      <Title a={0} b={4.35} kicker="WEIHNACHTSMARKT 101" title="PROFESSOR OLAF" top={1060} />
       <Title a={4.35} b={6.45} kicker="LESSON 1" title="GLÜHWEIN" />
       <Stamp a={9.95} b={11.75} text="GROWN-UPS ONLY" />
       <Title a={11.75} b={13.95} kicker="LESSON 2" title="KINDERPUNSCH" />
       <Stamp a={19.1} b={22.35} text="DESIGNATED DRIVER" rot={-8} />
       <Title a={22.35} b={25.75} kicker="BONUS LESSON" title="ZE PFAND" />
-      <Stamp a={29.65} b={32.65} text="A PROBLEM." rot={-12} top={1010} />
-      <Title a={32.65} b={END} kicker="" title="PROST! 🍻" />
+      <Stamp a={30.9} b={32.65} text="A PROBLEM." rot={-12} top={1080} />
+      
       {frame < s(END) && <Captions />}
 
       {frame >= s(END) && (
